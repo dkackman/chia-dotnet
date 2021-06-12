@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31229.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "chia-dotnet", "chia-dotnet\chia-dotnet.csproj", "{C35A4AE5-0E0E-4D48-B28F-D7D1FF80804F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "chia-dotnet.tests", "chia-dotnet.tests\chia-dotnet.tests.csproj", "{453602C8-9CDF-40A0-B65A-BBC0E4C81111}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C35A4AE5-0E0E-4D48-B28F-D7D1FF80804F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C35A4AE5-0E0E-4D48-B28F-D7D1FF80804F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C35A4AE5-0E0E-4D48-B28F-D7D1FF80804F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C35A4AE5-0E0E-4D48-B28F-D7D1FF80804F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{453602C8-9CDF-40A0-B65A-BBC0E4C81111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{453602C8-9CDF-40A0-B65A-BBC0E4C81111}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{453602C8-9CDF-40A0-B65A-BBC0E4C81111}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{453602C8-9CDF-40A0-B65A-BBC0E4C81111}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1426D319-6A6B-4FF3-A902-1016DB0CB273}
+	EndGlobalSection
+EndGlobal
