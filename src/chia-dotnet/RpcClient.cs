@@ -52,6 +52,13 @@ namespace chia.dotnet
 
         public async Task PostMessage(Message message, CancellationToken cancellationToken)
         {
+            var json = message.ToJson();
+            await _webSocket.SendAsync(Encoding.UTF8.GetBytes(json), WebSocketMessageType.Text, true, cancellationToken);
+        }
+
+        public async Task<Message> SendMessage(Message message, CancellationToken cancellationToken)
+        {
+            // capture the message to be sent
             if (!_pendingMessages.TryAdd(message.Request_Id, message))
             {
                 throw new InvalidOperationException($"Message with id of {message.Request_Id} has already been sent");
@@ -67,23 +74,24 @@ namespace chia.dotnet
                 _pendingMessages.TryRemove(message.Request_Id, out _);
                 throw;
             }
-        }
 
-        public async Task<Message> SendMessage(Message message, CancellationToken cancellationToken)
-        {
-            await PostMessage(message, cancellationToken);
-
-            // wait here until a resposne shows up or we get cancelled
+            // wait here until a response shows up or we get cancelled
             Message response;
-            while (!_pendingResponses.TryGetValue(message.Request_Id, out response) && !cancellationToken.IsCancellationRequested)
+            while (!_pendingResponses.TryRemove(message.Request_Id, out response) && !cancellationToken.IsCancellationRequested)
             {
                 await Task.Yield();
+            }
+
+            // the receive loop cleans up but make sure we do so on cancellation too
+            if (_pendingMessages.ContainsKey(message.Request_Id))
+            {
+                _pendingMessages.TryRemove(message.Request_Id, out _);
             }
 
             return response;
         }
 
-        async Task ReceiveLoop()
+        private async Task ReceiveLoop()
         {
             var buffer = new ArraySegment<byte>(new byte[2048]);
             do
@@ -105,7 +113,12 @@ namespace chia.dotnet
                 var response = await reader.ReadToEndAsync();
                 var message = Message.FromJson(response);
 
-                _pendingResponses[message.Request_Id] = message;
+                // if we have a message pending with this id capture the response and remove it from the pending dictionary                
+                if (_pendingMessages.TryRemove(message.Request_Id, out _))
+                {
+                    _pendingResponses[message.Request_Id] = message;
+                }
+                // TODO - broadcast any response received that's not in the pending dictionary
 
             } while (!_receiveCancellationTokenSource.IsCancellationRequested);
         }
@@ -125,7 +138,6 @@ namespace chia.dotnet
             if ((sslPolicyErrors & SslPolicyErrors.RemoteCertificateNotAvailable) == SslPolicyErrors.RemoteCertificateNotAvailable)
                 return false;
 
-            Debug.WriteLine("Certificate error: {0}", sslPolicyErrors);
             return true;
         }
 
