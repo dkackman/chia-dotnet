@@ -13,6 +13,9 @@ using System.Runtime.CompilerServices;
 
 namespace chia.dotnet
 {
+    /// <summary>
+    /// Base calss that handles core websocket communication with the rpc endpoint
+    /// </summary>
     public class RpcClient : IDisposable
     {
         private readonly ClientWebSocket _webSocket = new();
@@ -23,6 +26,11 @@ namespace chia.dotnet
 
         private bool disposedValue;
 
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="endpoint">Details of thw websocket endpoint</param>
+        /// <param name="serviceName">The name of the service that is running. Will be used as the 'origin' of all messages</param>
         public RpcClient(EndpointInfo endpoint, string serviceName)
         {
             _endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
@@ -37,8 +45,16 @@ namespace chia.dotnet
             _webSocket.Options.RemoteCertificateValidationCallback += ValidateServerCertificate;
         }
 
+        /// <summary>
+        /// The name of the service that is running. Will be used as the 'origin' of all messages
+        /// </summary>
         public string ServiceName { get; private set; }
 
+        /// <summary>
+        /// Opens the websocket and starts the receive loop
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns>Awaitable Task</returns>
         public async Task Connect(CancellationToken cancellationToken)
         {
             _webSocket.Options.ClientCertificates = CertLoader.GetCerts(_endpoint.CertPath, _endpoint.KeyPath);
@@ -47,6 +63,11 @@ namespace chia.dotnet
             _ = Task.Factory.StartNew(ReceiveLoop, _receiveCancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
         }
 
+        /// <summary>
+        /// Cancels the receive loop and closes the websocket
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns>Awaitable Task</returns>
         public async Task Close(CancellationToken cancellationToken)
         {
             _receiveCancellationTokenSource.Cancel();
@@ -66,9 +87,9 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Sends a <see cref="Message"/> to the websocket but and waits for a response
+        /// Sends a <see cref="Message"/> to the websocket and waits for a response
         /// </summary>
-        /// <param name="message">The <see cref="Message"/> to post</param>
+        /// <param name="message">The <see cref="Message"/> to send</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The response message</returns>
         public async Task<Message> SendMessage(Message message, CancellationToken cancellationToken)
@@ -112,6 +133,10 @@ namespace chia.dotnet
         /// </summary>
         public event EventHandler<Message> BroadcastMessageReceived;
 
+        /// <summary>
+        /// Raises the <see cref="BroadcastMessageReceived"/> event
+        /// </summary>
+        /// <param name="message">The message to broadcast</param>
         protected virtual void OnBroadcastMessageReceived(Message message)
         {
             BroadcastMessageReceived?.Invoke(this, message);
@@ -168,6 +193,10 @@ namespace chia.dotnet
             return !((sslPolicyErrors & SslPolicyErrors.RemoteCertificateNotAvailable) == SslPolicyErrors.RemoteCertificateNotAvailable);
         }
 
+        /// <summary>
+        /// Called when the instance is being disposed or finalized
+        /// </summary>
+        /// <param name="disposing">Invoke from <see cref="IDisposable.Dispose"/></param>
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
