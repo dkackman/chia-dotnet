@@ -73,7 +73,8 @@
   
   <h1 id="chia_dotnet_RpcClient" data-uid="chia.dotnet.RpcClient" class="text-break">Class RpcClient
   </h1>
-  <div class="markdown level0 summary"><p>Base calss that handles core websocket communication with the rpc endpoint</p>
+  <div class="markdown level0 summary"><p>Base class that handles core websocket communication with the rpc endpoint
+and synchronizes request and response messages</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -123,7 +124,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_RpcClient__ctor_chia_dotnet_EndpointInfo_System_String_.md&amp;value=---%0Auid%3A%20chia.dotnet.RpcClient.%23ctor(chia.dotnet.EndpointInfo%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L34">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L35">View Source</a>
   </span>
   <a id="chia_dotnet_RpcClient__ctor_" data-uid="chia.dotnet.RpcClient.#ctor*"></a>
   <h4 id="chia_dotnet_RpcClient__ctor_chia_dotnet_EndpointInfo_System_String_" data-uid="chia.dotnet.RpcClient.#ctor(chia.dotnet.EndpointInfo,System.String)">RpcClient(EndpointInfo, String)</h4>
@@ -165,7 +166,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_RpcClient_ServiceName.md&amp;value=---%0Auid%3A%20chia.dotnet.RpcClient.ServiceName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L51">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L52">View Source</a>
   </span>
   <a id="chia_dotnet_RpcClient_ServiceName_" data-uid="chia.dotnet.RpcClient.ServiceName*"></a>
   <h4 id="chia_dotnet_RpcClient_ServiceName" data-uid="chia.dotnet.RpcClient.ServiceName">ServiceName</h4>
@@ -198,7 +199,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_RpcClient_Close_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.RpcClient.Close(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L71">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L72">View Source</a>
   </span>
   <a id="chia_dotnet_RpcClient_Close_" data-uid="chia.dotnet.RpcClient.Close*"></a>
   <h4 id="chia_dotnet_RpcClient_Close_System_Threading_CancellationToken_" data-uid="chia.dotnet.RpcClient.Close(System.Threading.CancellationToken)">Close(CancellationToken)</h4>
@@ -247,7 +248,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_RpcClient_Connect_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.RpcClient.Connect(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L58">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L59">View Source</a>
   </span>
   <a id="chia_dotnet_RpcClient_Connect_" data-uid="chia.dotnet.RpcClient.Connect*"></a>
   <h4 id="chia_dotnet_RpcClient_Connect_System_Threading_CancellationToken_" data-uid="chia.dotnet.RpcClient.Connect(System.Threading.CancellationToken)">Connect(CancellationToken)</h4>
@@ -296,7 +297,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_RpcClient_Dispose.md&amp;value=---%0Auid%3A%20chia.dotnet.RpcClient.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L217">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L218">View Source</a>
   </span>
   <a id="chia_dotnet_RpcClient_Dispose_" data-uid="chia.dotnet.RpcClient.Dispose*"></a>
   <h4 id="chia_dotnet_RpcClient_Dispose" data-uid="chia.dotnet.RpcClient.Dispose">Dispose()</h4>
@@ -312,7 +313,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_RpcClient_Dispose_System_Boolean_.md&amp;value=---%0Auid%3A%20chia.dotnet.RpcClient.Dispose(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L200">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L201">View Source</a>
   </span>
   <a id="chia_dotnet_RpcClient_Dispose_" data-uid="chia.dotnet.RpcClient.Dispose*"></a>
   <h4 id="chia_dotnet_RpcClient_Dispose_System_Boolean_" data-uid="chia.dotnet.RpcClient.Dispose(System.Boolean)">Dispose(Boolean)</h4>
@@ -346,7 +347,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_RpcClient_OnBroadcastMessageReceived_chia_dotnet_Message_.md&amp;value=---%0Auid%3A%20chia.dotnet.RpcClient.OnBroadcastMessageReceived(chia.dotnet.Message)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L140">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L141">View Source</a>
   </span>
   <a id="chia_dotnet_RpcClient_OnBroadcastMessageReceived_" data-uid="chia.dotnet.RpcClient.OnBroadcastMessageReceived*"></a>
   <h4 id="chia_dotnet_RpcClient_OnBroadcastMessageReceived_chia_dotnet_Message_" data-uid="chia.dotnet.RpcClient.OnBroadcastMessageReceived(chia.dotnet.Message)">OnBroadcastMessageReceived(Message)</h4>
@@ -380,7 +381,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_RpcClient_PostMessage_chia_dotnet_Message_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.RpcClient.PostMessage(chia.dotnet.Message%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L83">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L84">View Source</a>
   </span>
   <a id="chia_dotnet_RpcClient_PostMessage_" data-uid="chia.dotnet.RpcClient.PostMessage*"></a>
   <h4 id="chia_dotnet_RpcClient_PostMessage_chia_dotnet_Message_System_Threading_CancellationToken_" data-uid="chia.dotnet.RpcClient.PostMessage(chia.dotnet.Message,System.Threading.CancellationToken)">PostMessage(Message, CancellationToken)</h4>
@@ -436,7 +437,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_RpcClient_SendMessage_chia_dotnet_Message_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.RpcClient.SendMessage(chia.dotnet.Message%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L95">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L96">View Source</a>
   </span>
   <a id="chia_dotnet_RpcClient_SendMessage_" data-uid="chia.dotnet.RpcClient.SendMessage*"></a>
   <h4 id="chia_dotnet_RpcClient_SendMessage_chia_dotnet_Message_System_Threading_CancellationToken_" data-uid="chia.dotnet.RpcClient.SendMessage(chia.dotnet.Message,System.Threading.CancellationToken)">SendMessage(Message, CancellationToken)</h4>
@@ -494,7 +495,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_RpcClient_BroadcastMessageReceived.md&amp;value=---%0Auid%3A%20chia.dotnet.RpcClient.BroadcastMessageReceived%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L134">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L135">View Source</a>
   </span>
   <h4 id="chia_dotnet_RpcClient_BroadcastMessageReceived" data-uid="chia.dotnet.RpcClient.BroadcastMessageReceived">BroadcastMessageReceived</h4>
   <div class="markdown level1 summary"><p>Event rasied when a message is received from the endpoint that was either not in response to a send
@@ -535,7 +536,7 @@ or was a response from a posted message (i.e. we didn't register to receive the 
                     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_RpcClient.md&amp;value=---%0Auid%3A%20chia.dotnet.RpcClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L19" class="contribution-link">View Source</a>
+                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L20" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

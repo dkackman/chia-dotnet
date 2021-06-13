@@ -2,6 +2,9 @@
 
 namespace chia.dotnet
 {
+    /// <summary>
+    /// Information about how to connect and authenticate with the RPC endpoint
+    /// </summary>
     public record EndpointInfo
     {
         public Uri Uri { get; init; }

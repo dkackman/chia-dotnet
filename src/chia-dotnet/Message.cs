@@ -5,6 +5,9 @@ using Newtonsoft.Json.Serialization;
 
 namespace chia.dotnet
 {
+    /// <summary>
+    /// The messaging data strucutre for request and response exchange with the RPC endpoint
+    /// </summary>
     public record Message
     {
         public string Command { get; init; }

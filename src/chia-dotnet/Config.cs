@@ -11,14 +11,20 @@ using Newtonsoft.Json.Converters;
 
 namespace chia.dotnet
 {
+    /// <summary>
+    /// Represents the chia config yaml file and its contents. 
+    /// </summary>
     public sealed class Config
     {
-        private readonly dynamic _config;
-
         internal Config(dynamic config)
         {
-            _config = config;
+            Contents = config;
         }
+
+        /// <summary>
+        /// The contents of the config yaml
+        /// </summary>
+        public dynamic Contents { get; private set; }
 
         public EndpointInfo GetEndpoint(string serviceName)
         {
@@ -27,16 +33,17 @@ namespace chia.dotnet
 
             if (serviceName == "ui")
             {
-                dynamic section = _config.ui;
+                dynamic section = Contents.ui;
                 builder.Host = section.daemon_host;
                 builder.Port = Convert.ToInt32(section.daemon_port);
                 ssl = section.daemon_ssl;
             }
             else
             {
-                builder.Host = _config.self_hostname;
-                builder.Port = Convert.ToInt32(_config.daemon_port);
-                ssl = _config.daemon_ssl;
+                // all other service names resolve to the info at the root of the yaml config
+                builder.Host = Contents.self_hostname;
+                builder.Port = Convert.ToInt32(Contents.daemon_port);
+                ssl = Contents.daemon_ssl;
             }
 
             return new EndpointInfo

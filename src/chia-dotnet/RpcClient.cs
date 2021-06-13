@@ -14,7 +14,8 @@ using System.Runtime.CompilerServices;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Base calss that handles core websocket communication with the rpc endpoint
+    /// Base class that handles core websocket communication with the rpc endpoint
+    /// and synchronizes request and response messages
     /// </summary>
     public class RpcClient : IDisposable
     {

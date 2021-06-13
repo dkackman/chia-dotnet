@@ -13,6 +13,19 @@ references:
   commentId: T:chia.dotnet.Config
   fullName: chia.dotnet.Config
   nameWithType: Config
+- uid: chia.dotnet.Config.Contents
+  name: Contents
+  href: api/chia.dotnet.Config.html#chia_dotnet_Config_Contents
+  commentId: P:chia.dotnet.Config.Contents
+  fullName: chia.dotnet.Config.Contents
+  nameWithType: Config.Contents
+- uid: chia.dotnet.Config.Contents*
+  name: Contents
+  href: api/chia.dotnet.Config.html#chia_dotnet_Config_Contents_
+  commentId: Overload:chia.dotnet.Config.Contents
+  isSpec: "True"
+  fullName: chia.dotnet.Config.Contents
+  nameWithType: Config.Contents
 - uid: chia.dotnet.Config.DefaultRootPath
   name: DefaultRootPath
   href: api/chia.dotnet.Config.html#chia_dotnet_Config_DefaultRootPath

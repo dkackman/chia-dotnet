@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace chia.dotnet
 {
+    /// <summary>
+    /// The names fo chia services. These are used as <see cref="Message.Destination"/> values
+    /// </summary>
     public struct ServiceNames
     {
         public const string FullNode = "chia_full_node";
@@ -15,6 +18,9 @@ namespace chia.dotnet
         public const string Plotter = "chia plots create";
     }
 
+    /// <summary>
+    /// Rpc client for the daemon interface. The daemon can be used to proxy messages to and from other chia services.
+    /// </summary>
     public class Daemon : RpcClient
     {
         public Daemon(EndpointInfo endpoint, string serviceName)
@@ -24,7 +30,7 @@ namespace chia.dotnet
 
         public async Task Exit(CancellationToken cancellationToken)
         {
-            var response = await SendMessage(Message.Create("exit", new ExpandoObject(), "daemon", this.ServiceName), cancellationToken);
+            var response = await SendMessage(Message.Create("exit", new ExpandoObject(), "daemon", ServiceName), cancellationToken);
 
             if (response.Data.success == false)
             {
