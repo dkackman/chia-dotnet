@@ -29,6 +29,6 @@ dotnet build ./src/chia-dotnet.sln
 
 ### Tests
 
-Various unit and integration tests in the test project. Tests attributes with `[TestCategory("Integration")]` will use the local install of chia and the mainnet configuration to resolve RPC endpoints. 
+There are various unit and integration tests in the test project that have example usage. Tests attributes with `[TestCategory("Integration")]` will use the local install of chia and the mainnet configuration to resolve RPC endpoints. 
 
 _chia is a registered trademark or trademark of Chia Network, Inc. in the United States and worldwide._
