@@ -34,5 +34,16 @@ namespace chia.dotnet.tests
 
             Assert.IsTrue(running);
         }
+
+        [TestMethod]
+        public async Task StopLocalDaemon()
+        {
+            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
+
+            await daemon.ConnectAsync(CancellationToken.None);
+            await daemon.Exit(CancellationToken.None);       
+
+            // if not exception the daemon was stopped successfully
+        }
     }
 }
