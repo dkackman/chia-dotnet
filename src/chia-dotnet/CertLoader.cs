@@ -17,7 +17,7 @@ namespace chia.dotnet
         /// <param name="certPath">The full path the the .crt public cert</param>
         /// <param name="keyPath">The full path to the RSA encoded private key</param>
         /// <returns>An ephermal certificate that can be used for WebSocket authentication</returns>
-        public static X509Certificate2 GetCert(string certPath, string keyPath)
+        public static X509Certificate2Collection GetCerts(string certPath, string keyPath)
         {
             using X509Certificate2 cert = new(certPath);
 
@@ -33,7 +33,8 @@ namespace chia.dotnet
 
             using X509Certificate2 certWithKey = cert.CopyWithPrivateKey(rsa);
 
-            return new X509Certificate2(certWithKey.Export(X509ContentType.Pkcs12));
+            var ephermeralCert = new X509Certificate2(certWithKey.Export(X509ContentType.Pkcs12));
+            return new X509Certificate2Collection(ephermeralCert);
         }
     }
 }

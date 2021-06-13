@@ -28,8 +28,7 @@ namespace chia.dotnet
 
         public async Task ConnectAsync(CancellationToken cancellationToken)
         {
-            var cert = CertLoader.GetCert(_endpoint.CertPath, _endpoint.KeyPath);
-            _webSocket.Options.ClientCertificates = new X509Certificate2Collection(cert);
+            _webSocket.Options.ClientCertificates = CertLoader.GetCerts(_endpoint.CertPath, _endpoint.KeyPath);
 
             await _webSocket.ConnectAsync(_endpoint.Uri, cancellationToken);
             _ = Task.Factory.StartNew(ReceiveLoop, _receiveCancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
