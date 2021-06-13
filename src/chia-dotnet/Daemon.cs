@@ -23,6 +23,11 @@ namespace chia.dotnet
     /// </summary>
     public class Daemon : RpcClient
     {
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="endpoint">Details of thw websocket endpoint</param>
+        /// <param name="serviceName">The name of the service that is running. Will be used as the 'origin' of all messages</param>
         public Daemon(EndpointInfo endpoint, string serviceName)
             : base(endpoint, serviceName)
         {
@@ -47,7 +52,7 @@ namespace chia.dotnet
 
         public async Task Register(CancellationToken cancellationToken)
         {
-            await RegisterService(this.ServiceName, cancellationToken);
+            await RegisterService(ServiceName, cancellationToken);
         }
 
         public async Task RegisterService(string service, CancellationToken cancellationToken)
@@ -84,7 +89,7 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.service = service;
-            return Message.Create(command, data, "daemon", this.ServiceName);
+            return Message.Create(command, data, "daemon", ServiceName);
         }
     }
 }
