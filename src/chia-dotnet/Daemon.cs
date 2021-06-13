@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace chia.dotnet
 {
     /// <summary>
-    /// The names fo chia services. These are used as <see cref="Message.Destination"/> values
+    /// The names of chia services. These are used as <see cref="Message.Destination"/> values
     /// </summary>
     public struct ServiceNames
     {
