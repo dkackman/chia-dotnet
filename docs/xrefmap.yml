@@ -77,11 +77,11 @@ references:
   commentId: T:chia.dotnet.Daemon
   fullName: chia.dotnet.Daemon
   nameWithType: Daemon
-- uid: chia.dotnet.Daemon.#ctor(chia.dotnet.EndpointInfo,System.String)
+- uid: chia.dotnet.Daemon.#ctor(EndpointInfo,System.String)
   name: Daemon(EndpointInfo, String)
-  href: api/chia.dotnet.Daemon.html#chia_dotnet_Daemon__ctor_chia_dotnet_EndpointInfo_System_String_
-  commentId: M:chia.dotnet.Daemon.#ctor(chia.dotnet.EndpointInfo,System.String)
-  fullName: chia.dotnet.Daemon.Daemon(chia.dotnet.EndpointInfo, System.String)
+  href: api/chia.dotnet.Daemon.html#chia_dotnet_Daemon__ctor_EndpointInfo_System_String_
+  commentId: M:chia.dotnet.Daemon.#ctor(EndpointInfo,System.String)
+  fullName: chia.dotnet.Daemon.Daemon(EndpointInfo, System.String)
   nameWithType: Daemon.Daemon(EndpointInfo, String)
 - uid: chia.dotnet.Daemon.#ctor*
   name: Daemon
@@ -168,185 +168,17 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.Daemon.StopService
   nameWithType: Daemon.StopService
-- uid: chia.dotnet.EndpointInfo
-  name: EndpointInfo
-  href: api/chia.dotnet.EndpointInfo.html
-  commentId: T:chia.dotnet.EndpointInfo
-  fullName: chia.dotnet.EndpointInfo
-  nameWithType: EndpointInfo
-- uid: chia.dotnet.EndpointInfo.CertPath
-  name: CertPath
-  href: api/chia.dotnet.EndpointInfo.html#chia_dotnet_EndpointInfo_CertPath
-  commentId: P:chia.dotnet.EndpointInfo.CertPath
-  fullName: chia.dotnet.EndpointInfo.CertPath
-  nameWithType: EndpointInfo.CertPath
-- uid: chia.dotnet.EndpointInfo.CertPath*
-  name: CertPath
-  href: api/chia.dotnet.EndpointInfo.html#chia_dotnet_EndpointInfo_CertPath_
-  commentId: Overload:chia.dotnet.EndpointInfo.CertPath
-  isSpec: "True"
-  fullName: chia.dotnet.EndpointInfo.CertPath
-  nameWithType: EndpointInfo.CertPath
-- uid: chia.dotnet.EndpointInfo.KeyPath
-  name: KeyPath
-  href: api/chia.dotnet.EndpointInfo.html#chia_dotnet_EndpointInfo_KeyPath
-  commentId: P:chia.dotnet.EndpointInfo.KeyPath
-  fullName: chia.dotnet.EndpointInfo.KeyPath
-  nameWithType: EndpointInfo.KeyPath
-- uid: chia.dotnet.EndpointInfo.KeyPath*
-  name: KeyPath
-  href: api/chia.dotnet.EndpointInfo.html#chia_dotnet_EndpointInfo_KeyPath_
-  commentId: Overload:chia.dotnet.EndpointInfo.KeyPath
-  isSpec: "True"
-  fullName: chia.dotnet.EndpointInfo.KeyPath
-  nameWithType: EndpointInfo.KeyPath
-- uid: chia.dotnet.EndpointInfo.Uri
-  name: Uri
-  href: api/chia.dotnet.EndpointInfo.html#chia_dotnet_EndpointInfo_Uri
-  commentId: P:chia.dotnet.EndpointInfo.Uri
-  fullName: chia.dotnet.EndpointInfo.Uri
-  nameWithType: EndpointInfo.Uri
-- uid: chia.dotnet.EndpointInfo.Uri*
-  name: Uri
-  href: api/chia.dotnet.EndpointInfo.html#chia_dotnet_EndpointInfo_Uri_
-  commentId: Overload:chia.dotnet.EndpointInfo.Uri
-  isSpec: "True"
-  fullName: chia.dotnet.EndpointInfo.Uri
-  nameWithType: EndpointInfo.Uri
-- uid: chia.dotnet.Message
-  name: Message
-  href: api/chia.dotnet.Message.html
-  commentId: T:chia.dotnet.Message
-  fullName: chia.dotnet.Message
-  nameWithType: Message
-- uid: chia.dotnet.Message.Ack
-  name: Ack
-  href: api/chia.dotnet.Message.html#chia_dotnet_Message_Ack
-  commentId: P:chia.dotnet.Message.Ack
-  fullName: chia.dotnet.Message.Ack
-  nameWithType: Message.Ack
-- uid: chia.dotnet.Message.Ack*
-  name: Ack
-  href: api/chia.dotnet.Message.html#chia_dotnet_Message_Ack_
-  commentId: Overload:chia.dotnet.Message.Ack
-  isSpec: "True"
-  fullName: chia.dotnet.Message.Ack
-  nameWithType: Message.Ack
-- uid: chia.dotnet.Message.Command
-  name: Command
-  href: api/chia.dotnet.Message.html#chia_dotnet_Message_Command
-  commentId: P:chia.dotnet.Message.Command
-  fullName: chia.dotnet.Message.Command
-  nameWithType: Message.Command
-- uid: chia.dotnet.Message.Command*
-  name: Command
-  href: api/chia.dotnet.Message.html#chia_dotnet_Message_Command_
-  commentId: Overload:chia.dotnet.Message.Command
-  isSpec: "True"
-  fullName: chia.dotnet.Message.Command
-  nameWithType: Message.Command
-- uid: chia.dotnet.Message.Create(System.String,System.Object,System.String,System.String)
-  name: Create(String, Object, String, String)
-  href: api/chia.dotnet.Message.html#chia_dotnet_Message_Create_System_String_System_Object_System_String_System_String_
-  commentId: M:chia.dotnet.Message.Create(System.String,System.Object,System.String,System.String)
-  fullName: chia.dotnet.Message.Create(System.String, System.Object, System.String, System.String)
-  nameWithType: Message.Create(String, Object, String, String)
-- uid: chia.dotnet.Message.Create*
-  name: Create
-  href: api/chia.dotnet.Message.html#chia_dotnet_Message_Create_
-  commentId: Overload:chia.dotnet.Message.Create
-  isSpec: "True"
-  fullName: chia.dotnet.Message.Create
-  nameWithType: Message.Create
-- uid: chia.dotnet.Message.Data
-  name: Data
-  href: api/chia.dotnet.Message.html#chia_dotnet_Message_Data
-  commentId: P:chia.dotnet.Message.Data
-  fullName: chia.dotnet.Message.Data
-  nameWithType: Message.Data
-- uid: chia.dotnet.Message.Data*
-  name: Data
-  href: api/chia.dotnet.Message.html#chia_dotnet_Message_Data_
-  commentId: Overload:chia.dotnet.Message.Data
-  isSpec: "True"
-  fullName: chia.dotnet.Message.Data
-  nameWithType: Message.Data
-- uid: chia.dotnet.Message.Destination
-  name: Destination
-  href: api/chia.dotnet.Message.html#chia_dotnet_Message_Destination
-  commentId: P:chia.dotnet.Message.Destination
-  fullName: chia.dotnet.Message.Destination
-  nameWithType: Message.Destination
-- uid: chia.dotnet.Message.Destination*
-  name: Destination
-  href: api/chia.dotnet.Message.html#chia_dotnet_Message_Destination_
-  commentId: Overload:chia.dotnet.Message.Destination
-  isSpec: "True"
-  fullName: chia.dotnet.Message.Destination
-  nameWithType: Message.Destination
-- uid: chia.dotnet.Message.FromJson(System.String)
-  name: FromJson(String)
-  href: api/chia.dotnet.Message.html#chia_dotnet_Message_FromJson_System_String_
-  commentId: M:chia.dotnet.Message.FromJson(System.String)
-  fullName: chia.dotnet.Message.FromJson(System.String)
-  nameWithType: Message.FromJson(String)
-- uid: chia.dotnet.Message.FromJson*
-  name: FromJson
-  href: api/chia.dotnet.Message.html#chia_dotnet_Message_FromJson_
-  commentId: Overload:chia.dotnet.Message.FromJson
-  isSpec: "True"
-  fullName: chia.dotnet.Message.FromJson
-  nameWithType: Message.FromJson
-- uid: chia.dotnet.Message.Origin
-  name: Origin
-  href: api/chia.dotnet.Message.html#chia_dotnet_Message_Origin
-  commentId: P:chia.dotnet.Message.Origin
-  fullName: chia.dotnet.Message.Origin
-  nameWithType: Message.Origin
-- uid: chia.dotnet.Message.Origin*
-  name: Origin
-  href: api/chia.dotnet.Message.html#chia_dotnet_Message_Origin_
-  commentId: Overload:chia.dotnet.Message.Origin
-  isSpec: "True"
-  fullName: chia.dotnet.Message.Origin
-  nameWithType: Message.Origin
-- uid: chia.dotnet.Message.Request_Id
-  name: Request_Id
-  href: api/chia.dotnet.Message.html#chia_dotnet_Message_Request_Id
-  commentId: P:chia.dotnet.Message.Request_Id
-  fullName: chia.dotnet.Message.Request_Id
-  nameWithType: Message.Request_Id
-- uid: chia.dotnet.Message.Request_Id*
-  name: Request_Id
-  href: api/chia.dotnet.Message.html#chia_dotnet_Message_Request_Id_
-  commentId: Overload:chia.dotnet.Message.Request_Id
-  isSpec: "True"
-  fullName: chia.dotnet.Message.Request_Id
-  nameWithType: Message.Request_Id
-- uid: chia.dotnet.Message.ToJson
-  name: ToJson()
-  href: api/chia.dotnet.Message.html#chia_dotnet_Message_ToJson
-  commentId: M:chia.dotnet.Message.ToJson
-  fullName: chia.dotnet.Message.ToJson()
-  nameWithType: Message.ToJson()
-- uid: chia.dotnet.Message.ToJson*
-  name: ToJson
-  href: api/chia.dotnet.Message.html#chia_dotnet_Message_ToJson_
-  commentId: Overload:chia.dotnet.Message.ToJson
-  isSpec: "True"
-  fullName: chia.dotnet.Message.ToJson
-  nameWithType: Message.ToJson
 - uid: chia.dotnet.RpcClient
   name: RpcClient
   href: api/chia.dotnet.RpcClient.html
   commentId: T:chia.dotnet.RpcClient
   fullName: chia.dotnet.RpcClient
   nameWithType: RpcClient
-- uid: chia.dotnet.RpcClient.#ctor(chia.dotnet.EndpointInfo,System.String)
+- uid: chia.dotnet.RpcClient.#ctor(EndpointInfo,System.String)
   name: RpcClient(EndpointInfo, String)
-  href: api/chia.dotnet.RpcClient.html#chia_dotnet_RpcClient__ctor_chia_dotnet_EndpointInfo_System_String_
-  commentId: M:chia.dotnet.RpcClient.#ctor(chia.dotnet.EndpointInfo,System.String)
-  fullName: chia.dotnet.RpcClient.RpcClient(chia.dotnet.EndpointInfo, System.String)
+  href: api/chia.dotnet.RpcClient.html#chia_dotnet_RpcClient__ctor_EndpointInfo_System_String_
+  commentId: M:chia.dotnet.RpcClient.#ctor(EndpointInfo,System.String)
+  fullName: chia.dotnet.RpcClient.RpcClient(EndpointInfo, System.String)
   nameWithType: RpcClient.RpcClient(EndpointInfo, String)
 - uid: chia.dotnet.RpcClient.#ctor*
   name: RpcClient
@@ -406,11 +238,11 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.RpcClient.Dispose
   nameWithType: RpcClient.Dispose
-- uid: chia.dotnet.RpcClient.OnBroadcastMessageReceived(chia.dotnet.Message)
+- uid: chia.dotnet.RpcClient.OnBroadcastMessageReceived(Message)
   name: OnBroadcastMessageReceived(Message)
-  href: api/chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_OnBroadcastMessageReceived_chia_dotnet_Message_
-  commentId: M:chia.dotnet.RpcClient.OnBroadcastMessageReceived(chia.dotnet.Message)
-  fullName: chia.dotnet.RpcClient.OnBroadcastMessageReceived(chia.dotnet.Message)
+  href: api/chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_OnBroadcastMessageReceived_Message_
+  commentId: M:chia.dotnet.RpcClient.OnBroadcastMessageReceived(Message)
+  fullName: chia.dotnet.RpcClient.OnBroadcastMessageReceived(Message)
   nameWithType: RpcClient.OnBroadcastMessageReceived(Message)
 - uid: chia.dotnet.RpcClient.OnBroadcastMessageReceived*
   name: OnBroadcastMessageReceived
@@ -419,11 +251,11 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.RpcClient.OnBroadcastMessageReceived
   nameWithType: RpcClient.OnBroadcastMessageReceived
-- uid: chia.dotnet.RpcClient.PostMessage(chia.dotnet.Message,System.Threading.CancellationToken)
+- uid: chia.dotnet.RpcClient.PostMessage(Message,System.Threading.CancellationToken)
   name: PostMessage(Message, CancellationToken)
-  href: api/chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_PostMessage_chia_dotnet_Message_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.RpcClient.PostMessage(chia.dotnet.Message,System.Threading.CancellationToken)
-  fullName: chia.dotnet.RpcClient.PostMessage(chia.dotnet.Message, System.Threading.CancellationToken)
+  href: api/chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_PostMessage_Message_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.RpcClient.PostMessage(Message,System.Threading.CancellationToken)
+  fullName: chia.dotnet.RpcClient.PostMessage(Message, System.Threading.CancellationToken)
   nameWithType: RpcClient.PostMessage(Message, CancellationToken)
 - uid: chia.dotnet.RpcClient.PostMessage*
   name: PostMessage
@@ -432,11 +264,11 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.RpcClient.PostMessage
   nameWithType: RpcClient.PostMessage
-- uid: chia.dotnet.RpcClient.SendMessage(chia.dotnet.Message,System.Threading.CancellationToken)
+- uid: chia.dotnet.RpcClient.SendMessage(Message,System.Threading.CancellationToken)
   name: SendMessage(Message, CancellationToken)
-  href: api/chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_SendMessage_chia_dotnet_Message_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.RpcClient.SendMessage(chia.dotnet.Message,System.Threading.CancellationToken)
-  fullName: chia.dotnet.RpcClient.SendMessage(chia.dotnet.Message, System.Threading.CancellationToken)
+  href: api/chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_SendMessage_Message_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.RpcClient.SendMessage(Message,System.Threading.CancellationToken)
+  fullName: chia.dotnet.RpcClient.SendMessage(Message, System.Threading.CancellationToken)
   nameWithType: RpcClient.SendMessage(Message, CancellationToken)
 - uid: chia.dotnet.RpcClient.SendMessage*
   name: SendMessage

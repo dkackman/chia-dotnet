@@ -1,3 +1,5 @@
+- name: Project Home
+  href: https://github.com/dkackman/chia-dotnet
 - name: Articles
   href: articles/
 - name: Api Documentation

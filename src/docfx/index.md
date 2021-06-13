@@ -1,6 +1,6 @@
 # chia-dotnet
 
-Cross-platform .Net5 rpc client library for [chia](https://chia.net).
+Cross-platform .Net5 [rpc client library](https://github.com/dkackman/chia-dotnet) for [chia](https://chia.net).
 
 ## Status
 
