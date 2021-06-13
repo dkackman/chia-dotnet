@@ -6,7 +6,7 @@ A [.net 5](https://dotnet.microsoft.com/download/dotnet/5.0) client library for 
 ## Build 
 
 ````bash
-dotnet build ./src/chia-dotnet.tests/chia-dotnet.tests.csproj
+dotnet build ./src/chia-dotnet.sln
 ````
 
 ## Tests
