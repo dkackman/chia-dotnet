@@ -8,21 +8,6 @@ namespace chia.dotnet.tests
     public class MessageTests
     {
         [TestMethod]
-        public void NewMessageHasId()
-        {
-            var m = new Message();
-            Assert.IsFalse(string.IsNullOrEmpty(m.Request_Id));
-        }
-            
-        [TestMethod]
-        public void GeneratedIdsAreUnique()
-        {
-            var m1 = new Message();
-            var m2 = new Message();
-            Assert.IsFalse(m1.Request_Id == m2.Request_Id);
-        }
-
-        [TestMethod]
         public void CanSerializeToJson()
         {
             var m = new Message();

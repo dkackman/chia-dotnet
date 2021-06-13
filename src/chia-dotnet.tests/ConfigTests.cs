@@ -6,6 +6,7 @@ namespace chia.dotnet.tests
     public class ConfigTests
     {
         [TestMethod]
+        [TestCategory("Integration")]
         public void CanOpenDefaultConfig()
         {
             var config = Config.Open();
