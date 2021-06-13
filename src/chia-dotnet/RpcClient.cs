@@ -39,7 +39,7 @@ namespace chia.dotnet
 
         public string ServiceName { get; private set; }
 
-        public async Task ConnectAsync(CancellationToken cancellationToken)
+        public async Task Connect(CancellationToken cancellationToken)
         {
             _webSocket.Options.ClientCertificates = CertLoader.GetCerts(_endpoint.CertPath, _endpoint.KeyPath);
 
@@ -47,7 +47,7 @@ namespace chia.dotnet
             _ = Task.Factory.StartNew(ReceiveLoop, _receiveCancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
         }
 
-        public async Task CloseAsync(CancellationToken cancellationToken)
+        public async Task Close(CancellationToken cancellationToken)
         {
             _receiveCancellationTokenSource.Cancel();
             await _webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "bye", cancellationToken);

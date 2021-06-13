@@ -1,4 +1,16 @@
-# This is the **HOMEPAGE**.
-Refer to [Markdown](http://daringfireball.net/projects/markdown/) for how to write markdown files.
+# chia-dotnet
+
+Cross-platform .Net5 rpc client library for [chia](https://chia.net).
+
 ## Quick Start Notes:
-1. Add images to the *images* folder if the file is referencing an image.
+
+```csharp
+    using Daemon daemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
+
+    await daemon.Connect(CancellationToken.None);
+
+    await daemon.Register(CancellationToken.None);
+    var message = Message.Create("get_blockchain_state", new ExpandoObject(), ServiceNames.FullNode, daemon.ServiceName);
+
+    var state = await daemon.SendMessage(message, CancellationToken.None);
+```

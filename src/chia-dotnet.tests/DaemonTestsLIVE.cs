@@ -19,7 +19,7 @@ namespace chia.dotnet.tests
         {
             using Daemon daemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
 
-            await daemon.ConnectAsync(CancellationToken.None);
+            await daemon.Connect(CancellationToken.None);
             bool running = await daemon.IsServiceRunning(ServiceNames.Farmer, CancellationToken.None);
 
             Assert.IsTrue(running);
@@ -30,7 +30,7 @@ namespace chia.dotnet.tests
         {
             using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
 
-            await daemon.ConnectAsync(CancellationToken.None);
+            await daemon.Connect(CancellationToken.None);
             bool running = await daemon.IsServiceRunning(ServiceNames.Harvester, CancellationToken.None);
 
             Assert.IsTrue(running);
@@ -41,7 +41,7 @@ namespace chia.dotnet.tests
         {
             using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
 
-            await daemon.ConnectAsync(CancellationToken.None);
+            await daemon.Connect(CancellationToken.None);
             await daemon.Exit(CancellationToken.None);       
 
             // if no exception the daemon was stopped successfully
@@ -52,7 +52,7 @@ namespace chia.dotnet.tests
         {
             using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
 
-            await daemon.ConnectAsync(CancellationToken.None);
+            await daemon.Connect(CancellationToken.None);
 
             Assert.IsFalse(await daemon.IsServiceRunning(ServiceNames.Farmer, CancellationToken.None));
 
@@ -70,7 +70,7 @@ namespace chia.dotnet.tests
         {
             using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
 
-            await daemon.ConnectAsync(CancellationToken.None);
+            await daemon.Connect(CancellationToken.None);
 
             await daemon.RegisterService(daemon.ServiceName, CancellationToken.None);
 
@@ -82,7 +82,7 @@ namespace chia.dotnet.tests
         {
             using Daemon daemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
 
-            await daemon.ConnectAsync(CancellationToken.None);
+            await daemon.Connect(CancellationToken.None);
 
             await daemon.Register(CancellationToken.None);
             var message = Message.Create("get_blockchain_state", new ExpandoObject(), ServiceNames.FullNode, daemon.ServiceName);
