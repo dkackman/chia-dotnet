@@ -33,7 +33,7 @@ namespace chia.dotnet
         public async Task Exit(CancellationToken cancellationToken)
         {
             var response = await SendMessage(Message.Create("exit", new ExpandoObject(), "daemon", _origin), cancellationToken);
-            
+
             if (response.Data.success == false)
             {
                 throw new InvalidOperationException();

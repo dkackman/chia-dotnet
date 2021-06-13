@@ -13,7 +13,7 @@ namespace chia.dotnet
 {
     public sealed class Config
     {
-        private dynamic _config;
+        private readonly dynamic _config;
 
         internal Config(dynamic config)
         {
@@ -68,7 +68,10 @@ namespace chia.dotnet
 
         public static string DefaultRootPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".chia", "mainnet");
 
-        public static Config Open() => Open(Path.Combine(DefaultRootPath, "config", "config.yaml"));
+        public static Config Open()
+        {
+            return Open(Path.Combine(DefaultRootPath, "config", "config.yaml"));
+        }
 
         // sigh... YAML
         // https://stackoverflow.com/questions/32757084/yamldotnet-how-to-handle-set
@@ -76,7 +79,7 @@ namespace chia.dotnet
         {
             void IDictionary<T, object>.Add(T key, object value)
             {
-                Add(key);
+                _ = Add(key);
             }
 
             bool IDictionary<T, object>.ContainsKey(T key)
@@ -84,10 +87,7 @@ namespace chia.dotnet
                 throw new NotImplementedException();
             }
 
-            ICollection<T> IDictionary<T, object>.Keys
-            {
-                get { throw new NotImplementedException(); }
-            }
+            ICollection<T> IDictionary<T, object>.Keys => throw new NotImplementedException();
 
             bool IDictionary<T, object>.Remove(T key)
             {
@@ -99,22 +99,9 @@ namespace chia.dotnet
                 throw new NotImplementedException();
             }
 
-            ICollection<object> IDictionary<T, object>.Values
-            {
-                get { throw new NotImplementedException(); }
-            }
+            ICollection<object> IDictionary<T, object>.Values => throw new NotImplementedException();
 
-            object IDictionary<T, object>.this[T key]
-            {
-                get
-                {
-                    throw new NotImplementedException();
-                }
-                set
-                {
-                    Add(key);
-                }
-            }
+            object IDictionary<T, object>.this[T key] { get => throw new NotImplementedException(); set => _ = Add(key); }
 
             void ICollection<KeyValuePair<T, object>>.Add(KeyValuePair<T, object> item)
             {
@@ -136,15 +123,9 @@ namespace chia.dotnet
                 throw new NotImplementedException();
             }
 
-            int ICollection<KeyValuePair<T, object>>.Count
-            {
-                get { return base.Count; }
-            }
+            int ICollection<KeyValuePair<T, object>>.Count => base.Count;
 
-            bool ICollection<KeyValuePair<T, object>>.IsReadOnly
-            {
-                get { throw new NotImplementedException(); }
-            }
+            bool ICollection<KeyValuePair<T, object>>.IsReadOnly => throw new NotImplementedException();
 
             bool ICollection<KeyValuePair<T, object>>.Remove(KeyValuePair<T, object> item)
             {
@@ -154,9 +135,9 @@ namespace chia.dotnet
             IEnumerator<KeyValuePair<T, object>> IEnumerable<KeyValuePair<T, object>>.GetEnumerator()
             {
                 IDictionary<T, object> dict = new Dictionary<T, object>();
-                T[] keys = new T[base.Count];
+                var keys = new T[base.Count];
                 base.CopyTo(keys);
-                foreach (T k in keys)
+                foreach (var k in keys)
                 {
                     dict.Add(k, null);
                 }

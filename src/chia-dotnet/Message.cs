@@ -37,7 +37,10 @@ namespace chia.dotnet
 
         private class LowercaseContractResolver : DefaultContractResolver
         {
-            protected override string ResolvePropertyName(string propertyName) => propertyName.ToLower();
+            protected override string ResolvePropertyName(string propertyName)
+            {
+                return propertyName.ToLower();
+            }
         }
 
         public static Message FromJson(string json)
@@ -50,7 +53,7 @@ namespace chia.dotnet
 
         private static string GetNewReuqestId()
         {
-            byte[] buffer = new byte[32];
+            var buffer = new byte[32];
             random.NextBytes(buffer);
             return BitConverter.ToString(buffer).Replace("-", "");
         }

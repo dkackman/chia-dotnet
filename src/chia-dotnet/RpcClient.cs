@@ -7,8 +7,9 @@ using System.Net.WebSockets;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Collections.Concurrent;
+using System.Runtime.CompilerServices;
 
-[assembly:System.Runtime.CompilerServices.InternalsVisibleTo("chia-dotnet.tests")]
+[assembly: InternalsVisibleTo("chia-dotnet.tests")]
 
 namespace chia.dotnet
 {
@@ -75,7 +76,7 @@ namespace chia.dotnet
             }
             catch
             {
-                _pendingMessages.TryRemove(message.Request_Id, out _);
+                _ = _pendingMessages.TryRemove(message.Request_Id, out _);
                 throw;
             }
 
@@ -89,7 +90,7 @@ namespace chia.dotnet
             // the receive loop cleans up but make sure we do so on cancellation too
             if (_pendingMessages.ContainsKey(message.Request_Id))
             {
-                _pendingMessages.TryRemove(message.Request_Id, out _);
+                _ = _pendingMessages.TryRemove(message.Request_Id, out _);
             }
 
             return response;
@@ -101,7 +102,10 @@ namespace chia.dotnet
         /// </summary>
         public event EventHandler<Message> BroadcastMessageReceived;
 
-        protected virtual void OnBroadcastMessageReceived(Message message) => BroadcastMessageReceived?.Invoke(this, message);
+        protected virtual void OnBroadcastMessageReceived(Message message)
+        {
+            BroadcastMessageReceived?.Invoke(this, message);
+        }
 
         private async Task ReceiveLoop()
         {
@@ -118,9 +122,11 @@ namespace chia.dotnet
                 } while (!result.EndOfMessage);
 
                 if (result.MessageType == WebSocketMessageType.Close)
+                {
                     break;
+                }
 
-                ms.Seek(0, SeekOrigin.Begin);
+                _ = ms.Seek(0, SeekOrigin.Begin);
                 using var reader = new StreamReader(ms, Encoding.UTF8);
                 var response = await reader.ReadToEndAsync();
                 var message = Message.FromJson(response);
@@ -149,10 +155,7 @@ namespace chia.dotnet
             //if ((sslPolicyErrors & SslPolicyErrors.RemoteCertificateNameMismatch) == SslPolicyErrors.RemoteCertificateNameMismatch)
             //    return false;
 
-            if ((sslPolicyErrors & SslPolicyErrors.RemoteCertificateNotAvailable) == SslPolicyErrors.RemoteCertificateNotAvailable)
-                return false;
-
-            return true;
+            return !((sslPolicyErrors & SslPolicyErrors.RemoteCertificateNotAvailable) == SslPolicyErrors.RemoteCertificateNotAvailable);
         }
 
         protected virtual void Dispose(bool disposing)

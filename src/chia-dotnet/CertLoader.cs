@@ -9,7 +9,7 @@ namespace chia.dotnet
     /// <summary>
     /// Helper class for loading certificates
     /// </summary>
-    static class CertLoader
+    internal static class CertLoader
     {
         /// <summary>
         /// Constructs an ephemeral <see cref="X509Certificate2"/> from crt and keys stored as files
@@ -22,16 +22,16 @@ namespace chia.dotnet
             using X509Certificate2 cert = new(certPath);
 
             using StreamReader streamReader = new(keyPath);
-            string base64 = new StringBuilder(streamReader.ReadToEnd())
+            var base64 = new StringBuilder(streamReader.ReadToEnd())
                 .Replace("-----BEGIN RSA PRIVATE KEY-----", string.Empty)
                 .Replace("-----END RSA PRIVATE KEY-----", string.Empty)
                 .Replace(Environment.NewLine, string.Empty)
                 .ToString();
 
-            using RSA rsa = RSA.Create();
+            using var rsa = RSA.Create();
             rsa.ImportRSAPrivateKey(Convert.FromBase64String(base64), out _);
 
-            using X509Certificate2 certWithKey = cert.CopyWithPrivateKey(rsa);
+            using var certWithKey = cert.CopyWithPrivateKey(rsa);
 
             var ephermeralCert = new X509Certificate2(certWithKey.Export(X509ContentType.Pkcs12));
             return new X509Certificate2Collection(ephermeralCert);

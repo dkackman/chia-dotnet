@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace chia.dotnet
 {
-    static class Extensions
+    internal static class Extensions
     {
         public static void Dump(this Exception e)
         {
