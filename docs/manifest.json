@@ -1,0 +1,212 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/dkack/src/github/dkackman/chia-dotnet/src/docfx",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.Config.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.Config.html",
+          "hash": "kp9XxqmPNSsxdWIjLUmznPQtb8/PE8r9VtGNzUqg3KY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.Daemon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.Daemon.html",
+          "hash": "r9IbnL67xUGtljju5z4n+Qc0MoBzMUPavoVCfDIMwD8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.EndpointInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.EndpointInfo.html",
+          "hash": "2KRK9L0Qnh3UpqGNAgGfsJrGRPI+8vI2cpK7CsdWBBE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.Message.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.Message.html",
+          "hash": "rDTRiCWuzGcYH2SNELXSrWZAbKWofW/WRDRbTToHZ4o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.RpcClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.RpcClient.html",
+          "hash": "aPqb2LfwrjeyQmTXk4z6y20at9lvuF7ruMAg7BvtRJI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.ServiceNames.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.ServiceNames.html",
+          "hash": "EOLCcDqV4gJkszUbokHQEmRG13f3uqY5CiZc4eedTFs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.html",
+          "hash": "A96qQR8MGIj4+smagLVQL3Mqtqb/O6EVaWi8i9jpMGs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "UqItO7yTVW+VW7qrDFEYc0RMPDkRem+q3xpbarpOOuc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "cMO2T0CtWcRnXXgtqyTrZ8XPhsztLocWiOTjogJvcbE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "29Cl8tC+8Px9bnhSqTdpMM/KFa9CdW7Q/7HRaf3d2+8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "BlPxk5mtl2kgfcZUgkEguqiSAR/EUyUTT4EdebwkQvs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "Pcl59pvcBcOpITYQDRdIv/sqBic8ygKTCSQOtJrnhwE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "WSuRrYiGwKKMbtdG9z8W9fXmLoCyTnGg9AxbPKLXm2Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Disable incremental build by force rebuild option.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "ForceRebuild"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 7,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
