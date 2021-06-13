@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Dynamic;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using Newtonsoft.Json.Converters;
 
 namespace chia.dotnet
 {
@@ -30,8 +28,10 @@ namespace chia.dotnet
 
         public string ToJson()
         {
-            var serializerSettings = new JsonSerializerSettings();
-            serializerSettings.ContractResolver = new LowercaseContractResolver();
+            var serializerSettings = new JsonSerializerSettings
+            {
+                ContractResolver = new LowercaseContractResolver()
+            };
             return JsonConvert.SerializeObject(this, serializerSettings);
         }
 
@@ -46,7 +46,7 @@ namespace chia.dotnet
             return message;
         }
 
-        private static Random random = new();
+        private static readonly Random random = new();
 
         private static string GetNewReuqestId()
         {
