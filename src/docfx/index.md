@@ -6,7 +6,7 @@ Cross-platform .Net5 rpc client library for [chia](https://chia.net).
 
 Still very much a work in progress. Websocket communcation to the `daemon` works and can communciate with other services. 
 
-_Browse the [api documentation](http://localhost:8080/api/index.html) and [integration test code](https://github.com/dkackman/chia-dotnet/tree/main/src/chia-dotnet.tests) for more info and examples._
+_Browse the [api documentation](https://dkackman.github.io/chia-dotnet/api/index.html) and [integration test code](https://github.com/dkackman/chia-dotnet/tree/main/src/chia-dotnet.tests) for more info and examples._
 
 ## Quick Start Notes:
 
