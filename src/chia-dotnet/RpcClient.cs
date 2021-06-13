@@ -23,11 +23,21 @@ namespace chia.dotnet
 
         private bool disposedValue;
 
-        public RpcClient(EndpointInfo endpoint)
+        public RpcClient(EndpointInfo endpoint, string serviceName)
         {
-            _endpoint = endpoint;
+            _endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
+
+            if (string.IsNullOrEmpty(value: serviceName))
+            {
+                throw new ArgumentNullException(nameof(serviceName));
+            }
+
+            ServiceName = serviceName;
+
             _webSocket.Options.RemoteCertificateValidationCallback += ValidateServerCertificate;
         }
+
+        public string ServiceName { get; private set; }
 
         public async Task ConnectAsync(CancellationToken cancellationToken)
         {

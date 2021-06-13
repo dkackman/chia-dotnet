@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Dynamic;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -64,7 +65,6 @@ namespace chia.dotnet.tests
             // if no exception the daemon was stopped successfully
         }
 
-
         [TestMethod]
         public async Task RegisterService()
         {
@@ -72,7 +72,24 @@ namespace chia.dotnet.tests
 
             await daemon.ConnectAsync(CancellationToken.None);
 
-            await daemon.RegisterService("unit_tests", CancellationToken.None);
+            await daemon.RegisterService(daemon.ServiceName, CancellationToken.None);
+
+            // no exception we were successful
+        }
+
+        [TestMethod]
+        public async Task GetBlockChainState()
+        {
+            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
+
+            await daemon.ConnectAsync(CancellationToken.None);
+
+            await daemon.Register(CancellationToken.None);
+            var message = Message.Create("get_blockchain_state", new ExpandoObject(), ServiceNames.FullNode, daemon.ServiceName);
+
+            var state = await daemon.SendMessage(message, CancellationToken.None);
+
+            Assert.IsNotNull(state);
 
             // no exception we were successful
         }

@@ -17,22 +17,14 @@ namespace chia.dotnet
 
     public class Daemon : RpcClient
     {
-        private readonly string _origin;
-
-        public Daemon(EndpointInfo endpoint, string origin)
-            : base(endpoint)
+        public Daemon(EndpointInfo endpoint, string serviceName)
+            : base(endpoint, serviceName)
         {
-            if (string.IsNullOrEmpty(origin))
-            {
-                throw new ArgumentNullException(nameof(origin));
-            }
-
-            _origin = origin;
         }
 
         public async Task Exit(CancellationToken cancellationToken)
         {
-            var response = await SendMessage(Message.Create("exit", new ExpandoObject(), "daemon", _origin), cancellationToken);
+            var response = await SendMessage(Message.Create("exit", new ExpandoObject(), "daemon", this.ServiceName), cancellationToken);
 
             if (response.Data.success == false)
             {
@@ -45,6 +37,11 @@ namespace chia.dotnet
             var response = await SendMessage(CreateServiceMessage("is_running", service), cancellationToken);
 
             return response.Data.is_running;
+        }
+
+        public async Task Register(CancellationToken cancellationToken)
+        {
+            await RegisterService(this.ServiceName, cancellationToken);
         }
 
         public async Task RegisterService(string service, CancellationToken cancellationToken)
@@ -81,7 +78,7 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.service = service;
-            return Message.Create(command, data, "daemon", _origin);
+            return Message.Create(command, data, "daemon", this.ServiceName);
         }
     }
 }
