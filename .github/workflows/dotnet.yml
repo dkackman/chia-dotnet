@@ -24,5 +24,5 @@ jobs:
       run: dotnet build --no-restore
       working-directory: src
     - name: Test
-      run: dotnet test --no-build --verbosity normal --filter chia-dotnet.tests\!~LIVE
+      run: dotnet test --no-build --verbosity normal --filter "TestCategory!=Integration"
       working-directory: src
