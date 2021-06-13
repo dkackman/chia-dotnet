@@ -5,7 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Net.WebSockets;
 using System.Net.Security;
-using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
 using System.Collections.Concurrent;
 
@@ -29,19 +28,11 @@ namespace chia.dotnet
 
         public async Task ConnectAsync(CancellationToken cancellationToken)
         {
-            try
-            {
-                var cert = CertLoader.GetCert(_endpoint.CertPath, _endpoint.KeyPath);
-                _webSocket.Options.ClientCertificates = new X509Certificate2Collection(cert);
+            var cert = CertLoader.GetCert(_endpoint.CertPath, _endpoint.KeyPath);
+            _webSocket.Options.ClientCertificates = new X509Certificate2Collection(cert);
 
-                await _webSocket.ConnectAsync(_endpoint.Uri, cancellationToken);
-                _ = Task.Factory.StartNew(ReceiveLoop, _receiveCancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
-            }
-            catch (Exception e)
-            {
-                e.Dump();
-                throw;
-            }
+            await _webSocket.ConnectAsync(_endpoint.Uri, cancellationToken);
+            _ = Task.Factory.StartNew(ReceiveLoop, _receiveCancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
         }
 
         public async Task CloseAsync(CancellationToken cancellationToken)
@@ -50,12 +41,24 @@ namespace chia.dotnet
             await _webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "bye", cancellationToken);
         }
 
+        /// <summary>
+        /// Posts a <see cref="Message"/> to the websocket but does not wait for a response
+        /// </summary>
+        /// <param name="message">The <see cref="Message"/> to post</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>A <see cref="Task"/></returns>
         public async Task PostMessage(Message message, CancellationToken cancellationToken)
         {
             var json = message.ToJson();
             await _webSocket.SendAsync(Encoding.UTF8.GetBytes(json), WebSocketMessageType.Text, true, cancellationToken);
         }
 
+        /// <summary>
+        /// Sends a <see cref="Message"/> to the websocket but and waits for a response
+        /// </summary>
+        /// <param name="message">The <see cref="Message"/> to post</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>The response message</returns>
         public async Task<Message> SendMessage(Message message, CancellationToken cancellationToken)
         {
             // capture the message to be sent
@@ -91,6 +94,14 @@ namespace chia.dotnet
             return response;
         }
 
+        /// <summary>
+        /// Event rasied when a message is received from the endpoint that was either not in response to a send
+        /// or was a response from a posted message (i.e. we didn't register to receive the response
+        /// </summary>
+        public event EventHandler<Message> BroadcastMessageReceived;
+
+        protected virtual void OnBroadcastMessageReceived(Message message) => BroadcastMessageReceived?.Invoke(this, message);
+
         private async Task ReceiveLoop()
         {
             var buffer = new ArraySegment<byte>(new byte[2048]);
@@ -118,8 +129,10 @@ namespace chia.dotnet
                 {
                     _pendingResponses[message.Request_Id] = message;
                 }
-                // TODO - broadcast any response received that's not in the pending dictionary
-
+                else
+                {
+                    OnBroadcastMessageReceived(message);
+                }
             } while (!_receiveCancellationTokenSource.IsCancellationRequested);
         }
 
@@ -141,7 +154,7 @@ namespace chia.dotnet
             return true;
         }
 
-        private void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
             {
@@ -155,6 +168,9 @@ namespace chia.dotnet
             }
         }
 
+        /// <summary>
+        /// <see cref="IDisposable.Dispose"/>
+        /// </summary>
         public void Dispose()
         {
             // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method

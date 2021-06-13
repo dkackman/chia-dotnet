@@ -9,6 +9,8 @@ namespace chia.dotnet.tests
     /// This class is a test harness for interation with an actual daemon instance
     /// </summary>
     [TestClass]
+    [TestCategory("LIVE")]
+    //[Ignore] // uncomment to suppress completely
     public class DaemonTestsLIVE
     {
         [TestMethod]

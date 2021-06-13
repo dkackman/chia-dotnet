@@ -24,21 +24,64 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(origin))
             {
-                throw new ArgumentNullException("origin");
+                throw new ArgumentNullException(nameof(origin));
             }
 
             _origin = origin;
         }
 
+        public async Task Exit(CancellationToken cancellationToken)
+        {
+            var response = await SendMessage(Message.Create("exit", new ExpandoObject(), "daemon", _origin), cancellationToken);
+            
+            if (response.Data.success == false)
+            {
+                throw new InvalidOperationException();
+            }
+        }
+
         public async Task<bool> IsServiceRunning(string service, CancellationToken cancellationToken)
+        {
+            var response = await SendMessage(CreateServiceMessage("is_running", service), cancellationToken);
+
+            return response.Data.is_running;
+        }
+
+        public async Task RegisterService(string service, CancellationToken cancellationToken)
+        {
+            var response = await SendMessage(CreateServiceMessage("register_service", service), cancellationToken);
+
+            if (response.Data.success == false)
+            {
+                throw new InvalidOperationException();
+            }
+        }
+
+        public async Task StartService(string service, CancellationToken cancellationToken)
+        {
+            var response = await SendMessage(CreateServiceMessage("start_service", service), cancellationToken);
+
+            if (response.Data.success == false)
+            {
+                throw new InvalidOperationException();
+            }
+        }
+
+        public async Task StopService(string service, CancellationToken cancellationToken)
+        {
+            var response = await SendMessage(CreateServiceMessage("stop_service", service), cancellationToken);
+
+            if (response.Data.success == false)
+            {
+                throw new InvalidOperationException();
+            }
+        }
+
+        private Message CreateServiceMessage(string command, string service)
         {
             dynamic data = new ExpandoObject();
             data.service = service;
-            var message = Message.Create("is_running", data, "daemon", _origin);
-
-            var response = await SendMessage(message, cancellationToken);
-
-            return response.Data.is_running;
+            return Message.Create(command, data, "daemon", _origin);
         }
     }
 }
