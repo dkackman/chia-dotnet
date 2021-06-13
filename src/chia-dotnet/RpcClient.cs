@@ -8,6 +8,8 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Collections.Concurrent;
 
+[assembly:System.Runtime.CompilerServices.InternalsVisibleTo("chia-dotnet.tests")]
+
 namespace chia.dotnet
 {
     public class RpcClient : IDisposable

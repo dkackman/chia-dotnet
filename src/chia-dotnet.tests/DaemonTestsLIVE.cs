@@ -63,5 +63,18 @@ namespace chia.dotnet.tests
 
             // if no exception the daemon was stopped successfully
         }
+
+
+        [TestMethod]
+        public async Task RegisterService()
+        {
+            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
+
+            await daemon.ConnectAsync(CancellationToken.None);
+
+            await daemon.RegisterService("unit_tests", CancellationToken.None);
+
+            // no exception we were successful
+        }
     }
 }
