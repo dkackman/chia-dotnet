@@ -9,7 +9,7 @@ namespace chia.dotnet.tests
     /// This class is a test harness for interation with an actual daemon instance
     /// </summary>
     [TestClass]
-    [TestCategory("LIVE")]
+    [TestCategory("Integration")]
     //[Ignore] // uncomment to suppress completely
     public class DaemonTestsLIVE
     {
@@ -36,14 +36,32 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
-        public async Task StopLocalDaemon()
+        public async Task ExitLocalDaemon()
         {
             using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
 
             await daemon.ConnectAsync(CancellationToken.None);
             await daemon.Exit(CancellationToken.None);       
 
-            // if not exception the daemon was stopped successfully
+            // if no exception the daemon was stopped successfully
+        }
+
+        [TestMethod]
+        public async Task StartAndStopFarmerOnLocalDaemon()
+        {
+            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
+
+            await daemon.ConnectAsync(CancellationToken.None);
+
+            Assert.IsFalse(await daemon.IsServiceRunning(ServiceNames.Farmer, CancellationToken.None));
+
+            await daemon.StartService(ServiceNames.Farmer, CancellationToken.None);
+            Assert.IsTrue(await daemon.IsServiceRunning(ServiceNames.Farmer, CancellationToken.None));
+            
+            await daemon.StopService(ServiceNames.Farmer, CancellationToken.None);
+            Assert.IsFalse(await daemon.IsServiceRunning(ServiceNames.Farmer, CancellationToken.None));
+
+            // if no exception the daemon was stopped successfully
         }
     }
 }
