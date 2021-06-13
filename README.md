@@ -16,8 +16,8 @@ using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "my-fancy-
 await daemon.Connect(CancellationToken.None);
 
 await daemon.Register(CancellationToken.None);
-var message = Message.Create("get_blockchain_state", new ExpandoObject(), ServiceNames.FullNode, daemon.ServiceName);
 
+var message = Message.Create("get_blockchain_state", new ExpandoObject(), ServiceNames.FullNode, daemon.ServiceName);
 var state = await daemon.SendMessage(message, CancellationToken.None);
 ```
 
