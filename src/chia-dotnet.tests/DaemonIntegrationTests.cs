@@ -12,7 +12,7 @@ namespace chia.dotnet.tests
     [TestClass]
     [TestCategory("Integration")]
     //[Ignore] // uncomment to suppress completely
-    public class DaemonTestsLIVE
+    public class DaemonIntegrationTests
     {
         [TestMethod]
         public async Task GetFarmerIsRunningOnUIDaemon()
@@ -72,24 +72,7 @@ namespace chia.dotnet.tests
 
             await daemon.Connect(CancellationToken.None);
 
-            await daemon.RegisterService(daemon.OriginServiceName, CancellationToken.None);
-
-            // no exception we were successful
-        }
-
-        [TestMethod]
-        public async Task GetBlockChainState()
-        {
-            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
-
-            await daemon.Connect(CancellationToken.None);
-
-            await daemon.Register(CancellationToken.None);
-            var message = Message.Create("get_blockchain_state", new ExpandoObject(), ServiceNames.FullNode, daemon.OriginServiceName);
-
-            var state = await daemon.SendMessage(message, CancellationToken.None);
-
-            Assert.IsNotNull(state);
+            await daemon.RegisterService(daemon.OriginService, CancellationToken.None);
 
             // no exception we were successful
         }

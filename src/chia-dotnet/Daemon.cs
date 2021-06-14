@@ -36,13 +36,13 @@ namespace chia.dotnet
                 throw new ArgumentNullException(nameof(originServiceName));
             }
 
-            OriginServiceName = originServiceName;
+            OriginService = originServiceName;
         }
 
         /// <summary>
         /// The name of the service that is running. Will be used as the <see cref="Message.Origin"/> of all messages
         /// </summary>
-        public string OriginServiceName { get; private set; }
+        public string OriginService { get; private set; }
 
         /// <summary>
         /// Tells the daemon at the RPC endpoint to exit.
@@ -52,7 +52,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task Exit(CancellationToken cancellationToken)
         {
-            var response = await SendMessage(Message.Create("exit", new ExpandoObject(), "daemon", OriginServiceName), cancellationToken);
+            var response = await SendMessage(Message.Create("exit", new ExpandoObject(), "daemon", OriginService), cancellationToken);
 
             if (response.Data.success == false)
             {
@@ -74,13 +74,13 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Registers this websocket to receive messages using <see cref="OriginServiceName"/> This is needed to receive responses from services other than the daemon.
+        /// Registers this websocket to receive messages using <see cref="OriginService"/> This is needed to receive responses from services other than the daemon.
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task Register(CancellationToken cancellationToken)
         {
-            await RegisterService(OriginServiceName, cancellationToken);
+            await RegisterService(OriginService, cancellationToken);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.service = service;
-            return Message.Create(command, data, "daemon", OriginServiceName);
+            return Message.Create(command, data, "daemon", OriginService);
         }
     }
 }

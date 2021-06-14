@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Dynamic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace chia.dotnet
 {
     /// <summary>
-    /// Wrapper class to use the <see cref="Daemon"/> to send and receive messages to other services
+    /// Wrapper class that uses a <see cref="Daemon"/> to send and receive messages to other services
     /// </summary>
+    /// <remarks>The lifetime of the daemon is not controlled by the proxy. It should be disposed outside of this class. <see cref="RpcClient.Connect(System.Threading.CancellationToken)"/></remarks>
+    /// and <see cref="Daemon.Register(System.Threading.CancellationToken)"/> should be invoked 
     public class ServiceProxy
     {
-        private readonly Daemon _daemon;
-
         /// <summary>
         /// ctor
         /// </summary>
@@ -20,7 +17,7 @@ namespace chia.dotnet
         /// <param name="destinationService"><see cref="Message.Destination"/></param>
         public ServiceProxy(Daemon daemon, string destinationService)
         {
-            _daemon = daemon ?? throw new ArgumentNullException(nameof(daemon));
+            Daemon = daemon ?? throw new ArgumentNullException(nameof(daemon));
 
             if (string.IsNullOrEmpty(destinationService))
             {
@@ -29,6 +26,11 @@ namespace chia.dotnet
 
             DestinationService = destinationService;
         }
+
+        /// <summary>
+        /// The <see cref="Daemon"/> used for underlying RPC
+        /// </summary>
+        public Daemon Daemon { get; init; }
 
         /// <summary>
         /// <see cref="Message.Destination"/>
@@ -43,7 +45,7 @@ namespace chia.dotnet
         /// <returns><see cref="Message"/></returns>
         protected Message CreateMessage(string command, dynamic data)
         {
-            return Message.Create(command, data ?? new ExpandoObject(), DestinationService, _daemon.OriginServiceName);
+            return Message.Create(command, data ?? new ExpandoObject(), DestinationService, Daemon.OriginService);
         }
     }
 }
