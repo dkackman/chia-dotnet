@@ -12,7 +12,7 @@ using Newtonsoft.Json.Converters;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Represents the chia config yaml file and its contents. 
+    /// Represents the chia config yaml file and its contents. Used to find the uri and ssl certs needed to connect via a <see cref="System.Net.WebSockets.WebSocket"/>
     /// </summary>
     public sealed class Config
     {
@@ -26,6 +26,11 @@ namespace chia.dotnet
         /// </summary>
         public dynamic Contents { get; private set; }
 
+        /// <summary>
+        /// Creates an <see cref="EndpointInfo"/> from the named service section
+        /// </summary>
+        /// <param name="serviceName">The setion name in the config file. Use 'daemon' for the root config that include 'sel_fhostname'; i.e. the local daemon</param>
+        /// <returns>An <see cref="EndpointInfo"/> that can be used to connect to the given service's RPC interface</returns>
         public EndpointInfo GetEndpoint(string serviceName)
         {
             UriBuilder builder = new("wss", "");
@@ -54,6 +59,11 @@ namespace chia.dotnet
             };
         }
 
+        /// <summary>
+        /// Opens a chia config yaml file
+        /// </summary>
+        /// <param name="fullPath">The full filesystem path to the config file</param>
+        /// <returns>A <see cref="Config"/> instance</returns>
         public static Config Open(string fullPath)
         {
             Debug.Assert(!string.IsNullOrEmpty(fullPath));
@@ -73,8 +83,15 @@ namespace chia.dotnet
             return new Config(config);
         }
 
+        /// <summary>
+        /// The OS specific default location of the chia config file
+        /// </summary>
         public static string DefaultRootPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".chia", "mainnet");
 
+        /// <summary>
+        /// Opens the <see cref="Config"/> from <see cref="DefaultRootPath"/> plus 'config' and 'config.yaml'
+        /// </summary>
+        /// <returns></returns>
         public static Config Open()
         {
             return Open(Path.Combine(DefaultRootPath, "config", "config.yaml"));
