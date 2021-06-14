@@ -116,6 +116,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.Daemon.IsServiceRunning
   nameWithType: Daemon.IsServiceRunning
+- uid: chia.dotnet.Daemon.OriginServiceName
+  name: OriginServiceName
+  href: api/chia.dotnet.Daemon.html#chia_dotnet_Daemon_OriginServiceName
+  commentId: P:chia.dotnet.Daemon.OriginServiceName
+  fullName: chia.dotnet.Daemon.OriginServiceName
+  nameWithType: Daemon.OriginServiceName
+- uid: chia.dotnet.Daemon.OriginServiceName*
+  name: OriginServiceName
+  href: api/chia.dotnet.Daemon.html#chia_dotnet_Daemon_OriginServiceName_
+  commentId: Overload:chia.dotnet.Daemon.OriginServiceName
+  isSpec: "True"
+  fullName: chia.dotnet.Daemon.OriginServiceName
+  nameWithType: Daemon.OriginServiceName
 - uid: chia.dotnet.Daemon.Register(System.Threading.CancellationToken)
   name: Register(CancellationToken)
   href: api/chia.dotnet.Daemon.html#chia_dotnet_Daemon_Register_System_Threading_CancellationToken_
@@ -342,12 +355,12 @@ references:
   commentId: T:chia.dotnet.RpcClient
   fullName: chia.dotnet.RpcClient
   nameWithType: RpcClient
-- uid: chia.dotnet.RpcClient.#ctor(chia.dotnet.EndpointInfo,System.String)
-  name: RpcClient(EndpointInfo, String)
-  href: api/chia.dotnet.RpcClient.html#chia_dotnet_RpcClient__ctor_chia_dotnet_EndpointInfo_System_String_
-  commentId: M:chia.dotnet.RpcClient.#ctor(chia.dotnet.EndpointInfo,System.String)
-  fullName: chia.dotnet.RpcClient.RpcClient(chia.dotnet.EndpointInfo, System.String)
-  nameWithType: RpcClient.RpcClient(EndpointInfo, String)
+- uid: chia.dotnet.RpcClient.#ctor(chia.dotnet.EndpointInfo)
+  name: RpcClient(EndpointInfo)
+  href: api/chia.dotnet.RpcClient.html#chia_dotnet_RpcClient__ctor_chia_dotnet_EndpointInfo_
+  commentId: M:chia.dotnet.RpcClient.#ctor(chia.dotnet.EndpointInfo)
+  fullName: chia.dotnet.RpcClient.RpcClient(chia.dotnet.EndpointInfo)
+  nameWithType: RpcClient.RpcClient(EndpointInfo)
 - uid: chia.dotnet.RpcClient.#ctor*
   name: RpcClient
   href: api/chia.dotnet.RpcClient.html#chia_dotnet_RpcClient__ctor_
@@ -419,6 +432,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.RpcClient.OnBroadcastMessageReceived
   nameWithType: RpcClient.OnBroadcastMessageReceived
+- uid: chia.dotnet.RpcClient.OnConnected
+  name: OnConnected()
+  href: api/chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_OnConnected
+  commentId: M:chia.dotnet.RpcClient.OnConnected
+  fullName: chia.dotnet.RpcClient.OnConnected()
+  nameWithType: RpcClient.OnConnected()
+- uid: chia.dotnet.RpcClient.OnConnected*
+  name: OnConnected
+  href: api/chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_OnConnected_
+  commentId: Overload:chia.dotnet.RpcClient.OnConnected
+  isSpec: "True"
+  fullName: chia.dotnet.RpcClient.OnConnected
+  nameWithType: RpcClient.OnConnected
 - uid: chia.dotnet.RpcClient.PostMessage(chia.dotnet.Message,System.Threading.CancellationToken)
   name: PostMessage(Message, CancellationToken)
   href: api/chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_PostMessage_chia_dotnet_Message_System_Threading_CancellationToken_
@@ -445,19 +471,6 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.RpcClient.SendMessage
   nameWithType: RpcClient.SendMessage
-- uid: chia.dotnet.RpcClient.ServiceName
-  name: ServiceName
-  href: api/chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_ServiceName
-  commentId: P:chia.dotnet.RpcClient.ServiceName
-  fullName: chia.dotnet.RpcClient.ServiceName
-  nameWithType: RpcClient.ServiceName
-- uid: chia.dotnet.RpcClient.ServiceName*
-  name: ServiceName
-  href: api/chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_ServiceName_
-  commentId: Overload:chia.dotnet.RpcClient.ServiceName
-  isSpec: "True"
-  fullName: chia.dotnet.RpcClient.ServiceName
-  nameWithType: RpcClient.ServiceName
 - uid: chia.dotnet.ServiceNames
   name: ServiceNames
   href: api/chia.dotnet.ServiceNames.html
@@ -500,3 +513,48 @@ references:
   commentId: F:chia.dotnet.ServiceNames.Wallet
   fullName: chia.dotnet.ServiceNames.Wallet
   nameWithType: ServiceNames.Wallet
+- uid: chia.dotnet.ServiceProxy
+  name: ServiceProxy
+  href: api/chia.dotnet.ServiceProxy.html
+  commentId: T:chia.dotnet.ServiceProxy
+  fullName: chia.dotnet.ServiceProxy
+  nameWithType: ServiceProxy
+- uid: chia.dotnet.ServiceProxy.#ctor(chia.dotnet.Daemon,System.String)
+  name: ServiceProxy(Daemon, String)
+  href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy__ctor_chia_dotnet_Daemon_System_String_
+  commentId: M:chia.dotnet.ServiceProxy.#ctor(chia.dotnet.Daemon,System.String)
+  fullName: chia.dotnet.ServiceProxy.ServiceProxy(chia.dotnet.Daemon, System.String)
+  nameWithType: ServiceProxy.ServiceProxy(Daemon, String)
+- uid: chia.dotnet.ServiceProxy.#ctor*
+  name: ServiceProxy
+  href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy__ctor_
+  commentId: Overload:chia.dotnet.ServiceProxy.#ctor
+  isSpec: "True"
+  fullName: chia.dotnet.ServiceProxy.ServiceProxy
+  nameWithType: ServiceProxy.ServiceProxy
+- uid: chia.dotnet.ServiceProxy.CreateMessage(System.String,System.Object)
+  name: CreateMessage(String, Object)
+  href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_CreateMessage_System_String_System_Object_
+  commentId: M:chia.dotnet.ServiceProxy.CreateMessage(System.String,System.Object)
+  fullName: chia.dotnet.ServiceProxy.CreateMessage(System.String, System.Object)
+  nameWithType: ServiceProxy.CreateMessage(String, Object)
+- uid: chia.dotnet.ServiceProxy.CreateMessage*
+  name: CreateMessage
+  href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_CreateMessage_
+  commentId: Overload:chia.dotnet.ServiceProxy.CreateMessage
+  isSpec: "True"
+  fullName: chia.dotnet.ServiceProxy.CreateMessage
+  nameWithType: ServiceProxy.CreateMessage
+- uid: chia.dotnet.ServiceProxy.DestinationService
+  name: DestinationService
+  href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_DestinationService
+  commentId: P:chia.dotnet.ServiceProxy.DestinationService
+  fullName: chia.dotnet.ServiceProxy.DestinationService
+  nameWithType: ServiceProxy.DestinationService
+- uid: chia.dotnet.ServiceProxy.DestinationService*
+  name: DestinationService
+  href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_DestinationService_
+  commentId: Overload:chia.dotnet.ServiceProxy.DestinationService
+  isSpec: "True"
+  fullName: chia.dotnet.ServiceProxy.DestinationService
+  nameWithType: ServiceProxy.DestinationService

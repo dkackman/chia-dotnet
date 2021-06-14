@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.Daemon.html",
-          "hash": "f61CHFxAggIGng31mDruJMWDMueXekiDBE2cfYfSgiA="
+          "hash": "VqKWbTW6x1vCIRkzQ0JUWsmLHSfLkBsVVqizgKjSoDU="
         }
       },
       "is_incremental": false,
@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.RpcClient.html",
-          "hash": "VH0Bt/KzAe1DzMjqxqo6a1pxXBGgosNeo/GdeEHKfiM="
+          "hash": "T5ou7XJeJbCTgfCwNnJEnId3k0I6XQhtoN6rEPKHgrY="
         }
       },
       "is_incremental": false,
@@ -77,11 +77,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.ServiceProxy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.ServiceProxy.html",
+          "hash": "3Xe5qWs8NKTjiEFl0nTmbdXuKetAZ36ObcWalB/W/w0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/chia.dotnet.yml",
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.html",
-          "hash": "McesLrKZRxmtH+bBsSzAaPmdx1KATjyeLAjpfqpv3sM="
+          "hash": "LCgKQn45mbKwNfyZ5ARo03Zd9k1+xz9p7yR0x0oGXCA="
         }
       },
       "is_incremental": false,
@@ -105,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "cMO2T0CtWcRnXXgtqyTrZ8XPhsztLocWiOTjogJvcbE="
+          "hash": "GYGxpBTuFGYGsqz/ZRR+AROnkq4ObBH87NOGJ1LVCNQ="
         }
       },
       "is_incremental": false,
@@ -180,7 +192,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 7,
+          "total_file_count": 8,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
