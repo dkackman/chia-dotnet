@@ -30,26 +30,13 @@ namespace chia.dotnet
         /// <summary>
         /// ctor
         /// </summary>
-        /// <param name="endpoint">Details of thw websocket endpoint</param>
-        /// <param name="serviceName">The name of the service that is running. Will be used as the 'origin' of all messages</param>
-        public RpcClient(EndpointInfo endpoint, string serviceName)
+        /// <param name="endpoint">Details of thw websocket endpoint</param>        
+        public RpcClient(EndpointInfo endpoint)
         {
             _endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
 
-            if (string.IsNullOrEmpty(value: serviceName))
-            {
-                throw new ArgumentNullException(nameof(serviceName));
-            }
-
-            ServiceName = serviceName;
-
             _webSocket.Options.RemoteCertificateValidationCallback += ValidateServerCertificate;
         }
-
-        /// <summary>
-        /// The name of the service that is running. Will be used as the 'origin' of all messages
-        /// </summary>
-        public string ServiceName { get; private set; }
 
         /// <summary>
         /// Opens the websocket and starts the receive loop
@@ -62,6 +49,16 @@ namespace chia.dotnet
 
             await _webSocket.ConnectAsync(_endpoint.Uri, cancellationToken);
             _ = Task.Factory.StartNew(ReceiveLoop, _receiveCancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
+            OnConnected();
+        }
+
+        /// <summary>
+        /// Called after <see cref="Connect(CancellationToken)"/> completes successfully. Let's derived classess know that they can do any 
+        /// post connection initialization that they need.
+        /// </summary>
+        protected virtual void OnConnected()
+        {
+
         }
 
         /// <summary>

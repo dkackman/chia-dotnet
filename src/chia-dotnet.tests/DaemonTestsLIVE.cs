@@ -72,7 +72,7 @@ namespace chia.dotnet.tests
 
             await daemon.Connect(CancellationToken.None);
 
-            await daemon.RegisterService(daemon.ServiceName, CancellationToken.None);
+            await daemon.RegisterService(daemon.OriginServiceName, CancellationToken.None);
 
             // no exception we were successful
         }
@@ -85,7 +85,7 @@ namespace chia.dotnet.tests
             await daemon.Connect(CancellationToken.None);
 
             await daemon.Register(CancellationToken.None);
-            var message = Message.Create("get_blockchain_state", new ExpandoObject(), ServiceNames.FullNode, daemon.ServiceName);
+            var message = Message.Create("get_blockchain_state", new ExpandoObject(), ServiceNames.FullNode, daemon.OriginServiceName);
 
             var state = await daemon.SendMessage(message, CancellationToken.None);
 
