@@ -54,7 +54,7 @@ namespace chia.dotnet
         /// <summary>
         /// Opens the websocket and starts the receive loop
         /// </summary>
-        /// <param name="cancellationToken"></param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Awaitable Task</returns>
         public async Task Connect(CancellationToken cancellationToken)
         {
@@ -67,7 +67,7 @@ namespace chia.dotnet
         /// <summary>
         /// Cancels the receive loop and closes the websocket
         /// </summary>
-        /// <param name="cancellationToken"></param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Awaitable Task</returns>
         public async Task Close(CancellationToken cancellationToken)
         {
