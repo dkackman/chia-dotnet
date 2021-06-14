@@ -22,7 +22,7 @@ namespace chia.dotnet
         {
             _daemon = daemon ?? throw new ArgumentNullException(nameof(daemon));
 
-            if(string.IsNullOrEmpty(destinationService))
+            if (string.IsNullOrEmpty(destinationService))
             {
                 throw new ArgumentNullException(nameof(destinationService));
             }

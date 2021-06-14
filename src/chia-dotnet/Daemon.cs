@@ -74,7 +74,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Registers this websocket to receive messages using <see cref="RpcClient.ServiceName"/> This is needed to receive responses from services other than the daemon.
+        /// Registers this websocket to receive messages using <see cref="OriginServiceName"/> This is needed to receive responses from services other than the daemon.
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Awaitable <see cref="Task"/></returns>
