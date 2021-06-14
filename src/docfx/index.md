@@ -4,11 +4,11 @@ Cross-platform .Net5 [rpc client library](https://github.com/dkackman/chia-dotne
 
 ## Status
 
-Still very much a work in progress. Websocket communcation to the `daemon` works and can communciate with other services. 
+Still very much a work in progress. Websocket communication to the `daemon` works and can proxy messages to other services.
 
-_Browse the [api documentation](https://dkackman.github.io/chia-dotnet/api/index.html) and [integration test code](https://github.com/dkackman/chia-dotnet/tree/main/src/chia-dotnet.tests) for more info and examples._
+_Browse the [api documentation](https://dkackman.github.io/chia-dotnet/api/chia.dotnet.html) and [integration test code](https://github.com/dkackman/chia-dotnet/tree/main/src/chia-dotnet.tests) for more info and examples._
 
-## Quick Start Notes:
+## Quick Start Notes
 
 ```csharp
     using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "my-fancy-service");
