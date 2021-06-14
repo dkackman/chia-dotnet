@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Daemon
    ">
-    <meta name="generator" content="docfx 2.57.2.0">
+    <meta name="generator" content="docfx 2.58.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,7 @@
   
   <h1 id="chia_dotnet_Daemon" data-uid="chia.dotnet.Daemon" class="text-break">Class Daemon
   </h1>
-  <div class="markdown level0 summary"><p>Rpc client for the daemon interface. The daemon can be used to proxy messages to and from other chia services.</p>
+  <div class="markdown level0 summary"><p><a class="xref" href="chia.dotnet.RpcClient.html">RpcClient</a> for the daemon interface. The daemon can be used to proxy messages to and from other chia services.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -98,16 +98,16 @@
       <a class="xref" href="chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_Close_System_Threading_CancellationToken_">RpcClient.Close(CancellationToken)</a>
     </div>
     <div>
-      <a class="xref" href="chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_PostMessage_Message_System_Threading_CancellationToken_">RpcClient.PostMessage(Message, CancellationToken)</a>
+      <a class="xref" href="chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_PostMessage_chia_dotnet_Message_System_Threading_CancellationToken_">RpcClient.PostMessage(Message, CancellationToken)</a>
     </div>
     <div>
-      <a class="xref" href="chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_SendMessage_Message_System_Threading_CancellationToken_">RpcClient.SendMessage(Message, CancellationToken)</a>
+      <a class="xref" href="chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_SendMessage_chia_dotnet_Message_System_Threading_CancellationToken_">RpcClient.SendMessage(Message, CancellationToken)</a>
     </div>
     <div>
       <a class="xref" href="chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_BroadcastMessageReceived">RpcClient.BroadcastMessageReceived</a>
     </div>
     <div>
-      <a class="xref" href="chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_OnBroadcastMessageReceived_Message_">RpcClient.OnBroadcastMessageReceived(Message)</a>
+      <a class="xref" href="chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_OnBroadcastMessageReceived_chia_dotnet_Message_">RpcClient.OnBroadcastMessageReceived(Message)</a>
     </div>
     <div>
       <a class="xref" href="chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_Dispose_System_Boolean_">RpcClient.Dispose(Boolean)</a>
@@ -147,13 +147,13 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Daemon__ctor_EndpointInfo_System_String_.md&amp;value=---%0Auid%3A%20chia.dotnet.Daemon.%23ctor(EndpointInfo%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Daemon__ctor_chia_dotnet_EndpointInfo_System_String_.md&amp;value=---%0Auid%3A%20chia.dotnet.Daemon.%23ctor(chia.dotnet.EndpointInfo%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Daemon.cs/#L31">View Source</a>
   </span>
   <a id="chia_dotnet_Daemon__ctor_" data-uid="chia.dotnet.Daemon.#ctor*"></a>
-  <h4 id="chia_dotnet_Daemon__ctor_EndpointInfo_System_String_" data-uid="chia.dotnet.Daemon.#ctor(EndpointInfo,System.String)">Daemon(EndpointInfo, String)</h4>
+  <h4 id="chia_dotnet_Daemon__ctor_chia_dotnet_EndpointInfo_System_String_" data-uid="chia.dotnet.Daemon.#ctor(chia.dotnet.EndpointInfo,System.String)">Daemon(EndpointInfo, String)</h4>
   <div class="markdown level1 summary"><p>ctor</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -172,9 +172,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">EndpointInfo</span></td>
+        <td><a class="xref" href="chia.dotnet.EndpointInfo.html">EndpointInfo</a></td>
         <td><span class="parametername">endpoint</span></td>
-        <td><p>Details of thw websocket endpoint</p>
+        <td><p>Details of the websocket endpoint</p>
 </td>
       </tr>
       <tr>
@@ -192,15 +192,16 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Daemon_Exit_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.Daemon.Exit(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Daemon.cs/#L36">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Daemon.cs/#L42">View Source</a>
   </span>
   <a id="chia_dotnet_Daemon_Exit_" data-uid="chia.dotnet.Daemon.Exit*"></a>
   <h4 id="chia_dotnet_Daemon_Exit_System_Threading_CancellationToken_" data-uid="chia.dotnet.Daemon.Exit(System.Threading.CancellationToken)">Exit(CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Tells the daemon at the RPC endpoint to exit.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task Exit(CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task Exit(CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -215,7 +216,8 @@
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -230,24 +232,29 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td></td>
+        <td><p>Awaitable task</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="chia_dotnet_Daemon_Exit_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>There isn't a way to start the daemon remotely via RPC so take care that you have access to the RPC host if needed</p>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Daemon_IsServiceRunning_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.Daemon.IsServiceRunning(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Daemon.cs/#L46">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Daemon.cs/#L58">View Source</a>
   </span>
   <a id="chia_dotnet_Daemon_IsServiceRunning_" data-uid="chia.dotnet.Daemon.IsServiceRunning*"></a>
   <h4 id="chia_dotnet_Daemon_IsServiceRunning_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.Daemon.IsServiceRunning(System.String,System.Threading.CancellationToken)">IsServiceRunning(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Determines if the named service is running</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; IsServiceRunning(string service, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;bool&gt; IsServiceRunning(string service, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -262,12 +269,14 @@
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">service</span></td>
-        <td></td>
+        <td><p>The <a class="xref" href="chia.dotnet.ServiceNames.html">ServiceNames</a> of the service</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -282,7 +291,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
-        <td></td>
+        <td><p>Awaitable task with the boolean value indicating whether the service is running</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -291,15 +301,16 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Daemon_Register_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.Daemon.Register(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Daemon.cs/#L53">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Daemon.cs/#L70">View Source</a>
   </span>
   <a id="chia_dotnet_Daemon_Register_" data-uid="chia.dotnet.Daemon.Register*"></a>
   <h4 id="chia_dotnet_Daemon_Register_System_Threading_CancellationToken_" data-uid="chia.dotnet.Daemon.Register(System.Threading.CancellationToken)">Register(CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Registers this websocket to receive messages using <a class="xref" href="chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_ServiceName">ServiceName</a> This is need to receive responses from services other than the daemon.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task Register(CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task Register(CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -314,7 +325,8 @@
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -329,7 +341,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td></td>
+        <td><p>Awaitable task</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -338,15 +351,17 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Daemon_RegisterService_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.Daemon.RegisterService(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Daemon.cs/#L58">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Daemon.cs/#L82">View Source</a>
   </span>
   <a id="chia_dotnet_Daemon_RegisterService_" data-uid="chia.dotnet.Daemon.RegisterService*"></a>
   <h4 id="chia_dotnet_Daemon_RegisterService_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.Daemon.RegisterService(System.String,System.Threading.CancellationToken)">RegisterService(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Registers this websocket to receive messages. This is need to receive responses from services other than the daemon.
+This is not a <a class="xref" href="chia.dotnet.ServiceNames.html">ServiceNames</a> but usually rather the name of the consuumer application such as 'wallet_ui'</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task RegisterService(string service, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task RegisterService(string service, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -361,12 +376,14 @@
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">service</span></td>
-        <td></td>
+        <td><p>The name to register</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -381,7 +398,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td></td>
+        <td><p>Awaitable task</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -390,15 +408,16 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Daemon_StartService_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.Daemon.StartService(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Daemon.cs/#L68">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Daemon.cs/#L98">View Source</a>
   </span>
   <a id="chia_dotnet_Daemon_StartService_" data-uid="chia.dotnet.Daemon.StartService*"></a>
   <h4 id="chia_dotnet_Daemon_StartService_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.Daemon.StartService(System.String,System.Threading.CancellationToken)">StartService(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Starts the named service</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task StartService(string service, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task StartService(string service, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -413,12 +432,14 @@
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">service</span></td>
-        <td></td>
+        <td><p>The <a class="xref" href="chia.dotnet.ServiceNames.html">ServiceNames</a> of the service</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -433,7 +454,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td></td>
+        <td><p>Awaitable task</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -442,15 +464,16 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Daemon_StopService_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.Daemon.StopService(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Daemon.cs/#L78">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Daemon.cs/#L114">View Source</a>
   </span>
   <a id="chia_dotnet_Daemon_StopService_" data-uid="chia.dotnet.Daemon.StopService*"></a>
   <h4 id="chia_dotnet_Daemon_StopService_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.Daemon.StopService(System.String,System.Threading.CancellationToken)">StopService(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Stops the named service</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task StopService(string service, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task StopService(string service, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -465,12 +488,14 @@
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">service</span></td>
-        <td></td>
+        <td><p>The <a class="xref" href="chia.dotnet.ServiceNames.html">ServiceNames</a> of the service</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -485,7 +510,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td></td>
+        <td><p>Awaitable task</p>
+</td>
       </tr>
     </tbody>
   </table>

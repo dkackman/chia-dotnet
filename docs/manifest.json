@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.Config.html",
-          "hash": "QL2RiSWA6QQA/o1R/opi7RR0Xu+EbkmNUyOgCGthgbY="
+          "hash": "T4Aht7cQ7RjDqGGA2P/7OxA2VZWtpFDJqfelin6HNn8="
         }
       },
       "is_incremental": false,
@@ -21,7 +21,31 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.Daemon.html",
-          "hash": "Hbp0LrjF8xwpEPux9p2nsUSvKxVRmWRRsHC3WBj2Cpo="
+          "hash": "f61CHFxAggIGng31mDruJMWDMueXekiDBE2cfYfSgiA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.EndpointInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.EndpointInfo.html",
+          "hash": "3cNGgsHACtXOawamdGDKqUjcX1feQSlL06wds479Geo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.Message.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.Message.html",
+          "hash": "L24oJBBHfVpqe9C7UICj/DN+Pwm7NpgtZAQj+MhKLyU="
         }
       },
       "is_incremental": false,
@@ -33,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.RpcClient.html",
-          "hash": "+bOvVcgPI3D3DJBTNeiCxQevkSvDKrSXijKiB7V6Uew="
+          "hash": "VH0Bt/KzAe1DzMjqxqo6a1pxXBGgosNeo/GdeEHKfiM="
         }
       },
       "is_incremental": false,
@@ -45,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.ServiceNames.html",
-          "hash": "u2Ltg2wDr5/GTJrhClSZ4aa14dd8ugmqP5AjI+15eMs="
+          "hash": "Ssx1p2ygonyZ9Ag7eD/YjMloiQgeREY0IqTB/VkXVok="
         }
       },
       "is_incremental": false,
@@ -57,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.html",
-          "hash": "23jF/WaYEztnaBZwz1qzYiu4MGM/m1+HfpexpemDlW8="
+          "hash": "McesLrKZRxmtH+bBsSzAaPmdx1KATjyeLAjpfqpv3sM="
         }
       },
       "is_incremental": false,
@@ -69,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "WBzIjX4Y8jpsGgL8xSz0CyRooRxBk+KWLnNKpmmjMy8="
+          "hash": "UqItO7yTVW+VW7qrDFEYc0RMPDkRem+q3xpbarpOOuc="
         }
       },
       "is_incremental": false,
@@ -81,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "Hdbo7fJCsts/kqnodRGFJ/ltn/raep0HvLh0b/uQHuY="
+          "hash": "cMO2T0CtWcRnXXgtqyTrZ8XPhsztLocWiOTjogJvcbE="
         }
       },
       "is_incremental": false,
@@ -93,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "q7t1kSTrOAIIU2/nbVdLEVqt4gQ29zSZmor71uG+QIg="
+          "hash": "29Cl8tC+8Px9bnhSqTdpMM/KFa9CdW7Q/7HRaf3d2+8="
         }
       },
       "is_incremental": false,
@@ -117,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "LUPOjjoiH1wwMki11H+sBXP1WaTKJX4RpImSmCposyc="
+          "hash": "U9yHGuMCi3+nM69Oy4fTDpuOAicFT+816NHvQ3Ke+yU="
         }
       },
       "is_incremental": false,
@@ -140,11 +164,11 @@
     {
       "status": {
         "can_incremental": false,
-        "details": "Cannot build incrementally because docfx version changed from 2.58.0.0 to 2.57.2.0.",
+        "details": "Disable incremental build by force rebuild option.",
         "incrementalPhase": "build",
         "total_file_count": 0,
         "skipped_file_count": 0,
-        "full_build_reason_code": "DocfxVersionChanged"
+        "full_build_reason_code": "ForceRebuild"
       },
       "processors": {
         "ConceptualDocumentProcessor": {
@@ -156,7 +180,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 5,
+          "total_file_count": 7,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
@@ -170,8 +194,8 @@
     },
     {
       "status": {
-        "can_incremental": true,
-        "details": "Can support incremental post processing.",
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0
