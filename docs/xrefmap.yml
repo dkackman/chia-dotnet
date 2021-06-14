@@ -116,19 +116,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.Daemon.IsServiceRunning
   nameWithType: Daemon.IsServiceRunning
-- uid: chia.dotnet.Daemon.OriginServiceName
-  name: OriginServiceName
-  href: api/chia.dotnet.Daemon.html#chia_dotnet_Daemon_OriginServiceName
-  commentId: P:chia.dotnet.Daemon.OriginServiceName
-  fullName: chia.dotnet.Daemon.OriginServiceName
-  nameWithType: Daemon.OriginServiceName
-- uid: chia.dotnet.Daemon.OriginServiceName*
-  name: OriginServiceName
-  href: api/chia.dotnet.Daemon.html#chia_dotnet_Daemon_OriginServiceName_
-  commentId: Overload:chia.dotnet.Daemon.OriginServiceName
+- uid: chia.dotnet.Daemon.OriginService
+  name: OriginService
+  href: api/chia.dotnet.Daemon.html#chia_dotnet_Daemon_OriginService
+  commentId: P:chia.dotnet.Daemon.OriginService
+  fullName: chia.dotnet.Daemon.OriginService
+  nameWithType: Daemon.OriginService
+- uid: chia.dotnet.Daemon.OriginService*
+  name: OriginService
+  href: api/chia.dotnet.Daemon.html#chia_dotnet_Daemon_OriginService_
+  commentId: Overload:chia.dotnet.Daemon.OriginService
   isSpec: "True"
-  fullName: chia.dotnet.Daemon.OriginServiceName
-  nameWithType: Daemon.OriginServiceName
+  fullName: chia.dotnet.Daemon.OriginService
+  nameWithType: Daemon.OriginService
 - uid: chia.dotnet.Daemon.Register(System.Threading.CancellationToken)
   name: Register(CancellationToken)
   href: api/chia.dotnet.Daemon.html#chia_dotnet_Daemon_Register_System_Threading_CancellationToken_
@@ -226,6 +226,38 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.EndpointInfo.Uri
   nameWithType: EndpointInfo.Uri
+- uid: chia.dotnet.FullNodeProxy
+  name: FullNodeProxy
+  href: api/chia.dotnet.FullNodeProxy.html
+  commentId: T:chia.dotnet.FullNodeProxy
+  fullName: chia.dotnet.FullNodeProxy
+  nameWithType: FullNodeProxy
+- uid: chia.dotnet.FullNodeProxy.#ctor(chia.dotnet.Daemon)
+  name: FullNodeProxy(Daemon)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy__ctor_chia_dotnet_Daemon_
+  commentId: M:chia.dotnet.FullNodeProxy.#ctor(chia.dotnet.Daemon)
+  fullName: chia.dotnet.FullNodeProxy.FullNodeProxy(chia.dotnet.Daemon)
+  nameWithType: FullNodeProxy.FullNodeProxy(Daemon)
+- uid: chia.dotnet.FullNodeProxy.#ctor*
+  name: FullNodeProxy
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy__ctor_
+  commentId: Overload:chia.dotnet.FullNodeProxy.#ctor
+  isSpec: "True"
+  fullName: chia.dotnet.FullNodeProxy.FullNodeProxy
+  nameWithType: FullNodeProxy.FullNodeProxy
+- uid: chia.dotnet.FullNodeProxy.GetBlockchainState(System.Threading.CancellationToken)
+  name: GetBlockchainState(CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetBlockchainState_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetBlockchainState(System.Threading.CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetBlockchainState(System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetBlockchainState(CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetBlockchainState*
+  name: GetBlockchainState
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetBlockchainState_
+  commentId: Overload:chia.dotnet.FullNodeProxy.GetBlockchainState
+  isSpec: "True"
+  fullName: chia.dotnet.FullNodeProxy.GetBlockchainState
+  nameWithType: FullNodeProxy.GetBlockchainState
 - uid: chia.dotnet.Message
   name: Message
   href: api/chia.dotnet.Message.html
@@ -545,6 +577,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.ServiceProxy.CreateMessage
   nameWithType: ServiceProxy.CreateMessage
+- uid: chia.dotnet.ServiceProxy.Daemon
+  name: Daemon
+  href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_Daemon
+  commentId: P:chia.dotnet.ServiceProxy.Daemon
+  fullName: chia.dotnet.ServiceProxy.Daemon
+  nameWithType: ServiceProxy.Daemon
+- uid: chia.dotnet.ServiceProxy.Daemon*
+  name: Daemon
+  href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_Daemon_
+  commentId: Overload:chia.dotnet.ServiceProxy.Daemon
+  isSpec: "True"
+  fullName: chia.dotnet.ServiceProxy.Daemon
+  nameWithType: ServiceProxy.Daemon
 - uid: chia.dotnet.ServiceProxy.DestinationService
   name: DestinationService
   href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_DestinationService

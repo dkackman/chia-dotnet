@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.Daemon.html",
-          "hash": "OYeniFaqRno/COyIH7GA1uu4Sc0VSRZurn/0fXhE0Fc="
+          "hash": "2YvZZ/cC6/mOl6cXcCoa2KfQY7qqzXVegjgun4A3nwY="
         }
       },
       "is_incremental": false,
@@ -34,6 +34,18 @@
         ".html": {
           "relative_path": "api/chia.dotnet.EndpointInfo.html",
           "hash": "3cNGgsHACtXOawamdGDKqUjcX1feQSlL06wds479Geo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.FullNodeProxy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.FullNodeProxy.html",
+          "hash": "Fcp9lxFpl9oj2zd/jhhMwlwmz3wdGhu4qEbaaSUZkDk="
         }
       },
       "is_incremental": false,
@@ -81,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.ServiceProxy.html",
-          "hash": "3Xe5qWs8NKTjiEFl0nTmbdXuKetAZ36ObcWalB/W/w0="
+          "hash": "Xvzw3kBvYL1AS/pEjyjFjN/zsTvjczJsm3KMeFM5qOM="
         }
       },
       "is_incremental": false,
@@ -93,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.html",
-          "hash": "LCgKQn45mbKwNfyZ5ARo03Zd9k1+xz9p7yR0x0oGXCA="
+          "hash": "lYSkFHU3Ve5fsi4GV3r11r8KP0gb08BQpz4buC/W3Zk="
         }
       },
       "is_incremental": false,
@@ -117,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "GYGxpBTuFGYGsqz/ZRR+AROnkq4ObBH87NOGJ1LVCNQ="
+          "hash": "EDsy66u5Q00la4flL6m8Sgr447+AXR4u05MCJuZ3NA0="
         }
       },
       "is_incremental": false,
@@ -192,7 +204,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 8,
+          "total_file_count": 9,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
