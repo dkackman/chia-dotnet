@@ -42,7 +42,7 @@ namespace chia.dotnet
         /// <summary>
         /// The name of the service that is running. Will be used as the <see cref="Message.Origin"/> of all messages
         /// </summary>
-        public string OriginService { get; private set; }
+        public string OriginService { get; init; }
 
         /// <summary>
         /// Tells the daemon at the RPC endpoint to exit.

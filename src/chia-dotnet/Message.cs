@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Dynamic;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -22,7 +23,7 @@ namespace chia.dotnet
             return new Message
             {
                 Command = command,
-                Data = data,
+                Data = data ?? new ExpandoObject(),
                 Origin = origin,
                 Destination = destination,
                 Request_Id = GetNewReuqestId()

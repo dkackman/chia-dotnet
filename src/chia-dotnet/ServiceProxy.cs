@@ -38,14 +38,15 @@ namespace chia.dotnet
         public string DestinationService { get; init; }
 
         /// <summary>
-        /// Constructs a <see cref="Message"/> instance with <see cref="Message.Destination"/> and <see cref="Message.Origin"/> set correctly
+        /// Constructs a <see cref="Message"/> instance with <see cref="Message.Destination"/> and <see cref="Message.Origin"/> set
+        /// from <see cref="DestinationService"/> and <see cref="Daemon.OriginService"/>
         /// </summary>
         /// <param name="command">The command to send</param>
         /// <param name="data">Data to send with the command</param>
         /// <returns><see cref="Message"/></returns>
         protected Message CreateMessage(string command, dynamic data)
         {
-            return Message.Create(command, data ?? new ExpandoObject(), DestinationService, Daemon.OriginService);
+            return Message.Create(command, data, DestinationService, Daemon.OriginService);
         }
     }
 }

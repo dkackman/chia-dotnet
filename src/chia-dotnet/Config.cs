@@ -24,7 +24,7 @@ namespace chia.dotnet
         /// <summary>
         /// The contents of the config yaml
         /// </summary>
-        public dynamic Contents { get; private set; }
+        public dynamic Contents { get; init; }
 
         /// <summary>
         /// Creates an <see cref="EndpointInfo"/> from the named service section
