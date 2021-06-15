@@ -7,11 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "chia-dotnet", "chia-dotnet\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "chia-dotnet.tests", "chia-dotnet.tests\chia-dotnet.tests.csproj", "{453602C8-9CDF-40A0-B65A-BBC0E4C81111}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "docfx", "docfx\docfx.csproj", "{3C7E0C4C-2B46-47DA-8E26-4E782A9F23B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "docfx", "docfx\docfx.csproj", "{3C7E0C4C-2B46-47DA-8E26-4E782A9F23B8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EDE35679-65F9-4823-96B8-167567BD761A}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		..\chia-leaf-logo-384x384.png = ..\chia-leaf-logo-384x384.png
 	EndProjectSection
 EndProject
 Global

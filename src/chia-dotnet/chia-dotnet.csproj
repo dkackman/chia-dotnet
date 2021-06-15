@@ -4,11 +4,36 @@
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>chia.dotnet</RootNamespace>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.1.0</Version>
+    <Authors>dkackman</Authors>
+    <Company>dkackman</Company>
+    <Description>A .net 5 client library for chia™ RPC interfaces that runs on linux and windows.</Description>
+    <Copyright>2021 dkackman</Copyright>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/dkackman/chia-dotnet</PackageProjectUrl>
+    <NeutralLanguage>en</NeutralLanguage>
+    <RepositoryUrl>https://github.com/dkackman/chia-dotnet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>chia</PackageTags>
+    <PackageReleaseNotes>0.1.0 first pre-release</PackageReleaseNotes>
+    <PackageIcon>chia-leaf-logo-384x384.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="YamlDotNet" Version="11.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\chia-leaf-logo-384x384.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
