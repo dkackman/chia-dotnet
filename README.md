@@ -11,14 +11,13 @@ https://dkackman.github.io/chia-dotnet/
 ### Example
 
 ```csharp
-using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "my-fancy-service");
+using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
 
 await daemon.Connect(CancellationToken.None);
-
 await daemon.Register(CancellationToken.None);
 
-var message = Message.Create("get_blockchain_state", new ExpandoObject(), ServiceNames.FullNode, daemon.ServiceName);
-var state = await daemon.SendMessage(message, CancellationToken.None);
+var fullNode = new FullNodeProxy(daemon);
+var state = await fullNode.GetBlockchainState(CancellationToken.None);
 ```
 
 ### Build 
