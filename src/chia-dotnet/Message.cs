@@ -42,6 +42,12 @@ namespace chia.dotnet
         public string Request_Id { get; init; }
 
         /// <summary>
+        /// Inidcates wether this is a response (<see cref="Ack"/> is true) and the success flag is also true
+        /// </summary>
+        [JsonIgnore]
+        public bool IsSuccessfulResponse => Ack && Data?.success == true;
+
+        /// <summary>
         /// Construct a new instance of a <see cref="Message"/>
         /// </summary>
         /// <param name="command"><see cref="Command"/></param>

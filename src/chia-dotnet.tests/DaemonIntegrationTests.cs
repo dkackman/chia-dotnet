@@ -1,5 +1,4 @@
-﻿using System.Dynamic;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;

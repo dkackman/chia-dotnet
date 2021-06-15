@@ -21,9 +21,8 @@ namespace chia.dotnet
     {
         private readonly ClientWebSocket _webSocket = new();
         private readonly CancellationTokenSource _receiveCancellationTokenSource = new();
-        private readonly ConcurrentDictionary<string, Message> _pendingMessages = new();
+        private readonly ConcurrentDictionary<string, Message> _pendingRequests = new();
         private readonly ConcurrentDictionary<string, Message> _pendingResponses = new();
-        private readonly EndpointInfo _endpoint;
 
         private bool disposedValue;
 
@@ -33,10 +32,15 @@ namespace chia.dotnet
         /// <param name="endpoint">Details of thw websocket endpoint</param>        
         public RpcClient(EndpointInfo endpoint)
         {
-            _endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
+            Endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
 
             _webSocket.Options.RemoteCertificateValidationCallback += ValidateServerCertificate;
         }
+
+        /// <summary>
+        /// Details of the RPC service endpoint
+        /// </summary>
+        public EndpointInfo Endpoint { get; init; }
 
         /// <summary>
         /// Opens the websocket and starts the receive loop
@@ -45,9 +49,14 @@ namespace chia.dotnet
         /// <returns>Awaitable Task</returns>
         public async Task Connect(CancellationToken cancellationToken)
         {
-            _webSocket.Options.ClientCertificates = CertLoader.GetCerts(_endpoint.CertPath, _endpoint.KeyPath);
+            if (disposedValue)
+            {
+                throw new ObjectDisposedException(nameof(RpcClient));
+            }
 
-            await _webSocket.ConnectAsync(_endpoint.Uri, cancellationToken);
+            _webSocket.Options.ClientCertificates = CertLoader.GetCerts(Endpoint.CertPath, Endpoint.KeyPath);
+
+            await _webSocket.ConnectAsync(Endpoint.Uri, cancellationToken);
             _ = Task.Factory.StartNew(ReceiveLoop, _receiveCancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
             OnConnected();
         }
@@ -58,7 +67,6 @@ namespace chia.dotnet
         /// </summary>
         protected virtual void OnConnected()
         {
-
         }
 
         /// <summary>
@@ -68,6 +76,11 @@ namespace chia.dotnet
         /// <returns>Awaitable Task</returns>
         public async Task Close(CancellationToken cancellationToken)
         {
+            if (disposedValue)
+            {
+                throw new ObjectDisposedException(nameof(RpcClient));
+            }
+
             _receiveCancellationTokenSource.Cancel();
             await _webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "bye", cancellationToken);
         }
@@ -80,6 +93,11 @@ namespace chia.dotnet
         /// <returns>A <see cref="Task"/></returns>
         public async Task PostMessage(Message message, CancellationToken cancellationToken)
         {
+            if (disposedValue)
+            {
+                throw new ObjectDisposedException(nameof(RpcClient));
+            }
+
             var json = message.ToJson();
             await _webSocket.SendAsync(Encoding.UTF8.GetBytes(json), WebSocketMessageType.Text, true, cancellationToken);
         }
@@ -87,42 +105,47 @@ namespace chia.dotnet
         /// <summary>
         /// Sends a <see cref="Message"/> to the websocket and waits for a response
         /// </summary>
-        /// <param name="message">The <see cref="Message"/> to send</param>
+        /// <param name="request">The <see cref="Message"/> to send</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The response message</returns>
-        public async Task<Message> SendMessage(Message message, CancellationToken cancellationToken)
+        public async Task<Message> SendMessage(Message request, CancellationToken cancellationToken)
         {
-            // capture the message to be sent
-            if (!_pendingMessages.TryAdd(message.Request_Id, message))
+            if (disposedValue)
             {
-                throw new InvalidOperationException($"Message with id of {message.Request_Id} has already been sent");
+                throw new ObjectDisposedException(nameof(RpcClient));
+            }
+
+            // capture the message to be sent
+            if (!_pendingRequests.TryAdd(request.Request_Id, request))
+            {
+                throw new InvalidOperationException($"Message with id of {request.Request_Id} has already been sent");
             }
 
             try
             {
-                var json = message.ToJson();
+                var json = request.ToJson();
                 await _webSocket.SendAsync(Encoding.UTF8.GetBytes(json), WebSocketMessageType.Text, true, cancellationToken);
             }
             catch
             {
-                _ = _pendingMessages.TryRemove(message.Request_Id, out _);
+                _ = _pendingRequests.TryRemove(request.Request_Id, out _);
                 throw;
             }
 
             // wait here until a response shows up or we get cancelled
             Message response;
-            while (!_pendingResponses.TryRemove(message.Request_Id, out response) && !cancellationToken.IsCancellationRequested)
+            while (!_pendingResponses.TryRemove(request.Request_Id, out response) && !cancellationToken.IsCancellationRequested)
             {
                 await Task.Yield();
             }
 
             // the receive loop cleans up but make sure we do so on cancellation too
-            if (_pendingMessages.ContainsKey(message.Request_Id))
+            if (_pendingRequests.ContainsKey(request.Request_Id))
             {
-                _ = _pendingMessages.TryRemove(message.Request_Id, out _);
+                _ = _pendingRequests.TryRemove(request.Request_Id, out _);
             }
 
-            return response;
+            return !response.IsSuccessfulResponse ? throw new ResponseException(request, response) : response;
         }
 
         /// <summary>
@@ -165,7 +188,7 @@ namespace chia.dotnet
                 var message = Message.FromJson(response);
 
                 // if we have a message pending with this id capture the response and remove it from the pending dictionary                
-                if (_pendingMessages.TryRemove(message.Request_Id, out _))
+                if (_pendingRequests.TryRemove(message.Request_Id, out _))
                 {
                     _pendingResponses[message.Request_Id] = message;
                 }
@@ -202,7 +225,10 @@ namespace chia.dotnet
                 if (disposing)
                 {
                     _receiveCancellationTokenSource.Cancel();
+                    _pendingRequests.Clear();
+                    _pendingResponses.Clear();
                     _webSocket.Dispose();
+                    _receiveCancellationTokenSource.Dispose();
                 }
 
                 disposedValue = true;

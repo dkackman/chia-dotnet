@@ -52,12 +52,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task Exit(CancellationToken cancellationToken)
         {
-            var response = await SendMessage(Message.Create("exit", new ExpandoObject(), "daemon", OriginService), cancellationToken);
-
-            if (response.Data.success == false)
-            {
-                throw new InvalidOperationException();
-            }
+            _ = await SendMessage(Message.Create("exit", new ExpandoObject(), "daemon", OriginService), cancellationToken);
         }
 
         /// <summary>
@@ -92,12 +87,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task RegisterService(string service, CancellationToken cancellationToken)
         {
-            var response = await SendMessage(CreateServiceMessage("register_service", service), cancellationToken);
-
-            if (response.Data.success == false)
-            {
-                throw new InvalidOperationException();
-            }
+            _ = await SendMessage(CreateServiceMessage("register_service", service), cancellationToken);
         }
 
         /// <summary>
@@ -108,12 +98,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task StartService(string service, CancellationToken cancellationToken)
         {
-            var response = await SendMessage(CreateServiceMessage("start_service", service), cancellationToken);
-
-            if (response.Data.success == false)
-            {
-                throw new InvalidOperationException();
-            }
+            _ = await SendMessage(CreateServiceMessage("start_service", service), cancellationToken);
         }
 
         /// <summary>
@@ -124,12 +109,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task StopService(string service, CancellationToken cancellationToken)
         {
-            var response = await SendMessage(CreateServiceMessage("stop_service", service), cancellationToken);
-
-            if (response.Data.success == false)
-            {
-                throw new InvalidOperationException();
-            }
+            _ = await SendMessage(CreateServiceMessage("stop_service", service), cancellationToken);
         }
 
         private Message CreateServiceMessage(string command, string service)
