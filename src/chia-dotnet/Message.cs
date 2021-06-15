@@ -42,7 +42,7 @@ namespace chia.dotnet
         public string Request_Id { get; init; }
 
         /// <summary>
-        /// Inidcates wether this is a response (<see cref="Ack"/> is true) and the success flag is also true
+        /// Inidcates whether this is a response (<see cref="Ack"/> is true) and the success flag is also true
         /// </summary>
         [JsonIgnore]
         public bool IsSuccessfulResponse => Ack && Data?.success == true;

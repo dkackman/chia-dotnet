@@ -5,13 +5,13 @@ namespace chia.dotnet
     /// <summary>
     /// Exception thrown when the RPC endpoint returns a response <see cref="Message"/> but Data.success is false
     /// </summary>
-    public class ResponseException : ApplicationException
+    public class ResponseException : Exception
     {
         /// <summary>
         /// ctor
         /// </summary>
         /// <param name="request">The request sent to the service</param>
-        /// <param name="response">The response from the service</param>
+        /// <param name="response">The response received from the service</param>
         public ResponseException(Message request, Message response)
             : this(request, response, "The RPC endpoint returned success == false", null)
         {
@@ -21,7 +21,7 @@ namespace chia.dotnet
         /// ctor
         /// </summary>
         /// <param name="request">The request sent to the service</param>
-        /// <param name="response">The response from the service</param>
+        /// <param name="response">The response received from the service</param>
         /// <param name="message"><see cref="Exception.Message"/></param>
         /// <param name="innerException"><see cref="Exception.InnerException"/></param>
         public ResponseException(Message request, Message response, string message, Exception innerException)
@@ -38,7 +38,7 @@ namespace chia.dotnet
 
 
         /// <summary>
-        /// The response from the service
+        /// The response received from the service
         /// </summary>
         public Message Response { get; init; }
     }
