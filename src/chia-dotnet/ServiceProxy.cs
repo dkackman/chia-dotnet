@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Dynamic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace chia.dotnet
 {
     /// <summary>
     /// Wrapper class that uses a <see cref="Daemon"/> to send and receive messages to other services
     /// </summary>
-    /// <remarks>The lifetime of the daemon is not controlled by the proxy. It should be disposed outside of this class. <see cref="RpcClient.Connect(System.Threading.CancellationToken)"/></remarks>
-    /// and <see cref="Daemon.Register(System.Threading.CancellationToken)"/> should be invoked 
+    /// <remarks>The lifetime of the daemon is not controlled by the proxy. It should be disposed outside of this class. <see cref="RpcClient.Connect(CancellationToken)"/></remarks>
+    /// and <see cref="Daemon.Register(CancellationToken)"/> should be invoked 
     public class ServiceProxy
     {
         /// <summary>
@@ -36,6 +37,13 @@ namespace chia.dotnet
         /// <see cref="Message.Destination"/>
         /// </summary>
         public string DestinationService { get; init; }
+
+        public async Task Ping(CancellationToken cancellationToken)
+        {
+            var message = CreateMessage("ping");
+
+            _ = await Daemon.SendMessage(message, cancellationToken);
+        }
 
         /// <summary>
         /// Constructs a <see cref="Message"/> instance with <see cref="Message.Destination"/> and <see cref="Message.Origin"/> set

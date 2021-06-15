@@ -74,7 +74,7 @@ namespace chia.dotnet.tests
 
 
         [TestMethod]
-        public async Task GetRecentSignagePointOrEos()
+        public async Task Ping()
         {
             using Daemon daemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
 
@@ -82,8 +82,7 @@ namespace chia.dotnet.tests
             await daemon.Register(CancellationToken.None);
 
             var fullNode = new FullNodeProxy(daemon);
-            var signagePoint = await fullNode.GetRecentSignagePointOrEos("0x457649e7e6dabb5660f8c3cd9e08534522361d97cb237bdfa341bce01e91c3f5", CancellationToken.None);
-            Assert.IsNotNull(signagePoint);
+            await fullNode.Ping(CancellationToken.None);
         }
     }
 }
