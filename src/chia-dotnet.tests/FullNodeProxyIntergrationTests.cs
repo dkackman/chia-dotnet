@@ -110,5 +110,17 @@ namespace chia.dotnet.tests
             var connections = await fullNode.GetConnections(CancellationToken.None);
             Assert.IsNotNull(connections);
         }
+
+        [TestMethod]
+        public async Task OpenConnection()
+        {
+            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
+
+            await daemon.Connect(CancellationToken.None);
+            await daemon.Register(CancellationToken.None);
+
+            var fullNode = new FullNodeProxy(daemon);
+            await fullNode.OpenConnection("node.chia.net", 8444, CancellationToken.None);
+        }
     }
 }

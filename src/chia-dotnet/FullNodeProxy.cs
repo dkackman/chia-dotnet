@@ -126,5 +126,37 @@ namespace chia.dotnet
 
             return response.Data.connections;
         }
+
+        /// <summary>
+        /// Add a connection
+        /// </summary>
+        /// <param name="host">The host name of the connection</param>
+        /// <param name="port">The port to use</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>Collection of connections</returns>
+        public async Task OpenConnection(string host, int port, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.host = host;
+            data.port = port;
+
+            var message = CreateMessage("open_connection", data);
+            _ = await Daemon.SendMessage(message, cancellationToken);
+        }
+
+        /// <summary>
+        /// Closes a connection
+        /// </summary>
+        /// <param name="nodeId">The id of the node to close</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>Collection of connections</returns>
+        public async Task CloseConnection(string nodeId, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.node_id = nodeId;
+
+            var message = CreateMessage("close_connection", data);
+            _ = await Daemon.SendMessage(message, cancellationToken);
+        }
     }
 }
