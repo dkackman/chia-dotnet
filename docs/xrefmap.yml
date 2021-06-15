@@ -245,6 +245,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FullNodeProxy.FullNodeProxy
   nameWithType: FullNodeProxy.FullNodeProxy
+- uid: chia.dotnet.FullNodeProxy.GetBlock(System.String,System.Threading.CancellationToken)
+  name: GetBlock(String, CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetBlock_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetBlock(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetBlock(System.String, System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetBlock(String, CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetBlock*
+  name: GetBlock
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetBlock_
+  commentId: Overload:chia.dotnet.FullNodeProxy.GetBlock
+  isSpec: "True"
+  fullName: chia.dotnet.FullNodeProxy.GetBlock
+  nameWithType: FullNodeProxy.GetBlock
 - uid: chia.dotnet.FullNodeProxy.GetBlockchainState(System.Threading.CancellationToken)
   name: GetBlockchainState(CancellationToken)
   href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetBlockchainState_System_Threading_CancellationToken_
@@ -258,6 +271,71 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FullNodeProxy.GetBlockchainState
   nameWithType: FullNodeProxy.GetBlockchainState
+- uid: chia.dotnet.FullNodeProxy.GetBlockRecord(System.String,System.Threading.CancellationToken)
+  name: GetBlockRecord(String, CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetBlockRecord_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetBlockRecord(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetBlockRecord(System.String, System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetBlockRecord(String, CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetBlockRecord*
+  name: GetBlockRecord
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetBlockRecord_
+  commentId: Overload:chia.dotnet.FullNodeProxy.GetBlockRecord
+  isSpec: "True"
+  fullName: chia.dotnet.FullNodeProxy.GetBlockRecord
+  nameWithType: FullNodeProxy.GetBlockRecord
+- uid: chia.dotnet.FullNodeProxy.GetBlocks(System.Int32,System.Int32,System.Threading.CancellationToken)
+  name: GetBlocks(Int32, Int32, CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetBlocks_System_Int32_System_Int32_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetBlocks(System.Int32,System.Int32,System.Threading.CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetBlocks(System.Int32, System.Int32, System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetBlocks(Int32, Int32, CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetBlocks*
+  name: GetBlocks
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetBlocks_
+  commentId: Overload:chia.dotnet.FullNodeProxy.GetBlocks
+  isSpec: "True"
+  fullName: chia.dotnet.FullNodeProxy.GetBlocks
+  nameWithType: FullNodeProxy.GetBlocks
+- uid: chia.dotnet.FullNodeProxy.GetConnections(System.Threading.CancellationToken)
+  name: GetConnections(CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetConnections_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetConnections(System.Threading.CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetConnections(System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetConnections(CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetConnections*
+  name: GetConnections
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetConnections_
+  commentId: Overload:chia.dotnet.FullNodeProxy.GetConnections
+  isSpec: "True"
+  fullName: chia.dotnet.FullNodeProxy.GetConnections
+  nameWithType: FullNodeProxy.GetConnections
+- uid: chia.dotnet.FullNodeProxy.GetNetworkSpace(System.String,System.String,System.Threading.CancellationToken)
+  name: GetNetworkSpace(String, String, CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetNetworkSpace_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetNetworkSpace(System.String,System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetNetworkSpace(System.String, System.String, System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetNetworkSpace(String, String, CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetNetworkSpace*
+  name: GetNetworkSpace
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetNetworkSpace_
+  commentId: Overload:chia.dotnet.FullNodeProxy.GetNetworkSpace
+  isSpec: "True"
+  fullName: chia.dotnet.FullNodeProxy.GetNetworkSpace
+  nameWithType: FullNodeProxy.GetNetworkSpace
+- uid: chia.dotnet.FullNodeProxy.GetUnfinishedBlockHeaders(System.Threading.CancellationToken)
+  name: GetUnfinishedBlockHeaders(CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetUnfinishedBlockHeaders_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetUnfinishedBlockHeaders(System.Threading.CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetUnfinishedBlockHeaders(System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetUnfinishedBlockHeaders(CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetUnfinishedBlockHeaders*
+  name: GetUnfinishedBlockHeaders
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetUnfinishedBlockHeaders_
+  commentId: Overload:chia.dotnet.FullNodeProxy.GetUnfinishedBlockHeaders
+  isSpec: "True"
+  fullName: chia.dotnet.FullNodeProxy.GetUnfinishedBlockHeaders
+  nameWithType: FullNodeProxy.GetUnfinishedBlockHeaders
 - uid: chia.dotnet.Message
   name: Message
   href: api/chia.dotnet.Message.html
@@ -406,6 +484,12 @@ references:
   commentId: M:chia.dotnet.ResponseException.#ctor(chia.dotnet.Message,chia.dotnet.Message)
   fullName: chia.dotnet.ResponseException.ResponseException(chia.dotnet.Message, chia.dotnet.Message)
   nameWithType: ResponseException.ResponseException(Message, Message)
+- uid: chia.dotnet.ResponseException.#ctor(chia.dotnet.Message,chia.dotnet.Message,System.String)
+  name: ResponseException(Message, Message, String)
+  href: api/chia.dotnet.ResponseException.html#chia_dotnet_ResponseException__ctor_chia_dotnet_Message_chia_dotnet_Message_System_String_
+  commentId: M:chia.dotnet.ResponseException.#ctor(chia.dotnet.Message,chia.dotnet.Message,System.String)
+  fullName: chia.dotnet.ResponseException.ResponseException(chia.dotnet.Message, chia.dotnet.Message, System.String)
+  nameWithType: ResponseException.ResponseException(Message, Message, String)
 - uid: chia.dotnet.ResponseException.#ctor(chia.dotnet.Message,chia.dotnet.Message,System.String,System.Exception)
   name: ResponseException(Message, Message, String, Exception)
   href: api/chia.dotnet.ResponseException.html#chia_dotnet_ResponseException__ctor_chia_dotnet_Message_chia_dotnet_Message_System_String_System_Exception_
@@ -641,6 +725,12 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.ServiceProxy.ServiceProxy
   nameWithType: ServiceProxy.ServiceProxy
+- uid: chia.dotnet.ServiceProxy.CreateMessage(System.String)
+  name: CreateMessage(String)
+  href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_CreateMessage_System_String_
+  commentId: M:chia.dotnet.ServiceProxy.CreateMessage(System.String)
+  fullName: chia.dotnet.ServiceProxy.CreateMessage(System.String)
+  nameWithType: ServiceProxy.CreateMessage(String)
 - uid: chia.dotnet.ServiceProxy.CreateMessage(System.String,System.Object)
   name: CreateMessage(String, Object)
   href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_CreateMessage_System_String_System_Object_
@@ -680,3 +770,16 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.ServiceProxy.DestinationService
   nameWithType: ServiceProxy.DestinationService
+- uid: chia.dotnet.ServiceProxy.Ping(System.Threading.CancellationToken)
+  name: Ping(CancellationToken)
+  href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_Ping_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.ServiceProxy.Ping(System.Threading.CancellationToken)
+  fullName: chia.dotnet.ServiceProxy.Ping(System.Threading.CancellationToken)
+  nameWithType: ServiceProxy.Ping(CancellationToken)
+- uid: chia.dotnet.ServiceProxy.Ping*
+  name: Ping
+  href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_Ping_
+  commentId: Overload:chia.dotnet.ServiceProxy.Ping
+  isSpec: "True"
+  fullName: chia.dotnet.ServiceProxy.Ping
+  nameWithType: ServiceProxy.Ping
