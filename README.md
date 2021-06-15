@@ -11,7 +11,7 @@ https://dkackman.github.io/chia-dotnet/
 ### Example
 
 ```csharp
-using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
+using var daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
 
 await daemon.Connect(CancellationToken.None);
 await daemon.Register(CancellationToken.None);
