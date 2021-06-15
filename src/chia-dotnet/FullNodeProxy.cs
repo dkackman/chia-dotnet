@@ -60,5 +60,13 @@ namespace chia.dotnet
 
             return response.Data.space;
         }
+
+        public async Task<dynamic> GetConnections(CancellationToken cancellationToken)
+        {
+            var message = CreateMessage("get_connections");
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return response.Data.connections;
+        }
     }
 }

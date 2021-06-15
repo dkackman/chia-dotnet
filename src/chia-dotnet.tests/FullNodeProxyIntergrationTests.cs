@@ -72,7 +72,6 @@ namespace chia.dotnet.tests
             Debug.WriteLine(space);
         }
 
-
         [TestMethod]
         public async Task Ping()
         {
@@ -83,6 +82,19 @@ namespace chia.dotnet.tests
 
             var fullNode = new FullNodeProxy(daemon);
             await fullNode.Ping(CancellationToken.None);
+        }
+
+        [TestMethod]
+        public async Task GetConnections()
+        {
+            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
+
+            await daemon.Connect(CancellationToken.None);
+            await daemon.Register(CancellationToken.None);
+
+            var fullNode = new FullNodeProxy(daemon);
+            var connections = await fullNode.GetConnections(CancellationToken.None);
+            Assert.IsNotNull(connections);
         }
     }
 }
