@@ -80,8 +80,7 @@
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
     <div class="level1"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.exception">Exception</a></div>
-    <div class="level2"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.applicationexception">ApplicationException</a></div>
-    <div class="level3"><span class="xref">ResponseException</span></div>
+    <div class="level2"><span class="xref">ResponseException</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
@@ -148,7 +147,7 @@
   <h6><strong>Assembly</strong>: chia-dotnet.dll</h6>
   <h5 id="chia_dotnet_ResponseException_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ResponseException : ApplicationException, ISerializable</code></pre>
+    <pre><code class="lang-csharp hljs">public class ResponseException : Exception, ISerializable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -187,7 +186,7 @@
       <tr>
         <td><a class="xref" href="chia.dotnet.Message.html">Message</a></td>
         <td><span class="parametername">response</span></td>
-        <td><p>The response from the service</p>
+        <td><p>The response received from the service</p>
 </td>
       </tr>
     </tbody>
@@ -227,7 +226,7 @@
       <tr>
         <td><a class="xref" href="chia.dotnet.Message.html">Message</a></td>
         <td><span class="parametername">response</span></td>
-        <td><p>The response from the service</p>
+        <td><p>The response received from the service</p>
 </td>
       </tr>
       <tr>
@@ -286,7 +285,7 @@
   </span>
   <a id="chia_dotnet_ResponseException_Response_" data-uid="chia.dotnet.ResponseException.Response*"></a>
   <h4 id="chia_dotnet_ResponseException_Response" data-uid="chia.dotnet.ResponseException.Response">Response</h4>
-  <div class="markdown level1 summary"><p>The response from the service</p>
+  <div class="markdown level1 summary"><p>The response received from the service</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
