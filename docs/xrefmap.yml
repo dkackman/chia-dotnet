@@ -245,6 +245,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FullNodeProxy.FullNodeProxy
   nameWithType: FullNodeProxy.FullNodeProxy
+- uid: chia.dotnet.FullNodeProxy.CloseConnection(System.String,System.Threading.CancellationToken)
+  name: CloseConnection(String, CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_CloseConnection_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.CloseConnection(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.CloseConnection(System.String, System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.CloseConnection(String, CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.CloseConnection*
+  name: CloseConnection
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_CloseConnection_
+  commentId: Overload:chia.dotnet.FullNodeProxy.CloseConnection
+  isSpec: "True"
+  fullName: chia.dotnet.FullNodeProxy.CloseConnection
+  nameWithType: FullNodeProxy.CloseConnection
 - uid: chia.dotnet.FullNodeProxy.GetBlock(System.String,System.Threading.CancellationToken)
   name: GetBlock(String, CancellationToken)
   href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetBlock_System_String_System_Threading_CancellationToken_
@@ -336,6 +349,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FullNodeProxy.GetUnfinishedBlockHeaders
   nameWithType: FullNodeProxy.GetUnfinishedBlockHeaders
+- uid: chia.dotnet.FullNodeProxy.OpenConnection(System.String,System.Int32,System.Threading.CancellationToken)
+  name: OpenConnection(String, Int32, CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_OpenConnection_System_String_System_Int32_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.OpenConnection(System.String,System.Int32,System.Threading.CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.OpenConnection(System.String, System.Int32, System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.OpenConnection(String, Int32, CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.OpenConnection*
+  name: OpenConnection
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_OpenConnection_
+  commentId: Overload:chia.dotnet.FullNodeProxy.OpenConnection
+  isSpec: "True"
+  fullName: chia.dotnet.FullNodeProxy.OpenConnection
+  nameWithType: FullNodeProxy.OpenConnection
 - uid: chia.dotnet.Message
   name: Message
   href: api/chia.dotnet.Message.html
