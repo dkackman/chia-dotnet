@@ -23,7 +23,7 @@ var state = await fullNode.GetBlockchainState(CancellationToken.None);
 ### Build 
 
 ````bash
-dotnet build ./src/chia-dotnet.sln
+dotnet build ./src
 ````
 
 ### Tests
