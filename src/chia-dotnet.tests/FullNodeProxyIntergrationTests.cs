@@ -44,6 +44,20 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
+        public async Task GetBlockRecord()
+        {
+            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
+
+            await daemon.Connect(CancellationToken.None);
+            await daemon.Register(CancellationToken.None);
+
+            var fullNode = new FullNodeProxy(daemon);
+            var record = await fullNode.GetBlockRecord("0xc5d6292aaf50c3cdc3f8481a30b2e9f12babf274c0488ab24db3dd9b1dd41364", CancellationToken.None);
+
+            Assert.IsNotNull(record);
+        }
+
+        [TestMethod]
         public async Task GetBlocks()
         {
             using Daemon daemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
