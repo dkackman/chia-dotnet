@@ -42,6 +42,17 @@ namespace chia.dotnet
         /// from <see cref="DestinationService"/> and <see cref="Daemon.OriginService"/>
         /// </summary>
         /// <param name="command">The command to send</param>
+        /// <returns><see cref="Message"/></returns>
+        protected Message CreateMessage(string command)
+        {
+            return Message.Create(command, null, DestinationService, Daemon.OriginService);
+        }
+
+        /// <summary>
+        /// Constructs a <see cref="Message"/> instance with <see cref="Message.Destination"/> and <see cref="Message.Origin"/> set
+        /// from <see cref="DestinationService"/> and <see cref="Daemon.OriginService"/>
+        /// </summary>
+        /// <param name="command">The command to send</param>
         /// <param name="data">Data to send with the command</param>
         /// <returns><see cref="Message"/></returns>
         protected Message CreateMessage(string command, dynamic data)
