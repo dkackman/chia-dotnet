@@ -145,7 +145,7 @@ namespace chia.dotnet
                 _ = _pendingRequests.TryRemove(request.Request_Id, out _);
             }
 
-            return !response.IsSuccessfulResponse ? throw new ResponseException(request, response) : response;
+            return !response.IsSuccessfulResponse ? throw new ResponseException(request, response, response.Data?.error?.ToString()) : response;
         }
 
         /// <summary>

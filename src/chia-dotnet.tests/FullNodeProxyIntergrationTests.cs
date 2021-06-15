@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -68,7 +69,21 @@ namespace chia.dotnet.tests
             var space = await fullNode.GetNetworkSpace("0x457649e7e6dabb5660f8c3cd9e08534522361d97cb237bdfa341bce01e91c3f5", "0x1353f4d1a01d5393cb7f8f0631487774e11125f47af487426fd9cbcd24151a15", CancellationToken.None);
             Assert.IsNotNull(space);
 
-            Console.WriteLine(space);
+            Debug.WriteLine(space);
+        }
+
+
+        [TestMethod]
+        public async Task GetRecentSignagePointOrEos()
+        {
+            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
+
+            await daemon.Connect(CancellationToken.None);
+            await daemon.Register(CancellationToken.None);
+
+            var fullNode = new FullNodeProxy(daemon);
+            var signagePoint = await fullNode.GetRecentSignagePointOrEos("0x457649e7e6dabb5660f8c3cd9e08534522361d97cb237bdfa341bce01e91c3f5", CancellationToken.None);
+            Assert.IsNotNull(signagePoint);
         }
     }
 }

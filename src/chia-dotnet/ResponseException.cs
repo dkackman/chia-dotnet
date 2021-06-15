@@ -23,6 +23,17 @@ namespace chia.dotnet
         /// <param name="request">The request sent to the service</param>
         /// <param name="response">The response received from the service</param>
         /// <param name="message"><see cref="Exception.Message"/></param>
+        public ResponseException(Message request, Message response, string message)
+            : this(request, response, message, null)
+        {
+        }
+
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="request">The request sent to the service</param>
+        /// <param name="response">The response received from the service</param>
+        /// <param name="message"><see cref="Exception.Message"/></param>
         /// <param name="innerException"><see cref="Exception.InnerException"/></param>
         public ResponseException(Message request, Message response, string message, Exception innerException)
             : base(message, innerException)
