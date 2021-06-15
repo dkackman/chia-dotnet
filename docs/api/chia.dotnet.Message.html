@@ -73,7 +73,7 @@
   
   <h1 id="chia_dotnet_Message" data-uid="chia.dotnet.Message" class="text-break">Class Message
   </h1>
-  <div class="markdown level0 summary"><p>The messaging data strucutre for request and response exchange with the RPC endpoint</p>
+  <div class="markdown level0 summary"><p>The messaging data structure for request and response exchange with the RPC endpoint</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -122,11 +122,12 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Message_Ack.md&amp;value=---%0Auid%3A%20chia.dotnet.Message.Ack%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L17">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L37">View Source</a>
   </span>
   <a id="chia_dotnet_Message_Ack_" data-uid="chia.dotnet.Message.Ack*"></a>
   <h4 id="chia_dotnet_Message_Ack" data-uid="chia.dotnet.Message.Ack">Ack</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Indication whether message is an acknowledgement (i.e response)</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -152,11 +153,12 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Message_Command.md&amp;value=---%0Auid%3A%20chia.dotnet.Message.Command%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L13">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L17">View Source</a>
   </span>
   <a id="chia_dotnet_Message_Command_" data-uid="chia.dotnet.Message.Command*"></a>
   <h4 id="chia_dotnet_Message_Command" data-uid="chia.dotnet.Message.Command">Command</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The command to be processed by the endpoint service</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -182,11 +184,12 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Message_Data.md&amp;value=---%0Auid%3A%20chia.dotnet.Message.Data%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L14">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L22">View Source</a>
   </span>
   <a id="chia_dotnet_Message_Data_" data-uid="chia.dotnet.Message.Data*"></a>
   <h4 id="chia_dotnet_Message_Data" data-uid="chia.dotnet.Message.Data">Data</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Data to go along with the command</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -212,11 +215,12 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Message_Destination.md&amp;value=---%0Auid%3A%20chia.dotnet.Message.Destination%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L16">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L32">View Source</a>
   </span>
   <a id="chia_dotnet_Message_Destination_" data-uid="chia.dotnet.Message.Destination*"></a>
   <h4 id="chia_dotnet_Message_Destination" data-uid="chia.dotnet.Message.Destination">Destination</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The name of the destination service</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -239,14 +243,47 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Message_IsSuccessfulResponse.md&amp;value=---%0Auid%3A%20chia.dotnet.Message.IsSuccessfulResponse%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L47">View Source</a>
+  </span>
+  <a id="chia_dotnet_Message_IsSuccessfulResponse_" data-uid="chia.dotnet.Message.IsSuccessfulResponse*"></a>
+  <h4 id="chia_dotnet_Message_IsSuccessfulResponse" data-uid="chia.dotnet.Message.IsSuccessfulResponse">IsSuccessfulResponse</h4>
+  <div class="markdown level1 summary"><p>Inidcates wether this is a response (<a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Ack">Ack</a> is true) and the success flag is also true</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+public bool IsSuccessfulResponse { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Message_Origin.md&amp;value=---%0Auid%3A%20chia.dotnet.Message.Origin%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L15">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L27">View Source</a>
   </span>
   <a id="chia_dotnet_Message_Origin_" data-uid="chia.dotnet.Message.Origin*"></a>
   <h4 id="chia_dotnet_Message_Origin" data-uid="chia.dotnet.Message.Origin">Origin</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The name of the origin service</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -272,11 +309,12 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Message_Request_Id.md&amp;value=---%0Auid%3A%20chia.dotnet.Message.Request_Id%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L18">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L42">View Source</a>
   </span>
   <a id="chia_dotnet_Message_Request_Id_" data-uid="chia.dotnet.Message.Request_Id*"></a>
   <h4 id="chia_dotnet_Message_Request_Id" data-uid="chia.dotnet.Message.Request_Id">Request_Id</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Unique id to correlate requests to responses</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -304,11 +342,12 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Message_Create_System_String_System_Object_System_String_System_String_.md&amp;value=---%0Auid%3A%20chia.dotnet.Message.Create(System.String%2CSystem.Object%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L20">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L58">View Source</a>
   </span>
   <a id="chia_dotnet_Message_Create_" data-uid="chia.dotnet.Message.Create*"></a>
   <h4 id="chia_dotnet_Message_Create_System_String_System_Object_System_String_System_String_" data-uid="chia.dotnet.Message.Create(System.String,System.Object,System.String,System.String)">Create(String, Object, String, String)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Construct a new instance of a <a class="xref" href="chia.dotnet.Message.html">Message</a></p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -327,22 +366,26 @@
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">command</span></td>
-        <td></td>
+        <td><p><a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Command">Command</a></p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></td>
         <td><span class="parametername">data</span></td>
-        <td></td>
+        <td><p><a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Data">Data</a></p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">destination</span></td>
-        <td></td>
+        <td><p><a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Destination">Destination</a></p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">origin</span></td>
-        <td></td>
+        <td><p><a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Origin">Origin</a></p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -366,11 +409,12 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Message_FromJson_System_String_.md&amp;value=---%0Auid%3A%20chia.dotnet.Message.FromJson(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L49">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L96">View Source</a>
   </span>
   <a id="chia_dotnet_Message_FromJson_" data-uid="chia.dotnet.Message.FromJson*"></a>
   <h4 id="chia_dotnet_Message_FromJson_System_String_" data-uid="chia.dotnet.Message.FromJson(System.String)">FromJson(String)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Deserialize a <a class="xref" href="chia.dotnet.Message.html">Message</a> from a json string</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -389,7 +433,8 @@
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">json</span></td>
-        <td></td>
+        <td><p>Json representation of the Message</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -404,7 +449,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="chia.dotnet.Message.html">Message</a></td>
-        <td></td>
+        <td><p><a class="xref" href="chia.dotnet.Message.html">Message</a></p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -413,11 +459,12 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Message_ToJson.md&amp;value=---%0Auid%3A%20chia.dotnet.Message.ToJson%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L32">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L74">View Source</a>
   </span>
   <a id="chia_dotnet_Message_ToJson_" data-uid="chia.dotnet.Message.ToJson*"></a>
   <h4 id="chia_dotnet_Message_ToJson" data-uid="chia.dotnet.Message.ToJson">ToJson()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Serialize the <a class="xref" href="chia.dotnet.Message.html">Message</a> to a json string</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -434,7 +481,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td></td>
+        <td><p>Json representation of the message</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -453,7 +501,7 @@
                     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Message.md&amp;value=---%0Auid%3A%20chia.dotnet.Message%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L12" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

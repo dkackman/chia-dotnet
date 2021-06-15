@@ -342,6 +342,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.Message.FromJson
   nameWithType: Message.FromJson
+- uid: chia.dotnet.Message.IsSuccessfulResponse
+  name: IsSuccessfulResponse
+  href: api/chia.dotnet.Message.html#chia_dotnet_Message_IsSuccessfulResponse
+  commentId: P:chia.dotnet.Message.IsSuccessfulResponse
+  fullName: chia.dotnet.Message.IsSuccessfulResponse
+  nameWithType: Message.IsSuccessfulResponse
+- uid: chia.dotnet.Message.IsSuccessfulResponse*
+  name: IsSuccessfulResponse
+  href: api/chia.dotnet.Message.html#chia_dotnet_Message_IsSuccessfulResponse_
+  commentId: Overload:chia.dotnet.Message.IsSuccessfulResponse
+  isSpec: "True"
+  fullName: chia.dotnet.Message.IsSuccessfulResponse
+  nameWithType: Message.IsSuccessfulResponse
 - uid: chia.dotnet.Message.Origin
   name: Origin
   href: api/chia.dotnet.Message.html#chia_dotnet_Message_Origin
@@ -381,6 +394,57 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.Message.ToJson
   nameWithType: Message.ToJson
+- uid: chia.dotnet.ResponseException
+  name: ResponseException
+  href: api/chia.dotnet.ResponseException.html
+  commentId: T:chia.dotnet.ResponseException
+  fullName: chia.dotnet.ResponseException
+  nameWithType: ResponseException
+- uid: chia.dotnet.ResponseException.#ctor(chia.dotnet.Message,chia.dotnet.Message)
+  name: ResponseException(Message, Message)
+  href: api/chia.dotnet.ResponseException.html#chia_dotnet_ResponseException__ctor_chia_dotnet_Message_chia_dotnet_Message_
+  commentId: M:chia.dotnet.ResponseException.#ctor(chia.dotnet.Message,chia.dotnet.Message)
+  fullName: chia.dotnet.ResponseException.ResponseException(chia.dotnet.Message, chia.dotnet.Message)
+  nameWithType: ResponseException.ResponseException(Message, Message)
+- uid: chia.dotnet.ResponseException.#ctor(chia.dotnet.Message,chia.dotnet.Message,System.String,System.Exception)
+  name: ResponseException(Message, Message, String, Exception)
+  href: api/chia.dotnet.ResponseException.html#chia_dotnet_ResponseException__ctor_chia_dotnet_Message_chia_dotnet_Message_System_String_System_Exception_
+  commentId: M:chia.dotnet.ResponseException.#ctor(chia.dotnet.Message,chia.dotnet.Message,System.String,System.Exception)
+  fullName: chia.dotnet.ResponseException.ResponseException(chia.dotnet.Message, chia.dotnet.Message, System.String, System.Exception)
+  nameWithType: ResponseException.ResponseException(Message, Message, String, Exception)
+- uid: chia.dotnet.ResponseException.#ctor*
+  name: ResponseException
+  href: api/chia.dotnet.ResponseException.html#chia_dotnet_ResponseException__ctor_
+  commentId: Overload:chia.dotnet.ResponseException.#ctor
+  isSpec: "True"
+  fullName: chia.dotnet.ResponseException.ResponseException
+  nameWithType: ResponseException.ResponseException
+- uid: chia.dotnet.ResponseException.Request
+  name: Request
+  href: api/chia.dotnet.ResponseException.html#chia_dotnet_ResponseException_Request
+  commentId: P:chia.dotnet.ResponseException.Request
+  fullName: chia.dotnet.ResponseException.Request
+  nameWithType: ResponseException.Request
+- uid: chia.dotnet.ResponseException.Request*
+  name: Request
+  href: api/chia.dotnet.ResponseException.html#chia_dotnet_ResponseException_Request_
+  commentId: Overload:chia.dotnet.ResponseException.Request
+  isSpec: "True"
+  fullName: chia.dotnet.ResponseException.Request
+  nameWithType: ResponseException.Request
+- uid: chia.dotnet.ResponseException.Response
+  name: Response
+  href: api/chia.dotnet.ResponseException.html#chia_dotnet_ResponseException_Response
+  commentId: P:chia.dotnet.ResponseException.Response
+  fullName: chia.dotnet.ResponseException.Response
+  nameWithType: ResponseException.Response
+- uid: chia.dotnet.ResponseException.Response*
+  name: Response
+  href: api/chia.dotnet.ResponseException.html#chia_dotnet_ResponseException_Response_
+  commentId: Overload:chia.dotnet.ResponseException.Response
+  isSpec: "True"
+  fullName: chia.dotnet.ResponseException.Response
+  nameWithType: ResponseException.Response
 - uid: chia.dotnet.RpcClient
   name: RpcClient
   href: api/chia.dotnet.RpcClient.html
@@ -451,6 +515,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.RpcClient.Dispose
   nameWithType: RpcClient.Dispose
+- uid: chia.dotnet.RpcClient.Endpoint
+  name: Endpoint
+  href: api/chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_Endpoint
+  commentId: P:chia.dotnet.RpcClient.Endpoint
+  fullName: chia.dotnet.RpcClient.Endpoint
+  nameWithType: RpcClient.Endpoint
+- uid: chia.dotnet.RpcClient.Endpoint*
+  name: Endpoint
+  href: api/chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_Endpoint_
+  commentId: Overload:chia.dotnet.RpcClient.Endpoint
+  isSpec: "True"
+  fullName: chia.dotnet.RpcClient.Endpoint
+  nameWithType: RpcClient.Endpoint
 - uid: chia.dotnet.RpcClient.OnBroadcastMessageReceived(chia.dotnet.Message)
   name: OnBroadcastMessageReceived(Message)
   href: api/chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_OnBroadcastMessageReceived_chia_dotnet_Message_
