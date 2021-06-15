@@ -38,6 +38,11 @@ namespace chia.dotnet
         /// </summary>
         public string DestinationService { get; init; }
 
+        /// <summary>
+        /// Sends ping message to the service
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task Ping(CancellationToken cancellationToken)
         {
             var message = CreateMessage("ping");
