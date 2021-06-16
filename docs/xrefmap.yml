@@ -226,6 +226,103 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.EndpointInfo.Uri
   nameWithType: EndpointInfo.Uri
+- uid: chia.dotnet.FarmerProxy
+  name: FarmerProxy
+  href: api/chia.dotnet.FarmerProxy.html
+  commentId: T:chia.dotnet.FarmerProxy
+  fullName: chia.dotnet.FarmerProxy
+  nameWithType: FarmerProxy
+- uid: chia.dotnet.FarmerProxy.#ctor(chia.dotnet.Daemon)
+  name: FarmerProxy(Daemon)
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy__ctor_chia_dotnet_Daemon_
+  commentId: M:chia.dotnet.FarmerProxy.#ctor(chia.dotnet.Daemon)
+  fullName: chia.dotnet.FarmerProxy.FarmerProxy(chia.dotnet.Daemon)
+  nameWithType: FarmerProxy.FarmerProxy(Daemon)
+- uid: chia.dotnet.FarmerProxy.#ctor*
+  name: FarmerProxy
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy__ctor_
+  commentId: Overload:chia.dotnet.FarmerProxy.#ctor
+  isSpec: "True"
+  fullName: chia.dotnet.FarmerProxy.FarmerProxy
+  nameWithType: FarmerProxy.FarmerProxy
+- uid: chia.dotnet.FarmerProxy.CloseConnection(System.String,System.Threading.CancellationToken)
+  name: CloseConnection(String, CancellationToken)
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_CloseConnection_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FarmerProxy.CloseConnection(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.FarmerProxy.CloseConnection(System.String, System.Threading.CancellationToken)
+  nameWithType: FarmerProxy.CloseConnection(String, CancellationToken)
+- uid: chia.dotnet.FarmerProxy.CloseConnection*
+  name: CloseConnection
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_CloseConnection_
+  commentId: Overload:chia.dotnet.FarmerProxy.CloseConnection
+  isSpec: "True"
+  fullName: chia.dotnet.FarmerProxy.CloseConnection
+  nameWithType: FarmerProxy.CloseConnection
+- uid: chia.dotnet.FarmerProxy.GetConnections(System.Threading.CancellationToken)
+  name: GetConnections(CancellationToken)
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetConnections_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FarmerProxy.GetConnections(System.Threading.CancellationToken)
+  fullName: chia.dotnet.FarmerProxy.GetConnections(System.Threading.CancellationToken)
+  nameWithType: FarmerProxy.GetConnections(CancellationToken)
+- uid: chia.dotnet.FarmerProxy.GetConnections*
+  name: GetConnections
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetConnections_
+  commentId: Overload:chia.dotnet.FarmerProxy.GetConnections
+  isSpec: "True"
+  fullName: chia.dotnet.FarmerProxy.GetConnections
+  nameWithType: FarmerProxy.GetConnections
+- uid: chia.dotnet.FarmerProxy.GetRewardTargets(System.Boolean,System.Threading.CancellationToken)
+  name: GetRewardTargets(Boolean, CancellationToken)
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetRewardTargets_System_Boolean_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FarmerProxy.GetRewardTargets(System.Boolean,System.Threading.CancellationToken)
+  fullName: chia.dotnet.FarmerProxy.GetRewardTargets(System.Boolean, System.Threading.CancellationToken)
+  nameWithType: FarmerProxy.GetRewardTargets(Boolean, CancellationToken)
+- uid: chia.dotnet.FarmerProxy.GetRewardTargets*
+  name: GetRewardTargets
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetRewardTargets_
+  commentId: Overload:chia.dotnet.FarmerProxy.GetRewardTargets
+  isSpec: "True"
+  fullName: chia.dotnet.FarmerProxy.GetRewardTargets
+  nameWithType: FarmerProxy.GetRewardTargets
+- uid: chia.dotnet.FarmerProxy.GetSignagePoints(System.Threading.CancellationToken)
+  name: GetSignagePoints(CancellationToken)
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetSignagePoints_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FarmerProxy.GetSignagePoints(System.Threading.CancellationToken)
+  fullName: chia.dotnet.FarmerProxy.GetSignagePoints(System.Threading.CancellationToken)
+  nameWithType: FarmerProxy.GetSignagePoints(CancellationToken)
+- uid: chia.dotnet.FarmerProxy.GetSignagePoints*
+  name: GetSignagePoints
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetSignagePoints_
+  commentId: Overload:chia.dotnet.FarmerProxy.GetSignagePoints
+  isSpec: "True"
+  fullName: chia.dotnet.FarmerProxy.GetSignagePoints
+  nameWithType: FarmerProxy.GetSignagePoints
+- uid: chia.dotnet.FarmerProxy.OpenConnection(System.String,System.Int32,System.Threading.CancellationToken)
+  name: OpenConnection(String, Int32, CancellationToken)
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_OpenConnection_System_String_System_Int32_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FarmerProxy.OpenConnection(System.String,System.Int32,System.Threading.CancellationToken)
+  fullName: chia.dotnet.FarmerProxy.OpenConnection(System.String, System.Int32, System.Threading.CancellationToken)
+  nameWithType: FarmerProxy.OpenConnection(String, Int32, CancellationToken)
+- uid: chia.dotnet.FarmerProxy.OpenConnection*
+  name: OpenConnection
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_OpenConnection_
+  commentId: Overload:chia.dotnet.FarmerProxy.OpenConnection
+  isSpec: "True"
+  fullName: chia.dotnet.FarmerProxy.OpenConnection
+  nameWithType: FarmerProxy.OpenConnection
+- uid: chia.dotnet.FarmerProxy.SetRewardTargets(System.String,System.String,System.Threading.CancellationToken)
+  name: SetRewardTargets(String, String, CancellationToken)
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_SetRewardTargets_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FarmerProxy.SetRewardTargets(System.String,System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.FarmerProxy.SetRewardTargets(System.String, System.String, System.Threading.CancellationToken)
+  nameWithType: FarmerProxy.SetRewardTargets(String, String, CancellationToken)
+- uid: chia.dotnet.FarmerProxy.SetRewardTargets*
+  name: SetRewardTargets
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_SetRewardTargets_
+  commentId: Overload:chia.dotnet.FarmerProxy.SetRewardTargets
+  isSpec: "True"
+  fullName: chia.dotnet.FarmerProxy.SetRewardTargets
+  nameWithType: FarmerProxy.SetRewardTargets
 - uid: chia.dotnet.FullNodeProxy
   name: FullNodeProxy
   href: api/chia.dotnet.FullNodeProxy.html

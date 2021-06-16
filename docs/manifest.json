@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.Config.html",
-          "hash": "wBPsTvlq+Cwq2C0BOhriMhcg3ioDjGQUgEJEsChv8g0="
+          "hash": "pQewKe87ecHY4AtWyY+ZXfySaHn5/DgJO4Knh9Ujtg8="
         }
       },
       "is_incremental": false,
@@ -41,11 +41,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.FarmerProxy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.FarmerProxy.html",
+          "hash": "jK5aPb1JvsftK71KwxSOkOMFdBNWHywvWeXnNrjRbvk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/chia.dotnet.FullNodeProxy.yml",
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.FullNodeProxy.html",
-          "hash": "xHAqPop2sUDHkRHy94GhYo+4ZvF229nVMkRwa2YopFE="
+          "hash": "cmbvMwNBdiFWHk4UyjjmMSry6Qu88VV0+YNYGoD+TvA="
         }
       },
       "is_incremental": false,
@@ -81,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.RpcClient.html",
-          "hash": "x8ZMAEH1bWsJdfYPK5/8MRXbja3t1oo9MvAnsMW7tGs="
+          "hash": "1mWVTLMV1VNMK7ITX3w9/oSUzG3c/9AfzHaV24gYKwg="
         }
       },
       "is_incremental": false,
@@ -105,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.ServiceProxy.html",
-          "hash": "hW5QFV//DgVifTSG/MZ88spnplZ4YHtE2JpviSe+3Wo="
+          "hash": "nqEtDVLBmpB9XiNss6yjROGAXiUlgZfvUsrnuazPDX0="
         }
       },
       "is_incremental": false,
@@ -117,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.html",
-          "hash": "dAf52FzpBWuf5IoX7vTt2ANWrd+fUcxMbZ24ZWYWJSo="
+          "hash": "vGKCkA64lvtjfezgoxyCD9UyLVc8CYlkgX2nl2VU3i4="
         }
       },
       "is_incremental": false,
@@ -141,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "/09nN8V+jUHrME3Ew0pjEXFMmPr6K4vCtE21E39ktww="
+          "hash": "zCQIbVh+OZ70vuna4RDndqGkaiFRs4tKh9/Bj3bxURE="
         }
       },
       "is_incremental": false,
@@ -216,7 +228,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 10,
+          "total_file_count": 11,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {

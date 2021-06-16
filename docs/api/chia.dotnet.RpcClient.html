@@ -233,7 +233,7 @@ and synchronizes request and response messages</p>
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>Awaitable Task</p>
+        <td><p>Awaitable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
 </td>
       </tr>
     </tbody>
@@ -381,8 +381,8 @@ and synchronizes request and response messages</p>
   </span>
   <a id="chia_dotnet_RpcClient_OnConnected_" data-uid="chia.dotnet.RpcClient.OnConnected*"></a>
   <h4 id="chia_dotnet_RpcClient_OnConnected" data-uid="chia.dotnet.RpcClient.OnConnected">OnConnected()</h4>
-  <div class="markdown level1 summary"><p>Called after <a class="xref" href="chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_Connect_System_Threading_CancellationToken_">Connect(CancellationToken)</a> completes successfully. Let's derived classess know that they can do any
-post connection initialization that they need.</p>
+  <div class="markdown level1 summary"><p>Called after <a class="xref" href="chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_Connect_System_Threading_CancellationToken_">Connect(CancellationToken)</a> completes successfully. Lets derived classess know that they can do
+post connection initialization</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -440,7 +440,7 @@ post connection initialization that they need.</p>
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>A <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+        <td><p>Awaitable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
 </td>
       </tr>
     </tbody>
@@ -511,8 +511,8 @@ post connection initialization that they need.</p>
     <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/RpcClient.cs/#L155">View Source</a>
   </span>
   <h4 id="chia_dotnet_RpcClient_BroadcastMessageReceived" data-uid="chia.dotnet.RpcClient.BroadcastMessageReceived">BroadcastMessageReceived</h4>
-  <div class="markdown level1 summary"><p>Event rasied when a message is received from the endpoint that was either not in response to a send
-or was a response from a posted message (i.e. we didn't register to receive the response</p>
+  <div class="markdown level1 summary"><p>Event raised when a message is received from the endpoint that was either not in response to a send
+or was a response from a posted message (i.e. we didn't register to receive the response)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
