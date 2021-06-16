@@ -32,7 +32,7 @@ namespace chia.dotnet
             var message = CreateMessage("get_reward_targets", data);
             var response = await Daemon.SendMessage(message, cancellationToken);
 
-            return response.Data.blocks;
+            return response.Data;
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace chia.dotnet
             var message = CreateMessage("get_signage_points");
             var response = await Daemon.SendMessage(message, cancellationToken);
 
-            return response.Data;
+            return response.Data.signage_points;
         }
 
         /// <summary>
