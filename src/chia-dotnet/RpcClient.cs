@@ -62,8 +62,8 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Called after <see cref="Connect(CancellationToken)"/> completes successfully. Let's derived classess know that they can do any 
-        /// post connection initialization that they need.
+        /// Called after <see cref="Connect(CancellationToken)"/> completes successfully. Lets derived classess know that they can do
+        /// post connection initialization 
         /// </summary>
         protected virtual void OnConnected()
         {
@@ -149,7 +149,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Event rasied when a message is received from the endpoint that was either not in response to a send
+        /// Event raised when a message is received from the endpoint that was either not in response to a send
         /// or was a response from a posted message (i.e. we didn't register to receive the response)
         /// </summary>
         public event EventHandler<Message> BroadcastMessageReceived;
