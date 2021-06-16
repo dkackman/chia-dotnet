@@ -8,6 +8,15 @@ A [.net 5](https://dotnet.microsoft.com/download/dotnet/5.0) client library for 
 ### Documentation
 https://dkackman.github.io/chia-dotnet/
 
+### Service Coverage
+
+- [x] Daemon
+- [x] Full Node
+- [ ] Farmer
+- [ ] Harvester
+- [ ] Wallet
+- [ ] Plotter
+
 ### Example
 
 ```csharp
