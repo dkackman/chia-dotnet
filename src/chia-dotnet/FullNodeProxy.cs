@@ -1,7 +1,7 @@
 ﻿using System.Dynamic;
+using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Numerics;
 
 namespace chia.dotnet
 {
@@ -65,7 +65,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Get the blocks ebtween a start and end height
+        /// Get the blocks between a start and end height
         /// </summary>
         /// <param name="start">Start height</param>
         /// <param name="end">End Height</param>
