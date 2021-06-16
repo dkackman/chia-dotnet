@@ -12,7 +12,7 @@ https://dkackman.github.io/chia-dotnet/
 
 - [x] Daemon
 - [x] Full Node
-- [ ] Farmer
+- [x] Farmer
 - [ ] Harvester
 - [ ] Wallet
 - [ ] Plotter
