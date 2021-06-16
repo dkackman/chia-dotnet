@@ -70,7 +70,7 @@ namespace chia.dotnet
         /// <param name="start">Start height</param>
         /// <param name="end">End Height</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Colleciton of blocks</returns>
+        /// <returns>A list of blocks</returns>
         public async Task<dynamic> GetBlocks(int start, int end, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
@@ -86,7 +86,7 @@ namespace chia.dotnet
         /// Get unfinished block headers
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>list of headers</returns>
+        /// <returns>A list of headers</returns>
         public async Task<dynamic> GetUnfinishedBlockHeaders(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_unfinished_block_headers");
@@ -118,7 +118,7 @@ namespace chia.dotnet
         /// Get connections that the full node has
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Collection of connections</returns>
+        /// <returns>A list of connections</returns>
         public async Task<dynamic> GetConnections(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_connections");
@@ -133,7 +133,7 @@ namespace chia.dotnet
         /// <param name="host">The host name of the connection</param>
         /// <param name="port">The port to use</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Collection of connections</returns>
+        /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task OpenConnection(string host, int port, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
@@ -149,7 +149,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="nodeId">The id of the node to close</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Collection of connections</returns>
+        /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task CloseConnection(string nodeId, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
