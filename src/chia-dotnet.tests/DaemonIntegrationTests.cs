@@ -41,7 +41,7 @@ namespace chia.dotnet.tests
             using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
 
             await daemon.Connect(CancellationToken.None);
-            await daemon.Exit(CancellationToken.None);       
+            await daemon.Exit(CancellationToken.None);
 
             // if no exception the daemon was stopped successfully
         }
@@ -57,7 +57,7 @@ namespace chia.dotnet.tests
 
             await daemon.StartService(ServiceNames.Farmer, CancellationToken.None);
             Assert.IsTrue(await daemon.IsServiceRunning(ServiceNames.Farmer, CancellationToken.None));
-            
+
             await daemon.StopService(ServiceNames.Farmer, CancellationToken.None);
             Assert.IsFalse(await daemon.IsServiceRunning(ServiceNames.Farmer, CancellationToken.None));
 

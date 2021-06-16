@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,16 +14,29 @@ namespace chia.dotnet.tests
     //[Ignore] // uncomment to suppress completely
     public class FullNodeProxyIntergrationTests
     {
+        private static Daemon _theDaemon;
+        private static FullNodeProxy _theFullNode;
+
+        [ClassInitialize]
+        public static async Task Initialize(TestContext context)
+        {
+            _theDaemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
+
+            await _theDaemon.Connect(CancellationToken.None);
+            await _theDaemon.Register(CancellationToken.None);
+            _theFullNode = new FullNodeProxy(_theDaemon);
+        }
+
+        [ClassCleanup()]
+        public static void ClassCleanup()
+        {
+            _theDaemon?.Dispose();
+        }
+
         [TestMethod]
         public async Task GetBlockChainState()
         {
-            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
-
-            await daemon.Connect(CancellationToken.None);
-            await daemon.Register(CancellationToken.None);
-
-            var fullNode = new FullNodeProxy(daemon);
-            var state = await fullNode.GetBlockchainState(CancellationToken.None);
+            var state = await _theFullNode.GetBlockchainState(CancellationToken.None);
 
             Assert.IsNotNull(state);
         }
@@ -32,13 +44,7 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetBlock()
         {
-            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
-
-            await daemon.Connect(CancellationToken.None);
-            await daemon.Register(CancellationToken.None);
-
-            var fullNode = new FullNodeProxy(daemon);
-            var block = await fullNode.GetBlock("0xc5d6292aaf50c3cdc3f8481a30b2e9f12babf274c0488ab24db3dd9b1dd41364", CancellationToken.None);
+            var block = await _theFullNode.GetBlock("0xc5d6292aaf50c3cdc3f8481a30b2e9f12babf274c0488ab24db3dd9b1dd41364", CancellationToken.None);
 
             Assert.IsNotNull(block);
         }
@@ -46,13 +52,7 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetBlockRecord()
         {
-            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
-
-            await daemon.Connect(CancellationToken.None);
-            await daemon.Register(CancellationToken.None);
-
-            var fullNode = new FullNodeProxy(daemon);
-            var record = await fullNode.GetBlockRecord("0xc5d6292aaf50c3cdc3f8481a30b2e9f12babf274c0488ab24db3dd9b1dd41364", CancellationToken.None);
+            var record = await _theFullNode.GetBlockRecord("0xc5d6292aaf50c3cdc3f8481a30b2e9f12babf274c0488ab24db3dd9b1dd41364", CancellationToken.None);
 
             Assert.IsNotNull(record);
         }
@@ -60,13 +60,7 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetBlocks()
         {
-            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
-
-            await daemon.Connect(CancellationToken.None);
-            await daemon.Register(CancellationToken.None);
-
-            var fullNode = new FullNodeProxy(daemon);
-            var blocks = await fullNode.GetBlocks(435160, 435167, CancellationToken.None);
+            var blocks = await _theFullNode.GetBlocks(435160, 435167, CancellationToken.None);
 
             Assert.IsNotNull(blocks);
         }
@@ -74,13 +68,7 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetNetworkSpace()
         {
-            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
-
-            await daemon.Connect(CancellationToken.None);
-            await daemon.Register(CancellationToken.None);
-
-            var fullNode = new FullNodeProxy(daemon);
-            var space = await fullNode.GetNetworkSpace("0x457649e7e6dabb5660f8c3cd9e08534522361d97cb237bdfa341bce01e91c3f5", "0x1353f4d1a01d5393cb7f8f0631487774e11125f47af487426fd9cbcd24151a15", CancellationToken.None);
+            var space = await _theFullNode.GetNetworkSpace("0x457649e7e6dabb5660f8c3cd9e08534522361d97cb237bdfa341bce01e91c3f5", "0x1353f4d1a01d5393cb7f8f0631487774e11125f47af487426fd9cbcd24151a15", CancellationToken.None);
             Assert.IsNotNull(space);
 
             Debug.WriteLine(space);
@@ -89,38 +77,20 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task Ping()
         {
-            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
-
-            await daemon.Connect(CancellationToken.None);
-            await daemon.Register(CancellationToken.None);
-
-            var fullNode = new FullNodeProxy(daemon);
-            await fullNode.Ping(CancellationToken.None);
+            await _theFullNode.Ping(CancellationToken.None);
         }
 
         [TestMethod]
         public async Task GetConnections()
         {
-            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
-
-            await daemon.Connect(CancellationToken.None);
-            await daemon.Register(CancellationToken.None);
-
-            var fullNode = new FullNodeProxy(daemon);
-            var connections = await fullNode.GetConnections(CancellationToken.None);
+            var connections = await _theFullNode.GetConnections(CancellationToken.None);
             Assert.IsNotNull(connections);
         }
 
         [TestMethod]
         public async Task OpenConnection()
         {
-            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
-
-            await daemon.Connect(CancellationToken.None);
-            await daemon.Register(CancellationToken.None);
-
-            var fullNode = new FullNodeProxy(daemon);
-            await fullNode.OpenConnection("node.chia.net", 8444, CancellationToken.None);
+            await _theFullNode.OpenConnection("node.chia.net", 8444, CancellationToken.None);
         }
     }
 }
