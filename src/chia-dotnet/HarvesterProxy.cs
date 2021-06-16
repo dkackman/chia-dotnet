@@ -34,7 +34,7 @@ namespace chia.dotnet
         /// <summary>
         /// Permanently delete a plot file
         /// </summary>
-        /// <param name="filename">the file name of the plot target</param>
+        /// <param name="filename">the file name of the plot</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         /// <remarks><strong>Calling this DELETES the plot file. Proceed with caution.</strong></remarks>
@@ -61,7 +61,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Add a plot directory to the harvester configuraiton
+        /// Add a plot directory to the harvester configuration
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>

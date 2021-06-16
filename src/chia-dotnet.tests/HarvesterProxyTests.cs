@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace chia.dotnet.tests
 {
-    [TestClass()]
+    [TestClass]
+    [TestCategory("Integration")]
     public class HarvesterProxyTests
     {
         private static Daemon _theDaemon;
@@ -41,7 +42,7 @@ namespace chia.dotnet.tests
         [Ignore]
         public async Task DeletePlotTest()
         {
-            Assert.Fail();
+            await _theHarvester.DeletePlot("<plot name", CancellationToken.None);
         }
 
         [TestMethod()]
