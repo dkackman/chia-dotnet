@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Proxy that communicates with the full node via the daemon
+    /// Proxy that communicates with the farmer via the daemon
     /// </summary>
     public class FarmerProxy : ServiceProxy
     {
@@ -19,7 +19,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Get the farmer reqard targets 
+        /// Get the farm and pool reward targets 
         /// </summary>
         /// <param name="searchForPrivateKey">Include private key in search</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
@@ -42,7 +42,6 @@ namespace chia.dotnet
         /// <param name="poolTarget">Pool target</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        /// <remarks><strong>Calling this method will change the state of the farmer. Proceed with caution.</strong></remarks>
         public async Task SetRewardTargets(string farmerTarget, string poolTarget, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();

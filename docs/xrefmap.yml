@@ -459,6 +459,103 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FullNodeProxy.OpenConnection
   nameWithType: FullNodeProxy.OpenConnection
+- uid: chia.dotnet.HarvesterProxy
+  name: HarvesterProxy
+  href: api/chia.dotnet.HarvesterProxy.html
+  commentId: T:chia.dotnet.HarvesterProxy
+  fullName: chia.dotnet.HarvesterProxy
+  nameWithType: HarvesterProxy
+- uid: chia.dotnet.HarvesterProxy.#ctor(chia.dotnet.Daemon)
+  name: HarvesterProxy(Daemon)
+  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy__ctor_chia_dotnet_Daemon_
+  commentId: M:chia.dotnet.HarvesterProxy.#ctor(chia.dotnet.Daemon)
+  fullName: chia.dotnet.HarvesterProxy.HarvesterProxy(chia.dotnet.Daemon)
+  nameWithType: HarvesterProxy.HarvesterProxy(Daemon)
+- uid: chia.dotnet.HarvesterProxy.#ctor*
+  name: HarvesterProxy
+  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy__ctor_
+  commentId: Overload:chia.dotnet.HarvesterProxy.#ctor
+  isSpec: "True"
+  fullName: chia.dotnet.HarvesterProxy.HarvesterProxy
+  nameWithType: HarvesterProxy.HarvesterProxy
+- uid: chia.dotnet.HarvesterProxy.AddPlotDirectory(System.String,System.Threading.CancellationToken)
+  name: AddPlotDirectory(String, CancellationToken)
+  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_AddPlotDirectory_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.HarvesterProxy.AddPlotDirectory(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.HarvesterProxy.AddPlotDirectory(System.String, System.Threading.CancellationToken)
+  nameWithType: HarvesterProxy.AddPlotDirectory(String, CancellationToken)
+- uid: chia.dotnet.HarvesterProxy.AddPlotDirectory*
+  name: AddPlotDirectory
+  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_AddPlotDirectory_
+  commentId: Overload:chia.dotnet.HarvesterProxy.AddPlotDirectory
+  isSpec: "True"
+  fullName: chia.dotnet.HarvesterProxy.AddPlotDirectory
+  nameWithType: HarvesterProxy.AddPlotDirectory
+- uid: chia.dotnet.HarvesterProxy.DeletePlot(System.String,System.Threading.CancellationToken)
+  name: DeletePlot(String, CancellationToken)
+  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_DeletePlot_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.HarvesterProxy.DeletePlot(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.HarvesterProxy.DeletePlot(System.String, System.Threading.CancellationToken)
+  nameWithType: HarvesterProxy.DeletePlot(String, CancellationToken)
+- uid: chia.dotnet.HarvesterProxy.DeletePlot*
+  name: DeletePlot
+  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_DeletePlot_
+  commentId: Overload:chia.dotnet.HarvesterProxy.DeletePlot
+  isSpec: "True"
+  fullName: chia.dotnet.HarvesterProxy.DeletePlot
+  nameWithType: HarvesterProxy.DeletePlot
+- uid: chia.dotnet.HarvesterProxy.GetPlotDirectories(System.Threading.CancellationToken)
+  name: GetPlotDirectories(CancellationToken)
+  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_GetPlotDirectories_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.HarvesterProxy.GetPlotDirectories(System.Threading.CancellationToken)
+  fullName: chia.dotnet.HarvesterProxy.GetPlotDirectories(System.Threading.CancellationToken)
+  nameWithType: HarvesterProxy.GetPlotDirectories(CancellationToken)
+- uid: chia.dotnet.HarvesterProxy.GetPlotDirectories*
+  name: GetPlotDirectories
+  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_GetPlotDirectories_
+  commentId: Overload:chia.dotnet.HarvesterProxy.GetPlotDirectories
+  isSpec: "True"
+  fullName: chia.dotnet.HarvesterProxy.GetPlotDirectories
+  nameWithType: HarvesterProxy.GetPlotDirectories
+- uid: chia.dotnet.HarvesterProxy.GetPlots(System.Threading.CancellationToken)
+  name: GetPlots(CancellationToken)
+  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_GetPlots_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.HarvesterProxy.GetPlots(System.Threading.CancellationToken)
+  fullName: chia.dotnet.HarvesterProxy.GetPlots(System.Threading.CancellationToken)
+  nameWithType: HarvesterProxy.GetPlots(CancellationToken)
+- uid: chia.dotnet.HarvesterProxy.GetPlots*
+  name: GetPlots
+  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_GetPlots_
+  commentId: Overload:chia.dotnet.HarvesterProxy.GetPlots
+  isSpec: "True"
+  fullName: chia.dotnet.HarvesterProxy.GetPlots
+  nameWithType: HarvesterProxy.GetPlots
+- uid: chia.dotnet.HarvesterProxy.RefreshPlots(System.Threading.CancellationToken)
+  name: RefreshPlots(CancellationToken)
+  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_RefreshPlots_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.HarvesterProxy.RefreshPlots(System.Threading.CancellationToken)
+  fullName: chia.dotnet.HarvesterProxy.RefreshPlots(System.Threading.CancellationToken)
+  nameWithType: HarvesterProxy.RefreshPlots(CancellationToken)
+- uid: chia.dotnet.HarvesterProxy.RefreshPlots*
+  name: RefreshPlots
+  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_RefreshPlots_
+  commentId: Overload:chia.dotnet.HarvesterProxy.RefreshPlots
+  isSpec: "True"
+  fullName: chia.dotnet.HarvesterProxy.RefreshPlots
+  nameWithType: HarvesterProxy.RefreshPlots
+- uid: chia.dotnet.HarvesterProxy.RemovePlotDirectory(System.String,System.Threading.CancellationToken)
+  name: RemovePlotDirectory(String, CancellationToken)
+  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_RemovePlotDirectory_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.HarvesterProxy.RemovePlotDirectory(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.HarvesterProxy.RemovePlotDirectory(System.String, System.Threading.CancellationToken)
+  nameWithType: HarvesterProxy.RemovePlotDirectory(String, CancellationToken)
+- uid: chia.dotnet.HarvesterProxy.RemovePlotDirectory*
+  name: RemovePlotDirectory
+  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_RemovePlotDirectory_
+  commentId: Overload:chia.dotnet.HarvesterProxy.RemovePlotDirectory
+  isSpec: "True"
+  fullName: chia.dotnet.HarvesterProxy.RemovePlotDirectory
+  nameWithType: HarvesterProxy.RemovePlotDirectory
 - uid: chia.dotnet.Message
   name: Message
   href: api/chia.dotnet.Message.html
