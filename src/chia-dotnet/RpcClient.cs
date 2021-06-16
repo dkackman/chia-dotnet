@@ -73,7 +73,7 @@ namespace chia.dotnet
         /// Cancels the receive loop and closes the websocket
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Awaitable Task</returns>
+        /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task Close(CancellationToken cancellationToken)
         {
             if (disposedValue)
@@ -90,7 +90,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="message">The <see cref="Message"/> to post</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A <see cref="Task"/></returns>
+        /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task PostMessage(Message message, CancellationToken cancellationToken)
         {
             if (disposedValue)
@@ -150,7 +150,7 @@ namespace chia.dotnet
 
         /// <summary>
         /// Event rasied when a message is received from the endpoint that was either not in response to a send
-        /// or was a response from a posted message (i.e. we didn't register to receive the response
+        /// or was a response from a posted message (i.e. we didn't register to receive the response)
         /// </summary>
         public event EventHandler<Message> BroadcastMessageReceived;
 
