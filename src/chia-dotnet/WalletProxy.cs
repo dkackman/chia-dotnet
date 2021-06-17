@@ -91,7 +91,7 @@ namespace chia.dotnet
         /// Get blockchain height info
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Current block hieght</returns>
+        /// <returns>Current block height</returns>
         public async Task<int> GetHeightInfo(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_height_info");
