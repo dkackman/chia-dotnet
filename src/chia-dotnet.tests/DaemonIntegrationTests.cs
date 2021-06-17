@@ -36,6 +36,7 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
+        [Ignore]
         public async Task ExitLocalDaemon()
         {
             using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
@@ -47,6 +48,7 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
+        [Ignore]
         public async Task StartAndStopFarmerOnLocalDaemon()
         {
             using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");

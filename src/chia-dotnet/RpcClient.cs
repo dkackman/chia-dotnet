@@ -136,7 +136,7 @@ namespace chia.dotnet
             Message response;
             while (!_pendingResponses.TryRemove(request.Request_Id, out response) && !cancellationToken.IsCancellationRequested)
             {
-                await Task.Yield();
+                await Task.Delay(10, cancellationToken);
             }
 
             // the receive loop cleans up but make sure we do so on cancellation too
