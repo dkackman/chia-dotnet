@@ -15,4 +15,8 @@
     <ProjectReference Include="..\chia-dotnet\chia-dotnet.csproj" />
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy &quot;$(ProjectDir)_site\&quot; &quot;$(SolutionDir)..\docs\&quot; /S /R /Y" />
+  </Target>
+
 </Project>

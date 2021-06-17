@@ -36,7 +36,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="walletId">The numeric id of the wallet to query</param>        
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A list of plots</returns>
+        /// <returns>The wallet balance</returns>
         public async Task<dynamic> GetWalletBalance(int walletId, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
@@ -65,7 +65,7 @@ namespace chia.dotnet
         /// Get the wallet's sync status
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A list of connections</returns>
+        /// <returns>sync status</returns>
         public async Task<dynamic> GetSyncStatus(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_sync_status");
@@ -78,7 +78,7 @@ namespace chia.dotnet
         /// Get network info
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A list of connections</returns>
+        /// <returns>network name and prefix</returns>
         public async Task<dynamic> GetNetworkInfo(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_network_info");
@@ -91,7 +91,7 @@ namespace chia.dotnet
         /// Get blockchain height info
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A list of connections</returns>
+        /// <returns>Current block hieght</returns>
         public async Task<int> GetHeightInfo(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_height_info");
