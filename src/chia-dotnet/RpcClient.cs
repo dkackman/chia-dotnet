@@ -149,7 +149,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Event raised when a message is received from the endpoint that was either not in response to a send
+        /// Event raised when a message is received from the endpoint that was either not in response to a request
         /// or was a response from a posted message (i.e. we didn't register to receive the response)
         /// </summary>
         public event EventHandler<Message> BroadcastMessageReceived;
