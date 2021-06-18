@@ -14,8 +14,11 @@ namespace chia.dotnet
     /// </summary>
     public sealed class Config
     {
-        internal Config(dynamic config)
+        private readonly string _chiaRootPath;
+
+        internal Config(string chiaRootPath, dynamic config)
         {
+            _chiaRootPath = chiaRootPath;
             Contents = config;
         }
 
@@ -52,8 +55,8 @@ namespace chia.dotnet
             return new EndpointInfo
             {
                 Uri = builder.Uri,
-                CertPath = Path.Combine(DefaultRootPath, ssl.private_crt),
-                KeyPath = Path.Combine(DefaultRootPath, ssl.private_key)
+                CertPath = Path.Combine(_chiaRootPath, ssl.private_crt),
+                KeyPath = Path.Combine(_chiaRootPath, ssl.private_key)
             };
         }
 
@@ -77,8 +80,8 @@ namespace chia.dotnet
 
             var json = serializer.Serialize(yamlObject);
             dynamic config = JsonConvert.DeserializeObject<ExpandoObject>(json, new ExpandoObjectConverter());
-
-            return new Config(config);
+            var chiaRoot = Directory.GetParent(Path.GetDirectoryName(fullPath));
+            return new Config(chiaRoot.FullName, config);
         }
 
         /// <summary>
