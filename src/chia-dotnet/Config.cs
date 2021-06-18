@@ -61,6 +61,11 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// The OS specific default location of the chia root folder
+        /// </summary>
+        public static string DefaultRootPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".chia", "mainnet");
+
+        /// <summary>
         /// Opens a chia config yaml file
         /// </summary>
         /// <param name="fullPath">The full filesystem path to the config file</param>
@@ -80,14 +85,11 @@ namespace chia.dotnet
 
             var json = serializer.Serialize(yamlObject);
             dynamic config = JsonConvert.DeserializeObject<ExpandoObject>(json, new ExpandoObjectConverter());
+
             var chiaRoot = Directory.GetParent(Path.GetDirectoryName(fullPath));
+
             return new Config(chiaRoot.FullName, config);
         }
-
-        /// <summary>
-        /// The OS specific default location of the chia config file
-        /// </summary>
-        public static string DefaultRootPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".chia", "mainnet");
 
         /// <summary>
         /// Opens the <see cref="Config"/> from <see cref="DefaultRootPath"/> plus 'config' and 'config.yaml'
