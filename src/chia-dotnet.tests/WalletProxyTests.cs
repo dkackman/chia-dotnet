@@ -15,7 +15,8 @@ namespace chia.dotnet.tests
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
-            _theDaemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
+            var config = Config.Open(@"C:\Users\dkack\.chia\testnet8\config\config.yaml");
+            _theDaemon = new Daemon(config.GetEndpoint("daemon"), "unit_tests");
 
             await _theDaemon.Connect(CancellationToken.None);
             await _theDaemon.Register(CancellationToken.None);

@@ -11,7 +11,7 @@ namespace chia.dotnet.tests
     [TestClass]
     [TestCategory("Integration")]
     //[Ignore] // uncomment to suppress completely
-    public class DaemonIntegrationTests
+    public class DaemonTests
     {
         [TestMethod]
         public async Task GetFarmerIsRunningOnUIDaemon()

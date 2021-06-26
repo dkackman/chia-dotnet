@@ -12,7 +12,7 @@ namespace chia.dotnet.tests
     [TestClass]
     [TestCategory("Integration")]
     //[Ignore] // uncomment to suppress completely
-    public class FullNodeProxyIntergrationTests
+    public class FullNodeProxyTests
     {
         private static Daemon _theDaemon;
         private static FullNodeProxy _theFullNode;
@@ -63,6 +63,14 @@ namespace chia.dotnet.tests
             var blocks = await _theFullNode.GetBlocks(435160, 435167, CancellationToken.None);
 
             Assert.IsNotNull(blocks);
+        }
+
+        [TestMethod()]
+        public async Task GetNetworkInfo()
+        {
+            var info = await _theFullNode.GetNetworkInfo(CancellationToken.None);
+
+            Assert.IsNotNull(info);
         }
 
         [TestMethod]
