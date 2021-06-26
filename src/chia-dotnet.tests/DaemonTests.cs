@@ -16,7 +16,7 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetFarmerIsRunningOnUIDaemon()
         {
-            using var daemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
+            using var daemon = Factory.CreateDaemon();
 
             await daemon.Connect(CancellationToken.None);
             var running = await daemon.IsServiceRunning(ServiceNames.Farmer, CancellationToken.None);
@@ -27,7 +27,7 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetHarvesterIsRunningOnLocalDaemon()
         {
-            using var daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
+            using var daemon = Factory.CreateDaemon();
 
             await daemon.Connect(CancellationToken.None);
             var running = await daemon.IsServiceRunning(ServiceNames.Harvester, CancellationToken.None);
@@ -39,7 +39,7 @@ namespace chia.dotnet.tests
         [Ignore]
         public async Task ExitLocalDaemon()
         {
-            using var daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
+            using var daemon = Factory.CreateDaemon();
 
             await daemon.Connect(CancellationToken.None);
             await daemon.Exit(CancellationToken.None);
@@ -51,7 +51,7 @@ namespace chia.dotnet.tests
         [Ignore]
         public async Task StartAndStopFarmerOnLocalDaemon()
         {
-            using var daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
+            using var daemon = Factory.CreateDaemon();
 
             await daemon.Connect(CancellationToken.None);
 
@@ -69,7 +69,7 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task RegisterService()
         {
-            using var daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
+            using var daemon = Factory.CreateDaemon();
 
             await daemon.Connect(CancellationToken.None);
 

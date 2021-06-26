@@ -15,9 +15,7 @@ namespace chia.dotnet.tests
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
-            var config = Config.Open(@"C:\Users\dkack\.chia\testnet9\config\config.yaml");
-
-            _theDaemon = new Daemon(config.GetEndpoint("daemon"), "unit_tests");
+            _theDaemon = Factory.CreateDaemon();
 
             await _theDaemon.Connect(CancellationToken.None);
             await _theDaemon.Register(CancellationToken.None);
@@ -97,5 +95,19 @@ namespace chia.dotnet.tests
 
             Assert.IsTrue(height > 0);
         }
+
+
+        [TestMethod()]
+        public void LogIn()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void LogInAndRestoreBackup()
+        {
+            Assert.Fail();
+        }
+
     }
 }
