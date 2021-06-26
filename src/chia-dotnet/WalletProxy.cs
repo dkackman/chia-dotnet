@@ -24,12 +24,12 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Get the private key accessible by the wallet
+        /// Sets a key to active.
         /// </summary>
         /// <param name="fingerprint">The fingerprint</param>          
         /// <param name="skipImport">Indicator whether to skip the import at login</param>          
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>a private key</returns>
+        /// <returns>a key fingerprint</returns>
         public async Task<dynamic> LogIn(uint fingerprint, bool skipImport, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
@@ -44,12 +44,12 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Get the private key accessible by the wallet
+        /// Sets a key to active.
         /// </summary>
         /// <param name="fingerprint">The fingerprint</param>
         /// <param name="filePath">The path to the backup file</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>a private key</returns>
+        /// <returns>a key fingerprint</returns>
         public async Task<dynamic> LogInAndRestoreBackup(uint fingerprint, string filePath, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
