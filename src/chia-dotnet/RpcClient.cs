@@ -90,6 +90,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="message">The <see cref="Message"/> to post</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <remarks>Awaiting this method waits for the message to be sent only. It doesn't await a response.</remarks>
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task PostMessage(Message message, CancellationToken cancellationToken)
         {
@@ -107,6 +108,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="request">The <see cref="Message"/> to send</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <remarks>Awaiting this method will block untila response is received from thw <see cref="WebSocket"/> ot the <see cref="CancellationToken"/> is cancelled</remarks>
         /// <returns>The response message</returns>
         public async Task<Message> SendMessage(Message request, CancellationToken cancellationToken)
         {
@@ -118,7 +120,7 @@ namespace chia.dotnet
             // capture the message to be sent
             if (!_pendingRequests.TryAdd(request.Request_Id, request))
             {
-                throw new InvalidOperationException($"Message with id of {request.Request_Id} has already been sent");
+                throw new InvalidOperationException($"A message with an id of {request.Request_Id} has already been sent");
             }
 
             try
@@ -187,7 +189,7 @@ namespace chia.dotnet
                 var response = await reader.ReadToEndAsync();
                 var message = Message.FromJson(response);
 
-                // if we have a message pending with this id capture the response and remove it from the pending dictionary                
+                // if we have a message pending with this id, capture the response and remove the request from the pending dictionary                
                 if (_pendingRequests.TryRemove(message.Request_Id, out _))
                 {
                     _pendingResponses[message.Request_Id] = message;
