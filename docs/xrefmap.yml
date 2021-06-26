@@ -1126,6 +1126,12 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.WalletProxy
   nameWithType: WalletProxy.WalletProxy
+- uid: chia.dotnet.WalletProxy.DefaultBackupHost
+  name: DefaultBackupHost
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_DefaultBackupHost
+  commentId: F:chia.dotnet.WalletProxy.DefaultBackupHost
+  fullName: chia.dotnet.WalletProxy.DefaultBackupHost
+  nameWithType: WalletProxy.DefaultBackupHost
 - uid: chia.dotnet.WalletProxy.GetHeightInfo(System.Threading.CancellationToken)
   name: GetHeightInfo(CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetHeightInfo_System_Threading_CancellationToken_
@@ -1217,3 +1223,29 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.GetWallets
   nameWithType: WalletProxy.GetWallets
+- uid: chia.dotnet.WalletProxy.LogIn(System.UInt32,System.Boolean,System.Threading.CancellationToken)
+  name: LogIn(UInt32, Boolean, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_LogIn_System_UInt32_System_Boolean_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.LogIn(System.UInt32,System.Boolean,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.LogIn(System.UInt32, System.Boolean, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.LogIn(UInt32, Boolean, CancellationToken)
+- uid: chia.dotnet.WalletProxy.LogIn*
+  name: LogIn
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_LogIn_
+  commentId: Overload:chia.dotnet.WalletProxy.LogIn
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.LogIn
+  nameWithType: WalletProxy.LogIn
+- uid: chia.dotnet.WalletProxy.LogInAndRestoreBackup(System.UInt32,System.String,System.Threading.CancellationToken)
+  name: LogInAndRestoreBackup(UInt32, String, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_LogInAndRestoreBackup_System_UInt32_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.LogInAndRestoreBackup(System.UInt32,System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.LogInAndRestoreBackup(System.UInt32, System.String, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.LogInAndRestoreBackup(UInt32, String, CancellationToken)
+- uid: chia.dotnet.WalletProxy.LogInAndRestoreBackup*
+  name: LogInAndRestoreBackup
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_LogInAndRestoreBackup_
+  commentId: Overload:chia.dotnet.WalletProxy.LogInAndRestoreBackup
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.LogInAndRestoreBackup
+  nameWithType: WalletProxy.LogInAndRestoreBackup
