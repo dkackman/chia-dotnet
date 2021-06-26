@@ -15,8 +15,7 @@ namespace chia.dotnet.tests
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
-            var config = Config.Open(@"C:\Users\dkack\.chia\testnet8\config\config.yaml");
-            _theDaemon = new Daemon(config.GetEndpoint("daemon"), "unit_tests");
+            _theDaemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
 
             await _theDaemon.Connect(CancellationToken.None);
             await _theDaemon.Register(CancellationToken.None);
@@ -35,6 +34,22 @@ namespace chia.dotnet.tests
             var wallets = await _theWallet.GetWallets(CancellationToken.None);
 
             Assert.IsNotNull(wallets);
+        }
+
+        [TestMethod()]
+        public async Task GetPublicKeys()
+        {
+            var keys = await _theWallet.GetPublicKeys(CancellationToken.None);
+
+            Assert.IsNotNull(keys);
+        }
+
+        [TestMethod()]
+        public async Task GetPrivateKey()
+        {
+            var key = await _theWallet.GetPrivateKey(2287630151, CancellationToken.None);
+
+            Assert.IsNotNull(key);
         }
 
         [TestMethod()]

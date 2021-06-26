@@ -62,6 +62,36 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Get all root public keys accessible by the wallet
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>all root public keys accessible by the walle</returns>
+        public async Task<dynamic> GetPublicKeys(CancellationToken cancellationToken)
+        {
+            var message = CreateMessage("get_public_keys");
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return response.Data.public_key_fingerprints;
+        }
+
+        /// <summary>
+        /// Get the private key accessible by the wallet
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>          
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>a private key</returns>
+        public async Task<dynamic> GetPrivateKey(uint fingerprint, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+
+            var message = CreateMessage("get_private_key", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return response.Data.private_key;
+        }
+
+        /// <summary>
         /// Get the wallet's sync status
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
@@ -75,7 +105,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Get network info
+        /// Retrieves some information about the current network
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>network name and prefix</returns>
