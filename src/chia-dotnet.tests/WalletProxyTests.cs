@@ -15,7 +15,9 @@ namespace chia.dotnet.tests
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
-            _theDaemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
+            var config = Config.Open(@"C:\Users\dkack\.chia\testnet9\config\config.yaml");
+
+            _theDaemon = new Daemon(config.GetEndpoint("daemon"), "unit_tests");
 
             await _theDaemon.Connect(CancellationToken.None);
             await _theDaemon.Register(CancellationToken.None);
@@ -29,7 +31,7 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        public async Task GetWalletsTest()
+        public async Task GetWallets()
         {
             var wallets = await _theWallet.GetWallets(CancellationToken.None);
 
@@ -53,7 +55,7 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        public async Task GetWalletBalanceTest()
+        public async Task GetWalletBalance()
         {
             var balance = await _theWallet.GetWalletBalance(1, CancellationToken.None);
 
@@ -61,7 +63,7 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        public async Task GetSyncStatusTest()
+        public async Task GetSyncStatus()
         {
             var info = await _theWallet.GetSyncStatus(CancellationToken.None);
 
@@ -69,7 +71,7 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        public async Task GetNetworkInfoTest()
+        public async Task GetNetworkInfo()
         {
             var info = await _theWallet.GetNetworkInfo(CancellationToken.None);
 
@@ -77,7 +79,7 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        public async Task GetHeightInfoTest()
+        public async Task GetHeightInfo()
         {
             var height = await _theWallet.GetHeightInfo(CancellationToken.None);
 

@@ -11,7 +11,6 @@ namespace chia.dotnet.tests
     /// </summary>
     [TestClass]
     [TestCategory("Integration")]
-    //[Ignore] // uncomment to suppress completely
     public class FullNodeProxyTests
     {
         private static Daemon _theDaemon;
@@ -99,6 +98,67 @@ namespace chia.dotnet.tests
         public async Task OpenConnection()
         {
             await _theFullNode.OpenConnection("node.chia.net", 8444, CancellationToken.None);
+        }
+
+        [TestMethod()]
+        public void GetBlockRecordByHeight()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void GetBlockRecords()
+        {
+            Assert.Fail();
+        }
+
+
+        [TestMethod()]
+        public void GetUnfinishedBlockHeaders()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void GetCountRecordsByPuzzleHash()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void GetCoinRecordsByPuzzleHash()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void GetCoinRecordsByName()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void GetAdditionsAndRemovals()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void GetAllMempoolItems()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void GetAllMemmpoolTxIds()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void GetMemmpooItemByTxId()
+        {
+            Assert.Fail();
         }
     }
 }

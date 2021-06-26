@@ -16,10 +16,10 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetFarmerIsRunningOnUIDaemon()
         {
-            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
+            using var daemon = new Daemon(Config.Open().GetEndpoint("ui"), "unit_tests");
 
             await daemon.Connect(CancellationToken.None);
-            bool running = await daemon.IsServiceRunning(ServiceNames.Farmer, CancellationToken.None);
+            var running = await daemon.IsServiceRunning(ServiceNames.Farmer, CancellationToken.None);
 
             Assert.IsTrue(running);
         }
@@ -27,10 +27,10 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetHarvesterIsRunningOnLocalDaemon()
         {
-            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
+            using var daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
 
             await daemon.Connect(CancellationToken.None);
-            bool running = await daemon.IsServiceRunning(ServiceNames.Harvester, CancellationToken.None);
+            var running = await daemon.IsServiceRunning(ServiceNames.Harvester, CancellationToken.None);
 
             Assert.IsTrue(running);
         }
@@ -39,7 +39,7 @@ namespace chia.dotnet.tests
         [Ignore]
         public async Task ExitLocalDaemon()
         {
-            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
+            using var daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
 
             await daemon.Connect(CancellationToken.None);
             await daemon.Exit(CancellationToken.None);
@@ -51,7 +51,7 @@ namespace chia.dotnet.tests
         [Ignore]
         public async Task StartAndStopFarmerOnLocalDaemon()
         {
-            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
+            using var daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
 
             await daemon.Connect(CancellationToken.None);
 
@@ -69,7 +69,7 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task RegisterService()
         {
-            using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
+            using var daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
 
             await daemon.Connect(CancellationToken.None);
 
