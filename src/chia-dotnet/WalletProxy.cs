@@ -37,7 +37,7 @@ namespace chia.dotnet
         /// <param name="walletId">The numeric id of the wallet to query</param>        
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The wallet balance</returns>
-        public async Task<dynamic> GetWalletBalance(int walletId, CancellationToken cancellationToken)
+        public async Task<dynamic> GetWalletBalance(uint walletId, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = walletId;
@@ -122,7 +122,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Current block height</returns>
-        public async Task<int> GetHeightInfo(CancellationToken cancellationToken)
+        public async Task<uint> GetHeightInfo(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_height_info");
             var response = await Daemon.SendMessage(message, cancellationToken);
