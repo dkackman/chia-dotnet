@@ -49,19 +49,6 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Get connections that the wallet has
-        /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A list of connections</returns>
-        public async Task<dynamic> GetConnections(CancellationToken cancellationToken)
-        {
-            var message = CreateMessage("get_connections");
-            var response = await Daemon.SendMessage(message, cancellationToken);
-
-            return response.Data.connections;
-        }
-
-        /// <summary>
         /// Get all root public keys accessible by the wallet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
