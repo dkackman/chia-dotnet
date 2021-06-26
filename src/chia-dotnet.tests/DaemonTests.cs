@@ -14,7 +14,7 @@ namespace chia.dotnet.tests
     public class DaemonTests
     {
         [TestMethod]
-        public async Task GetFarmerIsRunningOnUIDaemon()
+        public async Task GetFarmerIsRunning()
         {
             using var daemon = Factory.CreateDaemon();
 
@@ -25,7 +25,7 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
-        public async Task GetHarvesterIsRunningOnLocalDaemon()
+        public async Task GetHarvesterIsRunning()
         {
             using var daemon = Factory.CreateDaemon();
 
@@ -37,7 +37,7 @@ namespace chia.dotnet.tests
 
         [TestMethod]
         [Ignore]
-        public async Task ExitLocalDaemon()
+        public async Task ExitDaemon()
         {
             using var daemon = Factory.CreateDaemon();
 
@@ -49,7 +49,7 @@ namespace chia.dotnet.tests
 
         [TestMethod]
         [Ignore]
-        public async Task StartAndStopFarmerOnLocalDaemon()
+        public async Task StartAndStopFarmer()
         {
             using var daemon = Factory.CreateDaemon();
 
