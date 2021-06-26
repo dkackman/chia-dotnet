@@ -65,7 +65,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Retrieves a block record by height (assuming the height <= peak height)
+        /// Retrieves a block record by height (assuming the height is less then or equal peak height)
         /// </summary>
         /// <param name="height">the height to get</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
