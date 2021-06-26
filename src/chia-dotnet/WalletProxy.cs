@@ -10,12 +10,58 @@ namespace chia.dotnet
     public class WalletProxy : ServiceProxy
     {
         /// <summary>
+        /// Default location for backups
+        /// </summary>
+        public const string DefaultBackupHost = "https://backup.chia.net";
+
+        /// <summary>
         /// ctor
         /// </summary>
         /// <param name="daemon">The <see cref="Daemon"/> to handle RPC</param>
         public WalletProxy(Daemon daemon)
             : base(daemon, ServiceNames.Wallet)
         {
+        }
+
+        /// <summary>
+        /// Get the private key accessible by the wallet
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>          
+        /// <param name="skipImport">Indicator whether to skip the import at login</param>          
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>a private key</returns>
+        public async Task<dynamic> LogIn(uint fingerprint, bool skipImport, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+            data.type = skipImport ? "skip" : "normal";
+            data.host = DefaultBackupHost;
+
+            var message = CreateMessage("log_in", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return response.Data.fingerprint;
+        }
+
+        /// <summary>
+        /// Get the private key accessible by the wallet
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>
+        /// <param name="filePath">The path to the backup file</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>a private key</returns>
+        public async Task<dynamic> LogInAndRestoreBackup(uint fingerprint, string filePath, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+            data.type = "restore_backup";
+            data.file_path = filePath;
+            data.host = DefaultBackupHost;
+
+            var message = CreateMessage("log_in", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return response.Data.fingerprint;
         }
 
         /// <summary>
