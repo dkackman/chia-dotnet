@@ -101,64 +101,70 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        public void GetBlockRecordByHeight()
+        public async Task GetBlockRecordByHeight()
+        {
+            var blockRecord = await _theFullNode.GetBlockRecordByHeight(12441, CancellationToken.None);
+            Assert.IsNotNull(blockRecord);
+        }
+
+        [TestMethod()]
+        public async Task GetBlockRecords()
+        {
+            var blockRecords = await _theFullNode.GetBlockRecords(12000, 12441, CancellationToken.None);
+            Assert.IsNotNull(blockRecords);
+        }
+
+
+        [TestMethod()]
+        public async Task GetUnfinishedBlockHeaders()
+        {
+            var blockHeaders = await _theFullNode.GetUnfinishedBlockHeaders(CancellationToken.None);
+            Assert.IsNotNull(blockHeaders);
+        }
+
+        [TestMethod()]
+        public async Task GetCoinRecordsByPuzzleHash()
+        {
+            var records = await _theFullNode.GetCoinRecordsByPuzzleHash("0xb5a83c005c4ee98dc807a560ea5bc361d6d3b32d2f4d75061351d1f6d2b6085f", true, CancellationToken.None);
+            Assert.IsNotNull(records);
+        }
+
+        [TestMethod()]
+        public async Task GetCoinRecordsByName()
         {
             Assert.Fail();
         }
 
         [TestMethod()]
-        public void GetBlockRecords()
+        public async Task GetAdditionsAndRemovals()
         {
-            Assert.Fail();
-        }
-
-
-        [TestMethod()]
-        public void GetUnfinishedBlockHeaders()
-        {
-            Assert.Fail();
+            var additionsAndRemovals = await _theFullNode.GetAdditionsAndRemovals("6b143b214f731021106d411c5bdce2fe03de0af5449c63830f111f25dc7d0a2b", CancellationToken.None);
+            Assert.IsNotNull(additionsAndRemovals);
         }
 
         [TestMethod()]
-        public void GetCountRecordsByPuzzleHash()
+        public async Task GetAllMempoolItems()
         {
-            Assert.Fail();
+            var items = await _theFullNode.GetAllMempoolItems(CancellationToken.None);
+            Assert.IsNotNull(items);
         }
 
         [TestMethod()]
-        public void GetCoinRecordsByPuzzleHash()
+        public async Task GetAllMemmpoolTxIds()
         {
-            Assert.Fail();
+            var ids = await _theFullNode.GetAllMemmpoolTxIds(CancellationToken.None);
+            Assert.IsNotNull(ids);
         }
 
         [TestMethod()]
-        public void GetCoinRecordsByName()
+        public async Task GetMemmpooItemByTxId()
         {
-            Assert.Fail();
-        }
+            var ids = await _theFullNode.GetAllMemmpoolTxIds(CancellationToken.None);
+            Assert.IsNotNull(ids);
+            Assert.IsTrue(ids.Count > 0);
 
-        [TestMethod()]
-        public void GetAdditionsAndRemovals()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void GetAllMempoolItems()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void GetAllMemmpoolTxIds()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void GetMemmpooItemByTxId()
-        {
-            Assert.Fail();
+            var item = await _theFullNode.GetMemmpooItemByTxId((string)ids[0], CancellationToken.None);
+            Assert.IsNotNull(item);
         }
     }
 }

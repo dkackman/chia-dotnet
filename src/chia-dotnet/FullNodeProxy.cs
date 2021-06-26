@@ -136,7 +136,7 @@ namespace chia.dotnet
         /// <param name="includeSpendCoins">whether to include spent coins too, instead of just unspent</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of coin records</returns>
-        public async Task<dynamic> GetCountRecordsByPuzzleHash(string puzzleHash, bool includeSpendCoins, CancellationToken cancellationToken)
+        public async Task<dynamic> GetCoinRecordsByPuzzleHash(string puzzleHash, bool includeSpendCoins, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.puzzle_hash = puzzleHash;
