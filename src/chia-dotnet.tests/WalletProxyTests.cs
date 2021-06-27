@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -49,9 +50,9 @@ namespace chia.dotnet.tests
         {
             var fingerprints = await _theWallet.GetPublicKeys(CancellationToken.None);
             Assert.IsNotNull(fingerprints);
-            Assert.IsTrue(fingerprints.Count > 0);
+            Assert.IsTrue(fingerprints.Count() > 0);
 
-            var keys = await _theWallet.LogIn((uint)fingerprints[0], skipImport: true, CancellationToken.None);
+            var keys = await _theWallet.LogIn((uint)fingerprints.First(), skipImport: true, CancellationToken.None);
 
             Assert.IsNotNull(keys);
         }

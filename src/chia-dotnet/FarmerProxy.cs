@@ -1,6 +1,7 @@
 ﻿using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace chia.dotnet
 {
@@ -23,7 +24,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="searchForPrivateKey">Include private key in search</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A list of blocks</returns>
+        /// <returns>the farm and pool reward targets</returns>
         public async Task<dynamic> GetRewardTargets(bool searchForPrivateKey, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
@@ -57,7 +58,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>List of signage points</returns>
-        public async Task<dynamic> GetSignagePoints(CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetSignagePoints(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_signage_points");
             var response = await Daemon.SendMessage(message, cancellationToken);

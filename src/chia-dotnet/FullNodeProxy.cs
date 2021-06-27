@@ -2,6 +2,7 @@
 using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace chia.dotnet
 {
@@ -87,7 +88,7 @@ namespace chia.dotnet
         /// <param name="end">End Height - non-inclusive</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>list of block_record</returns>
-        public async Task<dynamic> GetBlockRecords(uint start, uint end, CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetBlockRecords(uint start, uint end, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.start = start;
@@ -105,7 +106,7 @@ namespace chia.dotnet
         /// <param name="end">End Height - non-inclusive</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of blocks</returns>
-        public async Task<dynamic> GetBlocks(uint start, uint end, CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetBlocks(uint start, uint end, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.start = start;
@@ -121,7 +122,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of headers</returns>
-        public async Task<dynamic> GetUnfinishedBlockHeaders(CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetUnfinishedBlockHeaders(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_unfinished_block_headers");
             var response = await Daemon.SendMessage(message, cancellationToken);
@@ -136,7 +137,7 @@ namespace chia.dotnet
         /// <param name="includeSpendCoins">whether to include spent coins too, instead of just unspent</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of coin records</returns>
-        public async Task<dynamic> GetCoinRecordsByPuzzleHash(string puzzleHash, bool includeSpendCoins, CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetCoinRecordsByPuzzleHash(string puzzleHash, bool includeSpendCoins, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.puzzle_hash = puzzleHash;
@@ -156,7 +157,7 @@ namespace chia.dotnet
         /// <param name="includeSpendCoins">whether to include spent coins too, instead of just unspent</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of coin records</returns>
-        public async Task<dynamic> GetCoinRecordsByPuzzleHash(string puzzleHash, uint start, uint end, bool includeSpendCoins, CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetCoinRecordsByPuzzleHash(string puzzleHash, uint start, uint end, bool includeSpendCoins, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.puzzle_hash = puzzleHash;
@@ -206,7 +207,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a list of mempool items</returns>
-        public async Task<dynamic> GetAllMempoolItems(CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetAllMempoolItems(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_all_mempool_items");
             var response = await Daemon.SendMessage(message, cancellationToken);
@@ -219,7 +220,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a list of tx_ids</returns>
-        public async Task<dynamic> GetAllMemmpoolTxIds(CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetAllMemmpoolTxIds(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_all_mempool_tx_ids");
             var response = await Daemon.SendMessage(message, cancellationToken);
@@ -273,6 +274,23 @@ namespace chia.dotnet
             var response = await Daemon.SendMessage(message, cancellationToken);
 
             return response.Data;
+        }
+
+        /// <summary>
+        /// Pushes a transaction / spend bundle to the mempool and blockchain. 
+        /// Returns whether the spend bundle was successfully included into the mempool
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>Indicator of whether the spend bundle was successfully included in the mempool</returns>
+        public async Task<bool> PushTx(SpendBundle spendBundle, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.spend_bundle = spendBundle;
+
+            var message = CreateMessage("push_tx", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return response.Data.status == "SUCCESS";
         }
     }
 }

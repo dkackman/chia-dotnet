@@ -1,6 +1,7 @@
 ﻿using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace chia.dotnet
 {
@@ -52,7 +53,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>List of directories</returns>
-        public async Task<dynamic> GetPlotDirectories(CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetPlotDirectories(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_plot_directories");
             var response = await Daemon.SendMessage(message, cancellationToken);

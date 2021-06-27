@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Linq;
+
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -162,9 +164,9 @@ namespace chia.dotnet.tests
         {
             var ids = await _theFullNode.GetAllMemmpoolTxIds(CancellationToken.None);
             Assert.IsNotNull(ids);
-            Assert.IsTrue(ids.Count > 0);
+            Assert.IsTrue(ids.Count() > 0);
 
-            var item = await _theFullNode.GetMemmpooItemByTxId((string)ids[0], CancellationToken.None);
+            var item = await _theFullNode.GetMemmpooItemByTxId((string)ids.First(), CancellationToken.None);
             Assert.IsNotNull(item);
         }
     }

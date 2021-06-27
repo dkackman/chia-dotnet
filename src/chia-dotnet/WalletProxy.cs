@@ -1,6 +1,7 @@
 ﻿using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace chia.dotnet
 {
@@ -69,7 +70,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of wallets</returns>
-        public async Task<dynamic> GetWallets(CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetWallets(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_wallets");
             var response = await Daemon.SendMessage(message, cancellationToken);
@@ -99,7 +100,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>all root public keys accessible by the walle</returns>
-        public async Task<dynamic> GetPublicKeys(CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetPublicKeys(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_public_keys");
             var response = await Daemon.SendMessage(message, cancellationToken);
@@ -169,7 +170,7 @@ namespace chia.dotnet
         /// <param name="walletId">The numeric id of the wallet to query</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of transactions</returns>
-        public async Task<dynamic> GetTransactions(uint walletId, CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetTransactions(uint walletId, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = walletId;
@@ -179,8 +180,6 @@ namespace chia.dotnet
 
             return response.Data.transactions;
         }
-
-
 
         /// <summary>
         /// Get the list of transactions

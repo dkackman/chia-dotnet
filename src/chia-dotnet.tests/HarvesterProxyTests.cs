@@ -30,7 +30,7 @@ namespace chia.dotnet.tests
 
 
         [TestMethod()]
-        public async Task GetPlotsTest()
+        public async Task GetPlots()
         {
             var plots = await _theHarvester.GetPlots(CancellationToken.None);
 
@@ -40,13 +40,13 @@ namespace chia.dotnet.tests
         [TestMethod()]
         [TestCategory("CAUTION")]
         [Ignore]
-        public async Task DeletePlotTest()
+        public async Task DeletePlot()
         {
             await _theHarvester.DeletePlot("<plot name", CancellationToken.None);
         }
 
         [TestMethod()]
-        public async Task GetPlotDirectoriesTest()
+        public async Task GetPlotDirectories()
         {
             var directories = await _theHarvester.GetPlotDirectories(CancellationToken.None);
 
@@ -56,13 +56,13 @@ namespace chia.dotnet.tests
         [TestMethod()]
         [TestCategory("CAUTION")]
         [Ignore]
-        public async Task AddPlotDirectoryTest()
+        public async Task AddPlotDirectory()
         {
             await _theHarvester.AddPlotDirectory("/mnt/plots/", CancellationToken.None);
         }
 
         [TestMethod]
-        public async Task PingTest()
+        public async Task Ping()
         {
             await _theHarvester.Ping(CancellationToken.None);
         }
@@ -70,13 +70,13 @@ namespace chia.dotnet.tests
         [TestMethod()]
         [TestCategory("CAUTION")]
         [Ignore]
-        public async Task RemovePlotDirectoryTest()
+        public async Task RemovePlotDirectory()
         {
             await _theHarvester.RemovePlotDirectory("/mnt/plots/", CancellationToken.None);
         }
 
         [TestMethod()]
-        public async Task RefreshPlotsTest()
+        public async Task RefreshPlots()
         {
             await _theHarvester.RefreshPlots(CancellationToken.None);
         }
