@@ -191,15 +191,15 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="headerHash">The header hash</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A list of headers</returns>
-        public async Task<dynamic> GetAdditionsAndRemovals(string headerHash, CancellationToken cancellationToken)
+        /// <returns>A list of additions and a list of removals</returns>
+        public async Task<(IEnumerable<dynamic> Additions, IEnumerable<dynamic> Removals)> GetAdditionsAndRemovals(string headerHash, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.header_hash = headerHash;
             var message = CreateMessage("get_additions_and_removals", data);
             var response = await Daemon.SendMessage(message, cancellationToken);
 
-            return response.Data;
+            return (response.Data.additions, response.Data.removals);
         }
 
         /// <summary>
