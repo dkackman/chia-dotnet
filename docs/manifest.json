@@ -5,6 +5,30 @@
   "files": [
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.Coin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.Coin.html",
+          "hash": "zqAXfdBXa9dHjXn7Cw3YxmbvauJzjSmNgcMUergPvDw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.CoinSolution.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.CoinSolution.html",
+          "hash": "Uxfdf2cLRcFrtc7DIllp2G2Ib7VqohUAbI3cIl9+2+s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/chia.dotnet.Config.yml",
       "output": {
         ".html": {
@@ -45,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.FarmerProxy.html",
-          "hash": "R+gHKJevtC3T3m1N/L32vo1NCuxLdeI0cH0qZlPV6q0="
+          "hash": "bQMp4k/8PGnMICYdfHqNTPd+Kn4iGmSPUWjnG1vAcX8="
         }
       },
       "is_incremental": false,
@@ -57,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.FullNodeProxy.html",
-          "hash": "gy5yeEtyYv46fYkuQx9rI3g6VcmvQSBbSHi3RSp5rWk="
+          "hash": "90pubOZqwXTlxr0AsdVXytD+E/uhEp4ZC4r6nuueLXI="
         }
       },
       "is_incremental": false,
@@ -69,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.HarvesterProxy.html",
-          "hash": "J9LLeKs/NgdlwNl8UKDVKbneufYIybv8jPPkww5ApM4="
+          "hash": "v2eGjN5hXafC3QdhnNjLSYs7sMF8QtLKClfubm95jgI="
         }
       },
       "is_incremental": false,
@@ -105,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.RpcClient.html",
-          "hash": "swixbLGh6pueEYC2YrsckfYkAHILxFOEn3PiWjlln3k="
+          "hash": "C1WkTFCnk7VulK1ZpNUQ2ILlX+zDBl2oxzBed9W5KEg="
         }
       },
       "is_incremental": false,
@@ -137,11 +161,35 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.SpendBundle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.SpendBundle.html",
+          "hash": "Ipo99XsSl2QFHSDXkf6yJR1Ia63MJ6pvl7Ypv6VMYDc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/chia.dotnet.WalletProxy.yml",
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.WalletProxy.html",
-          "hash": "0YQFuYaAgQwnheuq8skw3XtIngCLCNv63U/+pU5tHOE="
+          "hash": "C31WNTE4Wdp5If9+LQIH4rdAziu5W2HbhOJLw8hyYO4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.WalletType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.WalletType.html",
+          "hash": "206WK6bUEtu5OI4CJgQmDNpvZyUS5cQzfC3g3sq/2wo="
         }
       },
       "is_incremental": false,
@@ -153,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.html",
-          "hash": "VkUYDVfP8G36yIfBb9lShqKLfmR55PYIscPRUyXMX4A="
+          "hash": "6NKmBoJWn10P5R1mrCxPh4jKGbXlJaXfFOcSuBwH3Y4="
         }
       },
       "is_incremental": false,
@@ -177,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "FUvNkn5/RNpM4/rzcYEC/h2JmEOkG9ZVZew+dPCWn94="
+          "hash": "pL45+LX5VVwVdFvsoVZHPc9Mo7EGjjoaLlVsgqp4UhU="
         }
       },
       "is_incremental": false,
@@ -252,7 +300,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 13,
+          "total_file_count": 17,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {

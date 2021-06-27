@@ -146,7 +146,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy__ctor_chia_dotnet_Daemon_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.%23ctor(chia.dotnet.Daemon)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L17">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L18">View Source</a>
   </span>
   <a id="chia_dotnet_FullNodeProxy__ctor_" data-uid="chia.dotnet.FullNodeProxy.#ctor*"></a>
   <h4 id="chia_dotnet_FullNodeProxy__ctor_chia_dotnet_Daemon_" data-uid="chia.dotnet.FullNodeProxy.#ctor(chia.dotnet.Daemon)">FullNodeProxy(Daemon)</h4>
@@ -182,7 +182,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetAdditionsAndRemovals_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetAdditionsAndRemovals(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L194">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L195">View Source</a>
   </span>
   <a id="chia_dotnet_FullNodeProxy_GetAdditionsAndRemovals_" data-uid="chia.dotnet.FullNodeProxy.GetAdditionsAndRemovals*"></a>
   <h4 id="chia_dotnet_FullNodeProxy_GetAdditionsAndRemovals_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetAdditionsAndRemovals(System.String,System.Threading.CancellationToken)">GetAdditionsAndRemovals(String, CancellationToken)</h4>
@@ -238,7 +238,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetAllMemmpoolTxIds_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetAllMemmpoolTxIds(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L222">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L223">View Source</a>
   </span>
   <a id="chia_dotnet_FullNodeProxy_GetAllMemmpoolTxIds_" data-uid="chia.dotnet.FullNodeProxy.GetAllMemmpoolTxIds*"></a>
   <h4 id="chia_dotnet_FullNodeProxy_GetAllMemmpoolTxIds_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetAllMemmpoolTxIds(System.Threading.CancellationToken)">GetAllMemmpoolTxIds(CancellationToken)</h4>
@@ -247,7 +247,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;dynamic&gt; GetAllMemmpoolTxIds(CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;dynamic&gt;&gt; GetAllMemmpoolTxIds(CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -277,7 +277,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;&gt;</td>
         <td><p>a list of tx_ids</p>
 </td>
       </tr>
@@ -288,7 +288,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetAllMempoolItems_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetAllMempoolItems(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L209">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L210">View Source</a>
   </span>
   <a id="chia_dotnet_FullNodeProxy_GetAllMempoolItems_" data-uid="chia.dotnet.FullNodeProxy.GetAllMempoolItems*"></a>
   <h4 id="chia_dotnet_FullNodeProxy_GetAllMempoolItems_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetAllMempoolItems(System.Threading.CancellationToken)">GetAllMempoolItems(CancellationToken)</h4>
@@ -297,7 +297,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;dynamic&gt; GetAllMempoolItems(CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;dynamic&gt;&gt; GetAllMempoolItems(CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -327,7 +327,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;&gt;</td>
         <td><p>a list of mempool items</p>
 </td>
       </tr>
@@ -338,7 +338,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetBlock_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetBlock(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L41">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L42">View Source</a>
   </span>
   <a id="chia_dotnet_FullNodeProxy_GetBlock_" data-uid="chia.dotnet.FullNodeProxy.GetBlock*"></a>
   <h4 id="chia_dotnet_FullNodeProxy_GetBlock_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetBlock(System.String,System.Threading.CancellationToken)">GetBlock(String, CancellationToken)</h4>
@@ -394,7 +394,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetBlockchainState_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetBlockchainState(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L27">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L28">View Source</a>
   </span>
   <a id="chia_dotnet_FullNodeProxy_GetBlockchainState_" data-uid="chia.dotnet.FullNodeProxy.GetBlockchainState*"></a>
   <h4 id="chia_dotnet_FullNodeProxy_GetBlockchainState_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetBlockchainState(System.Threading.CancellationToken)">GetBlockchainState(CancellationToken)</h4>
@@ -444,7 +444,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetBlockRecord_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetBlockRecord(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L57">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L58">View Source</a>
   </span>
   <a id="chia_dotnet_FullNodeProxy_GetBlockRecord_" data-uid="chia.dotnet.FullNodeProxy.GetBlockRecord*"></a>
   <h4 id="chia_dotnet_FullNodeProxy_GetBlockRecord_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetBlockRecord(System.String,System.Threading.CancellationToken)">GetBlockRecord(String, CancellationToken)</h4>
@@ -500,7 +500,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetBlockRecordByHeight_System_UInt32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetBlockRecordByHeight(System.UInt32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L73">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L74">View Source</a>
   </span>
   <a id="chia_dotnet_FullNodeProxy_GetBlockRecordByHeight_" data-uid="chia.dotnet.FullNodeProxy.GetBlockRecordByHeight*"></a>
   <h4 id="chia_dotnet_FullNodeProxy_GetBlockRecordByHeight_System_UInt32_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetBlockRecordByHeight(System.UInt32,System.Threading.CancellationToken)">GetBlockRecordByHeight(UInt32, CancellationToken)</h4>
@@ -556,7 +556,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetBlockRecords_System_UInt32_System_UInt32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetBlockRecords(System.UInt32%2CSystem.UInt32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L90">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L91">View Source</a>
   </span>
   <a id="chia_dotnet_FullNodeProxy_GetBlockRecords_" data-uid="chia.dotnet.FullNodeProxy.GetBlockRecords*"></a>
   <h4 id="chia_dotnet_FullNodeProxy_GetBlockRecords_System_UInt32_System_UInt32_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetBlockRecords(System.UInt32,System.UInt32,System.Threading.CancellationToken)">GetBlockRecords(UInt32, UInt32, CancellationToken)</h4>
@@ -565,7 +565,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;dynamic&gt; GetBlockRecords(uint start, uint end, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;dynamic&gt;&gt; GetBlockRecords(uint start, uint end, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -607,7 +607,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;&gt;</td>
         <td><p>list of block_record</p>
 </td>
       </tr>
@@ -618,7 +618,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetBlocks_System_UInt32_System_UInt32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetBlocks(System.UInt32%2CSystem.UInt32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L108">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L109">View Source</a>
   </span>
   <a id="chia_dotnet_FullNodeProxy_GetBlocks_" data-uid="chia.dotnet.FullNodeProxy.GetBlocks*"></a>
   <h4 id="chia_dotnet_FullNodeProxy_GetBlocks_System_UInt32_System_UInt32_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetBlocks(System.UInt32,System.UInt32,System.Threading.CancellationToken)">GetBlocks(UInt32, UInt32, CancellationToken)</h4>
@@ -627,7 +627,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;dynamic&gt; GetBlocks(uint start, uint end, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;dynamic&gt;&gt; GetBlocks(uint start, uint end, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -669,7 +669,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;&gt;</td>
         <td><p>A list of blocks</p>
 </td>
       </tr>
@@ -677,19 +677,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetCoinRecordsByName_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetCoinRecordsByName(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetCoinRecordByName_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetCoinRecordByName(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L178">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L179">View Source</a>
   </span>
-  <a id="chia_dotnet_FullNodeProxy_GetCoinRecordsByName_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordsByName*"></a>
-  <h4 id="chia_dotnet_FullNodeProxy_GetCoinRecordsByName_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordsByName(System.String,System.Threading.CancellationToken)">GetCoinRecordsByName(String, CancellationToken)</h4>
+  <a id="chia_dotnet_FullNodeProxy_GetCoinRecordByName_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordByName*"></a>
+  <h4 id="chia_dotnet_FullNodeProxy_GetCoinRecordByName_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordByName(System.String,System.Threading.CancellationToken)">GetCoinRecordByName(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves a coin record by its name/id.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;dynamic&gt; GetCoinRecordsByName(string name, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;dynamic&gt; GetCoinRecordByName(string name, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -733,10 +733,72 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetCoinRecordsByPuzzleHash_System_String_System_Boolean_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetCoinRecordsByPuzzleHash(System.String%2CSystem.Boolean%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L140">View Source</a>
+  </span>
+  <a id="chia_dotnet_FullNodeProxy_GetCoinRecordsByPuzzleHash_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordsByPuzzleHash*"></a>
+  <h4 id="chia_dotnet_FullNodeProxy_GetCoinRecordsByPuzzleHash_System_String_System_Boolean_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordsByPuzzleHash(System.String,System.Boolean,System.Threading.CancellationToken)">GetCoinRecordsByPuzzleHash(String, Boolean, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a list of coin records with a certain puzzle hash.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;dynamic&gt;&gt; GetCoinRecordsByPuzzleHash(string puzzleHash, bool includeSpendCoins, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">puzzleHash</span></td>
+        <td><p>The puzzle hash</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">includeSpendCoins</span></td>
+        <td><p>whether to include spent coins too, instead of just unspent</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;&gt;</td>
+        <td><p>A list of coin records</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetCoinRecordsByPuzzleHash_System_String_System_UInt32_System_UInt32_System_Boolean_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetCoinRecordsByPuzzleHash(System.String%2CSystem.UInt32%2CSystem.UInt32%2CSystem.Boolean%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L159">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L160">View Source</a>
   </span>
   <a id="chia_dotnet_FullNodeProxy_GetCoinRecordsByPuzzleHash_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordsByPuzzleHash*"></a>
   <h4 id="chia_dotnet_FullNodeProxy_GetCoinRecordsByPuzzleHash_System_String_System_UInt32_System_UInt32_System_Boolean_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordsByPuzzleHash(System.String,System.UInt32,System.UInt32,System.Boolean,System.Threading.CancellationToken)">GetCoinRecordsByPuzzleHash(String, UInt32, UInt32, Boolean, CancellationToken)</h4>
@@ -745,7 +807,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;dynamic&gt; GetCoinRecordsByPuzzleHash(string puzzleHash, uint start, uint end, bool includeSpendCoins, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;dynamic&gt;&gt; GetCoinRecordsByPuzzleHash(string puzzleHash, uint start, uint end, bool includeSpendCoins, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -799,69 +861,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
-        <td><p>A list of coin records</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetCountRecordsByPuzzleHash_System_String_System_Boolean_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetCountRecordsByPuzzleHash(System.String%2CSystem.Boolean%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L139">View Source</a>
-  </span>
-  <a id="chia_dotnet_FullNodeProxy_GetCountRecordsByPuzzleHash_" data-uid="chia.dotnet.FullNodeProxy.GetCountRecordsByPuzzleHash*"></a>
-  <h4 id="chia_dotnet_FullNodeProxy_GetCountRecordsByPuzzleHash_System_String_System_Boolean_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetCountRecordsByPuzzleHash(System.String,System.Boolean,System.Threading.CancellationToken)">GetCountRecordsByPuzzleHash(String, Boolean, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieves a list of coin records with a certain puzzle hash.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;dynamic&gt; GetCountRecordsByPuzzleHash(string puzzleHash, bool includeSpendCoins, CancellationToken cancellationToken)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">puzzleHash</span></td>
-        <td><p>The puzzle hash</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><span class="parametername">includeSpendCoins</span></td>
-        <td><p>whether to include spent coins too, instead of just unspent</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;&gt;</td>
         <td><p>A list of coin records</p>
 </td>
       </tr>
@@ -872,7 +872,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetMemmpooItemByTxId_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetMemmpooItemByTxId(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L236">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L237">View Source</a>
   </span>
   <a id="chia_dotnet_FullNodeProxy_GetMemmpooItemByTxId_" data-uid="chia.dotnet.FullNodeProxy.GetMemmpooItemByTxId*"></a>
   <h4 id="chia_dotnet_FullNodeProxy_GetMemmpooItemByTxId_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetMemmpooItemByTxId(System.String,System.Threading.CancellationToken)">GetMemmpooItemByTxId(String, CancellationToken)</h4>
@@ -927,7 +927,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetNetworkInfo_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetNetworkInfo(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L270">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L271">View Source</a>
   </span>
   <a id="chia_dotnet_FullNodeProxy_GetNetworkInfo_" data-uid="chia.dotnet.FullNodeProxy.GetNetworkInfo*"></a>
   <h4 id="chia_dotnet_FullNodeProxy_GetNetworkInfo_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetNetworkInfo(System.Threading.CancellationToken)">GetNetworkInfo(CancellationToken)</h4>
@@ -977,7 +977,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetNetworkSpace_System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetNetworkSpace(System.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L253">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L254">View Source</a>
   </span>
   <a id="chia_dotnet_FullNodeProxy_GetNetworkSpace_" data-uid="chia.dotnet.FullNodeProxy.GetNetworkSpace*"></a>
   <h4 id="chia_dotnet_FullNodeProxy_GetNetworkSpace_System_String_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetNetworkSpace(System.String,System.String,System.Threading.CancellationToken)">GetNetworkSpace(String, String, CancellationToken)</h4>
@@ -1037,7 +1037,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetUnfinishedBlockHeaders_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetUnfinishedBlockHeaders(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L124">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L125">View Source</a>
   </span>
   <a id="chia_dotnet_FullNodeProxy_GetUnfinishedBlockHeaders_" data-uid="chia.dotnet.FullNodeProxy.GetUnfinishedBlockHeaders*"></a>
   <h4 id="chia_dotnet_FullNodeProxy_GetUnfinishedBlockHeaders_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetUnfinishedBlockHeaders(System.Threading.CancellationToken)">GetUnfinishedBlockHeaders(CancellationToken)</h4>
@@ -1046,7 +1046,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;dynamic&gt; GetUnfinishedBlockHeaders(CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;dynamic&gt;&gt; GetUnfinishedBlockHeaders(CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1076,8 +1076,64 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;&gt;</td>
         <td><p>A list of headers</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_PushTx_chia_dotnet_SpendBundle_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.PushTx(chia.dotnet.SpendBundle%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L285">View Source</a>
+  </span>
+  <a id="chia_dotnet_FullNodeProxy_PushTx_" data-uid="chia.dotnet.FullNodeProxy.PushTx*"></a>
+  <h4 id="chia_dotnet_FullNodeProxy_PushTx_chia_dotnet_SpendBundle_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.PushTx(chia.dotnet.SpendBundle,System.Threading.CancellationToken)">PushTx(SpendBundle, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Pushes a transaction / spend bundle to the mempool and blockchain.
+Returns whether the spend bundle was successfully included into the mempool</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;bool&gt; PushTx(SpendBundle spendBundle, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a></td>
+        <td><span class="parametername">spendBundle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
+        <td><p>Indicator of whether the spend bundle was successfully included in the mempool</p>
 </td>
       </tr>
     </tbody>
@@ -1093,7 +1149,7 @@
                     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L12" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

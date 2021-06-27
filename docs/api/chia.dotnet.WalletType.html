@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace chia.dotnet
+    <title>Enum WalletType
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace chia.dotnet
+    <meta name="title" content="Enum WalletType
    ">
     <meta name="generator" content="docfx 2.58.0.0">
     
@@ -68,64 +68,63 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="chia.dotnet">
+            <article class="content wrap" id="_content" data-uid="chia.dotnet.WalletType">
   
-  <h1 id="chia_dotnet" data-uid="chia.dotnet" class="text-break">Namespace chia.dotnet
+  
+  <h1 id="chia_dotnet_WalletType" data-uid="chia.dotnet.WalletType" class="text-break">Enum WalletType
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
-    <h3 id="classes">Classes
+  <h6><strong>Namespace</strong>: <a class="xref" href="chia.dotnet.html">chia.dotnet</a></h6>
+  <h6><strong>Assembly</strong>: chia-dotnet.dll</h6>
+  <h5 id="chia_dotnet_WalletType_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public enum WalletType</code></pre>
+  </div>
+  <h3 id="fields">Fields
   </h3>
-      <h4><a class="xref" href="chia.dotnet.Coin.html">Coin</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.CoinSolution.html">CoinSolution</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.Config.html">Config</a></h4>
-      <section><p>Represents the chia config yaml file and its contents. Used to find the uri and ssl certs needed to connect via a <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.net.websockets.websocket">WebSocket</a></p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.Daemon.html">Daemon</a></h4>
-      <section><p><a class="xref" href="chia.dotnet.RpcClient.html">RpcClient</a> for the daemon interface. The daemon can be used to proxy messages to and from other chia services.</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.EndpointInfo.html">EndpointInfo</a></h4>
-      <section><p>Information about how to connect and authenticate with the RPC endpoint</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.FarmerProxy.html">FarmerProxy</a></h4>
-      <section><p>Proxy that communicates with the farmer via the daemon</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.FullNodeProxy.html">FullNodeProxy</a></h4>
-      <section><p>Proxy that communicates with the full node via the daemon</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.HarvesterProxy.html">HarvesterProxy</a></h4>
-      <section><p>Proxy that communicates with the harvester via the daemon</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.Message.html">Message</a></h4>
-      <section><p>The messaging data structure for request and response exchange with the RPC endpoint</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.ResponseException.html">ResponseException</a></h4>
-      <section><p>Exception thrown when the RPC endpoint returns a response <a class="xref" href="chia.dotnet.Message.html">Message</a> but Data.success is false</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.RpcClient.html">RpcClient</a></h4>
-      <section><p>Base class that handles core websocket communication with the rpc endpoint
-and synchronizes request and response messages</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.ServiceProxy.html">ServiceProxy</a></h4>
-      <section><p>Wrapper class that uses a <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_Daemon">Daemon</a> to send and receive messages to other services</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.WalletProxy.html">WalletProxy</a></h4>
-      <section><p>Proxy that communicates with the wallet via the daemon</p>
-</section>
-    <h3 id="structs">Structs
-  </h3>
-      <h4><a class="xref" href="chia.dotnet.ServiceNames.html">ServiceNames</a></h4>
-      <section><p>The names of chia services. These are used as <a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Destination">Destination</a> values</p>
-</section>
-    <h3 id="enums">Enums
-  </h3>
-      <h4><a class="xref" href="chia.dotnet.WalletType.html">WalletType</a></h4>
-      <section></section>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    <thead>
+    <tbody>
+      <tr>
+        <td id="chia_dotnet_WalletType_ATOMIC_SWAP">ATOMIC_SWAP</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td id="chia_dotnet_WalletType_AUTHORIZED_PAYEE">AUTHORIZED_PAYEE</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td id="chia_dotnet_WalletType_COLOURED_COIN">COLOURED_COIN</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td id="chia_dotnet_WalletType_CUSTODY">CUSTODY</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td id="chia_dotnet_WalletType_MULTI_SIG">MULTI_SIG</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td id="chia_dotnet_WalletType_RATE_LIMITED">RATE_LIMITED</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td id="chia_dotnet_WalletType_RECOVERABLE">RECOVERABLE</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td id="chia_dotnet_WalletType_STANDARD_WALLET">STANDARD_WALLET</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </thead></thead></table>
 </article>
           </div>
           
@@ -133,6 +132,12 @@ and synchronizes request and response messages</p>
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_WalletType.md&amp;value=---%0Auid%3A%20chia.dotnet.WalletType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/SpendBundle.cs/#L6" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
