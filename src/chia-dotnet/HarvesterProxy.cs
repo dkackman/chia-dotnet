@@ -24,12 +24,12 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of plots</returns>
-        public async Task<dynamic> GetPlots(CancellationToken cancellationToken)
+        public async Task<(IEnumerable<dynamic> FailedToOpenFilenames, IEnumerable<dynamic> NotFoundFileNames, IEnumerable<dynamic> Plots)> GetPlots(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_plots");
             var response = await Daemon.SendMessage(message, cancellationToken);
 
-            return response.Data;
+            return (response.Data.failed_to_open_filenames, response.Data.not_found_filenames, response.Data.plots);
         }
 
         /// <summary>
