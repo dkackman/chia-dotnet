@@ -73,6 +73,14 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
+        public async Task GetTransactions()
+        {
+            var transactions = await _theWallet.GetTransactions(1, CancellationToken.None);
+
+            Assert.IsNotNull(transactions);
+        }
+
+        [TestMethod()]
         public async Task GetSyncStatus()
         {
             var info = await _theWallet.GetSyncStatus(CancellationToken.None);

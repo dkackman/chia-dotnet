@@ -162,5 +162,22 @@ namespace chia.dotnet
 
             return response.Data.height;
         }
+
+        /// <summary>
+        /// Get the list of transactions
+        /// </summary>
+        /// <param name="walletId">The numeric id of the wallet to query</param> 
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>A list of transactions</returns>
+        public async Task<dynamic> GetTransactions(uint walletId, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_id = walletId;
+
+            var message = CreateMessage("get_transactions", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return response.Data.transactions;
+        }
     }
 }
