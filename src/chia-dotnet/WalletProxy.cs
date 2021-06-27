@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace chia.dotnet
 {
@@ -100,12 +101,12 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>all root public keys accessible by the walle</returns>
-        public async Task<IEnumerable<dynamic>> GetPublicKeys(CancellationToken cancellationToken)
+        public async Task<IEnumerable<uint>> GetPublicKeys(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_public_keys");
             var response = await Daemon.SendMessage(message, cancellationToken);
 
-            return response.Data.public_key_fingerprints;
+            return ((IEnumerable<dynamic>)response.Data.public_key_fingerprints).Select(item => (uint)item);
         }
 
         /// <summary>
