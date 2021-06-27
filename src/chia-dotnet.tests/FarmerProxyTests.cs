@@ -39,8 +39,6 @@ namespace chia.dotnet.tests
             var targets = await _theFarmer.GetRewardTargets(false, CancellationToken.None);
 
             Assert.IsNotNull(targets);
-            string s = targets.ToString();
-            Debug.WriteLine(s);
         }
 
         [TestMethod]
