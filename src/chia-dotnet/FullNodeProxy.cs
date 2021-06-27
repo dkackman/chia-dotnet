@@ -282,7 +282,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Indicator of whether the spend bundle was successfully included in the mempool</returns>
-        public async Task<bool> PushTx(SpendBundle spendBundle, CancellationToken cancellationToken)
+        public async Task<bool> PushTx(dynamic spendBundle, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.spend_bundle = spendBundle;

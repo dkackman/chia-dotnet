@@ -39,7 +39,7 @@ namespace chia.dotnet
         /// <summary>
         /// Unique id to correlate requests to responses
         /// </summary>
-        public string Request_Id { get; init; }
+        public string RequestId { get; init; }
 
         /// <summary>
         /// Inidcates whether this is a response (<see cref="Ack"/> is true) and the success flag is also true
@@ -63,7 +63,7 @@ namespace chia.dotnet
                 Data = data ?? new ExpandoObject(),
                 Origin = origin,
                 Destination = destination,
-                Request_Id = GetNewReuqestId()
+                RequestId = GetNewReuqestId()
             };
         }
 
@@ -75,17 +75,12 @@ namespace chia.dotnet
         {
             var serializerSettings = new JsonSerializerSettings
             {
-                ContractResolver = new LowercaseContractResolver()
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new SnakeCaseNamingStrategy()
+                }
             };
             return JsonConvert.SerializeObject(this, serializerSettings);
-        }
-
-        private class LowercaseContractResolver : DefaultContractResolver
-        {
-            protected override string ResolvePropertyName(string propertyName)
-            {
-                return propertyName.ToLower();
-            }
         }
 
         /// <summary>
@@ -95,8 +90,14 @@ namespace chia.dotnet
         /// <returns><see cref="Message"/></returns>
         public static Message FromJson(string json)
         {
-            var message = JsonConvert.DeserializeObject<Message>(json);
-            return message;
+            var serializerSettings = new JsonSerializerSettings
+            {
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new SnakeCaseNamingStrategy()
+                }
+            };
+            return JsonConvert.DeserializeObject<Message>(json, serializerSettings);
         }
 
         private static readonly Random random = new();

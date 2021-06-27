@@ -118,9 +118,9 @@ namespace chia.dotnet
             }
 
             // capture the message to be sent
-            if (!_pendingRequests.TryAdd(request.Request_Id, request))
+            if (!_pendingRequests.TryAdd(request.RequestId, request))
             {
-                throw new InvalidOperationException($"A message with an id of {request.Request_Id} has already been sent");
+                throw new InvalidOperationException($"A message with an id of {request.RequestId} has already been sent");
             }
 
             try
@@ -130,21 +130,21 @@ namespace chia.dotnet
             }
             catch
             {
-                _ = _pendingRequests.TryRemove(request.Request_Id, out _);
+                _ = _pendingRequests.TryRemove(request.RequestId, out _);
                 throw;
             }
 
             // wait here until a response shows up or we get cancelled
             Message response;
-            while (!_pendingResponses.TryRemove(request.Request_Id, out response) && !cancellationToken.IsCancellationRequested)
+            while (!_pendingResponses.TryRemove(request.RequestId, out response) && !cancellationToken.IsCancellationRequested)
             {
                 await Task.Delay(10, cancellationToken);
             }
 
             // the receive loop cleans up but make sure we do so on cancellation too
-            if (_pendingRequests.ContainsKey(request.Request_Id))
+            if (_pendingRequests.ContainsKey(request.RequestId))
             {
-                _ = _pendingRequests.TryRemove(request.Request_Id, out _);
+                _ = _pendingRequests.TryRemove(request.RequestId, out _);
             }
 
             return !response.IsSuccessfulResponse ? throw new ResponseException(request, response, response.Data?.error?.ToString()) : response;
@@ -190,9 +190,9 @@ namespace chia.dotnet
                 var message = Message.FromJson(response);
 
                 // if we have a message pending with this id, capture the response and remove the request from the pending dictionary                
-                if (_pendingRequests.TryRemove(message.Request_Id, out _))
+                if (_pendingRequests.TryRemove(message.RequestId, out _))
                 {
-                    _pendingResponses[message.Request_Id] = message;
+                    _pendingResponses[message.RequestId] = message;
                 }
                 else
                 {
