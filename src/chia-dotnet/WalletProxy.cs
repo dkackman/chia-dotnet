@@ -179,5 +179,25 @@ namespace chia.dotnet
 
             return response.Data.transactions;
         }
+
+
+
+        /// <summary>
+        /// Get the list of transactions
+        /// </summary>
+        /// <param name="walletId">The numeric id of the wallet to query</param> 
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>A list of transactions</returns>
+        public async Task<string> GetNextAddress(uint walletId, bool newAddress, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_id = walletId;
+            data.new_address = newAddress;
+
+            var message = CreateMessage("get_next_address ", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return response.Data.address;
+        }
     }
 }

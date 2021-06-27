@@ -104,18 +104,12 @@ namespace chia.dotnet.tests
             Assert.IsTrue(height > 0);
         }
 
-
         [TestMethod()]
-        public void LogIn()
+        public async Task GetNextAddress()
         {
-            Assert.Fail();
-        }
+            var address = await _theWallet.GetNextAddress(1, true, CancellationToken.None);
 
-        [TestMethod()]
-        public void LogInAndRestoreBackup()
-        {
-            Assert.Fail();
+            Assert.IsNotNull(address);
         }
-
     }
 }
