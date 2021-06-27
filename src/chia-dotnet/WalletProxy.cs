@@ -131,12 +131,12 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>sync status</returns>
-        public async Task<dynamic> GetSyncStatus(CancellationToken cancellationToken)
+        public async Task<(bool GenesisInitialized, bool Synced, bool Syncing)> GetSyncStatus(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_sync_status");
             var response = await Daemon.SendMessage(message, cancellationToken);
 
-            return response.Data;
+            return (response.Data.genesis_initialized, response.Data.synced, response.Data.syncing);
         }
 
         /// <summary>
@@ -144,12 +144,12 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>network name and prefix</returns>
-        public async Task<dynamic> GetNetworkInfo(CancellationToken cancellationToken)
+        public async Task<(string NetworkName, string NetworkPrefix)> GetNetworkInfo(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_network_info");
             var response = await Daemon.SendMessage(message, cancellationToken);
 
-            return response.Data;
+            return (response.Data.network_name, response.Data.network_prefix);
         }
 
         /// <summary>

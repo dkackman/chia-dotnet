@@ -52,7 +52,7 @@ namespace chia.dotnet.tests
             Assert.IsNotNull(fingerprints);
             Assert.IsTrue(fingerprints.Count() > 0);
 
-            var fingerprint = await _theWallet.LogIn((uint)fingerprints.First(), skipImport: true, CancellationToken.None);
+            var fingerprint = await _theWallet.LogIn(fingerprints.First(), skipImport: true, CancellationToken.None);
 
             Assert.IsFalse(fingerprint == 0);
         }
@@ -60,7 +60,8 @@ namespace chia.dotnet.tests
         [TestMethod()]
         public async Task GetPrivateKey()
         {
-            var key = await _theWallet.GetPrivateKey(2287630151, CancellationToken.None);
+            var fingerprints = await _theWallet.GetPublicKeys(CancellationToken.None);
+            var key = await _theWallet.GetPrivateKey(fingerprints.First(), CancellationToken.None);
 
             Assert.IsNotNull(key);
         }

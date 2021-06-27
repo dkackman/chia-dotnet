@@ -268,12 +268,12 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>some information about the current network</returns>
-        public async Task<dynamic> GetNetworkInfo(CancellationToken cancellationToken)
+        public async Task<(string NetworkName, string NetworkPrefix)> GetNetworkInfo(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_network_info");
             var response = await Daemon.SendMessage(message, cancellationToken);
 
-            return response.Data;
+            return (response.Data.network_name, response.Data.network_prefix);
         }
 
         /// <summary>
