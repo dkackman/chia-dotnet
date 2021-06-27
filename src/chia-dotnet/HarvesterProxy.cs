@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace chia.dotnet
 {
@@ -53,12 +54,12 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>List of directories</returns>
-        public async Task<IEnumerable<dynamic>> GetPlotDirectories(CancellationToken cancellationToken)
+        public async Task<IEnumerable<string>> GetPlotDirectories(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_plot_directories");
             var response = await Daemon.SendMessage(message, cancellationToken);
 
-            return response.Data.directories;
+            return ((IEnumerable<dynamic>)response.Data.directories).Select<dynamic, string>(item => item.ToString());
         }
 
         /// <summary>
