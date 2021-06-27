@@ -38,6 +38,8 @@ namespace chia.dotnet.tests
             var targets = await _theFarmer.GetRewardTargets(false, CancellationToken.None);
 
             Assert.IsNotNull(targets);
+            Assert.IsFalse(string.IsNullOrEmpty(targets.FarmerTarget));
+            Assert.IsFalse(string.IsNullOrEmpty(targets.PoolTarget));
         }
 
         [TestMethod]

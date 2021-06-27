@@ -25,7 +25,7 @@ namespace chia.dotnet
         /// <param name="searchForPrivateKey">Include private key in search</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>the farm and pool reward targets</returns>
-        public async Task<(string farmer_target, string pool_target)> GetRewardTargets(bool searchForPrivateKey, CancellationToken cancellationToken)
+        public async Task<(string FarmerTarget, string PoolTarget)> GetRewardTargets(bool searchForPrivateKey, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.search_for_private_key = searchForPrivateKey;
