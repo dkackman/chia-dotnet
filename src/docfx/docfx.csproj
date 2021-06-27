@@ -16,8 +16,4 @@
     <ProjectReference Include="..\chia-dotnet\chia-dotnet.csproj" />
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="echo Copying docs to github pages folder&#xD;&#xA;xcopy &quot;$(ProjectDir)_site\&quot; &quot;$(SolutionDir)..\docs\&quot; /S /R /Y" />
-  </Target>
-
 </Project>
