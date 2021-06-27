@@ -175,7 +175,7 @@ namespace chia.dotnet
         /// <param name="name">The coin name</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A coin record</returns>
-        public async Task<dynamic> GetCoinRecordsByName(string name, CancellationToken cancellationToken)
+        public async Task<dynamic> GetCoinRecordByName(string name, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.name = name;

@@ -130,9 +130,10 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        public async Task GetCoinRecordsByName()
+        public async Task GetCoinRecordByName()
         {
-            Assert.Fail();
+            var coinRecord = await _theFullNode.GetCoinRecordByName("0x2b83ca807d305cd142e0e91d4e7a18f8e57df0ac6b4fa403bff249d0d491c609", CancellationToken.None);
+            Assert.IsNotNull(coinRecord);
         }
 
         [TestMethod()]
