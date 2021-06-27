@@ -2,6 +2,7 @@
 using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace chia.dotnet
 {
@@ -68,7 +69,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of connections</returns>
-        public async Task<dynamic> GetConnections(CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetConnections(CancellationToken cancellationToken)
         {
             var message = CreateMessage("get_connections");
             var response = await Daemon.SendMessage(message, cancellationToken);
