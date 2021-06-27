@@ -31,7 +31,7 @@ namespace chia.dotnet
         /// <param name="skipImport">Indicator whether to skip the import at login</param>          
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a key fingerprint</returns>
-        public async Task<dynamic> LogIn(uint fingerprint, bool skipImport, CancellationToken cancellationToken)
+        public async Task<uint> LogIn(uint fingerprint, bool skipImport, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
@@ -41,7 +41,7 @@ namespace chia.dotnet
             var message = CreateMessage("log_in", data);
             var response = await Daemon.SendMessage(message, cancellationToken);
 
-            return response.Data.fingerprint;
+            return (uint)response.Data.fingerprint;
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace chia.dotnet
         /// <param name="filePath">The path to the backup file</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a key fingerprint</returns>
-        public async Task<dynamic> LogInAndRestoreBackup(uint fingerprint, string filePath, CancellationToken cancellationToken)
+        public async Task<uint> LogInAndRestoreBackup(uint fingerprint, string filePath, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
@@ -62,7 +62,7 @@ namespace chia.dotnet
             var message = CreateMessage("log_in", data);
             var response = await Daemon.SendMessage(message, cancellationToken);
 
-            return response.Data.fingerprint;
+            return (uint)response.Data.fingerprint;
         }
 
         /// <summary>

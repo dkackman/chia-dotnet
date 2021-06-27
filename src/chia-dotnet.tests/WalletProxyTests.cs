@@ -52,9 +52,9 @@ namespace chia.dotnet.tests
             Assert.IsNotNull(fingerprints);
             Assert.IsTrue(fingerprints.Count() > 0);
 
-            var keys = await _theWallet.LogIn((uint)fingerprints.First(), skipImport: true, CancellationToken.None);
+            var fingerprint = await _theWallet.LogIn((uint)fingerprints.First(), skipImport: true, CancellationToken.None);
 
-            Assert.IsNotNull(keys);
+            Assert.IsFalse(fingerprint == 0);
         }
 
         [TestMethod()]
