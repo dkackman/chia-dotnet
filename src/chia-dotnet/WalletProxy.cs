@@ -183,11 +183,12 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Get the list of transactions
+        /// Get the last address or create a new one
         /// </summary>
         /// <param name="walletId">The numeric id of the wallet to query</param> 
+        /// <param name="newAddress">Whether to generate a new address</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A list of transactions</returns>
+        /// <returns>An address</returns>
         public async Task<string> GetNextAddress(uint walletId, bool newAddress, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
