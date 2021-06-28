@@ -65,5 +65,21 @@ namespace chia.dotnet
 
             return response.Data.signage_points;
         }
+
+        /// <summary>
+        /// Get's a signage point by hash
+        /// </summary>
+        /// <param name="spHash">signage point hash</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>a signage point</returns>
+        public async Task<dynamic> GetSignagePoint(string spHash, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.sp_hash = spHash;
+            var message = CreateMessage("get_signage_point", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return response.Data.signage_point;
+        }
     }
 }

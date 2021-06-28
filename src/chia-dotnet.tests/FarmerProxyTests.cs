@@ -61,6 +61,14 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
+        public async Task GetSignagePoint()
+        {
+            var signagePoint = await _theFarmer.GetSignagePoint("0xb040c8e61a875249736136734467f505cd404f7803892e70fea2bac3cc0a6f0a", CancellationToken.None);
+
+            Assert.IsNotNull(signagePoint);
+        }
+
+        [TestMethod]
         public async Task Ping()
         {
             await _theFarmer.Ping(CancellationToken.None);
