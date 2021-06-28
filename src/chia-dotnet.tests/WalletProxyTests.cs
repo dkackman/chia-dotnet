@@ -112,7 +112,7 @@ namespace chia.dotnet.tests
             var address = await _theWallet.GetNextAddress(1, true, CancellationToken.None);
 
             Assert.IsNotNull(address);
-        }   
+        }
 
         [TestMethod()]
         public async Task GetFarmedAmount()
@@ -134,6 +134,12 @@ namespace chia.dotnet.tests
             var count = await _theWallet.GetTransactionCount(1, CancellationToken.None);
 
             Assert.IsNotNull(count);
+        }
+
+        [TestMethod()]
+        public async Task DeleteUnconfirmedTransactions()
+        {
+            await _theWallet.DeleteUnconfirmedTransactions(1, CancellationToken.None);
         }
     }
 }

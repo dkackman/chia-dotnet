@@ -249,5 +249,20 @@ namespace chia.dotnet
 
             return response.Data.count;
         }
+
+        /// <summary>
+        /// Delete unconfirmed transactions from the wallet
+        /// </summary>
+        /// <param name="walletId">The numeric id of the wallet to delete from</param> 
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>An awaitable <see cref="Task"/></returns>
+        public async Task DeleteUnconfirmedTransactions(uint walletId, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_id = walletId;
+
+            var message = CreateMessage("delete_unconfirmed_transactions", data);
+            _ = await Daemon.SendMessage(message, cancellationToken);
+        }
     }
 }
