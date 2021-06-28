@@ -207,7 +207,6 @@ namespace chia.dotnet
         /// <param name="walletId">The numeric id of the wallet to query</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The amount farmed</returns>
-        /// 
         public async Task<(uint FarmedAmount, uint FarmerRewardAmount, uint FeeAmount, uint LastHieghtFarmed, uint PoolReqardAmount)> GetFarmedAmount(uint walletId, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
@@ -225,7 +224,6 @@ namespace chia.dotnet
         /// <param name="filePath">Path to the backup file to create</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        /// 
         public async Task CreateBackup(string filePath, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
@@ -233,6 +231,23 @@ namespace chia.dotnet
 
             var message = CreateMessage("create_backup", data);
             _ = await Daemon.SendMessage(message, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get the number of transactions
+        /// </summary>
+        /// <param name="walletId">The numeric id of the wallet to query</param> 
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>The number of transactions</returns>
+        public async Task<uint> GetTransactionCount(uint walletId, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_id = walletId;
+
+            var message = CreateMessage("get_transaction_count", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return response.Data.count;
         }
     }
 }

@@ -112,7 +112,7 @@ namespace chia.dotnet.tests
             var address = await _theWallet.GetNextAddress(1, true, CancellationToken.None);
 
             Assert.IsNotNull(address);
-        }
+        }   
 
         [TestMethod()]
         public async Task GetFarmedAmount()
@@ -122,11 +122,18 @@ namespace chia.dotnet.tests
             Assert.IsNotNull(amount);
         }
 
-
         [TestMethod()]
         public async Task CreateBackup()
         {
             await _theWallet.CreateBackup(@"C:\tmp\b.bak", CancellationToken.None);
+        }
+
+        [TestMethod()]
+        public async Task GetTransactionCount()
+        {
+            var count = await _theWallet.GetTransactionCount(1, CancellationToken.None);
+
+            Assert.IsNotNull(count);
         }
     }
 }
