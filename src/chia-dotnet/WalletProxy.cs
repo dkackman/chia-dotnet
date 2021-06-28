@@ -213,10 +213,26 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = walletId;
 
-            var message = CreateMessage("get_farmed_amount");
+            var message = CreateMessage("get_farmed_amount", data);
             var response = await Daemon.SendMessage(message, cancellationToken);
 
             return (response.Data.farmed_amount, response.Data.farmer_reward_amount, response.Data.fee_amount, response.Data.last_height_farmed, response.Data.pool_reward_amount);
+        }
+
+        /// <summary>
+        /// Backup the wallet
+        /// </summary>
+        /// <param name="filePath">Path to the backup file to create</param> 
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>An awaitable <see cref="Task"/></returns>
+        /// 
+        public async Task CreateBackup(string filePath, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.file_path = filePath;
+
+            var message = CreateMessage("create_backup", data);
+            _ = await Daemon.SendMessage(message, cancellationToken);
         }
     }
 }

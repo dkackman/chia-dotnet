@@ -121,5 +121,12 @@ namespace chia.dotnet.tests
 
             Assert.IsNotNull(amount);
         }
+
+
+        [TestMethod()]
+        public async Task CreateBackup()
+        {
+            await _theWallet.CreateBackup(@"C:\tmp\b.bak", CancellationToken.None);
+        }
     }
 }
