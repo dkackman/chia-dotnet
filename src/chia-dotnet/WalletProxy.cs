@@ -195,10 +195,28 @@ namespace chia.dotnet
             data.wallet_id = walletId;
             data.new_address = newAddress;
 
-            var message = CreateMessage("get_next_address ", data);
+            var message = CreateMessage("get_next_address", data);
             var response = await Daemon.SendMessage(message, cancellationToken);
 
             return response.Data.address;
+        }
+
+        /// <summary>
+        /// Get the amount farmed
+        /// </summary>
+        /// <param name="walletId">The numeric id of the wallet to query</param> 
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>The amount farmed</returns>
+        /// 
+        public async Task<(uint FarmedAmount, uint FarmerRewardAmount, uint FeeAmount, uint LastHieghtFarmed, uint PoolReqardAmount)> GetFarmedAmount(uint walletId, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_id = walletId;
+
+            var message = CreateMessage("get_farmed_amount");
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return (response.Data.farmed_amount, response.Data.farmer_reward_amount, response.Data.fee_amount, response.Data.last_height_farmed, response.Data.pool_reward_amount);
         }
     }
 }

@@ -113,5 +113,13 @@ namespace chia.dotnet.tests
 
             Assert.IsNotNull(address);
         }
+
+        [TestMethod()]
+        public async Task GetFarmedAmount()
+        {
+            var amount = await _theWallet.GetFarmedAmount(1, CancellationToken.None);
+
+            Assert.IsNotNull(amount);
+        }
     }
 }
