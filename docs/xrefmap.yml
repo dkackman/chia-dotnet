@@ -245,6 +245,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FarmerProxy.FarmerProxy
   nameWithType: FarmerProxy.FarmerProxy
+- uid: chia.dotnet.FarmerProxy.GetPlots(System.Threading.CancellationToken)
+  name: GetPlots(CancellationToken)
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetPlots_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FarmerProxy.GetPlots(System.Threading.CancellationToken)
+  fullName: chia.dotnet.FarmerProxy.GetPlots(System.Threading.CancellationToken)
+  nameWithType: FarmerProxy.GetPlots(CancellationToken)
+- uid: chia.dotnet.FarmerProxy.GetPlots*
+  name: GetPlots
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetPlots_
+  commentId: Overload:chia.dotnet.FarmerProxy.GetPlots
+  isSpec: "True"
+  fullName: chia.dotnet.FarmerProxy.GetPlots
+  nameWithType: FarmerProxy.GetPlots
 - uid: chia.dotnet.FarmerProxy.GetRewardTargets(System.Boolean,System.Threading.CancellationToken)
   name: GetRewardTargets(Boolean, CancellationToken)
   href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetRewardTargets_System_Boolean_System_Threading_CancellationToken_
@@ -258,6 +271,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FarmerProxy.GetRewardTargets
   nameWithType: FarmerProxy.GetRewardTargets
+- uid: chia.dotnet.FarmerProxy.GetSignagePoint(System.String,System.Threading.CancellationToken)
+  name: GetSignagePoint(String, CancellationToken)
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetSignagePoint_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FarmerProxy.GetSignagePoint(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.FarmerProxy.GetSignagePoint(System.String, System.Threading.CancellationToken)
+  nameWithType: FarmerProxy.GetSignagePoint(String, CancellationToken)
+- uid: chia.dotnet.FarmerProxy.GetSignagePoint*
+  name: GetSignagePoint
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetSignagePoint_
+  commentId: Overload:chia.dotnet.FarmerProxy.GetSignagePoint
+  isSpec: "True"
+  fullName: chia.dotnet.FarmerProxy.GetSignagePoint
+  nameWithType: FarmerProxy.GetSignagePoint
 - uid: chia.dotnet.FarmerProxy.GetSignagePoints(System.Threading.CancellationToken)
   name: GetSignagePoints(CancellationToken)
   href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetSignagePoints_System_Threading_CancellationToken_
@@ -1132,12 +1158,51 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.WalletProxy
   nameWithType: WalletProxy.WalletProxy
+- uid: chia.dotnet.WalletProxy.CreateBackup(System.String,System.Threading.CancellationToken)
+  name: CreateBackup(String, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateBackup_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.CreateBackup(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.CreateBackup(System.String, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.CreateBackup(String, CancellationToken)
+- uid: chia.dotnet.WalletProxy.CreateBackup*
+  name: CreateBackup
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateBackup_
+  commentId: Overload:chia.dotnet.WalletProxy.CreateBackup
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.CreateBackup
+  nameWithType: WalletProxy.CreateBackup
 - uid: chia.dotnet.WalletProxy.DefaultBackupHost
   name: DefaultBackupHost
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_DefaultBackupHost
   commentId: F:chia.dotnet.WalletProxy.DefaultBackupHost
   fullName: chia.dotnet.WalletProxy.DefaultBackupHost
   nameWithType: WalletProxy.DefaultBackupHost
+- uid: chia.dotnet.WalletProxy.DeleteUnconfirmedTransactions(System.UInt32,System.Threading.CancellationToken)
+  name: DeleteUnconfirmedTransactions(UInt32, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_DeleteUnconfirmedTransactions_System_UInt32_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.DeleteUnconfirmedTransactions(System.UInt32,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.DeleteUnconfirmedTransactions(System.UInt32, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.DeleteUnconfirmedTransactions(UInt32, CancellationToken)
+- uid: chia.dotnet.WalletProxy.DeleteUnconfirmedTransactions*
+  name: DeleteUnconfirmedTransactions
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_DeleteUnconfirmedTransactions_
+  commentId: Overload:chia.dotnet.WalletProxy.DeleteUnconfirmedTransactions
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.DeleteUnconfirmedTransactions
+  nameWithType: WalletProxy.DeleteUnconfirmedTransactions
+- uid: chia.dotnet.WalletProxy.GetFarmedAmount(System.UInt32,System.Threading.CancellationToken)
+  name: GetFarmedAmount(UInt32, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetFarmedAmount_System_UInt32_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.GetFarmedAmount(System.UInt32,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.GetFarmedAmount(System.UInt32, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.GetFarmedAmount(UInt32, CancellationToken)
+- uid: chia.dotnet.WalletProxy.GetFarmedAmount*
+  name: GetFarmedAmount
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetFarmedAmount_
+  commentId: Overload:chia.dotnet.WalletProxy.GetFarmedAmount
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.GetFarmedAmount
+  nameWithType: WalletProxy.GetFarmedAmount
 - uid: chia.dotnet.WalletProxy.GetHeightInfo(System.Threading.CancellationToken)
   name: GetHeightInfo(CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetHeightInfo_System_Threading_CancellationToken_
@@ -1216,6 +1281,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.GetSyncStatus
   nameWithType: WalletProxy.GetSyncStatus
+- uid: chia.dotnet.WalletProxy.GetTransactionCount(System.UInt32,System.Threading.CancellationToken)
+  name: GetTransactionCount(UInt32, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetTransactionCount_System_UInt32_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.GetTransactionCount(System.UInt32,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.GetTransactionCount(System.UInt32, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.GetTransactionCount(UInt32, CancellationToken)
+- uid: chia.dotnet.WalletProxy.GetTransactionCount*
+  name: GetTransactionCount
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetTransactionCount_
+  commentId: Overload:chia.dotnet.WalletProxy.GetTransactionCount
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.GetTransactionCount
+  nameWithType: WalletProxy.GetTransactionCount
 - uid: chia.dotnet.WalletProxy.GetTransactions(System.UInt32,System.Threading.CancellationToken)
   name: GetTransactions(UInt32, CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetTransactions_System_UInt32_System_Threading_CancellationToken_

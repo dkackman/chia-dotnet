@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.FarmerProxy.html",
-          "hash": "aCimyRiKn55xfeRlv22tKPcN4FxdWj1hY3l/YDQLk6Y="
+          "hash": "ZA9ucSvnkqROap+qjx3k+SpNyxFUbmk/+o9XS74lN04="
         }
       },
       "is_incremental": false,
@@ -141,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.WalletProxy.html",
-          "hash": "d4BDsClllvCpNow8HiJz/jV4/Hzz3GsiVuMses5kapY="
+          "hash": "52StfF7lErpwpIlV4VsEwtqqv0fOrfaQREZiY7NXWM4="
         }
       },
       "is_incremental": false,
