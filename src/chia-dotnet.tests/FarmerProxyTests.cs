@@ -69,6 +69,13 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
+        public async Task GetPlots()
+        {
+            var plots = await _theFarmer.GetPlots(CancellationToken.None);
+            Assert.IsNotNull(plots);
+        }
+
+        [TestMethod]
         public async Task Ping()
         {
             await _theFarmer.Ping(CancellationToken.None);

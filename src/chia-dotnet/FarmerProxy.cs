@@ -81,5 +81,19 @@ namespace chia.dotnet
 
             return response.Data.signage_point;
         }
+
+
+        /// <summary>
+        /// Get the list of plot files from all attached harvester
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>A list of plots</returns>
+        public async Task<dynamic> GetPlots(CancellationToken cancellationToken)
+        {
+            var message = CreateMessage("get_plots");
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return response.Data;
+        }
     }
 }
