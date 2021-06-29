@@ -517,6 +517,45 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FullNodeProxy.GetNetworkSpace
   nameWithType: FullNodeProxy.GetNetworkSpace
+- uid: chia.dotnet.FullNodeProxy.GetPuzzleAndSolution(System.String,System.UInt32,System.Threading.CancellationToken)
+  name: GetPuzzleAndSolution(String, UInt32, CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetPuzzleAndSolution_System_String_System_UInt32_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetPuzzleAndSolution(System.String,System.UInt32,System.Threading.CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetPuzzleAndSolution(System.String, System.UInt32, System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetPuzzleAndSolution(String, UInt32, CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetPuzzleAndSolution*
+  name: GetPuzzleAndSolution
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetPuzzleAndSolution_
+  commentId: Overload:chia.dotnet.FullNodeProxy.GetPuzzleAndSolution
+  isSpec: "True"
+  fullName: chia.dotnet.FullNodeProxy.GetPuzzleAndSolution
+  nameWithType: FullNodeProxy.GetPuzzleAndSolution
+- uid: chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOS(System.String,System.Threading.CancellationToken)
+  name: GetRecentSignagPointOrEOS(String, CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetRecentSignagPointOrEOS_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOS(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOS(System.String, System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetRecentSignagPointOrEOS(String, CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOS*
+  name: GetRecentSignagPointOrEOS
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetRecentSignagPointOrEOS_
+  commentId: Overload:chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOS
+  isSpec: "True"
+  fullName: chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOS
+  nameWithType: FullNodeProxy.GetRecentSignagPointOrEOS
+- uid: chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOSByChallenge(System.String,System.Threading.CancellationToken)
+  name: GetRecentSignagPointOrEOSByChallenge(String, CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetRecentSignagPointOrEOSByChallenge_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOSByChallenge(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOSByChallenge(System.String, System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetRecentSignagPointOrEOSByChallenge(String, CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOSByChallenge*
+  name: GetRecentSignagPointOrEOSByChallenge
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetRecentSignagPointOrEOSByChallenge_
+  commentId: Overload:chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOSByChallenge
+  isSpec: "True"
+  fullName: chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOSByChallenge
+  nameWithType: FullNodeProxy.GetRecentSignagPointOrEOSByChallenge
 - uid: chia.dotnet.FullNodeProxy.GetUnfinishedBlockHeaders(System.Threading.CancellationToken)
   name: GetUnfinishedBlockHeaders(CancellationToken)
   href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetUnfinishedBlockHeaders_System_Threading_CancellationToken_
