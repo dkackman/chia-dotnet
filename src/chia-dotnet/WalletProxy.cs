@@ -166,6 +166,23 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Get a specific transaction
+        /// </summary>
+        /// <param name="transactionId">The id of the transaction to find</param> 
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>A transaction</returns>
+        public async Task<dynamic> GetTransaction(string transactionId, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.transaction_id = transactionId;
+
+            var message = CreateMessage("get_transaction", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return response.Data.transaction;
+        }
+
+        /// <summary>
         /// Get the list of transactions
         /// </summary>
         /// <param name="walletId">The numeric id of the wallet to query</param> 
