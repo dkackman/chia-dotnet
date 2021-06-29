@@ -327,5 +327,25 @@ namespace chia.dotnet
 
             return response.Data;
         }
+
+
+        /// <summary>
+        /// Gets a coin solution 
+        /// </summary>
+        /// <param name="coinId">Id of the coin</param>
+        /// <param name="height">Block height</param> 
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>A coin_solution</returns>
+        public async Task<dynamic> GetPuzzleAndSolution(string coinId, uint height, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.coin_id = coinId;
+            data.height = height;
+
+            var message = CreateMessage("get_puzzle_and_solution", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return response.Data.coin_solution;
+        }
     }
 }
