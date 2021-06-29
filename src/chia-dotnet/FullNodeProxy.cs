@@ -280,6 +280,7 @@ namespace chia.dotnet
         /// Pushes a transaction / spend bundle to the mempool and blockchain. 
         /// Returns whether the spend bundle was successfully included into the mempool
         /// </summary>
+        /// <param name="spendBundle"></param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Indicator of whether the spend bundle was successfully included in the mempool</returns>
         public async Task<bool> PushTx(dynamic spendBundle, CancellationToken cancellationToken)
@@ -291,6 +292,40 @@ namespace chia.dotnet
             var response = await Daemon.SendMessage(message, cancellationToken);
 
             return response.Data.status == "SUCCESS";
+        }
+
+        /// <summary>
+        /// Gets a recent signage point or the end of slot
+        /// </summary>
+        /// <param name="spHash">signage point hash</param> 
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>Indicator of whether the spend bundle was successfully included in the mempool</returns>
+        public async Task<dynamic> GetRecentSignagPointOrEOS(string spHash, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.sp_hash = spHash;
+
+            var message = CreateMessage("get_recent_signage_point_or_eos", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return response.Data;
+        }
+
+        /// <summary>
+        /// Gets a recent signage point or the end of slot
+        /// </summary>
+        /// <param name="challengeHash">signage point challenge hash</param> 
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>A signange _point or an eos</returns>
+        public async Task<dynamic> GetRecentSignagPointOrEOSByChallenge(string challengeHash, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.challenge_hash = challengeHash;
+
+            var message = CreateMessage("get_recent_signage_point_or_eos", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return response.Data;
         }
     }
 }

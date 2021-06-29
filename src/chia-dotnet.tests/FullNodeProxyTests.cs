@@ -169,5 +169,12 @@ namespace chia.dotnet.tests
             var item = await _theFullNode.GetMemmpooItemByTxId((string)ids.First(), CancellationToken.None);
             Assert.IsNotNull(item);
         }
+
+        [TestMethod()]
+        public async Task GetRecentSignagPointOrEOS()
+        {
+            var sp = await _theFullNode.GetRecentSignagPointOrEOS("0x315ec5a8e0ac849915e136b81fd2d2277ae3804e2aea3911321ed293eb3595fb", CancellationToken.None);
+            Assert.IsNotNull(sp);
+        }
     }
 }
