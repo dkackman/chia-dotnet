@@ -429,7 +429,7 @@ namespace chia.dotnet
             var message = CreateMessage("create_new_wallet", data);
             var response = await Daemon.SendMessage(message, cancellationToken);
 
-            return (response.Data.Id, response.Data.type, response.Data.origin, response.Data.pubkey);
+            return (response.Data.id, response.Data.type, response.Data.origin, response.Data.pubkey);
         }
 
         /// <summary>
@@ -447,7 +447,7 @@ namespace chia.dotnet
             var message = CreateMessage("create_new_wallet", data);
             var response = await Daemon.SendMessage(message, cancellationToken);
 
-            return (response.Data.Id, response.Data.type, response.Data.pubkey);
+            return (response.Data.id, response.Data.type, response.Data.pubkey);
         }
     }
 }
