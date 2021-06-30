@@ -16,7 +16,7 @@
     <RepositoryUrl>https://github.com/dkackman/chia-dotnet</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>chia</PackageTags>
-    <PackageReleaseNotes>0.1.0 first pre-release</PackageReleaseNotes>
+    <PackageReleaseNotes>0.1.0 pre-release</PackageReleaseNotes>
     <PackageIcon>chia-leaf-logo-384x384.png</PackageIcon>
   </PropertyGroup>
 
