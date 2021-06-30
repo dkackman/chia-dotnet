@@ -289,10 +289,10 @@ namespace chia.dotnet
         /// <param name="skipImport">Indicator whether to skip the import at login</param>                
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The new key's fingerprint</returns>
-        public async Task<uint> AddKey(string mnemonic, bool skipImport, CancellationToken cancellationToken)
+        public async Task<uint> AddKey(IEnumerable<string> mnemonic, bool skipImport, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
-            data.mnemonic = mnemonic;
+            data.mnemonic = mnemonic.ToList();
             data.type = skipImport ? "skip" : "new_wallet";
 
             var message = CreateMessage("add_key", data);
@@ -351,7 +351,7 @@ namespace chia.dotnet
         /// Generates a new mnemonic phrase
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>The new mnemonic an as <see cref="IEnumerable{T}"/> of 24 words</returns>
+        /// <returns>The new mnemonic as an <see cref="IEnumerable{T}"/> of 24 words</returns>
         public async Task<IEnumerable<string>> GenerateMnemonic(CancellationToken cancellationToken)
         {
             var message = CreateMessage("generate_mnemonic");

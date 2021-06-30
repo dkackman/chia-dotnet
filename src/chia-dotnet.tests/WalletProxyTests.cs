@@ -137,6 +137,7 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
+        [TestCategory("CAUTION")]
         public async Task DeleteUnconfirmedTransactions()
         {
             await _theWallet.DeleteUnconfirmedTransactions(1, CancellationToken.None);
@@ -148,6 +149,17 @@ namespace chia.dotnet.tests
             var mnemonic = await _theWallet.GenerateMnemonic(CancellationToken.None);
 
             Assert.IsNotNull(mnemonic);
+        }
+
+        [TestMethod()]
+        public async Task FullCircleKey()
+        {
+            var mnemonic = await _theWallet.GenerateMnemonic(CancellationToken.None);
+            var fingerprint = await _theWallet.AddKey(mnemonic, true, CancellationToken.None);
+            var key = await _theWallet.GetPrivateKey(fingerprint, CancellationToken.None);
+            Assert.IsNotNull(key);
+
+            await _theWallet.DeleteKey(fingerprint, CancellationToken.None);
         }
     }
 }
