@@ -281,5 +281,83 @@ namespace chia.dotnet
             var message = CreateMessage("delete_unconfirmed_transactions", data);
             _ = await Daemon.SendMessage(message, cancellationToken);
         }
+
+        /// <summary>
+        /// Deletes a specific key from the wallet
+        /// </summary>        
+        /// <param name="mnemonic">The key mnemonic</param>
+        /// <param name="skipImport">Indicator whether to skip the import at login</param>                
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>The new key's fingerprint</returns>
+        public async Task<uint> AddKey(string mnemonic, bool skipImport, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.mnemonic = mnemonic;
+            data.type = skipImport ? "skip" : "new_wallet";
+
+            var message = CreateMessage("add_key", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return (uint)response.Data.fingerprint;
+        }
+
+        /// <summary>
+        /// Add a new key and restores from backup
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>
+        /// <param name="filePath">The path to the backup file</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>a key fingerprint</returns>
+        public async Task<uint> AddKeyAndRestoreBackup(uint fingerprint, string filePath, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+            data.type = "restore_backup";
+            data.file_path = filePath;
+
+            var message = CreateMessage("log_in", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return (uint)response.Data.fingerprint;
+        }
+
+        /// <summary>
+        /// Deletes a specific key from the wallet
+        /// </summary>        
+        /// <param name="fingerprint">The key's fingerprint</param>  
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>An awaitable <see cref="Task"/></returns>
+        public async Task DeleteKey(uint fingerprint, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+
+            var message = CreateMessage("delete_all_keys", data);
+            _ = await Daemon.SendMessage(message, cancellationToken);
+        }
+
+        /// <summary>
+        /// Deletes all keys from the wallet
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>An awaitable <see cref="Task"/></returns>
+        public async Task DeleteAllKeys(CancellationToken cancellationToken)
+        {
+            var message = CreateMessage("delete_all_keys");
+            _ = await Daemon.SendMessage(message, cancellationToken);
+        }
+
+        /// <summary>
+        /// Generates a new mnemonic phrase
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>The new mnemonic an as <see cref="IEnumerable{T}"/> of 24 words</returns>
+        public async Task<IEnumerable<string>> GenerateMnemonic(CancellationToken cancellationToken)
+        {
+            var message = CreateMessage("generate_mnemonic");
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return ((IEnumerable<dynamic>)response.Data.mnemonic).Select<dynamic, string>(item => item.ToString());
+        }
     }
 }

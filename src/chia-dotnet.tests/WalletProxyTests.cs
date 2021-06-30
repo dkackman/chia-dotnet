@@ -141,5 +141,13 @@ namespace chia.dotnet.tests
         {
             await _theWallet.DeleteUnconfirmedTransactions(1, CancellationToken.None);
         }
+
+        [TestMethod()]
+        public async Task GenerateMnemonic()
+        {
+            var mnemonic = await _theWallet.GenerateMnemonic(CancellationToken.None);
+
+            Assert.IsNotNull(mnemonic);
+        }
     }
 }
