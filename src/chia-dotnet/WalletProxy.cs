@@ -363,6 +363,9 @@ namespace chia.dotnet
         /// <summary>
         /// Create a new colour coin wallet
         /// </summary>
+        /// <param name="fee">fee to create the wallet</param>
+        /// <param name="amount">the amount to put in the wallet</param>
+        /// <param name="colour">The coin Colour</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the wallet</returns>
         public async Task<(byte Type, string Colour, uint WalletId)> CreateNewColourCoinWallet(BigInteger fee, BigInteger amount, string colour, CancellationToken cancellationToken)
@@ -384,7 +387,8 @@ namespace chia.dotnet
         /// <summary>
         /// Update a colour coin wallet
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="colour">The coin Colour</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>        
         /// <returns>Information about the wallet</returns>
         public async Task<byte> CreateExistingColourCoinWallet(string colour, CancellationToken cancellationToken)
         {
@@ -401,10 +405,15 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Generates a new mnemonic phrase
+        /// Creates a new Admin Rate Limited wallet
         /// </summary>
+        /// <param name="pubkey">fee to create the wallet</param>
+        /// <param name="interval">The limit interval</param>
+        /// <param name="limit">The limit amount</param>
+        /// <param name="fee">fee to create the wallet</param>
+        /// <param name="amount">the amount to put in the wallet</param>     
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>The new mnemonic as an <see cref="IEnumerable{T}"/> of 24 words</returns>
+        /// <returns>Information about the wallet</returns>
         public async Task<(uint Id, byte Type, dynamic origin, string pubkey)> CreateRateLimitedAdminWallet(string pubkey, BigInteger interval, BigInteger limit, BigInteger fee, BigInteger amount, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
@@ -424,10 +433,10 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Generates a new mnemonic phrase
+        /// Creates a new User Rate Limited wallet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>The new mnemonic as an <see cref="IEnumerable{T}"/> of 24 words</returns>
+        /// <returns>Information about the wallet</returns>
         public async Task<(uint Id, byte Type, string pubkey)> CreateRateLimitedUserWallet(CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
