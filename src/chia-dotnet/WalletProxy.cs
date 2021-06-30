@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Numerics;
 namespace chia.dotnet
 {
     /// <summary>
@@ -358,6 +358,87 @@ namespace chia.dotnet
             var response = await Daemon.SendMessage(message, cancellationToken);
 
             return ((IEnumerable<dynamic>)response.Data.mnemonic).Select<dynamic, string>(item => item.ToString());
+        }
+
+        /// <summary>
+        /// Create a new colour coin wallet
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>Information about the wallet</returns>
+        public async Task<(byte Type, string Colour, uint WalletId)> CreateNewColourCoinWallet(BigInteger fee, BigInteger amount, string colour, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_type = "cc_wallet";
+            data.host = DefaultBackupHost;
+            data.fee = fee;
+            data.amount = amount;
+            data.mode = "new";
+            data.colour = colour;
+
+            var message = CreateMessage("create_new_wallet", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return (response.Data.type, response.Data.colour, response.Data.wallet_id);
+        }
+
+        /// <summary>
+        /// Update a colour coin wallet
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>Information about the wallet</returns>
+        public async Task<byte> CreateExistingColourCoinWallet(string colour, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_type = "cc_wallet";
+            data.host = DefaultBackupHost;
+            data.mode = "existing";
+            data.colour = colour;
+
+            var message = CreateMessage("create_new_wallet", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return response.Data.type;
+        }
+
+        /// <summary>
+        /// Generates a new mnemonic phrase
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>The new mnemonic as an <see cref="IEnumerable{T}"/> of 24 words</returns>
+        public async Task<(uint Id, byte Type, dynamic origin, string pubkey)> CreateRateLimitedAdminWallet(string pubkey, BigInteger interval, BigInteger limit, BigInteger fee, BigInteger amount, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_type = "rl_wallet";
+            data.rl_type = "admin";
+            data.host = DefaultBackupHost;
+            data.pubkey = pubkey;
+            data.fee = fee;
+            data.amount = amount;
+            data.interval = interval;
+            data.limit = limit;
+
+            var message = CreateMessage("create_new_wallet", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return (response.Data.Id, response.Data.type, response.Data.origin, response.Data.pubkey);
+        }
+
+        /// <summary>
+        /// Generates a new mnemonic phrase
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>The new mnemonic as an <see cref="IEnumerable{T}"/> of 24 words</returns>
+        public async Task<(uint Id, byte Type, string pubkey)> CreateRateLimitedUserWallet(CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_type = "rl_wallet";
+            data.rl_type = "user";
+            data.host = DefaultBackupHost;
+
+            var message = CreateMessage("create_new_wallet", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return (response.Data.Id, response.Data.type, response.Data.pubkey);
         }
     }
 }
