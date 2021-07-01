@@ -449,5 +449,49 @@ namespace chia.dotnet
 
             return (response.Data.id, response.Data.type, response.Data.pubkey);
         }
+
+        /// <summary>
+        /// Creates a new DID wallet
+        /// </summary>
+        /// <param name="backupDIDs">Backup DIDs</param>
+        /// <param name="numOfBackupIdsNeeded">The number of back ids needed to create the wallet/param>
+        /// <param name="amount">the amount to put in the wallet</param>           
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>Information about the wallet</returns>
+        public async Task<(uint Type, string myDID, uint walletId)> CreateDIDWallet(IEnumerable<string> backupDIDs, BigInteger numOfBackupIdsNeeded, int amount, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_type = "did_wallet";
+            data.did_type = "new";
+            data.backup_dids = backupDIDs.ToList();
+            data.num_of_backup_ids_needed = numOfBackupIdsNeeded;
+            data.amount = amount;
+            data.host = DefaultBackupHost;
+
+            var message = CreateMessage("create_new_wallet", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return (response.Data.type, response.Data.my_did, response.Data.wallet_id);
+        }
+
+        /// <summary>
+        /// Recvoers a DID wallet
+        /// </summary>
+        /// <param name="filename">Filename to recover from</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>Information about the wallet</returns>
+        public async Task<(uint Type, string myDID, uint walletId, string coinName, IEnumerable<dynamic> coinList, string newPuzHash, string pubkey, IEnumerable<dynamic> backupDIDs, BigInteger numVerificationsRequired)>
+            CreateRecoveryDiDWallet(string filename, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_type = "did_wallet";
+            data.did_type = "recovery";
+            data.filename = filename;
+
+            var message = CreateMessage("create_new_wallet", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return (response.Data.type, response.Data.my_did, response.Data.wallet_id, response.Data.coin_name, response.Data.coin_list, response.Data.newpuzhash, response.Data.pubkey, response.Data.backup_dids, response.Data.num_verifications_required);
+        }
     }
 }
