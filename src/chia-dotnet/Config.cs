@@ -61,9 +61,9 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// The OS specific default location of the chia root folder
+        /// The OS specific default location of the chia root folder 
         /// </summary>
-        public static string DefaultRootPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".chia", "mainnet");
+        public static string DefaultRootPath => Environment.GetEnvironmentVariable("CHIA_ROOT") ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".chia", "mainnet");
 
         /// <summary>
         /// Opens a chia config yaml file
@@ -150,7 +150,7 @@ namespace chia.dotnet
                 throw new NotImplementedException();
             }
 
-            int ICollection<KeyValuePair<T, object>>.Count => base.Count;
+            int ICollection<KeyValuePair<T, object>>.Count => Count;
 
             bool ICollection<KeyValuePair<T, object>>.IsReadOnly => throw new NotImplementedException();
 
@@ -162,8 +162,8 @@ namespace chia.dotnet
             IEnumerator<KeyValuePair<T, object>> IEnumerable<KeyValuePair<T, object>>.GetEnumerator()
             {
                 IDictionary<T, object> dict = new Dictionary<T, object>();
-                var keys = new T[base.Count];
-                base.CopyTo(keys);
+                var keys = new T[Count];
+                CopyTo(keys);
                 foreach (var k in keys)
                 {
                     dict.Add(k, null);
@@ -173,7 +173,7 @@ namespace chia.dotnet
 
             System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
             {
-                return base.GetEnumerator();
+                return GetEnumerator();
             }
         }
     }
