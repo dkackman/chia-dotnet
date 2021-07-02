@@ -37,6 +37,12 @@ var state = await fullNode.GetBlockchainState(CancellationToken.None);
 dotnet build ./src
 ````
 
+### Install from nuget.org
+
+````bash
+dotnet add package chia-dotnet
+````
+
 ### Tests
 
 There are various unit and integration tests in the test project that have example usage. Tests attributes with `[TestCategory("Integration")]` will use the local install of chia and the mainnet configuration to resolve RPC endpoints.
