@@ -530,32 +530,32 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FullNodeProxy.GetPuzzleAndSolution
   nameWithType: FullNodeProxy.GetPuzzleAndSolution
-- uid: chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOS(System.String,System.Threading.CancellationToken)
-  name: GetRecentSignagPointOrEOS(String, CancellationToken)
-  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetRecentSignagPointOrEOS_System_String_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOS(System.String,System.Threading.CancellationToken)
-  fullName: chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOS(System.String, System.Threading.CancellationToken)
-  nameWithType: FullNodeProxy.GetRecentSignagPointOrEOS(String, CancellationToken)
-- uid: chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOS*
-  name: GetRecentSignagPointOrEOS
-  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetRecentSignagPointOrEOS_
-  commentId: Overload:chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOS
+- uid: chia.dotnet.FullNodeProxy.GetRecentEOS(System.String,System.Threading.CancellationToken)
+  name: GetRecentEOS(String, CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetRecentEOS_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetRecentEOS(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetRecentEOS(System.String, System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetRecentEOS(String, CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetRecentEOS*
+  name: GetRecentEOS
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetRecentEOS_
+  commentId: Overload:chia.dotnet.FullNodeProxy.GetRecentEOS
   isSpec: "True"
-  fullName: chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOS
-  nameWithType: FullNodeProxy.GetRecentSignagPointOrEOS
-- uid: chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOSByChallenge(System.String,System.Threading.CancellationToken)
-  name: GetRecentSignagPointOrEOSByChallenge(String, CancellationToken)
-  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetRecentSignagPointOrEOSByChallenge_System_String_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOSByChallenge(System.String,System.Threading.CancellationToken)
-  fullName: chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOSByChallenge(System.String, System.Threading.CancellationToken)
-  nameWithType: FullNodeProxy.GetRecentSignagPointOrEOSByChallenge(String, CancellationToken)
-- uid: chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOSByChallenge*
-  name: GetRecentSignagPointOrEOSByChallenge
-  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetRecentSignagPointOrEOSByChallenge_
-  commentId: Overload:chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOSByChallenge
+  fullName: chia.dotnet.FullNodeProxy.GetRecentEOS
+  nameWithType: FullNodeProxy.GetRecentEOS
+- uid: chia.dotnet.FullNodeProxy.GetRecentSignagePoint(System.String,System.Threading.CancellationToken)
+  name: GetRecentSignagePoint(String, CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetRecentSignagePoint_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetRecentSignagePoint(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetRecentSignagePoint(System.String, System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetRecentSignagePoint(String, CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetRecentSignagePoint*
+  name: GetRecentSignagePoint
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetRecentSignagePoint_
+  commentId: Overload:chia.dotnet.FullNodeProxy.GetRecentSignagePoint
   isSpec: "True"
-  fullName: chia.dotnet.FullNodeProxy.GetRecentSignagPointOrEOSByChallenge
-  nameWithType: FullNodeProxy.GetRecentSignagPointOrEOSByChallenge
+  fullName: chia.dotnet.FullNodeProxy.GetRecentSignagePoint
+  nameWithType: FullNodeProxy.GetRecentSignagePoint
 - uid: chia.dotnet.FullNodeProxy.GetUnfinishedBlockHeaders(System.Threading.CancellationToken)
   name: GetUnfinishedBlockHeaders(CancellationToken)
   href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetUnfinishedBlockHeaders_System_Threading_CancellationToken_
@@ -1281,6 +1281,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.CreateNewColourCoinWallet
   nameWithType: WalletProxy.CreateNewColourCoinWallet
+- uid: chia.dotnet.WalletProxy.CreatePoolWallet(System.Object,System.Numerics.BigInteger,System.String,System.Threading.CancellationToken)
+  name: CreatePoolWallet(Object, BigInteger, String, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreatePoolWallet_System_Object_System_Numerics_BigInteger_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.CreatePoolWallet(System.Object,System.Numerics.BigInteger,System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.CreatePoolWallet(System.Object, System.Numerics.BigInteger, System.String, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.CreatePoolWallet(Object, BigInteger, String, CancellationToken)
+- uid: chia.dotnet.WalletProxy.CreatePoolWallet*
+  name: CreatePoolWallet
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreatePoolWallet_
+  commentId: Overload:chia.dotnet.WalletProxy.CreatePoolWallet
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.CreatePoolWallet
+  nameWithType: WalletProxy.CreatePoolWallet
 - uid: chia.dotnet.WalletProxy.CreateRateLimitedAdminWallet(System.String,System.Numerics.BigInteger,System.Numerics.BigInteger,System.Numerics.BigInteger,System.Numerics.BigInteger,System.Threading.CancellationToken)
   name: CreateRateLimitedAdminWallet(String, BigInteger, BigInteger, BigInteger, BigInteger, CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateRateLimitedAdminWallet_System_String_System_Numerics_BigInteger_System_Numerics_BigInteger_System_Numerics_BigInteger_System_Numerics_BigInteger_System_Threading_CancellationToken_
