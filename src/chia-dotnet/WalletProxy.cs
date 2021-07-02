@@ -498,7 +498,7 @@ namespace chia.dotnet
         /// <summary>
         /// Creates a new pool wallet
         /// </summary>
-        /// <param name="initialTargetState">The desired intial statue of the wallet</param>
+        /// <param name="initialTargetState">The desired intiial state of the wallet</param>
         /// <param name="p2SingletonDelayedPH">A delayed address (can be null or empty to not use)</param>
         /// <param name="p2SingletonDelayTime">Delay time to create the wallet</param>           
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>

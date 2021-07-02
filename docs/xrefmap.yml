@@ -1573,3 +1573,16 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.LogInAndRestoreBackup
   nameWithType: WalletProxy.LogInAndRestoreBackup
+- uid: chia.dotnet.WalletProxy.SendTransaction(System.UInt32,System.String,System.Numerics.BigInteger,System.Numerics.BigInteger,System.Threading.CancellationToken)
+  name: SendTransaction(UInt32, String, BigInteger, BigInteger, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_SendTransaction_System_UInt32_System_String_System_Numerics_BigInteger_System_Numerics_BigInteger_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.SendTransaction(System.UInt32,System.String,System.Numerics.BigInteger,System.Numerics.BigInteger,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.SendTransaction(System.UInt32, System.String, System.Numerics.BigInteger, System.Numerics.BigInteger, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.SendTransaction(UInt32, String, BigInteger, BigInteger, CancellationToken)
+- uid: chia.dotnet.WalletProxy.SendTransaction*
+  name: SendTransaction
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_SendTransaction_
+  commentId: Overload:chia.dotnet.WalletProxy.SendTransaction
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.SendTransaction
+  nameWithType: WalletProxy.SendTransaction
