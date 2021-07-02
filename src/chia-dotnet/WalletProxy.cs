@@ -455,7 +455,7 @@ namespace chia.dotnet
         /// Creates a new DID wallet
         /// </summary>
         /// <param name="backupDIDs">Backup DIDs</param>
-        /// <param name="numOfBackupIdsNeeded">The number of back ids needed to create the wallet/param>
+        /// <param name="numOfBackupIdsNeeded">The number of back ids needed to create the wallet</param>
         /// <param name="amount">the amount to put in the wallet</param>           
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the wallet</returns>
@@ -476,7 +476,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Recvoers a DID wallet
+        /// Recover a DID wallet
         /// </summary>
         /// <param name="filename">Filename to recover from</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
@@ -494,7 +494,6 @@ namespace chia.dotnet
 
             return (response.Data.type, response.Data.my_did, response.Data.wallet_id, response.Data.coin_name, response.Data.coin_list, response.Data.newpuzhash, response.Data.pubkey, response.Data.backup_dids, response.Data.num_verifications_required);
         }
-
 
         /// <summary>
         /// Creates a new pool wallet
@@ -520,6 +519,29 @@ namespace chia.dotnet
             var response = await Daemon.SendMessage(message, cancellationToken);
 
             return (response.Data.transaction, response.Data.launcher_id, response.Data.p2_singleton_puzzle_hash);
+        }
+
+        /// <summary>
+        /// Sends a transaction
+        /// </summary>
+        /// <param name="walletId">The id of the wallet to send from</param>
+        /// <param name="address">The receiving address</param>
+        /// <param name="amount">The amount to send</param>
+        /// <param name="fee">Fee amount</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>Information about the wallet</returns>
+        public async Task<dynamic> SendTransaction(uint walletId, string address, BigInteger amount, BigInteger fee, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_id = walletId;
+            data.address = address;
+            data.amount = amount;
+            data.fee = fee;
+
+            var message = CreateMessage("send_transaction", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return response.Data.transaction;
         }
     }
 }
