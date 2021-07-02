@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
 
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace chia.dotnet.tests
@@ -171,9 +170,9 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        public async Task GetRecentSignagPointOrEOS()
+        public async Task GetRecentSignagePoint()
         {
-            var sp = await _theFullNode.GetRecentSignagPointOrEOS("0x315ec5a8e0ac849915e136b81fd2d2277ae3804e2aea3911321ed293eb3595fb", CancellationToken.None);
+            var sp = await _theFullNode.GetRecentSignagePoint("0x315ec5a8e0ac849915e136b81fd2d2277ae3804e2aea3911321ed293eb3595fb", CancellationToken.None);
             Assert.IsNotNull(sp);
         }
     }

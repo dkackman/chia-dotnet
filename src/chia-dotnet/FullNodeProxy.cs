@@ -295,12 +295,12 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Gets a recent signage point or the end of slot
+        /// Gets a recent signage point
         /// </summary>
         /// <param name="spHash">signage point hash</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Indicator of whether the spend bundle was successfully included in the mempool</returns>
-        public async Task<dynamic> GetRecentSignagPointOrEOS(string spHash, CancellationToken cancellationToken)
+        public async Task<(dynamic signagePoint, double timeReceived, bool reverted)> GetRecentSignagePoint(string spHash, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.sp_hash = spHash;
@@ -308,16 +308,16 @@ namespace chia.dotnet
             var message = CreateMessage("get_recent_signage_point_or_eos", data);
             var response = await Daemon.SendMessage(message, cancellationToken);
 
-            return response.Data;
+            return (response.Data.signage_point, response.Data.time_received, response.Data.reverted);
         }
 
         /// <summary>
-        /// Gets a recent signage point or the end of slot
+        /// Gets a recent end of slot
         /// </summary>
-        /// <param name="challengeHash">signage point challenge hash</param> 
+        /// <param name="challengeHash">challenge hash</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A signange _point or an eos</returns>
-        public async Task<dynamic> GetRecentSignagPointOrEOSByChallenge(string challengeHash, CancellationToken cancellationToken)
+        public async Task<(dynamic eos, double timeReceived, bool reverted)> GetRecentEOS(string challengeHash, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.challenge_hash = challengeHash;
@@ -325,7 +325,7 @@ namespace chia.dotnet
             var message = CreateMessage("get_recent_signage_point_or_eos", data);
             var response = await Daemon.SendMessage(message, cancellationToken);
 
-            return response.Data;
+            return (response.Data.eos, response.Data.time_received, response.Data.reverted);
         }
 
 
