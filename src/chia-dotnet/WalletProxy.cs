@@ -494,5 +494,32 @@ namespace chia.dotnet
 
             return (response.Data.type, response.Data.my_did, response.Data.wallet_id, response.Data.coin_name, response.Data.coin_list, response.Data.newpuzhash, response.Data.pubkey, response.Data.backup_dids, response.Data.num_verifications_required);
         }
+
+
+        /// <summary>
+        /// Creates a new pool wallet
+        /// </summary>
+        /// <param name="initialTargetState">The desired intial statue of the wallet</param>
+        /// <param name="p2SingletonDelayedPH">A delayed address (can be null or empty to not use)</param>
+        /// <param name="p2SingletonDelayTime">Delay time to create the wallet</param>           
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>Information about the wallet</returns>
+        public async Task<(dynamic transaction, string launcherId, string p2SingletonHash)> CreatePoolWallet(dynamic initialTargetState, BigInteger p2SingletonDelayTime, string p2SingletonDelayedPH, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_type = "pool_wallet";
+            data.mode = "new";
+            data.initial_target_state = initialTargetState;
+            data.p2_singleton_delay_time = p2SingletonDelayTime;
+            if (!string.IsNullOrEmpty(p2SingletonDelayedPH))
+            {
+                data.p2_singleton_delayed_ph = p2SingletonDelayedPH;
+            }
+
+            var message = CreateMessage("create_new_wallet", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return (response.Data.transaction, response.Data.launcher_id, response.Data.p2_singleton_puzzle_hash);
+        }
     }
 }
