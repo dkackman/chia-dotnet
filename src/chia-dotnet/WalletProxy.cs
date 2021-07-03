@@ -543,5 +543,44 @@ namespace chia.dotnet
 
             return response.Data.transaction;
         }
+
+        /// <summary>
+        /// Sends a transaction
+        /// </summary>
+        /// <param name="walletId">The id of the wallet to send from</param>
+        /// <param name="additions">Additions to the block chain</param>
+        /// <param name="coins">Coins to include</param>
+        /// <param name="fee">Fee amount</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>Information about the wallet</returns>
+        public async Task<dynamic> SendTransactionMulti(uint walletId, IEnumerable<dynamic> additions, IEnumerable<dynamic> coins, BigInteger fee, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_id = walletId;
+            data.additions = additions.ToList();
+            data.fee = fee;
+            if (coins != null) // coins are optional
+            {
+                data.coins = coins.ToList();
+            }
+
+            var message = CreateMessage("send_transaction_multi", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return response.Data.transaction;
+        }
+
+        /// <summary>
+        /// Sends a transaction
+        /// </summary>
+        /// <param name="walletId">The id of the wallet to send from</param>
+        /// <param name="additions">Additions to the block chain</param>
+        /// <param name="fee">Fee amount</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>Information about the wallet</returns>
+        public async Task<dynamic> SendTransactionMulti(uint walletId, IEnumerable<dynamic> additions, BigInteger fee, CancellationToken cancellationToken)
+        {
+            return await SendTransactionMulti(walletId, additions, null, fee, cancellationToken);
+        }
     }
 }
