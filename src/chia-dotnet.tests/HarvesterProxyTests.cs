@@ -39,10 +39,9 @@ namespace chia.dotnet.tests
 
         [TestMethod()]
         [TestCategory("CAUTION")]
-        [Ignore]
         public async Task DeletePlot()
         {
-            await _theHarvester.DeletePlot("<plot name", CancellationToken.None);
+            await _theHarvester.DeletePlot("<plot name>", CancellationToken.None);
         }
 
         [TestMethod()]
@@ -54,8 +53,7 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        [TestCategory("CAUTION")]
-        [Ignore]
+        [TestCategory("CAUTION")]        
         public async Task AddPlotDirectory()
         {
             await _theHarvester.AddPlotDirectory("/mnt/plots/", CancellationToken.None);
@@ -69,7 +67,6 @@ namespace chia.dotnet.tests
 
         [TestMethod()]
         [TestCategory("CAUTION")]
-        [Ignore]
         public async Task RemovePlotDirectory()
         {
             await _theHarvester.RemovePlotDirectory("/mnt/plots/", CancellationToken.None);
