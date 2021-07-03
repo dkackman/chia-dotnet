@@ -28,7 +28,6 @@ namespace chia.dotnet.tests
             _theDaemon?.Dispose();
         }
 
-
         [TestMethod()]
         public async Task GetPlots()
         {
@@ -53,7 +52,7 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        [TestCategory("CAUTION")]        
+        [TestCategory("CAUTION")]
         public async Task AddPlotDirectory()
         {
             await _theHarvester.AddPlotDirectory("/mnt/plots/", CancellationToken.None);
