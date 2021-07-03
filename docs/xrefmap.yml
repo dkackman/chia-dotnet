@@ -1586,3 +1586,28 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.SendTransaction
   nameWithType: WalletProxy.SendTransaction
+- uid: chia.dotnet.WalletProxy.SendTransactionMulti(System.UInt32,System.Collections.Generic.IEnumerable{System.Object},System.Collections.Generic.IEnumerable{System.Object},System.Numerics.BigInteger,System.Threading.CancellationToken)
+  name: SendTransactionMulti(UInt32, IEnumerable<Object>, IEnumerable<Object>, BigInteger, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_SendTransactionMulti_System_UInt32_System_Collections_Generic_IEnumerable_System_Object__System_Collections_Generic_IEnumerable_System_Object__System_Numerics_BigInteger_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.SendTransactionMulti(System.UInt32,System.Collections.Generic.IEnumerable{System.Object},System.Collections.Generic.IEnumerable{System.Object},System.Numerics.BigInteger,System.Threading.CancellationToken)
+  name.vb: SendTransactionMulti(UInt32, IEnumerable(Of Object), IEnumerable(Of Object), BigInteger, CancellationToken)
+  fullName: chia.dotnet.WalletProxy.SendTransactionMulti(System.UInt32, System.Collections.Generic.IEnumerable<System.Object>, System.Collections.Generic.IEnumerable<System.Object>, System.Numerics.BigInteger, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.WalletProxy.SendTransactionMulti(System.UInt32, System.Collections.Generic.IEnumerable(Of System.Object), System.Collections.Generic.IEnumerable(Of System.Object), System.Numerics.BigInteger, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.SendTransactionMulti(UInt32, IEnumerable<Object>, IEnumerable<Object>, BigInteger, CancellationToken)
+  nameWithType.vb: WalletProxy.SendTransactionMulti(UInt32, IEnumerable(Of Object), IEnumerable(Of Object), BigInteger, CancellationToken)
+- uid: chia.dotnet.WalletProxy.SendTransactionMulti(System.UInt32,System.Collections.Generic.IEnumerable{System.Object},System.Numerics.BigInteger,System.Threading.CancellationToken)
+  name: SendTransactionMulti(UInt32, IEnumerable<Object>, BigInteger, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_SendTransactionMulti_System_UInt32_System_Collections_Generic_IEnumerable_System_Object__System_Numerics_BigInteger_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.SendTransactionMulti(System.UInt32,System.Collections.Generic.IEnumerable{System.Object},System.Numerics.BigInteger,System.Threading.CancellationToken)
+  name.vb: SendTransactionMulti(UInt32, IEnumerable(Of Object), BigInteger, CancellationToken)
+  fullName: chia.dotnet.WalletProxy.SendTransactionMulti(System.UInt32, System.Collections.Generic.IEnumerable<System.Object>, System.Numerics.BigInteger, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.WalletProxy.SendTransactionMulti(System.UInt32, System.Collections.Generic.IEnumerable(Of System.Object), System.Numerics.BigInteger, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.SendTransactionMulti(UInt32, IEnumerable<Object>, BigInteger, CancellationToken)
+  nameWithType.vb: WalletProxy.SendTransactionMulti(UInt32, IEnumerable(Of Object), BigInteger, CancellationToken)
+- uid: chia.dotnet.WalletProxy.SendTransactionMulti*
+  name: SendTransactionMulti
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_SendTransactionMulti_
+  commentId: Overload:chia.dotnet.WalletProxy.SendTransactionMulti
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.SendTransactionMulti
+  nameWithType: WalletProxy.SendTransactionMulti
