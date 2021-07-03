@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Numerics;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace chia.dotnet.tests
@@ -159,6 +161,19 @@ namespace chia.dotnet.tests
             Assert.IsNotNull(key);
 
             await _theWallet.DeleteKey(fingerprint, CancellationToken.None);
+        }
+
+        [TestMethod()]
+        public async Task SendTransaction()
+        {
+            var fingerprints = await _theWallet.GetPublicKeys(CancellationToken.None);
+            Assert.IsNotNull(fingerprints);
+            Assert.IsTrue(fingerprints.Count() > 0);
+
+            _ = await _theWallet.LogIn(fingerprints.First(), skipImport: true, CancellationToken.None);
+            var transaction = await _theWallet.SendTransaction(1, "txch1em43zsczg2fv79jlg00ucedl9x3atvpnfa09uuk5pgd7v9039sdsashhuq", BigInteger.One, BigInteger.One, CancellationToken.None);
+
+            Assert.IsNotNull(transaction);
         }
     }
 }

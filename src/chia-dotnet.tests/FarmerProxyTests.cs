@@ -44,12 +44,11 @@ namespace chia.dotnet.tests
 
         [TestMethod]
         [TestCategory("CAUTION")]
-        [Ignore]
         public async Task SetRewardTargets()
         {
             // this will change the state of the farmer - make sure you want to do this
             // fill in addresses for target and pool as appropriate
-            await _theFarmer.SetRewardTargets("", "", CancellationToken.None);
+            await _theFarmer.SetRewardTargets("txch1pacgsfkngcrw50pnuvgvak0qpt8mx9pmey2uxl6p65c9727lhc0sgnklt4", "txch1pacgsfkngcrw50pnuvgvak0qpt8mx9pmey2uxl6p65c9727lhc0sgnklt4", CancellationToken.None);
         }
 
         [TestMethod]
