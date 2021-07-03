@@ -582,5 +582,44 @@ namespace chia.dotnet
         {
             return await SendTransactionMulti(walletId, additions, null, fee, cancellationToken);
         }
+
+        /// <summary>
+        /// Create but do not send a transaction
+        /// </summary>
+        /// <param name="walletId">The id of the wallet to send from</param>
+        /// <param name="additions">Additions to the block chain</param>
+        /// <param name="coins">Coins to include</param>
+        /// <param name="fee">Fee amount</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>Information about the wallet</returns>
+        public async Task<dynamic> CreateSignedTransaction(uint walletId, IEnumerable<dynamic> additions, IEnumerable<dynamic> coins, BigInteger fee, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_id = walletId;
+            data.additions = additions.ToList();
+            data.fee = fee;
+            if (coins != null) // coins are optional
+            {
+                data.coins = coins.ToList();
+            }
+
+            var message = CreateMessage("create_signed_transaction", data);
+            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            return response.Data.signed_tx;
+        }
+
+        /// <summary>
+        /// Create but do not send a transaction
+        /// </summary>
+        /// <param name="walletId">The id of the wallet to send from</param>
+        /// <param name="additions">Additions to the block chain</param>
+        /// <param name="fee">Fee amount</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>Information about the wallet</returns>
+        public async Task<dynamic> CreateSignedTransaction(uint walletId, IEnumerable<dynamic> additions, BigInteger fee, CancellationToken cancellationToken)
+        {
+            return await CreateSignedTransaction(walletId, additions, null, fee, cancellationToken);
+        }
     }
 }
