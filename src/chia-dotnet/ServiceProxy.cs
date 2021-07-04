@@ -7,11 +7,11 @@ using System.Collections.Generic;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Wrapper class that uses a <see cref="Daemon"/> to send and receive messages to other services
+    /// Base class that uses a <see cref="Daemon"/> to send and receive messages to other services
     /// </summary>
     /// <remarks>The lifetime of the daemon is not controlled by the proxy. It should be disposed outside of this class. <see cref="RpcClient.Connect(CancellationToken)"/></remarks>
     /// and <see cref="Daemon.Register(CancellationToken)"/> should be invoked 
-    public class ServiceProxy
+    public abstract class ServiceProxy
     {
         /// <summary>
         /// ctor
