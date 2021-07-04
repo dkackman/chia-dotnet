@@ -73,7 +73,7 @@
   
   <h1 id="chia_dotnet_Config" data-uid="chia.dotnet.Config" class="text-break">Class Config
   </h1>
-  <div class="markdown level0 summary"><p>Represents the chia config yaml file and its contents. Used to find the uri and ssl certs needed to connect via a <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.net.websockets.websocket">WebSocket</a></p>
+  <div class="markdown level0 summary"><p>Represents a chia config yaml file and its contents. Used to find the uri and ssl certs needed to connect via a <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.net.websockets.websocket">WebSocket</a></p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -153,7 +153,7 @@
   </span>
   <a id="chia_dotnet_Config_DefaultRootPath_" data-uid="chia.dotnet.Config.DefaultRootPath*"></a>
   <h4 id="chia_dotnet_Config_DefaultRootPath" data-uid="chia.dotnet.Config.DefaultRootPath">DefaultRootPath</h4>
-  <div class="markdown level1 summary"><p>The OS specific default location of the chia root folder</p>
+  <div class="markdown level1 summary"><p>The OS specific default location of the chia root folder (respects CHIA_ROOT)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -206,7 +206,7 @@
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">serviceName</span></td>
-        <td><p>The setion name in the config file. Use 'daemon' for the root config that include 'sel_fhostname'; i.e. the local daemon</p>
+        <td><p>The setion name in the config file. Use 'daemon' for the root config that include 'self_hostname'; i.e. the local daemon</p>
 </td>
       </tr>
     </tbody>

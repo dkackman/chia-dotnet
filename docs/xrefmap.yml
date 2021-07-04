@@ -1081,25 +1081,6 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.ServiceProxy.CloseConnection
   nameWithType: ServiceProxy.CloseConnection
-- uid: chia.dotnet.ServiceProxy.CreateMessage(System.String)
-  name: CreateMessage(String)
-  href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_CreateMessage_System_String_
-  commentId: M:chia.dotnet.ServiceProxy.CreateMessage(System.String)
-  fullName: chia.dotnet.ServiceProxy.CreateMessage(System.String)
-  nameWithType: ServiceProxy.CreateMessage(String)
-- uid: chia.dotnet.ServiceProxy.CreateMessage(System.String,System.Object)
-  name: CreateMessage(String, Object)
-  href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_CreateMessage_System_String_System_Object_
-  commentId: M:chia.dotnet.ServiceProxy.CreateMessage(System.String,System.Object)
-  fullName: chia.dotnet.ServiceProxy.CreateMessage(System.String, System.Object)
-  nameWithType: ServiceProxy.CreateMessage(String, Object)
-- uid: chia.dotnet.ServiceProxy.CreateMessage*
-  name: CreateMessage
-  href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_CreateMessage_
-  commentId: Overload:chia.dotnet.ServiceProxy.CreateMessage
-  isSpec: "True"
-  fullName: chia.dotnet.ServiceProxy.CreateMessage
-  nameWithType: ServiceProxy.CreateMessage
 - uid: chia.dotnet.ServiceProxy.Daemon
   name: Daemon
   href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_Daemon
@@ -1165,6 +1146,25 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.ServiceProxy.Ping
   nameWithType: ServiceProxy.Ping
+- uid: chia.dotnet.ServiceProxy.SendMessage(System.String,System.Object,System.Threading.CancellationToken)
+  name: SendMessage(String, Object, CancellationToken)
+  href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_SendMessage_System_String_System_Object_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.ServiceProxy.SendMessage(System.String,System.Object,System.Threading.CancellationToken)
+  fullName: chia.dotnet.ServiceProxy.SendMessage(System.String, System.Object, System.Threading.CancellationToken)
+  nameWithType: ServiceProxy.SendMessage(String, Object, CancellationToken)
+- uid: chia.dotnet.ServiceProxy.SendMessage(System.String,System.Threading.CancellationToken)
+  name: SendMessage(String, CancellationToken)
+  href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_SendMessage_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.ServiceProxy.SendMessage(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.ServiceProxy.SendMessage(System.String, System.Threading.CancellationToken)
+  nameWithType: ServiceProxy.SendMessage(String, CancellationToken)
+- uid: chia.dotnet.ServiceProxy.SendMessage*
+  name: SendMessage
+  href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_SendMessage_
+  commentId: Overload:chia.dotnet.ServiceProxy.SendMessage
+  isSpec: "True"
+  fullName: chia.dotnet.ServiceProxy.SendMessage
+  nameWithType: ServiceProxy.SendMessage
 - uid: chia.dotnet.ServiceProxy.StopNode(System.Threading.CancellationToken)
   name: StopNode(CancellationToken)
   href: api/chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_StopNode_System_Threading_CancellationToken_
@@ -1333,6 +1333,31 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.CreateRecoveryDiDWallet
   nameWithType: WalletProxy.CreateRecoveryDiDWallet
+- uid: chia.dotnet.WalletProxy.CreateSignedTransaction(System.UInt32,System.Collections.Generic.IEnumerable{System.Object},System.Collections.Generic.IEnumerable{System.Object},System.Numerics.BigInteger,System.Threading.CancellationToken)
+  name: CreateSignedTransaction(UInt32, IEnumerable<Object>, IEnumerable<Object>, BigInteger, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateSignedTransaction_System_UInt32_System_Collections_Generic_IEnumerable_System_Object__System_Collections_Generic_IEnumerable_System_Object__System_Numerics_BigInteger_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.CreateSignedTransaction(System.UInt32,System.Collections.Generic.IEnumerable{System.Object},System.Collections.Generic.IEnumerable{System.Object},System.Numerics.BigInteger,System.Threading.CancellationToken)
+  name.vb: CreateSignedTransaction(UInt32, IEnumerable(Of Object), IEnumerable(Of Object), BigInteger, CancellationToken)
+  fullName: chia.dotnet.WalletProxy.CreateSignedTransaction(System.UInt32, System.Collections.Generic.IEnumerable<System.Object>, System.Collections.Generic.IEnumerable<System.Object>, System.Numerics.BigInteger, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.WalletProxy.CreateSignedTransaction(System.UInt32, System.Collections.Generic.IEnumerable(Of System.Object), System.Collections.Generic.IEnumerable(Of System.Object), System.Numerics.BigInteger, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.CreateSignedTransaction(UInt32, IEnumerable<Object>, IEnumerable<Object>, BigInteger, CancellationToken)
+  nameWithType.vb: WalletProxy.CreateSignedTransaction(UInt32, IEnumerable(Of Object), IEnumerable(Of Object), BigInteger, CancellationToken)
+- uid: chia.dotnet.WalletProxy.CreateSignedTransaction(System.UInt32,System.Collections.Generic.IEnumerable{System.Object},System.Numerics.BigInteger,System.Threading.CancellationToken)
+  name: CreateSignedTransaction(UInt32, IEnumerable<Object>, BigInteger, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateSignedTransaction_System_UInt32_System_Collections_Generic_IEnumerable_System_Object__System_Numerics_BigInteger_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.CreateSignedTransaction(System.UInt32,System.Collections.Generic.IEnumerable{System.Object},System.Numerics.BigInteger,System.Threading.CancellationToken)
+  name.vb: CreateSignedTransaction(UInt32, IEnumerable(Of Object), BigInteger, CancellationToken)
+  fullName: chia.dotnet.WalletProxy.CreateSignedTransaction(System.UInt32, System.Collections.Generic.IEnumerable<System.Object>, System.Numerics.BigInteger, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.WalletProxy.CreateSignedTransaction(System.UInt32, System.Collections.Generic.IEnumerable(Of System.Object), System.Numerics.BigInteger, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.CreateSignedTransaction(UInt32, IEnumerable<Object>, BigInteger, CancellationToken)
+  nameWithType.vb: WalletProxy.CreateSignedTransaction(UInt32, IEnumerable(Of Object), BigInteger, CancellationToken)
+- uid: chia.dotnet.WalletProxy.CreateSignedTransaction*
+  name: CreateSignedTransaction
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateSignedTransaction_
+  commentId: Overload:chia.dotnet.WalletProxy.CreateSignedTransaction
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.CreateSignedTransaction
+  nameWithType: WalletProxy.CreateSignedTransaction
 - uid: chia.dotnet.WalletProxy.DefaultBackupHost
   name: DefaultBackupHost
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_DefaultBackupHost
@@ -1391,6 +1416,32 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.GenerateMnemonic
   nameWithType: WalletProxy.GenerateMnemonic
+- uid: chia.dotnet.WalletProxy.GetColouredCoinColour(System.UInt32,System.Threading.CancellationToken)
+  name: GetColouredCoinColour(UInt32, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetColouredCoinColour_System_UInt32_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.GetColouredCoinColour(System.UInt32,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.GetColouredCoinColour(System.UInt32, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.GetColouredCoinColour(UInt32, CancellationToken)
+- uid: chia.dotnet.WalletProxy.GetColouredCoinColour*
+  name: GetColouredCoinColour
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetColouredCoinColour_
+  commentId: Overload:chia.dotnet.WalletProxy.GetColouredCoinColour
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.GetColouredCoinColour
+  nameWithType: WalletProxy.GetColouredCoinColour
+- uid: chia.dotnet.WalletProxy.GetColouredCoinName(System.UInt32,System.Threading.CancellationToken)
+  name: GetColouredCoinName(UInt32, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetColouredCoinName_System_UInt32_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.GetColouredCoinName(System.UInt32,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.GetColouredCoinName(System.UInt32, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.GetColouredCoinName(UInt32, CancellationToken)
+- uid: chia.dotnet.WalletProxy.GetColouredCoinName*
+  name: GetColouredCoinName
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetColouredCoinName_
+  commentId: Overload:chia.dotnet.WalletProxy.GetColouredCoinName
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.GetColouredCoinName
+  nameWithType: WalletProxy.GetColouredCoinName
 - uid: chia.dotnet.WalletProxy.GetFarmedAmount(System.UInt32,System.Threading.CancellationToken)
   name: GetFarmedAmount(UInt32, CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetFarmedAmount_System_UInt32_System_Threading_CancellationToken_
@@ -1611,3 +1662,16 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.SendTransactionMulti
   nameWithType: WalletProxy.SendTransactionMulti
+- uid: chia.dotnet.WalletProxy.SetColouredCoinName(System.UInt32,System.String,System.Threading.CancellationToken)
+  name: SetColouredCoinName(UInt32, String, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_SetColouredCoinName_System_UInt32_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.SetColouredCoinName(System.UInt32,System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.SetColouredCoinName(System.UInt32, System.String, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.SetColouredCoinName(UInt32, String, CancellationToken)
+- uid: chia.dotnet.WalletProxy.SetColouredCoinName*
+  name: SetColouredCoinName
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_SetColouredCoinName_
+  commentId: Overload:chia.dotnet.WalletProxy.SetColouredCoinName
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.SetColouredCoinName
+  nameWithType: WalletProxy.SetColouredCoinName
