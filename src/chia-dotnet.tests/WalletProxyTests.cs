@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using System.Numerics;
+using System.Collections.Generic;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -201,6 +202,28 @@ namespace chia.dotnet.tests
             var colour = await _theWallet.GetColouredCoinColour(2, CancellationToken.None);
 
             Assert.IsNotNull(colour);
+        }
+
+        [TestMethod()]
+        public async Task CreateOfferForIds()
+        {
+            await LoginToFirstWallet();
+            var ids = new Dictionary<int, int>()
+            {
+                { 1, 1 }
+            };
+
+            await _theWallet.CreateOfferForIds(ids, @"C:\tmp\test.offer", CancellationToken.None);
+        }
+
+        [TestMethod()]
+        public async Task GetDiscrepenciesForOffer()
+        {
+            await LoginToFirstWallet();
+
+            var discrepencies = await _theWallet.GetDiscrepenciesForOffer(@"C:\tmp\test.offer", CancellationToken.None);
+
+            Assert.IsNotNull(discrepencies);
         }
 
         private async Task LoginToFirstWallet()
