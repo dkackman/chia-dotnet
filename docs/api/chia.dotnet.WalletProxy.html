@@ -527,7 +527,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;(byte Type, string Colour, uint WalletId)&gt; CreateNewColourCoinWallet(BigInteger fee, BigInteger amount, string colour, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;(byte Type, string Colour, uint WalletId)&gt; CreateNewColourCoinWallet(BigInteger amount, BigInteger fee, string colour, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -541,14 +541,14 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a></td>
-        <td><span class="parametername">fee</span></td>
-        <td><p>fee to create the wallet</p>
+        <td><span class="parametername">amount</span></td>
+        <td><p>the amount to put in the wallet</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a></td>
-        <td><span class="parametername">amount</span></td>
-        <td><p>the amount to put in the wallet</p>
+        <td><span class="parametername">fee</span></td>
+        <td><p>fee to create the wallet</p>
 </td>
       </tr>
       <tr>
@@ -663,7 +663,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;(uint Id, byte Type, dynamic origin, string pubkey)&gt; CreateRateLimitedAdminWallet(string pubkey, BigInteger interval, BigInteger limit, BigInteger fee, BigInteger amount, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;(uint Id, byte Type, dynamic origin, string pubkey)&gt; CreateRateLimitedAdminWallet(string pubkey, BigInteger interval, BigInteger limit, BigInteger amount, BigInteger fee, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -695,14 +695,14 @@
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a></td>
-        <td><span class="parametername">fee</span></td>
-        <td><p>fee to create the wallet</p>
+        <td><span class="parametername">amount</span></td>
+        <td><p>the amount to put in the wallet</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a></td>
-        <td><span class="parametername">amount</span></td>
-        <td><p>the amount to put in the wallet</p>
+        <td><span class="parametername">fee</span></td>
+        <td><p>fee to create the wallet</p>
 </td>
       </tr>
       <tr>
@@ -2347,6 +2347,79 @@
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
         <td><p>An awaitable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_WalletProxy_SpendColouredCoin_System_UInt32_System_String_System_Numerics_BigInteger_System_Numerics_BigInteger_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.WalletProxy.SpendColouredCoin(System.UInt32%2CSystem.String%2CSystem.Numerics.BigInteger%2CSystem.Numerics.BigInteger%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L651">View Source</a>
+  </span>
+  <a id="chia_dotnet_WalletProxy_SpendColouredCoin_" data-uid="chia.dotnet.WalletProxy.SpendColouredCoin*"></a>
+  <h4 id="chia_dotnet_WalletProxy_SpendColouredCoin_System_UInt32_System_String_System_Numerics_BigInteger_System_Numerics_BigInteger_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.SpendColouredCoin(System.UInt32,System.String,System.Numerics.BigInteger,System.Numerics.BigInteger,System.Threading.CancellationToken)">SpendColouredCoin(UInt32, String, BigInteger, BigInteger, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Spend a coloured coin</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;dynamic&gt; SpendColouredCoin(uint walletId, string innerAddress, BigInteger amount, BigInteger fee, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint32">UInt32</a></td>
+        <td><span class="parametername">walletId</span></td>
+        <td><p>The id of the wallet</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">innerAddress</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a></td>
+        <td><span class="parametername">amount</span></td>
+        <td><p>the amount to put in the wallet</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a></td>
+        <td><span class="parametername">fee</span></td>
+        <td><p>fee to create the wallet</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
+        <td><p>A transaction</p>
 </td>
       </tr>
     </tbody>

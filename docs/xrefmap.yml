@@ -1675,3 +1675,16 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.SetColouredCoinName
   nameWithType: WalletProxy.SetColouredCoinName
+- uid: chia.dotnet.WalletProxy.SpendColouredCoin(System.UInt32,System.String,System.Numerics.BigInteger,System.Numerics.BigInteger,System.Threading.CancellationToken)
+  name: SpendColouredCoin(UInt32, String, BigInteger, BigInteger, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_SpendColouredCoin_System_UInt32_System_String_System_Numerics_BigInteger_System_Numerics_BigInteger_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.SpendColouredCoin(System.UInt32,System.String,System.Numerics.BigInteger,System.Numerics.BigInteger,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.SpendColouredCoin(System.UInt32, System.String, System.Numerics.BigInteger, System.Numerics.BigInteger, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.SpendColouredCoin(UInt32, String, BigInteger, BigInteger, CancellationToken)
+- uid: chia.dotnet.WalletProxy.SpendColouredCoin*
+  name: SpendColouredCoin
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_SpendColouredCoin_
+  commentId: Overload:chia.dotnet.WalletProxy.SpendColouredCoin
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.SpendColouredCoin
+  nameWithType: WalletProxy.SpendColouredCoin

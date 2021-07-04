@@ -73,7 +73,7 @@
   
   <h1 id="chia_dotnet_ServiceProxy" data-uid="chia.dotnet.ServiceProxy" class="text-break">Class ServiceProxy
   </h1>
-  <div class="markdown level0 summary"><p>Wrapper class that uses a <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_Daemon">Daemon</a> to send and receive messages to other services</p>
+  <div class="markdown level0 summary"><p>Base class that uses a <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_Daemon">Daemon</a> to send and receive messages to other services</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -113,7 +113,7 @@
   <h6><strong>Assembly</strong>: chia-dotnet.dll</h6>
   <h5 id="chia_dotnet_ServiceProxy_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ServiceProxy</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class ServiceProxy</code></pre>
   </div>
   <h5 id="chia_dotnet_ServiceProxy_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>The lifetime of the daemon is not controlled by the proxy. It should be disposed outside of this class. <a class="xref" href="chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_Connect_System_Threading_CancellationToken_">Connect(CancellationToken)</a></p>
