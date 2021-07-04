@@ -27,8 +27,7 @@ namespace chia.dotnet
         /// <returns>A list of plots</returns>
         public async Task<(IEnumerable<dynamic> FailedToOpenFilenames, IEnumerable<dynamic> NotFoundFileNames, IEnumerable<dynamic> Plots)> GetPlots(CancellationToken cancellationToken)
         {
-            var message = CreateMessage("get_plots");
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_plots", cancellationToken);
 
             return (response.Data.failed_to_open_filenames, response.Data.not_found_filenames, response.Data.plots);
         }
@@ -45,8 +44,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.filename = filename;
 
-            var message = CreateMessage("delete_plot", data);
-            _ = await Daemon.SendMessage(message, cancellationToken);
+            _ = await SendMessage("delete_plot", data, cancellationToken);
         }
 
         /// <summary>
@@ -56,8 +54,7 @@ namespace chia.dotnet
         /// <returns>List of directories</returns>
         public async Task<IEnumerable<string>> GetPlotDirectories(CancellationToken cancellationToken)
         {
-            var message = CreateMessage("get_plot_directories");
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_plot_directories", cancellationToken);
 
             return ((IEnumerable<dynamic>)response.Data.directories).Select<dynamic, string>(item => item.ToString());
         }
@@ -72,8 +69,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.dirname = dirname;
 
-            var message = CreateMessage("add_plot_directory", data);
-            _ = await Daemon.SendMessage(message, cancellationToken);
+            _ = await SendMessage("add_plot_directory", data, cancellationToken);
         }
 
         /// <summary>
@@ -86,8 +82,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.dirname = dirname;
 
-            var message = CreateMessage("remove_plot_directory", data);
-            _ = await Daemon.SendMessage(message, cancellationToken);
+            _ = await SendMessage("remove_plot_directory", data, cancellationToken);
         }
 
         /// <summary>
@@ -97,8 +92,7 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task RefreshPlots(CancellationToken cancellationToken)
         {
-            var message = CreateMessage("refresh_plots");
-            _ = await Daemon.SendMessage(message, cancellationToken);
+            _ = await SendMessage("refresh_plots", cancellationToken);
         }
     }
 }

@@ -27,8 +27,7 @@ namespace chia.dotnet
         /// <returns>blockchain_state</returns>
         public async Task<dynamic> GetBlockchainState(CancellationToken cancellationToken)
         {
-            var message = CreateMessage("get_blockchain_state");
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_blockchain_state", cancellationToken);
 
             return response.Data.blockchain_state;
         }
@@ -43,8 +42,8 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.header_hash = headerHash;
-            var message = CreateMessage("get_block", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            var response = await SendMessage("get_block", data, cancellationToken);
 
             return response.Data.block;
         }
@@ -59,8 +58,8 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.header_hash = headerHash;
-            var message = CreateMessage("get_block_record", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            var response = await SendMessage("get_block_record", data, cancellationToken);
 
             return response.Data.block_record;
         }
@@ -75,8 +74,8 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.height = height;
-            var message = CreateMessage("get_block_record_by_height", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            var response = await SendMessage("get_block_record_by_height", data, cancellationToken);
 
             return response.Data.block_record;
         }
@@ -93,8 +92,8 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.start = start;
             data.end = end;
-            var message = CreateMessage("get_block_records", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            var response = await SendMessage("get_block_records", data, cancellationToken);
 
             return response.Data.block_records;
         }
@@ -111,8 +110,8 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.start = start;
             data.end = end;
-            var message = CreateMessage("get_blocks", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            var response = await SendMessage("get_blocks", data, cancellationToken);
 
             return response.Data.blocks;
         }
@@ -124,8 +123,7 @@ namespace chia.dotnet
         /// <returns>A list of headers</returns>
         public async Task<IEnumerable<dynamic>> GetUnfinishedBlockHeaders(CancellationToken cancellationToken)
         {
-            var message = CreateMessage("get_unfinished_block_headers");
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_unfinished_block_headers", cancellationToken);
 
             return response.Data.headers;
         }
@@ -142,8 +140,8 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.puzzle_hash = puzzleHash;
             data.include_spend_coins = includeSpendCoins;
-            var message = CreateMessage("get_coin_records_by_puzzle_hash", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            var response = await SendMessage("get_coin_records_by_puzzle_hash", data, cancellationToken);
 
             return response.Data.coin_records;
         }
@@ -164,8 +162,8 @@ namespace chia.dotnet
             data.start = start;
             data.end = end;
             data.include_spend_coins = includeSpendCoins;
-            var message = CreateMessage("get_coin_records_by_puzzle_hash", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            var response = await SendMessage("get_coin_records_by_puzzle_hash", data, cancellationToken);
 
             return response.Data.coin_records;
         }
@@ -180,8 +178,8 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.name = name;
-            var message = CreateMessage("get_coin_record_by_name", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            var response = await SendMessage("get_coin_record_by_name", data, cancellationToken);
 
             return response.Data.coin_record;
         }
@@ -196,8 +194,8 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.header_hash = headerHash;
-            var message = CreateMessage("get_additions_and_removals", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            var response = await SendMessage("get_additions_and_removals", data, cancellationToken);
 
             return (response.Data.additions, response.Data.removals);
         }
@@ -209,8 +207,7 @@ namespace chia.dotnet
         /// <returns>a list of mempool items</returns>
         public async Task<IEnumerable<dynamic>> GetAllMempoolItems(CancellationToken cancellationToken)
         {
-            var message = CreateMessage("get_all_mempool_items");
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_all_mempool_items", cancellationToken);
 
             return response.Data.mempool_items;
         }
@@ -222,8 +219,7 @@ namespace chia.dotnet
         /// <returns>a list of tx_ids</returns>
         public async Task<IEnumerable<dynamic>> GetAllMemmpoolTxIds(CancellationToken cancellationToken)
         {
-            var message = CreateMessage("get_all_mempool_tx_ids");
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_all_mempool_tx_ids", cancellationToken);
 
             return response.Data.tx_ids;
         }
@@ -238,8 +234,8 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.tx_id = txId;
-            var message = CreateMessage("get_mempool_item_by_tx_id");
-            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            var response = await SendMessage("get_mempool_item_by_tx_id", cancellationToken);
 
             return response.Data.mempool_item;
         }
@@ -257,8 +253,7 @@ namespace chia.dotnet
             data.newer_block_header_hash = newerBlockHeaderHash;
             data.older_block_header_hash = olderBlockHeaderHash;
 
-            var message = CreateMessage("get_network_space", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_network_space", data, cancellationToken);
 
             return response.Data.space;
         }
@@ -270,8 +265,7 @@ namespace chia.dotnet
         /// <returns>some information about the current network</returns>
         public async Task<(string NetworkName, string NetworkPrefix)> GetNetworkInfo(CancellationToken cancellationToken)
         {
-            var message = CreateMessage("get_network_info");
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_network_info", cancellationToken);
 
             return (response.Data.network_name, response.Data.network_prefix);
         }
@@ -288,10 +282,9 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.spend_bundle = spendBundle;
 
-            var message = CreateMessage("push_tx", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("push_tx", data, cancellationToken);
 
-            return response.Data.status == "SUCCESS";
+            return response.Data.status?.ToString() == "SUCCESS";
         }
 
         /// <summary>
@@ -305,8 +298,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.sp_hash = spHash;
 
-            var message = CreateMessage("get_recent_signage_point_or_eos", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_recent_signage_point_or_eos", data, cancellationToken);
 
             return (response.Data.signage_point, response.Data.time_received, response.Data.reverted);
         }
@@ -322,8 +314,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.challenge_hash = challengeHash;
 
-            var message = CreateMessage("get_recent_signage_point_or_eos", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_recent_signage_point_or_eos", data, cancellationToken);
 
             return (response.Data.eos, response.Data.time_received, response.Data.reverted);
         }
@@ -342,8 +333,7 @@ namespace chia.dotnet
             data.coin_id = coinId;
             data.height = height;
 
-            var message = CreateMessage("get_puzzle_and_solution", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_puzzle_and_solution", data, cancellationToken);
 
             return response.Data.coin_solution;
         }

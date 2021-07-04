@@ -30,8 +30,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.search_for_private_key = searchForPrivateKey;
 
-            var message = CreateMessage("get_reward_targets", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_reward_targets", data, cancellationToken);
 
             return (response.Data.farmer_target, response.Data.pool_target);
         }
@@ -49,8 +48,7 @@ namespace chia.dotnet
             data.farmer_target = farmerTarget;
             data.pool_target = poolTarget;
 
-            var message = CreateMessage("set_reward_targets", data);
-            _ = await Daemon.SendMessage(message, cancellationToken);
+            _ = await SendMessage("set_reward_targets", data, cancellationToken);
         }
 
         /// <summary>
@@ -60,8 +58,7 @@ namespace chia.dotnet
         /// <returns>List of signage points</returns>
         public async Task<IEnumerable<dynamic>> GetSignagePoints(CancellationToken cancellationToken)
         {
-            var message = CreateMessage("get_signage_points");
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_signage_points", cancellationToken);
 
             return response.Data.signage_points;
         }
@@ -76,8 +73,8 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.sp_hash = spHash;
-            var message = CreateMessage("get_signage_point", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+
+            var response = await SendMessage("get_signage_point", data, cancellationToken);
 
             return response.Data.signage_point;
         }
@@ -90,8 +87,7 @@ namespace chia.dotnet
         /// <returns>A list of plots</returns>
         public async Task<dynamic> GetPlots(CancellationToken cancellationToken)
         {
-            var message = CreateMessage("get_plots");
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_plots", cancellationToken);
 
             return response.Data;
         }

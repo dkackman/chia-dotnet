@@ -40,8 +40,7 @@ namespace chia.dotnet
             data.type = skipImport ? "skip" : "normal";
             data.host = DefaultBackupHost;
 
-            var message = CreateMessage("log_in", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("log_in", data, cancellationToken);
 
             return (uint)response.Data.fingerprint;
         }
@@ -61,8 +60,7 @@ namespace chia.dotnet
             data.file_path = filePath;
             data.host = DefaultBackupHost;
 
-            var message = CreateMessage("log_in", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("log_in", data, cancellationToken);
 
             return (uint)response.Data.fingerprint;
         }
@@ -74,8 +72,7 @@ namespace chia.dotnet
         /// <returns>A list of wallets</returns>
         public async Task<IEnumerable<dynamic>> GetWallets(CancellationToken cancellationToken)
         {
-            var message = CreateMessage("get_wallets");
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_wallets", cancellationToken);
 
             return response.Data.wallets;
         }
@@ -91,8 +88,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = walletId;
 
-            var message = CreateMessage("get_wallet_balance", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_wallet_balance", data, cancellationToken);
 
             return response.Data.wallet_balance;
         }
@@ -104,8 +100,7 @@ namespace chia.dotnet
         /// <returns>all root public keys accessible by the walle</returns>
         public async Task<IEnumerable<uint>> GetPublicKeys(CancellationToken cancellationToken)
         {
-            var message = CreateMessage("get_public_keys");
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_public_keys", cancellationToken);
 
             return ((IEnumerable<dynamic>)response.Data.public_key_fingerprints).Select(item => (uint)item);
         }
@@ -121,8 +116,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
 
-            var message = CreateMessage("get_private_key", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_private_key", data, cancellationToken);
 
             return response.Data.private_key;
         }
@@ -134,8 +128,7 @@ namespace chia.dotnet
         /// <returns>sync status</returns>
         public async Task<(bool GenesisInitialized, bool Synced, bool Syncing)> GetSyncStatus(CancellationToken cancellationToken)
         {
-            var message = CreateMessage("get_sync_status");
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_sync_status", cancellationToken);
 
             return (response.Data.genesis_initialized, response.Data.synced, response.Data.syncing);
         }
@@ -147,8 +140,7 @@ namespace chia.dotnet
         /// <returns>network name and prefix</returns>
         public async Task<(string NetworkName, string NetworkPrefix)> GetNetworkInfo(CancellationToken cancellationToken)
         {
-            var message = CreateMessage("get_network_info");
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_network_info", cancellationToken);
 
             return (response.Data.network_name, response.Data.network_prefix);
         }
@@ -160,8 +152,7 @@ namespace chia.dotnet
         /// <returns>Current block height</returns>
         public async Task<uint> GetHeightInfo(CancellationToken cancellationToken)
         {
-            var message = CreateMessage("get_height_info");
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_height_info", cancellationToken);
 
             return response.Data.height;
         }
@@ -177,8 +168,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.transaction_id = transactionId;
 
-            var message = CreateMessage("get_transaction", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_transaction", data, cancellationToken);
 
             return response.Data.transaction;
         }
@@ -194,8 +184,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = walletId;
 
-            var message = CreateMessage("get_transactions", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_transactions", data, cancellationToken);
 
             return response.Data.transactions;
         }
@@ -213,8 +202,7 @@ namespace chia.dotnet
             data.wallet_id = walletId;
             data.new_address = newAddress;
 
-            var message = CreateMessage("get_next_address", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_next_address", data, cancellationToken);
 
             return response.Data.address;
         }
@@ -230,8 +218,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = walletId;
 
-            var message = CreateMessage("get_farmed_amount", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_farmed_amount", data, cancellationToken);
 
             return (response.Data.farmed_amount, response.Data.farmer_reward_amount, response.Data.fee_amount, response.Data.last_height_farmed, response.Data.pool_reward_amount);
         }
@@ -247,8 +234,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.file_path = filePath;
 
-            var message = CreateMessage("create_backup", data);
-            _ = await Daemon.SendMessage(message, cancellationToken);
+            _ = await SendMessage("create_backup", data, cancellationToken);
         }
 
         /// <summary>
@@ -262,8 +248,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = walletId;
 
-            var message = CreateMessage("get_transaction_count", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_transaction_count", data, cancellationToken);
 
             return response.Data.count;
         }
@@ -279,8 +264,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = walletId;
 
-            var message = CreateMessage("delete_unconfirmed_transactions", data);
-            _ = await Daemon.SendMessage(message, cancellationToken);
+            _ = await SendMessage("delete_unconfirmed_transactions", data, cancellationToken);
         }
 
         /// <summary>
@@ -296,8 +280,7 @@ namespace chia.dotnet
             data.mnemonic = mnemonic.ToList();
             data.type = skipImport ? "skip" : "new_wallet";
 
-            var message = CreateMessage("add_key", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("add_key", data, cancellationToken);
 
             return (uint)response.Data.fingerprint;
         }
@@ -316,8 +299,7 @@ namespace chia.dotnet
             data.type = "restore_backup";
             data.file_path = filePath;
 
-            var message = CreateMessage("log_in", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("log_in", data, cancellationToken);
 
             return (uint)response.Data.fingerprint;
         }
@@ -333,8 +315,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
 
-            var message = CreateMessage("delete_all_keys", data);
-            _ = await Daemon.SendMessage(message, cancellationToken);
+            _ = await SendMessage("delete_all_keys", data, cancellationToken);
         }
 
         /// <summary>
@@ -344,8 +325,7 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task DeleteAllKeys(CancellationToken cancellationToken)
         {
-            var message = CreateMessage("delete_all_keys");
-            _ = await Daemon.SendMessage(message, cancellationToken);
+            _ = await SendMessage("delete_all_keys", cancellationToken);
         }
 
         /// <summary>
@@ -355,8 +335,7 @@ namespace chia.dotnet
         /// <returns>The new mnemonic as an <see cref="IEnumerable{T}"/> of 24 words</returns>
         public async Task<IEnumerable<string>> GenerateMnemonic(CancellationToken cancellationToken)
         {
-            var message = CreateMessage("generate_mnemonic");
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("generate_mnemonic", cancellationToken);
 
             return ((IEnumerable<dynamic>)response.Data.mnemonic).Select<dynamic, string>(item => item.ToString());
         }
@@ -379,8 +358,7 @@ namespace chia.dotnet
             data.mode = "new";
             data.colour = colour;
 
-            var message = CreateMessage("create_new_wallet", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
             return (response.Data.type, response.Data.colour, response.Data.wallet_id);
         }
@@ -399,8 +377,7 @@ namespace chia.dotnet
             data.mode = "existing";
             data.colour = colour;
 
-            var message = CreateMessage("create_new_wallet", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
             return response.Data.type;
         }
@@ -427,8 +404,7 @@ namespace chia.dotnet
             data.interval = interval;
             data.limit = limit;
 
-            var message = CreateMessage("create_new_wallet", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
             return (response.Data.id, response.Data.type, response.Data.origin, response.Data.pubkey);
         }
@@ -445,8 +421,7 @@ namespace chia.dotnet
             data.rl_type = "user";
             data.host = DefaultBackupHost;
 
-            var message = CreateMessage("create_new_wallet", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
             return (response.Data.id, response.Data.type, response.Data.pubkey);
         }
@@ -469,8 +444,7 @@ namespace chia.dotnet
             data.amount = amount;
             data.host = DefaultBackupHost;
 
-            var message = CreateMessage("create_new_wallet", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
             return (response.Data.type, response.Data.my_did, response.Data.wallet_id);
         }
@@ -489,8 +463,7 @@ namespace chia.dotnet
             data.did_type = "recovery";
             data.filename = filename;
 
-            var message = CreateMessage("create_new_wallet", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
             return (response.Data.type, response.Data.my_did, response.Data.wallet_id, response.Data.coin_name, response.Data.coin_list, response.Data.newpuzhash, response.Data.pubkey, response.Data.backup_dids, response.Data.num_verifications_required);
         }
@@ -515,8 +488,7 @@ namespace chia.dotnet
                 data.p2_singleton_delayed_ph = p2SingletonDelayedPH;
             }
 
-            var message = CreateMessage("create_new_wallet", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
             return (response.Data.transaction, response.Data.launcher_id, response.Data.p2_singleton_puzzle_hash);
         }
@@ -538,8 +510,7 @@ namespace chia.dotnet
             data.amount = amount;
             data.fee = fee;
 
-            var message = CreateMessage("send_transaction", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("send_transaction", data, cancellationToken);
 
             return response.Data.transaction;
         }
@@ -564,8 +535,7 @@ namespace chia.dotnet
                 data.coins = coins.ToList();
             }
 
-            var message = CreateMessage("send_transaction_multi", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("send_transaction_multi", data, cancellationToken);
 
             return response.Data.transaction;
         }
@@ -603,8 +573,7 @@ namespace chia.dotnet
                 data.coins = coins.ToList();
             }
 
-            var message = CreateMessage("create_signed_transaction", data);
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("create_signed_transaction", data, cancellationToken);
 
             return response.Data.signed_tx;
         }

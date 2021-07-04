@@ -47,9 +47,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task Ping(CancellationToken cancellationToken)
         {
-            var message = CreateMessage("ping");
-
-            _ = await Daemon.SendMessage(message, cancellationToken);
+            _ = await SendMessage("ping", cancellationToken);
         }
 
         /// <summary>
@@ -59,20 +57,17 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task StopNode(CancellationToken cancellationToken)
         {
-            var message = CreateMessage("stop_node");
-
-            _ = await Daemon.SendMessage(message, cancellationToken);
+            _ = await SendMessage("stop_node", cancellationToken);
         }
 
         /// <summary>
-        /// Get connections that the farmer has
+        /// Get connections that the service has
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of connections</returns>
         public async Task<IEnumerable<dynamic>> GetConnections(CancellationToken cancellationToken)
         {
-            var message = CreateMessage("get_connections");
-            var response = await Daemon.SendMessage(message, cancellationToken);
+            var response = await SendMessage("get_connections", cancellationToken);
 
             return response.Data.connections;
         }
@@ -90,8 +85,7 @@ namespace chia.dotnet
             data.host = host;
             data.port = port;
 
-            var message = CreateMessage("open_connection", data);
-            _ = await Daemon.SendMessage(message, cancellationToken);
+            _ = await SendMessage("open_connection", data, cancellationToken);
         }
 
         /// <summary>
@@ -105,31 +99,32 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.node_id = nodeId;
 
-            var message = CreateMessage("close_connection", data);
-            _ = await Daemon.SendMessage(message, cancellationToken);
+            _ = await SendMessage("close_connection", data, cancellationToken);
         }
 
         /// <summary>
-        /// Constructs a <see cref="Message"/> instance with <see cref="Message.Destination"/> and <see cref="Message.Origin"/> set
-        /// from <see cref="DestinationService"/> and <see cref="Daemon.OriginService"/>
+        /// Sends a message via the <see cref="Daemon"/> to <see cref="DestinationService"/>
         /// </summary>
-        /// <param name="command">The command to send</param>
-        /// <returns><see cref="Message"/></returns>
-        protected Message CreateMessage(string command)
+        /// <param name="command">The command</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>A response <see cref="Message"/></returns>
+        protected async Task<Message> SendMessage(string command, CancellationToken cancellationToken)
         {
-            return Message.Create(command, null, DestinationService, Daemon.OriginService);
+            var message = Message.Create(command, null, DestinationService, Daemon.OriginService);
+            return await Daemon.SendMessage(message, cancellationToken);
         }
 
         /// <summary>
-        /// Constructs a <see cref="Message"/> instance with <see cref="Message.Destination"/> and <see cref="Message.Origin"/> set
-        /// from <see cref="DestinationService"/> and <see cref="Daemon.OriginService"/>
+        /// Sends a message via the <see cref="Daemon"/> to <see cref="DestinationService"/>
         /// </summary>
-        /// <param name="command">The command to send</param>
-        /// <param name="data">Data to send with the command</param>
-        /// <returns><see cref="Message"/></returns>
-        protected Message CreateMessage(string command, dynamic data)
+        /// <param name="command">The command</param>
+        /// <param name="data">Data to go along with the command</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>A response <see cref="Message"/></returns>
+        protected async Task<Message> SendMessage(string command, dynamic data, CancellationToken cancellationToken)
         {
-            return Message.Create(command, data, DestinationService, Daemon.OriginService);
+            var message = Message.Create(command, data, DestinationService, Daemon.OriginService);
+            return await Daemon.SendMessage(message, cancellationToken);
         }
     }
 }
