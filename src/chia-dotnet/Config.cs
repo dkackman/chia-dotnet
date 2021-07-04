@@ -46,7 +46,7 @@ namespace chia.dotnet
             }
             else
             {
-                // all other service names resolve to the info at the root of the yaml config
+                // for now all other service names resolve to the info at the root of the yaml config
                 builder.Host = Contents.self_hostname;
                 builder.Port = Convert.ToInt32(Contents.daemon_port);
                 ssl = Contents.daemon_ssl;
