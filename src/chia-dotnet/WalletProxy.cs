@@ -596,7 +596,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="walletId">The id of the wallet</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A name</returns>
+        /// <returns>The coin name</returns>
         public async Task<string> GetColouredCoinName(uint walletId, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
@@ -623,13 +623,12 @@ namespace chia.dotnet
             _ = await SendMessage("cc_set_name", data, cancellationToken);
         }
 
-
         /// <summary>
         /// Get the colour of a wallet's coloured coin
         /// </summary>
         /// <param name="walletId">The id of the wallet</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>An awaitable <see cref="Task"/></returns>
+        /// <returns>The colout as a string</returns>
         public async Task<string> GetColouredCoinColour(uint walletId, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
