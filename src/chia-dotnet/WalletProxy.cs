@@ -343,18 +343,18 @@ namespace chia.dotnet
         /// <summary>
         /// Create a new colour coin wallet
         /// </summary>
-        /// <param name="fee">fee to create the wallet</param>
         /// <param name="amount">the amount to put in the wallet</param>
+        /// <param name="fee">fee to create the wallet</param>
         /// <param name="colour">The coin Colour</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(byte Type, string Colour, uint WalletId)> CreateNewColourCoinWallet(BigInteger fee, BigInteger amount, string colour, CancellationToken cancellationToken)
+        public async Task<(byte Type, string Colour, uint WalletId)> CreateNewColourCoinWallet(BigInteger amount, BigInteger fee, string colour, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.wallet_type = "cc_wallet";
             data.host = DefaultBackupHost;
-            data.fee = fee;
             data.amount = amount;
+            data.fee = fee;
             data.mode = "new";
             data.colour = colour;
 
@@ -388,19 +388,19 @@ namespace chia.dotnet
         /// <param name="pubkey">fee to create the wallet</param>
         /// <param name="interval">The limit interval</param>
         /// <param name="limit">The limit amount</param>
-        /// <param name="fee">fee to create the wallet</param>
         /// <param name="amount">the amount to put in the wallet</param>     
+        /// <param name="fee">fee to create the wallet</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(uint Id, byte Type, dynamic origin, string pubkey)> CreateRateLimitedAdminWallet(string pubkey, BigInteger interval, BigInteger limit, BigInteger fee, BigInteger amount, CancellationToken cancellationToken)
+        public async Task<(uint Id, byte Type, dynamic origin, string pubkey)> CreateRateLimitedAdminWallet(string pubkey, BigInteger interval, BigInteger limit, BigInteger amount, BigInteger fee, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.wallet_type = "rl_wallet";
             data.rl_type = "admin";
             data.host = DefaultBackupHost;
             data.pubkey = pubkey;
-            data.fee = fee;
             data.amount = amount;
+            data.fee = fee;
             data.interval = interval;
             data.limit = limit;
 
@@ -637,6 +637,28 @@ namespace chia.dotnet
             var response = await SendMessage("cc_get_colour", data, cancellationToken);
 
             return response.Data.colour;
+        }
+
+        /// <summary>
+        /// Spend a coloured coin
+        /// </summary>
+        /// <param name="walletId">The id of the wallet</param>
+        /// <param name="limit">The limit amount</param>
+        /// <param name="fee">fee to create the wallet</param>
+        /// <param name="amount">the amount to put in the wallet</param>         
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>A transaction</returns>
+        public async Task<dynamic> SpendColouredCoin(uint walletId, string innerAddress, BigInteger amount, BigInteger fee, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_id = walletId;
+            data.inner_address = innerAddress;
+            data.amount = amount;
+            data.fee = fee;
+
+            var response = await SendMessage("cc_spend", data, cancellationToken);
+
+            return response.Data.transaction;
         }
     }
 }
