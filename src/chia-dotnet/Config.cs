@@ -10,7 +10,7 @@ using YamlDotNet.Serialization;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Represents the chia config yaml file and its contents. Used to find the uri and ssl certs needed to connect via a <see cref="System.Net.WebSockets.WebSocket"/>
+    /// Represents a chia config yaml file and its contents. Used to find the uri and ssl certs needed to connect via a <see cref="System.Net.WebSockets.WebSocket"/>
     /// </summary>
     public sealed class Config
     {
@@ -30,7 +30,7 @@ namespace chia.dotnet
         /// <summary>
         /// Creates an <see cref="EndpointInfo"/> from the named service section
         /// </summary>
-        /// <param name="serviceName">The setion name in the config file. Use 'daemon' for the root config that include 'sel_fhostname'; i.e. the local daemon</param>
+        /// <param name="serviceName">The setion name in the config file. Use 'daemon' for the root config that include 'self_hostname'; i.e. the local daemon</param>
         /// <returns>An <see cref="EndpointInfo"/> that can be used to connect to the given service's RPC interface</returns>
         public EndpointInfo GetEndpoint(string serviceName)
         {
@@ -61,7 +61,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// The OS specific default location of the chia root folder 
+        /// The OS specific default location of the chia root folder (respects CHIA_ROOT)
         /// </summary>
         public static string DefaultRootPath => Environment.GetEnvironmentVariable("CHIA_ROOT") ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".chia", "mainnet");
 
