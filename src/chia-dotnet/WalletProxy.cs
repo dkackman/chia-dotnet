@@ -622,5 +622,22 @@ namespace chia.dotnet
 
             _ = await SendMessage("cc_set_name", data, cancellationToken);
         }
+
+
+        /// <summary>
+        /// Get the colour of a wallet's coloured coin
+        /// </summary>
+        /// <param name="walletId">The id of the wallet</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>An awaitable <see cref="Task"/></returns>
+        public async Task<string> GetColouredCoinColour(uint walletId, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_id = walletId;
+
+            var response = await SendMessage("cc_get_colour", data, cancellationToken);
+
+            return response.Data.colour;
+        }
     }
 }

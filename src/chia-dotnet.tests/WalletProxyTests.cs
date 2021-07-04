@@ -193,6 +193,16 @@ namespace chia.dotnet.tests
             Assert.IsNotNull(name);
         }
 
+        [TestMethod()]
+        public async Task GetColouredCoinColour()
+        {
+            await LoginToFirstWallet();
+
+            var colour = await _theWallet.GetColouredCoinColour(2, CancellationToken.None);
+
+            Assert.IsNotNull(colour);
+        }
+
         private async Task LoginToFirstWallet()
         {
             var fingerprints = await _theWallet.GetPublicKeys(CancellationToken.None);
