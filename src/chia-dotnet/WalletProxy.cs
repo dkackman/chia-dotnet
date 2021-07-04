@@ -590,5 +590,37 @@ namespace chia.dotnet
         {
             return await CreateSignedTransaction(walletId, additions, null, fee, cancellationToken);
         }
+
+        /// <summary>
+        /// Get the name of a wallet's coloured coin
+        /// </summary>
+        /// <param name="walletId">The id of the wallet</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>A name</returns>
+        public async Task<string> GetColouredCoinName(uint walletId, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_id = walletId;
+
+            var response = await SendMessage("cc_get_name", data, cancellationToken);
+
+            return response.Data.name.ToString();
+        }
+
+        /// <summary>
+        /// Set the name of a wallet's coloured coin
+        /// </summary>
+        /// <param name="walletId">The id of the wallet</param>
+        /// <param name="name">The new name</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>An awaitable <see cref="Task"/></returns>
+        public async Task SetColouredCoinName(uint walletId, string name, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_id = walletId;
+            data.name = name;
+
+            _ = await SendMessage("cc_set_name", data, cancellationToken);
+        }
     }
 }

@@ -166,14 +166,38 @@ namespace chia.dotnet.tests
         [TestMethod()]
         public async Task SendTransaction()
         {
-            var fingerprints = await _theWallet.GetPublicKeys(CancellationToken.None);
-            Assert.IsNotNull(fingerprints);
-            Assert.IsTrue(fingerprints.Count() > 0);
+            await LoginToFirstWallet();
 
-            _ = await _theWallet.LogIn(fingerprints.First(), skipImport: true, CancellationToken.None);
             var transaction = await _theWallet.SendTransaction(1, "txch1em43zsczg2fv79jlg00ucedl9x3atvpnfa09uuk5pgd7v9039sdsashhuq", BigInteger.One, BigInteger.One, CancellationToken.None);
 
             Assert.IsNotNull(transaction);
+        }
+
+        [TestMethod()]
+        public async Task CreateNewColourCoinWallet()
+        {
+            await LoginToFirstWallet();
+
+            var walletInfo = await _theWallet.CreateNewColourCoinWallet(BigInteger.One, BigInteger.One, "dkackman.colouredwallet.1", CancellationToken.None);
+
+            Assert.IsNotNull(walletInfo);
+        }
+
+        [TestMethod()]
+        public async Task GetColouredCoinName()
+        {
+            await LoginToFirstWallet();
+
+            var name = await _theWallet.GetColouredCoinName(2, CancellationToken.None);
+
+            Assert.IsNotNull(name);
+        }
+
+        private async Task LoginToFirstWallet()
+        {
+            var fingerprints = await _theWallet.GetPublicKeys(CancellationToken.None);
+
+            _ = await _theWallet.LogIn(fingerprints.First(), skipImport: true, CancellationToken.None);
         }
     }
 }
