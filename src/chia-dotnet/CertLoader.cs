@@ -20,8 +20,8 @@ namespace chia.dotnet
         public static X509Certificate2Collection GetCerts(string certPath, string keyPath)
         {
             using X509Certificate2 cert = new(certPath);
-
             using StreamReader streamReader = new(keyPath);
+
             var base64 = new StringBuilder(streamReader.ReadToEnd())
                 .Replace("-----BEGIN RSA PRIVATE KEY-----", string.Empty)
                 .Replace("-----END RSA PRIVATE KEY-----", string.Empty)
@@ -32,8 +32,8 @@ namespace chia.dotnet
             rsa.ImportRSAPrivateKey(Convert.FromBase64String(base64), out _);
 
             using var certWithKey = cert.CopyWithPrivateKey(rsa);
-
             var ephermeralCert = new X509Certificate2(certWithKey.Export(X509ContentType.Pkcs12));
+
             return new X509Certificate2Collection(ephermeralCert);
         }
     }
