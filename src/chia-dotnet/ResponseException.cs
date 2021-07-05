@@ -5,7 +5,7 @@ namespace chia.dotnet
     /// <summary>
     /// Exception thrown when the RPC endpoint returns a response <see cref="Message"/> but Data.success is false
     /// </summary>
-    public class ResponseException : Exception
+    public sealed class ResponseException : Exception
     {
         /// <summary>
         /// ctor

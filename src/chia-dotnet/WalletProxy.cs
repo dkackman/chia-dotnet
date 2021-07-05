@@ -10,7 +10,7 @@ namespace chia.dotnet
     /// <summary>
     /// Proxy that communicates with the wallet via the daemon
     /// </summary>
-    public class WalletProxy : ServiceProxy
+    public sealed class WalletProxy : ServiceProxy
     {
         /// <summary>
         /// Default location for backups

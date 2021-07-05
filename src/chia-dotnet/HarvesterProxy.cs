@@ -9,7 +9,7 @@ namespace chia.dotnet
     /// <summary>
     /// Proxy that communicates with the harvester via the daemon
     /// </summary>
-    public class HarvesterProxy : ServiceProxy
+    public sealed class HarvesterProxy : ServiceProxy
     {
         /// <summary>
         /// ctor

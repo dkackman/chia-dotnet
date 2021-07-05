@@ -21,7 +21,7 @@ namespace chia.dotnet
     /// <summary>
     /// <see cref="RpcClient"/> for the daemon interface. The daemon can be used to proxy messages to and from other chia services.
     /// </summary>
-    public class Daemon : RpcClient
+    public sealed class Daemon : RpcClient
     {
         /// <summary>
         /// ctor

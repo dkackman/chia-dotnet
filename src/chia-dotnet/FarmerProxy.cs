@@ -8,7 +8,7 @@ namespace chia.dotnet
     /// <summary>
     /// Proxy that communicates with the farmer via the daemon
     /// </summary>
-    public class FarmerProxy : ServiceProxy
+    public sealed class FarmerProxy : ServiceProxy
     {
         /// <summary>
         /// ctor

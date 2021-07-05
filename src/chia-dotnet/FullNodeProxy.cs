@@ -9,7 +9,7 @@ namespace chia.dotnet
     /// <summary>
     /// Proxy that communicates with the full node via the daemon
     /// </summary>
-    public class FullNodeProxy : ServiceProxy
+    public sealed class FullNodeProxy : ServiceProxy
     {
         /// <summary>
         /// ctor
