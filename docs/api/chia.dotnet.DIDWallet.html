@@ -79,10 +79,53 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">DIDWallet</span></div>
+    <div class="level1"><a class="xref" href="chia.dotnet.Wallet.html">Wallet</a></div>
+    <div class="level2"><span class="xref">DIDWallet</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_WalletId">Wallet.WalletId</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_WalletProxy">Wallet.WalletProxy</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_Login_System_Threading_CancellationToken_">Wallet.Login(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetBalance_System_Threading_CancellationToken_">Wallet.GetBalance(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetTransactions_System_Threading_CancellationToken_">Wallet.GetTransactions(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetNextAddress_System_Boolean_System_Threading_CancellationToken_">Wallet.GetNextAddress(Boolean, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetFarmedAmount_System_Threading_CancellationToken_">Wallet.GetFarmedAmount(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetTransactionCount_System_Threading_CancellationToken_">Wallet.GetTransactionCount(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_DeleteUnconfirmedTransactions_System_Threading_CancellationToken_">Wallet.DeleteUnconfirmedTransactions(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransaction_System_String_System_Numerics_BigInteger_System_Numerics_BigInteger_System_Threading_CancellationToken_">Wallet.SendTransaction(String, BigInteger, BigInteger, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_System_Object__System_Collections_Generic_IEnumerable_System_Object__System_Numerics_BigInteger_System_Threading_CancellationToken_">Wallet.SendTransactionMulti(IEnumerable&lt;Object&gt;, IEnumerable&lt;Object&gt;, BigInteger, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_System_Object__System_Numerics_BigInteger_System_Threading_CancellationToken_">Wallet.SendTransactionMulti(IEnumerable&lt;Object&gt;, BigInteger, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_CreateSignedTransaction_System_Collections_Generic_IEnumerable_System_Object__System_Collections_Generic_IEnumerable_System_Object__System_Numerics_BigInteger_System_Threading_CancellationToken_">Wallet.CreateSignedTransaction(IEnumerable&lt;Object&gt;, IEnumerable&lt;Object&gt;, BigInteger, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_CreateSignedTransaction_System_Collections_Generic_IEnumerable_System_Object__System_Numerics_BigInteger_System_Threading_CancellationToken_">Wallet.CreateSignedTransaction(IEnumerable&lt;Object&gt;, BigInteger, CancellationToken)</a>
+    </div>
     <div>
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
     </div>
@@ -109,7 +152,7 @@
   <h6><strong>Assembly</strong>: chia-dotnet.dll</h6>
   <h5 id="chia_dotnet_DIDWallet_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class DIDWallet</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class DIDWallet : Wallet</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -118,7 +161,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DIDWallet__ctor_System_UInt32_chia_dotnet_WalletProxy_.md&amp;value=---%0Auid%3A%20chia.dotnet.DIDWallet.%23ctor(System.UInt32%2Cchia.dotnet.WalletProxy)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L23">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L20">View Source</a>
   </span>
   <a id="chia_dotnet_DIDWallet__ctor_" data-uid="chia.dotnet.DIDWallet.#ctor*"></a>
   <h4 id="chia_dotnet_DIDWallet__ctor_System_UInt32_chia_dotnet_WalletProxy_" data-uid="chia.dotnet.DIDWallet.#ctor(System.UInt32,chia.dotnet.WalletProxy)">DIDWallet(UInt32, WalletProxy)</h4>
@@ -153,39 +196,6 @@
       </tr>
     </tbody>
   </table>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DIDWallet_WalletId.md&amp;value=---%0Auid%3A%20chia.dotnet.DIDWallet.WalletId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L32">View Source</a>
-  </span>
-  <a id="chia_dotnet_DIDWallet_WalletId_" data-uid="chia.dotnet.DIDWallet.WalletId*"></a>
-  <h4 id="chia_dotnet_DIDWallet_WalletId" data-uid="chia.dotnet.DIDWallet.WalletId">WalletId</h4>
-  <div class="markdown level1 summary"><p>The id of the wallet</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public uint WalletId { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint32">UInt32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
@@ -193,7 +203,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DIDWallet_CreateAttest_System_String_System_String_System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DIDWallet.CreateAttest(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L180">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L155">View Source</a>
   </span>
   <a id="chia_dotnet_DIDWallet_CreateAttest_" data-uid="chia.dotnet.DIDWallet.CreateAttest*"></a>
   <h4 id="chia_dotnet_DIDWallet_CreateAttest_System_String_System_String_System_String_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.CreateAttest(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">CreateAttest(String, String, String, String, CancellationToken)</h4>
@@ -266,7 +276,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DIDWallet_CreateBackupFile_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DIDWallet.CreateBackupFile(System.Collections.Generic.IEnumerable%7BSystem.String%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L215">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L190">View Source</a>
   </span>
   <a id="chia_dotnet_DIDWallet_CreateBackupFile_" data-uid="chia.dotnet.DIDWallet.CreateBackupFile*"></a>
   <h4 id="chia_dotnet_DIDWallet_CreateBackupFile_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.CreateBackupFile(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">CreateBackupFile(IEnumerable&lt;String&gt;, CancellationToken)</h4>
@@ -322,7 +332,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DIDWallet_GetDID_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DIDWallet.GetDID(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L103">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L78">View Source</a>
   </span>
   <a id="chia_dotnet_DIDWallet_GetDID_" data-uid="chia.dotnet.DIDWallet.GetDID*"></a>
   <h4 id="chia_dotnet_DIDWallet_GetDID_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.GetDID(System.Threading.CancellationToken)">GetDID(CancellationToken)</h4>
@@ -372,7 +382,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DIDWallet_GetInformationNeededForRecovery_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DIDWallet.GetInformationNeededForRecovery(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L199">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L174">View Source</a>
   </span>
   <a id="chia_dotnet_DIDWallet_GetInformationNeededForRecovery_" data-uid="chia.dotnet.DIDWallet.GetInformationNeededForRecovery*"></a>
   <h4 id="chia_dotnet_DIDWallet_GetInformationNeededForRecovery_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.GetInformationNeededForRecovery(System.Threading.CancellationToken)">GetInformationNeededForRecovery(CancellationToken)</h4>
@@ -422,7 +432,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DIDWallet_GetPubKey_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DIDWallet.GetPubKey(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L119">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L94">View Source</a>
   </span>
   <a id="chia_dotnet_DIDWallet_GetPubKey_" data-uid="chia.dotnet.DIDWallet.GetPubKey*"></a>
   <h4 id="chia_dotnet_DIDWallet_GetPubKey_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.GetPubKey(System.Threading.CancellationToken)">GetPubKey(CancellationToken)</h4>
@@ -472,7 +482,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DIDWallet_GetRecoveryList_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DIDWallet.GetRecoveryList(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L159">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L134">View Source</a>
   </span>
   <a id="chia_dotnet_DIDWallet_GetRecoveryList_" data-uid="chia.dotnet.DIDWallet.GetRecoveryList*"></a>
   <h4 id="chia_dotnet_DIDWallet_GetRecoveryList_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.GetRecoveryList(System.Threading.CancellationToken)">GetRecoveryList(CancellationToken)</h4>
@@ -519,62 +529,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DIDWallet_Login_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DIDWallet.Login(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L39">View Source</a>
-  </span>
-  <a id="chia_dotnet_DIDWallet_Login_" data-uid="chia.dotnet.DIDWallet.Login*"></a>
-  <h4 id="chia_dotnet_DIDWallet_Login_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.Login(System.Threading.CancellationToken)">Login(CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Login to the wallet</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;uint&gt; Login(CancellationToken cancellationToken)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint32">UInt32</a>&gt;</td>
-        <td><p>an awaitable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="chia_dotnet_DIDWallet_Login_System_Threading_CancellationToken__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Always login before interacting with the wallet. Logged in state is kept on the serve so might have changed</p>
-</div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DIDWallet_RecoverySpend_System_Collections_Generic_IEnumerable_System_String__System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DIDWallet.RecoverySpend(System.Collections.Generic.IEnumerable%7BSystem.String%7D%2CSystem.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L137">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L112">View Source</a>
   </span>
   <a id="chia_dotnet_DIDWallet_RecoverySpend_" data-uid="chia.dotnet.DIDWallet.RecoverySpend*"></a>
   <h4 id="chia_dotnet_DIDWallet_RecoverySpend_System_Collections_Generic_IEnumerable_System_String__System_String_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.RecoverySpend(System.Collections.Generic.IEnumerable{System.String},System.String,System.String,System.Threading.CancellationToken)">RecoverySpend(IEnumerable&lt;String&gt;, String, String, CancellationToken)</h4>
@@ -583,7 +541,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task RecoverySpend(IEnumerable&lt;string&gt; attestFilenames, string pubkey, string puzHash, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task RecoverySpend(IEnumerable&lt;string&gt; attestFilenames, string pubkey, string puzzlehash, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -609,7 +567,7 @@
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">puzHash</span></td>
+        <td><span class="parametername">puzzlehash</span></td>
         <td><p>The puzzlehash of the spend</p>
 </td>
       </tr>
@@ -642,7 +600,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DIDWallet_Spend_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DIDWallet.Spend(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L88">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L63">View Source</a>
   </span>
   <a id="chia_dotnet_DIDWallet_Spend_" data-uid="chia.dotnet.DIDWallet.Spend*"></a>
   <h4 id="chia_dotnet_DIDWallet_Spend_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.Spend(System.String,System.Threading.CancellationToken)">Spend(String, CancellationToken)</h4>
@@ -698,7 +656,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DIDWallet_UpdateRecoveryIds_System_Collections_Generic_IEnumerable_System_String__System_Numerics_BigInteger_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DIDWallet.UpdateRecoveryIds(System.Collections.Generic.IEnumerable%7BSystem.String%7D%2CSystem.Numerics.BigInteger%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L72">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L47">View Source</a>
   </span>
   <a id="chia_dotnet_DIDWallet_UpdateRecoveryIds_" data-uid="chia.dotnet.DIDWallet.UpdateRecoveryIds*"></a>
   <h4 id="chia_dotnet_DIDWallet_UpdateRecoveryIds_System_Collections_Generic_IEnumerable_System_String__System_Numerics_BigInteger_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.UpdateRecoveryIds(System.Collections.Generic.IEnumerable{System.String},System.Numerics.BigInteger,System.Threading.CancellationToken)">UpdateRecoveryIds(IEnumerable&lt;String&gt;, BigInteger, CancellationToken)</h4>
@@ -760,7 +718,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DIDWallet_UpdateRecoveryIds_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DIDWallet.UpdateRecoveryIds(System.Collections.Generic.IEnumerable%7BSystem.String%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L56">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L31">View Source</a>
   </span>
   <a id="chia_dotnet_DIDWallet_UpdateRecoveryIds_" data-uid="chia.dotnet.DIDWallet.UpdateRecoveryIds*"></a>
   <h4 id="chia_dotnet_DIDWallet_UpdateRecoveryIds_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.UpdateRecoveryIds(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">UpdateRecoveryIds(IEnumerable&lt;String&gt;, CancellationToken)</h4>
@@ -822,7 +780,7 @@
                     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DIDWallet.md&amp;value=---%0Auid%3A%20chia.dotnet.DIDWallet%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L14" class="contribution-link">View Source</a>
+                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L13" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
