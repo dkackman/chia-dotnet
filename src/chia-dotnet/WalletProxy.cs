@@ -78,30 +78,6 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Get the balance of a specific wallet
-        /// </summary>
-        /// <param name="walletId">The numeric id of the wallet to query</param>        
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>The wallet balance</returns>
-        public async Task<(BigInteger ConfirmedWalletBalance, BigInteger MaxSendAmount, BigInteger PendingChange, int PendingCoinRemovalAmount, BigInteger SpendableBalance, BigInteger UnconfirmedWalletBalance, int UnspentCoinCount)>
-            GetBalance(uint walletId, CancellationToken cancellationToken)
-        {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = walletId;
-
-            var response = await SendMessage("get_wallet_balance", data, cancellationToken);
-
-            return (response.Data.wallet_balance.confirmed_wallet_balance,
-                response.Data.wallet_balance.max_send_amount,
-                response.Data.wallet_balance.pending_change,
-                response.Data.wallet_balance.pending_coin_removal_count,
-                response.Data.wallet_balance.spendable_balance,
-                response.Data.wallet_balance.unconfirmed_wallet_balance,
-                response.Data.wallet_balance.unspent_coin_count
-                );
-        }
-
-        /// <summary>
         /// Get all root public keys accessible by the wallet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
@@ -182,56 +158,6 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Get the list of transactions
-        /// </summary>
-        /// <param name="walletId">The numeric id of the wallet to query</param> 
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A list of transactions</returns>
-        public async Task<IEnumerable<dynamic>> GetTransactions(uint walletId, CancellationToken cancellationToken)
-        {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = walletId;
-
-            var response = await SendMessage("get_transactions", data, cancellationToken);
-
-            return response.Data.transactions;
-        }
-
-        /// <summary>
-        /// Get the last address or create a new one
-        /// </summary>
-        /// <param name="walletId">The numeric id of the wallet to query</param> 
-        /// <param name="newAddress">Whether to generate a new address</param> 
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>An address</returns>
-        public async Task<string> GetNextAddress(uint walletId, bool newAddress, CancellationToken cancellationToken)
-        {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = walletId;
-            data.new_address = newAddress;
-
-            var response = await SendMessage("get_next_address", data, cancellationToken);
-
-            return response.Data.address;
-        }
-
-        /// <summary>
-        /// Get the amount farmed
-        /// </summary>
-        /// <param name="walletId">The numeric id of the wallet to query</param> 
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>The amount farmed</returns>
-        public async Task<(uint FarmedAmount, uint FarmerRewardAmount, uint FeeAmount, uint LastHieghtFarmed, uint PoolReqardAmount)> GetFarmedAmount(uint walletId, CancellationToken cancellationToken)
-        {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = walletId;
-
-            var response = await SendMessage("get_farmed_amount", data, cancellationToken);
-
-            return (response.Data.farmed_amount, response.Data.farmer_reward_amount, response.Data.fee_amount, response.Data.last_height_farmed, response.Data.pool_reward_amount);
-        }
-
-        /// <summary>
         /// Backup the wallet
         /// </summary>
         /// <param name="filePath">Path to the backup file to create</param> 
@@ -243,36 +169,6 @@ namespace chia.dotnet
             data.file_path = filePath;
 
             _ = await SendMessage("create_backup", data, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get the number of transactions
-        /// </summary>
-        /// <param name="walletId">The numeric id of the wallet to query</param> 
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>The number of transactions</returns>
-        public async Task<uint> GetTransactionCount(uint walletId, CancellationToken cancellationToken)
-        {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = walletId;
-
-            var response = await SendMessage("get_transaction_count", data, cancellationToken);
-
-            return response.Data.count;
-        }
-
-        /// <summary>
-        /// Delete unconfirmed transactions from the wallet
-        /// </summary>
-        /// <param name="walletId">The numeric id of the wallet to delete from</param> 
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task DeleteUnconfirmedTransactions(uint walletId, CancellationToken cancellationToken)
-        {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = walletId;
-
-            _ = await SendMessage("delete_unconfirmed_transactions", data, cancellationToken);
         }
 
         /// <summary>
@@ -499,104 +395,6 @@ namespace chia.dotnet
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
             return (response.Data.transaction, response.Data.launcher_id, response.Data.p2_singleton_puzzle_hash);
-        }
-
-        /// <summary>
-        /// Sends a transaction
-        /// </summary>
-        /// <param name="walletId">The id of the wallet to send from</param>
-        /// <param name="address">The receiving address</param>
-        /// <param name="amount">The amount to send</param>
-        /// <param name="fee">Fee amount</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Information about the wallet</returns>
-        public async Task<dynamic> SendTransaction(uint walletId, string address, BigInteger amount, BigInteger fee, CancellationToken cancellationToken)
-        {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = walletId;
-            data.address = address;
-            data.amount = amount;
-            data.fee = fee;
-
-            var response = await SendMessage("send_transaction", data, cancellationToken);
-
-            return response.Data.transaction;
-        }
-
-        /// <summary>
-        /// Sends a transaction
-        /// </summary>
-        /// <param name="walletId">The id of the wallet to send from</param>
-        /// <param name="additions">Additions to the block chain</param>
-        /// <param name="coins">Coins to include</param>
-        /// <param name="fee">Fee amount</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Information about the wallet</returns>
-        public async Task<dynamic> SendTransactionMulti(uint walletId, IEnumerable<dynamic> additions, IEnumerable<dynamic> coins, BigInteger fee, CancellationToken cancellationToken)
-        {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = walletId;
-            data.additions = additions.ToList();
-            data.fee = fee;
-            if (coins != null) // coins are optional
-            {
-                data.coins = coins.ToList();
-            }
-
-            var response = await SendMessage("send_transaction_multi", data, cancellationToken);
-
-            return response.Data.transaction;
-        }
-
-        /// <summary>
-        /// Sends a transaction
-        /// </summary>
-        /// <param name="walletId">The id of the wallet to send from</param>
-        /// <param name="additions">Additions to the block chain</param>
-        /// <param name="fee">Fee amount</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Information about the wallet</returns>
-        public async Task<dynamic> SendTransactionMulti(uint walletId, IEnumerable<dynamic> additions, BigInteger fee, CancellationToken cancellationToken)
-        {
-            return await SendTransactionMulti(walletId, additions, null, fee, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create but do not send a transaction
-        /// </summary>
-        /// <param name="walletId">The id of the wallet to send from</param>
-        /// <param name="additions">Additions to the block chain</param>
-        /// <param name="coins">Coins to include</param>
-        /// <param name="fee">Fee amount</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Information about the wallet</returns>
-        public async Task<dynamic> CreateSignedTransaction(uint walletId, IEnumerable<dynamic> additions, IEnumerable<dynamic> coins, BigInteger fee, CancellationToken cancellationToken)
-        {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = walletId;
-            data.additions = additions.ToList();
-            data.fee = fee;
-            if (coins != null) // coins are optional
-            {
-                data.coins = coins.ToList();
-            }
-
-            var response = await SendMessage("create_signed_transaction", data, cancellationToken);
-
-            return response.Data.signed_tx;
-        }
-
-        /// <summary>
-        /// Create but do not send a transaction
-        /// </summary>
-        /// <param name="walletId">The id of the wallet to send from</param>
-        /// <param name="additions">Additions to the block chain</param>
-        /// <param name="fee">Fee amount</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Information about the wallet</returns>
-        public async Task<dynamic> CreateSignedTransaction(uint walletId, IEnumerable<dynamic> additions, BigInteger fee, CancellationToken cancellationToken)
-        {
-            return await CreateSignedTransaction(walletId, additions, null, fee, cancellationToken);
         }
     }
 }

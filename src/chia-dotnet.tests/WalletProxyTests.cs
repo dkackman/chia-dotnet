@@ -69,24 +69,6 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        public async Task GetWalletBalance()
-        {
-            await LoginToFirstWallet();
-
-            var balance = await _theWallet.GetBalance(1, CancellationToken.None);
-
-            Assert.IsNotNull(balance);
-        }
-
-        [TestMethod()]
-        public async Task GetTransactions()
-        {
-            var transactions = await _theWallet.GetTransactions(1, CancellationToken.None);
-
-            Assert.IsNotNull(transactions);
-        }
-
-        [TestMethod()]
         public async Task GetSyncStatus()
         {
             var info = await _theWallet.GetSyncStatus(CancellationToken.None);
@@ -111,40 +93,10 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        public async Task GetNextAddress()
-        {
-            var address = await _theWallet.GetNextAddress(1, true, CancellationToken.None);
-
-            Assert.IsNotNull(address);
-        }
-
-        [TestMethod()]
-        public async Task GetFarmedAmount()
-        {
-            var amount = await _theWallet.GetFarmedAmount(1, CancellationToken.None);
-
-            Assert.IsNotNull(amount);
-        }
-
-        [TestMethod()]
+        [TestCategory("CAUTION")]
         public async Task CreateBackup()
         {
             await _theWallet.CreateBackup(@"C:\tmp\b.bak", CancellationToken.None);
-        }
-
-        [TestMethod()]
-        public async Task GetTransactionCount()
-        {
-            var count = await _theWallet.GetTransactionCount(1, CancellationToken.None);
-
-            Assert.IsNotNull(count);
-        }
-
-        [TestMethod()]
-        [TestCategory("CAUTION")]
-        public async Task DeleteUnconfirmedTransactions()
-        {
-            await _theWallet.DeleteUnconfirmedTransactions(1, CancellationToken.None);
         }
 
         [TestMethod()]
@@ -156,6 +108,7 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
+        [TestCategory("CAUTION")]
         public async Task FullCircleKey()
         {
             var mnemonic = await _theWallet.GenerateMnemonic(CancellationToken.None);
@@ -167,16 +120,7 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        public async Task SendTransaction()
-        {
-            await LoginToFirstWallet();
-
-            var transaction = await _theWallet.SendTransaction(1, "txch1em43zsczg2fv79jlg00ucedl9x3atvpnfa09uuk5pgd7v9039sdsashhuq", BigInteger.One, BigInteger.One, CancellationToken.None);
-
-            Assert.IsNotNull(transaction);
-        }
-
-        [TestMethod()]
+        [TestCategory("CAUTION")]
         public async Task CreateNewColourCoinWallet()
         {
             await LoginToFirstWallet();
@@ -187,6 +131,7 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
+        [TestCategory("CAUTION")]
         public async Task CreateDIDWallet()
         {
             await LoginToFirstWallet();
@@ -196,6 +141,15 @@ namespace chia.dotnet.tests
             var walletInfo = await _theWallet.CreateDIDWallet(backupIDs, BigInteger.One, 1, CancellationToken.None);
 
             Assert.IsNotNull(walletInfo);
+        }
+
+        [TestMethod()]
+        public async Task GetTransaction()
+        {
+            await LoginToFirstWallet();
+            var transaction = await _theWallet.GetTransaction("0x03ba20de8cbaf42944277eef60ac716730721a1b253a606c5e9621541487b519", CancellationToken.None);
+
+            Assert.IsNotNull(transaction);
         }
 
         private async Task LoginToFirstWallet()

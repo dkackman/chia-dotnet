@@ -1,50 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Numerics;
 using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Linq;
 
 namespace chia.dotnet
 {
     /// <summary>
     /// Wraps a Coloured Coin wallet
     /// </summary>
-    public sealed class ColouredCoinWallet
+    public sealed class ColouredCoinWallet : Wallet
     {
-        private readonly WalletProxy _walletProxy;
-
         /// <summary>
         /// ctor
         /// </summary>
         /// <param name="walletId">The wallet_id to wrap</param>
         /// <param name="walletProxy">Wallet RPC proxy to use for communication</param>
         public ColouredCoinWallet(uint walletId, WalletProxy walletProxy)
+            : base(walletId, walletProxy)
         {
-            WalletId = walletId;
-            _walletProxy = walletProxy ?? throw new ArgumentNullException(nameof(walletProxy));
-        }
-
-        /// <summary>
-        /// The id of the wallet
-        /// </summary>
-        public uint WalletId { get; init; }
-
-        /// <summary>
-        /// Login to the wallet
-        /// </summary>
-        /// <remarks>Always login before interacting with the wallet. Logged in state is kept on the serve so might have changed</remarks>
-        /// <returns>an awaitable <see cref="Task"/></returns>
-        public async Task<uint> Login(CancellationToken cancellationToken)
-        {
-            var fingerprints = await _walletProxy.GetPublicKeys(cancellationToken);
-
-            // not 100% sure this applies in all cases but wallets seem to come back in id order
-            // haven't figured out a different or better way to get a fingerprint from an id
-            var fingerprint = fingerprints.First();
-
-            return await _walletProxy.LogIn(fingerprint, true, cancellationToken);
         }
 
         /// <summary>
