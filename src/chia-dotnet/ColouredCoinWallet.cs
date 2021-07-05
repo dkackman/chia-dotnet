@@ -31,7 +31,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
-            var response = await _walletProxy.SendMessage("cc_get_name", data, cancellationToken);
+            var response = await WalletProxy.SendMessage("cc_get_name", data, cancellationToken);
 
             return response.Data.name.ToString();
         }
@@ -48,7 +48,7 @@ namespace chia.dotnet
             data.wallet_id = WalletId;
             data.name = name;
 
-            _ = await _walletProxy.SendMessage("cc_set_name", data, cancellationToken);
+            _ = await WalletProxy.SendMessage("cc_set_name", data, cancellationToken);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
-            var response = await _walletProxy.SendMessage("cc_get_colour", data, cancellationToken);
+            var response = await WalletProxy.SendMessage("cc_get_colour", data, cancellationToken);
 
             return response.Data.colour;
         }
@@ -82,7 +82,7 @@ namespace chia.dotnet
             data.amount = amount;
             data.fee = fee;
 
-            var response = await _walletProxy.SendMessage("cc_spend", data, cancellationToken);
+            var response = await WalletProxy.SendMessage("cc_spend", data, cancellationToken);
 
             return response.Data.transaction;
         }
@@ -100,7 +100,7 @@ namespace chia.dotnet
             data.ids = ids;
             data.filename = filename;
 
-            _ = await _walletProxy.SendMessage("create_offer_for_ids", data, cancellationToken);
+            _ = await WalletProxy.SendMessage("create_offer_for_ids", data, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.filename = filename;
 
-            var response = await _walletProxy.SendMessage("get_discrepancies_for_offer", data, cancellationToken);
+            var response = await WalletProxy.SendMessage("get_discrepancies_for_offer", data, cancellationToken);
 
             return response.Data.discrepancies;
         }
@@ -131,7 +131,7 @@ namespace chia.dotnet
 
             data.filename = filename;
 
-            _ = await _walletProxy.SendMessage("respond_to_offer", data, cancellationToken);
+            _ = await WalletProxy.SendMessage("respond_to_offer", data, cancellationToken);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.trade_id = tradeId;
 
-            var response = await _walletProxy.SendMessage("get_trade", data, cancellationToken);
+            var response = await WalletProxy.SendMessage("get_trade", data, cancellationToken);
 
             return response.Data.trade;
         }
@@ -157,7 +157,7 @@ namespace chia.dotnet
         /// <returns>The trades</returns>
         public async Task<IEnumerable<dynamic>> GetAllTrades(CancellationToken cancellationToken)
         {
-            var response = await _walletProxy.SendMessage("get_all_trades", cancellationToken);
+            var response = await WalletProxy.SendMessage("get_all_trades", cancellationToken);
 
             return response.Data.trades;
         }
@@ -175,7 +175,7 @@ namespace chia.dotnet
             data.trade_id = tradeId;
             data.secure = secure;
 
-            _ = await _walletProxy.SendMessage("cancel_trade", data, cancellationToken);
+            _ = await WalletProxy.SendMessage("cancel_trade", data, cancellationToken);
         }
     }
 }

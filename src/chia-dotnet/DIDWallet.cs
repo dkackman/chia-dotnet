@@ -34,7 +34,7 @@ namespace chia.dotnet
             data.wallet_id = WalletId;
             data.new_list = newList.ToList();
 
-            _ = await _walletProxy.SendMessage("did_update_recovery_ids", data, cancellationToken);
+            _ = await WalletProxy.SendMessage("did_update_recovery_ids", data, cancellationToken);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace chia.dotnet
             data.new_list = newList.ToList();
             data.num_verifications_required = numVerificationsRequired;
 
-            _ = await _walletProxy.SendMessage("did_update_recovery_ids", data, cancellationToken);
+            _ = await WalletProxy.SendMessage("did_update_recovery_ids", data, cancellationToken);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace chia.dotnet
             data.wallet_id = WalletId;
             data.puzzlehash = puzzlehash;
 
-            _ = await _walletProxy.SendMessage("did_spend", data, cancellationToken);
+            _ = await WalletProxy.SendMessage("did_spend", data, cancellationToken);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
-            var response = await _walletProxy.SendMessage("did_get_did", data, cancellationToken);
+            var response = await WalletProxy.SendMessage("did_get_did", data, cancellationToken);
 
             // coin_id might be null
             return (response.Data.my_did.ToString(), response.Data.coin_id?.ToString());
@@ -96,7 +96,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
-            var response = await _walletProxy.SendMessage("did_get_pubkey", data, cancellationToken);
+            var response = await WalletProxy.SendMessage("did_get_pubkey", data, cancellationToken);
 
             return response.Data.pubkey.ToString();
         }
@@ -123,7 +123,7 @@ namespace chia.dotnet
                 data.puzhash = puzHash;
             }
 
-            _ = await _walletProxy.SendMessage("did_recovery_spend", data, cancellationToken);
+            _ = await WalletProxy.SendMessage("did_recovery_spend", data, cancellationToken);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
-            var response = await _walletProxy.SendMessage("did_get_recovery_list", data, cancellationToken);
+            var response = await WalletProxy.SendMessage("did_get_recovery_list", data, cancellationToken);
 
             var recoverList = ((IEnumerable<dynamic>)response.Data.recover_list).Select<dynamic, string>(i => i.ToString());
 
@@ -161,7 +161,7 @@ namespace chia.dotnet
             data.pubkey = pubkey;
             data.puzhash = puzHash;
 
-            var response = await _walletProxy.SendMessage("did_create_attest", data, cancellationToken);
+            var response = await WalletProxy.SendMessage("did_create_attest", data, cancellationToken);
 
             return (response.Data.message_spend_bundle, response.Data.info);
         }
@@ -176,7 +176,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
-            var response = await _walletProxy.SendMessage("did_get_information_needed_for_recovery", data, cancellationToken);
+            var response = await WalletProxy.SendMessage("did_get_information_needed_for_recovery", data, cancellationToken);
 
             return (response.Data.my_did, response.Data.coin_name, response.Data.newpuzhash, response.Data.pubkey, response.Data.backup_dids);
         }
@@ -193,7 +193,7 @@ namespace chia.dotnet
             data.attest_filenames = WalletId;
             data.filename = filename;
 
-            _ = await _walletProxy.SendMessage("did_create_backup_file", data, cancellationToken);
+            _ = await WalletProxy.SendMessage("did_create_backup_file", data, cancellationToken);
         }
     }
 }

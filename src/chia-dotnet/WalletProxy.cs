@@ -289,7 +289,7 @@ namespace chia.dotnet
         /// <summary>
         /// Creates a new Admin Rate Limited wallet
         /// </summary>
-        /// <param name="pubkey">fee to create the wallet</param>
+        /// <param name="pubkey">admin pubkey</param>
         /// <param name="interval">The limit interval</param>
         /// <param name="limit">The limit amount</param>
         /// <param name="amount">the amount to put in the wallet</param>     
