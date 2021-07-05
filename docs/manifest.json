@@ -5,6 +5,18 @@
   "files": [
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.ColouredCoinWallet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.ColouredCoinWallet.html",
+          "hash": "66hxSSkxPd4PCeYdKqMI+wZfiaZEZlR2L8SfVruhTHE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/chia.dotnet.Config.yml",
       "output": {
         ".html": {
@@ -17,11 +29,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.DIDWallet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.DIDWallet.html",
+          "hash": "pa9Il7utu535rykFSB0KD0NgEF1r1lgzYwNHIjF0zJE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/chia.dotnet.Daemon.yml",
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.Daemon.html",
-          "hash": "vy9YdW9G3wMvgZK2HKOrpG/2wXZ3rrgRHrcEHbCp/+4="
+          "hash": "v07lVtRqn5/aKg0sC2+vhm9wY5NY4Sz5LikZLA1+fv0="
         }
       },
       "is_incremental": false,
@@ -45,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.FarmerProxy.html",
-          "hash": "RUJyY1eosRpLB1cUzv2pyR68BjDLAyIyGovLrRk8qu4="
+          "hash": "igC8XQMEbs8ZuedS1/5wyrB6toKHJgRan1H8XlKxKkc="
         }
       },
       "is_incremental": false,
@@ -57,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.FullNodeProxy.html",
-          "hash": "AUrC/VVrbOAz89ehpDUL5ehScdpmfEw1EVWgKKxwiX4="
+          "hash": "Fql6ue9tlH0OTkvTldgHXeCoFb1p7+2hDbk6SIDi+xw="
         }
       },
       "is_incremental": false,
@@ -69,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.HarvesterProxy.html",
-          "hash": "njugZMXbVfIwi5FC8quKXhpTE/qwr6hSNnVq8Gh2Ao0="
+          "hash": "KIWHdR5B2VIx7en/FqVJVvyv/ZXGmh+YCeJGyMtAMHw="
         }
       },
       "is_incremental": false,
@@ -93,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.ResponseException.html",
-          "hash": "1gW3jDOvTAs/wzM6dnkuirKKJhV/5XW8nT1jToDQjvo="
+          "hash": "ppsBtEN1KcDIVJUNSnjrbYaHCPZ8+MYodxfvUEGTrCk="
         }
       },
       "is_incremental": false,
@@ -129,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.ServiceProxy.html",
-          "hash": "j68+Pjr7cTxXd0j7VsIfiyzqZLt/5UhKu+MxOF1+t4A="
+          "hash": "zvR9OG+HNvtfOxkRuV2qyY2/LwEF7+p4FHTwKudGhus="
         }
       },
       "is_incremental": false,
@@ -141,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.WalletProxy.html",
-          "hash": "lpd2bwqUgvEao+N9K2eJDRGq7MbvvJsXL/dqYHXxNCg="
+          "hash": "VTF4e6w5k7Or+dyKdqny4f4jlbdjr6N0HUG5Ze51NB8="
         }
       },
       "is_incremental": false,
@@ -153,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.html",
-          "hash": "+meisW7vjCkd24J1mePz1GC4sCGROVmZ6VCS+vdNxR8="
+          "hash": "LV+YwsUClAzjGV99NZ5gGQeN8Y61BNVo8O5LVCYHJGQ="
         }
       },
       "is_incremental": false,
@@ -177,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "FUvNkn5/RNpM4/rzcYEC/h2JmEOkG9ZVZew+dPCWn94="
+          "hash": "snjrnnaRilLDlKYADKEkF8FnUaYzS5YE/Wp7uPN59ag="
         }
       },
       "is_incremental": false,
@@ -252,7 +276,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 13,
+          "total_file_count": 15,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
