@@ -52,8 +52,7 @@ namespace chia.dotnet
 
         /// <summary>
         /// Get the balance of a specific wallet
-        /// </summary>
-        /// <param name="WalletId">The numeric id of the wallet to query</param>        
+        /// </summary>      
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The wallet balance</returns>
         public async Task<(BigInteger ConfirmedWalletBalance, BigInteger MaxSendAmount, BigInteger PendingChange, int PendingCoinRemovalAmount, BigInteger SpendableBalance, BigInteger UnconfirmedWalletBalance, int UnspentCoinCount)>
@@ -77,7 +76,6 @@ namespace chia.dotnet
         /// <summary>
         /// Get the list of transactions
         /// </summary>
-        /// <param name="WalletId">The numeric id of the wallet to query</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of transactions</returns>
         public async Task<IEnumerable<dynamic>> GetTransactions(CancellationToken cancellationToken)
@@ -93,7 +91,6 @@ namespace chia.dotnet
         /// <summary>
         /// Get the last address or create a new one
         /// </summary>
-        /// <param name="WalletId">The numeric id of the wallet to query</param> 
         /// <param name="newAddress">Whether to generate a new address</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An address</returns>
@@ -111,7 +108,6 @@ namespace chia.dotnet
         /// <summary>
         /// Get the amount farmed
         /// </summary>
-        /// <param name="WalletId">The numeric id of the wallet to query</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The amount farmed</returns>
         public async Task<(uint FarmedAmount, uint FarmerRewardAmount, uint FeeAmount, uint LastHieghtFarmed, uint PoolReqardAmount)> GetFarmedAmount(CancellationToken cancellationToken)
@@ -127,7 +123,6 @@ namespace chia.dotnet
         /// <summary>
         /// Get the number of transactions
         /// </summary>
-        /// <param name="WalletId">The numeric id of the wallet to query</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The number of transactions</returns>
         public async Task<uint> GetTransactionCount(CancellationToken cancellationToken)
@@ -143,7 +138,6 @@ namespace chia.dotnet
         /// <summary>
         /// Delete unconfirmed transactions from the wallet
         /// </summary>
-        /// <param name="WalletId">The numeric id of the wallet to delete from</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task DeleteUnconfirmedTransactions(CancellationToken cancellationToken)
@@ -161,7 +155,7 @@ namespace chia.dotnet
         /// <param name="amount">The amount to send</param>
         /// <param name="fee">Fee amount</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Information about the wallet</returns>
+        /// <returns>The transaction</returns>
         public async Task<dynamic> SendTransaction(string address, BigInteger amount, BigInteger fee, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
@@ -182,7 +176,7 @@ namespace chia.dotnet
         /// <param name="coins">Coins to include</param>
         /// <param name="fee">Fee amount</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Information about the wallet</returns>
+        /// <returns>The transaction</returns>
         public async Task<dynamic> SendTransactionMulti(IEnumerable<dynamic> additions, IEnumerable<dynamic> coins, BigInteger fee, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
@@ -205,7 +199,7 @@ namespace chia.dotnet
         /// <param name="additions">Additions to the block chain</param>
         /// <param name="fee">Fee amount</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Information about the wallet</returns>
+        /// <returns>The transaction</returns>
         public async Task<dynamic> SendTransactionMulti(IEnumerable<dynamic> additions, BigInteger fee, CancellationToken cancellationToken)
         {
             return await SendTransactionMulti(additions, null, fee, cancellationToken);
@@ -218,7 +212,7 @@ namespace chia.dotnet
         /// <param name="coins">Coins to include</param>
         /// <param name="fee">Fee amount</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Information about the wallet</returns>
+        /// <returns>The signed transaction</returns>
         public async Task<dynamic> CreateSignedTransaction(IEnumerable<dynamic> additions, IEnumerable<dynamic> coins, BigInteger fee, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
@@ -241,7 +235,7 @@ namespace chia.dotnet
         /// <param name="additions">Additions to the block chain</param>
         /// <param name="fee">Fee amount</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Information about the wallet</returns>
+        /// <returns>The signed transaction</returns>
         public async Task<dynamic> CreateSignedTransaction(IEnumerable<dynamic> additions, BigInteger fee, CancellationToken cancellationToken)
         {
             return await CreateSignedTransaction(additions, null, fee, cancellationToken);

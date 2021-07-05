@@ -106,10 +106,10 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="attestFilenames">List of attest files. Must be >= num_of_backup_ids_needed</param>
         /// <param name="pubkey">The public key</param>
-        /// <param name="puzHash">The puzzlehash of the spend</param>
+        /// <param name="puzzlehash">The puzzlehash of the spend</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task RecoverySpend(IEnumerable<string> attestFilenames, string pubkey, string puzHash, CancellationToken cancellationToken)
+        public async Task RecoverySpend(IEnumerable<string> attestFilenames, string pubkey, string puzzlehash, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -118,9 +118,9 @@ namespace chia.dotnet
             {
                 data.pubkey = pubkey;
             }
-            if (!string.IsNullOrEmpty(puzHash))
+            if (!string.IsNullOrEmpty(puzzlehash))
             {
-                data.puzhash = puzHash;
+                data.puzhash = puzzlehash;
             }
 
             _ = await WalletProxy.SendMessage("did_recovery_spend", data, cancellationToken);

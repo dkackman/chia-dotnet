@@ -131,14 +131,14 @@ namespace chia.dotnet
         /// <summary>
         /// Retrieves a list of coin records with a certain puzzle hash.
         /// </summary>
-        /// <param name="puzzleHash">The puzzle hash</param>
+        /// <param name="puzzlehash">The puzzle hash</param>
         /// <param name="includeSpendCoins">whether to include spent coins too, instead of just unspent</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of coin records</returns>
-        public async Task<IEnumerable<dynamic>> GetCoinRecordsByPuzzleHash(string puzzleHash, bool includeSpendCoins, CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetCoinRecordsByPuzzleHash(string puzzlehash, bool includeSpendCoins, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
-            data.puzzle_hash = puzzleHash;
+            data.puzzle_hash = puzzlehash;
             data.include_spend_coins = includeSpendCoins;
 
             var response = await SendMessage("get_coin_records_by_puzzle_hash", data, cancellationToken);
@@ -149,16 +149,16 @@ namespace chia.dotnet
         /// <summary>
         /// Retrieves a list of coin records with a certain puzzle hash.
         /// </summary>
-        /// <param name="puzzleHash">The puzzle hash</param>
+        /// <param name="puzzlehash">The puzzle hash</param>
         /// <param name="start">confirmation start height for search</param>
         /// <param name="end">confirmation end height for search</param>
         /// <param name="includeSpendCoins">whether to include spent coins too, instead of just unspent</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of coin records</returns>
-        public async Task<IEnumerable<dynamic>> GetCoinRecordsByPuzzleHash(string puzzleHash, uint start, uint end, bool includeSpendCoins, CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetCoinRecordsByPuzzleHash(string puzzlehash, uint start, uint end, bool includeSpendCoins, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
-            data.puzzle_hash = puzzleHash;
+            data.puzzle_hash = puzzlehash;
             data.start = start;
             data.end = end;
             data.include_spend_coins = includeSpendCoins;
