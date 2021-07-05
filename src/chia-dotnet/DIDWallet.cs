@@ -8,10 +8,18 @@ using System.Linq;
 
 namespace chia.dotnet
 {
+    /// <summary>
+    /// Wraps a Distributed Identity Wallet
+    /// </summary>
     public sealed class DIDWallet
     {
         private readonly WalletProxy _walletProxy;
 
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="walletId">The wallet_id to wrap</param>
+        /// <param name="walletProxy">Wallet RPC proxy to use for communication</param>
         public DIDWallet(uint walletId, WalletProxy walletProxy)
         {
             WalletId = walletId;
@@ -24,10 +32,10 @@ namespace chia.dotnet
         public uint WalletId { get; init; }
 
         /// <summary>
-        /// Login with <see cref="WalletId"/>
+        /// Login to the wallet
         /// </summary>
         /// <remarks>Always login before interacting with the wallet. Logged in state is kept on the serve so might have changed</remarks>
-        /// <returns>an awaitabel <see cref="Task"/></returns>
+        /// <returns>an awaitable <see cref="Task"/></returns>
         public async Task<uint> Login(CancellationToken cancellationToken)
         {
             var fingerprints = await _walletProxy.GetPublicKeys(cancellationToken);

@@ -348,7 +348,7 @@ namespace chia.dotnet
         /// <param name="colour">The coin Colour</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(byte Type, string Colour, uint WalletId)> CreateNewColourCoinWallet(BigInteger amount, BigInteger fee, string colour, CancellationToken cancellationToken)
+        public async Task<(byte Type, string Colour, uint WalletId)> CreateColourCoinWallet(BigInteger amount, BigInteger fee, string colour, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.wallet_type = "cc_wallet";
@@ -364,12 +364,12 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Update a colour coin wallet
+        /// Create a coloured coin wallet for an existing colour
         /// </summary>
         /// <param name="colour">The coin Colour</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>        
         /// <returns>Information about the wallet</returns>
-        public async Task<byte> CreateExistingColourCoinWallet(string colour, CancellationToken cancellationToken)
+        public async Task<byte> CreateColouredCoinForColour(string colour, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.wallet_type = "cc_wallet";
@@ -456,7 +456,7 @@ namespace chia.dotnet
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the wallet</returns>
         public async Task<(uint Type, string myDID, uint walletId, string coinName, IEnumerable<dynamic> coinList, string newPuzHash, string pubkey, IEnumerable<dynamic> backupDIDs, BigInteger numVerificationsRequired)>
-            CreateRecoveryDiDWallet(string filename, CancellationToken cancellationToken)
+            RecoverDIDWallet(string filename, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.wallet_type = "did_wallet";

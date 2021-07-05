@@ -177,7 +177,7 @@ namespace chia.dotnet.tests
         {
             await LoginToFirstWallet();
 
-            var walletInfo = await _theWallet.CreateNewColourCoinWallet(BigInteger.One, BigInteger.One, "dkackman.colouredwallet.1", CancellationToken.None);
+            var walletInfo = await _theWallet.CreateColourCoinWallet(BigInteger.One, BigInteger.One, "dkackman.colouredwallet.1", CancellationToken.None);
 
             Assert.IsNotNull(walletInfo);
         }

@@ -9,13 +9,17 @@ using System.Linq;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Rerpresents the methods used for interacting with a coloured coin wallet 
+    /// Wraps a Coloured Coin wallet
     /// </summary>
-    /// <remarks>Also encapsulates the logged in state of the wallet with an id of <see cref="WalletId"/></remarks>
     public sealed class ColouredCoinWallet
     {
         private readonly WalletProxy _walletProxy;
 
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="walletId">The wallet_id to wrap</param>
+        /// <param name="walletProxy">Wallet RPC proxy to use for communication</param>
         public ColouredCoinWallet(uint walletId, WalletProxy walletProxy)
         {
             WalletId = walletId;
@@ -28,10 +32,10 @@ namespace chia.dotnet
         public uint WalletId { get; init; }
 
         /// <summary>
-        /// Login with <see cref="WalletId"/>
+        /// Login to the wallet
         /// </summary>
         /// <remarks>Always login before interacting with the wallet. Logged in state is kept on the serve so might have changed</remarks>
-        /// <returns>an awaitabel <see cref="Task"/></returns>
+        /// <returns>an awaitable <see cref="Task"/></returns>
         public async Task<uint> Login(CancellationToken cancellationToken)
         {
             var fingerprints = await _walletProxy.GetPublicKeys(cancellationToken);
