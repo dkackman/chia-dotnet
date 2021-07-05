@@ -110,5 +110,115 @@ namespace chia.dotnet
             // coin_id might be null
             return (response.Data.my_did.ToString(), response.Data.coin_id?.ToString());
         }
+
+        /// <summary>
+        /// Get the wallet pubkey
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>The pubkey</returns>
+        public async Task<string> GetPubKey(CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_id = WalletId;
+
+            var response = await _walletProxy.SendMessage("did_get_pubkey", data, cancellationToken);
+
+            return response.Data.pubkey.ToString();
+        }
+
+        /// <summary>
+        /// Recovery spend
+        /// </summary>
+        /// <param name="attestFilenames">List of attest files. Must be >= num_of_backup_ids_needed</param>
+        /// <param name="pubkey">The public key</param>
+        /// <param name="puzHash">The puzzlehash of the spend</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>An awaitable <see cref="Task"/></returns>
+        public async Task RecoverySpend(IEnumerable<string> attestFilenames, string pubkey, string puzHash, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_id = WalletId;
+            data.attest_filenames = attestFilenames.ToList();
+            if (!string.IsNullOrEmpty(pubkey))
+            {
+                data.pubkey = pubkey;
+            }
+            if (!string.IsNullOrEmpty(puzHash))
+            {
+                data.puzhash = puzHash;
+            }
+
+            _ = await _walletProxy.SendMessage("did_recovery_spend", data, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get the recover list
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>The recover list and num required property of the wallet</returns>
+        public async Task<(IEnumerable<string> RecoverList, int NumRequired)> GetRecoveryList(CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_id = WalletId;
+
+            var response = await _walletProxy.SendMessage("did_get_recovery_list", data, cancellationToken);
+
+            var recoverList = ((IEnumerable<dynamic>)response.Data.recover_list).Select<dynamic, string>(i => i.ToString());
+
+            return (recoverList, response.Data.num_required);
+        }
+
+        /// <summary>
+        /// Create an attest file
+        /// </summary>
+        /// <param name="filename">file name of the attest</param>
+        /// <param name="coinname">The coin name</param>
+        /// <param name="pubkey">The public key</param>
+        /// <param name="puzHash">The puzzlehash</param>        
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>A spendbundle and information about the attest</returns>
+        public async Task<(dynamic MessageSpendBundle, dynamic Info)> CreateAttest(string filename, string coinName, string pubkey, string puzHash, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_id = WalletId;
+            data.filename = filename;
+            data.coin_name = coinName;
+            data.pubkey = pubkey;
+            data.puzhash = puzHash;
+
+            var response = await _walletProxy.SendMessage("did_create_attest", data, cancellationToken);
+
+            return (response.Data.message_spend_bundle, response.Data.info);
+        }
+
+        /// <summary>
+        /// Create an attest file
+        /// </summary>       
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>A spendbundle and information about the attest</returns>
+        public async Task<(string MyDID, string CoinName, string NewPuzzleHash, string PublicKey, IEnumerable<dynamic> BackUpIds)> GetInformationNeededForRecovery(CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_id = WalletId;
+
+            var response = await _walletProxy.SendMessage("did_get_information_needed_for_recovery", data, cancellationToken);
+
+            return (response.Data.my_did, response.Data.coin_name, response.Data.newpuzhash, response.Data.pubkey, response.Data.backup_dids);
+        }
+
+        /// <summary>
+        /// Create a backup file of the wallet
+        /// </summary>
+        /// <param name="filename">The filename ot create</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>An awaitable <see cref="Task"/></returns>
+        public async Task CreateBackupFile(IEnumerable<string> filename, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.attest_filenames = WalletId;
+            data.filename = filename;
+
+            _ = await _walletProxy.SendMessage("did_create_backup_file", data, cancellationToken);
+        }
     }
 }
