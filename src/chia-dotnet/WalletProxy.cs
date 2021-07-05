@@ -83,14 +83,22 @@ namespace chia.dotnet
         /// <param name="walletId">The numeric id of the wallet to query</param>        
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The wallet balance</returns>
-        public async Task<dynamic> GetWalletBalance(uint walletId, CancellationToken cancellationToken)
+        public async Task<(BigInteger ConfirmedWalletBalance, BigInteger MaxSendAmount, BigInteger PendingChange, int PendingCoinRemovalAmount, BigInteger SpendableBalance, BigInteger UnconfirmedWalletBalance, int UnspentCoinCount)>
+            GetBalance(uint walletId, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = walletId;
 
             var response = await SendMessage("get_wallet_balance", data, cancellationToken);
 
-            return response.Data.wallet_balance;
+            return (response.Data.wallet_balance.confirmed_wallet_balance,
+                response.Data.wallet_balance.max_send_amount,
+                response.Data.wallet_balance.pending_change,
+                response.Data.wallet_balance.pending_coin_removal_count,
+                response.Data.wallet_balance.spendable_balance,
+                response.Data.wallet_balance.unconfirmed_wallet_balance,
+                response.Data.wallet_balance.unspent_coin_count
+                );
         }
 
         /// <summary>

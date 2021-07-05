@@ -2,6 +2,8 @@
 using System.Threading;
 using System.Threading.Tasks;
 using System.Numerics;
+using System.Collections.Generic;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace chia.dotnet.tests
@@ -69,7 +71,9 @@ namespace chia.dotnet.tests
         [TestMethod()]
         public async Task GetWalletBalance()
         {
-            var balance = await _theWallet.GetWalletBalance(1, CancellationToken.None);
+            await LoginToFirstWallet();
+
+            var balance = await _theWallet.GetBalance(1, CancellationToken.None);
 
             Assert.IsNotNull(balance);
         }
@@ -178,6 +182,18 @@ namespace chia.dotnet.tests
             await LoginToFirstWallet();
 
             var walletInfo = await _theWallet.CreateColourCoinWallet(BigInteger.One, BigInteger.One, "dkackman.colouredwallet.1", CancellationToken.None);
+
+            Assert.IsNotNull(walletInfo);
+        }
+
+        [TestMethod()]
+        public async Task CreateDIDWallet()
+        {
+            await LoginToFirstWallet();
+
+            var backupIDs = new List<string>();
+
+            var walletInfo = await _theWallet.CreateDIDWallet(backupIDs, BigInteger.One, 1, CancellationToken.None);
 
             Assert.IsNotNull(walletInfo);
         }
