@@ -108,7 +108,7 @@ namespace chia.dotnet
         /// <param name="command">The command</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A response <see cref="Message"/></returns>
-        protected async Task<Message> SendMessage(string command, CancellationToken cancellationToken)
+        internal async Task<Message> SendMessage(string command, CancellationToken cancellationToken)
         {
             var message = Message.Create(command, null, DestinationService, Daemon.OriginService);
             return await Daemon.SendMessage(message, cancellationToken);
@@ -121,7 +121,7 @@ namespace chia.dotnet
         /// <param name="data">Data to go along with the command</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A response <see cref="Message"/></returns>
-        protected async Task<Message> SendMessage(string command, dynamic data, CancellationToken cancellationToken)
+        internal async Task<Message> SendMessage(string command, dynamic data, CancellationToken cancellationToken)
         {
             var message = Message.Create(command, data, DestinationService, Daemon.OriginService);
             return await Daemon.SendMessage(message, cancellationToken);
