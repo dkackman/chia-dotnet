@@ -108,8 +108,9 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="request">The <see cref="Message"/> to send</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <remarks>Awaiting this method will block untila response is received from thw <see cref="WebSocket"/> ot the <see cref="CancellationToken"/> is cancelled</remarks>
+        /// <remarks>Awaiting this method will block until a response is received from thw <see cref="WebSocket"/> ot the <see cref="CancellationToken"/> is cancelled</remarks>
         /// <returns>The response message</returns>
+        /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
         public async Task<Message> SendMessage(Message request, CancellationToken cancellationToken)
         {
             if (disposedValue)
