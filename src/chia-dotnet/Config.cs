@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Dynamic;
 using System.IO;
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+
 using YamlDotNet.Serialization;
 
 namespace chia.dotnet
@@ -72,7 +73,10 @@ namespace chia.dotnet
         /// <returns>A <see cref="Config"/> instance</returns>
         public static Config Open(string fullPath)
         {
-            Debug.Assert(!string.IsNullOrEmpty(fullPath));
+            if (string.IsNullOrEmpty(fullPath))
+            {
+                throw new ArgumentNullException(nameof(fullPath));
+            }
 
             using var input = new StreamReader(fullPath);
             var deserializer = new DeserializerBuilder()

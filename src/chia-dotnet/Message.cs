@@ -37,7 +37,7 @@ namespace chia.dotnet
         public bool Ack { get; init; }
 
         /// <summary>
-        /// Unique id to correlate requests to responses
+        /// Unique correlation id of the message. This will round trip to the RPC server and back in its response
         /// </summary>
         public string RequestId { get; init; }
 
@@ -57,14 +57,20 @@ namespace chia.dotnet
         /// <returns></returns>
         public static Message Create(string command, object data, string destination, string origin)
         {
-            return new Message
-            {
-                Command = command,
-                Data = data ?? new ExpandoObject(),
-                Origin = origin,
-                Destination = destination,
-                RequestId = GetNewReuqestId()
-            };
+            return string.IsNullOrEmpty(command)
+                ? throw new ArgumentNullException(nameof(command))
+                : string.IsNullOrEmpty(destination)
+                ? throw new ArgumentNullException(nameof(destination))
+                : string.IsNullOrEmpty(origin)
+                ? throw new ArgumentNullException(nameof(origin))
+                : new Message
+                {
+                    Command = command,
+                    Data = data ?? new ExpandoObject(),
+                    Origin = origin,
+                    Destination = destination,
+                    RequestId = GetNewReuqestId()
+                };
         }
 
         /// <summary>
