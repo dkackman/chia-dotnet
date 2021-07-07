@@ -1,4 +1,4 @@
-using System.Text.Json;
+﻿using System.Text.Json;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace chia.dotnet.tests
@@ -11,7 +11,7 @@ namespace chia.dotnet.tests
         {
             var m = new Message();
 
-            string json = JsonSerializer.Serialize(m);
+            var json = JsonSerializer.Serialize(m);
 
             Assert.IsFalse(string.IsNullOrEmpty(json));
             Assert.IsTrue(json.StartsWith("{"));
