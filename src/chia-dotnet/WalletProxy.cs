@@ -338,7 +338,7 @@ namespace chia.dotnet
         /// <param name="amount">the amount to put in the wallet</param>           
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(uint Type, string myDID, uint walletId)> CreateDIDWallet(IEnumerable<string> backupDIDs, BigInteger numOfBackupIdsNeeded, int amount, CancellationToken cancellationToken)
+        public async Task<(uint Type, string myDID, uint walletId)> CreateDIDWallet(IEnumerable<string> backupDIDs, BigInteger numOfBackupIdsNeeded, BigInteger amount, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.wallet_type = "did_wallet";
