@@ -219,7 +219,27 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
 
-            _ = await SendMessage("delete_all_keys", data, cancellationToken);
+            _ = await SendMessage("delete_key", data, cancellationToken);
+        }
+
+        /// <summary>
+        /// Check the key use prior to possible deletion
+        /// checks whether key is used for either farm or pool rewards
+        /// checks if any wallets have a non-zero balance
+        /// </summary>        
+        /// <param name="fingerprint">The key's fingerprint</param>  
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>
+        /// idicators of how wallet is used
+        /// <returns>
+        public async Task<(bool UsedForFarmerRewards, bool UsedForPoolRewards, bool WalletBalance)> CheckDeleteKey(uint fingerprint, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+
+            var response = await SendMessage("check_delete_key", data, cancellationToken);
+
+            return (response.Data.used_for_farmer_rewards, response.Data.used_for_pool_rewards, response.Data.wallet_balance);
         }
 
         /// <summary>
