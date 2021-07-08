@@ -51,7 +51,10 @@ namespace chia.dotnet
         /// <returns>A transaction</returns>
         public async Task<dynamic> SelfPool(CancellationToken cancellationToken)
         {
-            var response = await WalletProxy.SendMessage("pw_self_pool", cancellationToken);
+            dynamic data = new ExpandoObject();
+            data.wallet_id = WalletId;
+
+            var response = await WalletProxy.SendMessage("pw_self_pool", data, cancellationToken);
 
             return response.Data.transaction;
         }
@@ -65,6 +68,7 @@ namespace chia.dotnet
         public async Task<(dynamic State, dynamic Transaction)> AbsorbRewards(BigInteger fee, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
+            data.wallet_id = WalletId;
             data.fee = fee;
 
             var response = await WalletProxy.SendMessage("pw_absorb_rewards", cancellationToken);
@@ -79,7 +83,10 @@ namespace chia.dotnet
         /// <returns>Wallet state and list of unconfirmed transactions</returns>
         public async Task<(dynamic State, IEnumerable<dynamic> Transaction)> Status(CancellationToken cancellationToken)
         {
-            var response = await WalletProxy.SendMessage("pw_status", cancellationToken);
+            dynamic data = new ExpandoObject();
+            data.wallet_id = WalletId;
+
+            var response = await WalletProxy.SendMessage("pw_status", data, cancellationToken);
 
             return (response.Data.state, response.Data.unconfirmed_transactions);
         }
