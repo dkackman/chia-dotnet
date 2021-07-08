@@ -95,7 +95,6 @@ namespace chia.dotnet
         /// Get's the pool login link, if any
         /// </summary>
         /// <param name="launcherID">The id of the pool launcher</param>
-        /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The link</returns>
         public async Task<string> GetPoolLoginLink(string launcherID, CancellationToken cancellationToken)
