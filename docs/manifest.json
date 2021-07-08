@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.FarmerProxy.html",
-          "hash": "igC8XQMEbs8ZuedS1/5wyrB6toKHJgRan1H8XlKxKkc="
+          "hash": "PBjbYmEwy90VuWrKGLlrKvSQ2YkeOtrPeXLPB82sHHk="
         }
       },
       "is_incremental": false,
@@ -101,6 +101,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.KValues.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.KValues.html",
+          "hash": "jse9OqbCKPMh74pTJ+YQ6r4Dvt0HLpZUnz/Sc1Peqlg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/chia.dotnet.Message.yml",
       "output": {
         ".html": {
@@ -113,11 +125,35 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.PlotterConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.PlotterConfig.html",
+          "hash": "8Zm68LGjvxWmO8vW/gl/i+L18NavgRks5SI7ypVazN8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.PlotterProxy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.PlotterProxy.html",
+          "hash": "C5RHHsZkZPYTznzU5GHXFY/0271Q6jtZK6yFUbGGLoc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/chia.dotnet.PoolWallet.yml",
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.PoolWallet.html",
-          "hash": "BIPfTIQpKAmpgcmdl1YJfPGRgA1Yvu1gGyCuAldJ+YU="
+          "hash": "QoalK6XtKQADuS01/tQg99+Hnxi7ubRDNCSISBuYJk4="
         }
       },
       "is_incremental": false,
@@ -177,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.ServiceProxy.html",
-          "hash": "zvR9OG+HNvtfOxkRuV2qyY2/LwEF7+p4FHTwKudGhus="
+          "hash": "w2iHRKemTglhPROF2Rj5FM1TenuxGKUnsOAibGRtrgo="
         }
       },
       "is_incremental": false,
@@ -201,7 +237,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.WalletProxy.html",
-          "hash": "bPMSPVS7r5R8+MEeo2HSN07m7fejQRni7VJHtniHiWM="
+          "hash": "Rs6vdad3IsOobM/PnFWK0DruxcHqA5tUVzBNJ0Mx594="
         }
       },
       "is_incremental": false,
@@ -213,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.html",
-          "hash": "Qn9hsJzuUiPLIs3x7UFxwEiRmmnaLOR7zQ+duoyaOL4="
+          "hash": "xZWTfrdMpLlfvRlbOAR8fSesuVeuy0/QX8OULfyUCus="
         }
       },
       "is_incremental": false,
@@ -237,7 +273,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "6dVp1lNInkO/JRh37ihfFNmiqG8gZTOKN1rFzBH9muA="
+          "hash": "5AwQZR6CaPeyLmvD7FdZL9qn5d7PDQguxezfOuAEzGU="
         }
       },
       "is_incremental": false,
@@ -312,7 +348,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 18,
+          "total_file_count": 21,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {

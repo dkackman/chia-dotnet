@@ -329,6 +329,64 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_WalletProxy_CheckDeleteKey_System_UInt32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.WalletProxy.CheckDeleteKey(System.UInt32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L235">View Source</a>
+  </span>
+  <a id="chia_dotnet_WalletProxy_CheckDeleteKey_" data-uid="chia.dotnet.WalletProxy.CheckDeleteKey*"></a>
+  <h4 id="chia_dotnet_WalletProxy_CheckDeleteKey_System_UInt32_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CheckDeleteKey(System.UInt32,System.Threading.CancellationToken)">CheckDeleteKey(UInt32, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Check the key use prior to possible deletion
+checks whether key is used for either farm or pool rewards
+checks if any wallets have a non-zero balance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;(bool UsedForFarmerRewards, bool UsedForPoolRewards, bool WalletBalance)&gt; CheckDeleteKey(uint fingerprint, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint32">UInt32</a></td>
+        <td><span class="parametername">fingerprint</span></td>
+        <td><p>The key's fingerprint</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.valuetuple-3">(T1, T2, T3)</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;&gt;</td>
+        <td><p>idicators of how wallet is used</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_WalletProxy_CreateBackup_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.WalletProxy.CreateBackup(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -388,7 +446,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_WalletProxy_CreateColourCoinWallet_System_Numerics_BigInteger_System_Numerics_BigInteger_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.WalletProxy.CreateColourCoinWallet(System.Numerics.BigInteger%2CSystem.Numerics.BigInteger%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L255">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L275">View Source</a>
   </span>
   <a id="chia_dotnet_WalletProxy_CreateColourCoinWallet_" data-uid="chia.dotnet.WalletProxy.CreateColourCoinWallet*"></a>
   <h4 id="chia_dotnet_WalletProxy_CreateColourCoinWallet_System_Numerics_BigInteger_System_Numerics_BigInteger_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CreateColourCoinWallet(System.Numerics.BigInteger,System.Numerics.BigInteger,System.String,System.Threading.CancellationToken)">CreateColourCoinWallet(BigInteger, BigInteger, String, CancellationToken)</h4>
@@ -456,7 +514,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_WalletProxy_CreateColouredCoinForColour_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.WalletProxy.CreateColouredCoinForColour(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L276">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L296">View Source</a>
   </span>
   <a id="chia_dotnet_WalletProxy_CreateColouredCoinForColour_" data-uid="chia.dotnet.WalletProxy.CreateColouredCoinForColour*"></a>
   <h4 id="chia_dotnet_WalletProxy_CreateColouredCoinForColour_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CreateColouredCoinForColour(System.String,System.Threading.CancellationToken)">CreateColouredCoinForColour(String, CancellationToken)</h4>
@@ -512,7 +570,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_WalletProxy_CreateDIDWallet_System_Collections_Generic_IEnumerable_System_String__System_Numerics_BigInteger_System_Numerics_BigInteger_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.WalletProxy.CreateDIDWallet(System.Collections.Generic.IEnumerable%7BSystem.String%7D%2CSystem.Numerics.BigInteger%2CSystem.Numerics.BigInteger%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L341">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L361">View Source</a>
   </span>
   <a id="chia_dotnet_WalletProxy_CreateDIDWallet_" data-uid="chia.dotnet.WalletProxy.CreateDIDWallet*"></a>
   <h4 id="chia_dotnet_WalletProxy_CreateDIDWallet_System_Collections_Generic_IEnumerable_System_String__System_Numerics_BigInteger_System_Numerics_BigInteger_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CreateDIDWallet(System.Collections.Generic.IEnumerable{System.String},System.Numerics.BigInteger,System.Numerics.BigInteger,System.Threading.CancellationToken)">CreateDIDWallet(IEnumerable&lt;String&gt;, BigInteger, BigInteger, CancellationToken)</h4>
@@ -580,7 +638,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_WalletProxy_CreatePoolWallet_System_Object_System_Numerics_BigInteger_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.WalletProxy.CreatePoolWallet(System.Object%2CSystem.Numerics.BigInteger%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L383">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L403">View Source</a>
   </span>
   <a id="chia_dotnet_WalletProxy_CreatePoolWallet_" data-uid="chia.dotnet.WalletProxy.CreatePoolWallet*"></a>
   <h4 id="chia_dotnet_WalletProxy_CreatePoolWallet_System_Object_System_Numerics_BigInteger_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CreatePoolWallet(System.Object,System.Numerics.BigInteger,System.String,System.Threading.CancellationToken)">CreatePoolWallet(Object, BigInteger, String, CancellationToken)</h4>
@@ -648,7 +706,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_WalletProxy_CreateRateLimitedAdminWallet_System_String_System_Numerics_BigInteger_System_Numerics_BigInteger_System_Numerics_BigInteger_System_Numerics_BigInteger_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.WalletProxy.CreateRateLimitedAdminWallet(System.String%2CSystem.Numerics.BigInteger%2CSystem.Numerics.BigInteger%2CSystem.Numerics.BigInteger%2CSystem.Numerics.BigInteger%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L299">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L319">View Source</a>
   </span>
   <a id="chia_dotnet_WalletProxy_CreateRateLimitedAdminWallet_" data-uid="chia.dotnet.WalletProxy.CreateRateLimitedAdminWallet*"></a>
   <h4 id="chia_dotnet_WalletProxy_CreateRateLimitedAdminWallet_System_String_System_Numerics_BigInteger_System_Numerics_BigInteger_System_Numerics_BigInteger_System_Numerics_BigInteger_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CreateRateLimitedAdminWallet(System.String,System.Numerics.BigInteger,System.Numerics.BigInteger,System.Numerics.BigInteger,System.Numerics.BigInteger,System.Threading.CancellationToken)">CreateRateLimitedAdminWallet(String, BigInteger, BigInteger, BigInteger, BigInteger, CancellationToken)</h4>
@@ -728,7 +786,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_WalletProxy_CreateRateLimitedUserWallet_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.WalletProxy.CreateRateLimitedUserWallet(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L321">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L341">View Source</a>
   </span>
   <a id="chia_dotnet_WalletProxy_CreateRateLimitedUserWallet_" data-uid="chia.dotnet.WalletProxy.CreateRateLimitedUserWallet*"></a>
   <h4 id="chia_dotnet_WalletProxy_CreateRateLimitedUserWallet_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CreateRateLimitedUserWallet(System.Threading.CancellationToken)">CreateRateLimitedUserWallet(CancellationToken)</h4>
@@ -778,7 +836,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_WalletProxy_DeleteAllKeys_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.WalletProxy.DeleteAllKeys(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L230">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L250">View Source</a>
   </span>
   <a id="chia_dotnet_WalletProxy_DeleteAllKeys_" data-uid="chia.dotnet.WalletProxy.DeleteAllKeys*"></a>
   <h4 id="chia_dotnet_WalletProxy_DeleteAllKeys_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.DeleteAllKeys(System.Threading.CancellationToken)">DeleteAllKeys(CancellationToken)</h4>
@@ -884,7 +942,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_WalletProxy_GenerateMnemonic_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.WalletProxy.GenerateMnemonic(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L240">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L260">View Source</a>
   </span>
   <a id="chia_dotnet_WalletProxy_GenerateMnemonic_" data-uid="chia.dotnet.WalletProxy.GenerateMnemonic*"></a>
   <h4 id="chia_dotnet_WalletProxy_GenerateMnemonic_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.GenerateMnemonic(System.Threading.CancellationToken)">GenerateMnemonic(CancellationToken)</h4>
@@ -1420,7 +1478,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_WalletProxy_RecoverDIDWallet_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.WalletProxy.RecoverDIDWallet(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L362">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L382">View Source</a>
   </span>
   <a id="chia_dotnet_WalletProxy_RecoverDIDWallet_" data-uid="chia.dotnet.WalletProxy.RecoverDIDWallet*"></a>
   <h4 id="chia_dotnet_WalletProxy_RecoverDIDWallet_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.RecoverDIDWallet(System.String,System.Threading.CancellationToken)">RecoverDIDWallet(String, CancellationToken)</h4>

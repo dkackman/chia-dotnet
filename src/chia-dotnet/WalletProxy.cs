@@ -231,7 +231,7 @@ namespace chia.dotnet
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>
         /// idicators of how wallet is used
-        /// <returns>
+        /// </returns>
         public async Task<(bool UsedForFarmerRewards, bool UsedForPoolRewards, bool WalletBalance)> CheckDeleteKey(uint fingerprint, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();

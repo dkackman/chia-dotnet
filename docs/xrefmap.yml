@@ -551,19 +551,45 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FarmerProxy.FarmerProxy
   nameWithType: FarmerProxy.FarmerProxy
-- uid: chia.dotnet.FarmerProxy.GetPlots(System.Threading.CancellationToken)
-  name: GetPlots(CancellationToken)
-  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetPlots_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.FarmerProxy.GetPlots(System.Threading.CancellationToken)
-  fullName: chia.dotnet.FarmerProxy.GetPlots(System.Threading.CancellationToken)
-  nameWithType: FarmerProxy.GetPlots(CancellationToken)
-- uid: chia.dotnet.FarmerProxy.GetPlots*
-  name: GetPlots
-  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetPlots_
-  commentId: Overload:chia.dotnet.FarmerProxy.GetPlots
+- uid: chia.dotnet.FarmerProxy.GetHarvesters(System.Threading.CancellationToken)
+  name: GetHarvesters(CancellationToken)
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetHarvesters_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FarmerProxy.GetHarvesters(System.Threading.CancellationToken)
+  fullName: chia.dotnet.FarmerProxy.GetHarvesters(System.Threading.CancellationToken)
+  nameWithType: FarmerProxy.GetHarvesters(CancellationToken)
+- uid: chia.dotnet.FarmerProxy.GetHarvesters*
+  name: GetHarvesters
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetHarvesters_
+  commentId: Overload:chia.dotnet.FarmerProxy.GetHarvesters
   isSpec: "True"
-  fullName: chia.dotnet.FarmerProxy.GetPlots
-  nameWithType: FarmerProxy.GetPlots
+  fullName: chia.dotnet.FarmerProxy.GetHarvesters
+  nameWithType: FarmerProxy.GetHarvesters
+- uid: chia.dotnet.FarmerProxy.GetPoolLoginLink(System.String,System.Threading.CancellationToken)
+  name: GetPoolLoginLink(String, CancellationToken)
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetPoolLoginLink_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FarmerProxy.GetPoolLoginLink(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.FarmerProxy.GetPoolLoginLink(System.String, System.Threading.CancellationToken)
+  nameWithType: FarmerProxy.GetPoolLoginLink(String, CancellationToken)
+- uid: chia.dotnet.FarmerProxy.GetPoolLoginLink*
+  name: GetPoolLoginLink
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetPoolLoginLink_
+  commentId: Overload:chia.dotnet.FarmerProxy.GetPoolLoginLink
+  isSpec: "True"
+  fullName: chia.dotnet.FarmerProxy.GetPoolLoginLink
+  nameWithType: FarmerProxy.GetPoolLoginLink
+- uid: chia.dotnet.FarmerProxy.GetPoolState(System.Threading.CancellationToken)
+  name: GetPoolState(CancellationToken)
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetPoolState_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FarmerProxy.GetPoolState(System.Threading.CancellationToken)
+  fullName: chia.dotnet.FarmerProxy.GetPoolState(System.Threading.CancellationToken)
+  nameWithType: FarmerProxy.GetPoolState(CancellationToken)
+- uid: chia.dotnet.FarmerProxy.GetPoolState*
+  name: GetPoolState
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetPoolState_
+  commentId: Overload:chia.dotnet.FarmerProxy.GetPoolState
+  isSpec: "True"
+  fullName: chia.dotnet.FarmerProxy.GetPoolState
+  nameWithType: FarmerProxy.GetPoolState
 - uid: chia.dotnet.FarmerProxy.GetRewardTargets(System.Boolean,System.Threading.CancellationToken)
   name: GetRewardTargets(Boolean, CancellationToken)
   href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetRewardTargets_System_Boolean_System_Threading_CancellationToken_
@@ -603,6 +629,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FarmerProxy.GetSignagePoints
   nameWithType: FarmerProxy.GetSignagePoints
+- uid: chia.dotnet.FarmerProxy.SetPayoutInstructions(System.String,System.String,System.Threading.CancellationToken)
+  name: SetPayoutInstructions(String, String, CancellationToken)
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_SetPayoutInstructions_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FarmerProxy.SetPayoutInstructions(System.String,System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.FarmerProxy.SetPayoutInstructions(System.String, System.String, System.Threading.CancellationToken)
+  nameWithType: FarmerProxy.SetPayoutInstructions(String, String, CancellationToken)
+- uid: chia.dotnet.FarmerProxy.SetPayoutInstructions*
+  name: SetPayoutInstructions
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_SetPayoutInstructions_
+  commentId: Overload:chia.dotnet.FarmerProxy.SetPayoutInstructions
+  isSpec: "True"
+  fullName: chia.dotnet.FarmerProxy.SetPayoutInstructions
+  nameWithType: FarmerProxy.SetPayoutInstructions
 - uid: chia.dotnet.FarmerProxy.SetRewardTargets(System.String,System.String,System.Threading.CancellationToken)
   name: SetRewardTargets(String, String, CancellationToken)
   href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_SetRewardTargets_System_String_System_String_System_Threading_CancellationToken_
@@ -985,6 +1024,42 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.HarvesterProxy.RemovePlotDirectory
   nameWithType: HarvesterProxy.RemovePlotDirectory
+- uid: chia.dotnet.KValues
+  name: KValues
+  href: api/chia.dotnet.KValues.html
+  commentId: T:chia.dotnet.KValues
+  fullName: chia.dotnet.KValues
+  nameWithType: KValues
+- uid: chia.dotnet.KValues.K25
+  name: K25
+  href: api/chia.dotnet.KValues.html#chia_dotnet_KValues_K25
+  commentId: F:chia.dotnet.KValues.K25
+  fullName: chia.dotnet.KValues.K25
+  nameWithType: KValues.K25
+- uid: chia.dotnet.KValues.K32
+  name: K32
+  href: api/chia.dotnet.KValues.html#chia_dotnet_KValues_K32
+  commentId: F:chia.dotnet.KValues.K32
+  fullName: chia.dotnet.KValues.K32
+  nameWithType: KValues.K32
+- uid: chia.dotnet.KValues.K33
+  name: K33
+  href: api/chia.dotnet.KValues.html#chia_dotnet_KValues_K33
+  commentId: F:chia.dotnet.KValues.K33
+  fullName: chia.dotnet.KValues.K33
+  nameWithType: KValues.K33
+- uid: chia.dotnet.KValues.K34
+  name: K34
+  href: api/chia.dotnet.KValues.html#chia_dotnet_KValues_K34
+  commentId: F:chia.dotnet.KValues.K34
+  fullName: chia.dotnet.KValues.K34
+  nameWithType: KValues.K34
+- uid: chia.dotnet.KValues.K35
+  name: K35
+  href: api/chia.dotnet.KValues.html#chia_dotnet_KValues_K35
+  commentId: F:chia.dotnet.KValues.K35
+  fullName: chia.dotnet.KValues.K35
+  nameWithType: KValues.K35
 - uid: chia.dotnet.Message
   name: Message
   href: api/chia.dotnet.Message.html
@@ -1121,6 +1196,265 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.Message.ToJson
   nameWithType: Message.ToJson
+- uid: chia.dotnet.PlotterConfig
+  name: PlotterConfig
+  href: api/chia.dotnet.PlotterConfig.html
+  commentId: T:chia.dotnet.PlotterConfig
+  fullName: chia.dotnet.PlotterConfig
+  nameWithType: PlotterConfig
+- uid: chia.dotnet.PlotterConfig.AltFingerprint
+  name: AltFingerprint
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_AltFingerprint
+  commentId: P:chia.dotnet.PlotterConfig.AltFingerprint
+  fullName: chia.dotnet.PlotterConfig.AltFingerprint
+  nameWithType: PlotterConfig.AltFingerprint
+- uid: chia.dotnet.PlotterConfig.AltFingerprint*
+  name: AltFingerprint
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_AltFingerprint_
+  commentId: Overload:chia.dotnet.PlotterConfig.AltFingerprint
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterConfig.AltFingerprint
+  nameWithType: PlotterConfig.AltFingerprint
+- uid: chia.dotnet.PlotterConfig.Buckets
+  name: Buckets
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_Buckets
+  commentId: P:chia.dotnet.PlotterConfig.Buckets
+  fullName: chia.dotnet.PlotterConfig.Buckets
+  nameWithType: PlotterConfig.Buckets
+- uid: chia.dotnet.PlotterConfig.Buckets*
+  name: Buckets
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_Buckets_
+  commentId: Overload:chia.dotnet.PlotterConfig.Buckets
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterConfig.Buckets
+  nameWithType: PlotterConfig.Buckets
+- uid: chia.dotnet.PlotterConfig.Buffer
+  name: Buffer
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_Buffer
+  commentId: P:chia.dotnet.PlotterConfig.Buffer
+  fullName: chia.dotnet.PlotterConfig.Buffer
+  nameWithType: PlotterConfig.Buffer
+- uid: chia.dotnet.PlotterConfig.Buffer*
+  name: Buffer
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_Buffer_
+  commentId: Overload:chia.dotnet.PlotterConfig.Buffer
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterConfig.Buffer
+  nameWithType: PlotterConfig.Buffer
+- uid: chia.dotnet.PlotterConfig.Delay
+  name: Delay
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_Delay
+  commentId: P:chia.dotnet.PlotterConfig.Delay
+  fullName: chia.dotnet.PlotterConfig.Delay
+  nameWithType: PlotterConfig.Delay
+- uid: chia.dotnet.PlotterConfig.Delay*
+  name: Delay
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_Delay_
+  commentId: Overload:chia.dotnet.PlotterConfig.Delay
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterConfig.Delay
+  nameWithType: PlotterConfig.Delay
+- uid: chia.dotnet.PlotterConfig.DestinationDir
+  name: DestinationDir
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_DestinationDir
+  commentId: P:chia.dotnet.PlotterConfig.DestinationDir
+  fullName: chia.dotnet.PlotterConfig.DestinationDir
+  nameWithType: PlotterConfig.DestinationDir
+- uid: chia.dotnet.PlotterConfig.DestinationDir*
+  name: DestinationDir
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_DestinationDir_
+  commentId: Overload:chia.dotnet.PlotterConfig.DestinationDir
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterConfig.DestinationDir
+  nameWithType: PlotterConfig.DestinationDir
+- uid: chia.dotnet.PlotterConfig.ExcludeFinalDir
+  name: ExcludeFinalDir
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_ExcludeFinalDir
+  commentId: P:chia.dotnet.PlotterConfig.ExcludeFinalDir
+  fullName: chia.dotnet.PlotterConfig.ExcludeFinalDir
+  nameWithType: PlotterConfig.ExcludeFinalDir
+- uid: chia.dotnet.PlotterConfig.ExcludeFinalDir*
+  name: ExcludeFinalDir
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_ExcludeFinalDir_
+  commentId: Overload:chia.dotnet.PlotterConfig.ExcludeFinalDir
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterConfig.ExcludeFinalDir
+  nameWithType: PlotterConfig.ExcludeFinalDir
+- uid: chia.dotnet.PlotterConfig.Memo
+  name: Memo
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_Memo
+  commentId: P:chia.dotnet.PlotterConfig.Memo
+  fullName: chia.dotnet.PlotterConfig.Memo
+  nameWithType: PlotterConfig.Memo
+- uid: chia.dotnet.PlotterConfig.Memo*
+  name: Memo
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_Memo_
+  commentId: Overload:chia.dotnet.PlotterConfig.Memo
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterConfig.Memo
+  nameWithType: PlotterConfig.Memo
+- uid: chia.dotnet.PlotterConfig.NoBitField
+  name: NoBitField
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_NoBitField
+  commentId: P:chia.dotnet.PlotterConfig.NoBitField
+  fullName: chia.dotnet.PlotterConfig.NoBitField
+  nameWithType: PlotterConfig.NoBitField
+- uid: chia.dotnet.PlotterConfig.NoBitField*
+  name: NoBitField
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_NoBitField_
+  commentId: Overload:chia.dotnet.PlotterConfig.NoBitField
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterConfig.NoBitField
+  nameWithType: PlotterConfig.NoBitField
+- uid: chia.dotnet.PlotterConfig.Number
+  name: Number
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_Number
+  commentId: P:chia.dotnet.PlotterConfig.Number
+  fullName: chia.dotnet.PlotterConfig.Number
+  nameWithType: PlotterConfig.Number
+- uid: chia.dotnet.PlotterConfig.Number*
+  name: Number
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_Number_
+  commentId: Overload:chia.dotnet.PlotterConfig.Number
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterConfig.Number
+  nameWithType: PlotterConfig.Number
+- uid: chia.dotnet.PlotterConfig.OverrideK
+  name: OverrideK
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_OverrideK
+  commentId: P:chia.dotnet.PlotterConfig.OverrideK
+  fullName: chia.dotnet.PlotterConfig.OverrideK
+  nameWithType: PlotterConfig.OverrideK
+- uid: chia.dotnet.PlotterConfig.OverrideK*
+  name: OverrideK
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_OverrideK_
+  commentId: Overload:chia.dotnet.PlotterConfig.OverrideK
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterConfig.OverrideK
+  nameWithType: PlotterConfig.OverrideK
+- uid: chia.dotnet.PlotterConfig.Parallel
+  name: Parallel
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_Parallel
+  commentId: P:chia.dotnet.PlotterConfig.Parallel
+  fullName: chia.dotnet.PlotterConfig.Parallel
+  nameWithType: PlotterConfig.Parallel
+- uid: chia.dotnet.PlotterConfig.Parallel*
+  name: Parallel
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_Parallel_
+  commentId: Overload:chia.dotnet.PlotterConfig.Parallel
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterConfig.Parallel
+  nameWithType: PlotterConfig.Parallel
+- uid: chia.dotnet.PlotterConfig.PoolContractAddress
+  name: PoolContractAddress
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_PoolContractAddress
+  commentId: P:chia.dotnet.PlotterConfig.PoolContractAddress
+  fullName: chia.dotnet.PlotterConfig.PoolContractAddress
+  nameWithType: PlotterConfig.PoolContractAddress
+- uid: chia.dotnet.PlotterConfig.PoolContractAddress*
+  name: PoolContractAddress
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_PoolContractAddress_
+  commentId: Overload:chia.dotnet.PlotterConfig.PoolContractAddress
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterConfig.PoolContractAddress
+  nameWithType: PlotterConfig.PoolContractAddress
+- uid: chia.dotnet.PlotterConfig.PoolPublicKey
+  name: PoolPublicKey
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_PoolPublicKey
+  commentId: P:chia.dotnet.PlotterConfig.PoolPublicKey
+  fullName: chia.dotnet.PlotterConfig.PoolPublicKey
+  nameWithType: PlotterConfig.PoolPublicKey
+- uid: chia.dotnet.PlotterConfig.PoolPublicKey*
+  name: PoolPublicKey
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_PoolPublicKey_
+  commentId: Overload:chia.dotnet.PlotterConfig.PoolPublicKey
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterConfig.PoolPublicKey
+  nameWithType: PlotterConfig.PoolPublicKey
+- uid: chia.dotnet.PlotterConfig.Queue
+  name: Queue
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_Queue
+  commentId: P:chia.dotnet.PlotterConfig.Queue
+  fullName: chia.dotnet.PlotterConfig.Queue
+  nameWithType: PlotterConfig.Queue
+- uid: chia.dotnet.PlotterConfig.Queue*
+  name: Queue
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_Queue_
+  commentId: Overload:chia.dotnet.PlotterConfig.Queue
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterConfig.Queue
+  nameWithType: PlotterConfig.Queue
+- uid: chia.dotnet.PlotterConfig.Size
+  name: Size
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_Size
+  commentId: P:chia.dotnet.PlotterConfig.Size
+  fullName: chia.dotnet.PlotterConfig.Size
+  nameWithType: PlotterConfig.Size
+- uid: chia.dotnet.PlotterConfig.Size*
+  name: Size
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_Size_
+  commentId: Overload:chia.dotnet.PlotterConfig.Size
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterConfig.Size
+  nameWithType: PlotterConfig.Size
+- uid: chia.dotnet.PlotterConfig.TempDir
+  name: TempDir
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_TempDir
+  commentId: P:chia.dotnet.PlotterConfig.TempDir
+  fullName: chia.dotnet.PlotterConfig.TempDir
+  nameWithType: PlotterConfig.TempDir
+- uid: chia.dotnet.PlotterConfig.TempDir*
+  name: TempDir
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_TempDir_
+  commentId: Overload:chia.dotnet.PlotterConfig.TempDir
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterConfig.TempDir
+  nameWithType: PlotterConfig.TempDir
+- uid: chia.dotnet.PlotterConfig.TempDir2
+  name: TempDir2
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_TempDir2
+  commentId: P:chia.dotnet.PlotterConfig.TempDir2
+  fullName: chia.dotnet.PlotterConfig.TempDir2
+  nameWithType: PlotterConfig.TempDir2
+- uid: chia.dotnet.PlotterConfig.TempDir2*
+  name: TempDir2
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_TempDir2_
+  commentId: Overload:chia.dotnet.PlotterConfig.TempDir2
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterConfig.TempDir2
+  nameWithType: PlotterConfig.TempDir2
+- uid: chia.dotnet.PlotterProxy
+  name: PlotterProxy
+  href: api/chia.dotnet.PlotterProxy.html
+  commentId: T:chia.dotnet.PlotterProxy
+  fullName: chia.dotnet.PlotterProxy
+  nameWithType: PlotterProxy
+- uid: chia.dotnet.PlotterProxy.#ctor(chia.dotnet.Daemon)
+  name: PlotterProxy(Daemon)
+  href: api/chia.dotnet.PlotterProxy.html#chia_dotnet_PlotterProxy__ctor_chia_dotnet_Daemon_
+  commentId: M:chia.dotnet.PlotterProxy.#ctor(chia.dotnet.Daemon)
+  fullName: chia.dotnet.PlotterProxy.PlotterProxy(chia.dotnet.Daemon)
+  nameWithType: PlotterProxy.PlotterProxy(Daemon)
+- uid: chia.dotnet.PlotterProxy.#ctor*
+  name: PlotterProxy
+  href: api/chia.dotnet.PlotterProxy.html#chia_dotnet_PlotterProxy__ctor_
+  commentId: Overload:chia.dotnet.PlotterProxy.#ctor
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterProxy.PlotterProxy
+  nameWithType: PlotterProxy.PlotterProxy
+- uid: chia.dotnet.PlotterProxy.StartPlotting(chia.dotnet.PlotterConfig,System.Threading.CancellationToken)
+  name: StartPlotting(PlotterConfig, CancellationToken)
+  href: api/chia.dotnet.PlotterProxy.html#chia_dotnet_PlotterProxy_StartPlotting_chia_dotnet_PlotterConfig_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.PlotterProxy.StartPlotting(chia.dotnet.PlotterConfig,System.Threading.CancellationToken)
+  fullName: chia.dotnet.PlotterProxy.StartPlotting(chia.dotnet.PlotterConfig, System.Threading.CancellationToken)
+  nameWithType: PlotterProxy.StartPlotting(PlotterConfig, CancellationToken)
+- uid: chia.dotnet.PlotterProxy.StartPlotting*
+  name: StartPlotting
+  href: api/chia.dotnet.PlotterProxy.html#chia_dotnet_PlotterProxy_StartPlotting_
+  commentId: Overload:chia.dotnet.PlotterProxy.StartPlotting
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterProxy.StartPlotting
+  nameWithType: PlotterProxy.StartPlotting
 - uid: chia.dotnet.PoolWallet
   name: PoolWallet
   href: api/chia.dotnet.PoolWallet.html
@@ -1844,6 +2178,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.AddKeyAndRestoreBackup
   nameWithType: WalletProxy.AddKeyAndRestoreBackup
+- uid: chia.dotnet.WalletProxy.CheckDeleteKey(System.UInt32,System.Threading.CancellationToken)
+  name: CheckDeleteKey(UInt32, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CheckDeleteKey_System_UInt32_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.CheckDeleteKey(System.UInt32,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.CheckDeleteKey(System.UInt32, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.CheckDeleteKey(UInt32, CancellationToken)
+- uid: chia.dotnet.WalletProxy.CheckDeleteKey*
+  name: CheckDeleteKey
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CheckDeleteKey_
+  commentId: Overload:chia.dotnet.WalletProxy.CheckDeleteKey
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.CheckDeleteKey
+  nameWithType: WalletProxy.CheckDeleteKey
 - uid: chia.dotnet.WalletProxy.CreateBackup(System.String,System.Threading.CancellationToken)
   name: CreateBackup(String, CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateBackup_System_String_System_Threading_CancellationToken_

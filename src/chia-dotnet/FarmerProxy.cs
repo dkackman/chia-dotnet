@@ -94,7 +94,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get's the pool login link, if any
         /// </summary>
-        /// <param name="launcherID">The id of the pool launcher></param>
+        /// <param name="launcherID">The id of the pool launcher</param>
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The link</returns>
