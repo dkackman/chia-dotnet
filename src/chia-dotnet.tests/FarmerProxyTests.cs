@@ -68,10 +68,10 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
-        public async Task GetPlots()
+        public async Task GetHarvesters()
         {
-            var plots = await _theFarmer.GetPlots(CancellationToken.None);
-            Assert.IsNotNull(plots);
+            var harvesters = await _theFarmer.GetHarvesters(CancellationToken.None);
+            Assert.IsNotNull(harvesters);
         }
 
         [TestMethod]

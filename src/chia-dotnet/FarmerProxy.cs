@@ -80,15 +80,15 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Get the list of plot files from all attached harvester
+        /// Get the list of harvesters
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A list of plots</returns>
-        public async Task<dynamic> GetPlots(CancellationToken cancellationToken)
+        /// <returns>A list of harvesters</returns>
+        public async Task<IEnumerable<dynamic>> GetHarvesters(CancellationToken cancellationToken)
         {
-            var response = await SendMessage("get_plots", cancellationToken);
+            var response = await SendMessage("get_harvesters", cancellationToken);
 
-            return response.Data;
+            return response.Data.harvesters;
         }
 
         /// <summary>
