@@ -79,7 +79,6 @@ namespace chia.dotnet
             return response.Data.signage_point;
         }
 
-
         /// <summary>
         /// Get the list of plot files from all attached harvester
         /// </summary>
@@ -90,6 +89,51 @@ namespace chia.dotnet
             var response = await SendMessage("get_plots", cancellationToken);
 
             return response.Data;
+        }
+
+        /// <summary>
+        /// Get's the pool login link, if any
+        /// </summary>
+        /// <param name="launcherID">The id of the pool launcher></param>
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>The link</returns>
+        public async Task<string> GetPoolLoginLink(string launcherID, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.launcher_id = launcherID;
+
+            var response = await SendMessage("get_pool_login_link", data, cancellationToken);
+
+            return response.Data.login_link?.ToString();
+        }
+
+        /// <summary>
+        /// Get's the state of the pool
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>A list of pool states</returns>
+        public async Task<IEnumerable<dynamic>> GetPoolState(CancellationToken cancellationToken)
+        {
+            var response = await SendMessage("get_pool_state", cancellationToken);
+
+            return response.Data.pool_state;
+        }
+
+        /// <summary>
+        /// Set's a pool's payout instructions
+        /// </summary>
+        /// <param name="launcherID">The id of the pool launcher</param>
+        /// <param name="payoutInstructions">The instructions</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>An awaitable <see cref="Task"/></returns>
+        public async Task SetPayoutInstructions(string launcherID, string payoutInstructions, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.launcher_id = launcherID;
+            data.payout_instructions = payoutInstructions;
+
+            _ = await SendMessage("set_payout_instructions", data, cancellationToken);
         }
     }
 }
