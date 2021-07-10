@@ -8,6 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 [assembly: InternalsVisibleTo("chia-dotnet.tests")]
 
@@ -163,6 +164,9 @@ namespace chia.dotnet
         /// <param name="message">The message to broadcast</param>
         protected virtual void OnBroadcastMessageReceived(Message message)
         {
+            Debug.WriteLine("Broadcast message:");
+            Debug.WriteLine(message.ToJson());
+
             BroadcastMessageReceived?.Invoke(this, message);
         }
 

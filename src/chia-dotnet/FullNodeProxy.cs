@@ -3,6 +3,7 @@ using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace chia.dotnet
 {
@@ -21,7 +22,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Get the current state of the blockchain as known by the node
+        /// Returns a summary of the node's view of the blockchain.
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>blockchain_state</returns>
@@ -129,7 +130,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Retrieves a list of coin records with a certain puzzle hash.
+        /// Retrieves the coins for a given puzzlehash, by default returns unspent coins.
         /// </summary>
         /// <param name="puzzlehash">The puzzle hash</param>
         /// <param name="includeSpendCoins">whether to include spent coins too, instead of just unspent</param>
@@ -147,23 +148,45 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Retrieves a list of coin records with a certain puzzle hash.
+        /// Retrieves the coins for a given puzzlehash, by default returns unspent coins.
         /// </summary>
         /// <param name="puzzlehash">The puzzle hash</param>
-        /// <param name="start">confirmation start height for search</param>
-        /// <param name="end">confirmation end height for search</param>
+        /// <param name="startHeight">confirmation start height for search</param>
+        /// <param name="endHeight">confirmation end height for search</param>
         /// <param name="includeSpendCoins">whether to include spent coins too, instead of just unspent</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of coin records</returns>
-        public async Task<IEnumerable<dynamic>> GetCoinRecordsByPuzzleHash(string puzzlehash, uint start, uint end, bool includeSpendCoins, CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetCoinRecordsByPuzzleHash(string puzzlehash, uint startHeight, uint endHeight, bool includeSpendCoins, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.puzzle_hash = puzzlehash;
-            data.start = start;
-            data.end = end;
+            data.start_height = startHeight;
+            data.end_height = endHeight;
             data.include_spend_coins = includeSpendCoins;
 
             var response = await SendMessage("get_coin_records_by_puzzle_hash", data, cancellationToken);
+
+            return response.Data.coin_records;
+        }
+
+        /// <summary>
+        /// Retrieves the coins for a given list of puzzlehashes, by default returns unspent coins.
+        /// </summary>
+        /// <param name="puzzlehashes">The list of puzzle hashes</param>
+        /// <param name="startHeight">confirmation start height for search</param>
+        /// <param name="endHeight">confirmation end height for search</param>
+        /// <param name="includeSpendCoins">whether to include spent coins too, instead of just unspent</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>A list of coin records</returns>
+        public async Task<IEnumerable<dynamic>> GetCoinRecordsByPuzzleHashes(IEnumerable<string> puzzlehashes, uint startHeight, uint endHeight, bool includeSpendCoins, CancellationToken cancellationToken)
+        {
+            dynamic data = new ExpandoObject();
+            data.puzzle_hash = puzzlehashes.ToList();
+            data.start_height = startHeight;
+            data.end_height = endHeight;
+            data.include_spend_coins = includeSpendCoins;
+
+            var response = await SendMessage("get_coin_records_by_puzzle_hashes", data, cancellationToken);
 
             return response.Data.coin_records;
         }
@@ -241,7 +264,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Get network space
+        /// Retrieves an estimate of total space validating the chain between two block header hashes.
         /// </summary>
         /// <param name="newerBlockHeaderHash"></param>
         /// <param name="olderBlockHeaderHash"></param>
