@@ -52,6 +52,7 @@ namespace chia.dotnet.tests
 
             await _thePlotter.StartPlotting(config, CancellationToken.None);
 
+            // this seems like the only way to get the plot queue
             var q = await _theDaemon.RegisterPlotter(CancellationToken.None);
 
             Assert.IsNotNull(q);
