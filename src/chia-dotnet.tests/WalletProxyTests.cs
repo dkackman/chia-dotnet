@@ -171,6 +171,14 @@ namespace chia.dotnet.tests
             Assert.IsNotNull(discrepencies);
         }
 
+        [TestMethod()]
+        public async Task GetFarmedAmount()
+        {
+            var amount = await _theWallet.GetFarmedAmount(CancellationToken.None);
+
+            Assert.IsNotNull(amount);
+        }
+
         private async Task LoginToFirstWallet()
         {
             var fingerprints = await _theWallet.GetPublicKeys(CancellationToken.None);

@@ -56,14 +56,6 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        public async Task GetFarmedAmount()
-        {
-            var amount = await _theWallet.GetFarmedAmount(CancellationToken.None);
-
-            Assert.IsNotNull(amount);
-        }
-
-        [TestMethod()]
         public async Task GetTransactionCount()
         {
             var count = await _theWallet.GetTransactionCount(CancellationToken.None);

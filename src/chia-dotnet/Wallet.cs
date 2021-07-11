@@ -106,21 +106,6 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Get the amount farmed
-        /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>The amount farmed</returns>
-        public async Task<(uint FarmedAmount, uint FarmerRewardAmount, uint FeeAmount, uint LastHieghtFarmed, uint PoolReqardAmount)> GetFarmedAmount(CancellationToken cancellationToken)
-        {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
-
-            var response = await WalletProxy.SendMessage("get_farmed_amount", data, cancellationToken);
-
-            return (response.Data.farmed_amount, response.Data.farmer_reward_amount, response.Data.fee_amount, response.Data.last_height_farmed, response.Data.pool_reward_amount);
-        }
-
-        /// <summary>
         /// Get the number of transactions
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
@@ -203,42 +188,6 @@ namespace chia.dotnet
         public async Task<dynamic> SendTransactionMulti(IEnumerable<dynamic> additions, BigInteger fee, CancellationToken cancellationToken)
         {
             return await SendTransactionMulti(additions, null, fee, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create but do not send a transaction
-        /// </summary>
-        /// <param name="additions">Additions to the block chain</param>
-        /// <param name="coins">Coins to include</param>
-        /// <param name="fee">Fee amount</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>The signed transaction</returns>
-        public async Task<dynamic> CreateSignedTransaction(IEnumerable<dynamic> additions, IEnumerable<dynamic> coins, BigInteger fee, CancellationToken cancellationToken)
-        {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
-            data.additions = additions.ToList();
-            data.fee = fee;
-            if (coins != null) // coins are optional
-            {
-                data.coins = coins.ToList();
-            }
-
-            var response = await WalletProxy.SendMessage("create_signed_transaction", data, cancellationToken);
-
-            return response.Data.signed_tx;
-        }
-
-        /// <summary>
-        /// Create but do not send a transaction
-        /// </summary>
-        /// <param name="additions">Additions to the block chain</param>
-        /// <param name="fee">Fee amount</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>The signed transaction</returns>
-        public async Task<dynamic> CreateSignedTransaction(IEnumerable<dynamic> additions, BigInteger fee, CancellationToken cancellationToken)
-        {
-            return await CreateSignedTransaction(additions, null, fee, cancellationToken);
         }
     }
 }
