@@ -36,13 +36,13 @@ namespace chia.dotnet
         /// <summary>
         /// Get a block by a header hash
         /// </summary>
-        /// <param name="headerHash">The header hash</param>
+        /// <param name="headerhash">The header hash</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>block</returns>
-        public async Task<dynamic> GetBlock(string headerHash, CancellationToken cancellationToken)
+        public async Task<dynamic> GetBlock(string headerhash, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
-            data.header_hash = headerHash;
+            data.header_hash = headerhash;
 
             var response = await SendMessage("get_block", data, cancellationToken);
 
@@ -52,13 +52,13 @@ namespace chia.dotnet
         /// <summary>
         /// Get a block record by a header hash
         /// </summary>
-        /// <param name="headerHash">The header hash</param>
+        /// <param name="headerhash">The header hash</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>block_record</returns>
-        public async Task<dynamic> GetBlockRecord(string headerHash, CancellationToken cancellationToken)
+        public async Task<dynamic> GetBlockRecord(string headerhash, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
-            data.header_hash = headerHash;
+            data.header_hash = headerhash;
 
             var response = await SendMessage("get_block_record", data, cancellationToken);
 
@@ -104,13 +104,15 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="start">Start height</param>
         /// <param name="end">End Height - non-inclusive</param>
+        /// <param name="excludeHeaderhash">Flag indicating whether to include the header hash in the result or not</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of blocks</returns>
-        public async Task<IEnumerable<dynamic>> GetBlocks(uint start, uint end, CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetBlocks(uint start, uint end, bool excludeHeaderhash, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.start = start;
             data.end = end;
+            data.exclude_header_hash = excludeHeaderhash;
 
             var response = await SendMessage("get_blocks", data, cancellationToken);
 
@@ -210,13 +212,13 @@ namespace chia.dotnet
         /// <summary>
         /// Retrieves the additions and removals (state transitions) for a certain block. Returns coin records for each addition and removal.
         /// </summary>
-        /// <param name="headerHash">The header hash</param>
+        /// <param name="headerhash">The header hash</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of additions and a list of removals</returns>
-        public async Task<(IEnumerable<dynamic> Additions, IEnumerable<dynamic> Removals)> GetAdditionsAndRemovals(string headerHash, CancellationToken cancellationToken)
+        public async Task<(IEnumerable<dynamic> Additions, IEnumerable<dynamic> Removals)> GetAdditionsAndRemovals(string headerhash, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
-            data.header_hash = headerHash;
+            data.header_hash = headerhash;
 
             var response = await SendMessage("get_additions_and_removals", data, cancellationToken);
 
@@ -266,15 +268,15 @@ namespace chia.dotnet
         /// <summary>
         /// Retrieves an estimate of total space validating the chain between two block header hashes.
         /// </summary>
-        /// <param name="newerBlockHeaderHash"></param>
-        /// <param name="olderBlockHeaderHash"></param>
+        /// <param name="newerBlockHeaderhash"></param>
+        /// <param name="olderBlockHeaderhash"></param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns><see cref="BigInteger"/> of network space in bytes</returns>
-        public async Task<BigInteger> GetNetworkSpace(string newerBlockHeaderHash, string olderBlockHeaderHash, CancellationToken cancellationToken)
+        public async Task<BigInteger> GetNetworkSpace(string newerBlockHeaderhash, string olderBlockHeaderhash, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
-            data.newer_block_header_hash = newerBlockHeaderHash;
-            data.older_block_header_hash = olderBlockHeaderHash;
+            data.newer_block_header_hash = newerBlockHeaderhash;
+            data.older_block_header_hash = olderBlockHeaderhash;
 
             var response = await SendMessage("get_network_space", data, cancellationToken);
 
@@ -282,10 +284,10 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Retrieves some information about the current network
+        /// Retrieves information about the current network
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>some information about the current network</returns>
+        /// <returns>The network name and coin prefix</returns>
         public async Task<(string NetworkName, string NetworkPrefix)> GetNetworkInfo(CancellationToken cancellationToken)
         {
             var response = await SendMessage("get_network_info", cancellationToken);

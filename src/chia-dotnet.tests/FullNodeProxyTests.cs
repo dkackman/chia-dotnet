@@ -60,7 +60,7 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetBlocks()
         {
-            var blocks = await _theFullNode.GetBlocks(435160, 435167, CancellationToken.None);
+            var blocks = await _theFullNode.GetBlocks(435160, 435167, false, CancellationToken.None);
 
             Assert.IsNotNull(blocks);
         }
