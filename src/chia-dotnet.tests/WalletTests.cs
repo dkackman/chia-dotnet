@@ -56,6 +56,7 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
+        [TestCategory("CAUTION")]
         public async Task CreateNewWalletAddress()
         {
             var address = await _theWallet.GetNextAddress(false, CancellationToken.None);
