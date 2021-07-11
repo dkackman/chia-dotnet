@@ -73,7 +73,7 @@
   
   <h1 id="chia_dotnet_PlotterConfig" data-uid="chia.dotnet.PlotterConfig" class="text-break">Class PlotterConfig
   </h1>
-  <div class="markdown level0 summary"><p>Configuraiton settings for the plotter. Any property that is non null well be sent to the plotter</p>
+  <div class="markdown level0 summary"><p>Configuration settings for the plotter. (equivalent to chia plots create command line args)</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -122,7 +122,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_AltFingerprint.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.AltFingerprint%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L55">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L57">View Source</a>
   </span>
   <a id="chia_dotnet_PlotterConfig_AltFingerprint_" data-uid="chia.dotnet.PlotterConfig.AltFingerprint*"></a>
   <h4 id="chia_dotnet_PlotterConfig_AltFingerprint" data-uid="chia.dotnet.PlotterConfig.AltFingerprint">AltFingerprint</h4>
@@ -153,7 +153,7 @@ public uint? AltFingerprint { get; set; }</code></pre>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_Buckets.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.Buckets%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L52">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L54">View Source</a>
   </span>
   <a id="chia_dotnet_PlotterConfig_Buckets_" data-uid="chia.dotnet.PlotterConfig.Buckets*"></a>
   <h4 id="chia_dotnet_PlotterConfig_Buckets" data-uid="chia.dotnet.PlotterConfig.Buckets">Buckets</h4>
@@ -162,7 +162,7 @@ public uint? AltFingerprint { get; set; }</code></pre>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;u&quot;)]
-public int? Buckets { get; set; }</code></pre>
+public int Buckets { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -174,7 +174,7 @@ public int? Buckets { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -184,7 +184,7 @@ public int? Buckets { get; set; }</code></pre>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_Buffer.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.Buffer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L49">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L51">View Source</a>
   </span>
   <a id="chia_dotnet_PlotterConfig_Buffer_" data-uid="chia.dotnet.PlotterConfig.Buffer*"></a>
   <h4 id="chia_dotnet_PlotterConfig_Buffer" data-uid="chia.dotnet.PlotterConfig.Buffer">Buffer</h4>
@@ -193,7 +193,7 @@ public int? Buckets { get; set; }</code></pre>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;b&quot;)]
-public int? Buffer { get; set; }</code></pre>
+public int Buffer { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -205,7 +205,7 @@ public int? Buffer { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -215,7 +215,7 @@ public int? Buffer { get; set; }</code></pre>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_Delay.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.Delay%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L25">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L27">View Source</a>
   </span>
   <a id="chia_dotnet_PlotterConfig_Delay_" data-uid="chia.dotnet.PlotterConfig.Delay*"></a>
   <h4 id="chia_dotnet_PlotterConfig_Delay" data-uid="chia.dotnet.PlotterConfig.Delay">Delay</h4>
@@ -224,7 +224,7 @@ public int? Buffer { get; set; }</code></pre>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;delay&quot;)]
-public int? Delay { get; set; }</code></pre>
+public int Delay { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -236,7 +236,7 @@ public int? Delay { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -246,7 +246,7 @@ public int? Delay { get; set; }</code></pre>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_DestinationDir.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.DestinationDir%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L46">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L48">View Source</a>
   </span>
   <a id="chia_dotnet_PlotterConfig_DestinationDir_" data-uid="chia.dotnet.PlotterConfig.DestinationDir*"></a>
   <h4 id="chia_dotnet_PlotterConfig_DestinationDir" data-uid="chia.dotnet.PlotterConfig.DestinationDir">DestinationDir</h4>
@@ -277,7 +277,7 @@ public string DestinationDir { get; set; }</code></pre>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_ExcludeFinalDir.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.ExcludeFinalDir%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L70">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L75">View Source</a>
   </span>
   <a id="chia_dotnet_PlotterConfig_ExcludeFinalDir_" data-uid="chia.dotnet.PlotterConfig.ExcludeFinalDir*"></a>
   <h4 id="chia_dotnet_PlotterConfig_ExcludeFinalDir" data-uid="chia.dotnet.PlotterConfig.ExcludeFinalDir">ExcludeFinalDir</h4>
@@ -286,7 +286,7 @@ public string DestinationDir { get; set; }</code></pre>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;x&quot;)]
-public bool? ExcludeFinalDir { get; set; }</code></pre>
+public bool ExcludeFinalDir { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -298,7 +298,7 @@ public bool? ExcludeFinalDir { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -308,7 +308,7 @@ public bool? ExcludeFinalDir { get; set; }</code></pre>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_Memo.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.Memo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L64">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L66">View Source</a>
   </span>
   <a id="chia_dotnet_PlotterConfig_Memo_" data-uid="chia.dotnet.PlotterConfig.Memo*"></a>
   <h4 id="chia_dotnet_PlotterConfig_Memo" data-uid="chia.dotnet.PlotterConfig.Memo">Memo</h4>
@@ -339,7 +339,7 @@ public string Memo { get; set; }</code></pre>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_NoBitField.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.NoBitField%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L67">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L69">View Source</a>
   </span>
   <a id="chia_dotnet_PlotterConfig_NoBitField_" data-uid="chia.dotnet.PlotterConfig.NoBitField*"></a>
   <h4 id="chia_dotnet_PlotterConfig_NoBitField" data-uid="chia.dotnet.PlotterConfig.NoBitField">NoBitField</h4>
@@ -348,7 +348,7 @@ public string Memo { get; set; }</code></pre>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;e&quot;)]
-public bool? NoBitField { get; set; }</code></pre>
+public bool NoBitField { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -360,7 +360,7 @@ public bool? NoBitField { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -370,7 +370,7 @@ public bool? NoBitField { get; set; }</code></pre>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_Number.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.Number%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L31">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L33">View Source</a>
   </span>
   <a id="chia_dotnet_PlotterConfig_Number_" data-uid="chia.dotnet.PlotterConfig.Number*"></a>
   <h4 id="chia_dotnet_PlotterConfig_Number" data-uid="chia.dotnet.PlotterConfig.Number">Number</h4>
@@ -379,7 +379,7 @@ public bool? NoBitField { get; set; }</code></pre>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;n&quot;)]
-public int? Number { get; set; }</code></pre>
+public int Number { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -391,7 +391,38 @@ public int? Number { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_NumThreads.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.NumThreads%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L72">View Source</a>
+  </span>
+  <a id="chia_dotnet_PlotterConfig_NumThreads_" data-uid="chia.dotnet.PlotterConfig.NumThreads*"></a>
+  <h4 id="chia_dotnet_PlotterConfig_NumThreads" data-uid="chia.dotnet.PlotterConfig.NumThreads">NumThreads</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;r&quot;)]
+public int NumThreads { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -401,7 +432,7 @@ public int? Number { get; set; }</code></pre>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_OverrideK.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.OverrideK%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L73">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L78">View Source</a>
   </span>
   <a id="chia_dotnet_PlotterConfig_OverrideK_" data-uid="chia.dotnet.PlotterConfig.OverrideK*"></a>
   <h4 id="chia_dotnet_PlotterConfig_OverrideK" data-uid="chia.dotnet.PlotterConfig.OverrideK">OverrideK</h4>
@@ -432,7 +463,7 @@ public bool? OverrideK { get; set; }</code></pre>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_Parallel.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.Parallel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L28">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L30">View Source</a>
   </span>
   <a id="chia_dotnet_PlotterConfig_Parallel_" data-uid="chia.dotnet.PlotterConfig.Parallel*"></a>
   <h4 id="chia_dotnet_PlotterConfig_Parallel" data-uid="chia.dotnet.PlotterConfig.Parallel">Parallel</h4>
@@ -441,7 +472,7 @@ public bool? OverrideK { get; set; }</code></pre>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;parallel&quot;)]
-public bool? Parallel { get; set; }</code></pre>
+public bool Parallel { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -453,7 +484,7 @@ public bool? Parallel { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -463,7 +494,7 @@ public bool? Parallel { get; set; }</code></pre>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_PoolContractAddress.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.PoolContractAddress%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L58">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L60">View Source</a>
   </span>
   <a id="chia_dotnet_PlotterConfig_PoolContractAddress_" data-uid="chia.dotnet.PlotterConfig.PoolContractAddress*"></a>
   <h4 id="chia_dotnet_PlotterConfig_PoolContractAddress" data-uid="chia.dotnet.PlotterConfig.PoolContractAddress">PoolContractAddress</h4>
@@ -494,7 +525,7 @@ public string PoolContractAddress { get; set; }</code></pre>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_PoolPublicKey.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.PoolPublicKey%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L61">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L63">View Source</a>
   </span>
   <a id="chia_dotnet_PlotterConfig_PoolPublicKey_" data-uid="chia.dotnet.PlotterConfig.PoolPublicKey*"></a>
   <h4 id="chia_dotnet_PlotterConfig_PoolPublicKey" data-uid="chia.dotnet.PlotterConfig.PoolPublicKey">PoolPublicKey</h4>
@@ -525,7 +556,7 @@ public string PoolPublicKey { get; set; }</code></pre>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_Queue.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.Queue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L37">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L39">View Source</a>
   </span>
   <a id="chia_dotnet_PlotterConfig_Queue_" data-uid="chia.dotnet.PlotterConfig.Queue*"></a>
   <h4 id="chia_dotnet_PlotterConfig_Queue" data-uid="chia.dotnet.PlotterConfig.Queue">Queue</h4>
@@ -556,7 +587,7 @@ public string Queue { get; set; }</code></pre>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_Size.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.Size%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L34">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L36">View Source</a>
   </span>
   <a id="chia_dotnet_PlotterConfig_Size_" data-uid="chia.dotnet.PlotterConfig.Size*"></a>
   <h4 id="chia_dotnet_PlotterConfig_Size" data-uid="chia.dotnet.PlotterConfig.Size">Size</h4>
@@ -587,7 +618,7 @@ public KValues Size { get; set; }</code></pre>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_TempDir.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.TempDir%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L40">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L42">View Source</a>
   </span>
   <a id="chia_dotnet_PlotterConfig_TempDir_" data-uid="chia.dotnet.PlotterConfig.TempDir*"></a>
   <h4 id="chia_dotnet_PlotterConfig_TempDir" data-uid="chia.dotnet.PlotterConfig.TempDir">TempDir</h4>
@@ -618,7 +649,7 @@ public string TempDir { get; set; }</code></pre>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_TempDir2.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.TempDir2%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L43">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L45">View Source</a>
   </span>
   <a id="chia_dotnet_PlotterConfig_TempDir2_" data-uid="chia.dotnet.PlotterConfig.TempDir2*"></a>
   <h4 id="chia_dotnet_PlotterConfig_TempDir2" data-uid="chia.dotnet.PlotterConfig.TempDir2">TempDir2</h4>
@@ -659,7 +690,7 @@ public string TempDir2 { get; set; }</code></pre>
                     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L23" class="contribution-link">View Source</a>
+                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PlotterConfig.cs/#L25" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

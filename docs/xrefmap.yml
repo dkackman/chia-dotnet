@@ -1254,6 +1254,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.PlotterConfig.Number
   nameWithType: PlotterConfig.Number
+- uid: chia.dotnet.PlotterConfig.NumThreads
+  name: NumThreads
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_NumThreads
+  commentId: P:chia.dotnet.PlotterConfig.NumThreads
+  fullName: chia.dotnet.PlotterConfig.NumThreads
+  nameWithType: PlotterConfig.NumThreads
+- uid: chia.dotnet.PlotterConfig.NumThreads*
+  name: NumThreads
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_NumThreads_
+  commentId: Overload:chia.dotnet.PlotterConfig.NumThreads
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterConfig.NumThreads
+  nameWithType: PlotterConfig.NumThreads
 - uid: chia.dotnet.PlotterConfig.OverrideK
   name: OverrideK
   href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_OverrideK
@@ -1390,6 +1403,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.PlotterProxy.StartPlotting
   nameWithType: PlotterProxy.StartPlotting
+- uid: chia.dotnet.PlotterProxy.StopPlotting(System.String,System.Threading.CancellationToken)
+  name: StopPlotting(String, CancellationToken)
+  href: api/chia.dotnet.PlotterProxy.html#chia_dotnet_PlotterProxy_StopPlotting_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.PlotterProxy.StopPlotting(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.PlotterProxy.StopPlotting(System.String, System.Threading.CancellationToken)
+  nameWithType: PlotterProxy.StopPlotting(String, CancellationToken)
+- uid: chia.dotnet.PlotterProxy.StopPlotting*
+  name: StopPlotting
+  href: api/chia.dotnet.PlotterProxy.html#chia_dotnet_PlotterProxy_StopPlotting_
+  commentId: Overload:chia.dotnet.PlotterProxy.StopPlotting
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterProxy.StopPlotting
+  nameWithType: PlotterProxy.StopPlotting
 - uid: chia.dotnet.PoolWallet
   name: PoolWallet
   href: api/chia.dotnet.PoolWallet.html
@@ -1720,6 +1746,12 @@ references:
   commentId: T:chia.dotnet.ServiceNames
   fullName: chia.dotnet.ServiceNames
   nameWithType: ServiceNames
+- uid: chia.dotnet.ServiceNames.Daemon
+  name: Daemon
+  href: api/chia.dotnet.ServiceNames.html#chia_dotnet_ServiceNames_Daemon
+  commentId: F:chia.dotnet.ServiceNames.Daemon
+  fullName: chia.dotnet.ServiceNames.Daemon
+  nameWithType: ServiceNames.Daemon
 - uid: chia.dotnet.ServiceNames.Farmer
   name: Farmer
   href: api/chia.dotnet.ServiceNames.html#chia_dotnet_ServiceNames_Farmer
