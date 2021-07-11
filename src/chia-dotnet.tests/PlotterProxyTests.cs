@@ -47,7 +47,6 @@ namespace chia.dotnet.tests
                 Size = KValues.K25,
                 OverrideK = true,
                 TempDir = "/home/don/plots",
-                TempDir2 = "/home/don/plots",
                 DestinationDir = "/home/don/plots"
             };
 

@@ -7,7 +7,9 @@ using Newtonsoft.Json;
 
 namespace chia.dotnet
 {
-    // Valid plot sizes
+    /// <summary>
+    /// Valid plot sizes
+    /// </summary>
     public enum KValues
     {
         K25 = 25,
@@ -18,7 +20,7 @@ namespace chia.dotnet
     }
 
     /// <summary>
-    /// Configuraiton settings for the plotter. Any property that is non null well be sent to the plotter
+    /// Configuration settings for the plotter. (equivalent to chia plots create command line args)
     /// </summary>
     public record PlotterConfig
     {
@@ -78,8 +80,21 @@ namespace chia.dotnet
 
         internal dynamic PrepareForSerialization()
         {
+            if (string.IsNullOrEmpty(DestinationDir))
+            {
+                throw new InvalidOperationException($"{nameof(DestinationDir)} must be specified");
+            }
+            if (string.IsNullOrEmpty(TempDir))
+            {
+                throw new InvalidOperationException($"{nameof(TempDir)} must be specified");
+            }
+            if (Size == KValues.K25 && OverrideK == false)
+            {
+                throw new InvalidOperationException($"Using a {nameof(Size)} of {KValues.K25} requires {OverrideK} to be true");
+            }
+
             dynamic data = new ExpandoObject();
-            data.service = ServiceNames.Plotter; // this needs to be here - it tells the dameon this is a plotting message
+            data.service = ServiceNames.Plotter; // this needs to be here - it tells the dameon this is a plotting message            
 
             // get the dynamic object as a dictionary so we can add arbitrary properties
             var dict = (IDictionary<string, object>)data;
@@ -96,13 +111,17 @@ namespace chia.dotnet
                         v = Convert.ChangeType(v, Enum.GetUnderlyingType(v.GetType()));
                     }
 
-                    // now find out 
+                    // now find out the serialization name
                     var attr = p.GetCustomAttribute<JsonPropertyAttribute>();
 
                     dict.Add(attr.PropertyName, v);
                 }
             }
 
+            if (!dict.ContainsKey("t2"))
+            {
+                dict.Add("t2", dict["t"]); // start_plotting needs all params set, if even to defaults
+            }
             return data;
         }
     }
