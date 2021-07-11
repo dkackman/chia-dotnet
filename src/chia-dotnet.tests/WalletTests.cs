@@ -48,11 +48,20 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        public async Task GetNextAddress()
+        public async Task GetWalletAddress()
         {
-            var address = await _theWallet.GetNextAddress(true, CancellationToken.None);
+            var address = await _theWallet.GetNextAddress(false, CancellationToken.None);
 
             Assert.IsNotNull(address);
+        }
+
+        [TestMethod()]
+        public async Task CreateNewWalletAddress()
+        {
+            var address = await _theWallet.GetNextAddress(false, CancellationToken.None);
+            var newAddress = await _theWallet.GetNextAddress(true, CancellationToken.None);
+
+            Assert.AreNotEqual(address, newAddress);
         }
 
         [TestMethod()]
