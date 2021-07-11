@@ -81,7 +81,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Wallet state and list of unconfirmed transactions</returns>
-        public async Task<(dynamic State, IEnumerable<dynamic> Transaction)> Status(CancellationToken cancellationToken)
+        public async Task<(dynamic State, IEnumerable<dynamic> UnconfirmedTransactions)> Status(CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
