@@ -31,19 +31,27 @@ namespace chia.dotnet.tests
 
         [TestMethod()]
         [ExpectedException(typeof(TaskCanceledException))]
-        public async Task Timeout()
+        public async Task FailOnInvaliddConfig()
         {
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(1));
             var config = new PlotterConfig();
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
 
             await _thePlotter.StartPlotting(config, cts.Token);
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ResponseException))]
-        public async Task FailOnInvaliddConfig()
+        public async Task StartPlotting()
         {
-            var config = new PlotterConfig();
+            var config = new PlotterConfig()
+            {
+                Size = KValues.K25,
+                OverrideK = true,
+                TempDir = "/home/don/plots",
+                TempDir2 = "/home/don/plots",
+                DestinationDir = "/home/don/plots"
+            };
+
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
 
             await _thePlotter.StartPlotting(config, CancellationToken.None);
         }

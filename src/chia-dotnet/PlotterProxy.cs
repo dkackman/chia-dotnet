@@ -11,7 +11,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="daemon">The <see cref="Daemon"/> to handle RPC</param>
         public PlotterProxy(Daemon daemon)
-            : base(daemon, ServiceNames.Plotter)
+            : base(daemon, ServiceNames.Daemon) // plotting commands are handled by the daemon directly
         {
         }
 

@@ -16,6 +16,7 @@ namespace chia.dotnet
         public const string Harvester = "chia_harvester";
         public const string Simulator = "chia_full_node_simulator";
         public const string Plotter = "chia plots create";
+        public const string Daemon = "daemon";
     }
 
     /// <summary>

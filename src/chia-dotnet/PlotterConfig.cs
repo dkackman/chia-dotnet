@@ -23,19 +23,19 @@ namespace chia.dotnet
     public record PlotterConfig
     {
         [JsonProperty("delay")]
-        public int? Delay { get; init; }
+        public int Delay { get; init; } = 0;
 
         [JsonProperty("parallel")]
-        public bool? Parallel { get; init; }
+        public bool Parallel { get; init; } = false;
 
         [JsonProperty("n")]
-        public int? Number { get; init; }
+        public int Number { get; init; } = 1;
 
         [JsonProperty("k")]
         public KValues Size { get; init; } = KValues.K32;
 
         [JsonProperty("queue")]
-        public string Queue { get; init; }
+        public string Queue { get; init; } = "default";
 
         [JsonProperty("t")]
         public string TempDir { get; init; }
@@ -47,10 +47,10 @@ namespace chia.dotnet
         public string DestinationDir { get; init; }
 
         [JsonProperty("b")]
-        public int? Buffer { get; init; }
+        public int Buffer { get; init; } = 4096;
 
         [JsonProperty("u")]
-        public int? Buckets { get; init; }
+        public int Buckets { get; init; } = 128;
 
         [JsonProperty("a")]
         public uint? AltFingerprint { get; init; }
@@ -65,10 +65,13 @@ namespace chia.dotnet
         public string Memo { get; init; }
 
         [JsonProperty("e")]
-        public bool? NoBitField { get; init; }
+        public bool NoBitField { get; init; } = false;
+
+        [JsonProperty("r")]
+        public int NumThreads { get; init; } = 2;
 
         [JsonProperty("x")]
-        public bool? ExcludeFinalDir { get; init; }
+        public bool ExcludeFinalDir { get; init; } = false;
 
         [JsonProperty("overrideK")]
         public bool? OverrideK { get; init; }
@@ -76,7 +79,7 @@ namespace chia.dotnet
         internal dynamic PrepareForSerialization()
         {
             dynamic data = new ExpandoObject();
-            data.service = ServiceNames.Plotter;
+            data.service = ServiceNames.Plotter; // this needs to be here - it tells the dameon this is a plotting message
 
             // get the dynamic object as a dictionary so we can add arbitrary properties
             var dict = (IDictionary<string, object>)data;
