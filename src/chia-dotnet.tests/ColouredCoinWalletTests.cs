@@ -47,24 +47,5 @@ namespace chia.dotnet.tests
 
             Assert.IsNotNull(colour);
         }
-
-        [TestMethod()]
-        public async Task CreateOfferForIds()
-        {
-            var ids = new Dictionary<int, int>()
-            {
-                { 1, 1 }
-            };
-
-            await _theWallet.CreateOfferForIds(ids, @"C:\tmp\test.offer", CancellationToken.None);
-        }
-
-        [TestMethod()]
-        public async Task GetDiscrepenciesForOffer()
-        {
-            var discrepencies = await _theWallet.GetDiscrepenciesForOffer(@"C:\tmp\test.offer", CancellationToken.None);
-
-            Assert.IsNotNull(discrepencies);
-        }
     }
 }

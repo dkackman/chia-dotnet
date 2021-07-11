@@ -152,6 +152,25 @@ namespace chia.dotnet.tests
             Assert.IsNotNull(transaction);
         }
 
+        [TestMethod()]
+        public async Task CreateOfferForIds()
+        {
+            var ids = new Dictionary<int, int>()
+            {
+                { 1, 1 }
+            };
+
+            await _theWallet.CreateOfferForIds(ids, @"C:\tmp\test.offer", CancellationToken.None);
+        }
+
+        [TestMethod()]
+        public async Task GetDiscrepenciesForOffer()
+        {
+            var discrepencies = await _theWallet.GetDiscrepenciesForOffer(@"C:\tmp\test.offer", CancellationToken.None);
+
+            Assert.IsNotNull(discrepencies);
+        }
+
         private async Task LoginToFirstWallet()
         {
             var fingerprints = await _theWallet.GetPublicKeys(CancellationToken.None);
