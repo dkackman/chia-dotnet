@@ -103,9 +103,6 @@
       <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetNextAddress_System_Boolean_System_Threading_CancellationToken_">Wallet.GetNextAddress(Boolean, CancellationToken)</a>
     </div>
     <div>
-      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetFarmedAmount_System_Threading_CancellationToken_">Wallet.GetFarmedAmount(CancellationToken)</a>
-    </div>
-    <div>
       <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetTransactionCount_System_Threading_CancellationToken_">Wallet.GetTransactionCount(CancellationToken)</a>
     </div>
     <div>
@@ -119,12 +116,6 @@
     </div>
     <div>
       <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_System_Object__System_Numerics_BigInteger_System_Threading_CancellationToken_">Wallet.SendTransactionMulti(IEnumerable&lt;Object&gt;, BigInteger, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_CreateSignedTransaction_System_Collections_Generic_IEnumerable_System_Object__System_Collections_Generic_IEnumerable_System_Object__System_Numerics_BigInteger_System_Threading_CancellationToken_">Wallet.CreateSignedTransaction(IEnumerable&lt;Object&gt;, IEnumerable&lt;Object&gt;, BigInteger, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_CreateSignedTransaction_System_Collections_Generic_IEnumerable_System_Object__System_Numerics_BigInteger_System_Threading_CancellationToken_">Wallet.CreateSignedTransaction(IEnumerable&lt;Object&gt;, BigInteger, CancellationToken)</a>
     </div>
     <div>
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
@@ -161,7 +152,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ColouredCoinWallet__ctor_System_UInt32_chia_dotnet_WalletProxy_.md&amp;value=---%0Auid%3A%20chia.dotnet.ColouredCoinWallet.%23ctor(System.UInt32%2Cchia.dotnet.WalletProxy)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ColouredCoinWallet.cs/#L19">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ColouredCoinWallet.cs/#L18">View Source</a>
   </span>
   <a id="chia_dotnet_ColouredCoinWallet__ctor_" data-uid="chia.dotnet.ColouredCoinWallet.#ctor*"></a>
   <h4 id="chia_dotnet_ColouredCoinWallet__ctor_System_UInt32_chia_dotnet_WalletProxy_" data-uid="chia.dotnet.ColouredCoinWallet.#ctor(System.UInt32,chia.dotnet.WalletProxy)">ColouredCoinWallet(UInt32, WalletProxy)</h4>
@@ -200,184 +191,10 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ColouredCoinWallet_CancelTrade_System_String_System_Boolean_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ColouredCoinWallet.CancelTrade(System.String%2CSystem.Boolean%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ColouredCoinWallet.cs/#L172">View Source</a>
-  </span>
-  <a id="chia_dotnet_ColouredCoinWallet_CancelTrade_" data-uid="chia.dotnet.ColouredCoinWallet.CancelTrade*"></a>
-  <h4 id="chia_dotnet_ColouredCoinWallet_CancelTrade_System_String_System_Boolean_System_Threading_CancellationToken_" data-uid="chia.dotnet.ColouredCoinWallet.CancelTrade(System.String,System.Boolean,System.Threading.CancellationToken)">CancelTrade(String, Boolean, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Cancel a trade</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task CancelTrade(string tradeId, bool secure, CancellationToken cancellationToken)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">tradeId</span></td>
-        <td><p>The id of the trade to find</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><span class="parametername">secure</span></td>
-        <td><p>Flag indicating whether to cancel pedning offer securely or not</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>An awaitable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ColouredCoinWallet_CreateOfferForIds_System_Collections_Generic_IDictionary_System_Int32_System_Int32__System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ColouredCoinWallet.CreateOfferForIds(System.Collections.Generic.IDictionary%7BSystem.Int32%2CSystem.Int32%7D%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ColouredCoinWallet.cs/#L97">View Source</a>
-  </span>
-  <a id="chia_dotnet_ColouredCoinWallet_CreateOfferForIds_" data-uid="chia.dotnet.ColouredCoinWallet.CreateOfferForIds*"></a>
-  <h4 id="chia_dotnet_ColouredCoinWallet_CreateOfferForIds_System_Collections_Generic_IDictionary_System_Int32_System_Int32__System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.ColouredCoinWallet.CreateOfferForIds(System.Collections.Generic.IDictionary{System.Int32,System.Int32},System.String,System.Threading.CancellationToken)">CreateOfferForIds(IDictionary&lt;Int32, Int32&gt;, String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Create an offer file from a set of id's</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task CreateOfferForIds(IDictionary&lt;int, int&gt; ids, string filename, CancellationToken cancellationToken)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
-        <td><span class="parametername">ids</span></td>
-        <td><p>The set of ids</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">filename</span></td>
-        <td><p>path to the offer file to create</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>An awaitable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ColouredCoinWallet_GetAllTrades_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ColouredCoinWallet.GetAllTrades(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ColouredCoinWallet.cs/#L158">View Source</a>
-  </span>
-  <a id="chia_dotnet_ColouredCoinWallet_GetAllTrades_" data-uid="chia.dotnet.ColouredCoinWallet.GetAllTrades*"></a>
-  <h4 id="chia_dotnet_ColouredCoinWallet_GetAllTrades_System_Threading_CancellationToken_" data-uid="chia.dotnet.ColouredCoinWallet.GetAllTrades(System.Threading.CancellationToken)">GetAllTrades(CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Get all trades</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;dynamic&gt;&gt; GetAllTrades(CancellationToken cancellationToken)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;&gt;</td>
-        <td><p>The trades</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ColouredCoinWallet_GetColour_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ColouredCoinWallet.GetColour(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ColouredCoinWallet.cs/#L59">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ColouredCoinWallet.cs/#L58">View Source</a>
   </span>
   <a id="chia_dotnet_ColouredCoinWallet_GetColour_" data-uid="chia.dotnet.ColouredCoinWallet.GetColour*"></a>
   <h4 id="chia_dotnet_ColouredCoinWallet_GetColour_System_Threading_CancellationToken_" data-uid="chia.dotnet.ColouredCoinWallet.GetColour(System.Threading.CancellationToken)">GetColour(CancellationToken)</h4>
@@ -424,66 +241,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ColouredCoinWallet_GetDiscrepenciesForOffer_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ColouredCoinWallet.GetDiscrepenciesForOffer(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ColouredCoinWallet.cs/#L112">View Source</a>
-  </span>
-  <a id="chia_dotnet_ColouredCoinWallet_GetDiscrepenciesForOffer_" data-uid="chia.dotnet.ColouredCoinWallet.GetDiscrepenciesForOffer*"></a>
-  <h4 id="chia_dotnet_ColouredCoinWallet_GetDiscrepenciesForOffer_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.ColouredCoinWallet.GetDiscrepenciesForOffer(System.String,System.Threading.CancellationToken)">GetDiscrepenciesForOffer(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Get offer discrepencies</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;dynamic&gt; GetDiscrepenciesForOffer(string filename, CancellationToken cancellationToken)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">filename</span></td>
-        <td><p>path to the offer file</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
-        <td><p>The dicrepencies</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ColouredCoinWallet_GetName_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ColouredCoinWallet.GetName(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ColouredCoinWallet.cs/#L29">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ColouredCoinWallet.cs/#L28">View Source</a>
   </span>
   <a id="chia_dotnet_ColouredCoinWallet_GetName_" data-uid="chia.dotnet.ColouredCoinWallet.GetName*"></a>
   <h4 id="chia_dotnet_ColouredCoinWallet_GetName_System_Threading_CancellationToken_" data-uid="chia.dotnet.ColouredCoinWallet.GetName(System.Threading.CancellationToken)">GetName(CancellationToken)</h4>
@@ -530,122 +291,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ColouredCoinWallet_GetTrade_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ColouredCoinWallet.GetTrade(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ColouredCoinWallet.cs/#L143">View Source</a>
-  </span>
-  <a id="chia_dotnet_ColouredCoinWallet_GetTrade_" data-uid="chia.dotnet.ColouredCoinWallet.GetTrade*"></a>
-  <h4 id="chia_dotnet_ColouredCoinWallet_GetTrade_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.ColouredCoinWallet.GetTrade(System.String,System.Threading.CancellationToken)">GetTrade(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Get a trade</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;dynamic&gt; GetTrade(string tradeId, CancellationToken cancellationToken)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">tradeId</span></td>
-        <td><p>The id of the trade to find</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
-        <td><p>The trade</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ColouredCoinWallet_RespondToOffer_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ColouredCoinWallet.RespondToOffer(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ColouredCoinWallet.cs/#L128">View Source</a>
-  </span>
-  <a id="chia_dotnet_ColouredCoinWallet_RespondToOffer_" data-uid="chia.dotnet.ColouredCoinWallet.RespondToOffer*"></a>
-  <h4 id="chia_dotnet_ColouredCoinWallet_RespondToOffer_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.ColouredCoinWallet.RespondToOffer(System.String,System.Threading.CancellationToken)">RespondToOffer(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Respond to an offer</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task RespondToOffer(string filename, CancellationToken cancellationToken)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">filename</span></td>
-        <td><p>path to the offer file</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>An awaitable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ColouredCoinWallet_SetName_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ColouredCoinWallet.SetName(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ColouredCoinWallet.cs/#L45">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ColouredCoinWallet.cs/#L44">View Source</a>
   </span>
   <a id="chia_dotnet_ColouredCoinWallet_SetName_" data-uid="chia.dotnet.ColouredCoinWallet.SetName*"></a>
   <h4 id="chia_dotnet_ColouredCoinWallet_SetName_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.ColouredCoinWallet.SetName(System.String,System.Threading.CancellationToken)">SetName(String, CancellationToken)</h4>
@@ -701,7 +350,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ColouredCoinWallet_Spend_System_String_System_Numerics_BigInteger_System_Numerics_BigInteger_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ColouredCoinWallet.Spend(System.String%2CSystem.Numerics.BigInteger%2CSystem.Numerics.BigInteger%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ColouredCoinWallet.cs/#L77">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ColouredCoinWallet.cs/#L76">View Source</a>
   </span>
   <a id="chia_dotnet_ColouredCoinWallet_Spend_" data-uid="chia.dotnet.ColouredCoinWallet.Spend*"></a>
   <h4 id="chia_dotnet_ColouredCoinWallet_Spend_System_String_System_Numerics_BigInteger_System_Numerics_BigInteger_System_Threading_CancellationToken_" data-uid="chia.dotnet.ColouredCoinWallet.Spend(System.String,System.Numerics.BigInteger,System.Numerics.BigInteger,System.Threading.CancellationToken)">Spend(String, BigInteger, BigInteger, CancellationToken)</h4>
@@ -774,7 +423,7 @@
                     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ColouredCoinWallet.md&amp;value=---%0Auid%3A%20chia.dotnet.ColouredCoinWallet%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ColouredCoinWallet.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ColouredCoinWallet.cs/#L11" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
