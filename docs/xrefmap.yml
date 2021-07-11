@@ -213,6 +213,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.Daemon.Register
   nameWithType: Daemon.Register
+- uid: chia.dotnet.Daemon.RegisterPlotter(System.Threading.CancellationToken)
+  name: RegisterPlotter(CancellationToken)
+  href: api/chia.dotnet.Daemon.html#chia_dotnet_Daemon_RegisterPlotter_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.Daemon.RegisterPlotter(System.Threading.CancellationToken)
+  fullName: chia.dotnet.Daemon.RegisterPlotter(System.Threading.CancellationToken)
+  nameWithType: Daemon.RegisterPlotter(CancellationToken)
+- uid: chia.dotnet.Daemon.RegisterPlotter*
+  name: RegisterPlotter
+  href: api/chia.dotnet.Daemon.html#chia_dotnet_Daemon_RegisterPlotter_
+  commentId: Overload:chia.dotnet.Daemon.RegisterPlotter
+  isSpec: "True"
+  fullName: chia.dotnet.Daemon.RegisterPlotter
+  nameWithType: Daemon.RegisterPlotter
 - uid: chia.dotnet.Daemon.RegisterService(System.String,System.Threading.CancellationToken)
   name: RegisterService(String, CancellationToken)
   href: api/chia.dotnet.Daemon.html#chia_dotnet_Daemon_RegisterService_System_String_System_Threading_CancellationToken_

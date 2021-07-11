@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.Daemon.html",
-          "hash": "p8xhAgfBhh41C42lzVICOScxFbpwXo8AEm5ri4ljzn4="
+          "hash": "vWTq4R1B48c73VqVv//mvoxG4SbvPe3GEuNDQt3Vasw="
         }
       },
       "is_incremental": false,
@@ -201,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.ServiceNames.html",
-          "hash": "bAWLaK8G0SCAae+DKTQBSQlLcYCtVC0O55hztpegynU="
+          "hash": "bYGlevpSgU2XchLSSusoSrP7qv2H3XRyHgrSsm6hiCM="
         }
       },
       "is_incremental": false,
