@@ -95,14 +95,14 @@ namespace chia.dotnet
         /// <param name="fingerprint">The fingerprint</param>          
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a private key</returns>
-        public async Task<dynamic> GetPrivateKey(uint fingerprint, CancellationToken cancellationToken)
+        public async Task<(uint Fingerprint, string Sk, string Pk, string FarmerPk, string PoolPk, string Seed)> GetPrivateKey(uint fingerprint, CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
 
             var response = await SendMessage("get_private_key", data, cancellationToken);
 
-            return response.Data.private_key;
+            return (response.Data.private_key.fingerprint, response.Data.private_key.sk, response.Data.private_key.pk, response.Data.private_key.farmer_pk, response.Data.private_key.pool_pk, response.Data.private_key.seed);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Retrieves some information about the current network
+        /// Retrieves information about the current network
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>network name and prefix</returns>

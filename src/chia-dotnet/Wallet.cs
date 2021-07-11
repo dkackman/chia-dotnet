@@ -55,7 +55,7 @@ namespace chia.dotnet
         /// </summary>      
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The wallet balance</returns>
-        public async Task<(BigInteger ConfirmedWalletBalance, BigInteger MaxSendAmount, BigInteger PendingChange, int PendingCoinRemovalAmount, BigInteger SpendableBalance, BigInteger UnconfirmedWalletBalance, int UnspentCoinCount)>
+        public async Task<(BigInteger ConfirmedWalletBalance, BigInteger UnconfirmedWalletBalance, BigInteger SpendableBalance, BigInteger PendingChange, BigInteger MaxSendAmount, int UnspentCoinCount, int PendingCoinRemovalCount)>
             GetBalance(CancellationToken cancellationToken)
         {
             dynamic data = new ExpandoObject();
@@ -64,12 +64,12 @@ namespace chia.dotnet
             var response = await WalletProxy.SendMessage("get_wallet_balance", data, cancellationToken);
 
             return (response.Data.wallet_balance.confirmed_wallet_balance,
-                response.Data.wallet_balance.max_send_amount,
-                response.Data.wallet_balance.pending_change,
-                response.Data.wallet_balance.pending_coin_removal_count,
-                response.Data.wallet_balance.spendable_balance,
-                response.Data.wallet_balance.unconfirmed_wallet_balance,
-                response.Data.wallet_balance.unspent_coin_count
+                    response.Data.wallet_balance.unconfirmed_wallet_balance,
+                    response.Data.wallet_balance.spendable_balance,
+                    response.Data.wallet_balance.pending_change,
+                    response.Data.wallet_balance.max_send_amount,
+                    response.Data.wallet_balance.unspent_coin_count,
+                    response.Data.wallet_balance.pending_coin_removal_count
                 );
         }
 
