@@ -2,6 +2,7 @@
 using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace chia.dotnet
 {
@@ -89,6 +90,18 @@ namespace chia.dotnet
         public async Task RegisterService(string service, CancellationToken cancellationToken)
         {
             _ = await SendMessage(CreateServiceMessage("register_service", service), cancellationToken);
+        }
+
+        /// <summary>
+        /// Registers this daemon as a plotter and retreives the plot queue
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>The plot queue</returns>
+        public async Task<IEnumerable<dynamic>> RegisterPlotter(CancellationToken cancellationToken)
+        {
+            var response = await SendMessage(CreateServiceMessage("register_service", ServiceNames.Plotter), cancellationToken);
+
+            return response.Data.queue;
         }
 
         /// <summary>

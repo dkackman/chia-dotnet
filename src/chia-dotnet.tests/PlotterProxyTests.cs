@@ -50,9 +50,11 @@ namespace chia.dotnet.tests
                 DestinationDir = "/home/don/plots"
             };
 
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
-
             await _thePlotter.StartPlotting(config, CancellationToken.None);
+
+            var q = await _theDaemon.RegisterPlotter(CancellationToken.None);
+
+            Assert.IsNotNull(q);
         }
     }
 }
