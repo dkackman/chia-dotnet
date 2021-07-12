@@ -40,7 +40,7 @@ namespace chia.dotnet
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the plot to stop. Can be found by instpecting the plot queue returned from <see cref="Daemon.RegisterPlotter(CancellationToken)"/></param>
         /// <param name="cancellationToken"></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task StopPlotting(string id, CancellationToken cancellationToken)
