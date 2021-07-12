@@ -17,7 +17,7 @@ https://dkackman.github.io/chia-dotnet/
 - [x] Farmer
 - [x] Harvester
 - [x] Wallet 
-- [ ] Plotter (in progress)
+- [x] Plotter
 
 ### Example
 
