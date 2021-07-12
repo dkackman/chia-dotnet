@@ -16,7 +16,7 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetFarmerIsRunning()
         {
-            using var daemon = Factory.CreateDaemon();
+            using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
 
             await daemon.Connect(CancellationToken.None);
             var running = await daemon.IsServiceRunning(ServiceNames.Farmer, CancellationToken.None);
@@ -27,7 +27,7 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetHarvesterIsRunning()
         {
-            using var daemon = Factory.CreateDaemon();
+            using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
 
             await daemon.Connect(CancellationToken.None);
             var running = await daemon.IsServiceRunning(ServiceNames.Harvester, CancellationToken.None);
@@ -39,7 +39,7 @@ namespace chia.dotnet.tests
         [Ignore]
         public async Task ExitDaemon()
         {
-            using var daemon = Factory.CreateDaemon();
+            using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
 
             await daemon.Connect(CancellationToken.None);
             await daemon.Exit(CancellationToken.None);
@@ -51,7 +51,7 @@ namespace chia.dotnet.tests
         [Ignore]
         public async Task StartAndStopFarmer()
         {
-            using var daemon = Factory.CreateDaemon();
+            using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
 
             await daemon.Connect(CancellationToken.None);
 
@@ -69,7 +69,7 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task RegisterService()
         {
-            using var daemon = Factory.CreateDaemon();
+            using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
 
             await daemon.Connect(CancellationToken.None);
 
