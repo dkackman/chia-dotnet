@@ -19,7 +19,11 @@ https://dkackman.github.io/chia-dotnet/
 - [x] Wallet 
 - [x] Plotter
 
-### Example
+### Examples
+
+_Test carefully and in one of the testnets!_
+
+#### Connect to the Node and find out about the blockchain
 
 ```csharp
 using var daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
@@ -29,6 +33,23 @@ await daemon.Register(CancellationToken.None);
 
 var fullNode = new FullNodeProxy(daemon);
 var state = await fullNode.GetBlockchainState(CancellationToken.None);
+```
+
+#### Send me some chia
+
+
+```csharp
+using var daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
+
+await daemon.Connect();
+await daemon.Register();
+
+// walletId of 1 is the main wallet
+var wallet = new Wallet(1, new WalletProxy(_theDaemon));
+_ = await wallet.Login();
+
+// this is my receive address. feel free to run this code on mainnet as often as you like :-)
+var transaction = await wallet.SendTransaction("xch1zr49kksq5t27lx5gu3wnfgfxscnkvh3xqyldqz9xg5amsm26x86sh0kzhl", BigInteger.One, BigInteger.One);
 ```
 
 ### Build
