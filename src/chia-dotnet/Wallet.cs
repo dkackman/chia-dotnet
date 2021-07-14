@@ -54,7 +54,7 @@ namespace chia.dotnet
         /// Get the balance of a specific wallet
         /// </summary>      
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>The wallet balance</returns>
+        /// <returns>The wallet balance (in units of mojos)</returns>
         public async Task<(BigInteger ConfirmedWalletBalance, BigInteger UnconfirmedWalletBalance, BigInteger SpendableBalance, BigInteger PendingChange, BigInteger MaxSendAmount, int UnspentCoinCount, int PendingCoinRemovalCount)>
             GetBalance(CancellationToken cancellationToken = default)
         {
@@ -137,8 +137,8 @@ namespace chia.dotnet
         /// Sends a transaction
         /// </summary>
         /// <param name="address">The receiving address</param>
-        /// <param name="amount">The amount to send</param>
-        /// <param name="fee">Fee amount</param>
+        /// <param name="amount">The amount to send (in units of mojos)</param>
+        /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The transaction</returns>
         public async Task<dynamic> SendTransaction(string address, BigInteger amount, BigInteger fee, CancellationToken cancellationToken = default)
@@ -159,7 +159,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="additions">Additions to the block chain</param>
         /// <param name="coins">Coins to include</param>
-        /// <param name="fee">Fee amount</param>
+        /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The transaction</returns>
         public async Task<dynamic> SendTransactionMulti(IEnumerable<dynamic> additions, IEnumerable<dynamic> coins, BigInteger fee, CancellationToken cancellationToken = default)

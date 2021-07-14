@@ -62,7 +62,7 @@ namespace chia.dotnet
         /// <summary>
         /// Perform a sweep of the p2_singleton rewards controlled by the pool wallet singleton
         /// </summary>
-        /// <param name="fee">Transaction fee</param>
+        /// <param name="fee">Transaction fee (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Wallet state and transaction</returns>
         public async Task<(dynamic State, dynamic Transaction)> AbsorbRewards(BigInteger fee, CancellationToken cancellationToken = default)

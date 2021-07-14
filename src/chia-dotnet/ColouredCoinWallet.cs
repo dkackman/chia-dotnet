@@ -69,8 +69,8 @@ namespace chia.dotnet
         /// Spend a coloured coin
         /// </summary>
         /// <param name="limit">The limit amount</param>
-        /// <param name="fee">fee to create the wallet</param>
-        /// <param name="amount">the amount to put in the wallet</param>         
+        /// <param name="fee">fee to create the wallet (in units of mojos)</param>
+        /// <param name="amount">the amount to put in the wallet (in units of mojos)</param>         
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A transaction</returns>
         public async Task<dynamic> Spend(string innerAddress, BigInteger amount, BigInteger fee, CancellationToken cancellationToken = default)

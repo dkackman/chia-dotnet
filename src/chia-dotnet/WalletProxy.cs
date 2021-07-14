@@ -267,8 +267,8 @@ namespace chia.dotnet
         /// <summary>
         /// Create a new colour coin wallet
         /// </summary>
-        /// <param name="amount">the amount to put in the wallet</param>
-        /// <param name="fee">fee to create the wallet</param>
+        /// <param name="amount">the amount to put in the wallet (in units of mojos)</param>
+        /// <param name="fee">fee to create the wallet (in units of mojos)</param>
         /// <param name="colour">The coin Colour</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the wallet</returns>
@@ -312,8 +312,8 @@ namespace chia.dotnet
         /// <param name="pubkey">admin pubkey</param>
         /// <param name="interval">The limit interval</param>
         /// <param name="limit">The limit amount</param>
-        /// <param name="amount">the amount to put in the wallet</param>     
-        /// <param name="fee">fee to create the wallet</param>
+        /// <param name="amount">the amount to put in the wallet (in units of mojos)</param>     
+        /// <param name="fee">fee to create the wallet (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the wallet</returns>
         public async Task<(uint Id, byte Type, dynamic origin, string pubkey)> CreateRateLimitedAdminWallet(string pubkey, BigInteger interval, BigInteger limit, BigInteger amount, BigInteger fee, CancellationToken cancellationToken = default)
@@ -355,7 +355,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="backupDIDs">Backup DIDs</param>
         /// <param name="numOfBackupIdsNeeded">The number of back ids needed to create the wallet</param>
-        /// <param name="amount">the amount to put in the wallet</param>           
+        /// <param name="amount">the amount to put in the wallet (in units of mojos)</param>           
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the wallet</returns>
         public async Task<(uint Type, string myDID, uint walletId)> CreateDIDWallet(IEnumerable<string> backupDIDs, BigInteger numOfBackupIdsNeeded, BigInteger amount, CancellationToken cancellationToken = default)
@@ -527,7 +527,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="additions">Additions to the block chain</param>
         /// <param name="coins">Coins to include</param>
-        /// <param name="fee">Fee amount</param>
+        /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The signed transaction</returns>
         public async Task<dynamic> CreateSignedTransaction(IEnumerable<dynamic> additions, IEnumerable<dynamic> coins, BigInteger fee, CancellationToken cancellationToken = default)
@@ -549,7 +549,7 @@ namespace chia.dotnet
         /// Create but do not send a transaction
         /// </summary>
         /// <param name="additions">Additions to the block chain</param>
-        /// <param name="fee">Fee amount</param>
+        /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The signed transaction</returns>
         public async Task<dynamic> CreateSignedTransaction(IEnumerable<dynamic> additions, BigInteger fee, CancellationToken cancellationToken = default)

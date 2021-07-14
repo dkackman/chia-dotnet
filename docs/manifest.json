@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.ColouredCoinWallet.html",
-          "hash": "laniWz0pArZTqO9pj/UtHifAgAlxfeMe2JNdI33PqZ0="
+          "hash": "lM0q+0adUOhnFXNHK8dgT+AZN+cfu7LgX6FIFVZkANU="
         }
       },
       "is_incremental": false,
@@ -153,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.PoolWallet.html",
-          "hash": "aOmLTd0TdGJ9rRXZUPav8mV+1njobgolNymRrjp4pGk="
+          "hash": "2XASdjz2dZ9diJcy+Qw0uh9mrOhIlXDM/4oK89yQcw0="
         }
       },
       "is_incremental": false,
@@ -165,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.RateLimitedWallet.html",
-          "hash": "PQdTuSYxduWwlTpqTf+6DaFxHUJEeGlH7pD+qXKA5rY="
+          "hash": "hS/PRd0vmbECfgustOcdLjarbmuzjsUcl5AMtZdNm2c="
         }
       },
       "is_incremental": false,
@@ -225,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.Wallet.html",
-          "hash": "Oh1gxq2nj2GPX0qF++VjmniVFSxYU1aOdyY7GBrKt4U="
+          "hash": "SSRqIyKkx3qotSLdjxkVwUX4gLlkmx5sOyFvIAFRc60="
         }
       },
       "is_incremental": false,
@@ -237,7 +237,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.WalletProxy.html",
-          "hash": "IjARVQoo+t3p9leI/letSZd/FYfJNSy1CdeL8yDH/lU="
+          "hash": "n8+1/kD47PCCQDpJ3zi3YT45cztNCITGwW9IKZBrL7s="
         }
       },
       "is_incremental": false,

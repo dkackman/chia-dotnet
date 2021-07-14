@@ -44,7 +44,7 @@ namespace chia.dotnet
         /// <summary>
         /// Sends a clawback transaction
         /// </summary>
-        /// <param name="fee">Fee amount</param>
+        /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the transaction</returns>
         public async Task<dynamic> SendClawbackTransaction(BigInteger fee, CancellationToken cancellationToken = default)
@@ -61,8 +61,8 @@ namespace chia.dotnet
         /// <summary>
         /// Add rate limited funds to the wallet
         /// </summary>
-        /// <param name="amount">The amount to add</param>
-        /// <param name="fee">Transaction fee</param>
+        /// <param name="amount">The amount to add (in units of mojos)</param>
+        /// <param name="fee">Transaction fee (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task AddFunds(BigInteger amount, BigInteger fee, CancellationToken cancellationToken = default)
