@@ -25,7 +25,7 @@ namespace chia.dotnet
         /// <param name="config">The config of the plot. Maps 1:1 to the chia plot create command line</param>
         /// <param name="cancellationToken">A <see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task StartPlotting(PlotterConfig config, CancellationToken cancellationToken)
+        public async Task StartPlotting(PlotterConfig config, CancellationToken cancellationToken = default)
         {
             if (config == null)
             {
@@ -43,7 +43,7 @@ namespace chia.dotnet
         /// <param name="id">The id of the plot to stop. Can be found by instpecting the plot queue returned from <see cref="Daemon.RegisterPlotter(CancellationToken)"/></param>
         /// <param name="cancellationToken"></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task StopPlotting(string id, CancellationToken cancellationToken)
+        public async Task StopPlotting(string id, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.id = id;

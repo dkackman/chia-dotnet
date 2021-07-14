@@ -45,7 +45,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task Ping(CancellationToken cancellationToken)
+        public async Task Ping(CancellationToken cancellationToken = default)
         {
             _ = await SendMessage("ping", cancellationToken);
         }
@@ -55,7 +55,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task StopNode(CancellationToken cancellationToken)
+        public async Task StopNode(CancellationToken cancellationToken = default)
         {
             _ = await SendMessage("stop_node", cancellationToken);
         }
@@ -65,7 +65,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of connections</returns>
-        public async Task<IEnumerable<dynamic>> GetConnections(CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetConnections(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_connections", cancellationToken);
 
@@ -79,7 +79,7 @@ namespace chia.dotnet
         /// <param name="port">The port to use</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task OpenConnection(string host, int port, CancellationToken cancellationToken)
+        public async Task OpenConnection(string host, int port, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.host = host;
@@ -94,7 +94,7 @@ namespace chia.dotnet
         /// <param name="nodeId">The id of the node to close</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task CloseConnection(string nodeId, CancellationToken cancellationToken)
+        public async Task CloseConnection(string nodeId, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.node_id = nodeId;

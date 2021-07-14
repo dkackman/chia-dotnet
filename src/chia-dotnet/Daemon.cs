@@ -52,7 +52,7 @@ namespace chia.dotnet
         /// <remarks>There isn't a way to start the daemon remotely via RPC so take care that you have access to the RPC host if needed</remarks>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task Exit(CancellationToken cancellationToken)
+        public async Task Exit(CancellationToken cancellationToken = default)
         {
             _ = await SendMessage(Message.Create("exit", new ExpandoObject(), "daemon", OriginService), cancellationToken);
         }
@@ -63,7 +63,7 @@ namespace chia.dotnet
         /// <param name="service">The <see cref="ServiceNames"/> of the service</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Awaitable <see cref="Task"/> with the boolean value indicating whether the service is running</returns>
-        public async Task<bool> IsServiceRunning(string service, CancellationToken cancellationToken)
+        public async Task<bool> IsServiceRunning(string service, CancellationToken cancellationToken = default)
         {
             var response = await SendMessage(CreateServiceMessage("is_running", service), cancellationToken);
 
@@ -75,7 +75,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task Register(CancellationToken cancellationToken)
+        public async Task Register(CancellationToken cancellationToken = default)
         {
             await RegisterService(OriginService, cancellationToken);
         }
@@ -87,7 +87,7 @@ namespace chia.dotnet
         /// <param name="service">The name to register</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task RegisterService(string service, CancellationToken cancellationToken)
+        public async Task RegisterService(string service, CancellationToken cancellationToken = default)
         {
             _ = await SendMessage(CreateServiceMessage("register_service", service), cancellationToken);
         }
@@ -97,7 +97,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The plot queue</returns>
-        public async Task<IEnumerable<dynamic>> RegisterPlotter(CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> RegisterPlotter(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage(CreateServiceMessage("register_service", ServiceNames.Plotter), cancellationToken);
 
@@ -110,7 +110,7 @@ namespace chia.dotnet
         /// <param name="service">The <see cref="ServiceNames"/> of the service</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task StartService(string service, CancellationToken cancellationToken)
+        public async Task StartService(string service, CancellationToken cancellationToken = default)
         {
             _ = await SendMessage(CreateServiceMessage("start_service", service), cancellationToken);
         }
@@ -121,7 +121,7 @@ namespace chia.dotnet
         /// <param name="service">The <see cref="ServiceNames"/> of the service</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task StopService(string service, CancellationToken cancellationToken)
+        public async Task StopService(string service, CancellationToken cancellationToken = default)
         {
             _ = await SendMessage(CreateServiceMessage("stop_service", service), cancellationToken);
         }

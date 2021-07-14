@@ -1,4 +1,4 @@
-﻿using System.Threading;
+﻿
 using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -18,8 +18,8 @@ namespace chia.dotnet.tests
         {
             using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
 
-            await daemon.Connect(CancellationToken.None);
-            var running = await daemon.IsServiceRunning(ServiceNames.Farmer, CancellationToken.None);
+            await daemon.Connect();
+            var running = await daemon.IsServiceRunning(ServiceNames.Farmer);
 
             Assert.IsTrue(running);
         }
@@ -29,8 +29,8 @@ namespace chia.dotnet.tests
         {
             using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
 
-            await daemon.Connect(CancellationToken.None);
-            var running = await daemon.IsServiceRunning(ServiceNames.Harvester, CancellationToken.None);
+            await daemon.Connect();
+            var running = await daemon.IsServiceRunning(ServiceNames.Harvester);
 
             Assert.IsTrue(running);
         }
@@ -41,8 +41,8 @@ namespace chia.dotnet.tests
         {
             using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
 
-            await daemon.Connect(CancellationToken.None);
-            await daemon.Exit(CancellationToken.None);
+            await daemon.Connect();
+            await daemon.Exit();
 
             // if no exception the daemon was stopped successfully
         }
@@ -53,15 +53,15 @@ namespace chia.dotnet.tests
         {
             using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
 
-            await daemon.Connect(CancellationToken.None);
+            await daemon.Connect();
 
-            Assert.IsFalse(await daemon.IsServiceRunning(ServiceNames.Farmer, CancellationToken.None));
+            Assert.IsFalse(await daemon.IsServiceRunning(ServiceNames.Farmer));
 
-            await daemon.StartService(ServiceNames.Farmer, CancellationToken.None);
-            Assert.IsTrue(await daemon.IsServiceRunning(ServiceNames.Farmer, CancellationToken.None));
+            await daemon.StartService(ServiceNames.Farmer);
+            Assert.IsTrue(await daemon.IsServiceRunning(ServiceNames.Farmer));
 
-            await daemon.StopService(ServiceNames.Farmer, CancellationToken.None);
-            Assert.IsFalse(await daemon.IsServiceRunning(ServiceNames.Farmer, CancellationToken.None));
+            await daemon.StopService(ServiceNames.Farmer);
+            Assert.IsFalse(await daemon.IsServiceRunning(ServiceNames.Farmer));
 
             // if no exception the daemon was stopped successfully
         }
@@ -71,9 +71,9 @@ namespace chia.dotnet.tests
         {
             using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
 
-            await daemon.Connect(CancellationToken.None);
+            await daemon.Connect();
 
-            await daemon.RegisterService(daemon.OriginService, CancellationToken.None);
+            await daemon.RegisterService(daemon.OriginService);
 
             // no exception we were successful
         }

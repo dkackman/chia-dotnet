@@ -29,7 +29,7 @@ namespace chia.dotnet
         /// <param name="adminPubkey">The wallet admin pubkey</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task SetUserInfo(BigInteger interval, BigInteger limit, (string parent_coin_info, string puzzle_hash, BigInteger amount) origin, string adminPubkey, CancellationToken cancellationToken)
+        public async Task SetUserInfo(BigInteger interval, BigInteger limit, (string parent_coin_info, string puzzle_hash, BigInteger amount) origin, string adminPubkey, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -47,7 +47,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the transaction</returns>
-        public async Task<dynamic> SendClawbackTransaction(BigInteger fee, CancellationToken cancellationToken)
+        public async Task<dynamic> SendClawbackTransaction(BigInteger fee, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -65,7 +65,7 @@ namespace chia.dotnet
         /// <param name="fee">Transaction fee</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task AddFunds(BigInteger amount, BigInteger fee, CancellationToken cancellationToken)
+        public async Task AddFunds(BigInteger amount, BigInteger fee, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;

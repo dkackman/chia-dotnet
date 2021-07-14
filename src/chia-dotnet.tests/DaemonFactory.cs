@@ -14,7 +14,7 @@
             // this is an example using a WSL instance running locally
             var endpoint = new EndpointInfo()
             {
-                Uri = new System.Uri("wss://172.30.175.41:55400"),
+                Uri = new System.Uri("wss://172.30.162.121:55400"),
                 CertPath = @"\\wsl$\Ubuntu-20.04\home\don\.chia\mainnet\config\ssl\daemon\private_daemon.crt",
                 KeyPath = @"\\wsl$\Ubuntu-20.04\home\don\.chia\mainnet\config\ssl\daemon\private_daemon.key",
             };

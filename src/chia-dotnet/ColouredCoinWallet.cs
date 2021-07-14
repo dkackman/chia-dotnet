@@ -25,7 +25,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The coin name</returns>
-        public async Task<string> GetName(CancellationToken cancellationToken)
+        public async Task<string> GetName(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -41,7 +41,7 @@ namespace chia.dotnet
         /// <param name="name">The new name</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task SetName(string name, CancellationToken cancellationToken)
+        public async Task SetName(string name, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -55,7 +55,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The colout as a string</returns>
-        public async Task<string> GetColour(CancellationToken cancellationToken)
+        public async Task<string> GetColour(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -73,7 +73,7 @@ namespace chia.dotnet
         /// <param name="amount">the amount to put in the wallet</param>         
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A transaction</returns>
-        public async Task<dynamic> Spend(string innerAddress, BigInteger amount, BigInteger fee, CancellationToken cancellationToken)
+        public async Task<dynamic> Spend(string innerAddress, BigInteger amount, BigInteger fee, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;

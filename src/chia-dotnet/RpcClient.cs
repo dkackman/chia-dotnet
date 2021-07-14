@@ -48,7 +48,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Awaitable Task</returns>
-        public async Task Connect(CancellationToken cancellationToken)
+        public async Task Connect(CancellationToken cancellationToken = default)
         {
             if (disposedValue)
             {
@@ -75,7 +75,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task Close(CancellationToken cancellationToken)
+        public async Task Close(CancellationToken cancellationToken = default)
         {
             if (disposedValue)
             {
@@ -93,7 +93,7 @@ namespace chia.dotnet
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <remarks>Awaiting this method waits for the message to be sent only. It doesn't await a response.</remarks>
         /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task PostMessage(Message message, CancellationToken cancellationToken)
+        public async Task PostMessage(Message message, CancellationToken cancellationToken = default)
         {
             if (disposedValue)
             {
@@ -112,7 +112,7 @@ namespace chia.dotnet
         /// <remarks>Awaiting this method will block until a response is received from thw <see cref="WebSocket"/> ot the <see cref="CancellationToken"/> is cancelled</remarks>
         /// <returns>The response message</returns>
         /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
-        public async Task<Message> SendMessage(Message request, CancellationToken cancellationToken)
+        public async Task<Message> SendMessage(Message request, CancellationToken cancellationToken = default)
         {
             if (disposedValue)
             {

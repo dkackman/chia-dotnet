@@ -28,7 +28,7 @@ namespace chia.dotnet
         /// <param name="newList">The new ids</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task UpdateRecoveryIds(IEnumerable<string> newList, CancellationToken cancellationToken)
+        public async Task UpdateRecoveryIds(IEnumerable<string> newList, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -44,7 +44,7 @@ namespace chia.dotnet
         /// <param name="numVerificationsRequired">The number of verifications required</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task UpdateRecoveryIds(IEnumerable<string> newList, BigInteger numVerificationsRequired, CancellationToken cancellationToken)
+        public async Task UpdateRecoveryIds(IEnumerable<string> newList, BigInteger numVerificationsRequired, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -60,7 +60,7 @@ namespace chia.dotnet
         /// <param name="puzzlehash">The puzzlehash to spend</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task Spend(string puzzlehash, CancellationToken cancellationToken)
+        public async Task Spend(string puzzlehash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -75,7 +75,7 @@ namespace chia.dotnet
         /// <param name="puzzlehash">The puzzlehash of the spend</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A DID and optional CoinID</returns>
-        public async Task<(string MyDID, string CoinID)> GetDID(CancellationToken cancellationToken)
+        public async Task<(string MyDID, string CoinID)> GetDID(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -91,7 +91,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The pubkey</returns>
-        public async Task<string> GetPubKey(CancellationToken cancellationToken)
+        public async Task<string> GetPubKey(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -109,7 +109,7 @@ namespace chia.dotnet
         /// <param name="puzzlehash">The puzzlehash of the spend</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task RecoverySpend(IEnumerable<string> attestFilenames, string pubkey, string puzzlehash, CancellationToken cancellationToken)
+        public async Task RecoverySpend(IEnumerable<string> attestFilenames, string pubkey, string puzzlehash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -131,7 +131,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The recover list and num required property of the wallet</returns>
-        public async Task<(IEnumerable<string> RecoverList, int NumRequired)> GetRecoveryList(CancellationToken cancellationToken)
+        public async Task<(IEnumerable<string> RecoverList, int NumRequired)> GetRecoveryList(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -152,7 +152,7 @@ namespace chia.dotnet
         /// <param name="puzHash">The puzzlehash</param>        
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A spendbundle and information about the attest</returns>
-        public async Task<(dynamic MessageSpendBundle, dynamic Info)> CreateAttest(string filename, string coinName, string pubkey, string puzHash, CancellationToken cancellationToken)
+        public async Task<(dynamic MessageSpendBundle, dynamic Info)> CreateAttest(string filename, string coinName, string pubkey, string puzHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -171,7 +171,7 @@ namespace chia.dotnet
         /// </summary>       
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A spendbundle and information about the attest</returns>
-        public async Task<(string MyDID, string CoinName, string NewPuzzleHash, string PublicKey, IEnumerable<dynamic> BackUpIds)> GetInformationNeededForRecovery(CancellationToken cancellationToken)
+        public async Task<(string MyDID, string CoinName, string NewPuzzleHash, string PublicKey, IEnumerable<dynamic> BackUpIds)> GetInformationNeededForRecovery(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -187,7 +187,7 @@ namespace chia.dotnet
         /// <param name="filename">The filename ot create</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task CreateBackupFile(IEnumerable<string> filename, CancellationToken cancellationToken)
+        public async Task CreateBackupFile(IEnumerable<string> filename, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.attest_filenames = WalletId;

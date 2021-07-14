@@ -25,7 +25,7 @@ namespace chia.dotnet
         /// <param name="searchForPrivateKey">Include private key in search</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>the farm and pool reward targets</returns>
-        public async Task<(string FarmerTarget, string PoolTarget)> GetRewardTargets(bool searchForPrivateKey, CancellationToken cancellationToken)
+        public async Task<(string FarmerTarget, string PoolTarget)> GetRewardTargets(bool searchForPrivateKey, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.search_for_private_key = searchForPrivateKey;
@@ -42,7 +42,7 @@ namespace chia.dotnet
         /// <param name="poolTarget">Pool target</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task SetRewardTargets(string farmerTarget, string poolTarget, CancellationToken cancellationToken)
+        public async Task SetRewardTargets(string farmerTarget, string poolTarget, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.farmer_target = farmerTarget;
@@ -56,7 +56,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>List of signage points</returns>
-        public async Task<IEnumerable<dynamic>> GetSignagePoints(CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetSignagePoints(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_signage_points", cancellationToken);
 
@@ -69,7 +69,7 @@ namespace chia.dotnet
         /// <param name="spHash">signage point hash</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a signage point and proofs of space</returns>
-        public async Task<(dynamic SignagePoint, IEnumerable<dynamic> Proofs)> GetSignagePoint(string spHash, CancellationToken cancellationToken)
+        public async Task<(dynamic SignagePoint, IEnumerable<dynamic> Proofs)> GetSignagePoint(string spHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.sp_hash = spHash;
@@ -84,7 +84,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of harvesters</returns>
-        public async Task<IEnumerable<dynamic>> GetHarvesters(CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetHarvesters(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_harvesters", cancellationToken);
 
@@ -97,7 +97,7 @@ namespace chia.dotnet
         /// <param name="launcherID">The id of the pool launcher</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The link</returns>
-        public async Task<string> GetPoolLoginLink(string launcherID, CancellationToken cancellationToken)
+        public async Task<string> GetPoolLoginLink(string launcherID, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.launcher_id = launcherID;
@@ -112,7 +112,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of pool states</returns>
-        public async Task<IEnumerable<dynamic>> GetPoolState(CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetPoolState(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_pool_state", cancellationToken);
 
@@ -126,7 +126,7 @@ namespace chia.dotnet
         /// <param name="payoutInstructions">The instructions</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task SetPayoutInstructions(string launcherID, string payoutInstructions, CancellationToken cancellationToken)
+        public async Task SetPayoutInstructions(string launcherID, string payoutInstructions, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.launcher_id = launcherID;

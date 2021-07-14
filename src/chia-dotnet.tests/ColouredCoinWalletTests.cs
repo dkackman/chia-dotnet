@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -17,12 +16,12 @@ namespace chia.dotnet.tests
         {
             _theDaemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
 
-            await _theDaemon.Connect(CancellationToken.None);
-            await _theDaemon.Register(CancellationToken.None);
+            await _theDaemon.Connect();
+            await _theDaemon.Register();
 
             // SET this wallet ID to a coloroured coin wallet 
             _theWallet = new ColouredCoinWallet(2, new WalletProxy(_theDaemon));
-            _ = await _theWallet.Login(CancellationToken.None);
+            _ = await _theWallet.Login();
         }
 
         [ClassCleanup()]
@@ -34,7 +33,7 @@ namespace chia.dotnet.tests
         [TestMethod()]
         public async Task GetColouredCoinName()
         {
-            var name = await _theWallet.GetName(CancellationToken.None);
+            var name = await _theWallet.GetName();
 
             Assert.IsNotNull(name);
         }
@@ -42,7 +41,7 @@ namespace chia.dotnet.tests
         [TestMethod()]
         public async Task GetColouredCoinColour()
         {
-            var colour = await _theWallet.GetColour(CancellationToken.None);
+            var colour = await _theWallet.GetColour();
 
             Assert.IsNotNull(colour);
         }

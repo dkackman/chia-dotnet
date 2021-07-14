@@ -25,7 +25,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of plots</returns>
-        public async Task<(IEnumerable<dynamic> FailedToOpenFilenames, IEnumerable<dynamic> NotFoundFileNames, IEnumerable<dynamic> Plots)> GetPlots(CancellationToken cancellationToken)
+        public async Task<(IEnumerable<dynamic> FailedToOpenFilenames, IEnumerable<dynamic> NotFoundFileNames, IEnumerable<dynamic> Plots)> GetPlots(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_plots", cancellationToken);
 
@@ -39,7 +39,7 @@ namespace chia.dotnet
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         /// <remarks><strong>Calling this DELETES the plot file. Proceed with caution.</strong></remarks>
-        public async Task DeletePlot(string filename, CancellationToken cancellationToken)
+        public async Task DeletePlot(string filename, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.filename = filename;
@@ -52,7 +52,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>List of directories</returns>
-        public async Task<IEnumerable<string>> GetPlotDirectories(CancellationToken cancellationToken)
+        public async Task<IEnumerable<string>> GetPlotDirectories(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_plot_directories", cancellationToken);
 
@@ -64,7 +64,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task AddPlotDirectory(string dirname, CancellationToken cancellationToken)
+        public async Task AddPlotDirectory(string dirname, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.dirname = dirname;
@@ -77,7 +77,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task RemovePlotDirectory(string dirname, CancellationToken cancellationToken)
+        public async Task RemovePlotDirectory(string dirname, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.dirname = dirname;
@@ -90,7 +90,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task RefreshPlots(CancellationToken cancellationToken)
+        public async Task RefreshPlots(CancellationToken cancellationToken = default)
         {
             _ = await SendMessage("refresh_plots", cancellationToken);
         }

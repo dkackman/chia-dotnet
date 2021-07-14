@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -21,8 +20,8 @@ namespace chia.dotnet.tests
         {
             _theDaemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
 
-            await _theDaemon.Connect(CancellationToken.None);
-            await _theDaemon.Register(CancellationToken.None);
+            await _theDaemon.Connect();
+            await _theDaemon.Register();
             _theFarmer = new FarmerProxy(_theDaemon);
         }
 
@@ -35,7 +34,7 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetRewardTargets()
         {
-            var targets = await _theFarmer.GetRewardTargets(false, CancellationToken.None);
+            var targets = await _theFarmer.GetRewardTargets(false);
 
             Assert.IsNotNull(targets);
             Assert.IsFalse(string.IsNullOrEmpty(targets.FarmerTarget));
@@ -48,13 +47,13 @@ namespace chia.dotnet.tests
         {
             // this will change the state of the farmer - make sure you want to do this
             // fill in addresses for target and pool as appropriate
-            await _theFarmer.SetRewardTargets("txch1pacgsfkngcrw50pnuvgvak0qpt8mx9pmey2uxl6p65c9727lhc0sgnklt4", "txch1pacgsfkngcrw50pnuvgvak0qpt8mx9pmey2uxl6p65c9727lhc0sgnklt4", CancellationToken.None);
+            await _theFarmer.SetRewardTargets("txch1pacgsfkngcrw50pnuvgvak0qpt8mx9pmey2uxl6p65c9727lhc0sgnklt4", "txch1pacgsfkngcrw50pnuvgvak0qpt8mx9pmey2uxl6p65c9727lhc0sgnklt4");
         }
 
         [TestMethod]
         public async Task GetSignagePoints()
         {
-            var signagePoints = await _theFarmer.GetSignagePoints(CancellationToken.None);
+            var signagePoints = await _theFarmer.GetSignagePoints();
 
             Assert.IsNotNull(signagePoints);
         }
@@ -62,7 +61,7 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetSignagePoint()
         {
-            var signagePoint = await _theFarmer.GetSignagePoint("0xb040c8e61a875249736136734467f505cd404f7803892e70fea2bac3cc0a6f0a", CancellationToken.None);
+            var signagePoint = await _theFarmer.GetSignagePoint("0xb040c8e61a875249736136734467f505cd404f7803892e70fea2bac3cc0a6f0a");
 
             Assert.IsNotNull(signagePoint);
         }
@@ -70,27 +69,27 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetHarvesters()
         {
-            var harvesters = await _theFarmer.GetHarvesters(CancellationToken.None);
+            var harvesters = await _theFarmer.GetHarvesters();
             Assert.IsNotNull(harvesters);
         }
 
         [TestMethod]
         public async Task Ping()
         {
-            await _theFarmer.Ping(CancellationToken.None);
+            await _theFarmer.Ping();
         }
 
         [TestMethod]
         public async Task GetConnections()
         {
-            var connections = await _theFarmer.GetConnections(CancellationToken.None);
+            var connections = await _theFarmer.GetConnections();
             Assert.IsNotNull(connections);
         }
 
         [TestMethod]
         public async Task OpenConnection()
         {
-            await _theFarmer.OpenConnection("node.chia.net", 8444, CancellationToken.None);
+            await _theFarmer.OpenConnection("node.chia.net", 8444);
         }
     }
 }

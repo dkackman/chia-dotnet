@@ -17,9 +17,10 @@ namespace chia.dotnet.tests
         public static async Task Initialize(TestContext context)
         {
             _theDaemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
+            _theDaemon.BroadcastMessageReceived += _theDaemon_BroadcastMessageReceived;
 
-            await _theDaemon.Connect(CancellationToken.None);
-            await _theDaemon.Register(CancellationToken.None);
+            await _theDaemon.Connect();
+            await _theDaemon.Register();
             _thePlotter = new PlotterProxy(_theDaemon);
         }
 
@@ -50,12 +51,17 @@ namespace chia.dotnet.tests
                 DestinationDir = "/home/don/plots"
             };
 
-            await _thePlotter.StartPlotting(config, CancellationToken.None);
+            await _thePlotter.StartPlotting(config);
 
             // this seems like the only way to get the plot queue
-            var q = await _theDaemon.RegisterPlotter(CancellationToken.None);
+            var q = await _theDaemon.RegisterPlotter();
 
             Assert.IsNotNull(q);
+        }
+
+        private static void _theDaemon_BroadcastMessageReceived(object sender, Message e)
+        {
+
         }
     }
 }

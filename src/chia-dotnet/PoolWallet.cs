@@ -29,7 +29,7 @@ namespace chia.dotnet
         /// <param name="relativeLockHeight">Relative lock height</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A transaction</returns>
-        public async Task<dynamic> JoinPool(string targetPuzzlehash, string poolUrl, uint relativeLockHeight, CancellationToken cancellationToken)
+        public async Task<dynamic> JoinPool(string targetPuzzlehash, string poolUrl, uint relativeLockHeight, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -49,7 +49,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A transaction</returns>
-        public async Task<dynamic> SelfPool(CancellationToken cancellationToken)
+        public async Task<dynamic> SelfPool(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -65,7 +65,7 @@ namespace chia.dotnet
         /// <param name="fee">Transaction fee</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Wallet state and transaction</returns>
-        public async Task<(dynamic State, dynamic Transaction)> AbsorbRewards(BigInteger fee, CancellationToken cancellationToken)
+        public async Task<(dynamic State, dynamic Transaction)> AbsorbRewards(BigInteger fee, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -81,7 +81,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Wallet state and list of unconfirmed transactions</returns>
-        public async Task<(dynamic State, IEnumerable<dynamic> UnconfirmedTransactions)> Status(CancellationToken cancellationToken)
+        public async Task<(dynamic State, IEnumerable<dynamic> UnconfirmedTransactions)> Status(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;

@@ -26,7 +26,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>blockchain_state</returns>
-        public async Task<dynamic> GetBlockchainState(CancellationToken cancellationToken)
+        public async Task<dynamic> GetBlockchainState(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_blockchain_state", cancellationToken);
 
@@ -39,7 +39,7 @@ namespace chia.dotnet
         /// <param name="headerhash">The header hash</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>block</returns>
-        public async Task<dynamic> GetBlock(string headerhash, CancellationToken cancellationToken)
+        public async Task<dynamic> GetBlock(string headerhash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.header_hash = headerhash;
@@ -55,7 +55,7 @@ namespace chia.dotnet
         /// <param name="headerhash">The header hash</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>block_record</returns>
-        public async Task<dynamic> GetBlockRecord(string headerhash, CancellationToken cancellationToken)
+        public async Task<dynamic> GetBlockRecord(string headerhash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.header_hash = headerhash;
@@ -71,7 +71,7 @@ namespace chia.dotnet
         /// <param name="height">the height to get</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>block_record</returns>
-        public async Task<dynamic> GetBlockRecordByHeight(uint height, CancellationToken cancellationToken)
+        public async Task<dynamic> GetBlockRecordByHeight(uint height, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.height = height;
@@ -88,7 +88,7 @@ namespace chia.dotnet
         /// <param name="end">End Height - non-inclusive</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>list of block_record</returns>
-        public async Task<IEnumerable<dynamic>> GetBlockRecords(uint start, uint end, CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetBlockRecords(uint start, uint end, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.start = start;
@@ -107,7 +107,7 @@ namespace chia.dotnet
         /// <param name="excludeHeaderhash">Flag indicating whether to include the header hash in the result or not</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of blocks</returns>
-        public async Task<IEnumerable<dynamic>> GetBlocks(uint start, uint end, bool excludeHeaderhash, CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetBlocks(uint start, uint end, bool excludeHeaderhash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.start = start;
@@ -124,7 +124,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of headers</returns>
-        public async Task<IEnumerable<dynamic>> GetUnfinishedBlockHeaders(CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetUnfinishedBlockHeaders(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_unfinished_block_headers", cancellationToken);
 
@@ -138,7 +138,7 @@ namespace chia.dotnet
         /// <param name="includeSpendCoins">whether to include spent coins too, instead of just unspent</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of coin records</returns>
-        public async Task<IEnumerable<dynamic>> GetCoinRecordsByPuzzleHash(string puzzlehash, bool includeSpendCoins, CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetCoinRecordsByPuzzleHash(string puzzlehash, bool includeSpendCoins, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.puzzle_hash = puzzlehash;
@@ -158,7 +158,7 @@ namespace chia.dotnet
         /// <param name="includeSpendCoins">whether to include spent coins too, instead of just unspent</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of coin records</returns>
-        public async Task<IEnumerable<dynamic>> GetCoinRecordsByPuzzleHash(string puzzlehash, uint startHeight, uint endHeight, bool includeSpendCoins, CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetCoinRecordsByPuzzleHash(string puzzlehash, uint startHeight, uint endHeight, bool includeSpendCoins, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.puzzle_hash = puzzlehash;
@@ -180,7 +180,7 @@ namespace chia.dotnet
         /// <param name="includeSpendCoins">whether to include spent coins too, instead of just unspent</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of coin records</returns>
-        public async Task<IEnumerable<dynamic>> GetCoinRecordsByPuzzleHashes(IEnumerable<string> puzzlehashes, uint startHeight, uint endHeight, bool includeSpendCoins, CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetCoinRecordsByPuzzleHashes(IEnumerable<string> puzzlehashes, uint startHeight, uint endHeight, bool includeSpendCoins, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.puzzle_hash = puzzlehashes.ToList();
@@ -199,7 +199,7 @@ namespace chia.dotnet
         /// <param name="name">The coin name</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A coin record</returns>
-        public async Task<dynamic> GetCoinRecordByName(string name, CancellationToken cancellationToken)
+        public async Task<dynamic> GetCoinRecordByName(string name, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.name = name;
@@ -215,7 +215,7 @@ namespace chia.dotnet
         /// <param name="headerhash">The header hash</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of additions and a list of removals</returns>
-        public async Task<(IEnumerable<dynamic> Additions, IEnumerable<dynamic> Removals)> GetAdditionsAndRemovals(string headerhash, CancellationToken cancellationToken)
+        public async Task<(IEnumerable<dynamic> Additions, IEnumerable<dynamic> Removals)> GetAdditionsAndRemovals(string headerhash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.header_hash = headerhash;
@@ -230,7 +230,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a list of mempool items</returns>
-        public async Task<IEnumerable<dynamic>> GetAllMempoolItems(CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetAllMempoolItems(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_all_mempool_items", cancellationToken);
 
@@ -242,7 +242,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a list of tx_ids</returns>
-        public async Task<IEnumerable<dynamic>> GetAllMemmpoolTxIds(CancellationToken cancellationToken)
+        public async Task<IEnumerable<dynamic>> GetAllMemmpoolTxIds(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_all_mempool_tx_ids", cancellationToken);
 
@@ -255,7 +255,7 @@ namespace chia.dotnet
         /// <param name="spendBundleHash"></param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a list of tx_ids</returns>
-        public async Task<dynamic> GetMemmpooItemByTxId(string txId, CancellationToken cancellationToken)
+        public async Task<dynamic> GetMemmpooItemByTxId(string txId, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.tx_id = txId;
@@ -272,7 +272,7 @@ namespace chia.dotnet
         /// <param name="olderBlockHeaderhash"></param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns><see cref="BigInteger"/> of network space in bytes</returns>
-        public async Task<BigInteger> GetNetworkSpace(string newerBlockHeaderhash, string olderBlockHeaderhash, CancellationToken cancellationToken)
+        public async Task<BigInteger> GetNetworkSpace(string newerBlockHeaderhash, string olderBlockHeaderhash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.newer_block_header_hash = newerBlockHeaderhash;
@@ -288,7 +288,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The network name and coin prefix</returns>
-        public async Task<(string NetworkName, string NetworkPrefix)> GetNetworkInfo(CancellationToken cancellationToken)
+        public async Task<(string NetworkName, string NetworkPrefix)> GetNetworkInfo(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_network_info", cancellationToken);
 
@@ -302,7 +302,7 @@ namespace chia.dotnet
         /// <param name="spendBundle"></param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Indicator of whether the spend bundle was successfully included in the mempool</returns>
-        public async Task<bool> PushTx(dynamic spendBundle, CancellationToken cancellationToken)
+        public async Task<bool> PushTx(dynamic spendBundle, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.spend_bundle = spendBundle;
@@ -318,7 +318,7 @@ namespace chia.dotnet
         /// <param name="spHash">signage point hash</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Indicator of whether the spend bundle was successfully included in the mempool</returns>
-        public async Task<(dynamic signagePoint, double timeReceived, bool reverted)> GetRecentSignagePoint(string spHash, CancellationToken cancellationToken)
+        public async Task<(dynamic signagePoint, double timeReceived, bool reverted)> GetRecentSignagePoint(string spHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.sp_hash = spHash;
@@ -334,7 +334,7 @@ namespace chia.dotnet
         /// <param name="challengeHash">challenge hash</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A signange _point or an eos</returns>
-        public async Task<(dynamic eos, double timeReceived, bool reverted)> GetRecentEOS(string challengeHash, CancellationToken cancellationToken)
+        public async Task<(dynamic eos, double timeReceived, bool reverted)> GetRecentEOS(string challengeHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.challenge_hash = challengeHash;
@@ -352,7 +352,7 @@ namespace chia.dotnet
         /// <param name="height">Block height</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A coin_solution</returns>
-        public async Task<dynamic> GetPuzzleAndSolution(string coinId, uint height, CancellationToken cancellationToken)
+        public async Task<dynamic> GetPuzzleAndSolution(string coinId, uint height, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.coin_id = coinId;
