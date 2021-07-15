@@ -43,6 +43,7 @@ namespace chia.dotnet
 
         /// <summary>
         /// The name of the service that is running. Will be used as the <see cref="Message.Origin"/> of all messages
+        /// as well as the idenitifier used for <see cref="Register(CancellationToken)"/>
         /// </summary>
         public string OriginService { get; init; }
 

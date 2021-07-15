@@ -118,9 +118,10 @@ namespace chia.dotnet
                 }
             }
 
+            // if t2 is not set, set it to the value of t, start_plotting needs all params set, if even to defaults
             if (!dict.ContainsKey("t2"))
             {
-                dict.Add("t2", dict["t"]); // start_plotting needs all params set, if even to defaults
+                dict.Add("t2", dict["t"]);
             }
             return data;
         }

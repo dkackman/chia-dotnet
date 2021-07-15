@@ -9,8 +9,8 @@ namespace chia.dotnet
     /// <summary>
     /// Base class that uses a <see cref="Daemon"/> to send and receive messages to other services
     /// </summary>
-    /// <remarks>The lifetime of the daemon is not controlled by the proxy. It should be disposed outside of this class. <see cref="RpcClient.Connect(CancellationToken)"/></remarks>
-    /// and <see cref="Daemon.Register(CancellationToken)"/> should be invoked 
+    /// <remarks>The lifetime of the daemon is not controlled by the proxy. It should be disposed outside of this class. <see cref="RpcClient.Connect(CancellationToken)"/>
+    /// and <see cref="Daemon.Register(CancellationToken)"/> should be invoked </remarks>
     public abstract class ServiceProxy
     {
         /// <summary>

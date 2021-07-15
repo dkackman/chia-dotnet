@@ -109,7 +109,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="request">The <see cref="Message"/> to send</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <remarks>Awaiting this method will block until a response is received from thw <see cref="WebSocket"/> ot the <see cref="CancellationToken"/> is cancelled</remarks>
+        /// <remarks>Awaiting this method will block until a response is received from the <see cref="WebSocket"/> or the <see cref="CancellationToken"/> is cancelled</remarks>
         /// <returns>The response message</returns>
         /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
         public async Task<Message> SendMessage(Message request, CancellationToken cancellationToken = default)
@@ -155,6 +155,7 @@ namespace chia.dotnet
         /// <summary>
         /// Event raised when a message is received from the endpoint that was either not in response to a request
         /// or was a response from a posted message (i.e. we didn't register to receive the response)
+        /// Pooling state_changed messages come through this event
         /// </summary>
         public event EventHandler<Message> BroadcastMessageReceived;
 

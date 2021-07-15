@@ -182,7 +182,7 @@ namespace chia.dotnet
         /// Sends a transaction
         /// </summary>
         /// <param name="additions">Additions to the block chain</param>
-        /// <param name="fee">Fee amount</param>
+        /// <param name="fee">Fee amount (in units of mojo)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The transaction</returns>
         public async Task<dynamic> SendTransactionMulti(IEnumerable<dynamic> additions, BigInteger fee, CancellationToken cancellationToken = default)

@@ -54,7 +54,8 @@ namespace chia.dotnet
         /// <param name="data"><see cref="Data"/></param>
         /// <param name="destination"><see cref="Destination"/></param>
         /// <param name="origin"><see cref="Origin"/></param>
-        /// <returns></returns>
+        /// <returns>A populated <see cref="Message"/></returns>
+        /// <remarks>Ensure that <see cref="Data"/> and <see cref="RequestId"/> are set appropriately</remarks>
         public static Message Create(string command, object data, string destination, string origin)
         {
             return string.IsNullOrEmpty(command)
