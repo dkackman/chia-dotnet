@@ -19,6 +19,16 @@ namespace chia.dotnet
         /// <returns>An ephemeral certificate that can be used for WebSocket authentication</returns>
         public static X509Certificate2Collection GetCerts(string certPath, string keyPath)
         {
+            if (!File.Exists(certPath))
+            {
+                throw new FileNotFoundException($"crt file {certPath} not found");
+            }
+
+            if (!File.Exists(keyPath))
+            {
+                throw new FileNotFoundException($"key file {keyPath} not found");
+            }
+
             using X509Certificate2 cert = new(certPath);
             using StreamReader streamReader = new(keyPath);
 

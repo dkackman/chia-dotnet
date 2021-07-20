@@ -78,6 +78,10 @@ namespace chia.dotnet
                 throw new ArgumentNullException(nameof(fullPath));
             }
 
+            if (!File.Exists(fullPath))
+            {
+                throw new FileNotFoundException($"confgi file {fullPath} not found");
+            }
             using var input = new StreamReader(fullPath);
             var deserializer = new DeserializerBuilder()
                 .WithTagMapping("tag:yaml.org,2002:set", typeof(YamlSet<object>))

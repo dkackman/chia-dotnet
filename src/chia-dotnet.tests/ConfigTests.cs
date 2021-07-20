@@ -17,17 +17,10 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(DirectoryNotFoundException))]
-        public void InvalidFolderThrowsDirectoryNotFound()
-        {
-            _ = Config.Open(@"C:\this\path\does\not\exist\config.yaml");
-        }
-
-        [TestMethod]
         [ExpectedException(typeof(FileNotFoundException))]
         public void InvalidFilenameThrowsFileNotFound()
         {
-            _ = Config.Open(@"C:\windows\config.yaml");
+            _ = Config.Open(@"C:\this\path\does\not\exist\config.yaml");
         }
     }
 }
