@@ -3,7 +3,7 @@ using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-
+using System.Diagnostics;
 namespace chia.dotnet
 {
     /// <summary>
@@ -33,7 +33,7 @@ namespace chia.dotnet
         public Daemon(EndpointInfo endpoint, string originServiceName)
             : base(endpoint)
         {
-            if (string.IsNullOrEmpty(value: originServiceName))
+            if (string.IsNullOrEmpty(originServiceName))
             {
                 throw new ArgumentNullException(nameof(originServiceName));
             }
@@ -129,6 +129,13 @@ namespace chia.dotnet
 
         private Message CreateServiceMessage(string command, string service)
         {
+            Debug.Assert(!string.IsNullOrEmpty(command));
+
+            if (string.IsNullOrEmpty(service))
+            {
+                throw new ArgumentNullException(nameof(service));
+            }
+
             dynamic data = new ExpandoObject();
             data.service = service;
             return Message.Create(command, data, "daemon", OriginService);

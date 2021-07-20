@@ -35,6 +35,11 @@ namespace chia.dotnet
         /// <returns>An <see cref="EndpointInfo"/> that can be used to connect to the given service's RPC interface</returns>
         public EndpointInfo GetEndpoint(string serviceName)
         {
+            if (string.IsNullOrEmpty(serviceName))
+            {
+                throw new ArgumentNullException(nameof(serviceName));
+            }
+
             UriBuilder builder = new("wss", "");
             dynamic ssl;
 

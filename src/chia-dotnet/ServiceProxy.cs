@@ -3,6 +3,7 @@ using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace chia.dotnet
 {
@@ -81,6 +82,11 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task OpenConnection(string host, int port, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(host))
+            {
+                throw new ArgumentNullException(nameof(host));
+            }
+
             dynamic data = new ExpandoObject();
             data.host = host;
             data.port = port;
@@ -96,6 +102,11 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task CloseConnection(string nodeId, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(nodeId))
+            {
+                throw new ArgumentNullException(nameof(nodeId));
+            }
+
             dynamic data = new ExpandoObject();
             data.node_id = nodeId;
 
@@ -111,6 +122,8 @@ namespace chia.dotnet
         /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
         internal async Task<Message> SendMessage(string command, CancellationToken cancellationToken)
         {
+            Debug.Assert(!string.IsNullOrEmpty(command));
+
             var message = Message.Create(command, null, DestinationService, Daemon.OriginService);
             return await Daemon.SendMessage(message, cancellationToken);
         }
@@ -125,6 +138,8 @@ namespace chia.dotnet
         /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
         internal async Task<Message> SendMessage(string command, dynamic data, CancellationToken cancellationToken)
         {
+            Debug.Assert(!string.IsNullOrEmpty(command));
+
             var message = Message.Create(command, data, DestinationService, Daemon.OriginService);
             return await Daemon.SendMessage(message, cancellationToken);
         }

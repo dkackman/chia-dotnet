@@ -95,6 +95,11 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task PostMessage(Message message, CancellationToken cancellationToken = default)
         {
+            if (message is null)
+            {
+                throw new ArgumentNullException(nameof(message));
+            }
+
             if (disposedValue)
             {
                 throw new ObjectDisposedException(nameof(RpcClient));
@@ -107,49 +112,54 @@ namespace chia.dotnet
         /// <summary>
         /// Sends a <see cref="Message"/> to the websocket and waits for a response
         /// </summary>
-        /// <param name="request">The <see cref="Message"/> to send</param>
+        /// <param name="message">The <see cref="Message"/> to send</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <remarks>Awaiting this method will block until a response is received from the <see cref="WebSocket"/> or the <see cref="CancellationToken"/> is cancelled</remarks>
         /// <returns>The response message</returns>
         /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
-        public async Task<Message> SendMessage(Message request, CancellationToken cancellationToken = default)
+        public async Task<Message> SendMessage(Message message, CancellationToken cancellationToken = default)
         {
+            if (message is null)
+            {
+                throw new ArgumentNullException(nameof(message));
+            }
+
             if (disposedValue)
             {
                 throw new ObjectDisposedException(nameof(RpcClient));
             }
 
             // capture the message to be sent
-            if (!_pendingRequests.TryAdd(request.RequestId, request))
+            if (!_pendingRequests.TryAdd(message.RequestId, message))
             {
-                throw new InvalidOperationException($"A message with an id of {request.RequestId} has already been sent");
+                throw new InvalidOperationException($"A message with an id of {message.RequestId} has already been sent");
             }
 
             try
             {
-                var json = request.ToJson();
+                var json = message.ToJson();
                 await _webSocket.SendAsync(Encoding.UTF8.GetBytes(json), WebSocketMessageType.Text, true, cancellationToken);
             }
             catch
             {
-                _ = _pendingRequests.TryRemove(request.RequestId, out _);
+                _ = _pendingRequests.TryRemove(message.RequestId, out _);
                 throw;
             }
 
             // wait here until a response shows up or we get cancelled
             Message response;
-            while (!_pendingResponses.TryRemove(request.RequestId, out response) && !cancellationToken.IsCancellationRequested)
+            while (!_pendingResponses.TryRemove(message.RequestId, out response) && !cancellationToken.IsCancellationRequested)
             {
                 await Task.Delay(10, cancellationToken);
             }
 
             // the receive loop cleans up but make sure we do so on cancellation too
-            if (_pendingRequests.ContainsKey(request.RequestId))
+            if (_pendingRequests.ContainsKey(message.RequestId))
             {
-                _ = _pendingRequests.TryRemove(request.RequestId, out _);
+                _ = _pendingRequests.TryRemove(message.RequestId, out _);
             }
 
-            return !response.IsSuccessfulResponse ? throw new ResponseException(request, response, response.Data?.error?.ToString()) : response;
+            return !response.IsSuccessfulResponse ? throw new ResponseException(message, response, response.Data?.error?.ToString()) : response;
         }
 
         /// <summary>
@@ -165,6 +175,11 @@ namespace chia.dotnet
         /// <param name="message">The message to broadcast</param>
         protected virtual void OnBroadcastMessageReceived(Message message)
         {
+            if (message is null)
+            {
+                throw new ArgumentNullException(nameof(message));
+            }
+
             Debug.WriteLine("Broadcast message:");
             Debug.WriteLine(message.ToJson());
 
