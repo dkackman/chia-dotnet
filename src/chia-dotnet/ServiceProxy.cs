@@ -8,38 +8,49 @@ using System.Diagnostics;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Base class that uses a <see cref="Daemon"/> to send and receive messages to other services
+    /// Base class that uses a <see cref="RpcClient"/> to send and receive messages to other services
     /// </summary>
-    /// <remarks>The lifetime of the daemon is not controlled by the proxy. It should be disposed outside of this class. <see cref="RpcClient.Connect(CancellationToken)"/>
-    /// and <see cref="Daemon.Register(CancellationToken)"/> should be invoked </remarks>
+    /// <remarks>The lifetime of the daemon is not controlled by the proxy. It should be disposed outside of this class. <see cref="RpcClient.Connect(CancellationToken)"/></remarks>
     public abstract class ServiceProxy
     {
         /// <summary>
         /// ctor
         /// </summary>
-        /// <param name="daemon"><see cref="Daemon"/> instance to use for rpc communication</param>
+        /// <param name="rpcClient"><see cref="RpcClient"/> instance to use for rpc communication</param>
         /// <param name="destinationService"><see cref="Message.Destination"/></param>
-        public ServiceProxy(Daemon daemon, string destinationService)
+        /// <param name="originService"><see cref="Message.Origin"/></param>
+        public ServiceProxy(RpcClient rpcClient, string destinationService, string originService)
         {
-            Daemon = daemon ?? throw new ArgumentNullException(nameof(daemon));
+            RpcClient = rpcClient ?? throw new ArgumentNullException(nameof(rpcClient));
 
             if (string.IsNullOrEmpty(destinationService))
             {
                 throw new ArgumentNullException(nameof(destinationService));
             }
 
+            if (string.IsNullOrEmpty(originService))
+            {
+                throw new ArgumentNullException(nameof(originService));
+            }
+
             DestinationService = destinationService;
+            OriginService = originService;
         }
 
         /// <summary>
-        /// The <see cref="Daemon"/> used for underlying RPC
+        /// The <see cref="RpcClient"/> used for underlying RPC
         /// </summary>
-        public Daemon Daemon { get; init; }
+        public RpcClient RpcClient { get; init; }
 
         /// <summary>
         /// <see cref="Message.Destination"/>
         /// </summary>
         public string DestinationService { get; init; }
+
+        /// <summary>
+        /// <see cref="Message.Origin"/>
+        /// </summary>
+        public string OriginService { get; init; }
 
         /// <summary>
         /// Sends ping message to the service
@@ -114,7 +125,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Sends a message via the <see cref="Daemon"/> to <see cref="DestinationService"/>
+        /// Sends a message via the <see cref="RpcClient"/> to <see cref="DestinationService"/>
         /// </summary>
         /// <param name="command">The command</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
@@ -124,12 +135,12 @@ namespace chia.dotnet
         {
             Debug.Assert(!string.IsNullOrEmpty(command));
 
-            var message = Message.Create(command, null, DestinationService, Daemon.OriginService);
-            return await Daemon.SendMessage(message, cancellationToken);
+            var message = Message.Create(command, null, DestinationService, OriginService);
+            return await RpcClient.SendMessage(message, cancellationToken);
         }
 
         /// <summary>
-        /// Sends a message via the <see cref="Daemon"/> to <see cref="DestinationService"/>
+        /// Sends a message via the <see cref="RpcClient"/> to <see cref="DestinationService"/>
         /// </summary>
         /// <param name="command">The command</param>
         /// <param name="data">Data to go along with the command</param>
@@ -140,8 +151,8 @@ namespace chia.dotnet
         {
             Debug.Assert(!string.IsNullOrEmpty(command));
 
-            var message = Message.Create(command, data, DestinationService, Daemon.OriginService);
-            return await Daemon.SendMessage(message, cancellationToken);
+            var message = Message.Create(command, data, DestinationService, OriginService);
+            return await RpcClient.SendMessage(message, cancellationToken);
         }
     }
 }

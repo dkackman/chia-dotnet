@@ -16,7 +16,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="daemon">The <see cref="Daemon"/> to handle RPC</param>
         public HarvesterProxy(Daemon daemon)
-            : base(daemon, ServiceNames.Harvester)
+            : base(daemon, ServiceNames.Harvester, daemon.OriginService)
         {
         }
 

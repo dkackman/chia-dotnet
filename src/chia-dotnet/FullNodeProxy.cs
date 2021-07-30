@@ -17,7 +17,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="daemon">The <see cref="Daemon"/> to handle RPC</param>
         public FullNodeProxy(Daemon daemon)
-            : base(daemon, ServiceNames.FullNode)
+            : base(daemon, ServiceNames.FullNode, daemon.OriginService)
         {
         }
 
