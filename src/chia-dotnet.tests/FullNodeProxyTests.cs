@@ -43,7 +43,7 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetBlock()
         {
-            var block = await _theFullNode.GetBlock("0xc5d6292aaf50c3cdc3f8481a30b2e9f12babf274c0488ab24db3dd9b1dd41364");
+            var block = await _theFullNode.GetBlock("0xcb5c085a1f0259ab5581ebfce219f82cac9ec288da29665ce31e21a5b5856089");
 
             Assert.IsNotNull(block);
         }
@@ -51,7 +51,7 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetBlockRecord()
         {
-            var record = await _theFullNode.GetBlockRecord("0xc5d6292aaf50c3cdc3f8481a30b2e9f12babf274c0488ab24db3dd9b1dd41364");
+            var record = await _theFullNode.GetBlockRecord("0xcb5c085a1f0259ab5581ebfce219f82cac9ec288da29665ce31e21a5b5856089");
 
             Assert.IsNotNull(record);
         }
@@ -75,10 +75,8 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetNetworkSpace()
         {
-            var space = await _theFullNode.GetNetworkSpace("0x457649e7e6dabb5660f8c3cd9e08534522361d97cb237bdfa341bce01e91c3f5", "0x1353f4d1a01d5393cb7f8f0631487774e11125f47af487426fd9cbcd24151a15");
+            var space = await _theFullNode.GetNetworkSpace("0xcb5c085a1f0259ab5581ebfce219f82cac9ec288da29665ce31e21a5b5856089", "0x9edc235dfcb12a14e20e8f83b53060d067d97d217d6f9a3420fc9dbb470040fe");
             Assert.IsNotNull(space);
-
-            Debug.WriteLine(space);
         }
 
         [TestMethod]
@@ -95,6 +93,7 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
+        [Ignore] // only works on mainnet
         public async Task OpenConnection()
         {
             await _theFullNode.OpenConnection("node.chia.net", 8444);
@@ -139,7 +138,7 @@ namespace chia.dotnet.tests
         [TestMethod()]
         public async Task GetAdditionsAndRemovals()
         {
-            var additionsAndRemovals = await _theFullNode.GetAdditionsAndRemovals("6b143b214f731021106d411c5bdce2fe03de0af5449c63830f111f25dc7d0a2b");
+            var additionsAndRemovals = await _theFullNode.GetAdditionsAndRemovals("7d83874e532ea08b0a5882ce8df705a5f45fc94bdeae4b1f568f05ce3010c6ae");
             Assert.IsNotNull(additionsAndRemovals);
         }
 
@@ -171,7 +170,7 @@ namespace chia.dotnet.tests
         [TestMethod()]
         public async Task GetRecentSignagePoint()
         {
-            var sp = await _theFullNode.GetRecentSignagePoint("0x315ec5a8e0ac849915e136b81fd2d2277ae3804e2aea3911321ed293eb3595fb");
+            var sp = await _theFullNode.GetRecentSignagePoint("0xf3ca7a33ce723b38c9a72156252b3b2395ead751213eef5d8ed40c941c6a9017");
             Assert.IsNotNull(sp);
         }
     }

@@ -31,8 +31,8 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(TaskCanceledException))]
-        public async Task FailOnInvaliddConfig()
+        [ExpectedException(typeof(InvalidOperationException))]
+        public async Task FailOnInvalidConfig()
         {
             var config = new PlotterConfig();
             using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));

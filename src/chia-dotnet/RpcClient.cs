@@ -180,8 +180,8 @@ namespace chia.dotnet
                 throw new ArgumentNullException(nameof(message));
             }
 
-            Debug.WriteLine("Broadcast message:");
-            Debug.WriteLine(message.ToJson());
+            // Debug.WriteLine("Broadcast message:");
+            // Debug.WriteLine(message.ToJson());
 
             BroadcastMessageReceived?.Invoke(this, message);
         }

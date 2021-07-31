@@ -61,7 +61,7 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetSignagePoint()
         {
-            var signagePoint = await _theFarmer.GetSignagePoint("0xb040c8e61a875249736136734467f505cd404f7803892e70fea2bac3cc0a6f0a");
+            var signagePoint = await _theFarmer.GetSignagePoint("0x01a076953bef8eae24634a723d83593c23fa0a444fe0fc19138d49cdea440b6a");
 
             Assert.IsNotNull(signagePoint);
         }
@@ -87,6 +87,7 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
+        [Ignore] // only works on mainnet
         public async Task OpenConnection()
         {
             await _theFarmer.OpenConnection("node.chia.net", 8444);
