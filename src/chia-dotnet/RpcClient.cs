@@ -55,6 +55,11 @@ namespace chia.dotnet
                 throw new ObjectDisposedException(nameof(RpcClient));
             }
 
+            if (_webSocket.State is WebSocketState.Connecting or WebSocketState.Open)
+            {
+                throw new InvalidOperationException("RpcClient connection is already open");
+            }
+
             _webSocket.Options.ClientCertificates = CertLoader.GetCerts(Endpoint.CertPath, Endpoint.KeyPath);
 
             await _webSocket.ConnectAsync(Endpoint.Uri, cancellationToken);
@@ -180,8 +185,8 @@ namespace chia.dotnet
                 throw new ArgumentNullException(nameof(message));
             }
 
-            // Debug.WriteLine("Broadcast message:");
-            // Debug.WriteLine(message.ToJson());
+            Debug.WriteLine("Broadcast message:");
+            Debug.WriteLine(message.ToJson());
 
             BroadcastMessageReceived?.Invoke(this, message);
         }
