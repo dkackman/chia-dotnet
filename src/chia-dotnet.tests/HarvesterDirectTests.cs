@@ -21,7 +21,7 @@ namespace chia.dotnet.tests
                     KeyPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.key",
                 };
 
-                using var rpcClient = new WebSocketRpcClient(endpoint);
+                using var rpcClient = new HttpRpcClient(endpoint);
                 await rpcClient.Connect();
             }
             catch (Exception e)

@@ -1,8 +1,8 @@
 using System;
 using System.Net.Security;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Diagnostics;
@@ -10,12 +10,13 @@ using System.Diagnostics;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Base class that handles core websocket communication with the rpc endpoint
+    /// Base class that handles core communication with the rpc endpoint using http(s)
     /// and synchronizes request and response messages
     /// </summary>
     public class HttpRpcClient : IDisposable, IRpcClient
     {
-        private readonly HttpClient _httpClient = new();
+        private readonly SocketsHttpHandler _httpHandler = new();
+        private readonly HttpClient _httpClient;
         private readonly CancellationTokenSource _receiveCancellationTokenSource = new();
 
         private bool disposedValue;
@@ -28,7 +29,10 @@ namespace chia.dotnet
         {
             Endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
 
-            _httpClient.Options.RemoteCertificateValidationCallback += ValidateServerCertificate;
+            _httpHandler.SslOptions.ClientCertificates = CertLoader.GetCerts(Endpoint.CertPath, Endpoint.KeyPath);
+            _httpHandler.SslOptions.RemoteCertificateValidationCallback += ValidateServerCertificate;
+            _httpClient = new(_httpHandler);
+            _httpClient.BaseAddress = Endpoint.Uri;
         }
 
         /// <summary>
@@ -48,10 +52,12 @@ namespace chia.dotnet
                 throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
 
-            _httpClient.Options.ClientCertificates = CertLoader.GetCerts(Endpoint.CertPath, Endpoint.KeyPath);
+            // since each every rpc endpoint shares this readonly method
+            // we'll use get_connections to make sure the endpoint is up and basic sanity checks
+            using var response = await _httpClient.PostAsJsonAsync<string>("get_connections", "{}", cancellationToken);
+            response.EnsureSuccessStatusCode();
+            var content = await response.Content.ReadAsStringAsync();
 
-            await _httpClient.ConnectAsync(Endpoint.Uri, cancellationToken);
-            _ = Task.Factory.StartNew(ReceiveLoop, _receiveCancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
             OnConnected();
         }
 
@@ -76,7 +82,6 @@ namespace chia.dotnet
             }
 
             _receiveCancellationTokenSource.Cancel();
-            await _httpClient.CloseAsync(WebSocketCloseStatus.NormalClosure, "bye", cancellationToken);
         }
 
         /// <summary>
@@ -97,9 +102,6 @@ namespace chia.dotnet
             {
                 throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
-
-            var json = message.ToJson();
-            await _httpClient.SendAsync(Encoding.UTF8.GetBytes(json), WebSocketMessageType.Text, true, cancellationToken);
         }
 
         /// <summary>
@@ -122,37 +124,7 @@ namespace chia.dotnet
                 throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
 
-            // capture the message to be sent
-            if (!_pendingRequests.TryAdd(message.RequestId, message))
-            {
-                throw new InvalidOperationException($"A message with an id of {message.RequestId} has already been sent");
-            }
-
-            try
-            {
-                var json = message.ToJson();
-                await _httpClient.SendAsync(Encoding.UTF8.GetBytes(json), WebSocketMessageType.Text, true, cancellationToken);
-            }
-            catch
-            {
-                _ = _pendingRequests.TryRemove(message.RequestId, out _);
-                throw;
-            }
-
-            // wait here until a response shows up or we get cancelled
-            Message response;
-            while (!_pendingResponses.TryRemove(message.RequestId, out response) && !cancellationToken.IsCancellationRequested)
-            {
-                await Task.Delay(10, cancellationToken);
-            }
-
-            // the receive loop cleans up but make sure we do so on cancellation too
-            if (_pendingRequests.ContainsKey(message.RequestId))
-            {
-                _ = _pendingRequests.TryRemove(message.RequestId, out _);
-            }
-
-            return !response.IsSuccessfulResponse ? throw new ResponseException(message, response, response.Data?.error?.ToString()) : response;
+            return null;
         }
 
         /// <summary>
