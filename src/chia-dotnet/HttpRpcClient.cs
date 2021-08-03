@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.IO;
+using System;
 using System.Net.Security;
-using System.Net.WebSockets;
-using System.Runtime.CompilerServices;
+using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Diagnostics;
-
-[assembly: InternalsVisibleTo("chia-dotnet.tests")]
 
 namespace chia.dotnet
 {
@@ -18,24 +13,22 @@ namespace chia.dotnet
     /// Base class that handles core websocket communication with the rpc endpoint
     /// and synchronizes request and response messages
     /// </summary>
-    public class RpcClient : IDisposable
+    public class HttpRpcClient : IDisposable, IRpcClient
     {
-        private readonly ClientWebSocket _webSocket = new();
+        private readonly HttpClient _httpClient = new();
         private readonly CancellationTokenSource _receiveCancellationTokenSource = new();
-        private readonly ConcurrentDictionary<string, Message> _pendingRequests = new();
-        private readonly ConcurrentDictionary<string, Message> _pendingResponses = new();
 
         private bool disposedValue;
 
         /// <summary>
         /// ctor
         /// </summary>
-        /// <param name="endpoint">Details of thw websocket endpoint</param>        
-        public RpcClient(EndpointInfo endpoint)
+        /// <param name="endpoint">Details of the websocket endpoint</param>        
+        public HttpRpcClient(EndpointInfo endpoint)
         {
             Endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
 
-            _webSocket.Options.RemoteCertificateValidationCallback += ValidateServerCertificate;
+            _httpClient.Options.RemoteCertificateValidationCallback += ValidateServerCertificate;
         }
 
         /// <summary>
@@ -52,17 +45,12 @@ namespace chia.dotnet
         {
             if (disposedValue)
             {
-                throw new ObjectDisposedException(nameof(RpcClient));
+                throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
 
-            if (_webSocket.State is WebSocketState.Connecting or WebSocketState.Open)
-            {
-                throw new InvalidOperationException("RpcClient connection is already open");
-            }
+            _httpClient.Options.ClientCertificates = CertLoader.GetCerts(Endpoint.CertPath, Endpoint.KeyPath);
 
-            _webSocket.Options.ClientCertificates = CertLoader.GetCerts(Endpoint.CertPath, Endpoint.KeyPath);
-
-            await _webSocket.ConnectAsync(Endpoint.Uri, cancellationToken);
+            await _httpClient.ConnectAsync(Endpoint.Uri, cancellationToken);
             _ = Task.Factory.StartNew(ReceiveLoop, _receiveCancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
             OnConnected();
         }
@@ -84,11 +72,11 @@ namespace chia.dotnet
         {
             if (disposedValue)
             {
-                throw new ObjectDisposedException(nameof(RpcClient));
+                throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
 
             _receiveCancellationTokenSource.Cancel();
-            await _webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "bye", cancellationToken);
+            await _httpClient.CloseAsync(WebSocketCloseStatus.NormalClosure, "bye", cancellationToken);
         }
 
         /// <summary>
@@ -107,11 +95,11 @@ namespace chia.dotnet
 
             if (disposedValue)
             {
-                throw new ObjectDisposedException(nameof(RpcClient));
+                throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
 
             var json = message.ToJson();
-            await _webSocket.SendAsync(Encoding.UTF8.GetBytes(json), WebSocketMessageType.Text, true, cancellationToken);
+            await _httpClient.SendAsync(Encoding.UTF8.GetBytes(json), WebSocketMessageType.Text, true, cancellationToken);
         }
 
         /// <summary>
@@ -131,7 +119,7 @@ namespace chia.dotnet
 
             if (disposedValue)
             {
-                throw new ObjectDisposedException(nameof(RpcClient));
+                throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
 
             // capture the message to be sent
@@ -143,7 +131,7 @@ namespace chia.dotnet
             try
             {
                 var json = message.ToJson();
-                await _webSocket.SendAsync(Encoding.UTF8.GetBytes(json), WebSocketMessageType.Text, true, cancellationToken);
+                await _httpClient.SendAsync(Encoding.UTF8.GetBytes(json), WebSocketMessageType.Text, true, cancellationToken);
             }
             catch
             {
@@ -191,42 +179,6 @@ namespace chia.dotnet
             BroadcastMessageReceived?.Invoke(this, message);
         }
 
-        private async Task ReceiveLoop()
-        {
-            var buffer = new ArraySegment<byte>(new byte[2048]);
-            do
-            {
-                using var ms = new MemoryStream();
-
-                WebSocketReceiveResult result;
-                do
-                {
-                    result = await _webSocket.ReceiveAsync(buffer, _receiveCancellationTokenSource.Token);
-                    ms.Write(buffer.Array, buffer.Offset, result.Count);
-                } while (!result.EndOfMessage);
-
-                if (result.MessageType == WebSocketMessageType.Close)
-                {
-                    break;
-                }
-
-                _ = ms.Seek(0, SeekOrigin.Begin);
-                using var reader = new StreamReader(ms, Encoding.UTF8);
-                var response = await reader.ReadToEndAsync();
-                var message = Message.FromJson(response);
-
-                // if we have a message pending with this id, capture the response and remove the request from the pending dictionary                
-                if (_pendingRequests.TryRemove(message.RequestId, out _))
-                {
-                    _pendingResponses[message.RequestId] = message;
-                }
-                else
-                {
-                    OnBroadcastMessageReceived(message);
-                }
-            } while (!_receiveCancellationTokenSource.IsCancellationRequested);
-        }
-
         private static bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
         {
             // uncomment these checks to change remote cert validaiton requirements
@@ -253,9 +205,7 @@ namespace chia.dotnet
                 if (disposing)
                 {
                     _receiveCancellationTokenSource.Cancel();
-                    _pendingRequests.Clear();
-                    _pendingResponses.Clear();
-                    _webSocket.Dispose();
+                    _httpClient.Dispose();
                     _receiveCancellationTokenSource.Dispose();
                 }
 

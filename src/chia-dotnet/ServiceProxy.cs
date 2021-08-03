@@ -10,16 +10,16 @@ namespace chia.dotnet
     /// <summary>
     /// Base class that uses a <see cref="RpcClient"/> to send and receive messages to other services
     /// </summary>
-    /// <remarks>The lifetime of the daemon is not controlled by the proxy. It should be disposed outside of this class. <see cref="RpcClient.Connect(CancellationToken)"/></remarks>
+    /// <remarks>The lifetime of the daemon is not controlled by the proxy. It should be disposed outside of this class. <see cref="WebSocketRpcClient.Connect(CancellationToken)"/></remarks>
     public abstract class ServiceProxy
     {
         /// <summary>
         /// ctor
         /// </summary>
-        /// <param name="rpcClient"><see cref="RpcClient"/> instance to use for rpc communication</param>
+        /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
         /// <param name="destinationService"><see cref="Message.Destination"/></param>
         /// <param name="originService"><see cref="Message.Origin"/></param>
-        public ServiceProxy(RpcClient rpcClient, string destinationService, string originService)
+        public ServiceProxy(IRpcClient rpcClient, string destinationService, string originService)
         {
             RpcClient = rpcClient ?? throw new ArgumentNullException(nameof(rpcClient));
 
@@ -40,7 +40,7 @@ namespace chia.dotnet
         /// <summary>
         /// The <see cref="RpcClient"/> used for underlying RPC
         /// </summary>
-        public RpcClient RpcClient { get; init; }
+        public IRpcClient RpcClient { get; init; }
 
         /// <summary>
         /// <see cref="Message.Destination"/>

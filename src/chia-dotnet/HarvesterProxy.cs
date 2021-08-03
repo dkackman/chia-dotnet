@@ -21,6 +21,16 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="rpcClient">The <see cref="WebSocketRpcClient"/> to handle RPC</param>
+        /// <param name="originService"><see cref="Message.Origin"/></param>        
+        public HarvesterProxy(Daemon rpcClient, string originService)
+            : base(rpcClient, ServiceNames.Harvester, originService)
+        {
+        }
+
+        /// <summary>
         /// Get the list of plot files
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
