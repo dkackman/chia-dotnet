@@ -13,9 +13,9 @@ namespace chia.dotnet
         /// <summary>
         /// ctor
         /// </summary>
-        /// <param name="daemon">The <see cref="Daemon"/> to handle RPC</param>
-        public FarmerProxy(Daemon daemon)
-            : base(daemon, ServiceNames.Farmer, daemon.OriginService)
+        /// <param name="rpcClient">The <see cref="IRpcClient"/> to handle RPC</param>
+        public FarmerProxy(IRpcClient rpcClient)
+            : base(rpcClient)
         {
         }
 

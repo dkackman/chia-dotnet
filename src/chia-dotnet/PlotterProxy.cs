@@ -13,9 +13,9 @@ namespace chia.dotnet
         /// <summary>
         /// ctor
         /// </summary>
-        /// <param name="daemon">The <see cref="Daemon"/> to handle RPC</param>
-        public PlotterProxy(Daemon daemon)
-            : base(daemon, ServiceNames.Daemon, daemon.OriginService) // plotting commands are handled by the daemon directly
+        /// <param name="rpcClient">The <see cref="IRpcClient"/> to handle RPC</param>
+        public PlotterProxy(IRpcClient rpcClient)
+            : base(rpcClient) // plotting commands are handled by the daemon directly
         {
         }
 

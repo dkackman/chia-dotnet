@@ -16,7 +16,7 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetFarmerIsRunning()
         {
-            using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
+            using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation(ServiceNames.Daemon);
 
             await daemon.Connect();
             var running = await daemon.IsServiceRunning(ServiceNames.Farmer);
@@ -27,7 +27,7 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetHarvesterIsRunning()
         {
-            using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
+            using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation(ServiceNames.Daemon);
 
             await daemon.Connect();
             var running = await daemon.IsServiceRunning(ServiceNames.Harvester);
@@ -39,7 +39,7 @@ namespace chia.dotnet.tests
         [Ignore]
         public async Task ExitDaemon()
         {
-            using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
+            using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation(ServiceNames.Daemon);
 
             await daemon.Connect();
             await daemon.Exit();
@@ -48,32 +48,30 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
-        [Ignore]
-        public async Task StartAndStopFarmer()
+        public async Task RestartFarmer()
         {
-            using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
+            using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation(ServiceNames.Daemon);
 
             await daemon.Connect();
 
-            Assert.IsFalse(await daemon.IsServiceRunning(ServiceNames.Farmer));
+            if (await daemon.IsServiceRunning(ServiceNames.Farmer))
+            {
+                await daemon.StopService(ServiceNames.Farmer);
+                Assert.IsFalse(await daemon.IsServiceRunning(ServiceNames.Farmer));
+            }
 
             await daemon.StartService(ServiceNames.Farmer);
             Assert.IsTrue(await daemon.IsServiceRunning(ServiceNames.Farmer));
-
-            await daemon.StopService(ServiceNames.Farmer);
-            Assert.IsFalse(await daemon.IsServiceRunning(ServiceNames.Farmer));
-
-            // if no exception the daemon was stopped successfully
         }
 
         [TestMethod]
         public async Task RegisterService()
         {
-            using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
+            using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation(ServiceNames.Daemon);
 
             await daemon.Connect();
 
-            await daemon.RegisterService(daemon.OriginService);
+            await daemon.Register();
 
             // no exception we were successful
         }

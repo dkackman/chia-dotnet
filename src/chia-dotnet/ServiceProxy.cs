@@ -10,47 +10,22 @@ namespace chia.dotnet
     /// <summary>
     /// Base class that uses a <see cref="RpcClient"/> to send and receive messages to other services
     /// </summary>
-    /// <remarks>The lifetime of the daemon is not controlled by the proxy. It should be disposed outside of this class. <see cref="WebSocketRpcClient.Connect(CancellationToken)"/></remarks>
+    /// <remarks>The lifetime of the RpcClient is not controlled by the proxy. It should be disposed outside of this class. <see cref="IRpcClient.Connect(CancellationToken)"/></remarks>
     public abstract class ServiceProxy
     {
         /// <summary>
         /// ctor
         /// </summary>
         /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
-        /// <param name="destinationService"><see cref="Message.Destination"/></param>
-        /// <param name="originService"><see cref="Message.Origin"/></param>
-        public ServiceProxy(IRpcClient rpcClient, string destinationService, string originService)
+        public ServiceProxy(IRpcClient rpcClient)
         {
             RpcClient = rpcClient ?? throw new ArgumentNullException(nameof(rpcClient));
-
-            if (string.IsNullOrEmpty(destinationService))
-            {
-                throw new ArgumentNullException(nameof(destinationService));
-            }
-
-            if (string.IsNullOrEmpty(originService))
-            {
-                throw new ArgumentNullException(nameof(originService));
-            }
-
-            DestinationService = destinationService;
-            OriginService = originService;
         }
 
         /// <summary>
         /// The <see cref="RpcClient"/> used for underlying RPC
         /// </summary>
         public IRpcClient RpcClient { get; init; }
-
-        /// <summary>
-        /// <see cref="Message.Destination"/>
-        /// </summary>
-        public string DestinationService { get; init; }
-
-        /// <summary>
-        /// <see cref="Message.Origin"/>
-        /// </summary>
-        public string OriginService { get; init; }
 
         /// <summary>
         /// Sends ping message to the service
@@ -133,10 +108,7 @@ namespace chia.dotnet
         /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
         internal async Task<Message> SendMessage(string command, CancellationToken cancellationToken)
         {
-            Debug.Assert(!string.IsNullOrEmpty(command));
-
-            var message = Message.Create(command, null, DestinationService, OriginService);
-            return await RpcClient.SendMessage(message, cancellationToken);
+            return await RpcClient.SendMessage(command, null, cancellationToken);
         }
 
         /// <summary>
@@ -149,10 +121,7 @@ namespace chia.dotnet
         /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
         internal async Task<Message> SendMessage(string command, dynamic data, CancellationToken cancellationToken)
         {
-            Debug.Assert(!string.IsNullOrEmpty(command));
-
-            var message = Message.Create(command, data, DestinationService, OriginService);
-            return await RpcClient.SendMessage(message, cancellationToken);
+            return await RpcClient.SendMessage(command, data, cancellationToken);
         }
     }
 }

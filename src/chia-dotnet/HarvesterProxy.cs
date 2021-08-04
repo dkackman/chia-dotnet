@@ -14,19 +14,9 @@ namespace chia.dotnet
         /// <summary>
         /// ctor
         /// </summary>
-        /// <param name="daemon">The <see cref="Daemon"/> to handle RPC</param>
-        public HarvesterProxy(Daemon daemon)
-            : base(daemon, ServiceNames.Harvester, daemon.OriginService)
-        {
-        }
-
-        /// <summary>
-        /// ctor
-        /// </summary>
-        /// <param name="rpcClient">The <see cref="WebSocketRpcClient"/> to handle RPC</param>
-        /// <param name="originService"><see cref="Message.Origin"/></param>        
-        public HarvesterProxy(Daemon rpcClient, string originService)
-            : base(rpcClient, ServiceNames.Harvester, originService)
+        /// <param name="rpcClient">The <see cref="IRpcClient"/> to handle RPC</param>
+        public HarvesterProxy(IRpcClient rpcClient)
+            : base(rpcClient)
         {
         }
 

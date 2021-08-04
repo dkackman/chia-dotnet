@@ -16,7 +16,7 @@ namespace chia.dotnet.tests
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
-            _theDaemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
+            _theDaemon = DaemonFactory.CreateDaemonFromHardcodedLocation(ServiceNames.Daemon);
             _theDaemon.BroadcastMessageReceived += _theDaemon_BroadcastMessageReceived;
 
             await _theDaemon.Connect();

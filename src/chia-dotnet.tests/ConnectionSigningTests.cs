@@ -19,7 +19,7 @@ namespace chia.dotnet.tests
                 CertPath = "",
                 KeyPath = ""
             };
-            using var daemon = new Daemon(endpoint, "unit_tests");
+            using var daemon = new Daemon(endpoint, ServiceNames.Daemon, "unit_tests");
 
             await daemon.Connect();
         }

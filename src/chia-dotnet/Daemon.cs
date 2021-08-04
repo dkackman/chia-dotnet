@@ -3,7 +3,7 @@ using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using System.Diagnostics;
+
 namespace chia.dotnet
 {
     /// <summary>
@@ -29,16 +29,23 @@ namespace chia.dotnet
         /// ctor
         /// </summary>
         /// <param name="endpoint">Details of the websocket endpoint</param>
-        /// <param name="originServiceName">The name of the service that is running. Will be used as the 'origin' of all messages</param>
-        public Daemon(EndpointInfo endpoint, string originServiceName)
+        /// <param name="destinationService"><see cref="Message.Destination"/></param>
+        /// <param name="originService"><see cref="Message.Origin"/></param>
+        public Daemon(EndpointInfo endpoint, string destinationService, string originService)
             : base(endpoint)
         {
-            if (string.IsNullOrEmpty(originServiceName))
+            if (string.IsNullOrEmpty(destinationService))
             {
-                throw new ArgumentNullException(nameof(originServiceName));
+                throw new ArgumentNullException(nameof(destinationService));
             }
 
-            OriginService = originServiceName;
+            if (string.IsNullOrEmpty(originService))
+            {
+                throw new ArgumentNullException(nameof(originService));
+            }
+
+            DestinationService = destinationService;
+            OriginService = originService;
         }
 
         /// <summary>
@@ -48,6 +55,16 @@ namespace chia.dotnet
         public string OriginService { get; init; }
 
         /// <summary>
+        /// <see cref="Message.Destination"/>
+        /// </summary>
+        public string DestinationService { get; init; }
+
+        protected override Message CreateMessage(string command, dynamic data)
+        {
+            return !string.IsNullOrEmpty(command) ? Message.Create(command, data, DestinationService, OriginService) : throw new ArgumentNullException(nameof(command));
+        }
+
+        /// <summary>
         /// Tells the daemon at the RPC endpoint to exit.
         /// </summary>
         /// <remarks>There isn't a way to start the daemon remotely via RPC so take care that you have access to the RPC host if needed</remarks>
@@ -55,7 +72,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task Exit(CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage(Message.Create("exit", new ExpandoObject(), "daemon", OriginService), cancellationToken);
+            _ = await SendMessage("exit", new ExpandoObject(), cancellationToken);
         }
 
         /// <summary>
@@ -66,7 +83,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/> with the boolean value indicating whether the service is running</returns>
         public async Task<bool> IsServiceRunning(string service, CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage(CreateServiceMessage("is_running", service), cancellationToken);
+            var response = await SendMessage("is_running", CreateData(service), cancellationToken);
 
             return response.Data.is_running;
         }
@@ -82,7 +99,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Registers this websocket to receive messages. This is needed to receive responses from services other than the daemon. 
+        /// Registers this daemon to receive messages. This is needed to receive responses from services other than the daemon. 
         /// This is not a <see cref="ServiceNames"/> but usually the name of the consumer application such as 'wallet_ui'
         /// </summary>
         /// <param name="service">The name to register</param>
@@ -90,7 +107,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task RegisterService(string service, CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage(CreateServiceMessage("register_service", service), cancellationToken);
+            _ = await SendMessage("register_service", CreateData(service), cancellationToken);
         }
 
         /// <summary>
@@ -100,7 +117,7 @@ namespace chia.dotnet
         /// <returns>The plot queue</returns>
         public async Task<IEnumerable<dynamic>> RegisterPlotter(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage(CreateServiceMessage("register_service", ServiceNames.Plotter), cancellationToken);
+            var response = await SendMessage("register_service", CreateData(ServiceNames.Plotter), cancellationToken);
 
             return response.Data.queue;
         }
@@ -113,7 +130,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task StartService(string service, CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage(CreateServiceMessage("start_service", service), cancellationToken);
+            _ = await SendMessage("start_service", CreateData(service), cancellationToken);
         }
 
         /// <summary>
@@ -124,13 +141,11 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task StopService(string service, CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage(CreateServiceMessage("stop_service", service), cancellationToken);
+            _ = await SendMessage("stop_service", CreateData(service), cancellationToken);
         }
 
-        private Message CreateServiceMessage(string command, string service)
+        private dynamic CreateData(string service)
         {
-            Debug.Assert(!string.IsNullOrEmpty(command));
-
             if (string.IsNullOrEmpty(service))
             {
                 throw new ArgumentNullException(nameof(service));
@@ -138,7 +153,7 @@ namespace chia.dotnet
 
             dynamic data = new ExpandoObject();
             data.service = service;
-            return Message.Create(command, data, "daemon", OriginService);
+            return data;
         }
     }
 }

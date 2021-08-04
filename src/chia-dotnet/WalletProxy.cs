@@ -20,9 +20,9 @@ namespace chia.dotnet
         /// <summary>
         /// ctor
         /// </summary>
-        /// <param name="daemon">The <see cref="Daemon"/> to handle RPC</param>
-        public WalletProxy(Daemon daemon)
-            : base(daemon, ServiceNames.Wallet, daemon.OriginService)
+        /// <param name="rpcClient">The <see cref="IRpcClient"/> to handle RPC</param>
+        public WalletProxy(IRpcClient rpcClient)
+            : base(rpcClient)
         {
         }
 

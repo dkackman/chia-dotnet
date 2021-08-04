@@ -14,8 +14,8 @@ namespace chia.dotnet
 
         Task Connect(CancellationToken cancellationToken = default);
 
-        Task PostMessage(Message message, CancellationToken cancellationToken = default);
+        Task PostMessage(string command, dynamic data, CancellationToken cancellationToken = default);
 
-        Task<Message> SendMessage(Message message, CancellationToken cancellationToken = default);
+        Task<Message> SendMessage(string command, dynamic data, CancellationToken cancellationToken = default);
     }
 }

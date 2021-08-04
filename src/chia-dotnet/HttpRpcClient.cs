@@ -6,7 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Diagnostics;
-
+using System.Collections.Generic;
 namespace chia.dotnet
 {
     /// <summary>
@@ -17,7 +17,6 @@ namespace chia.dotnet
     {
         private readonly SocketsHttpHandler _httpHandler = new();
         private readonly HttpClient _httpClient;
-        private readonly CancellationTokenSource _receiveCancellationTokenSource = new();
 
         private bool disposedValue;
 
@@ -81,48 +80,48 @@ namespace chia.dotnet
                 throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
 
-            _receiveCancellationTokenSource.Cancel();
+            await Task.CompletedTask;
         }
 
         /// <summary>
         /// Posts a <see cref="Message"/> to the websocket but does not wait for a response
         /// </summary>
-        /// <param name="message">The <see cref="Message"/> to post</param>
+        /// <param name="command">The command</param>
+        /// <param name="data">Data to go along with the command</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <remarks>Awaiting this method waits for the message to be sent only. It doesn't await a response.</remarks>
         /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task PostMessage(Message message, CancellationToken cancellationToken = default)
+        public async Task PostMessage(string command, dynamic data, CancellationToken cancellationToken = default)
         {
-            if (message is null)
-            {
-                throw new ArgumentNullException(nameof(message));
-            }
-
             if (disposedValue)
             {
                 throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
+
+            var d = data as IDictionary<string, object>;
+            using var response = await _httpClient.PostAsJsonAsync<IDictionary<string, object>>("command", d, cancellationToken);
+            response.EnsureSuccessStatusCode();
         }
 
         /// <summary>
         /// Sends a <see cref="Message"/> to the websocket and waits for a response
         /// </summary>
-        /// <param name="message">The <see cref="Message"/> to send</param>
+        /// <param name="command">The command</param>
+        /// <param name="data">Data to go along with the command</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <remarks>Awaiting this method will block until a response is received from the <see cref="WebSocket"/> or the <see cref="CancellationToken"/> is cancelled</remarks>
         /// <returns>The response message</returns>
         /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
-        public async Task<Message> SendMessage(Message message, CancellationToken cancellationToken = default)
+        public async Task<Message> SendMessage(string command, dynamic data, CancellationToken cancellationToken = default)
         {
-            if (message is null)
-            {
-                throw new ArgumentNullException(nameof(message));
-            }
-
             if (disposedValue)
             {
                 throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
+
+            var d = data as IDictionary<string, object>;
+            using var response = await _httpClient.PostAsJsonAsync<IDictionary<string, object>>("command", d, cancellationToken);
+            response.EnsureSuccessStatusCode();
 
             return null;
         }
@@ -176,9 +175,7 @@ namespace chia.dotnet
             {
                 if (disposing)
                 {
-                    _receiveCancellationTokenSource.Cancel();
                     _httpClient.Dispose();
-                    _receiveCancellationTokenSource.Dispose();
                 }
 
                 disposedValue = true;
