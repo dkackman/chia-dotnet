@@ -18,7 +18,7 @@ namespace chia.dotnet
     /// Base class that handles core websocket communication with the rpc endpoint
     /// and synchronizes request and response messages
     /// </summary>
-    public class WebSocketRpcClient : IDisposable, IRpcClient
+    public abstract class WebSocketRpcClient : IDisposable, IRpcClient
     {
         private readonly ClientWebSocket _webSocket = new();
         private readonly CancellationTokenSource _receiveCancellationTokenSource = new();
@@ -91,25 +91,24 @@ namespace chia.dotnet
             await _webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "bye", cancellationToken);
         }
 
+        protected abstract Message CreateMessage(string command, dynamic data);
+
         /// <summary>
         /// Posts a <see cref="Message"/> to the websocket but does not wait for a response
         /// </summary>
-        /// <param name="message">The <see cref="Message"/> to post</param>
+        /// <param name="command">The command</param>
+        /// <param name="data">Data to go along with the command</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <remarks>Awaiting this method waits for the message to be sent only. It doesn't await a response.</remarks>
         /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task PostMessage(Message message, CancellationToken cancellationToken = default)
+        public virtual async Task PostMessage(string command, dynamic data, CancellationToken cancellationToken = default)
         {
-            if (message is null)
-            {
-                throw new ArgumentNullException(nameof(message));
-            }
-
             if (disposedValue)
             {
                 throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
 
+            var message = CreateMessage(command, data);
             var json = message.ToJson();
             await _webSocket.SendAsync(Encoding.UTF8.GetBytes(json), WebSocketMessageType.Text, true, cancellationToken);
         }
@@ -117,23 +116,21 @@ namespace chia.dotnet
         /// <summary>
         /// Sends a <see cref="Message"/> to the websocket and waits for a response
         /// </summary>
-        /// <param name="message">The <see cref="Message"/> to send</param>
+        /// <param name="command">The command</param>
+        /// <param name="data">Data to go along with the command</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <remarks>Awaiting this method will block until a response is received from the <see cref="WebSocket"/> or the <see cref="CancellationToken"/> is cancelled</remarks>
         /// <returns>The response message</returns>
         /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
-        public async Task<Message> SendMessage(Message message, CancellationToken cancellationToken = default)
+        public async Task<Message> SendMessage(string command, dynamic data, CancellationToken cancellationToken = default)
         {
-            if (message is null)
-            {
-                throw new ArgumentNullException(nameof(message));
-            }
-
             if (disposedValue)
             {
                 throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
 
+            var message = CreateMessage(command, data);
+            
             // capture the message to be sent
             if (!_pendingRequests.TryAdd(message.RequestId, message))
             {
@@ -147,7 +144,7 @@ namespace chia.dotnet
             }
             catch
             {
-                _ = _pendingRequests.TryRemove(message.RequestId, out _);
+                _ = _pendingRequests.TryRemove(message.RequestId, out Message m);
                 throw;
             }
 
@@ -161,7 +158,7 @@ namespace chia.dotnet
             // the receive loop cleans up but make sure we do so on cancellation too
             if (_pendingRequests.ContainsKey(message.RequestId))
             {
-                _ = _pendingRequests.TryRemove(message.RequestId, out _);
+                _ = _pendingRequests.TryRemove(message.RequestId, out Message m);
             }
 
             return !response.IsSuccessfulResponse ? throw new ResponseException(message, response, response.Data?.error?.ToString()) : response;
