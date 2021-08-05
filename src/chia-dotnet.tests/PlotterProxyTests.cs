@@ -9,8 +9,7 @@ namespace chia.dotnet.tests
     [TestClass]
     [TestCategory("Integration")]
     public class PlotterProxyTests
-    {
-        private static DaemonProxy _theDaemon;       
+    {     
         private static PlotterProxy _thePlotter;
 
         [ClassInitialize]

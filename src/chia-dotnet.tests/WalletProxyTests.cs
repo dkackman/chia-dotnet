@@ -30,7 +30,7 @@ namespace chia.dotnet.tests
         [ClassCleanup()]
         public static void ClassCleanup()
         {
-            _theWallet.RpcClient?.Dispose();
+            _theWallet.RpcClient.Dispose();
         }
 
         [TestMethod()]

@@ -23,7 +23,7 @@ namespace chia.dotnet.tests
                 };
 
                 using var rpcClient = new HttpRpcClient(endpoint);
-                await rpcClient.Connect();
+                
             }
             catch (Exception e)
             {

@@ -40,50 +40,6 @@ namespace chia.dotnet
         public EndpointInfo Endpoint { get; init; }
 
         /// <summary>
-        /// Opens the websocket and starts the receive loop
-        /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Awaitable Task</returns>
-        public async Task Connect(CancellationToken cancellationToken = default)
-        {
-            if (disposedValue)
-            {
-                throw new ObjectDisposedException(nameof(WebSocketRpcClient));
-            }
-
-            // since each every rpc endpoint shares this readonly method
-            // we'll use get_connections to make sure the endpoint is up and basic sanity checks
-            using var response = await _httpClient.PostAsJsonAsync("get_connections", "{}", cancellationToken);
-            _ = response.EnsureSuccessStatusCode();
-            var content = await response.Content.ReadAsStringAsync();
-
-            OnConnected();
-        }
-
-        /// <summary>
-        /// Called after <see cref="Connect(CancellationToken)"/> completes successfully. Lets derived classess know that they can do
-        /// post connection initialization 
-        /// </summary>
-        protected virtual void OnConnected()
-        {
-        }
-
-        /// <summary>
-        /// Cancels the receive loop and closes the websocket
-        /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task Close(CancellationToken cancellationToken = default)
-        {
-            if (disposedValue)
-            {
-                throw new ObjectDisposedException(nameof(WebSocketRpcClient));
-            }
-
-            await Task.CompletedTask;
-        }
-
-        /// <summary>
         /// Posts a <see cref="Message"/> to the websocket but does not wait for a response
         /// </summary>
         /// <param name="message">The message to send</param>
@@ -123,30 +79,6 @@ namespace chia.dotnet
 
             dynamic responseMessage = await response.Deserialize<dynamic>();
             return responseMessage?.success == false ? throw new ResponseException(message, responseMessage?.error?.ToString()) : (dynamic)message;
-        }
-
-        /// <summary>
-        /// Event raised when a message is received from the endpoint that was either not in response to a request
-        /// or was a response from a posted message (i.e. we didn't register to receive the response)
-        /// Pooling state_changed messages come through this event
-        /// </summary>
-        public event EventHandler<Message> BroadcastMessageReceived;
-
-        /// <summary>
-        /// Raises the <see cref="BroadcastMessageReceived"/> event
-        /// </summary>
-        /// <param name="message">The message to broadcast</param>
-        protected virtual void OnBroadcastMessageReceived(Message message)
-        {
-            if (message is null)
-            {
-                throw new ArgumentNullException(nameof(message));
-            }
-
-            Debug.WriteLine("Broadcast message:");
-            Debug.WriteLine(message.ToJson());
-
-            BroadcastMessageReceived?.Invoke(this, message);
         }
 
         private static bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
