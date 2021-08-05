@@ -22,4 +22,10 @@
     <ProjectReference Include="..\chia-dotnet\chia-dotnet.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="config.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

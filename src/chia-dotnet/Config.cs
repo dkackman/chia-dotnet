@@ -40,22 +40,34 @@ namespace chia.dotnet
                 throw new ArgumentNullException(nameof(serviceName));
             }
 
-            UriBuilder builder = new("wss", "");
+            UriBuilder builder = new();
             dynamic ssl;
 
             if (serviceName == "ui")
             {
+                builder.Scheme = "wss";
                 dynamic section = Contents.ui;
                 builder.Host = section.daemon_host;
                 builder.Port = Convert.ToInt32(section.daemon_port);
                 ssl = section.daemon_ssl;
             }
-            else
+            else if (serviceName == "daemon")
             {
-                // for now all other service names resolve to the info at the root of the yaml config
+                builder.Scheme = "wss";
                 builder.Host = Contents.self_hostname;
                 builder.Port = Convert.ToInt32(Contents.daemon_port);
                 ssl = Contents.daemon_ssl;
+            }
+            else
+            {
+                builder.Scheme = "https";
+                builder.Host = Contents.self_hostname;
+
+                var d = Contents as IDictionary<string, object>;
+                dynamic section = d[serviceName];
+
+                builder.Port = Convert.ToInt32(section.rpc_port);
+                ssl = section.ssl;
             }
 
             return new EndpointInfo

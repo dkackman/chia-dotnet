@@ -73,7 +73,7 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            var signagePoint = await _theFarmer.GetSignagePoint("fake", cts.Token);
+            _ = await _theFarmer.GetSignagePoint("fake", cts.Token);
         }
 
         [TestMethod]
