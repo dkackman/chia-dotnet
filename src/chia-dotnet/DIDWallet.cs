@@ -44,7 +44,7 @@ namespace chia.dotnet
         /// <param name="numVerificationsRequired">The number of verifications required</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task UpdateRecoveryIds(IEnumerable<string> newList, BigInteger numVerificationsRequired, CancellationToken cancellationToken = default)
+        public async Task UpdateRecoveryIds(IEnumerable<string> newList, ulong numVerificationsRequired, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;

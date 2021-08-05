@@ -65,7 +65,7 @@ namespace chia.dotnet
         /// <param name="fee">Transaction fee (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Wallet state and transaction</returns>
-        public async Task<(dynamic State, dynamic Transaction)> AbsorbRewards(BigInteger fee, CancellationToken cancellationToken = default)
+        public async Task<(dynamic State, dynamic Transaction)> AbsorbRewards(ulong fee, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;

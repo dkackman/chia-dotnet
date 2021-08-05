@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Numerics;
 using System.Collections.Generic;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -138,7 +137,7 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
             await LoginToFirstWallet();
 
-            var walletInfo = await _theWallet.CreateColourCoinWallet(BigInteger.One, BigInteger.One, "dkackman.colouredwallet.1", cts.Token);
+            var walletInfo = await _theWallet.CreateColourCoinWallet(1, 1, "dkackman.colouredwallet.1", cts.Token);
 
             Assert.IsNotNull(walletInfo);
         }
@@ -152,7 +151,7 @@ namespace chia.dotnet.tests
 
             var backupIDs = new List<string>();
 
-            var walletInfo = await _theWallet.CreateDIDWallet(backupIDs, BigInteger.One, 1, cts.Token);
+            var walletInfo = await _theWallet.CreateDIDWallet(backupIDs, 1, 1, cts.Token);
 
             Assert.IsNotNull(walletInfo);
         }

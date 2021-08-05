@@ -48,7 +48,7 @@ var wallet = new Wallet(1, new WalletProxy(rpcClient, "unit_tests"));
 _ = await wallet.Login();
 
 // this is my receive address. feel free to run this code on mainnet as often as you like :-)
-var transaction = await wallet.SendTransaction("xch1zr49kksq5t27lx5gu3wnfgfxscnkvh3xqyldqz9xg5amsm26x86sh0kzhl", BigInteger.One, BigInteger.One);
+var transaction = await wallet.SendTransaction("xch1zr49kksq5t27lx5gu3wnfgfxscnkvh3xqyldqz9xg5amsm26x86sh0kzhl", 1, 1);
 ```
 
 ### Build
@@ -76,7 +76,8 @@ In addition to static vs dynamic typing, C# and Python have very different conve
 - Method and property names are `ProperCased`.
 - Parameter names are `camelCased`.
 - The chia RPC uses unsigned integers where dotnet might use signed. In cases where chia expects an unsigned number, it is unsigned on the dotnet side.
-- `ulong` is used for the python unsigned 64 bit int.
+- `ulong` is used for the python 64 bit unsigned int.
+- `BigInteger` is used for the python 128 bit unsigned int.
 - Where the RPC return a scalar value, the dotnet code will as well.
 - Where the RPC returns a list of named scalar values, they are returned as a Tuple with named fields.
 - Complex types and structs are currently returned as a `dynamic` [`ExpandoObject`](https://docs.microsoft.com/en-us/dotnet/api/system.dynamic.expandoobject?view=net-5.0). This may change in the future.
