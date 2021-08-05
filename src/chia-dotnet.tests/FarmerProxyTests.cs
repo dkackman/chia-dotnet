@@ -20,7 +20,7 @@ namespace chia.dotnet.tests
             var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
             await rpcClient.Connect();
 
-            var daemon = new DaemonProxy(rpcClient, "unit_tests");            
+            var daemon = new DaemonProxy(rpcClient, "unit_tests");
             await daemon.RegisterService();
 
             _theFarmer = new FarmerProxy(rpcClient, "unit_tests");
