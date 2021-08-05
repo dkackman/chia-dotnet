@@ -6,24 +6,25 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace chia.dotnet.tests
 {
     [TestClass]
-    public class HarvesterDirectTests
+    public class DirectTests
     {
         [TestMethod]
         [TestCategory("Integration")]
-        [Ignore]
-        public async Task ConnectDirectlyToHarvester()
+        public async Task ConnectDirectlyToFullNode()
         {
             try
             {
                 var endpoint = new EndpointInfo()
                 {
-                    Uri = new System.Uri("https://172.26.208.64:8555"),
+                    Uri = new System.Uri("https://172.26.210.216:8555"),
                     CertPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.crt",
                     KeyPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.key",
                 };
 
                 using var rpcClient = new HttpRpcClient(endpoint);
-                
+                var fullNode = new FullNodeProxy(rpcClient, "unit_tests");
+
+                var state = await fullNode.GetBlockchainState();
             }
             catch (Exception e)
             {

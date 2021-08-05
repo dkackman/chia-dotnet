@@ -78,7 +78,7 @@ namespace chia.dotnet
             _ = response.EnsureSuccessStatusCode();
 
             dynamic responseMessage = await response.Deserialize<dynamic>();
-            return responseMessage?.success == false ? throw new ResponseException(message, responseMessage?.error?.ToString()) : (dynamic)message;
+            return responseMessage?.success == false ? throw new ResponseException(message, responseMessage?.error?.ToString()) : (dynamic)responseMessage;
         }
 
         private static bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
