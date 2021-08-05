@@ -81,7 +81,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_connections", cancellationToken);
 
-            return response.Data.connections;
+            return response.connections;
         }
 
         /// <summary>

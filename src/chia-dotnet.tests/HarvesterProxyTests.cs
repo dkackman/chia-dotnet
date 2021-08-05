@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -13,11 +14,12 @@ namespace chia.dotnet.tests
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
+            using var cts = new CancellationTokenSource(15000);
             var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
-            await rpcClient.Connect();
+            await rpcClient.Connect(cts.Token);
 
-            var daemon = new DaemonProxy(rpcClient, "unit_tests");            
-            await daemon.RegisterService();
+            var daemon = new DaemonProxy(rpcClient, "unit_tests");
+            await daemon.RegisterService(cts.Token);
 
             _theHarvester = new HarvesterProxy(rpcClient, "unit_tests");
         }
@@ -31,7 +33,8 @@ namespace chia.dotnet.tests
         [TestMethod()]
         public async Task GetPlots()
         {
-            var plots = await _theHarvester.GetPlots();
+            using var cts = new CancellationTokenSource(15000);
+            var plots = await _theHarvester.GetPlots(cts.Token);
 
             Assert.IsNotNull(plots);
         }
@@ -40,13 +43,15 @@ namespace chia.dotnet.tests
         [TestCategory("CAUTION")]
         public async Task DeletePlot()
         {
-            await _theHarvester.DeletePlot("<plot name>");
+            using var cts = new CancellationTokenSource(15000);
+            await _theHarvester.DeletePlot("<plot name>", cts.Token);
         }
 
         [TestMethod()]
         public async Task GetPlotDirectories()
         {
-            var directories = await _theHarvester.GetPlotDirectories();
+            using var cts = new CancellationTokenSource(15000);
+            var directories = await _theHarvester.GetPlotDirectories(cts.Token);
 
             Assert.IsNotNull(directories);
         }
@@ -55,26 +60,30 @@ namespace chia.dotnet.tests
         [TestCategory("CAUTION")]
         public async Task AddPlotDirectory()
         {
-            await _theHarvester.AddPlotDirectory("/home/don/plots");
+            using var cts = new CancellationTokenSource(15000);
+            await _theHarvester.AddPlotDirectory("/home/don/plots", cts.Token);
         }
 
         [TestMethod]
         public async Task Ping()
         {
-            await _theHarvester.Ping();
+            using var cts = new CancellationTokenSource(15000);
+            await _theHarvester.Ping(cts.Token);
         }
 
         [TestMethod()]
         [TestCategory("CAUTION")]
         public async Task RemovePlotDirectory()
         {
-            await _theHarvester.RemovePlotDirectory("/home/don/plots");
+            using var cts = new CancellationTokenSource(15000);
+            await _theHarvester.RemovePlotDirectory("/home/don/plots", cts.Token);
         }
 
         [TestMethod()]
         public async Task RefreshPlots()
         {
-            await _theHarvester.RefreshPlots();
+            using var cts = new CancellationTokenSource(15000);
+            await _theHarvester.RefreshPlots(cts.Token);
         }
     }
 }

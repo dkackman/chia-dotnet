@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -17,11 +18,12 @@ namespace chia.dotnet.tests
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
+            using var cts = new CancellationTokenSource(15000);
             var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
-            await rpcClient.Connect();
+            await rpcClient.Connect(cts.Token);
 
             var daemon = new DaemonProxy(rpcClient, "unit_tests");
-            await daemon.RegisterService();
+            await daemon.RegisterService(cts.Token);
 
             _theFarmer = new FarmerProxy(rpcClient, "unit_tests");
         }
@@ -35,6 +37,8 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetRewardTargets()
         {
+            using var cts = new CancellationTokenSource(15000);
+
             var targets = await _theFarmer.GetRewardTargets(false);
 
             Assert.IsNotNull(targets);
@@ -46,6 +50,8 @@ namespace chia.dotnet.tests
         [TestCategory("CAUTION")]
         public async Task SetRewardTargets()
         {
+            using var cts = new CancellationTokenSource(15000);
+
             // this will change the state of the farmer - make sure you want to do this
             // fill in addresses for target and pool as appropriate
             await _theFarmer.SetRewardTargets("txch1pacgsfkngcrw50pnuvgvak0qpt8mx9pmey2uxl6p65c9727lhc0sgnklt4", "txch1pacgsfkngcrw50pnuvgvak0qpt8mx9pmey2uxl6p65c9727lhc0sgnklt4");
@@ -54,36 +60,45 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetSignagePoints()
         {
-            var signagePoints = await _theFarmer.GetSignagePoints();
+            using var cts = new CancellationTokenSource(15000);
+
+            var signagePoints = await _theFarmer.GetSignagePoints(cts.Token);
 
             Assert.IsNotNull(signagePoints);
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ResponseException))]
         public async Task GetSignagePoint()
         {
-            var signagePoint = await _theFarmer.GetSignagePoint("0x01a076953bef8eae24634a723d83593c23fa0a444fe0fc19138d49cdea440b6a");
+            using var cts = new CancellationTokenSource(15000);
 
-            Assert.IsNotNull(signagePoint);
+            var signagePoint = await _theFarmer.GetSignagePoint("fake", cts.Token);
         }
 
         [TestMethod]
         public async Task GetHarvesters()
         {
-            var harvesters = await _theFarmer.GetHarvesters();
+            using var cts = new CancellationTokenSource(15000);
+
+            var harvesters = await _theFarmer.GetHarvesters(cts.Token);
             Assert.IsNotNull(harvesters);
         }
 
         [TestMethod]
         public async Task Ping()
         {
-            await _theFarmer.Ping();
+            using var cts = new CancellationTokenSource(15000);
+
+            await _theFarmer.Ping(cts.Token);
         }
 
         [TestMethod]
         public async Task GetConnections()
         {
-            var connections = await _theFarmer.GetConnections();
+            using var cts = new CancellationTokenSource(15000);
+
+            var connections = await _theFarmer.GetConnections(cts.Token);
             Assert.IsNotNull(connections);
         }
 
@@ -91,7 +106,9 @@ namespace chia.dotnet.tests
         [Ignore] // only works on mainnet
         public async Task OpenConnection()
         {
-            await _theFarmer.OpenConnection("node.chia.net", 8444);
+            using var cts = new CancellationTokenSource(15000);
+
+            await _theFarmer.OpenConnection("node.chia.net", 8444, cts.Token);
         }
     }
 }

@@ -16,11 +16,12 @@ namespace chia.dotnet.tests
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
+            using var cts = new CancellationTokenSource(15000);
             var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
-            await rpcClient.Connect();
+            await rpcClient.Connect(cts.Token);
 
-            _theDaemon = new DaemonProxy(rpcClient, "unit_tests");            
-            await _theDaemon.RegisterService();
+            var daemon = new DaemonProxy(rpcClient, "unit_tests");
+            await daemon.RegisterService(cts.Token);
 
             _thePlotter = new PlotterProxy(rpcClient, "unit_tests");
         }

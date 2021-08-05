@@ -134,8 +134,9 @@ namespace chia.dotnet
             {
                 await PostMessage(message, cancellationToken);
             }
-            catch
+            catch (Exception e)
             {
+                Debug.WriteLine(e.Message);
                 _ = _pendingRequests.TryRemove(message.RequestId, out _);
                 throw;
             }
@@ -153,7 +154,7 @@ namespace chia.dotnet
                 _ = _pendingRequests.TryRemove(message.RequestId, out _);
             }
 
-            return !response.IsSuccessfulResponse ? throw new ResponseException(response.Data?.error?.ToString()) : response.Data;
+            return !response.IsSuccessfulResponse ? throw new ResponseException(message, response.Data?.error?.ToString()) : response.Data;
         }
 
         /// <summary>

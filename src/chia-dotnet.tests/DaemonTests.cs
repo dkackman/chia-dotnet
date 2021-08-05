@@ -1,4 +1,5 @@
 ﻿
+using System.Threading;
 using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -18,8 +19,9 @@ namespace chia.dotnet.tests
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
+            using var cts = new CancellationTokenSource(15000);
             var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
-            await rpcClient.Connect();
+            await rpcClient.Connect(cts.Token);
 
             _theDaemon = new DaemonProxy(rpcClient, "unit_tests");
         }
@@ -33,7 +35,9 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetFarmerIsRunning()
         {
-            var running = await _theDaemon.IsServiceRunning(ServiceNames.Farmer);
+            using var cts = new CancellationTokenSource(15000);
+
+            var running = await _theDaemon.IsServiceRunning(ServiceNames.Farmer, cts.Token);
 
             Assert.IsTrue(running);
         }
@@ -41,7 +45,9 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetHarvesterIsRunning()
         {
-            var running = await _theDaemon.IsServiceRunning(ServiceNames.Harvester);
+            using var cts = new CancellationTokenSource(15000);
+
+            var running = await _theDaemon.IsServiceRunning(ServiceNames.Harvester, cts.Token);
 
             Assert.IsTrue(running);
         }
@@ -50,7 +56,8 @@ namespace chia.dotnet.tests
         [Ignore]
         public async Task ExitDaemon()
         {
-            await _theDaemon.Exit();
+            using var cts = new CancellationTokenSource(15000);
+            await _theDaemon.Exit(cts.Token);
 
             // if no exception the daemon was stopped successfully
         }
@@ -58,20 +65,24 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task RestartFarmer()
         {
-            if (await _theDaemon.IsServiceRunning(ServiceNames.Farmer))
+            using var cts = new CancellationTokenSource(15000);
+
+            if (await _theDaemon.IsServiceRunning(ServiceNames.Farmer, cts.Token))
             {
-                await _theDaemon.StopService(ServiceNames.Farmer);
-                Assert.IsFalse(await _theDaemon.IsServiceRunning(ServiceNames.Farmer));
+                await _theDaemon.StopService(ServiceNames.Farmer, cts.Token);
+                Assert.IsFalse(await _theDaemon.IsServiceRunning(ServiceNames.Farmer, cts.Token));
             }
 
-            await _theDaemon.StartService(ServiceNames.Farmer);
-            Assert.IsTrue(await _theDaemon.IsServiceRunning(ServiceNames.Farmer));
+            await _theDaemon.StartService(ServiceNames.Farmer, cts.Token);
+            Assert.IsTrue(await _theDaemon.IsServiceRunning(ServiceNames.Farmer, cts.Token));
         }
 
         [TestMethod]
         public async Task RegisterService()
         {
-            await _theDaemon.RegisterService("new_service");
+            using var cts = new CancellationTokenSource(15000);
+
+            await _theDaemon.RegisterService("new_service", cts.Token);
 
             // no exception we were successful
         }
