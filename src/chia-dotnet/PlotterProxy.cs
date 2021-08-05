@@ -3,6 +3,7 @@ using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+
 namespace chia.dotnet
 {
     /// <summary>
@@ -56,7 +57,7 @@ namespace chia.dotnet
         /// <summary>
         /// Stops the plot with the given id
         /// </summary>
-        /// <param name="id">The id of the plot to stop. Can be found by instpecting the plot queue returned from <see cref="DaemonProxy.RegisterPlotter(CancellationToken)"/></param>
+        /// <param name="id">The id of the plot to stop. Can be found by inspecting the plot queue returned from <see cref="RegisterPlotter(CancellationToken)"/></param>
         /// <param name="cancellationToken"></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task StopPlotting(string id, CancellationToken cancellationToken = default)

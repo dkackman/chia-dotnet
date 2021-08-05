@@ -72,7 +72,6 @@ namespace chia.dotnet
         /// <summary>
         /// Get the distributed identity and coin if present
         /// </summary>
-        /// <param name="puzzlehash">The puzzlehash of the spend</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A DID and optional CoinID</returns>
         public async Task<(string MyDID, string CoinID)> GetDID(CancellationToken cancellationToken = default)
@@ -147,7 +146,7 @@ namespace chia.dotnet
         /// Create an attest file
         /// </summary>
         /// <param name="filename">file name of the attest</param>
-        /// <param name="coinname">The coin name</param>
+        /// <param name="coinName">The coin name</param>
         /// <param name="pubkey">The public key</param>
         /// <param name="puzHash">The puzzlehash</param>        
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>

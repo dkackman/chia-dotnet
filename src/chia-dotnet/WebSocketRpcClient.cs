@@ -94,8 +94,7 @@ namespace chia.dotnet
         /// <summary>
         /// Posts a <see cref="Message"/> to the websocket but does not wait for a response
         /// </summary>
-        /// <param name="command">The command</param>
-        /// <param name="data">Data to go along with the command</param>
+        /// <param name="message">The message to post</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <remarks>Awaiting this method waits for the message to be sent only. It doesn't await a response.</remarks>
         /// <returns>Awaitable <see cref="Task"/></returns>
@@ -113,8 +112,7 @@ namespace chia.dotnet
         /// <summary>
         /// Sends a <see cref="Message"/> to the endpoint and waits for a response
         /// </summary>
-        /// <param name="command">The command</param>
-        /// <param name="data">Data to go along with the command</param>
+        /// <param name="message">The message to send</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <remarks>Awaiting this method will block until a response is received from the <see cref="WebSocket"/> or the <see cref="CancellationToken"/> is cancelled</remarks>
         /// <returns>The response message</returns>

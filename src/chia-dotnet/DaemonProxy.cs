@@ -2,7 +2,6 @@
 using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace chia.dotnet
 {
@@ -43,7 +42,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task Exit(CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("exit", new ExpandoObject(), cancellationToken);
+            _ = await SendMessage("exit", cancellationToken);
         }
 
         /// <summary>
@@ -60,7 +59,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Registers this websocket to receive messages using <see cref="OriginService"/> This is needed to receive responses from services other than the daemon.
+        /// Registers this websocket to receive messages using <see cref="ServiceProxy.OriginService"/> This is needed to receive responses from services other than the daemon.
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Awaitable <see cref="Task"/></returns>

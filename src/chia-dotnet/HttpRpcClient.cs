@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Net.Security;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -53,8 +53,8 @@ namespace chia.dotnet
 
             // since each every rpc endpoint shares this readonly method
             // we'll use get_connections to make sure the endpoint is up and basic sanity checks
-            using var response = await _httpClient.PostAsJsonAsync<string>("get_connections", "{}", cancellationToken);
-            response.EnsureSuccessStatusCode();
+            using var response = await _httpClient.PostAsJsonAsync("get_connections", "{}", cancellationToken);
+            _ = response.EnsureSuccessStatusCode();
             var content = await response.Content.ReadAsStringAsync();
 
             OnConnected();
@@ -86,8 +86,7 @@ namespace chia.dotnet
         /// <summary>
         /// Posts a <see cref="Message"/> to the websocket but does not wait for a response
         /// </summary>
-        /// <param name="command">The command</param>
-        /// <param name="data">Data to go along with the command</param>
+        /// <param name="message">The message to send</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <remarks>Awaiting this method waits for the message to be sent only. It doesn't await a response.</remarks>
         /// <returns>Awaitable <see cref="Task"/></returns>
@@ -99,17 +98,16 @@ namespace chia.dotnet
             }
 
             var d = message.Data as IDictionary<string, object>;
-            using var response = await _httpClient.PostAsJsonAsync<IDictionary<string, object>>(message.Command, d, cancellationToken);
+            using var response = await _httpClient.PostAsJsonAsync(message.Command, d, cancellationToken);
             _ = response.EnsureSuccessStatusCode();
         }
 
         /// <summary>
         /// Sends a <see cref="Message"/> to the websocket and waits for a response
         /// </summary>
-        /// <param name="command">The command</param>
-        /// <param name="data">Data to go along with the command</param>
+        /// <param name="message">The message to send</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <remarks>Awaiting this method will block until a response is received from the <see cref="WebSocket"/> or the <see cref="CancellationToken"/> is cancelled</remarks>
+        /// <remarks>Awaiting this method will block until a response is received from the rpc endpoint or the <see cref="CancellationToken"/> is cancelled</remarks>
         /// <returns>The response message</returns>
         /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
         public async Task<dynamic> SendMessage(Message message, CancellationToken cancellationToken = default)
@@ -120,15 +118,11 @@ namespace chia.dotnet
             }
 
             var d = message.Data as IDictionary<string, object>;
-            using var response = await _httpClient.PostAsJsonAsync<IDictionary<string, object>>(message.Command, d, cancellationToken);
+            using var response = await _httpClient.PostAsJsonAsync(message.Command, d, cancellationToken);
             _ = response.EnsureSuccessStatusCode();
 
             dynamic responseMessage = await response.Deserialize<dynamic>();
-            if (responseMessage?.success == false)
-            {
-                throw new ResponseException(message, responseMessage?.error?.ToString());
-            }
-            return message;
+            return responseMessage?.success == false ? throw new ResponseException(message, responseMessage?.error?.ToString()) : (dynamic)message;
         }
 
         /// <summary>

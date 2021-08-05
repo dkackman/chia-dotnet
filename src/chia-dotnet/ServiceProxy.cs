@@ -3,7 +3,6 @@ using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace chia.dotnet
 {
@@ -39,7 +38,7 @@ namespace chia.dotnet
 
         /// <summary>
         /// The name of the service that is running. Will be used as the <see cref="Message.Origin"/> of all messages
-        /// as well as the idenitifier used for <see cref="Register(CancellationToken)"/>
+        /// as well as the identifier used for <see cref="DaemonProxy.RegisterService(string, CancellationToken)"/>
         /// </summary>
         public string OriginService { get; init; }
 
@@ -47,7 +46,7 @@ namespace chia.dotnet
         /// <see cref="Message.Destination"/>
         /// </summary>
         public string DestinationService { get; init; }
-        
+
         /// <summary>
         /// The <see cref="RpcClient"/> used for underlying RPC
         /// </summary>

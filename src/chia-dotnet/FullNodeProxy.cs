@@ -253,7 +253,7 @@ namespace chia.dotnet
         /// <summary>
         /// Gets a mempool item by tx id.
         /// </summary>
-        /// <param name="spendBundleHash"></param>
+        /// <param name="txId">Trasnaction id</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a list of tx_ids</returns>
         public async Task<dynamic> GetMemmpooItemByTxId(string txId, CancellationToken cancellationToken = default)

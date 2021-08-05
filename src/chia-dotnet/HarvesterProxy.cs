@@ -63,6 +63,7 @@ namespace chia.dotnet
         /// <summary>
         /// Add a plot directory to the harvester configuration
         /// </summary>
+        /// <param name="dirname">The plot directory to add</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task AddPlotDirectory(string dirname, CancellationToken cancellationToken = default)
@@ -76,6 +77,7 @@ namespace chia.dotnet
         /// <summary>
         /// Removes a plot directory from the harveser configuration
         /// </summary>
+        /// <param name="dirname">The directory to remove</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task RemovePlotDirectory(string dirname, CancellationToken cancellationToken = default)

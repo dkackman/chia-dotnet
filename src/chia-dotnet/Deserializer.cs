@@ -1,4 +1,4 @@
-using System.IO;
+﻿using System.IO;
 using System.Net.Http;
 using System.Dynamic;
 using System.Diagnostics;
@@ -26,9 +26,8 @@ namespace chia.dotnet
         /// or other POCO types
         /// </typeparam>
         /// <param name="response">An <see cref="HttpResponseMessage"/> to deserialize</param>
-        /// <param name="settings">Json settings to control deserialization</param>
         /// <returns>content deserialized to type T</returns>
-        public async static Task<T> Deserialize<T>(this HttpResponseMessage response)
+        public static async Task<T> Deserialize<T>(this HttpResponseMessage response)
         {
             // if the client asked for a stream or byte array, return without serializing to a different type
             if (typeof(T) == typeof(Stream))
@@ -65,7 +64,7 @@ namespace chia.dotnet
             }
 
             // no content - return default
-            return default(T);
+            return default;
         }
 
         private static dynamic DeserializeToDynamic(string content)
@@ -74,12 +73,9 @@ namespace chia.dotnet
 
             var settings = new JsonSerializerSettings();
             settings.Converters.Add(new ExpandoObjectConverter());
-            if (content.StartsWith("[")) // when the result is a list we need to tell JSonConvert
-            {
-                return JsonConvert.DeserializeObject<List<dynamic>>(content, settings);
-            }
-
-            return JsonConvert.DeserializeObject<ExpandoObject>(content, settings);
+            return content.StartsWith("[")
+                ? (dynamic)JsonConvert.DeserializeObject<List<dynamic>>(content, settings)
+                : (dynamic)JsonConvert.DeserializeObject<ExpandoObject>(content, settings);
         }
     }
 }
