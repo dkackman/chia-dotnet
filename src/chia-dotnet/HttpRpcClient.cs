@@ -5,8 +5,8 @@ using System.Net.Http.Json;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Diagnostics;
 using System.Collections.Generic;
+
 namespace chia.dotnet
 {
     /// <summary>
@@ -30,6 +30,7 @@ namespace chia.dotnet
 
             _httpHandler.SslOptions.ClientCertificates = CertLoader.GetCerts(Endpoint.CertPath, Endpoint.KeyPath);
             _httpHandler.SslOptions.RemoteCertificateValidationCallback += ValidateServerCertificate;
+
             _httpClient = new(_httpHandler);
             _httpClient.BaseAddress = Endpoint.Uri;
         }
@@ -59,7 +60,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Sends a <see cref="Message"/> to the websocket and waits for a response
+        /// Sends a <see cref="Message"/> to the endpoint and waits for a response
         /// </summary>
         /// <param name="message">The message to send</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
