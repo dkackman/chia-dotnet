@@ -14,9 +14,10 @@ namespace chia.dotnet
         /// <summary>
         /// ctor
         /// </summary>
-        /// <param name="rpcClient">The <see cref="IRpcClient"/> to handle RPC</param>
-        public HarvesterProxy(IRpcClient rpcClient)
-            : base(rpcClient)
+        /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
+        /// <param name="originService"><see cref="Message.Origin"/></param>
+        public HarvesterProxy(IRpcClient rpcClient, string originService)
+            : base(rpcClient, ServiceNames.Harvester, originService)
         {
         }
 
@@ -29,7 +30,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_plots", cancellationToken);
 
-            return (response.Data.failed_to_open_filenames, response.Data.not_found_filenames, response.Data.plots);
+            return (response.failed_to_open_filenames, response.not_found_filenames, response.plots);
         }
 
         /// <summary>
@@ -56,7 +57,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_plot_directories", cancellationToken);
 
-            return ((IEnumerable<dynamic>)response.Data.directories).Select<dynamic, string>(item => item.ToString());
+            return ((IEnumerable<dynamic>)response.directories).Select<dynamic, string>(item => item.ToString());
         }
 
         /// <summary>

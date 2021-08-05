@@ -83,7 +83,7 @@ namespace chia.dotnet
             var response = await WalletProxy.SendMessage("did_get_did", data, cancellationToken);
 
             // coin_id might be null
-            return (response.Data.my_did.ToString(), response.Data.coin_id?.ToString());
+            return (response.my_did.ToString(), response.coin_id?.ToString());
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("did_get_pubkey", data, cancellationToken);
 
-            return response.Data.pubkey.ToString();
+            return response.pubkey.ToString();
         }
 
         /// <summary>
@@ -138,9 +138,9 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("did_get_recovery_list", data, cancellationToken);
 
-            var recoverList = ((IEnumerable<dynamic>)response.Data.recover_list).Select<dynamic, string>(i => i.ToString());
+            var recoverList = ((IEnumerable<dynamic>)response.recover_list).Select<dynamic, string>(i => i.ToString());
 
-            return (recoverList, response.Data.num_required);
+            return (recoverList, response.num_required);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("did_create_attest", data, cancellationToken);
 
-            return (response.Data.message_spend_bundle, response.Data.info);
+            return (response.message_spend_bundle, response.info);
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("did_get_information_needed_for_recovery", data, cancellationToken);
 
-            return (response.Data.my_did, response.Data.coin_name, response.Data.newpuzhash, response.Data.pubkey, response.Data.backup_dids);
+            return (response.my_did, response.coin_name, response.newpuzhash, response.pubkey, response.backup_dids);
         }
 
         /// <summary>

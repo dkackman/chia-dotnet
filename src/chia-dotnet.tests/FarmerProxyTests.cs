@@ -12,23 +12,24 @@ namespace chia.dotnet.tests
     //[Ignore] // uncomment to suppress completely
     public class FarmerProxyTests
     {
-        private static Daemon _theDaemon;
         private static FarmerProxy _theFarmer;
 
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
-            _theDaemon = DaemonFactory.CreateDaemonFromHardcodedLocation(ServiceNames.Farmer);
+            var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
+            await rpcClient.Connect();
 
-            await _theDaemon.Connect();
-            await _theDaemon.Register();
-            _theFarmer = new FarmerProxy(_theDaemon);
+            var daemon = new DaemonProxy(rpcClient, "unit_tests");            
+            await daemon.RegisterService();
+
+            _theFarmer = new FarmerProxy(rpcClient, "unit_tests");
         }
 
         [ClassCleanup()]
         public static void ClassCleanup()
         {
-            _theDaemon?.Dispose();
+            _theFarmer.RpcClient?.Dispose();
         }
 
         [TestMethod]

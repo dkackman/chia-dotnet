@@ -10,24 +10,25 @@ namespace chia.dotnet.tests
     [TestCategory("Integration")]
     public class PlotterProxyTests
     {
-        private static Daemon _theDaemon;
+        private static DaemonProxy _theDaemon;       
         private static PlotterProxy _thePlotter;
 
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
-            _theDaemon = DaemonFactory.CreateDaemonFromHardcodedLocation(ServiceNames.Daemon);
-            _theDaemon.BroadcastMessageReceived += _theDaemon_BroadcastMessageReceived;
+            var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
+            await rpcClient.Connect();
 
-            await _theDaemon.Connect();
-            await _theDaemon.Register();
-            _thePlotter = new PlotterProxy(_theDaemon);
+            _theDaemon = new DaemonProxy(rpcClient, "unit_tests");            
+            await _theDaemon.RegisterService();
+
+            _thePlotter = new PlotterProxy(rpcClient, "unit_tests");
         }
 
         [ClassCleanup()]
         public static void ClassCleanup()
         {
-            _theDaemon?.Dispose();
+            _thePlotter.RpcClient?.Dispose();
         }
 
         [TestMethod()]
@@ -54,7 +55,7 @@ namespace chia.dotnet.tests
             await _thePlotter.StartPlotting(config);
 
             // this seems like the only way to get the plot queue
-            var q = await _theDaemon.RegisterPlotter();
+            var q = await _thePlotter.RegisterPlotter();
 
             Assert.IsNotNull(q);
         }

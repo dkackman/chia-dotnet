@@ -18,7 +18,7 @@ namespace chia.dotnet
     /// Base class that handles core websocket communication with the rpc endpoint
     /// and synchronizes request and response messages
     /// </summary>
-    public abstract class WebSocketRpcClient : IDisposable, IRpcClient
+    public class WebSocketRpcClient : IDisposable, IRpcClient
     {
         private readonly ClientWebSocket _webSocket = new();
         private readonly CancellationTokenSource _receiveCancellationTokenSource = new();
@@ -91,8 +91,6 @@ namespace chia.dotnet
             await _webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "bye", cancellationToken);
         }
 
-        protected abstract Message CreateMessage(string command, dynamic data);
-
         /// <summary>
         /// Posts a <see cref="Message"/> to the websocket but does not wait for a response
         /// </summary>
@@ -101,20 +99,19 @@ namespace chia.dotnet
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <remarks>Awaiting this method waits for the message to be sent only. It doesn't await a response.</remarks>
         /// <returns>Awaitable <see cref="Task"/></returns>
-        public virtual async Task PostMessage(string command, dynamic data, CancellationToken cancellationToken = default)
+        public virtual async Task PostMessage(Message message, CancellationToken cancellationToken = default)
         {
             if (disposedValue)
             {
                 throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
 
-            var message = CreateMessage(command, data);
             var json = message.ToJson();
             await _webSocket.SendAsync(Encoding.UTF8.GetBytes(json), WebSocketMessageType.Text, true, cancellationToken);
         }
 
         /// <summary>
-        /// Sends a <see cref="Message"/> to the websocket and waits for a response
+        /// Sends a <see cref="Message"/> to the endpoint and waits for a response
         /// </summary>
         /// <param name="command">The command</param>
         /// <param name="data">Data to go along with the command</param>
@@ -122,15 +119,13 @@ namespace chia.dotnet
         /// <remarks>Awaiting this method will block until a response is received from the <see cref="WebSocket"/> or the <see cref="CancellationToken"/> is cancelled</remarks>
         /// <returns>The response message</returns>
         /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
-        public async Task<Message> SendMessage(string command, dynamic data, CancellationToken cancellationToken = default)
+        public async Task<dynamic> SendMessage(Message message, CancellationToken cancellationToken = default)
         {
             if (disposedValue)
             {
                 throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
 
-            var message = CreateMessage(command, data);
-            
             // capture the message to be sent
             if (!_pendingRequests.TryAdd(message.RequestId, message))
             {
@@ -139,12 +134,11 @@ namespace chia.dotnet
 
             try
             {
-                var json = message.ToJson();
-                await _webSocket.SendAsync(Encoding.UTF8.GetBytes(json), WebSocketMessageType.Text, true, cancellationToken);
+                await PostMessage(message, cancellationToken);
             }
             catch
             {
-                _ = _pendingRequests.TryRemove(message.RequestId, out Message m);
+                _ = _pendingRequests.TryRemove(message.RequestId, out _);
                 throw;
             }
 
@@ -158,10 +152,10 @@ namespace chia.dotnet
             // the receive loop cleans up but make sure we do so on cancellation too
             if (_pendingRequests.ContainsKey(message.RequestId))
             {
-                _ = _pendingRequests.TryRemove(message.RequestId, out Message m);
+                _ = _pendingRequests.TryRemove(message.RequestId, out _);
             }
 
-            return !response.IsSuccessfulResponse ? throw new ResponseException(message, response, response.Data?.error?.ToString()) : response;
+            return !response.IsSuccessfulResponse ? throw new ResponseException(response.Data?.error?.ToString()) : response.Data;
         }
 
         /// <summary>

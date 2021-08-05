@@ -17,11 +17,37 @@ namespace chia.dotnet
         /// ctor
         /// </summary>
         /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
-        public ServiceProxy(IRpcClient rpcClient)
+        /// <param name="destinationService"><see cref="Message.Destination"/></param>
+        /// <param name="originService"><see cref="Message.Origin"/></param>        
+        public ServiceProxy(IRpcClient rpcClient, string destinationService, string originService)
         {
             RpcClient = rpcClient ?? throw new ArgumentNullException(nameof(rpcClient));
+
+            if (string.IsNullOrEmpty(destinationService))
+            {
+                throw new ArgumentNullException(nameof(destinationService));
+            }
+
+            if (string.IsNullOrEmpty(originService))
+            {
+                throw new ArgumentNullException(nameof(originService));
+            }
+
+            DestinationService = destinationService;
+            OriginService = originService;
         }
 
+        /// <summary>
+        /// The name of the service that is running. Will be used as the <see cref="Message.Origin"/> of all messages
+        /// as well as the idenitifier used for <see cref="Register(CancellationToken)"/>
+        /// </summary>
+        public string OriginService { get; init; }
+
+        /// <summary>
+        /// <see cref="Message.Destination"/>
+        /// </summary>
+        public string DestinationService { get; init; }
+        
         /// <summary>
         /// The <see cref="RpcClient"/> used for underlying RPC
         /// </summary>
@@ -99,29 +125,15 @@ namespace chia.dotnet
             _ = await SendMessage("close_connection", data, cancellationToken);
         }
 
-        /// <summary>
-        /// Sends a message via the <see cref="RpcClient"/> to <see cref="DestinationService"/>
-        /// </summary>
-        /// <param name="command">The command</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A response <see cref="Message"/></returns>
-        /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
-        internal async Task<Message> SendMessage(string command, CancellationToken cancellationToken)
+        internal async Task<dynamic> SendMessage(string command, CancellationToken cancellationToken)
         {
-            return await RpcClient.SendMessage(command, null, cancellationToken);
+            return await SendMessage(command, null, cancellationToken);
         }
 
-        /// <summary>
-        /// Sends a message via the <see cref="RpcClient"/> to <see cref="DestinationService"/>
-        /// </summary>
-        /// <param name="command">The command</param>
-        /// <param name="data">Data to go along with the command</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A response <see cref="Message"/></returns>
-        /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
-        internal async Task<Message> SendMessage(string command, dynamic data, CancellationToken cancellationToken)
+        internal async Task<dynamic> SendMessage(string command, dynamic data, CancellationToken cancellationToken)
         {
-            return await RpcClient.SendMessage(command, data, cancellationToken);
+            var message = Message.Create(command, data, DestinationService, OriginService);
+            return await RpcClient.SendMessage(message, cancellationToken);
         }
     }
 }

@@ -8,23 +8,24 @@ namespace chia.dotnet.tests
     [TestCategory("Integration")]
     public class HarvesterProxyTests
     {
-        private static Daemon _theDaemon;
         private static HarvesterProxy _theHarvester;
 
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
-            _theDaemon = DaemonFactory.CreateDaemonFromHardcodedLocation(ServiceNames.Harvester);
+            var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
+            await rpcClient.Connect();
 
-            await _theDaemon.Connect();
-            await _theDaemon.Register();
-            _theHarvester = new HarvesterProxy(_theDaemon);
+            var daemon = new DaemonProxy(rpcClient, "unit_tests");            
+            await daemon.RegisterService();
+
+            _theHarvester = new HarvesterProxy(rpcClient, "unit_tests");
         }
 
         [ClassCleanup()]
         public static void ClassCleanup()
         {
-            _theDaemon?.Dispose();
+            _theHarvester.RpcClient?.Dispose();
         }
 
         [TestMethod()]

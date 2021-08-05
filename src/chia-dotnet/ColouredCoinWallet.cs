@@ -32,7 +32,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("cc_get_name", data, cancellationToken);
 
-            return response.Data.name.ToString();
+            return response.name.ToString();
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("cc_get_colour", data, cancellationToken);
 
-            return response.Data.colour;
+            return response.colour;
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("cc_spend", data, cancellationToken);
 
-            return response.Data.transaction;
+            return response.transaction;
         }
     }
 }

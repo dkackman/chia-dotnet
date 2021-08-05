@@ -20,9 +20,10 @@ namespace chia.dotnet
         /// <summary>
         /// ctor
         /// </summary>
-        /// <param name="rpcClient">The <see cref="IRpcClient"/> to handle RPC</param>
-        public WalletProxy(IRpcClient rpcClient)
-            : base(rpcClient)
+        /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
+        /// <param name="originService"><see cref="Message.Origin"/></param>
+        public WalletProxy(IRpcClient rpcClient, string originService)
+            : base(rpcClient, ServiceNames.Wallet, originService)
         {
         }
 
@@ -42,7 +43,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("log_in", data, cancellationToken);
 
-            return (uint)response.Data.fingerprint;
+            return (uint)response.fingerprint;
         }
 
         /// <summary>
@@ -62,7 +63,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("log_in", data, cancellationToken);
 
-            return (uint)response.Data.fingerprint;
+            return (uint)response.fingerprint;
         }
 
         /// <summary>
@@ -74,7 +75,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_wallets", cancellationToken);
 
-            return response.Data.wallets;
+            return response.wallets;
         }
 
         /// <summary>
@@ -86,7 +87,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_public_keys", cancellationToken);
 
-            return ((IEnumerable<dynamic>)response.Data.public_key_fingerprints).Select(item => (uint)item);
+            return ((IEnumerable<dynamic>)response.public_key_fingerprints).Select(item => (uint)item);
         }
 
         /// <summary>
@@ -102,7 +103,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_private_key", data, cancellationToken);
 
-            return (response.Data.private_key.fingerprint, response.Data.private_key.sk, response.Data.private_key.pk, response.Data.private_key.farmer_pk, response.Data.private_key.pool_pk, response.Data.private_key.seed);
+            return (response.private_key.fingerprint, response.private_key.sk, response.private_key.pk, response.private_key.farmer_pk, response.private_key.pool_pk, response.private_key.seed);
         }
 
         /// <summary>
@@ -114,7 +115,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_sync_status", cancellationToken);
 
-            return (response.Data.genesis_initialized, response.Data.synced, response.Data.syncing);
+            return (response.genesis_initialized, response.synced, response.syncing);
         }
 
         /// <summary>
@@ -126,7 +127,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_network_info", cancellationToken);
 
-            return (response.Data.network_name, response.Data.network_prefix);
+            return (response.network_name, response.network_prefix);
         }
 
         /// <summary>
@@ -138,7 +139,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_height_info", cancellationToken);
 
-            return response.Data.height;
+            return response.height;
         }
 
         /// <summary>
@@ -154,7 +155,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_transaction", data, cancellationToken);
 
-            return response.Data.transaction;
+            return response.transaction;
         }
 
         /// <summary>
@@ -186,7 +187,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("add_key", data, cancellationToken);
 
-            return (uint)response.Data.fingerprint;
+            return (uint)response.fingerprint;
         }
 
         /// <summary>
@@ -205,7 +206,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("log_in", data, cancellationToken);
 
-            return (uint)response.Data.fingerprint;
+            return (uint)response.fingerprint;
         }
 
         /// <summary>
@@ -239,7 +240,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("check_delete_key", data, cancellationToken);
 
-            return (response.Data.used_for_farmer_rewards, response.Data.used_for_pool_rewards, response.Data.wallet_balance);
+            return (response.used_for_farmer_rewards, response.used_for_pool_rewards, response.wallet_balance);
         }
 
         /// <summary>
@@ -261,7 +262,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("generate_mnemonic", cancellationToken);
 
-            return ((IEnumerable<dynamic>)response.Data.mnemonic).Select<dynamic, string>(item => item.ToString());
+            return ((IEnumerable<dynamic>)response.mnemonic).Select<dynamic, string>(item => item.ToString());
         }
 
         /// <summary>
@@ -284,7 +285,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
-            return (response.Data.type, response.Data.colour, response.Data.wallet_id);
+            return (response.type, response.colour, response.wallet_id);
         }
 
         /// <summary>
@@ -303,7 +304,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
-            return response.Data.type;
+            return response.type;
         }
 
         /// <summary>
@@ -330,7 +331,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
-            return (response.Data.id, response.Data.type, response.Data.origin, response.Data.pubkey);
+            return (response.id, response.type, response.origin, response.pubkey);
         }
 
         /// <summary>
@@ -347,7 +348,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
-            return (response.Data.id, response.Data.type, response.Data.pubkey);
+            return (response.id, response.type, response.pubkey);
         }
 
         /// <summary>
@@ -370,7 +371,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
-            return (response.Data.type, response.Data.my_did, response.Data.wallet_id);
+            return (response.type, response.my_did, response.wallet_id);
         }
 
         /// <summary>
@@ -389,7 +390,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
-            return (response.Data.type, response.Data.my_did, response.Data.wallet_id, response.Data.coin_name, response.Data.coin_list, response.Data.newpuzhash, response.Data.pubkey, response.Data.backup_dids, response.Data.num_verifications_required);
+            return (response.type, response.my_did, response.wallet_id, response.coin_name, response.coin_list, response.newpuzhash, response.pubkey, response.backup_dids, response.num_verifications_required);
         }
 
         /// <summary>
@@ -414,7 +415,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
-            return (response.Data.transaction, response.Data.launcher_id, response.Data.p2_singleton_puzzle_hash);
+            return (response.transaction, response.launcher_id, response.p2_singleton_puzzle_hash);
         }
 
 
@@ -448,7 +449,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_discrepancies_for_offer", data, cancellationToken);
 
-            return response.Data.discrepancies;
+            return response.discrepancies;
         }
 
         /// <summary>
@@ -479,7 +480,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_trade", data, cancellationToken);
 
-            return response.Data.trade;
+            return response.trade;
         }
 
         /// <summary>
@@ -491,7 +492,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_all_trades", cancellationToken);
 
-            return response.Data.trades;
+            return response.trades;
         }
 
         /// <summary>
@@ -519,7 +520,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_farmed_amount", cancellationToken);
 
-            return (response.Data.farmed_amount, response.Data.farmer_reward_amount, response.Data.fee_amount, response.Data.last_height_farmed, response.Data.pool_reward_amount);
+            return (response.farmed_amount, response.farmer_reward_amount, response.fee_amount, response.last_height_farmed, response.pool_reward_amount);
         }
 
         /// <summary>
@@ -542,7 +543,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("create_signed_transaction", data, cancellationToken);
 
-            return response.Data.signed_tx;
+            return response.signed_tx;
         }
 
         /// <summary>

@@ -55,7 +55,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("send_clawback_transaction", data, cancellationToken);
 
-            return response.Data.transaction;
+            return response.transaction;
         }
 
         /// <summary>

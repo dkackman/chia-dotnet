@@ -91,16 +91,16 @@ namespace chia.dotnet
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <remarks>Awaiting this method waits for the message to be sent only. It doesn't await a response.</remarks>
         /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task PostMessage(string command, dynamic data, CancellationToken cancellationToken = default)
+        public async Task PostMessage(Message message, CancellationToken cancellationToken = default)
         {
             if (disposedValue)
             {
                 throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
 
-            var d = data as IDictionary<string, object>;
-            using var response = await _httpClient.PostAsJsonAsync<IDictionary<string, object>>("command", d, cancellationToken);
-            response.EnsureSuccessStatusCode();
+            var d = message.Data as IDictionary<string, object>;
+            using var response = await _httpClient.PostAsJsonAsync<IDictionary<string, object>>(message.Command, d, cancellationToken);
+            _ = response.EnsureSuccessStatusCode();
         }
 
         /// <summary>
@@ -112,18 +112,23 @@ namespace chia.dotnet
         /// <remarks>Awaiting this method will block until a response is received from the <see cref="WebSocket"/> or the <see cref="CancellationToken"/> is cancelled</remarks>
         /// <returns>The response message</returns>
         /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
-        public async Task<Message> SendMessage(string command, dynamic data, CancellationToken cancellationToken = default)
+        public async Task<dynamic> SendMessage(Message message, CancellationToken cancellationToken = default)
         {
             if (disposedValue)
             {
                 throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
 
-            var d = data as IDictionary<string, object>;
-            using var response = await _httpClient.PostAsJsonAsync<IDictionary<string, object>>("command", d, cancellationToken);
-            response.EnsureSuccessStatusCode();
+            var d = message.Data as IDictionary<string, object>;
+            using var response = await _httpClient.PostAsJsonAsync<IDictionary<string, object>>(message.Command, d, cancellationToken);
+            _ = response.EnsureSuccessStatusCode();
 
-            return null;
+            dynamic responseMessage = await response.Deserialize<dynamic>();
+            if (responseMessage?.success == false)
+            {
+                throw new ResponseException(message, responseMessage?.error?.ToString());
+            }
+            return message;
         }
 
         /// <summary>

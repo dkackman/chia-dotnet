@@ -11,23 +11,24 @@ namespace chia.dotnet.tests
     [TestCategory("Integration")]
     public class WalletProxyTests
     {
-        private static Daemon _theDaemon;
         private static WalletProxy _theWallet;
 
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
-            _theDaemon = DaemonFactory.CreateDaemonFromHardcodedLocation(ServiceNames.Wallet);
+            var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
+            await rpcClient.Connect();
 
-            await _theDaemon.Connect();
-            await _theDaemon.Register();
-            _theWallet = new WalletProxy(_theDaemon);
+            var daemon = new DaemonProxy(rpcClient, "unit_tests");            
+            await daemon.RegisterService();
+
+            _theWallet = new WalletProxy(rpcClient, "unit_tests");
         }
 
         [ClassCleanup()]
         public static void ClassCleanup()
         {
-            _theDaemon?.Dispose();
+            _theWallet.RpcClient?.Dispose();
         }
 
         [TestMethod()]

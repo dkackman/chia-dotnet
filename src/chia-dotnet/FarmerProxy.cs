@@ -13,9 +13,10 @@ namespace chia.dotnet
         /// <summary>
         /// ctor
         /// </summary>
-        /// <param name="rpcClient">The <see cref="IRpcClient"/> to handle RPC</param>
-        public FarmerProxy(IRpcClient rpcClient)
-            : base(rpcClient)
+        /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
+        /// <param name="originService"><see cref="Message.Origin"/></param>
+        public FarmerProxy(IRpcClient rpcClient, string originService)
+            : base(rpcClient, ServiceNames.Farmer, originService)
         {
         }
 
@@ -32,7 +33,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_reward_targets", data, cancellationToken);
 
-            return (response.Data.farmer_target, response.Data.pool_target);
+            return (response.farmer_target, response.pool_target);
         }
 
         /// <summary>
@@ -60,7 +61,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_signage_points", cancellationToken);
 
-            return response.Data.signage_points;
+            return response.signage_points;
         }
 
         /// <summary>
@@ -76,7 +77,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_signage_point", data, cancellationToken);
 
-            return (response.Data.signage_point, response.Data.proofs);
+            return (response.signage_point, response.proofs);
         }
 
         /// <summary>
@@ -88,7 +89,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_harvesters", cancellationToken);
 
-            return response.Data.harvesters;
+            return response.harvesters;
         }
 
         /// <summary>
@@ -104,7 +105,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_pool_login_link", data, cancellationToken);
 
-            return response.Data.login_link?.ToString();
+            return response.login_link?.ToString();
         }
 
         /// <summary>
@@ -116,7 +117,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_pool_state", cancellationToken);
 
-            return response.Data.pool_state;
+            return response.pool_state;
         }
 
         /// <summary>

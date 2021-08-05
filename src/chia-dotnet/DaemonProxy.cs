@@ -23,45 +23,16 @@ namespace chia.dotnet
     /// <summary>
     /// <see cref="WebSocketRpcClient"/> for the daemon interface. The daemon can be used to proxy messages to and from other chia services.
     /// </summary>
-    public sealed class Daemon : WebSocketRpcClient
+    public sealed class DaemonProxy : ServiceProxy
     {
         /// <summary>
         /// ctor
         /// </summary>
-        /// <param name="endpoint">Details of the websocket endpoint</param>
-        /// <param name="destinationService"><see cref="Message.Destination"/></param>
+        /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
         /// <param name="originService"><see cref="Message.Origin"/></param>
-        public Daemon(EndpointInfo endpoint, string destinationService, string originService)
-            : base(endpoint)
+        public DaemonProxy(WebSocketRpcClient rpcClient, string originService)
+            : base(rpcClient, ServiceNames.Daemon, originService)
         {
-            if (string.IsNullOrEmpty(destinationService))
-            {
-                throw new ArgumentNullException(nameof(destinationService));
-            }
-
-            if (string.IsNullOrEmpty(originService))
-            {
-                throw new ArgumentNullException(nameof(originService));
-            }
-
-            DestinationService = destinationService;
-            OriginService = originService;
-        }
-
-        /// <summary>
-        /// The name of the service that is running. Will be used as the <see cref="Message.Origin"/> of all messages
-        /// as well as the idenitifier used for <see cref="Register(CancellationToken)"/>
-        /// </summary>
-        public string OriginService { get; init; }
-
-        /// <summary>
-        /// <see cref="Message.Destination"/>
-        /// </summary>
-        public string DestinationService { get; init; }
-
-        protected override Message CreateMessage(string command, dynamic data)
-        {
-            return !string.IsNullOrEmpty(command) ? Message.Create(command, data, DestinationService, OriginService) : throw new ArgumentNullException(nameof(command));
         }
 
         /// <summary>
@@ -83,9 +54,9 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/> with the boolean value indicating whether the service is running</returns>
         public async Task<bool> IsServiceRunning(string service, CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("is_running", CreateData(service), cancellationToken);
+            var response = await SendMessage("is_running", CreateDataObject(service), cancellationToken);
 
-            return response.Data.is_running;
+            return response.is_running;
         }
 
         /// <summary>
@@ -93,7 +64,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task Register(CancellationToken cancellationToken = default)
+        public async Task RegisterService(CancellationToken cancellationToken = default)
         {
             await RegisterService(OriginService, cancellationToken);
         }
@@ -107,19 +78,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task RegisterService(string service, CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("register_service", CreateData(service), cancellationToken);
-        }
-
-        /// <summary>
-        /// Registers this daemon as a plotter and retreives the plot queue
-        /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>The plot queue</returns>
-        public async Task<IEnumerable<dynamic>> RegisterPlotter(CancellationToken cancellationToken = default)
-        {
-            var response = await SendMessage("register_service", CreateData(ServiceNames.Plotter), cancellationToken);
-
-            return response.Data.queue;
+            _ = await SendMessage("register_service", CreateDataObject(service), cancellationToken);
         }
 
         /// <summary>
@@ -130,7 +89,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task StartService(string service, CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("start_service", CreateData(service), cancellationToken);
+            _ = await SendMessage("start_service", CreateDataObject(service), cancellationToken);
         }
 
         /// <summary>
@@ -141,10 +100,10 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task StopService(string service, CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("stop_service", CreateData(service), cancellationToken);
+            _ = await SendMessage("stop_service", CreateDataObject(service), cancellationToken);
         }
 
-        private dynamic CreateData(string service)
+        private dynamic CreateDataObject(string service)
         {
             if (string.IsNullOrEmpty(service))
             {
