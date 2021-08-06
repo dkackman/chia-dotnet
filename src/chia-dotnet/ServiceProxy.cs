@@ -7,9 +7,9 @@ using System.Collections.Generic;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Base class that uses a <see cref="RpcClient"/> to send and receive messages to other services
+    /// Base class that uses an <see cref="IRpcClient"/> to send and receive messages to other services
     /// </summary>
-    /// <remarks>The lifetime of the RpcClient is not controlled by the proxy. It should be disposed outside of this class. <see cref="IRpcClient.Connect(CancellationToken)"/></remarks>
+    /// <remarks>The lifetime of the RpcClient is not controlled by the proxy. It should be disposed outside of this class.</remarks>
     public abstract class ServiceProxy
     {
         /// <summary>
@@ -48,7 +48,7 @@ namespace chia.dotnet
         public string DestinationService { get; init; }
 
         /// <summary>
-        /// The <see cref="RpcClient"/> used for underlying RPC
+        /// The <see cref="IRpcClient"/> used for underlying RPC
         /// </summary>
         public IRpcClient RpcClient { get; init; }
 

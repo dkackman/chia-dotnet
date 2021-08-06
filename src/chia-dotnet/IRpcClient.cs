@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Interface representing rpc communcation
+    /// Interface representing rpc communication
     /// </summary>
     public interface IRpcClient : IDisposable
     {
