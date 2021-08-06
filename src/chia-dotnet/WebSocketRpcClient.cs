@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Concurrent;
 using System.IO;
 using System.Net.Security;
@@ -157,18 +158,20 @@ namespace chia.dotnet
             return !response.IsSuccessfulResponse ? throw new ResponseException(message, response.Data?.error?.ToString()) : response.Data;
         }
 
-        /// <summary>
-        /// Sends a <see cref="Message"/> to the endpoint and waits for a response
-        /// </summary>
-        /// <param name="message">The message to send</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <remarks>Awaiting this method will block until a response is received from the <see cref="WebSocket"/> or the <see cref="CancellationToken"/> is cancelled</remarks>
-        /// <returns>The response message</returns>
-        /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
-        public async Task<T> SendMessage<T>(Message message, CancellationToken cancellationToken = default)
+        public async Task<T> SendMessage<T>(Message message, CancellationToken cancellationToken = default) where T : new()
         {
             var d = await SendMessage(message, cancellationToken);
-            
+
+            return DynamicConverter.Convert<T>(d);
+        }
+
+        public async Task<IEnumerable<T>> SendMessageCollection<T>(Message message, CancellationToken cancellationToken = default) where T : new()
+        {
+            var d = await SendMessage(message, cancellationToken);
+            // REMOVE ME
+            d = d.queue;
+
+            return DynamicConverter.ConvertCollection<T>(d);
         }
 
         /// <summary>

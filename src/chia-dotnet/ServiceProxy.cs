@@ -129,21 +129,22 @@ namespace chia.dotnet
             return await SendMessage(command, null, cancellationToken);
         }
 
-        internal async Task<dynamic> SendMessage(string command, dynamic data, CancellationToken cancellationToken)
+        internal async Task<dynamic> SendMessage(string command, dynamic data = null, CancellationToken cancellationToken = default)
         {
             var message = Message.Create(command, data, DestinationService, OriginService);
             return await RpcClient.SendMessage(message, cancellationToken);
         }
 
-        internal async Task<T> SendMessage<T>(string command, CancellationToken cancellationToken)
-        {
-            return await SendMessage<T>(command, null, cancellationToken);
-        }
-
-        internal async Task<T> SendMessage<T>(string command, dynamic data, CancellationToken cancellationToken)
+        internal async Task<T> SendMessage<T>(string command, dynamic data, string item = null, CancellationToken cancellationToken = default) where T : new()
         {
             var message = Message.Create(command, data, DestinationService, OriginService);
             return await RpcClient.SendMessage<T>(message, cancellationToken);
+        }
+
+        internal async Task<IEnumerable<T>> SendMessageCollection<T>(string command, dynamic data, string item = null, CancellationToken cancellationToken = default) where T : new()
+        {
+            var message = Message.Create(command, data, DestinationService, OriginService);
+            return await RpcClient.SendMessageCollection<T>(message, cancellationToken);
         }
     }
 }

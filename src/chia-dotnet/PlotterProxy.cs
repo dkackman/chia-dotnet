@@ -31,9 +31,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.service = ServiceNames.Plotter;
 
-            var response = await SendMessage<IEnumerable<PlotQueueItem>>("register_service", data, cancellationToken);
-
-            return DynamicConverter.ConvertCollection<PlotQueueItem>((IEnumerable<dynamic>)response.queue);
+            return await SendMessageCollection<PlotQueueItem>("register_service", data, "queue", cancellationToken);
         }
 
         /// <summary>

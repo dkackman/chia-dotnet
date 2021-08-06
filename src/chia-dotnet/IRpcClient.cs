@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace chia.dotnet
 {
@@ -33,6 +34,8 @@ namespace chia.dotnet
         /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
         Task<dynamic> SendMessage(Message message, CancellationToken cancellationToken = default);
 
-        Task<T> SendMessage<T>(Message message, CancellationToken cancellationToken = default);
+        Task<T> SendMessage<T>(Message message, CancellationToken cancellationToken = default) where T : new();
+
+        Task<IEnumerable<T>> SendMessageCollection<T>(Message message, CancellationToken cancellationToken = default) where T : new();
     }
 }
