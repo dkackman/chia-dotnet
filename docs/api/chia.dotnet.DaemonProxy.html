@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class HarvesterProxy
+    <title>Class DaemonProxy
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class HarvesterProxy
+    <meta name="title" content="Class DaemonProxy
    ">
     <meta name="generator" content="docfx 2.58.0.0">
     
@@ -68,19 +68,19 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="chia.dotnet.HarvesterProxy">
+            <article class="content wrap" id="_content" data-uid="chia.dotnet.DaemonProxy">
   
   
-  <h1 id="chia_dotnet_HarvesterProxy" data-uid="chia.dotnet.HarvesterProxy" class="text-break">Class HarvesterProxy
+  <h1 id="chia_dotnet_DaemonProxy" data-uid="chia.dotnet.DaemonProxy" class="text-break">Class DaemonProxy
   </h1>
-  <div class="markdown level0 summary"><p>Proxy that communicates with the harvester via the daemon</p>
+  <div class="markdown level0 summary"><p><a class="xref" href="chia.dotnet.WebSocketRpcClient.html">WebSocketRpcClient</a> for the daemon interface. The daemon can be used to proxy messages to and from other chia services.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
     <div class="level1"><a class="xref" href="chia.dotnet.ServiceProxy.html">ServiceProxy</a></div>
-    <div class="level2"><span class="xref">HarvesterProxy</span></div>
+    <div class="level2"><span class="xref">DaemonProxy</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -132,27 +132,27 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="chia.dotnet.html">chia.dotnet</a></h6>
   <h6><strong>Assembly</strong>: chia-dotnet.dll</h6>
-  <h5 id="chia_dotnet_HarvesterProxy_syntax">Syntax</h5>
+  <h5 id="chia_dotnet_DaemonProxy_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class HarvesterProxy : ServiceProxy</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class DaemonProxy : ServiceProxy</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_HarvesterProxy__ctor_chia_dotnet_IRpcClient_System_String_.md&amp;value=---%0Auid%3A%20chia.dotnet.HarvesterProxy.%23ctor(chia.dotnet.IRpcClient%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DaemonProxy__ctor_chia_dotnet_WebSocketRpcClient_System_String_.md&amp;value=---%0Auid%3A%20chia.dotnet.DaemonProxy.%23ctor(chia.dotnet.WebSocketRpcClient%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L19">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L32">View Source</a>
   </span>
-  <a id="chia_dotnet_HarvesterProxy__ctor_" data-uid="chia.dotnet.HarvesterProxy.#ctor*"></a>
-  <h4 id="chia_dotnet_HarvesterProxy__ctor_chia_dotnet_IRpcClient_System_String_" data-uid="chia.dotnet.HarvesterProxy.#ctor(chia.dotnet.IRpcClient,System.String)">HarvesterProxy(IRpcClient, String)</h4>
+  <a id="chia_dotnet_DaemonProxy__ctor_" data-uid="chia.dotnet.DaemonProxy.#ctor*"></a>
+  <h4 id="chia_dotnet_DaemonProxy__ctor_chia_dotnet_WebSocketRpcClient_System_String_" data-uid="chia.dotnet.DaemonProxy.#ctor(chia.dotnet.WebSocketRpcClient,System.String)">DaemonProxy(WebSocketRpcClient, String)</h4>
   <div class="markdown level1 summary"><p>ctor</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public HarvesterProxy(IRpcClient rpcClient, string originService)</code></pre>
+    <pre><code class="lang-csharp hljs">public DaemonProxy(WebSocketRpcClient rpcClient, string originService)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -165,7 +165,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a></td>
+        <td><a class="xref" href="chia.dotnet.WebSocketRpcClient.html">WebSocketRpcClient</a></td>
         <td><span class="parametername">rpcClient</span></td>
         <td><p><a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a> instance to use for rpc communication</p>
 </td>
@@ -182,19 +182,72 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_HarvesterProxy_AddPlotDirectory_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.HarvesterProxy.AddPlotDirectory(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DaemonProxy_Exit_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DaemonProxy.Exit(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L69">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L43">View Source</a>
   </span>
-  <a id="chia_dotnet_HarvesterProxy_AddPlotDirectory_" data-uid="chia.dotnet.HarvesterProxy.AddPlotDirectory*"></a>
-  <h4 id="chia_dotnet_HarvesterProxy_AddPlotDirectory_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.HarvesterProxy.AddPlotDirectory(System.String,System.Threading.CancellationToken)">AddPlotDirectory(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Add a plot directory to the harvester configuration</p>
+  <a id="chia_dotnet_DaemonProxy_Exit_" data-uid="chia.dotnet.DaemonProxy.Exit*"></a>
+  <h4 id="chia_dotnet_DaemonProxy_Exit_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.Exit(System.Threading.CancellationToken)">Exit(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Tells the daemon at the RPC endpoint to exit.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task AddPlotDirectory(string dirname, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task Exit(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td><p>Awaitable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="chia_dotnet_DaemonProxy_Exit_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>There isn't a way to start the daemon remotely via RPC so take care that you have access to the RPC host if needed</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DaemonProxy_IsServiceRunning_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DaemonProxy.IsServiceRunning(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L54">View Source</a>
+  </span>
+  <a id="chia_dotnet_DaemonProxy_IsServiceRunning_" data-uid="chia.dotnet.DaemonProxy.IsServiceRunning*"></a>
+  <h4 id="chia_dotnet_DaemonProxy_IsServiceRunning_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.IsServiceRunning(System.String,System.Threading.CancellationToken)">IsServiceRunning(String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Determines if the named service is running</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;bool&gt; IsServiceRunning(string service, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -208,8 +261,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">dirname</span></td>
-        <td><p>The plot directory to add</p>
+        <td><span class="parametername">service</span></td>
+        <td><p>The <a class="xref" href="chia.dotnet.ServiceNames.html">ServiceNames</a> of the service</p>
 </td>
       </tr>
       <tr>
@@ -230,27 +283,28 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>An awaitable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
+        <td><p>Awaitable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> with the boolean value indicating whether the service is running</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_HarvesterProxy_DeletePlot_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.HarvesterProxy.DeletePlot(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DaemonProxy_RegisterService_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DaemonProxy.RegisterService(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L43">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L78">View Source</a>
   </span>
-  <a id="chia_dotnet_HarvesterProxy_DeletePlot_" data-uid="chia.dotnet.HarvesterProxy.DeletePlot*"></a>
-  <h4 id="chia_dotnet_HarvesterProxy_DeletePlot_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.HarvesterProxy.DeletePlot(System.String,System.Threading.CancellationToken)">DeletePlot(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Permanently delete a plot file</p>
+  <a id="chia_dotnet_DaemonProxy_RegisterService_" data-uid="chia.dotnet.DaemonProxy.RegisterService*"></a>
+  <h4 id="chia_dotnet_DaemonProxy_RegisterService_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.RegisterService(System.String,System.Threading.CancellationToken)">RegisterService(String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Registers this daemon to receive messages. This is needed to receive responses from services other than the daemon.
+This is not a <a class="xref" href="chia.dotnet.ServiceNames.html">ServiceNames</a> but usually the name of the consumer application such as 'wallet_ui'</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task DeletePlot(string filename, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task RegisterService(string service, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -264,8 +318,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">filename</span></td>
-        <td><p>the file name of the plot</p>
+        <td><span class="parametername">service</span></td>
+        <td><p>The name to register</p>
 </td>
       </tr>
       <tr>
@@ -287,129 +341,26 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>An awaitable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="chia_dotnet_HarvesterProxy_DeletePlot_System_String_System_Threading_CancellationToken__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p><strong>Calling this DELETES the plot file. Proceed with caution.</strong></p>
-</div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_HarvesterProxy_GetPlotDirectories_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.HarvesterProxy.GetPlotDirectories(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L56">View Source</a>
-  </span>
-  <a id="chia_dotnet_HarvesterProxy_GetPlotDirectories_" data-uid="chia.dotnet.HarvesterProxy.GetPlotDirectories*"></a>
-  <h4 id="chia_dotnet_HarvesterProxy_GetPlotDirectories_System_Threading_CancellationToken_" data-uid="chia.dotnet.HarvesterProxy.GetPlotDirectories(System.Threading.CancellationToken)">GetPlotDirectories(CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Get the list of plot directories from the harvester configuration</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;string&gt;&gt; GetPlotDirectories(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>&gt;&gt;</td>
-        <td><p>List of directories</p>
+        <td><p>Awaitable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_HarvesterProxy_GetPlots_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.HarvesterProxy.GetPlots(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DaemonProxy_RegisterService_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DaemonProxy.RegisterService(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L29">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L66">View Source</a>
   </span>
-  <a id="chia_dotnet_HarvesterProxy_GetPlots_" data-uid="chia.dotnet.HarvesterProxy.GetPlots*"></a>
-  <h4 id="chia_dotnet_HarvesterProxy_GetPlots_System_Threading_CancellationToken_" data-uid="chia.dotnet.HarvesterProxy.GetPlots(System.Threading.CancellationToken)">GetPlots(CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Get the list of plot files</p>
+  <a id="chia_dotnet_DaemonProxy_RegisterService_" data-uid="chia.dotnet.DaemonProxy.RegisterService*"></a>
+  <h4 id="chia_dotnet_DaemonProxy_RegisterService_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.RegisterService(System.Threading.CancellationToken)">RegisterService(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Registers this websocket to receive messages using <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_OriginService">OriginService</a> This is needed to receive responses from services other than the daemon.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;(IEnumerable&lt;dynamic&gt; FailedToOpenFilenames, IEnumerable&lt;dynamic&gt; NotFoundFileNames, IEnumerable&lt;dynamic&gt; Plots)&gt; GetPlots(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.valuetuple-3">(T1, T2, T3)</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;&gt;&gt;</td>
-        <td><p>A list of plots</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_HarvesterProxy_RefreshPlots_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.HarvesterProxy.RefreshPlots(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L96">View Source</a>
-  </span>
-  <a id="chia_dotnet_HarvesterProxy_RefreshPlots_" data-uid="chia.dotnet.HarvesterProxy.RefreshPlots*"></a>
-  <h4 id="chia_dotnet_HarvesterProxy_RefreshPlots_System_Threading_CancellationToken_" data-uid="chia.dotnet.HarvesterProxy.RefreshPlots(System.Threading.CancellationToken)">RefreshPlots(CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Refresh the list of plots</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task RefreshPlots(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task RegisterService(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -440,26 +391,26 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>An awaitable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+        <td><p>Awaitable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_HarvesterProxy_RemovePlotDirectory_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.HarvesterProxy.RemovePlotDirectory(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DaemonProxy_StartService_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DaemonProxy.StartService(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L83">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L89">View Source</a>
   </span>
-  <a id="chia_dotnet_HarvesterProxy_RemovePlotDirectory_" data-uid="chia.dotnet.HarvesterProxy.RemovePlotDirectory*"></a>
-  <h4 id="chia_dotnet_HarvesterProxy_RemovePlotDirectory_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.HarvesterProxy.RemovePlotDirectory(System.String,System.Threading.CancellationToken)">RemovePlotDirectory(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Removes a plot directory from the harveser configuration</p>
+  <a id="chia_dotnet_DaemonProxy_StartService_" data-uid="chia.dotnet.DaemonProxy.StartService*"></a>
+  <h4 id="chia_dotnet_DaemonProxy_StartService_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.StartService(System.String,System.Threading.CancellationToken)">StartService(String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Starts the named service</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task RemovePlotDirectory(string dirname, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task StartService(string service, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -473,8 +424,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">dirname</span></td>
-        <td><p>The plot directory to remove</p>
+        <td><span class="parametername">service</span></td>
+        <td><p>The <a class="xref" href="chia.dotnet.ServiceNames.html">ServiceNames</a> of the service</p>
 </td>
       </tr>
       <tr>
@@ -496,7 +447,63 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>An awaitable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+        <td><p>Awaitable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DaemonProxy_StopService_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DaemonProxy.StopService(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L100">View Source</a>
+  </span>
+  <a id="chia_dotnet_DaemonProxy_StopService_" data-uid="chia.dotnet.DaemonProxy.StopService*"></a>
+  <h4 id="chia_dotnet_DaemonProxy_StopService_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.StopService(System.String,System.Threading.CancellationToken)">StopService(String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Stops the named service</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task StopService(string service, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">service</span></td>
+        <td><p>The <a class="xref" href="chia.dotnet.ServiceNames.html">ServiceNames</a> of the service</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td><p>Awaitable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
 </td>
       </tr>
     </tbody>
@@ -509,10 +516,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_HarvesterProxy.md&amp;value=---%0Auid%3A%20chia.dotnet.HarvesterProxy%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DaemonProxy.md&amp;value=---%0Auid%3A%20chia.dotnet.DaemonProxy%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L25" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

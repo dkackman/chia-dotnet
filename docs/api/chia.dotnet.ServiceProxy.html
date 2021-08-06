@@ -73,13 +73,14 @@
   
   <h1 id="chia_dotnet_ServiceProxy" data-uid="chia.dotnet.ServiceProxy" class="text-break">Class ServiceProxy
   </h1>
-  <div class="markdown level0 summary"><p>Base class that uses a <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_Daemon">Daemon</a> to send and receive messages to other services</p>
+  <div class="markdown level0 summary"><p>Base class that uses a <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_RpcClient">RpcClient</a> to send and receive messages to other services</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
     <div class="level1"><span class="xref">ServiceProxy</span></div>
+      <div class="level2"><a class="xref" href="chia.dotnet.DaemonProxy.html">DaemonProxy</a></div>
       <div class="level2"><a class="xref" href="chia.dotnet.FarmerProxy.html">FarmerProxy</a></div>
       <div class="level2"><a class="xref" href="chia.dotnet.FullNodeProxy.html">FullNodeProxy</a></div>
       <div class="level2"><a class="xref" href="chia.dotnet.HarvesterProxy.html">HarvesterProxy</a></div>
@@ -117,26 +118,25 @@
     <pre><code class="lang-csharp hljs">public abstract class ServiceProxy</code></pre>
   </div>
   <h5 id="chia_dotnet_ServiceProxy_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>The lifetime of the daemon is not controlled by the proxy. It should be disposed outside of this class. <a class="xref" href="chia.dotnet.RpcClient.html#chia_dotnet_RpcClient_Connect_System_Threading_CancellationToken_">Connect(CancellationToken)</a>
-and <a class="xref" href="chia.dotnet.Daemon.html#chia_dotnet_Daemon_Register_System_Threading_CancellationToken_">Register(CancellationToken)</a> should be invoked</p>
+  <div class="markdown level0 remarks"><p>The lifetime of the RpcClient is not controlled by the proxy. It should be disposed outside of this class. <see cref="!:IRpcClient.Connect(CancellationToken)"></see></p>
 </div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy__ctor_chia_dotnet_Daemon_System_String_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.%23ctor(chia.dotnet.Daemon%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy__ctor_chia_dotnet_IRpcClient_System_String_System_String_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.%23ctor(chia.dotnet.IRpcClient%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L21">View Source</a>
   </span>
   <a id="chia_dotnet_ServiceProxy__ctor_" data-uid="chia.dotnet.ServiceProxy.#ctor*"></a>
-  <h4 id="chia_dotnet_ServiceProxy__ctor_chia_dotnet_Daemon_System_String_" data-uid="chia.dotnet.ServiceProxy.#ctor(chia.dotnet.Daemon,System.String)">ServiceProxy(Daemon, String)</h4>
+  <h4 id="chia_dotnet_ServiceProxy__ctor_chia_dotnet_IRpcClient_System_String_System_String_" data-uid="chia.dotnet.ServiceProxy.#ctor(chia.dotnet.IRpcClient,System.String,System.String)">ServiceProxy(IRpcClient, String, String)</h4>
   <div class="markdown level1 summary"><p>ctor</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ServiceProxy(Daemon daemon, string destinationService)</code></pre>
+    <pre><code class="lang-csharp hljs">public ServiceProxy(IRpcClient rpcClient, string destinationService, string originService)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -149,9 +149,9 @@ and <a class="xref" href="chia.dotnet.Daemon.html#chia_dotnet_Daemon_Register_Sy
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="chia.dotnet.Daemon.html">Daemon</a></td>
-        <td><span class="parametername">daemon</span></td>
-        <td><p><a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_Daemon">Daemon</a> instance to use for rpc communication</p>
+        <td><a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a></td>
+        <td><span class="parametername">rpcClient</span></td>
+        <td><p><a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a> instance to use for rpc communication</p>
 </td>
       </tr>
       <tr>
@@ -160,47 +160,22 @@ and <a class="xref" href="chia.dotnet.Daemon.html#chia_dotnet_Daemon_Register_Sy
         <td><p><a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Destination">Destination</a></p>
 </td>
       </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">originService</span></td>
+        <td><p><a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Origin">Origin</a></p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_Daemon.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.Daemon%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L36">View Source</a>
-  </span>
-  <a id="chia_dotnet_ServiceProxy_Daemon_" data-uid="chia.dotnet.ServiceProxy.Daemon*"></a>
-  <h4 id="chia_dotnet_ServiceProxy_Daemon" data-uid="chia.dotnet.ServiceProxy.Daemon">Daemon</h4>
-  <div class="markdown level1 summary"><p>The <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_Daemon">Daemon</a> used for underlying RPC</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Daemon Daemon { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="chia.dotnet.Daemon.html">Daemon</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_DestinationService.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.DestinationService%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L41">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L48">View Source</a>
   </span>
   <a id="chia_dotnet_ServiceProxy_DestinationService_" data-uid="chia.dotnet.ServiceProxy.DestinationService*"></a>
   <h4 id="chia_dotnet_ServiceProxy_DestinationService" data-uid="chia.dotnet.ServiceProxy.DestinationService">DestinationService</h4>
@@ -226,6 +201,69 @@ and <a class="xref" href="chia.dotnet.Daemon.html#chia_dotnet_Daemon_Register_Sy
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_OriginService.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.OriginService%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L43">View Source</a>
+  </span>
+  <a id="chia_dotnet_ServiceProxy_OriginService_" data-uid="chia.dotnet.ServiceProxy.OriginService*"></a>
+  <h4 id="chia_dotnet_ServiceProxy_OriginService" data-uid="chia.dotnet.ServiceProxy.OriginService">OriginService</h4>
+  <div class="markdown level1 summary"><p>The name of the service that is running. Will be used as the <a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Origin">Origin</a> of all messages
+as well as the identifier used for <a class="xref" href="chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_RegisterService_System_String_System_Threading_CancellationToken_">RegisterService(String, CancellationToken)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string OriginService { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_RpcClient.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.RpcClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L53">View Source</a>
+  </span>
+  <a id="chia_dotnet_ServiceProxy_RpcClient_" data-uid="chia.dotnet.ServiceProxy.RpcClient*"></a>
+  <h4 id="chia_dotnet_ServiceProxy_RpcClient" data-uid="chia.dotnet.ServiceProxy.RpcClient">RpcClient</h4>
+  <div class="markdown level1 summary"><p>The <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_RpcClient">RpcClient</a> used for underlying RPC</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRpcClient RpcClient { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
@@ -233,7 +271,7 @@ and <a class="xref" href="chia.dotnet.Daemon.html#chia_dotnet_Daemon_Register_Sy
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_CloseConnection_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.CloseConnection(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L97">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L114">View Source</a>
   </span>
   <a id="chia_dotnet_ServiceProxy_CloseConnection_" data-uid="chia.dotnet.ServiceProxy.CloseConnection*"></a>
   <h4 id="chia_dotnet_ServiceProxy_CloseConnection_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.CloseConnection(System.String,System.Threading.CancellationToken)">CloseConnection(String, CancellationToken)</h4>
@@ -289,7 +327,7 @@ and <a class="xref" href="chia.dotnet.Daemon.html#chia_dotnet_Daemon_Register_Sy
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_GetConnections_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.GetConnections(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L68">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L80">View Source</a>
   </span>
   <a id="chia_dotnet_ServiceProxy_GetConnections_" data-uid="chia.dotnet.ServiceProxy.GetConnections*"></a>
   <h4 id="chia_dotnet_ServiceProxy_GetConnections_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.GetConnections(System.Threading.CancellationToken)">GetConnections(CancellationToken)</h4>
@@ -339,7 +377,7 @@ and <a class="xref" href="chia.dotnet.Daemon.html#chia_dotnet_Daemon_Register_Sy
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_OpenConnection_System_String_System_Int32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.OpenConnection(System.String%2CSystem.Int32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L82">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L94">View Source</a>
   </span>
   <a id="chia_dotnet_ServiceProxy_OpenConnection_" data-uid="chia.dotnet.ServiceProxy.OpenConnection*"></a>
   <h4 id="chia_dotnet_ServiceProxy_OpenConnection_System_String_System_Int32_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.OpenConnection(System.String,System.Int32,System.Threading.CancellationToken)">OpenConnection(String, Int32, CancellationToken)</h4>
@@ -401,7 +439,7 @@ and <a class="xref" href="chia.dotnet.Daemon.html#chia_dotnet_Daemon_Register_Sy
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_Ping_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.Ping(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L48">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L60">View Source</a>
   </span>
   <a id="chia_dotnet_ServiceProxy_Ping_" data-uid="chia.dotnet.ServiceProxy.Ping*"></a>
   <h4 id="chia_dotnet_ServiceProxy_Ping_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.Ping(System.Threading.CancellationToken)">Ping(CancellationToken)</h4>
@@ -451,7 +489,7 @@ and <a class="xref" href="chia.dotnet.Daemon.html#chia_dotnet_Daemon_Register_Sy
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_StopNode_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.StopNode(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L58">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L70">View Source</a>
   </span>
   <a id="chia_dotnet_ServiceProxy_StopNode_" data-uid="chia.dotnet.ServiceProxy.StopNode*"></a>
   <h4 id="chia_dotnet_ServiceProxy_StopNode_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.StopNode(System.Threading.CancellationToken)">StopNode(CancellationToken)</h4>
@@ -507,7 +545,7 @@ and <a class="xref" href="chia.dotnet.Daemon.html#chia_dotnet_Daemon_Register_Sy
                     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L14" class="contribution-link">View Source</a>
+                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L13" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

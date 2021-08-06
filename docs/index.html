@@ -67,14 +67,15 @@
 <p>Still very much a work in progress. Websocket communication to the <code>daemon</code> works and can proxy messages to other services.</p>
 <p><em>Browse the <a href="https://dkackman.github.io/chia-dotnet/api/chia.dotnet.html">api documentation</a> and <a href="https://github.com/dkackman/chia-dotnet/tree/main/src/chia-dotnet.tests">integration test code</a> for more info and examples.</em></p>
 <h2 id="quick-start-notes">Quick Start Notes</h2>
-<pre><code class="lang-csharp">    using Daemon daemon = new Daemon(Config.Open().GetEndpoint(&quot;daemon&quot;), &quot;my-fancy-service&quot;);
+<pre><code class="lang-csharp">var endpoint = Config.Open().GetEndpoint(&quot;daemon&quot;);
+using var rpcClient = new WebSocketRpcClient(endpoint);
+await rpcClient.Connect();
 
-    await daemon.Connect(CancellationToken.None);
+var daemon = new DaemonProxy(rpcClient, &quot;unit_tests&quot;);
+await daemon.RegisterService();
 
-    await daemon.Register(CancellationToken.None);
-    var message = Message.Create(&quot;get_blockchain_state&quot;, new ExpandoObject(), ServiceNames.FullNode, daemon.ServiceName);
-
-    var state = await daemon.SendMessage(message, CancellationToken.None);
+var fullNode = new FullNodeProxy(rpcClient, &quot;unit_tests&quot;);
+var state = await fullNode.GetBlockchainState(e);
 </code></pre>
 </article>
           </div>

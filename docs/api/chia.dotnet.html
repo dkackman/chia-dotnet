@@ -83,8 +83,8 @@
       <h4><a class="xref" href="chia.dotnet.Config.html">Config</a></h4>
       <section><p>Represents a chia config yaml file and its contents. Used to find the uri and ssl certs needed to connect via a <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.net.websockets.websocket">WebSocket</a></p>
 </section>
-      <h4><a class="xref" href="chia.dotnet.Daemon.html">Daemon</a></h4>
-      <section><p><a class="xref" href="chia.dotnet.RpcClient.html">RpcClient</a> for the daemon interface. The daemon can be used to proxy messages to and from other chia services.</p>
+      <h4><a class="xref" href="chia.dotnet.DaemonProxy.html">DaemonProxy</a></h4>
+      <section><p><a class="xref" href="chia.dotnet.WebSocketRpcClient.html">WebSocketRpcClient</a> for the daemon interface. The daemon can be used to proxy messages to and from other chia services.</p>
 </section>
       <h4><a class="xref" href="chia.dotnet.DIDWallet.html">DIDWallet</a></h4>
       <section><p>Wraps a Distributed Identity Wallet</p>
@@ -100,6 +100,10 @@
 </section>
       <h4><a class="xref" href="chia.dotnet.HarvesterProxy.html">HarvesterProxy</a></h4>
       <section><p>Proxy that communicates with the harvester via the daemon</p>
+</section>
+      <h4><a class="xref" href="chia.dotnet.HttpRpcClient.html">HttpRpcClient</a></h4>
+      <section><p>Base class that handles core communication with the rpc endpoint using http(s)
+and synchronizes request and response messages</p>
 </section>
       <h4><a class="xref" href="chia.dotnet.Message.html">Message</a></h4>
       <section><p>The messaging data structure for request and response exchange with the RPC endpoint</p>
@@ -119,12 +123,8 @@
       <h4><a class="xref" href="chia.dotnet.ResponseException.html">ResponseException</a></h4>
       <section><p>Exception thrown when the RPC endpoint returns a response <a class="xref" href="chia.dotnet.Message.html">Message</a> but Data.success is false</p>
 </section>
-      <h4><a class="xref" href="chia.dotnet.RpcClient.html">RpcClient</a></h4>
-      <section><p>Base class that handles core websocket communication with the rpc endpoint
-and synchronizes request and response messages</p>
-</section>
       <h4><a class="xref" href="chia.dotnet.ServiceProxy.html">ServiceProxy</a></h4>
-      <section><p>Base class that uses a <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_Daemon">Daemon</a> to send and receive messages to other services</p>
+      <section><p>Base class that uses a <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_RpcClient">RpcClient</a> to send and receive messages to other services</p>
 </section>
       <h4><a class="xref" href="chia.dotnet.Wallet.html">Wallet</a></h4>
       <section><p>Base class representing a specific wallet (i.e. anything with a WalletID)</p>
@@ -132,10 +132,19 @@ and synchronizes request and response messages</p>
       <h4><a class="xref" href="chia.dotnet.WalletProxy.html">WalletProxy</a></h4>
       <section><p>Proxy that communicates with the wallet via the daemon</p>
 </section>
+      <h4><a class="xref" href="chia.dotnet.WebSocketRpcClient.html">WebSocketRpcClient</a></h4>
+      <section><p>Base class that handles core websocket communication with the rpc endpoint
+and synchronizes request and response messages</p>
+</section>
     <h3 id="structs">Structs
   </h3>
       <h4><a class="xref" href="chia.dotnet.ServiceNames.html">ServiceNames</a></h4>
       <section><p>The names of chia services. These are used as <a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Destination">Destination</a> values</p>
+</section>
+    <h3 id="interfaces">Interfaces
+  </h3>
+      <h4><a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a></h4>
+      <section><p>Interface representing rpc communcation</p>
 </section>
     <h3 id="enums">Enums
   </h3>

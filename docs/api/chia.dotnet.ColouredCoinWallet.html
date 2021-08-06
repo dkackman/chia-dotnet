@@ -109,13 +109,13 @@
       <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_DeleteUnconfirmedTransactions_System_Threading_CancellationToken_">Wallet.DeleteUnconfirmedTransactions(CancellationToken)</a>
     </div>
     <div>
-      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransaction_System_String_System_Numerics_BigInteger_System_Numerics_BigInteger_System_Threading_CancellationToken_">Wallet.SendTransaction(String, BigInteger, BigInteger, CancellationToken)</a>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransaction_System_String_System_UInt64_System_UInt64_System_Threading_CancellationToken_">Wallet.SendTransaction(String, UInt64, UInt64, CancellationToken)</a>
     </div>
     <div>
-      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_System_Object__System_Collections_Generic_IEnumerable_System_Object__System_Numerics_BigInteger_System_Threading_CancellationToken_">Wallet.SendTransactionMulti(IEnumerable&lt;Object&gt;, IEnumerable&lt;Object&gt;, BigInteger, CancellationToken)</a>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_System_Object__System_Collections_Generic_IEnumerable_System_Object__System_UInt64_System_Threading_CancellationToken_">Wallet.SendTransactionMulti(IEnumerable&lt;Object&gt;, IEnumerable&lt;Object&gt;, UInt64, CancellationToken)</a>
     </div>
     <div>
-      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_System_Object__System_Numerics_BigInteger_System_Threading_CancellationToken_">Wallet.SendTransactionMulti(IEnumerable&lt;Object&gt;, BigInteger, CancellationToken)</a>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_System_Object__System_UInt64_System_Threading_CancellationToken_">Wallet.SendTransactionMulti(IEnumerable&lt;Object&gt;, UInt64, CancellationToken)</a>
     </div>
     <div>
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_">Object.Equals(Object)</a>
@@ -347,19 +347,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ColouredCoinWallet_Spend_System_String_System_Numerics_BigInteger_System_Numerics_BigInteger_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ColouredCoinWallet.Spend(System.String%2CSystem.Numerics.BigInteger%2CSystem.Numerics.BigInteger%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ColouredCoinWallet_Spend_System_String_System_UInt64_System_UInt64_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ColouredCoinWallet.Spend(System.String%2CSystem.UInt64%2CSystem.UInt64%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ColouredCoinWallet.cs/#L76">View Source</a>
   </span>
   <a id="chia_dotnet_ColouredCoinWallet_Spend_" data-uid="chia.dotnet.ColouredCoinWallet.Spend*"></a>
-  <h4 id="chia_dotnet_ColouredCoinWallet_Spend_System_String_System_Numerics_BigInteger_System_Numerics_BigInteger_System_Threading_CancellationToken_" data-uid="chia.dotnet.ColouredCoinWallet.Spend(System.String,System.Numerics.BigInteger,System.Numerics.BigInteger,System.Threading.CancellationToken)">Spend(String, BigInteger, BigInteger, CancellationToken)</h4>
+  <h4 id="chia_dotnet_ColouredCoinWallet_Spend_System_String_System_UInt64_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.ColouredCoinWallet.Spend(System.String,System.UInt64,System.UInt64,System.Threading.CancellationToken)">Spend(String, UInt64, UInt64, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Spend a coloured coin</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;dynamic&gt; Spend(string innerAddress, BigInteger amount, BigInteger fee, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;dynamic&gt; Spend(string innerAddress, ulong amount, ulong fee, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -374,16 +374,17 @@
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">innerAddress</span></td>
-        <td></td>
+        <td><p>inner address for the spend</p>
+</td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint64">UInt64</a></td>
         <td><span class="parametername">amount</span></td>
         <td><p>the amount to put in the wallet (in units of mojos)</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint64">UInt64</a></td>
         <td><span class="parametername">fee</span></td>
         <td><p>fee to create the wallet (in units of mojos)</p>
 </td>
