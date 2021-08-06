@@ -39,7 +39,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("pw_join_pool", data, cancellationToken);
 
-            return response.Data.transaction;
+            return response.transaction;
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("pw_self_pool", data, cancellationToken);
 
-            return response.Data.transaction;
+            return response.transaction;
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace chia.dotnet
         /// <param name="fee">Transaction fee (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Wallet state and transaction</returns>
-        public async Task<(dynamic State, dynamic Transaction)> AbsorbRewards(BigInteger fee, CancellationToken cancellationToken = default)
+        public async Task<(dynamic State, dynamic Transaction)> AbsorbRewards(ulong fee, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -73,7 +73,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("pw_absorb_rewards", cancellationToken);
 
-            return (response.Data.state, response.Data.transaction);
+            return (response.state, response.transaction);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("pw_status", data, cancellationToken);
 
-            return (response.Data.state, response.Data.unconfirmed_transactions);
+            return (response.state, response.unconfirmed_transactions);
         }
     }
 }

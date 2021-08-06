@@ -19,9 +19,8 @@ namespace chia.dotnet.tests
                 CertPath = "",
                 KeyPath = ""
             };
-            using var daemon = new Daemon(endpoint, "unit_tests");
-
-            await daemon.Connect();
+            using var rpc = new WebSocketRpcClient(endpoint);
+            await rpc.Connect();
         }
     }
 }

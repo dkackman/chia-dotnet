@@ -15,9 +15,10 @@ namespace chia.dotnet
         /// <summary>
         /// ctor
         /// </summary>
-        /// <param name="daemon">The <see cref="Daemon"/> to handle RPC</param>
-        public FullNodeProxy(Daemon daemon)
-            : base(daemon, ServiceNames.FullNode, daemon.OriginService)
+        /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
+        /// <param name="originService"><see cref="Message.Origin"/></param>
+        public FullNodeProxy(IRpcClient rpcClient, string originService)
+            : base(rpcClient, ServiceNames.FullNode, originService)
         {
         }
 
@@ -30,7 +31,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_blockchain_state", cancellationToken);
 
-            return response.Data.blockchain_state;
+            return response.blockchain_state;
         }
 
         /// <summary>
@@ -46,7 +47,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_block", data, cancellationToken);
 
-            return response.Data.block;
+            return response.block;
         }
 
         /// <summary>
@@ -62,7 +63,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_block_record", data, cancellationToken);
 
-            return response.Data.block_record;
+            return response.block_record;
         }
 
         /// <summary>
@@ -78,7 +79,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_block_record_by_height", data, cancellationToken);
 
-            return response.Data.block_record;
+            return response.block_record;
         }
 
         /// <summary>
@@ -96,7 +97,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_block_records", data, cancellationToken);
 
-            return response.Data.block_records;
+            return response.block_records;
         }
 
         /// <summary>
@@ -116,7 +117,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_blocks", data, cancellationToken);
 
-            return response.Data.blocks;
+            return response.blocks;
         }
 
         /// <summary>
@@ -128,7 +129,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_unfinished_block_headers", cancellationToken);
 
-            return response.Data.headers;
+            return response.headers;
         }
 
         /// <summary>
@@ -146,7 +147,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_coin_records_by_puzzle_hash", data, cancellationToken);
 
-            return response.Data.coin_records;
+            return response.coin_records;
         }
 
         /// <summary>
@@ -168,7 +169,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_coin_records_by_puzzle_hash", data, cancellationToken);
 
-            return response.Data.coin_records;
+            return response.coin_records;
         }
 
         /// <summary>
@@ -190,7 +191,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_coin_records_by_puzzle_hashes", data, cancellationToken);
 
-            return response.Data.coin_records;
+            return response.coin_records;
         }
 
         /// <summary>
@@ -206,7 +207,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_coin_record_by_name", data, cancellationToken);
 
-            return response.Data.coin_record;
+            return response.coin_record;
         }
 
         /// <summary>
@@ -222,7 +223,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_additions_and_removals", data, cancellationToken);
 
-            return (response.Data.additions, response.Data.removals);
+            return (response.additions, response.removals);
         }
 
         /// <summary>
@@ -234,7 +235,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_all_mempool_items", cancellationToken);
 
-            return response.Data.mempool_items;
+            return response.mempool_items;
         }
 
         /// <summary>
@@ -246,13 +247,13 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_all_mempool_tx_ids", cancellationToken);
 
-            return response.Data.tx_ids;
+            return response.tx_ids;
         }
 
         /// <summary>
         /// Gets a mempool item by tx id.
         /// </summary>
-        /// <param name="spendBundleHash"></param>
+        /// <param name="txId">Trasnaction id</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a list of tx_ids</returns>
         public async Task<dynamic> GetMemmpooItemByTxId(string txId, CancellationToken cancellationToken = default)
@@ -262,7 +263,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_mempool_item_by_tx_id", cancellationToken);
 
-            return response.Data.mempool_item;
+            return response.mempool_item;
         }
 
         /// <summary>
@@ -280,7 +281,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_network_space", data, cancellationToken);
 
-            return response.Data.space;
+            return response.space;
         }
 
         /// <summary>
@@ -292,7 +293,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_network_info", cancellationToken);
 
-            return (response.Data.network_name, response.Data.network_prefix);
+            return (response.network_name, response.network_prefix);
         }
 
         /// <summary>
@@ -309,7 +310,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("push_tx", data, cancellationToken);
 
-            return response.Data.status?.ToString() == "SUCCESS";
+            return response.status?.ToString() == "SUCCESS";
         }
 
         /// <summary>
@@ -325,7 +326,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_recent_signage_point_or_eos", data, cancellationToken);
 
-            return (response.Data.signage_point, response.Data.time_received, response.Data.reverted);
+            return (response.signage_point, response.time_received, response.reverted);
         }
 
         /// <summary>
@@ -341,7 +342,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_recent_signage_point_or_eos", data, cancellationToken);
 
-            return (response.Data.eos, response.Data.time_received, response.Data.reverted);
+            return (response.eos, response.time_received, response.reverted);
         }
 
 
@@ -360,7 +361,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_puzzle_and_solution", data, cancellationToken);
 
-            return response.Data.coin_solution;
+            return response.coin_solution;
         }
     }
 }

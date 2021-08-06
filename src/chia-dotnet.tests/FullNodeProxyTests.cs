@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
 
@@ -13,29 +13,32 @@ namespace chia.dotnet.tests
     [TestCategory("Integration")]
     public class FullNodeProxyTests
     {
-        private static Daemon _theDaemon;
         private static FullNodeProxy _theFullNode;
 
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
-            _theDaemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
+            using var cts = new CancellationTokenSource(15000);
+            var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
+            await rpcClient.Connect(cts.Token);
 
-            await _theDaemon.Connect();
-            await _theDaemon.Register();
-            _theFullNode = new FullNodeProxy(_theDaemon);
+            var daemon = new DaemonProxy(rpcClient, "unit_tests");
+            await daemon.RegisterService(cts.Token);
+
+            _theFullNode = new FullNodeProxy(rpcClient, "unit_tests");
         }
 
         [ClassCleanup()]
         public static void ClassCleanup()
         {
-            _theDaemon?.Dispose();
+            _theFullNode.RpcClient?.Dispose();
         }
 
         [TestMethod]
         public async Task GetBlockChainState()
         {
-            var state = await _theFullNode.GetBlockchainState();
+            using var cts = new CancellationTokenSource(15000);
+            var state = await _theFullNode.GetBlockchainState(cts.Token);
 
             Assert.IsNotNull(state);
         }
@@ -43,7 +46,8 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetBlock()
         {
-            var block = await _theFullNode.GetBlock("0xcb5c085a1f0259ab5581ebfce219f82cac9ec288da29665ce31e21a5b5856089");
+            using var cts = new CancellationTokenSource(15000);
+            var block = await _theFullNode.GetBlock("0xcb5c085a1f0259ab5581ebfce219f82cac9ec288da29665ce31e21a5b5856089", cts.Token);
 
             Assert.IsNotNull(block);
         }
@@ -51,7 +55,8 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetBlockRecord()
         {
-            var record = await _theFullNode.GetBlockRecord("0xcb5c085a1f0259ab5581ebfce219f82cac9ec288da29665ce31e21a5b5856089");
+            using var cts = new CancellationTokenSource(15000);
+            var record = await _theFullNode.GetBlockRecord("0xcb5c085a1f0259ab5581ebfce219f82cac9ec288da29665ce31e21a5b5856089", cts.Token);
 
             Assert.IsNotNull(record);
         }
@@ -59,7 +64,8 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetBlocks()
         {
-            var blocks = await _theFullNode.GetBlocks(435160, 435167, false);
+            using var cts = new CancellationTokenSource(15000);
+            var blocks = await _theFullNode.GetBlocks(435160, 435167, false, cts.Token);
 
             Assert.IsNotNull(blocks);
         }
@@ -67,7 +73,8 @@ namespace chia.dotnet.tests
         [TestMethod()]
         public async Task GetNetworkInfo()
         {
-            var info = await _theFullNode.GetNetworkInfo();
+            using var cts = new CancellationTokenSource(15000);
+            var info = await _theFullNode.GetNetworkInfo(cts.Token);
 
             Assert.IsNotNull(info);
         }
@@ -75,20 +82,23 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetNetworkSpace()
         {
-            var space = await _theFullNode.GetNetworkSpace("0xcb5c085a1f0259ab5581ebfce219f82cac9ec288da29665ce31e21a5b5856089", "0x9edc235dfcb12a14e20e8f83b53060d067d97d217d6f9a3420fc9dbb470040fe");
+            using var cts = new CancellationTokenSource(15000);
+            var space = await _theFullNode.GetNetworkSpace("0xcb5c085a1f0259ab5581ebfce219f82cac9ec288da29665ce31e21a5b5856089", "0x9edc235dfcb12a14e20e8f83b53060d067d97d217d6f9a3420fc9dbb470040fe", cts.Token);
             Assert.IsNotNull(space);
         }
 
         [TestMethod]
         public async Task Ping()
         {
-            await _theFullNode.Ping();
+            using var cts = new CancellationTokenSource(15000);
+            await _theFullNode.Ping(cts.Token);
         }
 
         [TestMethod]
         public async Task GetConnections()
         {
-            var connections = await _theFullNode.GetConnections();
+            using var cts = new CancellationTokenSource(15000);
+            var connections = await _theFullNode.GetConnections(cts.Token);
             Assert.IsNotNull(connections);
         }
 
@@ -96,20 +106,23 @@ namespace chia.dotnet.tests
         [Ignore] // only works on mainnet
         public async Task OpenConnection()
         {
-            await _theFullNode.OpenConnection("node.chia.net", 8444);
+            using var cts = new CancellationTokenSource(15000);
+            await _theFullNode.OpenConnection("node.chia.net", 8444, cts.Token);
         }
 
         [TestMethod()]
         public async Task GetBlockRecordByHeight()
         {
-            var blockRecord = await _theFullNode.GetBlockRecordByHeight(12441);
+            using var cts = new CancellationTokenSource(15000);
+            var blockRecord = await _theFullNode.GetBlockRecordByHeight(12441, cts.Token);
             Assert.IsNotNull(blockRecord);
         }
 
         [TestMethod()]
         public async Task GetBlockRecords()
         {
-            var blockRecords = await _theFullNode.GetBlockRecords(12000, 12441);
+            using var cts = new CancellationTokenSource(15000);
+            var blockRecords = await _theFullNode.GetBlockRecords(12000, 12441, cts.Token);
             Assert.IsNotNull(blockRecords);
         }
 
@@ -117,60 +130,68 @@ namespace chia.dotnet.tests
         [TestMethod()]
         public async Task GetUnfinishedBlockHeaders()
         {
-            var blockHeaders = await _theFullNode.GetUnfinishedBlockHeaders();
+            using var cts = new CancellationTokenSource(15000);
+            var blockHeaders = await _theFullNode.GetUnfinishedBlockHeaders(cts.Token);
             Assert.IsNotNull(blockHeaders);
         }
 
         [TestMethod()]
         public async Task GetCoinRecordsByPuzzleHash()
         {
-            var records = await _theFullNode.GetCoinRecordsByPuzzleHash("0xb5a83c005c4ee98dc807a560ea5bc361d6d3b32d2f4d75061351d1f6d2b6085f", true);
+            using var cts = new CancellationTokenSource(15000);
+            var records = await _theFullNode.GetCoinRecordsByPuzzleHash("0xb5a83c005c4ee98dc807a560ea5bc361d6d3b32d2f4d75061351d1f6d2b6085f", true, cts.Token);
             Assert.IsNotNull(records);
         }
 
         [TestMethod()]
         public async Task GetCoinRecordByName()
         {
-            var coinRecord = await _theFullNode.GetCoinRecordByName("0x2b83ca807d305cd142e0e91d4e7a18f8e57df0ac6b4fa403bff249d0d491c609");
+            using var cts = new CancellationTokenSource(15000);
+            var coinRecord = await _theFullNode.GetCoinRecordByName("0x2b83ca807d305cd142e0e91d4e7a18f8e57df0ac6b4fa403bff249d0d491c609", cts.Token);
             Assert.IsNotNull(coinRecord);
         }
 
         [TestMethod()]
         public async Task GetAdditionsAndRemovals()
         {
-            var additionsAndRemovals = await _theFullNode.GetAdditionsAndRemovals("7d83874e532ea08b0a5882ce8df705a5f45fc94bdeae4b1f568f05ce3010c6ae");
+            using var cts = new CancellationTokenSource(15000);
+            var additionsAndRemovals = await _theFullNode.GetAdditionsAndRemovals("7d83874e532ea08b0a5882ce8df705a5f45fc94bdeae4b1f568f05ce3010c6ae", cts.Token);
             Assert.IsNotNull(additionsAndRemovals);
         }
 
         [TestMethod()]
         public async Task GetAllMempoolItems()
         {
-            var items = await _theFullNode.GetAllMempoolItems();
+            using var cts = new CancellationTokenSource(15000);
+            var items = await _theFullNode.GetAllMempoolItems(cts.Token);
             Assert.IsNotNull(items);
         }
 
         [TestMethod()]
         public async Task GetAllMemmpoolTxIds()
         {
-            var ids = await _theFullNode.GetAllMemmpoolTxIds();
+            using var cts = new CancellationTokenSource(15000);
+            var ids = await _theFullNode.GetAllMemmpoolTxIds(cts.Token);
             Assert.IsNotNull(ids);
         }
 
         [TestMethod()]
         public async Task GetMemmpooItemByTxId()
         {
-            var ids = await _theFullNode.GetAllMemmpoolTxIds();
+            using var cts = new CancellationTokenSource(15000);
+            var ids = await _theFullNode.GetAllMemmpoolTxIds(cts.Token);
             Assert.IsNotNull(ids);
             Assert.IsTrue(ids.Count() > 0);
 
-            var item = await _theFullNode.GetMemmpooItemByTxId((string)ids.First());
+            var item = await _theFullNode.GetMemmpooItemByTxId((string)ids.First(), cts.Token);
             Assert.IsNotNull(item);
         }
 
         [TestMethod()]
         public async Task GetRecentSignagePoint()
         {
-            var sp = await _theFullNode.GetRecentSignagePoint("0xf3ca7a33ce723b38c9a72156252b3b2395ead751213eef5d8ed40c941c6a9017");
+            using var cts = new CancellationTokenSource(15000);
+            var sp = await _theFullNode.GetRecentSignagePoint("0xf3ca7a33ce723b38c9a72156252b3b2395ead751213eef5d8ed40c941c6a9017", cts.Token);
             Assert.IsNotNull(sp);
         }
     }

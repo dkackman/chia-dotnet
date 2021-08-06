@@ -18,7 +18,7 @@ namespace chia.dotnet
     /// Base class that handles core websocket communication with the rpc endpoint
     /// and synchronizes request and response messages
     /// </summary>
-    public class RpcClient : IDisposable
+    public class WebSocketRpcClient : IDisposable, IRpcClient
     {
         private readonly ClientWebSocket _webSocket = new();
         private readonly CancellationTokenSource _receiveCancellationTokenSource = new();
@@ -30,8 +30,8 @@ namespace chia.dotnet
         /// <summary>
         /// ctor
         /// </summary>
-        /// <param name="endpoint">Details of thw websocket endpoint</param>        
-        public RpcClient(EndpointInfo endpoint)
+        /// <param name="endpoint">Details of the websocket endpoint</param>        
+        public WebSocketRpcClient(EndpointInfo endpoint)
         {
             Endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
 
@@ -52,7 +52,7 @@ namespace chia.dotnet
         {
             if (disposedValue)
             {
-                throw new ObjectDisposedException(nameof(RpcClient));
+                throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
 
             if (_webSocket.State is WebSocketState.Connecting or WebSocketState.Open)
@@ -84,7 +84,7 @@ namespace chia.dotnet
         {
             if (disposedValue)
             {
-                throw new ObjectDisposedException(nameof(RpcClient));
+                throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
 
             _receiveCancellationTokenSource.Cancel();
@@ -94,20 +94,15 @@ namespace chia.dotnet
         /// <summary>
         /// Posts a <see cref="Message"/> to the websocket but does not wait for a response
         /// </summary>
-        /// <param name="message">The <see cref="Message"/> to post</param>
+        /// <param name="message">The message to post</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <remarks>Awaiting this method waits for the message to be sent only. It doesn't await a response.</remarks>
         /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task PostMessage(Message message, CancellationToken cancellationToken = default)
+        public virtual async Task PostMessage(Message message, CancellationToken cancellationToken = default)
         {
-            if (message is null)
-            {
-                throw new ArgumentNullException(nameof(message));
-            }
-
             if (disposedValue)
             {
-                throw new ObjectDisposedException(nameof(RpcClient));
+                throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
 
             var json = message.ToJson();
@@ -115,23 +110,18 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Sends a <see cref="Message"/> to the websocket and waits for a response
+        /// Sends a <see cref="Message"/> to the endpoint and waits for a response
         /// </summary>
-        /// <param name="message">The <see cref="Message"/> to send</param>
+        /// <param name="message">The message to send</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <remarks>Awaiting this method will block until a response is received from the <see cref="WebSocket"/> or the <see cref="CancellationToken"/> is cancelled</remarks>
         /// <returns>The response message</returns>
         /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
-        public async Task<Message> SendMessage(Message message, CancellationToken cancellationToken = default)
+        public async Task<dynamic> SendMessage(Message message, CancellationToken cancellationToken = default)
         {
-            if (message is null)
-            {
-                throw new ArgumentNullException(nameof(message));
-            }
-
             if (disposedValue)
             {
-                throw new ObjectDisposedException(nameof(RpcClient));
+                throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
 
             // capture the message to be sent
@@ -142,11 +132,11 @@ namespace chia.dotnet
 
             try
             {
-                var json = message.ToJson();
-                await _webSocket.SendAsync(Encoding.UTF8.GetBytes(json), WebSocketMessageType.Text, true, cancellationToken);
+                await PostMessage(message, cancellationToken);
             }
-            catch
+            catch (Exception e)
             {
+                Debug.WriteLine(e.Message);
                 _ = _pendingRequests.TryRemove(message.RequestId, out _);
                 throw;
             }
@@ -164,7 +154,7 @@ namespace chia.dotnet
                 _ = _pendingRequests.TryRemove(message.RequestId, out _);
             }
 
-            return !response.IsSuccessfulResponse ? throw new ResponseException(message, response, response.Data?.error?.ToString()) : response;
+            return !response.IsSuccessfulResponse ? throw new ResponseException(message, response.Data?.error?.ToString()) : response.Data;
         }
 
         /// <summary>

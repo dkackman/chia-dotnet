@@ -13,7 +13,7 @@ namespace chia.dotnet
     {
         /// <summary>
         /// Constructs an ephemeral <see cref="X509Certificate2"/> from crt and keys stored as files
-        /// </summary
+        /// </summary>
         /// <param name="certPath">The full path the the .crt public cert</param>
         /// <param name="keyPath">The full path to the RSA encoded private key</param>
         /// <returns>An ephemeral certificate that can be used for WebSocket authentication</returns>

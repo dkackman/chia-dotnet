@@ -14,9 +14,10 @@ namespace chia.dotnet
         /// <summary>
         /// ctor
         /// </summary>
-        /// <param name="daemon">The <see cref="Daemon"/> to handle RPC</param>
-        public HarvesterProxy(Daemon daemon)
-            : base(daemon, ServiceNames.Harvester, daemon.OriginService)
+        /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
+        /// <param name="originService"><see cref="Message.Origin"/></param>
+        public HarvesterProxy(IRpcClient rpcClient, string originService)
+            : base(rpcClient, ServiceNames.Harvester, originService)
         {
         }
 
@@ -29,7 +30,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_plots", cancellationToken);
 
-            return (response.Data.failed_to_open_filenames, response.Data.not_found_filenames, response.Data.plots);
+            return (response.failed_to_open_filenames, response.not_found_filenames, response.plots);
         }
 
         /// <summary>
@@ -56,12 +57,13 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_plot_directories", cancellationToken);
 
-            return ((IEnumerable<dynamic>)response.Data.directories).Select<dynamic, string>(item => item.ToString());
+            return ((IEnumerable<dynamic>)response.directories).Select<dynamic, string>(item => item.ToString());
         }
 
         /// <summary>
         /// Add a plot directory to the harvester configuration
         /// </summary>
+        /// <param name="dirname">The plot directory to add</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task AddPlotDirectory(string dirname, CancellationToken cancellationToken = default)
@@ -75,6 +77,7 @@ namespace chia.dotnet
         /// <summary>
         /// Removes a plot directory from the harveser configuration
         /// </summary>
+        /// <param name="dirname">The plot directory to remove</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task RemovePlotDirectory(string dirname, CancellationToken cancellationToken = default)

@@ -8,26 +8,28 @@ namespace chia.dotnet.tests
     [TestCategory("Integration")]
     public class ColouredCoinWalletTests
     {
-        private static Daemon _theDaemon;
         private static ColouredCoinWallet _theWallet;
 
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
-            _theDaemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
+            var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
+            await rpcClient.Connect();
 
-            await _theDaemon.Connect();
-            await _theDaemon.Register();
+            var daemon = new DaemonProxy(rpcClient, "unit_tests");            
+            await daemon.RegisterService();
+
+            var walletProxy = new WalletProxy(rpcClient, "unit_tests");
 
             // SET this wallet ID to a coloroured coin wallet 
-            _theWallet = new ColouredCoinWallet(2, new WalletProxy(_theDaemon));
+            _theWallet = new ColouredCoinWallet(2, walletProxy);
             _ = await _theWallet.Login();
         }
 
         [ClassCleanup()]
         public static void ClassCleanup()
         {
-            _theDaemon?.Dispose();
+            _theWallet.WalletProxy.RpcClient?.Dispose();
         }
 
         [TestMethod()]

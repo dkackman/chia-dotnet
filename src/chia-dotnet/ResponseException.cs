@@ -11,9 +11,8 @@ namespace chia.dotnet
         /// ctor
         /// </summary>
         /// <param name="request">The request sent to the service</param>
-        /// <param name="response">The response received from the service</param>
-        public ResponseException(Message request, Message response)
-            : this(request, response, "The RPC endpoint returned success == false", null)
+        public ResponseException(Message request)
+            : this(request, "The RPC endpoint returned success == false", null)
         {
         }
 
@@ -21,10 +20,9 @@ namespace chia.dotnet
         /// ctor
         /// </summary>
         /// <param name="request">The request sent to the service</param>
-        /// <param name="response">The response received from the service</param>
         /// <param name="message"><see cref="Exception.Message"/></param>
-        public ResponseException(Message request, Message response, string message)
-            : this(request, response, message, null)
+        public ResponseException(Message request, string message)
+            : this(request, message, null)
         {
         }
 
@@ -32,25 +30,17 @@ namespace chia.dotnet
         /// ctor
         /// </summary>
         /// <param name="request">The request sent to the service</param>
-        /// <param name="response">The response received from the service</param>
         /// <param name="message"><see cref="Exception.Message"/></param>
         /// <param name="innerException"><see cref="Exception.InnerException"/></param>
-        public ResponseException(Message request, Message response, string message, Exception innerException)
+        public ResponseException(Message request, string message, Exception innerException)
             : base(message, innerException)
         {
             Request = request;
-            Response = response;
         }
 
         /// <summary>
         /// The request sent to the service
         /// </summary>
         public Message Request { get; init; }
-
-
-        /// <summary>
-        /// The response received from the service
-        /// </summary>
-        public Message Response { get; init; }
     }
 }

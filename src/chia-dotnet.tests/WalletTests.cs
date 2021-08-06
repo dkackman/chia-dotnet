@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using System.Numerics;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -9,25 +8,27 @@ namespace chia.dotnet.tests
     [TestCategory("Integration")]
     public class WalletTests
     {
-        private static Daemon _theDaemon;
         private static Wallet _theWallet;
 
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
-            _theDaemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
+            var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
+            await rpcClient.Connect();
 
-            await _theDaemon.Connect();
-            await _theDaemon.Register();
+            var daemon = new DaemonProxy(rpcClient, "unit_tests");            
+            await daemon.RegisterService();
 
-            _theWallet = new Wallet(1, new WalletProxy(_theDaemon));
+            var walletProxy = new WalletProxy(rpcClient, "unit_tests");
+
+            _theWallet = new Wallet(1, walletProxy);
             _ = await _theWallet.Login();
         }
 
         [ClassCleanup()]
         public static void ClassCleanup()
         {
-            _theDaemon?.Dispose();
+            _theWallet.WalletProxy.RpcClient?.Dispose();
         }
 
         [TestMethod()]
@@ -83,7 +84,7 @@ namespace chia.dotnet.tests
         [TestCategory("CAUTION")]
         public async Task SendTransaction()
         {
-            var transaction = await _theWallet.SendTransaction("txch1em43zsczg2fv79jlg00ucedl9x3atvpnfa09uuk5pgd7v9039sdsashhuq", BigInteger.One, BigInteger.One);
+            var transaction = await _theWallet.SendTransaction("txch1em43zsczg2fv79jlg00ucedl9x3atvpnfa09uuk5pgd7v9039sdsashhuq", 1, 1);
 
             Assert.IsNotNull(transaction);
         }

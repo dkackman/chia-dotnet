@@ -44,7 +44,7 @@ namespace chia.dotnet
         /// <param name="numVerificationsRequired">The number of verifications required</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task UpdateRecoveryIds(IEnumerable<string> newList, BigInteger numVerificationsRequired, CancellationToken cancellationToken = default)
+        public async Task UpdateRecoveryIds(IEnumerable<string> newList, ulong numVerificationsRequired, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -72,7 +72,6 @@ namespace chia.dotnet
         /// <summary>
         /// Get the distributed identity and coin if present
         /// </summary>
-        /// <param name="puzzlehash">The puzzlehash of the spend</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A DID and optional CoinID</returns>
         public async Task<(string MyDID, string CoinID)> GetDID(CancellationToken cancellationToken = default)
@@ -83,7 +82,7 @@ namespace chia.dotnet
             var response = await WalletProxy.SendMessage("did_get_did", data, cancellationToken);
 
             // coin_id might be null
-            return (response.Data.my_did.ToString(), response.Data.coin_id?.ToString());
+            return (response.my_did.ToString(), response.coin_id?.ToString());
         }
 
         /// <summary>
@@ -98,7 +97,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("did_get_pubkey", data, cancellationToken);
 
-            return response.Data.pubkey.ToString();
+            return response.pubkey.ToString();
         }
 
         /// <summary>
@@ -138,16 +137,16 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("did_get_recovery_list", data, cancellationToken);
 
-            var recoverList = ((IEnumerable<dynamic>)response.Data.recover_list).Select<dynamic, string>(i => i.ToString());
+            var recoverList = ((IEnumerable<dynamic>)response.recover_list).Select<dynamic, string>(i => i.ToString());
 
-            return (recoverList, response.Data.num_required);
+            return (recoverList, response.num_required);
         }
 
         /// <summary>
         /// Create an attest file
         /// </summary>
         /// <param name="filename">file name of the attest</param>
-        /// <param name="coinname">The coin name</param>
+        /// <param name="coinName">The coin name</param>
         /// <param name="pubkey">The public key</param>
         /// <param name="puzHash">The puzzlehash</param>        
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
@@ -163,7 +162,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("did_create_attest", data, cancellationToken);
 
-            return (response.Data.message_spend_bundle, response.Data.info);
+            return (response.message_spend_bundle, response.info);
         }
 
         /// <summary>
@@ -178,7 +177,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("did_get_information_needed_for_recovery", data, cancellationToken);
 
-            return (response.Data.my_did, response.Data.coin_name, response.Data.newpuzhash, response.Data.pubkey, response.Data.backup_dids);
+            return (response.my_did, response.coin_name, response.newpuzhash, response.pubkey, response.backup_dids);
         }
 
         /// <summary>

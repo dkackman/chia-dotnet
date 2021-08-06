@@ -11,12 +11,13 @@ _Browse the [api documentation](https://dkackman.github.io/chia-dotnet/api/chia.
 ## Quick Start Notes
 
 ```csharp
-    using Daemon daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "my-fancy-service");
+var endpoint = Config.Open().GetEndpoint("daemon");
+using var rpcClient = new WebSocketRpcClient(endpoint);
+await rpcClient.Connect();
 
-    await daemon.Connect(CancellationToken.None);
+var daemon = new DaemonProxy(rpcClient, "unit_tests");
+await daemon.RegisterService();
 
-    await daemon.Register(CancellationToken.None);
-    var message = Message.Create("get_blockchain_state", new ExpandoObject(), ServiceNames.FullNode, daemon.ServiceName);
-
-    var state = await daemon.SendMessage(message, CancellationToken.None);
+var fullNode = new FullNodeProxy(rpcClient, "unit_tests");
+var state = await fullNode.GetBlockchainState(e);
 ```

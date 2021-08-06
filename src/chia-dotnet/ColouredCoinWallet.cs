@@ -32,7 +32,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("cc_get_name", data, cancellationToken);
 
-            return response.Data.name.ToString();
+            return response.name.ToString();
         }
 
         /// <summary>
@@ -62,18 +62,18 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("cc_get_colour", data, cancellationToken);
 
-            return response.Data.colour;
+            return response.colour;
         }
 
         /// <summary>
         /// Spend a coloured coin
         /// </summary>
-        /// <param name="limit">The limit amount</param>
+        /// <param name="innerAddress">inner address for the spend</param>
+        /// <param name="amount">the amount to put in the wallet (in units of mojos)</param> 
         /// <param name="fee">fee to create the wallet (in units of mojos)</param>
-        /// <param name="amount">the amount to put in the wallet (in units of mojos)</param>         
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A transaction</returns>
-        public async Task<dynamic> Spend(string innerAddress, BigInteger amount, BigInteger fee, CancellationToken cancellationToken = default)
+        public async Task<dynamic> Spend(string innerAddress, ulong amount, ulong fee, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -83,7 +83,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("cc_spend", data, cancellationToken);
 
-            return response.Data.transaction;
+            return response.transaction;
         }
     }
 }

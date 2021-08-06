@@ -1,4 +1,5 @@
 ﻿
+using System.Threading;
 using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -13,13 +14,30 @@ namespace chia.dotnet.tests
     //[Ignore] // uncomment to suppress completely
     public class DaemonTests
     {
+        private static DaemonProxy _theDaemon;
+
+        [ClassInitialize]
+        public static async Task Initialize(TestContext context)
+        {
+            using var cts = new CancellationTokenSource(15000);
+            var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
+            await rpcClient.Connect(cts.Token);
+
+            _theDaemon = new DaemonProxy(rpcClient, "unit_tests");
+        }
+
+        [ClassCleanup()]
+        public static void ClassCleanup()
+        {
+            _theDaemon.RpcClient?.Dispose();
+        }
+
         [TestMethod]
         public async Task GetFarmerIsRunning()
         {
-            using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
+            using var cts = new CancellationTokenSource(15000);
 
-            await daemon.Connect();
-            var running = await daemon.IsServiceRunning(ServiceNames.Farmer);
+            var running = await _theDaemon.IsServiceRunning(ServiceNames.Farmer, cts.Token);
 
             Assert.IsTrue(running);
         }
@@ -27,10 +45,9 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetHarvesterIsRunning()
         {
-            using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
+            using var cts = new CancellationTokenSource(15000);
 
-            await daemon.Connect();
-            var running = await daemon.IsServiceRunning(ServiceNames.Harvester);
+            var running = await _theDaemon.IsServiceRunning(ServiceNames.Harvester, cts.Token);
 
             Assert.IsTrue(running);
         }
@@ -39,41 +56,33 @@ namespace chia.dotnet.tests
         [Ignore]
         public async Task ExitDaemon()
         {
-            using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
-
-            await daemon.Connect();
-            await daemon.Exit();
+            using var cts = new CancellationTokenSource(15000);
+            await _theDaemon.Exit(cts.Token);
 
             // if no exception the daemon was stopped successfully
         }
 
         [TestMethod]
-        [Ignore]
-        public async Task StartAndStopFarmer()
+        public async Task RestartFarmer()
         {
-            using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
+            using var cts = new CancellationTokenSource(15000);
 
-            await daemon.Connect();
+            if (await _theDaemon.IsServiceRunning(ServiceNames.Farmer, cts.Token))
+            {
+                await _theDaemon.StopService(ServiceNames.Farmer, cts.Token);
+                Assert.IsFalse(await _theDaemon.IsServiceRunning(ServiceNames.Farmer, cts.Token));
+            }
 
-            Assert.IsFalse(await daemon.IsServiceRunning(ServiceNames.Farmer));
-
-            await daemon.StartService(ServiceNames.Farmer);
-            Assert.IsTrue(await daemon.IsServiceRunning(ServiceNames.Farmer));
-
-            await daemon.StopService(ServiceNames.Farmer);
-            Assert.IsFalse(await daemon.IsServiceRunning(ServiceNames.Farmer));
-
-            // if no exception the daemon was stopped successfully
+            await _theDaemon.StartService(ServiceNames.Farmer, cts.Token);
+            Assert.IsTrue(await _theDaemon.IsServiceRunning(ServiceNames.Farmer, cts.Token));
         }
 
         [TestMethod]
         public async Task RegisterService()
         {
-            using var daemon = DaemonFactory.CreateDaemonFromHardcodedLocation();
+            using var cts = new CancellationTokenSource(15000);
 
-            await daemon.Connect();
-
-            await daemon.RegisterService(daemon.OriginService);
+            await _theDaemon.RegisterService("new_service", cts.Token);
 
             // no exception we were successful
         }

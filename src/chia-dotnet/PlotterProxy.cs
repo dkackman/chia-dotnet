@@ -2,6 +2,7 @@
 using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace chia.dotnet
 {
@@ -13,10 +14,26 @@ namespace chia.dotnet
         /// <summary>
         /// ctor
         /// </summary>
-        /// <param name="daemon">The <see cref="Daemon"/> to handle RPC</param>
-        public PlotterProxy(Daemon daemon)
-            : base(daemon, ServiceNames.Daemon, daemon.OriginService) // plotting commands are handled by the daemon directly
+        /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
+        /// <param name="originService"><see cref="Message.Origin"/></param>
+        public PlotterProxy(WebSocketRpcClient rpcClient, string originService)
+            : base(rpcClient, ServiceNames.Daemon, originService)
         {
+        }
+
+        /// <summary>
+        /// Registers this instance as a plotter and retreives the plot queue
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>The plot queue</returns>
+        public async Task<IEnumerable<dynamic>> RegisterPlotter(CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.service = ServiceNames.Plotter;
+
+            var response = await SendMessage("register_service", data, cancellationToken);
+
+            return response.queue;
         }
 
         /// <summary>
@@ -40,7 +57,7 @@ namespace chia.dotnet
         /// <summary>
         /// Stops the plot with the given id
         /// </summary>
-        /// <param name="id">The id of the plot to stop. Can be found by instpecting the plot queue returned from <see cref="Daemon.RegisterPlotter(CancellationToken)"/></param>
+        /// <param name="id">The id of the plot to stop. Can be found by inspecting the plot queue returned from <see cref="RegisterPlotter(CancellationToken)"/></param>
         /// <param name="cancellationToken"></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task StopPlotting(string id, CancellationToken cancellationToken = default)

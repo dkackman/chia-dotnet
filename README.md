@@ -10,15 +10,15 @@ A [.net 5](https://dotnet.microsoft.com/download/dotnet/5.0) client library for 
 
 https://dkackman.github.io/chia-dotnet/
 
-### Service Coverage
+### Features
 
-- [x] Daemon
-- [x] Full Node
-- [x] Farmer
-- [x] Harvester
-- [x] Wallet 
-- [x] Plotter
-
+- Coverage of all of chia's rpc endpoints
+  - Daemon, Full Node, Farmer, Harvester Wallet, Plotter
+- Complete coverage the methods ate each endpoint
+  - as of 1.2.3 (if you find something missing please create an issue)
+- Supports connecting via teh `daemon` on `wss` or directly to each service over `https`
+  - both `https` and `wss` use tha same interfaces so switching is seemless
+  
 ### Examples
 
 _Test carefully and in one of the testnets!_
@@ -26,30 +26,29 @@ _Test carefully and in one of the testnets!_
 #### Connect to the Node and find out about the blockchain
 
 ```csharp
-using var daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
+var endpoint = Config.Open().GetEndpoint("daemon");
+using var rpcClient = new WebSocketRpcClient(endpoint);
+await rpcClient.Connect();
 
-await daemon.Connect(CancellationToken.None);
-await daemon.Register(CancellationToken.None);
+var daemon = new DaemonProxy(rpcClient, "unit_tests");
+await daemon.RegisterService();
 
-var fullNode = new FullNodeProxy(daemon);
-var state = await fullNode.GetBlockchainState(CancellationToken.None);
+var fullNode = new FullNodeProxy(rpcClient, "unit_tests");
+var state = await fullNode.GetBlockchainState(e);
 ```
 
 #### Send me some chia
 
-
 ```csharp
-using var daemon = new Daemon(Config.Open().GetEndpoint("daemon"), "unit_tests");
-
-await daemon.Connect();
-await daemon.Register();
+var endpoint = Config.Open().GetEndpoint("wallet");
+using var rpcClient = new HttpRpcClient(endpoint);
 
 // walletId of 1 is the main wallet
-var wallet = new Wallet(1, new WalletProxy(_theDaemon));
+var wallet = new Wallet(1, new WalletProxy(rpcClient, "unit_tests"));
 _ = await wallet.Login();
 
 // this is my receive address. feel free to run this code on mainnet as often as you like :-)
-var transaction = await wallet.SendTransaction("xch1zr49kksq5t27lx5gu3wnfgfxscnkvh3xqyldqz9xg5amsm26x86sh0kzhl", BigInteger.One, BigInteger.One);
+var transaction = await wallet.SendTransaction("xch1zr49kksq5t27lx5gu3wnfgfxscnkvh3xqyldqz9xg5amsm26x86sh0kzhl", 1, 1);
 ```
 
 ### Build
@@ -77,7 +76,8 @@ In addition to static vs dynamic typing, C# and Python have very different conve
 - Method and property names are `ProperCased`.
 - Parameter names are `camelCased`.
 - The chia RPC uses unsigned integers where dotnet might use signed. In cases where chia expects an unsigned number, it is unsigned on the dotnet side.
-- [`BigInteger`](https://docs.microsoft.com/en-us/dotnet/api/system.numerics.biginteger?view=net-5.0) is used for the python unsigned 64 bit int.
+- `ulong` is used for the python 64 bit unsigned int.
+- `BigInteger` is used for the python 128 bit unsigned int.
 - Where the RPC return a scalar value, the dotnet code will as well.
 - Where the RPC returns a list of named scalar values, they are returned as a Tuple with named fields.
 - Complex types and structs are currently returned as a `dynamic` [`ExpandoObject`](https://docs.microsoft.com/en-us/dotnet/api/system.dynamic.expandoobject?view=net-5.0). This may change in the future.
