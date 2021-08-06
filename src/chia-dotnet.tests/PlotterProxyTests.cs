@@ -42,6 +42,7 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
+        [TestCategory("CAUTION")]
         public async Task StartPlotting()
         {
             var config = new PlotterConfig()

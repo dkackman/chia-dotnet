@@ -6,6 +6,7 @@ namespace chia.dotnet.tests
 {
     [TestClass]
     [TestCategory("Integration")]
+    [Ignore]
     public class DIDWalletTests
     {
         private static DIDWallet _theWallet;
