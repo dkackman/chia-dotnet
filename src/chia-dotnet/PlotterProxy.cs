@@ -26,14 +26,14 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The plot queue</returns>
-        public async Task<IEnumerable<dynamic>> RegisterPlotter(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<PlotQueueItem>> RegisterPlotter(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.service = ServiceNames.Plotter;
 
-            var response = await SendMessage("register_service", data, cancellationToken);
+            var response = await SendMessage<IEnumerable<PlotQueueItem>>("register_service", data, cancellationToken);
 
-            return response.queue;
+            return DynamicConverter.ConvertCollection<PlotQueueItem>((IEnumerable<dynamic>)response.queue);
         }
 
         /// <summary>
