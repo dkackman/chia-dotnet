@@ -14,10 +14,10 @@ https://dkackman.github.io/chia-dotnet/
 
 - Coverage of all of chia's rpc endpoints
   - Daemon, Full Node, Farmer, Harvester Wallet, Plotter
-- Complete coverage the methods ate each endpoint
+- Complete coverage the methods at each endpoint
   - as of 1.2.3 (if you find something missing please create an issue)
-- Supports connecting via teh `daemon` on `wss` or directly to each service over `https`
-  - both `https` and `wss` use tha same interfaces so switching is seemless
+- Supports connecting via the `daemon` on `wss` or directly to each service over `https`
+  - both `https` and `wss` use tha same interfaces, so switching is seemless
   
 ### Examples
 
