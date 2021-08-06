@@ -61,9 +61,12 @@ namespace chia.dotnet.tests
             Assert.IsNotNull(q);
         }
 
-        private static void _theDaemon_BroadcastMessageReceived(object sender, Message e)
+        [TestMethod()]
+        public async Task RegisterPlotter()
         {
+            var q = await _thePlotter.RegisterPlotter();
 
+            Assert.IsNotNull(q);
         }
     }
 }

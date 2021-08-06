@@ -134,5 +134,16 @@ namespace chia.dotnet
             var message = Message.Create(command, data, DestinationService, OriginService);
             return await RpcClient.SendMessage(message, cancellationToken);
         }
+
+        internal async Task<T> SendMessage<T>(string command, CancellationToken cancellationToken)
+        {
+            return await SendMessage<T>(command, null, cancellationToken);
+        }
+
+        internal async Task<T> SendMessage<T>(string command, dynamic data, CancellationToken cancellationToken)
+        {
+            var message = Message.Create(command, data, DestinationService, OriginService);
+            return await RpcClient.SendMessage<T>(message, cancellationToken);
+        }
     }
 }

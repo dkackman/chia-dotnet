@@ -81,6 +81,11 @@ namespace chia.dotnet
             dynamic responseMessage = await response.Deserialize<dynamic>();
             return responseMessage?.success == false ? throw new ResponseException(message, responseMessage?.error?.ToString()) : (dynamic)responseMessage;
         }
+        
+        public async Task<T> SendMessage<T>(Message message, CancellationToken cancellationToken = default)
+        {
+            return default;
+        }
 
         private static bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
         {

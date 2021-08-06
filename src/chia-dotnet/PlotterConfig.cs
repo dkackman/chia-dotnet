@@ -19,6 +19,20 @@ namespace chia.dotnet
         K35 = 35,
     }
 
+    public record PlotQueueItem
+    {
+        public int Delay { get; internal set; }
+        public bool Deleted { get; internal set; }
+        public string Error { get; internal set; }
+        public string Id { get; internal set; }
+        public string Log { get; internal set; }
+        public string LogNew { get; internal set; }
+        public bool Parallel { get; internal set; }
+        public string Queue { get; internal set; }
+        public KValues Size { get; internal set; }
+        public string State { get; internal set; }
+    }
+
     /// <summary>
     /// Configuration settings for the plotter. (equivalent to chia plots create command line args)
     /// </summary>

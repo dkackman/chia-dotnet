@@ -32,5 +32,7 @@ namespace chia.dotnet
         /// <returns>The response message</returns>
         /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
         Task<dynamic> SendMessage(Message message, CancellationToken cancellationToken = default);
+
+        Task<T> SendMessage<T>(Message message, CancellationToken cancellationToken = default);
     }
 }

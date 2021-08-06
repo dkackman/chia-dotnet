@@ -158,6 +158,20 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Sends a <see cref="Message"/> to the endpoint and waits for a response
+        /// </summary>
+        /// <param name="message">The message to send</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <remarks>Awaiting this method will block until a response is received from the <see cref="WebSocket"/> or the <see cref="CancellationToken"/> is cancelled</remarks>
+        /// <returns>The response message</returns>
+        /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
+        public async Task<T> SendMessage<T>(Message message, CancellationToken cancellationToken = default)
+        {
+            var d = await SendMessage(message, cancellationToken);
+            
+        }
+
+        /// <summary>
         /// Event raised when a message is received from the endpoint that was either not in response to a request
         /// or was a response from a posted message (i.e. we didn't register to receive the response)
         /// Pooling state_changed messages come through this event
@@ -175,8 +189,8 @@ namespace chia.dotnet
                 throw new ArgumentNullException(nameof(message));
             }
 
-            Debug.WriteLine("Broadcast message:");
-            Debug.WriteLine(message.ToJson());
+            //  Debug.WriteLine("Broadcast message:");
+            // Debug.WriteLine(message.ToJson());
 
             BroadcastMessageReceived?.Invoke(this, message);
         }
