@@ -47,7 +47,7 @@ namespace chia.dotnet.tests
         public async Task GetBlock()
         {
             using var cts = new CancellationTokenSource(15000);
-            var block = await _theFullNode.GetBlock("0xcb5c085a1f0259ab5581ebfce219f82cac9ec288da29665ce31e21a5b5856089", cts.Token);
+            var block = await _theFullNode.GetBlock("0x09d2eeda4845ec7160142b4b30ae8b3998cf5abab62a999d2ded35879945abcb", cts.Token);
 
             Assert.IsNotNull(block);
         }
@@ -56,7 +56,7 @@ namespace chia.dotnet.tests
         public async Task GetBlockRecord()
         {
             using var cts = new CancellationTokenSource(15000);
-            var record = await _theFullNode.GetBlockRecord("0xcb5c085a1f0259ab5581ebfce219f82cac9ec288da29665ce31e21a5b5856089", cts.Token);
+            var record = await _theFullNode.GetBlockRecord("0x09d2eeda4845ec7160142b4b30ae8b3998cf5abab62a999d2ded35879945abcb", cts.Token);
 
             Assert.IsNotNull(record);
         }
@@ -114,7 +114,7 @@ namespace chia.dotnet.tests
         public async Task GetBlockRecordByHeight()
         {
             using var cts = new CancellationTokenSource(15000);
-            var blockRecord = await _theFullNode.GetBlockRecordByHeight(12441, cts.Token);
+            var blockRecord = await _theFullNode.GetBlockRecordByHeight(419019, cts.Token);
             Assert.IsNotNull(blockRecord);
         }
 
@@ -122,7 +122,7 @@ namespace chia.dotnet.tests
         public async Task GetBlockRecords()
         {
             using var cts = new CancellationTokenSource(15000);
-            var blockRecords = await _theFullNode.GetBlockRecords(12000, 12441, cts.Token);
+            var blockRecords = await _theFullNode.GetBlockRecords(419019, 419021, cts.Token);
             Assert.IsNotNull(blockRecords);
         }
 

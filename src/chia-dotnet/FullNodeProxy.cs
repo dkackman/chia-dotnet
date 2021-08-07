@@ -54,14 +54,12 @@ namespace chia.dotnet
         /// <param name="headerhash">The header hash</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>block_record</returns>
-        public async Task<dynamic> GetBlockRecord(string headerhash, CancellationToken cancellationToken = default)
+        public async Task<BlockRecord> GetBlockRecord(string headerhash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.header_hash = headerhash;
 
-            var response = await SendMessage("get_block_record", data, cancellationToken);
-
-            return response.block_record;
+            return await SendMessage<BlockRecord>("get_block_record", data, "block_record", cancellationToken);
         }
 
         /// <summary>
@@ -70,14 +68,12 @@ namespace chia.dotnet
         /// <param name="height">the height to get</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>block_record</returns>
-        public async Task<dynamic> GetBlockRecordByHeight(uint height, CancellationToken cancellationToken = default)
+        public async Task<BlockRecord> GetBlockRecordByHeight(uint height, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.height = height;
 
-            var response = await SendMessage("get_block_record_by_height", data, cancellationToken);
-
-            return response.block_record;
+            return await SendMessage<BlockRecord>("get_block_record_by_height", data, "block_record", cancellationToken);
         }
 
         /// <summary>
@@ -87,15 +83,13 @@ namespace chia.dotnet
         /// <param name="end">End Height - non-inclusive</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>list of block_record</returns>
-        public async Task<IEnumerable<dynamic>> GetBlockRecords(uint start, uint end, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<BlockRecord>> GetBlockRecords(uint start, uint end, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.start = start;
             data.end = end;
 
-            var response = await SendMessage("get_block_records", data, cancellationToken);
-
-            return response.block_records;
+            return await SendMessage<List<BlockRecord>>("get_block_records", data, "block_records", cancellationToken);            
         }
 
         /// <summary>
