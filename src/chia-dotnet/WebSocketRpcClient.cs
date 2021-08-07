@@ -158,22 +158,6 @@ namespace chia.dotnet
             return !response.IsSuccessfulResponse ? throw new ResponseException(message, response.Data?.error?.ToString()) : response.Data;
         }
 
-        public async Task<T> SendMessage<T>(Message message, CancellationToken cancellationToken = default) where T : new()
-        {
-            var d = await SendMessage(message, cancellationToken);
-
-            return DynamicConverter.Convert<T>(d);
-        }
-
-        public async Task<IEnumerable<T>> SendMessageCollection<T>(Message message, CancellationToken cancellationToken = default) where T : new()
-        {
-            var d = await SendMessage(message, cancellationToken);
-            // REMOVE ME
-            d = d.queue;
-
-            return DynamicConverter.ConvertCollection<T>(d);
-        }
-
         /// <summary>
         /// Event raised when a message is received from the endpoint that was either not in response to a request
         /// or was a response from a posted message (i.e. we didn't register to receive the response)
@@ -192,7 +176,7 @@ namespace chia.dotnet
                 throw new ArgumentNullException(nameof(message));
             }
 
-            //  Debug.WriteLine("Broadcast message:");
+            // Debug.WriteLine("Broadcast message:");
             // Debug.WriteLine(message.ToJson());
 
             BroadcastMessageReceived?.Invoke(this, message);

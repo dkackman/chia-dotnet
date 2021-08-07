@@ -27,7 +27,7 @@ namespace chia.dotnet
         public static T Convert<T>(object o) where T : new()
         {
             var d = o as IDictionary<string, object>;
-            if (d is not null) 
+            if (d is not null)
             {
                 return d.Convert<T>();
             }

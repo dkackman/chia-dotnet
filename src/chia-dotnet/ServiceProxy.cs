@@ -4,6 +4,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json.Linq;
+
 namespace chia.dotnet
 {
     /// <summary>
@@ -124,11 +128,6 @@ namespace chia.dotnet
             _ = await SendMessage("close_connection", data, cancellationToken);
         }
 
-        internal async Task<dynamic> SendMessage(string command, CancellationToken cancellationToken)
-        {
-            return await SendMessage(command, null, cancellationToken);
-        }
-
         internal async Task<dynamic> SendMessage(string command, dynamic data = null, CancellationToken cancellationToken = default)
         {
             var message = Message.Create(command, data, DestinationService, OriginService);
@@ -137,14 +136,44 @@ namespace chia.dotnet
 
         internal async Task<T> SendMessage<T>(string command, dynamic data, string item = null, CancellationToken cancellationToken = default) where T : new()
         {
-            var message = Message.Create(command, data, DestinationService, OriginService);
-            return await RpcClient.SendMessage<T>(message, cancellationToken);
+            var d = await SendMessage(command, data, cancellationToken);
+
+            var j = d as JObject;
+            var token = j.GetValue(item);
+
+            var serializerSettings = new JsonSerializerSettings
+            {
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new SnakeCaseNamingStrategy()
+                }
+            };
+
+            var serializer = JsonSerializer.Create(serializerSettings);
+            return token.ToObject<T>(serializer);
+
+            return DynamicConverter.Convert<T>(d);
         }
 
         internal async Task<IEnumerable<T>> SendMessageCollection<T>(string command, dynamic data, string item = null, CancellationToken cancellationToken = default) where T : new()
         {
-            var message = Message.Create(command, data, DestinationService, OriginService);
-            return await RpcClient.SendMessageCollection<T>(message, cancellationToken);
+            var d = await SendMessage(command, data, cancellationToken);
+
+            var j = d as JObject;
+            var token = j.GetValue(item);
+
+            var serializerSettings = new JsonSerializerSettings
+            {
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new SnakeCaseNamingStrategy()
+                }
+            };
+
+            var serializer = JsonSerializer.Create(serializerSettings);
+            return token.ToObject<List<T>>(serializer);
+
+            return DynamicConverter.ConvertCollection<T>(d);
         }
     }
 }
