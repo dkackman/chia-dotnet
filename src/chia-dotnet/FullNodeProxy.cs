@@ -27,11 +27,9 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>blockchain_state</returns>
-        public async Task<dynamic> GetBlockchainState(CancellationToken cancellationToken = default)
+        public async Task<BlockchainState> GetBlockchainState(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_blockchain_state", cancellationToken);
-
-            return response.blockchain_state;
+            return await SendMessage<BlockchainState>("get_blockchain_state", "blockchain_state", cancellationToken);
         }
 
         /// <summary>
