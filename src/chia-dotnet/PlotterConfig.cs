@@ -19,7 +19,7 @@ namespace chia.dotnet
         K35 = 35,
     }
 
-    public class PlotQueueItem
+    public class PlotQueueEntry
     {
         public int Delay { get; set; }
         public bool Deleted { get; set; }

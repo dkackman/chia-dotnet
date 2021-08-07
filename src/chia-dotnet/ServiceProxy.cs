@@ -4,10 +4,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using Newtonsoft.Json.Linq;
-
 namespace chia.dotnet
 {
     /// <summary>
@@ -128,41 +124,24 @@ namespace chia.dotnet
             _ = await SendMessage("close_connection", data, cancellationToken);
         }
 
+        //
+        // These methods are the important ones that package up the request for the rpc lcient and then
+        // parse and convert the response for the requester
+        //
         internal async Task<dynamic> SendMessage(string command, dynamic data = null, CancellationToken cancellationToken = default)
         {
             var message = Message.Create(command, data, DestinationService, OriginService);
             return await RpcClient.SendMessage(message, cancellationToken);
         }
 
+        //
+        // If the return is a collection specify List<SomeConcreteType> in the caller
+        //
         internal async Task<T> SendMessage<T>(string command, dynamic data = null, string item = null, CancellationToken cancellationToken = default) where T : new()
         {
             var d = await SendMessage(command, data, cancellationToken);
 
-            return Convert<T>(d, item);
-        }
-
-        internal async Task<IEnumerable<T>> SendMessageCollection<T>(string command, dynamic data = null, string item = null, CancellationToken cancellationToken = default) where T : new()
-        {
-            var d = await SendMessage(command, data, cancellationToken);
-
-            return Convert<List<T>>(d, item);
-        }
-
-        private static T Convert<T>(dynamic o, string item)
-        {
-            var j = o as JObject;
-            var token = string.IsNullOrEmpty(item) ? j : j.GetValue(item);
-
-            var serializerSettings = new JsonSerializerSettings
-            {
-                ContractResolver = new DefaultContractResolver
-                {
-                    NamingStrategy = new SnakeCaseNamingStrategy()
-                }
-            };
-
-            var serializer = JsonSerializer.Create(serializerSettings);
-            return token.ToObject<T>(serializer);
+            return DynamicConverter.Convert<T>(d, item);
         }
     }
 }
