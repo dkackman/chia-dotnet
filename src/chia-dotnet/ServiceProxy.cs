@@ -134,14 +134,14 @@ namespace chia.dotnet
             return await RpcClient.SendMessage(message, cancellationToken);
         }
 
-        internal async Task<T> SendMessage<T>(string command, dynamic data, string item = null, CancellationToken cancellationToken = default) where T : new()
+        internal async Task<T> SendMessage<T>(string command, dynamic data = null, string item = null, CancellationToken cancellationToken = default) where T : new()
         {
             var d = await SendMessage(command, data, cancellationToken);
 
             return Convert<T>(d, item);
         }
 
-        internal async Task<IEnumerable<T>> SendMessageCollection<T>(string command, dynamic data, string item = null, CancellationToken cancellationToken = default) where T : new()
+        internal async Task<IEnumerable<T>> SendMessageCollection<T>(string command, dynamic data = null, string item = null, CancellationToken cancellationToken = default) where T : new()
         {
             var d = await SendMessage(command, data, cancellationToken);
 
