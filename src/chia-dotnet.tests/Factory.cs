@@ -1,10 +1,22 @@
-﻿namespace chia.dotnet.tests
+﻿using System;
+
+namespace chia.dotnet.tests
 {
     /// <summary>
     /// Use this class to setup the connection to the daemon under test
     /// </summary>
     internal static class Factory
     {
+        public static HttpRpcClient CreateDirectRpcClientFromHardcodedLocation()
+        {
+            var endpoint = new EndpointInfo()
+            {
+                Uri = new Uri("https://172.26.210.216:8555"),
+                CertPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.crt",
+                KeyPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.key",
+            };
+            return new HttpRpcClient(endpoint);
+        }
         /// <summary>
         /// Create a daemon instance from a hardcoded address
         /// </summary>
@@ -14,7 +26,7 @@
             // this is an example using a WSL instance running locally
             var endpoint = new EndpointInfo()
             {
-                Uri = new System.Uri("wss://172.26.210.216:55400"),
+                Uri = new Uri("wss://172.26.210.216:55400"),
                 CertPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/daemon/private_daemon.crt",
                 KeyPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/daemon/private_daemon.key",
                 //Uri = new System.Uri("wss://localhost:55400"),

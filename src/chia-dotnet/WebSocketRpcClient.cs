@@ -204,7 +204,7 @@ namespace chia.dotnet
                 _ = ms.Seek(0, SeekOrigin.Begin);
                 using var reader = new StreamReader(ms, Encoding.UTF8);
                 var response = await reader.ReadToEndAsync();
-                var message = Message.FromJson(response);
+                var message = response.ToObject<Message>();
 
                 // if we have a message pending with this id, capture the response and remove the request from the pending dictionary                
                 if (_pendingRequests.TryRemove(message.RequestId, out _))

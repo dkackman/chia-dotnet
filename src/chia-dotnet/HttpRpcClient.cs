@@ -78,7 +78,10 @@ namespace chia.dotnet
             using var response = await _httpClient.PostAsJsonAsync(message.Command, d, cancellationToken);
             _ = response.EnsureSuccessStatusCode();
 
-            dynamic responseMessage = await response.Deserialize<dynamic>();
+            var json = await response.Content.ReadAsStringAsync();
+            var responseMessage = json.ToObject<dynamic>();
+
+            // dynamic responseMessage = await response.Deserialize<dynamic>();
             return responseMessage?.success == false ? throw new ResponseException(message, responseMessage?.error?.ToString()) : (dynamic)responseMessage;
         }
 

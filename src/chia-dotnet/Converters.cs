@@ -32,5 +32,29 @@ namespace chia.dotnet
             var start = new DateTime(1970, 1, 1, 0, 0, 0, 0); //from start epoch time
             return start.AddSeconds(epoch); //add the seconds to the start DateTime
         }
+
+        public static string ToJson(this object o)
+        {
+            var serializerSettings = new JsonSerializerSettings
+            {
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new SnakeCaseNamingStrategy()
+                }
+            };
+            return JsonConvert.SerializeObject(o, serializerSettings);
+        }
+
+        public static T ToObject<T>(this string json)
+        {
+            var serializerSettings = new JsonSerializerSettings
+            {
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new SnakeCaseNamingStrategy()
+                }
+            };
+            return JsonConvert.DeserializeObject<T>(json, serializerSettings);
+        }
     }
 }

@@ -2,7 +2,6 @@
 using System.Dynamic;
 
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace chia.dotnet
 {
@@ -72,39 +71,6 @@ namespace chia.dotnet
                     Destination = destination,
                     RequestId = GetNewReuqestId()
                 };
-        }
-
-        /// <summary>
-        /// Serialize the <see cref="Message"/> to a json string
-        /// </summary>
-        /// <returns>Json representation of the message</returns>
-        public string ToJson()
-        {
-            var serializerSettings = new JsonSerializerSettings
-            {
-                ContractResolver = new DefaultContractResolver
-                {
-                    NamingStrategy = new SnakeCaseNamingStrategy()
-                }
-            };
-            return JsonConvert.SerializeObject(this, serializerSettings);
-        }
-
-        /// <summary>
-        /// Deserialize a <see cref="Message"/> from a json string
-        /// </summary>
-        /// <param name="json">Json representation of the Message</param>
-        /// <returns><see cref="Message"/></returns>
-        public static Message FromJson(string json)
-        {
-            var serializerSettings = new JsonSerializerSettings
-            {
-                ContractResolver = new DefaultContractResolver
-                {
-                    NamingStrategy = new SnakeCaseNamingStrategy()
-                }
-            };
-            return JsonConvert.DeserializeObject<Message>(json, serializerSettings);
         }
 
         private static readonly Random random = new();
