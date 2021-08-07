@@ -147,7 +147,7 @@ namespace chia.dotnet
         {
             var d = await SendMessage(command, data, cancellationToken);
 
-            return Converters.Convert<T>(d, childItem);
+            return Converters.ToObject<T>(d, childItem);
         }
     }
 }

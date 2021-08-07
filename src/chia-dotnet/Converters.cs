@@ -1,5 +1,7 @@
 using System;
+using System.Linq;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -7,14 +9,20 @@ using Newtonsoft.Json.Linq;
 
 namespace chia.dotnet
 {
-    public static class Converters
+    internal static class Converters
     {
-        public static T Convert<T>(JObject j, string childItem)
+        public static T ToObject<T>(JObject j, string childItem)
         {
             Debug.Assert(j is not null);
 
-            // the item string can be used to convert a child item rather than o
             var token = string.IsNullOrEmpty(childItem) ? j : j.GetValue(childItem);
+
+            return ToObject<T>(token);
+        }
+
+        public static T ToObject<T>(JToken token)
+        {
+            Debug.Assert(token is not null);
 
             var serializerSettings = new JsonSerializerSettings
             {
@@ -22,9 +30,17 @@ namespace chia.dotnet
                 {
                     NamingStrategy = new SnakeCaseNamingStrategy()
                 }
+
             };
 
             return token.ToObject<T>(JsonSerializer.Create(serializerSettings));
+        }
+
+        public static IEnumerable<string> ToStrings(dynamic stringEnumerable)
+        {
+            Debug.Assert(stringEnumerable is not null);
+
+            return ((IEnumerable<dynamic>)stringEnumerable).Select<dynamic, string>(item => item.ToString());
         }
 
         public static DateTime ToDateTime(this double epoch)

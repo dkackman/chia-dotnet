@@ -2,7 +2,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace chia.dotnet
 {
@@ -26,11 +25,15 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of plots</returns>
-        public async Task<(IEnumerable<dynamic> FailedToOpenFilenames, IEnumerable<dynamic> NotFoundFileNames, IEnumerable<dynamic> Plots)> GetPlots(CancellationToken cancellationToken = default)
+        public async Task<(IEnumerable<PlotFile> FailedToOpenFilenames, IEnumerable<PlotFile> NotFoundFileNames, IEnumerable<PlotFile> Plots)> GetPlots(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_plots", cancellationToken);
 
-            return (response.failed_to_open_filenames, response.not_found_filenames, response.plots);
+            return (
+                Converters.ToObject<List<PlotFile>>(response.failed_to_open_filenames),
+                Converters.ToObject<List<PlotFile>>(response.not_found_filenames),
+                Converters.ToObject<List<PlotFile>>(response.plots)
+            );
         }
 
         /// <summary>
@@ -57,7 +60,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_plot_directories", cancellationToken);
 
-            return ((IEnumerable<dynamic>)response.directories).Select<dynamic, string>(item => item.ToString());
+            return Converters.ToStrings(response.directories);
         }
 
         /// <summary>
