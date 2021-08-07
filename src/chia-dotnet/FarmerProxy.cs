@@ -57,11 +57,17 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>List of signage points</returns>
-        public async Task<IEnumerable<dynamic>> GetSignagePoints(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<(IEnumerable<dynamic> Proofs, SignagePoint SignagePoint)>> GetSignagePoints(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_signage_points", cancellationToken);
 
-            return response.signage_points;
+            var list = new List<(IEnumerable<dynamic> Proofs, SignagePoint SignagePoint)>();
+            foreach (var d in response.signage_points)
+            {
+                list.Add((d.proofs, Converters.ToObject<SignagePoint>(d.signage_point)));
+            }
+
+            return list;
         }
 
         /// <summary>
@@ -70,14 +76,14 @@ namespace chia.dotnet
         /// <param name="spHash">signage point hash</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a signage point and proofs of space</returns>
-        public async Task<(dynamic SignagePoint, IEnumerable<dynamic> Proofs)> GetSignagePoint(string spHash, CancellationToken cancellationToken = default)
+        public async Task<(IEnumerable<dynamic> Proofs, SignagePoint SignagePoint)> GetSignagePoint(string spHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.sp_hash = spHash;
 
             var response = await SendMessage("get_signage_point", data, cancellationToken);
 
-            return (response.signage_point, response.proofs);
+            return (response.proofs, Converters.ToObject<SignagePoint>(response.signage_point));
         }
 
         /// <summary>
@@ -85,11 +91,9 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of harvesters</returns>
-        public async Task<IEnumerable<dynamic>> GetHarvesters(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<Harvester>> GetHarvesters(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_harvesters", cancellationToken);
-
-            return response.harvesters;
+            return await SendMessage<List<Harvester>>("get_harvesters", "harvesters", cancellationToken);
         }
 
         /// <summary>

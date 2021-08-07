@@ -68,12 +68,23 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ResponseException))]
         public async Task GetSignagePoint()
         {
             using var cts = new CancellationTokenSource(15000);
 
-            _ = await _theFarmer.GetSignagePoint("fake", cts.Token);
+            var sp = await _theFarmer.GetSignagePoint("57e6de9b6b3edc197cbdab2c474a1c6017e2ab721bc026d26c357bcb8660ec38", cts.Token);
+
+            Assert.IsNotNull(sp);
+        }
+
+        [TestMethod]
+        public async Task GetPoolState()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            var state = await _theFarmer.GetPoolState(cts.Token);
+
+            Assert.IsNotNull(state);
         }
 
         [TestMethod]
