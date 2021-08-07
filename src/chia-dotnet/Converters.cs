@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 
 using Newtonsoft.Json;
@@ -6,7 +7,7 @@ using Newtonsoft.Json.Linq;
 
 namespace chia.dotnet
 {
-    public static class DynamicConverter
+    public static class Converters
     {
         public static T Convert<T>(JObject j, string childItem)
         {
@@ -24,6 +25,12 @@ namespace chia.dotnet
             };
 
             return token.ToObject<T>(JsonSerializer.Create(serializerSettings));
+        }
+
+        public static DateTime ToDateTime(this double epoch)
+        {
+            var start = new DateTime(1970, 1, 1, 0, 0, 0, 0); //from start epoch time
+            return start.AddSeconds(epoch); //add the seconds to the start DateTime
         }
     }
 }
