@@ -138,8 +138,20 @@ namespace chia.dotnet
         {
             var d = await SendMessage(command, data, cancellationToken);
 
-            var j = d as JObject;
-            var token = j.GetValue(item);
+            return Convert<T>(d, item);
+        }
+
+        internal async Task<IEnumerable<T>> SendMessageCollection<T>(string command, dynamic data, string item = null, CancellationToken cancellationToken = default) where T : new()
+        {
+            var d = await SendMessage(command, data, cancellationToken);
+
+            return Convert<List<T>>(d, item);
+        }
+
+        private static T Convert<T>(dynamic o, string item)
+        {
+            var j = o as JObject;
+            var token = string.IsNullOrEmpty(item) ? j : j.GetValue(item);
 
             var serializerSettings = new JsonSerializerSettings
             {
@@ -151,29 +163,6 @@ namespace chia.dotnet
 
             var serializer = JsonSerializer.Create(serializerSettings);
             return token.ToObject<T>(serializer);
-
-            return DynamicConverter.Convert<T>(d);
-        }
-
-        internal async Task<IEnumerable<T>> SendMessageCollection<T>(string command, dynamic data, string item = null, CancellationToken cancellationToken = default) where T : new()
-        {
-            var d = await SendMessage(command, data, cancellationToken);
-
-            var j = d as JObject;
-            var token = j.GetValue(item);
-
-            var serializerSettings = new JsonSerializerSettings
-            {
-                ContractResolver = new DefaultContractResolver
-                {
-                    NamingStrategy = new SnakeCaseNamingStrategy()
-                }
-            };
-
-            var serializer = JsonSerializer.Create(serializerSettings);
-            return token.ToObject<List<T>>(serializer);
-
-            return DynamicConverter.ConvertCollection<T>(d);
         }
     }
 }
