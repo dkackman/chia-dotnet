@@ -262,7 +262,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("generate_mnemonic", cancellationToken);
 
-            return ((IEnumerable<dynamic>)response.mnemonic).Select<dynamic, string>(item => item.ToString());
+            return Converters.ToStrings(response.mnemonic);
         }
 
         /// <summary>

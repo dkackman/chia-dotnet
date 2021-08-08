@@ -36,6 +36,18 @@ namespace chia.dotnet
             return token.ToObject<T>(JsonSerializer.Create(serializerSettings));
         }
 
+        public static T ToObject<T>(this string json)
+        {
+            var serializerSettings = new JsonSerializerSettings
+            {
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new SnakeCaseNamingStrategy()
+                }
+            };
+            return JsonConvert.DeserializeObject<T>(json, serializerSettings);
+        }
+
         public static IEnumerable<string> ToStrings(dynamic stringEnumerable)
         {
             Debug.Assert(stringEnumerable is not null);
@@ -59,18 +71,6 @@ namespace chia.dotnet
                 }
             };
             return JsonConvert.SerializeObject(o, serializerSettings);
-        }
-
-        public static T ToObject<T>(this string json)
-        {
-            var serializerSettings = new JsonSerializerSettings
-            {
-                ContractResolver = new DefaultContractResolver
-                {
-                    NamingStrategy = new SnakeCaseNamingStrategy()
-                }
-            };
-            return JsonConvert.DeserializeObject<T>(json, serializerSettings);
         }
     }
 }

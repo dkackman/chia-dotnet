@@ -103,7 +103,7 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
-        [Ignore] // only works on mainnet
+        [Ignore] // only works on mainnet with the address here
         public async Task OpenConnection()
         {
             using var cts = new CancellationTokenSource(15000);
@@ -114,7 +114,7 @@ namespace chia.dotnet.tests
         public async Task GetBlockRecordByHeight()
         {
             using var cts = new CancellationTokenSource(15000);
-            var blockRecord = await _theFullNode.GetBlockRecordByHeight(419019, cts.Token);
+            var blockRecord = await _theFullNode.GetBlockRecordByHeight(684568, cts.Token);
             Assert.IsNotNull(blockRecord);
         }
 
@@ -125,7 +125,6 @@ namespace chia.dotnet.tests
             var blockRecords = await _theFullNode.GetBlockRecords(419019, 419021, cts.Token);
             Assert.IsNotNull(blockRecords);
         }
-
 
         [TestMethod()]
         public async Task GetUnfinishedBlockHeaders()

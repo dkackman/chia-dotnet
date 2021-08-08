@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Dynamic;
 
-using Newtonsoft.Json;
-
 namespace chia.dotnet
 {
     /// <summary>
@@ -43,7 +41,6 @@ namespace chia.dotnet
         /// <summary>
         /// Inidcates whether this is a response (<see cref="Ack"/> is true) and the success flag is also true
         /// </summary>
-        [JsonIgnore]
         public bool IsSuccessfulResponse => Ack && Data?.success == true;
 
         /// <summary>

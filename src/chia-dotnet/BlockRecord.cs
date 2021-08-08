@@ -18,6 +18,13 @@ namespace chia.dotnet
         public string Data { get; init; }
     }
 
+    public record Coin
+    {
+        public string ParentCoinInfo { get; init; }
+        public string PuzzleHash { get; init; }
+        public ulong Amount { get; init; }
+    }
+
     public record BlockRecord
     {
         public string ChallengeBlockInfoHash { get; init; } //0xc6fc0cfdff1b11ad9b2f44b5b3bff871b240fb6b10b6ab7de6d4b4f9462ecf8apublic object ,
@@ -37,8 +44,7 @@ namespace chia.dotnet
         public string PrevTransactionBlockHash { get; init; } //null,
         public uint PrevTransactionBlockHeight { get; init; } //419020,
         public ulong RequiredIters { get; init; } //566207,
-        // TODO - this is a list of coins
-        public List<object> RewardClaimsIncorporated { get; init; } //null,
+        public List<Coin> RewardClaimsIncorporated { get; init; } //null,
         public string RewardInfusionNewChallenge { get; init; } //0xff17dab45e17b81f4fddec48605abdd440bc65f9d4adbb64d4975e6b35f9b0d0public object ,
         public byte SignagePointIndex { get; init; } //60,
         public SubEpochSummary SubEpochSummaryIncluded { get; init; } //null,
