@@ -68,7 +68,7 @@ namespace chia.dotnet
     public record SpendBundle
     {
         public string AggregatedSignature { get; init; }
-        public IEnumerable<CoinSpend> CoinSpends { get; init; }
+        public ICollection<CoinSpend> CoinSpends { get; init; }
     }
 
     /*
@@ -76,16 +76,16 @@ namespace chia.dotnet
     */
     public record TransactionRecord
     {
-        public IEnumerable<Coin> Additions { get; init; }
+        public ICollection<Coin> Additions { get; init; }
         public ulong Amount { get; init; }
         public bool Confirmed { get; init; }
         public uint ConfirmedAtHeight { get; init; }
         public double CreatedAtTime { get; init; }
         public ulong FeeAmount { get; init; }
         public string Name { get; init; }
-        public IEnumerable<Coin> Removals { get; init; }
+        public ICollection<Coin> Removals { get; init; }
         public uint Sent { get; init; }
-        public IEnumerable<SendPeer> SentTo { get; init; }
+        public ICollection<SendPeer> SentTo { get; init; }
         public SpendBundle SpendBundle { get; init; }
         public string ToAddress { get; init; }
         public string ToPuzzleHash { get; init; }

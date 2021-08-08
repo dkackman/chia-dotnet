@@ -11,10 +11,10 @@ namespace chia.dotnet
         public uint Sent { get; init; }
         public SpendBundle SpendBundle { get; init; }
         public SpendBundle TxSpendBundle { get; init; }
-        public IEnumerable<Coin> Additions { get; init; }
-        public IEnumerable<Coin> Removals { get; init; }
+        public ICollection<Coin> Additions { get; init; }
+        public ICollection<Coin> Removals { get; init; }
         public string TradeId { get; init; }
         public string Status { get; init; }
-        public IEnumerable<SendPeer> SentTo { get; init; }
+        public ICollection<SendPeer> SentTo { get; init; }
     }
 }

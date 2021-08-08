@@ -46,6 +46,7 @@ namespace chia.dotnet.tests
 
         [TestMethod]
         [TestCategory("Integration")]
+        [Ignore]
         public async Task ConnectDirectlyUsingConfigEndpoint()
         {
             try

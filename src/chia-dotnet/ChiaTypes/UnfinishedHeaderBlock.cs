@@ -25,7 +25,7 @@ namespace chia.dotnet
 
     public record UnfinishedHeaderBlock
     {
-        public IEnumerable<EndOfSubSlotBundle> FinishedSubSlots { get; init; }
+        public ICollection<EndOfSubSlotBundle> FinishedSubSlots { get; init; }
         public RewardChainBlockUnfinished RewardChainBlock { get; init; }
         public VDFProof ChallengeChainSpProof { get; init; }
         public VDFProof RewardChainSpProof { get; init; }

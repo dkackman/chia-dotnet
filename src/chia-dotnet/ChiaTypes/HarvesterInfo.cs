@@ -12,8 +12,8 @@ namespace chia.dotnet
     public record HarvesterInfo
     {
         public HarvesterConnection Connection { get; init; }
-        public IEnumerable<PlotInfo> FailedToOpenFileNames { get; init; }
-        public IEnumerable<PlotInfo> NotFoundFileNames { get; init; }
-        public IEnumerable<PlotInfo> Plots { get; init; }
+        public ICollection<PlotInfo> FailedToOpenFileNames { get; init; }
+        public ICollection<PlotInfo> NotFoundFileNames { get; init; }
+        public ICollection<PlotInfo> Plots { get; init; }
     }
 }

@@ -116,7 +116,7 @@ namespace chia.dotnet.tests
         public async Task GetBlockRecordByHeight()
         {
             using var cts = new CancellationTokenSource(15000);
-            var blockRecord = await _theFullNode.GetBlockRecordByHeight(684568, cts.Token);
+            var blockRecord = await _theFullNode.GetBlockRecordByHeight(400568, cts.Token);
             Assert.IsNotNull(blockRecord);
         }
 
