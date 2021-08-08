@@ -9,18 +9,18 @@ namespace chia.dotnet
         public byte SignagePointIndex { get; init; }
         public string PosSsCcChallengeHash { get; init; }
         public ProofOfSpace ProofOfSpace { get; init; }
-        public VDFInfo challenge_chain_sp_vdf { get; init; }
-        public string challenge_chain_sp_signature { get; init; }
-        public VDFInfo reward_chain_sp_vdf { get; init; }
-        public string reward_chain_sp_signature { get; init; }
+        public VDFInfo ChallengeChainSpVdf { get; init; }
+        public string ChallengeChainSpSignature { get; init; }
+        public VDFInfo RewardChainSpVdf { get; init; }
+        public string RewardChainSpSignature { get; init; }
     }
 
     public record EndOfSubSlotBundle
     {
-        public ChallengeChainSubSlot challenge_chain { get; init; }
-        public InfusedChallengeChainSubSlot infused_challenge_chain { get; init; }
-        public RewardChainSubSlot reward_chain { get; init; }
-        public SubSlotProofs proofs { get; init; }
+        public ChallengeChainSubSlot ChallengeChain { get; init; }
+        public InfusedChallengeChainSubSlot InfusedChallengeChain { get; init; }
+        public RewardChainSubSlot RewardChain { get; init; }
+        public SubSlotProofs Proofs { get; init; }
     }
 
     public record UnfinishedHeaderBlock
