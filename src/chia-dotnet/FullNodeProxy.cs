@@ -125,15 +125,13 @@ namespace chia.dotnet
         /// <param name="includeSpendCoins">whether to include spent coins too, instead of just unspent</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of coin records</returns>
-        public async Task<IEnumerable<dynamic>> GetCoinRecordsByPuzzleHash(string puzzlehash, bool includeSpendCoins, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHash(string puzzlehash, bool includeSpendCoins, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.puzzle_hash = puzzlehash;
             data.include_spend_coins = includeSpendCoins;
 
-            var response = await SendMessage("get_coin_records_by_puzzle_hash", data, cancellationToken);
-
-            return response.coin_records;
+            return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_puzzle_hash", data, "coin_records", cancellationToken);
         }
 
         /// <summary>
@@ -145,7 +143,7 @@ namespace chia.dotnet
         /// <param name="includeSpendCoins">whether to include spent coins too, instead of just unspent</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of coin records</returns>
-        public async Task<IEnumerable<dynamic>> GetCoinRecordsByPuzzleHash(string puzzlehash, uint startHeight, uint endHeight, bool includeSpendCoins, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHash(string puzzlehash, uint startHeight, uint endHeight, bool includeSpendCoins, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.puzzle_hash = puzzlehash;
@@ -153,9 +151,7 @@ namespace chia.dotnet
             data.end_height = endHeight;
             data.include_spend_coins = includeSpendCoins;
 
-            var response = await SendMessage("get_coin_records_by_puzzle_hash", data, cancellationToken);
-
-            return response.coin_records;
+            return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_puzzle_hash", data, "coin_records", cancellationToken);
         }
 
         /// <summary>
@@ -167,7 +163,7 @@ namespace chia.dotnet
         /// <param name="includeSpendCoins">whether to include spent coins too, instead of just unspent</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of coin records</returns>
-        public async Task<IEnumerable<dynamic>> GetCoinRecordsByPuzzleHashes(IEnumerable<string> puzzlehashes, uint startHeight, uint endHeight, bool includeSpendCoins, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHashes(IEnumerable<string> puzzlehashes, uint startHeight, uint endHeight, bool includeSpendCoins, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.puzzle_hash = puzzlehashes.ToList();
@@ -175,9 +171,7 @@ namespace chia.dotnet
             data.end_height = endHeight;
             data.include_spend_coins = includeSpendCoins;
 
-            var response = await SendMessage("get_coin_records_by_puzzle_hashes", data, cancellationToken);
-
-            return response.coin_records;
+            return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_puzzle_hashes", data, "coin_records", cancellationToken);
         }
 
         /// <summary>
@@ -186,14 +180,12 @@ namespace chia.dotnet
         /// <param name="name">The coin name</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A coin record</returns>
-        public async Task<dynamic> GetCoinRecordByName(string name, CancellationToken cancellationToken = default)
+        public async Task<CoinRecord> GetCoinRecordByName(string name, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.name = name;
 
-            var response = await SendMessage("get_coin_record_by_name", data, cancellationToken);
-
-            return response.coin_record;
+            return await SendMessage<CoinRecord>("get_coin_record_by_name", data, "coin_record", cancellationToken);
         }
 
         /// <summary>
@@ -202,14 +194,16 @@ namespace chia.dotnet
         /// <param name="headerhash">The header hash</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of additions and a list of removals</returns>
-        public async Task<(IEnumerable<dynamic> Additions, IEnumerable<dynamic> Removals)> GetAdditionsAndRemovals(string headerhash, CancellationToken cancellationToken = default)
+        public async Task<(IEnumerable<Coin> Additions, IEnumerable<Coin> Removals)> GetAdditionsAndRemovals(string headerhash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.header_hash = headerhash;
 
             var response = await SendMessage("get_additions_and_removals", data, cancellationToken);
 
-            return (response.additions, response.removals);
+            return (
+                Converters.ToObject<IEnumerable<Coin>>(response.additions),
+                Converters.ToObject<IEnumerable<Coin>>(response.removals));
         }
 
         /// <summary>
@@ -289,7 +283,7 @@ namespace chia.dotnet
         /// <param name="spendBundle"></param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Indicator of whether the spend bundle was successfully included in the mempool</returns>
-        public async Task<bool> PushTx(dynamic spendBundle, CancellationToken cancellationToken = default)
+        public async Task<bool> PushTx(SpendBundle spendBundle, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.spend_bundle = spendBundle;

@@ -386,15 +386,15 @@ namespace chia.dotnet
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
             return (
-                response.type,
-                response.my_did,
-                response.wallet_id,
-                response.coin_name,
-                response.coin_list,
-                response.newpuzhash,
-                response.pubkey,
-                response.backup_dids,
-                response.num_verifications_required);
+                    response.type,
+                    response.my_did,
+                    response.wallet_id,
+                    response.coin_name,
+                    response.coin_list,
+                    response.newpuzhash,
+                    response.pubkey,
+                    response.backup_dids,
+                    response.num_verifications_required);
         }
 
         /// <summary>
@@ -421,9 +421,9 @@ namespace chia.dotnet
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
             return (
-                Converters.ToObject<TransactionRecord>(response.transaction),
-                response.launcher_id,
-                response.p2_singleton_puzzle_hash);
+                    Converters.ToObject<TransactionRecord>(response.transaction),
+                    response.launcher_id,
+                    response.p2_singleton_puzzle_hash);
         }
 
         /// <summary>
