@@ -23,6 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="block.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="config.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

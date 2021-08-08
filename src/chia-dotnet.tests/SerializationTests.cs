@@ -37,5 +37,17 @@ namespace chia.dotnet.tests
 
             Assert.IsNotNull(transaction2);
         }
+
+        [TestMethod]
+        public void DeserializeFullBlock()
+        {
+            var file = new FileInfo("block.json");
+            using var reader = file.OpenText();
+            var json = reader.ReadToEnd();
+
+            var block = Converters.ToObject<FullBlock>(json);
+
+            Assert.IsNotNull(block);
+        }
     }
 }

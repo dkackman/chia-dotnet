@@ -18,7 +18,7 @@
     ],
     "amount": 1,
     "confirmed": true,
-    "confirmed_at_height": 542877,
+    "confirmed_at_height": 158877,
     "created_at_time": 1625751356,
     "fee_amount": 0,
     "name": "0x47be9c74c902d075562ca6b9f873386d30516eb6a698afc5067bf2f4f1b9b1d3",
@@ -65,7 +65,7 @@
             }
         ]
     },
-    "to_address": "xch1hayuymrh3ezn6m4refvllkzj5psq3w783394jduxvn9htpte24vss7z2hf",
+    "to_address": "txch1hayuymrh3ezn6m4refvllkzj5psq3w783394jduxvn9htpte24vss7z2hf",
     "to_puzzle_hash": "0xbf49c26c778e453d6ea3ca59ffd852a06008bbc78c4b59378664cb7585795559",
     "trade_id": null,
     "type": 1,

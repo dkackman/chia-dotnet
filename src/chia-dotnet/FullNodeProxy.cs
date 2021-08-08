@@ -100,16 +100,14 @@ namespace chia.dotnet
         /// <param name="excludeHeaderhash">Flag indicating whether to include the header hash in the result or not</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of blocks</returns>
-        public async Task<IEnumerable<dynamic>> GetBlocks(uint start, uint end, bool excludeHeaderhash, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<FullBlock>> GetBlocks(uint start, uint end, bool excludeHeaderhash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.start = start;
             data.end = end;
             data.exclude_header_hash = excludeHeaderhash;
 
-            var response = await SendMessage("get_blocks", data, cancellationToken);
-
-            return response.blocks;
+            return await SendMessage<IEnumerable<FullBlock>>("get_blocks", data, "blocks", cancellationToken);
         }
 
         /// <summary>

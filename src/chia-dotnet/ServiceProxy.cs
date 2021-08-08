@@ -154,9 +154,9 @@ namespace chia.dotnet
         }
 
         //
-        // If the return is a collection, specify List<SomeConcreteType> in the caller
+        // If the return is a collection, specify IEnumerable<SomeConcreteType> in the caller
         //
-        internal async Task<T> SendMessage<T>(string command, string childItem = null, CancellationToken cancellationToken = default) where T : new()
+        internal async Task<T> SendMessage<T>(string command, string childItem = null, CancellationToken cancellationToken = default)
         {
             return await SendMessage<T>(command, null, childItem, cancellationToken);
         }
@@ -164,7 +164,7 @@ namespace chia.dotnet
         //
         // If the return is a collection specify List<SomeConcreteType> in the caller
         //
-        internal async Task<T> SendMessage<T>(string command, dynamic data, string childItem = null, CancellationToken cancellationToken = default) where T : new()
+        internal async Task<T> SendMessage<T>(string command, dynamic data, string childItem = null, CancellationToken cancellationToken = default) 
         {
             var d = await SendMessage(command, data, cancellationToken);
 

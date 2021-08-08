@@ -64,8 +64,10 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetBlocks()
         {
+            var state = await _theFullNode.GetBlockchainState();
+            
             using var cts = new CancellationTokenSource(15000);
-            var blocks = await _theFullNode.GetBlocks(435160, 435167, false, cts.Token);
+            var blocks = await _theFullNode.GetBlocks(state.Peak.Height - 5, state.Peak.Height - 1, false, cts.Token);
 
             Assert.IsNotNull(blocks);
         }
