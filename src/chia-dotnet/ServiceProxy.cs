@@ -126,15 +126,31 @@ namespace chia.dotnet
         // These methods are the important ones that package up the request for the rpc lcient and then
         // parse and convert the response for the requester
         //
-        internal async Task<dynamic> SendMessage(string command, CancellationToken cancellationToken = default)
-        {
-            return await SendMessage(command, null, cancellationToken);
-        }
-
         internal async Task<dynamic> SendMessage(string command, dynamic data, CancellationToken cancellationToken = default)
         {
             var message = Message.Create(command, data, DestinationService, OriginService);
-            return await RpcClient.SendMessage(message, cancellationToken);
+
+            try
+            {
+                return await RpcClient.SendMessage(message, cancellationToken);
+            }
+            catch (ResponseException)
+            {
+                throw;
+            }
+            catch (TaskCanceledException)
+            {
+                throw;
+            }
+            catch (Exception e) // wrap eveything else in a resposne exception - this will include websocket or http specific failures
+            {
+                throw new ResponseException(message, "Something went wrong sending the rpc message. Inspect the InnerException for details", e);
+            }
+        }
+
+        internal async Task<dynamic> SendMessage(string command, CancellationToken cancellationToken = default)
+        {
+            return await SendMessage(command, null, cancellationToken);
         }
 
         //
