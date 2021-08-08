@@ -37,7 +37,6 @@ namespace chia.dotnet
         {
             writer.WriteStartArray();
             writer.WriteValue(value.TimeFound);
-            writer.WriteValue(",");
             writer.WriteValue(value.Difficulty);
             writer.WriteEndArray();
         }

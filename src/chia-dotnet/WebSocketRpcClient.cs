@@ -3,14 +3,11 @@ using System.Collections.Concurrent;
 using System.IO;
 using System.Net.Security;
 using System.Net.WebSockets;
-using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Diagnostics;
-
-[assembly: InternalsVisibleTo("chia-dotnet.tests")]
 
 namespace chia.dotnet
 {

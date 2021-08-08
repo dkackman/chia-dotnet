@@ -41,9 +41,7 @@ namespace chia.dotnet
         {
             writer.WriteStartArray();
             writer.WriteValue(value.Peer);
-            writer.WriteValue(",");
             writer.WriteValue(value.IncludedInMempool);
-            writer.WriteValue(",");
             writer.WriteValue(value.ErrorMessage);
             writer.WriteEndArray();
         }
