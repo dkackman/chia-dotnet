@@ -83,7 +83,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
-            return await WalletProxy.SendMessage<List<TransactionRecord>>("get_transactions", data, "transactions", cancellationToken);
+            return await WalletProxy.SendMessage<IEnumerable<TransactionRecord>>("get_transactions", data, "transactions", cancellationToken);
         }
 
         /// <summary>

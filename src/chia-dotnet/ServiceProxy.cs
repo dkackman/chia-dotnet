@@ -79,7 +79,7 @@ namespace chia.dotnet
         /// <returns>A list of connections</returns>
         public async Task<IEnumerable<Connection>> GetConnections(CancellationToken cancellationToken = default)
         {
-            return await SendMessage<List<Connection>>("get_connections", "connections", cancellationToken);
+            return await SendMessage<IEnumerable<Connection>>("get_connections", "connections", cancellationToken);
         }
 
         /// <summary>
@@ -162,9 +162,9 @@ namespace chia.dotnet
         }
 
         //
-        // If the return is a collection specify List<SomeConcreteType> in the caller
+        // If the return is a collection specify IEnumerable<SomeConcreteType> in the caller
         //
-        internal async Task<T> SendMessage<T>(string command, dynamic data, string childItem = null, CancellationToken cancellationToken = default) 
+        internal async Task<T> SendMessage<T>(string command, dynamic data, string childItem = null, CancellationToken cancellationToken = default)
         {
             var d = await SendMessage(command, data, cancellationToken);
 

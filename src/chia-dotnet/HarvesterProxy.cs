@@ -30,9 +30,9 @@ namespace chia.dotnet
             var response = await SendMessage("get_plots", cancellationToken);
 
             return (
-                Converters.ToObject<List<PlotInfo>>(response.failed_to_open_filenames),
-                Converters.ToObject<List<PlotInfo>>(response.not_found_filenames),
-                Converters.ToObject<List<PlotInfo>>(response.plots)
+                Converters.ToObject<IEnumerable<PlotInfo>>(response.failed_to_open_filenames),
+                Converters.ToObject<IEnumerable<PlotInfo>>(response.not_found_filenames),
+                Converters.ToObject<IEnumerable<PlotInfo>>(response.plots)
             );
         }
 

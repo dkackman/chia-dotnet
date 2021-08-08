@@ -61,14 +61,14 @@ namespace chia.dotnet
         public string P2SingletonPuzzleHash { get; init; }
 
         [JsonProperty("points_acknowledged_24h")]
-        public List<PoolPoint> PointsAcknowledged24h { get; init; }
+        public IEnumerable<PoolPoint> PointsAcknowledged24h { get; init; }
         public ulong PointsAcknowledgedSinceStart { get; init; }
 
         [JsonProperty("points_found_24h")]
-        public List<PoolPoint> PointsFound24h { get; init; }
+        public IEnumerable<PoolPoint> PointsFound24h { get; init; }
         public ulong PointsFoundSinceStart { get; init; }
         public PoolConfig PoolConfig { get; init; }
-        public List<dynamic> PoolErrors24h { get; init; }
+        public IEnumerable<dynamic> PoolErrors24h { get; init; }
 
         public DateTime NextFarmerUpdateDateTime => NextFarmerUpdate.ToDateTime();
         public DateTime NextPoolInfoUpdateDateTime => NextFarmerUpdate.ToDateTime();

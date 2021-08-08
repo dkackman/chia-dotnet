@@ -89,7 +89,7 @@ namespace chia.dotnet
             data.start = start;
             data.end = end;
 
-            return await SendMessage<List<BlockRecord>>("get_block_records", data, "block_records", cancellationToken);
+            return await SendMessage<IEnumerable<BlockRecord>>("get_block_records", data, "block_records", cancellationToken);
         }
 
         /// <summary>

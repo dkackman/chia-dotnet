@@ -130,12 +130,12 @@ namespace chia.dotnet
         public string AggregatedSignature { get; init; }
         public ulong Fees { get; init; }
         public ulong Cost { get; init; }
-        public List<Coin> RewardClaimsIncorporated { get; init; }
+        public IEnumerable<Coin> RewardClaimsIncorporated { get; init; }
     }
 
     public record FullBlock
     {
-        public List<EndOfSlotBundle> FinishedSubSlots { get; init; }
+        public IEnumerable<EndOfSlotBundle> FinishedSubSlots { get; init; }
         public RewardChainBlock RewardChainBlock { get; init; }
         public VDFProof ChallengeChainSpProof { get; init; }
         public VDFProof ChallengeChainIpProof { get; init; }

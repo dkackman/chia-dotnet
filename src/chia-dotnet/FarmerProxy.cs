@@ -93,7 +93,7 @@ namespace chia.dotnet
         /// <returns>A list of harvesters</returns>
         public async Task<IEnumerable<HarvesterInfo>> GetHarvesters(CancellationToken cancellationToken = default)
         {
-            return await SendMessage<List<HarvesterInfo>>("get_harvesters", "harvesters", cancellationToken);
+            return await SendMessage<IEnumerable<HarvesterInfo>>("get_harvesters", "harvesters", cancellationToken);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace chia.dotnet
         /// <returns>A list of pool states</returns>
         public async Task<IEnumerable<PoolState>> GetPoolState(CancellationToken cancellationToken = default)
         {
-            return await SendMessage<List<PoolState>>("get_pool_state", "pool_state", cancellationToken);
+            return await SendMessage<IEnumerable<PoolState>>("get_pool_state", "pool_state", cancellationToken);
         }
 
         /// <summary>
