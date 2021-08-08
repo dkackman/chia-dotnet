@@ -1,5 +1,4 @@
-using System;
-using System.Numerics;
+﻿using System.Numerics;
 using System.Collections.Generic;
 
 namespace chia.dotnet
@@ -42,7 +41,7 @@ namespace chia.dotnet
         public byte SignagePointIndex { get; init; } //60,
         public SubEpochSummary SubEpochSummaryIncluded { get; init; } //null,
         public ulong SubSlotIters { get; init; } //105381888,
-        public Double? Timestamp { get; init; } //null,
+        public double? Timestamp { get; init; } //null,
         public BigInteger TotalIters { get; init; } //968286176191,
         public BigInteger Weight { get; init; } //41305748871
     }

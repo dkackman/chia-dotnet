@@ -19,6 +19,7 @@
     <PackageReleaseNotes>0.3.0  pre-release - support https endpoints
 BREAKING CHANGES: https://github.com/dkackman/chia-dotnet/discussions/10</PackageReleaseNotes>
     <PackageIcon>chia-leaf-logo-384x384.png</PackageIcon>
+    <PackageIconUrl />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
