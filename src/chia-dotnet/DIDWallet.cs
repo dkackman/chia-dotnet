@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Numerics;
 using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -149,7 +148,7 @@ namespace chia.dotnet
         /// <param name="puzHash">The puzzlehash</param>        
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A spendbundle and information about the attest</returns>
-        public async Task<(dynamic MessageSpendBundle, dynamic Info)> CreateAttest(string filename, string coinName, string pubkey, string puzHash, CancellationToken cancellationToken = default)
+        public async Task<(string MessageSpendBundle, dynamic Info)> CreateAttest(string filename, string coinName, string pubkey, string puzHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;

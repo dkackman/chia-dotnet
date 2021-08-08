@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 using Newtonsoft.Json;
 using System.Globalization;
-using System.Numerics;
 
 namespace chia.dotnet
 {

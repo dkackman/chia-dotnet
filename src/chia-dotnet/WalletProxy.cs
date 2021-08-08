@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 
 namespace chia.dotnet
 {
@@ -418,8 +417,6 @@ namespace chia.dotnet
             return (response.transaction, response.launcher_id, response.p2_singleton_puzzle_hash);
         }
 
-
-
         /// <summary>
         /// Create an offer file from a set of id's
         /// </summary>
@@ -516,7 +513,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The amount farmed</returns>
-        public async Task<(uint FarmedAmount, uint FarmerRewardAmount, uint FeeAmount, uint LastHeightFarmed, uint PoolReqardAmount)> GetFarmedAmount(CancellationToken cancellationToken = default)
+        public async Task<(uint FarmedAmount, uint FarmerRewardAmount, uint FeeAmount, uint LastHeightFarmed, uint PoolRewardAmount)> GetFarmedAmount(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_farmed_amount", cancellationToken);
 
