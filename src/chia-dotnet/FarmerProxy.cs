@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Proxy that communicates with the farmer via the daemon
+    /// Proxy that communicates with the farmer
     /// </summary>
     public sealed class FarmerProxy : ServiceProxy
     {
@@ -91,9 +91,9 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of harvesters</returns>
-        public async Task<IEnumerable<Harvester>> GetHarvesters(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<HarvesterInfo>> GetHarvesters(CancellationToken cancellationToken = default)
         {
-            return await SendMessage<List<Harvester>>("get_harvesters", "harvesters", cancellationToken);
+            return await SendMessage<List<HarvesterInfo>>("get_harvesters", "harvesters", cancellationToken);
         }
 
         /// <summary>

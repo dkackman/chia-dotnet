@@ -126,7 +126,12 @@ namespace chia.dotnet
         // These methods are the important ones that package up the request for the rpc lcient and then
         // parse and convert the response for the requester
         //
-        internal async Task<dynamic> SendMessage(string command, dynamic data = null, CancellationToken cancellationToken = default)
+        internal async Task<dynamic> SendMessage(string command, CancellationToken cancellationToken = default)
+        {
+            return await SendMessage(command, null, cancellationToken);
+        }
+
+        internal async Task<dynamic> SendMessage(string command, dynamic data, CancellationToken cancellationToken = default)
         {
             var message = Message.Create(command, data, DestinationService, OriginService);
             return await RpcClient.SendMessage(message, cancellationToken);

@@ -3,7 +3,7 @@
     /// <summary>
     /// Chia's representation of an entry on the plotter queue
     /// </summary>
-    public record PlotQueueEntry
+    public record QueuedPlotInfo
     {
         public int Delay { get; init; }
         public bool Deleted { get; init; }

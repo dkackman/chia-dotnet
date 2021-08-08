@@ -2,7 +2,7 @@ using System;
 
 namespace chia.dotnet
 {
-    public record PlotFile
+    public record PlotInfo
     {
         public int FileSize { get; init; }
         public string Filename { get; init; }

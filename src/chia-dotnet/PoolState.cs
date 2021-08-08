@@ -24,12 +24,12 @@ namespace chia.dotnet
         {
             // these things are stored as an array of two numbers [double, int]
             // pivot those into an object
-            var foundTime = reader.ReadAsDouble();
+            var found = reader.ReadAsDouble();
             var difficulty = Convert.ToUInt64(reader.ReadAsString(), CultureInfo.InvariantCulture);
             _ = reader.Read();
             return new PoolPoint()
             {
-                FoundTime = foundTime ?? 0,
+                TimeFound = found ?? 0,
                 Difficulty = difficulty
             };
         }
@@ -37,7 +37,7 @@ namespace chia.dotnet
         public override void WriteJson(JsonWriter writer, PoolPoint value, JsonSerializer serializer)
         {
             writer.WriteStartArray();
-            writer.WriteValue(value.FoundTime);
+            writer.WriteValue(value.TimeFound);
             writer.WriteValue(",");
             writer.WriteValue(value.Difficulty);
             writer.WriteEndArray();
@@ -47,10 +47,10 @@ namespace chia.dotnet
     [JsonConverter(typeof(PoolPointConverter))]
     public record PoolPoint
     {
-        public double FoundTime { get; init; }
+        public double TimeFound { get; init; }
         public ulong Difficulty { get; init; }
 
-        public DateTime FoundDateTime => FoundTime.ToDateTime();
+        public DateTime DateTimeFound => TimeFound.ToDateTime();
     }
 
     public record PoolState

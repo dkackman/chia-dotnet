@@ -9,11 +9,11 @@ namespace chia.dotnet
         public int Port { get; init; }
     }
 
-    public record Harvester
+    public record HarvesterInfo
     {
         public HarvesterConnection Connection { get; init; }
-        public List<PlotFile> FailedToOpenFileNames { get; init; }
-        public List<PlotFile> NotFoundFileNames { get; init; }
-        public List<PlotFile> Plots { get; init; }
+        public List<PlotInfo> FailedToOpenFileNames { get; init; }
+        public List<PlotInfo> NotFoundFileNames { get; init; }
+        public List<PlotInfo> Plots { get; init; }
     }
 }
