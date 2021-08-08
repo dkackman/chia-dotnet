@@ -70,18 +70,16 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of wallets</returns>
-        public async Task<IEnumerable<dynamic>> GetWallets(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<WalletInfo>> GetWallets(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_wallets", cancellationToken);
-
-            return response.wallets;
+            return await SendMessage<IEnumerable<WalletInfo>>("get_wallets", "wallets", cancellationToken);
         }
 
         /// <summary>
         /// Get all root public keys accessible by the wallet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>all root public keys accessible by the walle</returns>
+        /// <returns>all root public keys accessible by the wallet</returns>
         public async Task<IEnumerable<uint>> GetPublicKeys(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_public_keys", cancellationToken);
