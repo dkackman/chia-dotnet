@@ -158,7 +158,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The transaction</returns>
-        public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<dynamic> additions, IEnumerable<dynamic> coins, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, IEnumerable<Coin> coins, ulong fee, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -179,7 +179,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount (in units of mojo)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The transaction</returns>
-        public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<dynamic> additions, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, ulong fee, CancellationToken cancellationToken = default)
         {
             return await SendTransactionMulti(additions, null, fee, cancellationToken);
         }

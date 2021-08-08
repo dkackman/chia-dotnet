@@ -117,9 +117,9 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of pool states</returns>
-        public async Task<IEnumerable<PoolState>> GetPoolState(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<PoolStateInfo>> GetPoolState(CancellationToken cancellationToken = default)
         {
-            return await SendMessage<IEnumerable<PoolState>>("get_pool_state", "pool_state", cancellationToken);
+            return await SendMessage<IEnumerable<PoolStateInfo>>("get_pool_state", "pool_state", cancellationToken);
         }
 
         /// <summary>

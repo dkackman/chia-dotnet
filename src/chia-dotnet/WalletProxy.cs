@@ -385,7 +385,16 @@ namespace chia.dotnet
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
-            return (response.type, response.my_did, response.wallet_id, response.coin_name, response.coin_list, response.newpuzhash, response.pubkey, response.backup_dids, response.num_verifications_required);
+            return (
+                response.type,
+                response.my_did,
+                response.wallet_id,
+                response.coin_name,
+                response.coin_list,
+                response.newpuzhash,
+                response.pubkey,
+                response.backup_dids,
+                response.num_verifications_required);
         }
 
         /// <summary>
@@ -396,7 +405,8 @@ namespace chia.dotnet
         /// <param name="p2SingletonDelayTime">Delay time to create the wallet</param>           
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(dynamic transaction, string launcherId, string p2SingletonHash)> CreatePoolWallet(dynamic initialTargetState, ulong p2SingletonDelayTime, string p2SingletonDelayedPH, CancellationToken cancellationToken = default)
+        public async Task<(TransactionRecord transaction, string launcherId, string p2SingletonHash)>
+            CreatePoolWallet(PoolState initialTargetState, ulong p2SingletonDelayTime, string p2SingletonDelayedPH, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_type = "pool_wallet";
@@ -410,7 +420,10 @@ namespace chia.dotnet
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
-            return (response.transaction, response.launcher_id, response.p2_singleton_puzzle_hash);
+            return (
+                Converters.ToObject<TransactionRecord>(response.transaction),
+                response.launcher_id,
+                response.p2_singleton_puzzle_hash);
         }
 
         /// <summary>
@@ -454,7 +467,6 @@ namespace chia.dotnet
         public async Task RespondToOffer(string filename, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
-
             data.filename = filename;
 
             _ = await SendMessage("respond_to_offer", data, cancellationToken);
@@ -466,14 +478,12 @@ namespace chia.dotnet
         /// <param name="tradeId">The id of the trade to find</param>         
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The trade</returns>
-        public async Task<dynamic> GetTrade(string tradeId, CancellationToken cancellationToken = default)
+        public async Task<TradeRecord> GetTrade(string tradeId, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.trade_id = tradeId;
 
-            var response = await SendMessage("get_trade", data, cancellationToken);
-
-            return response.trade;
+            return await SendMessage<TradeRecord>("get_trade", data, "trade", cancellationToken);
         }
 
         /// <summary>
@@ -481,11 +491,9 @@ namespace chia.dotnet
         /// </summary>        
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The trades</returns>
-        public async Task<IEnumerable<dynamic>> GetAllTrades(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<TradeRecord>> GetAllTrades(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_all_trades", cancellationToken);
-
-            return response.trades;
+            return await SendMessage<IEnumerable<TradeRecord>>("get_all_trades", "trades", cancellationToken);
         }
 
         /// <summary>
@@ -524,7 +532,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The signed transaction</returns>
-        public async Task<TransactionRecord> CreateSignedTransaction(IEnumerable<dynamic> additions, IEnumerable<dynamic> coins, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> CreateSignedTransaction(IEnumerable<Coin> additions, IEnumerable<Coin> coins, ulong fee, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.additions = additions.ToList();
@@ -544,7 +552,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The signed transaction</returns>
-        public async Task<TransactionRecord> CreateSignedTransaction(IEnumerable<dynamic> additions, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> CreateSignedTransaction(IEnumerable<Coin> additions, ulong fee, CancellationToken cancellationToken = default)
         {
             return await CreateSignedTransaction(additions, null, fee, cancellationToken);
         }

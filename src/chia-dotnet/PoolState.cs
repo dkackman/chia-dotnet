@@ -51,7 +51,7 @@ namespace chia.dotnet
         public DateTime DateTimeFound => TimeFound.ToDateTime();
     }
 
-    public record PoolState
+    public record PoolStateInfo
     {
         public int AuthenticationTokenTimeout { get; init; }
         public ulong CurrentDifficulty { get; init; }
@@ -72,5 +72,22 @@ namespace chia.dotnet
 
         public DateTime NextFarmerUpdateDateTime => NextFarmerUpdate.ToDateTime();
         public DateTime NextPoolInfoUpdateDateTime => NextFarmerUpdate.ToDateTime();
+    }
+
+    /* 
+        `PoolState` is a type that is serialized to the blockchain to track the state of the user's pool singleton
+    `target_puzzle_hash` is either the pool address, or the self-pooling address that pool rewards will be paid to.
+    `target_puzzle_hash` is NOT the p2_singleton puzzle that block rewards are sent to.
+    The `p2_singleton` address is the initial address, and the `target_puzzle_hash` is the final destination.
+    `relative_lock_height` is zero when in SELF_POOLING state
+    */
+    public record PoolState
+    {
+        public byte Version { get; init; }
+        public byte State { get; init; }
+        public string TargetPuzzleHash { get; init; }
+        public string OwnerPubkey { get; init; }
+        public string PoolUrl { get; init; }
+        public uint RelativeLockHeight { get; init; }
     }
 }
