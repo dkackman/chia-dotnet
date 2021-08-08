@@ -144,7 +144,7 @@ namespace chia.dotnet
             }
             catch (Exception e) // wrap eveything else in a resposne exception - this will include websocket or http specific failures
             {
-                throw new ResponseException(message, "Something went wrong sending the rpc message. Inspect the InnerException for details", e);
+                throw new ResponseException(message, "Something went wrong sending the rpc message. Inspect the InnerException for details.", e);
             }
         }
 
@@ -154,7 +154,7 @@ namespace chia.dotnet
         }
 
         //
-        // If the return is a collection specify List<SomeConcreteType> in the caller
+        // If the return is a collection, specify List<SomeConcreteType> in the caller
         //
         internal async Task<T> SendMessage<T>(string command, string childItem = null, CancellationToken cancellationToken = default) where T : new()
         {
