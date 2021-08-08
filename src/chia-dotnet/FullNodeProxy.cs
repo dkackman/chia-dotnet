@@ -38,14 +38,30 @@ namespace chia.dotnet
         /// <param name="headerhash">The header hash</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>block</returns>
-        public async Task<dynamic> GetBlock(string headerhash, CancellationToken cancellationToken = default)
+        public async Task<FullBlock> GetBlock(string headerhash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.header_hash = headerhash;
 
-            var response = await SendMessage("get_block", data, cancellationToken);
+            return await SendMessage<FullBlock>("get_block", data, "block", cancellationToken);
+        }
 
-            return response.block;
+        /// <summary>
+        /// Get the blocks between a start and end height
+        /// </summary>
+        /// <param name="start">Start height</param>
+        /// <param name="end">End Height - non-inclusive</param>
+        /// <param name="excludeHeaderhash">Flag indicating whether to include the header hash in the result or not</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>A list of blocks</returns>
+        public async Task<IEnumerable<FullBlock>> GetBlocks(uint start, uint end, bool excludeHeaderhash, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.start = start;
+            data.end = end;
+            data.exclude_header_hash = excludeHeaderhash;
+
+            return await SendMessage<IEnumerable<FullBlock>>("get_blocks", data, "blocks", cancellationToken);
         }
 
         /// <summary>
@@ -93,33 +109,13 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Get the blocks between a start and end height
-        /// </summary>
-        /// <param name="start">Start height</param>
-        /// <param name="end">End Height - non-inclusive</param>
-        /// <param name="excludeHeaderhash">Flag indicating whether to include the header hash in the result or not</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A list of blocks</returns>
-        public async Task<IEnumerable<FullBlock>> GetBlocks(uint start, uint end, bool excludeHeaderhash, CancellationToken cancellationToken = default)
-        {
-            dynamic data = new ExpandoObject();
-            data.start = start;
-            data.end = end;
-            data.exclude_header_hash = excludeHeaderhash;
-
-            return await SendMessage<IEnumerable<FullBlock>>("get_blocks", data, "blocks", cancellationToken);
-        }
-
-        /// <summary>
         /// Get unfinished block headers
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of headers</returns>
-        public async Task<IEnumerable<dynamic>> GetUnfinishedBlockHeaders(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<UnfinishedHeaderBlock>> GetUnfinishedBlockHeaders(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_unfinished_block_headers", cancellationToken);
-
-            return response.headers;
+            return await SendMessage<IEnumerable<UnfinishedHeaderBlock>>("get_unfinished_block_headers", "headers", cancellationToken);
         }
 
         /// <summary>
