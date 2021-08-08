@@ -147,14 +147,12 @@ namespace chia.dotnet
         /// <param name="transactionId">The id of the transaction to find</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A transaction</returns>
-        public async Task<dynamic> GetTransaction(string transactionId, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> GetTransaction(string transactionId, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.transaction_id = transactionId;
 
-            var response = await SendMessage("get_transaction", data, cancellationToken);
-
-            return response.transaction;
+            return await SendMessage<TransactionRecord>("get_transaction", data, "transaction", cancellationToken);
         }
 
         /// <summary>
@@ -528,7 +526,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The signed transaction</returns>
-        public async Task<dynamic> CreateSignedTransaction(IEnumerable<dynamic> additions, IEnumerable<dynamic> coins, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> CreateSignedTransaction(IEnumerable<dynamic> additions, IEnumerable<dynamic> coins, ulong fee, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.additions = additions.ToList();
@@ -538,9 +536,7 @@ namespace chia.dotnet
                 data.coins = coins.ToList();
             }
 
-            var response = await SendMessage("create_signed_transaction", data, cancellationToken);
-
-            return response.signed_tx;
+            return await SendMessage<TransactionRecord>("create_signed_transaction", data, "signed_tx", cancellationToken);
         }
 
         /// <summary>
@@ -550,7 +546,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The signed transaction</returns>
-        public async Task<dynamic> CreateSignedTransaction(IEnumerable<dynamic> additions, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> CreateSignedTransaction(IEnumerable<dynamic> additions, ulong fee, CancellationToken cancellationToken = default)
         {
             return await CreateSignedTransaction(additions, null, fee, cancellationToken);
         }

@@ -18,13 +18,6 @@ namespace chia.dotnet
         public string Data { get; init; }
     }
 
-    public record Coin
-    {
-        public string ParentCoinInfo { get; init; }
-        public string PuzzleHash { get; init; }
-        public ulong Amount { get; init; }
-    }
-
     public record BlockRecord
     {
         public string ChallengeBlockInfoHash { get; init; } //0xc6fc0cfdff1b11ad9b2f44b5b3bff871b240fb6b10b6ab7de6d4b4f9462ecf8apublic object ,

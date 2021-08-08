@@ -28,7 +28,7 @@ namespace chia.dotnet
         /// <param name="relativeLockHeight">Relative lock height</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A transaction</returns>
-        public async Task<dynamic> JoinPool(string targetPuzzlehash, string poolUrl, uint relativeLockHeight, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> JoinPool(string targetPuzzlehash, string poolUrl, uint relativeLockHeight, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -36,9 +36,7 @@ namespace chia.dotnet
             data.pool_url = poolUrl;
             data.relative_lock_height = relativeLockHeight;
 
-            var response = await WalletProxy.SendMessage("pw_join_pool", data, cancellationToken);
-
-            return response.transaction;
+            return await WalletProxy.SendMessage<TransactionRecord>("pw_join_pool", data, "transaction", cancellationToken);
         }
 
         /// <summary>
@@ -48,14 +46,12 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A transaction</returns>
-        public async Task<dynamic> SelfPool(CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> SelfPool(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
-            var response = await WalletProxy.SendMessage("pw_self_pool", data, cancellationToken);
-
-            return response.transaction;
+            return await WalletProxy.SendMessage<TransactionRecord>("pw_self_pool", data, "transaction", cancellationToken);
         }
 
         /// <summary>

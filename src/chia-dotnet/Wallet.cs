@@ -78,14 +78,12 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of transactions</returns>
-        public async Task<IEnumerable<dynamic>> GetTransactions(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<TransactionRecord>> GetTransactions(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
-            var response = await WalletProxy.SendMessage("get_transactions", data, cancellationToken);
-
-            return response.transactions;
+            return await WalletProxy.SendMessage<List<TransactionRecord>>("get_transactions", data, "transactions", cancellationToken);
         }
 
         /// <summary>
@@ -141,7 +139,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The transaction</returns>
-        public async Task<dynamic> SendTransaction(string address, ulong amount, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> SendTransaction(string address, ulong amount, ulong fee, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -149,9 +147,7 @@ namespace chia.dotnet
             data.amount = amount;
             data.fee = fee;
 
-            var response = await WalletProxy.SendMessage("send_transaction", data, cancellationToken);
-
-            return response.transaction;
+            return await WalletProxy.SendMessage<TransactionRecord>("send_transaction", data, "transaction", cancellationToken);
         }
 
         /// <summary>
@@ -162,7 +158,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The transaction</returns>
-        public async Task<dynamic> SendTransactionMulti(IEnumerable<dynamic> additions, IEnumerable<dynamic> coins, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<dynamic> additions, IEnumerable<dynamic> coins, ulong fee, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -173,9 +169,7 @@ namespace chia.dotnet
                 data.coins = coins.ToList();
             }
 
-            var response = await WalletProxy.SendMessage("send_transaction_multi", data, cancellationToken);
-
-            return response.transaction;
+            return await WalletProxy.SendMessage<TransactionRecord>("send_transaction_multi", data, "transaction", cancellationToken);
         }
 
         /// <summary>
@@ -185,7 +179,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount (in units of mojo)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The transaction</returns>
-        public async Task<dynamic> SendTransactionMulti(IEnumerable<dynamic> additions, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<dynamic> additions, ulong fee, CancellationToken cancellationToken = default)
         {
             return await SendTransactionMulti(additions, null, fee, cancellationToken);
         }
