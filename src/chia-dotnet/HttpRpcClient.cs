@@ -6,7 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-
+using System.Text;
 namespace chia.dotnet
 {
     /// <summary>
@@ -54,8 +54,12 @@ namespace chia.dotnet
                 throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
 
-            var d = message.Data as IDictionary<string, object>;
-            using var response = await _httpClient.PostAsJsonAsync(message.Command, d, cancellationToken);
+            // need to use our json to ensure we get the snake case resolver
+            // (don't change to extension method syntax as it won't bind to the dynamic 'Data' object)            
+            var json = Converters.ToJson(message.Data);
+
+            using var content = new StringContent(json, Encoding.UTF8, "application/json");
+            using var response = await _httpClient.PostAsync(message.Command, content, cancellationToken);
             _ = response.EnsureSuccessStatusCode();
         }
 
@@ -74,15 +78,18 @@ namespace chia.dotnet
                 throw new ObjectDisposedException(nameof(WebSocketRpcClient));
             }
 
-            var d = message.Data as IDictionary<string, object>;
-            using var response = await _httpClient.PostAsJsonAsync(message.Command, d, cancellationToken);
+            // need to use our json to ensure we get the snake case resolver
+            // (don't change to extension method syntax as it won't bind to the dynamic 'Data' object)
+            var json = Converters.ToJson(message.Data);
+
+            using var content = new StringContent(json, Encoding.UTF8, "application/json");
+            using var response = await _httpClient.PostAsync(message.Command, content, cancellationToken);
             _ = response.EnsureSuccessStatusCode();
 
-            var json = await response.Content.ReadAsStringAsync();
-            var responseMessage = json.ToObject<dynamic>();
+            var responseJson = await response.Content.ReadAsStringAsync();
+            var responseData = responseJson.ToObject<dynamic>();
 
-            // dynamic responseMessage = await response.Deserialize<dynamic>();
-            return responseMessage?.success == false ? throw new ResponseException(message, responseMessage?.error?.ToString()) : (dynamic)responseMessage;
+            return responseData?.success == false ? throw new ResponseException(message, responseData?.error?.ToString()) : (dynamic)responseData;
         }
 
         private static bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)

@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Diagnostics;
 using System.Collections.Generic;
+using System.Dynamic;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -72,5 +73,7 @@ namespace chia.dotnet
             };
             return JsonConvert.SerializeObject(o, serializerSettings);
         }
+
+
     }
 }
