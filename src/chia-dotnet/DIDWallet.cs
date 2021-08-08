@@ -148,7 +148,7 @@ namespace chia.dotnet
         /// <param name="puzHash">The puzzlehash</param>        
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A spendbundle and information about the attest</returns>
-        public async Task<(string MessageSpendBundle, dynamic Info)> CreateAttest(string filename, string coinName, string pubkey, string puzHash, CancellationToken cancellationToken = default)
+        public async Task<(string MessageSpendBundle, (string Parent, string InnerPuzzleHash, ulong Amount) Info)> CreateAttest(string filename, string coinName, string pubkey, string puzHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -159,7 +159,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("did_create_attest", data, cancellationToken);
 
-            return (response.message_spend_bundle, response.info);
+            return (response.message_spend_bundle, (response.info[0], response.info[1], response.info[2]));
         }
 
         /// <summary>
