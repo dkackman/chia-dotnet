@@ -1,4 +1,5 @@
-﻿using System.Dynamic;
+﻿using System;
+using System.Dynamic;
 using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
@@ -296,14 +297,19 @@ namespace chia.dotnet
         /// <param name="spHash">signage point hash</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Indicator of whether the spend bundle was successfully included in the mempool</returns>
-        public async Task<(dynamic signagePoint, double timeReceived, bool reverted)> GetRecentSignagePoint(string spHash, CancellationToken cancellationToken = default)
+        public async Task<(SignagePoint SignagePoint, double TimeReceived, bool Reverted, DateTime DateTimeReceived)> GetRecentSignagePoint(string spHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.sp_hash = spHash;
 
             var response = await SendMessage("get_recent_signage_point_or_eos", data, cancellationToken);
 
-            return (response.signage_point, response.time_received, response.reverted);
+            return (
+                Converters.ToObject<SignagePoint>(response.signage_point),
+                response.time_received,
+                response.reverted,
+                Converters.ToDateTime((double)response.time_received)
+                );
         }
 
         /// <summary>

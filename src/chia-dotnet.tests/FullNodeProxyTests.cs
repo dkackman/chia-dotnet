@@ -195,7 +195,8 @@ namespace chia.dotnet.tests
         public async Task GetRecentSignagePoint()
         {
             using var cts = new CancellationTokenSource(15000);
-            var sp = await _theFullNode.GetRecentSignagePoint("0xf3ca7a33ce723b38c9a72156252b3b2395ead751213eef5d8ed40c941c6a9017", cts.Token);
+            
+            var sp = await _theFullNode.GetRecentSignagePoint("3bb0fbe6bd0fbbb69eb058f839999e6306b34e033c66b4c08405a19cf81b7c6e", cts.Token);
             Assert.IsNotNull(sp);
         }
         

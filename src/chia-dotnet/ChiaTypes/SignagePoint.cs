@@ -2,11 +2,9 @@ namespace chia.dotnet
 {
     public record SignagePoint
     {
-        public string ChallengeChainSp { get; init; }
-        public string ChallengeHash { get; init; }
-        public ulong Difficulty { get; init; }
-        public string RewardChainSp { get; init; }
-        public byte SignagePointIndex { get; init; }
-        public ulong SubSlotIters { get; init; }
+        public VDFInfo CcVdf { get; init; }
+        public VDFProof CcProof { get; init; }
+        public VDFInfo RcVdf { get; init; }
+        public VDFProof RcProof { get; init; }
     }
 }
