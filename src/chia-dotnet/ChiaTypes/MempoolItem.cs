@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+
 using Newtonsoft.Json;
 
 namespace chia.dotnet
@@ -9,16 +10,25 @@ namespace chia.dotnet
         public ICollection<string> Vars { get; init; }
     }
 
+    /// <summary>
+    /// This type doesn't exist in the chia code. This property is serialzied into the Json
+    /// as a tuple, which shows up as a mixed type json array. There is a speciailzed converter to read
+    /// the Json and get the ConditionOpCode into <see cref="Condition.ConditionOpcode"/>
+    /// conditions: List[Tuple[ConditionOpcode, List[ConditionWithArgs]]]
+    /// </summary>
+    [JsonConverter(typeof(ConditionConverter))]
     public record Condition
     {
-
+        public string ConditionOpcode { get; init; }
+        public ICollection<ConditionWithArgs> Args { get; init; }
     }
 
     public record NPC
     {
         public string CoinName { get; init; }
         public string PuzzleHash { get; init; }
-        public ICollection<dynamic> Conditions { get; init; } //conditions: List[Tuple[ConditionOpcode, List[ConditionWithArgs]]]
+
+        public ICollection<Condition> Conditions { get; init; }
     }
 
     public record NPCResult
