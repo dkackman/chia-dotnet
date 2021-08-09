@@ -45,7 +45,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Information about the transaction</returns>
+        /// <returns>The <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> SendClawbackTransaction(ulong fee, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
