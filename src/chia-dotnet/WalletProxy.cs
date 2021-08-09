@@ -84,7 +84,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_public_keys", cancellationToken);
 
-            return ((IEnumerable<dynamic>)response.public_key_fingerprints).Select(item => (uint)item);
+            return Converters.ConvertList<uint>(response.public_key_fingerprints);
         }
 
         /// <summary>

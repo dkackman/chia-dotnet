@@ -47,6 +47,13 @@ namespace chia.dotnet
             return JsonConvert.DeserializeObject<T>(json, serializerSettings);
         }
 
+        public static IEnumerable<T> ConvertList<T>(dynamic enumerable)
+        {
+            Debug.Assert(enumerable is not null);
+
+            return ((IEnumerable<dynamic>)enumerable).Select<dynamic, T>(item => (T)item);
+        }
+
         public static IEnumerable<string> ToStrings(dynamic stringEnumerable)
         {
             Debug.Assert(stringEnumerable is not null);
