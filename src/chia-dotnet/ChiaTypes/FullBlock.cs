@@ -52,14 +52,6 @@ namespace chia.dotnet
         public VDFProof RewardChainSlotProof { get; init; }
     }
 
-    public record EndOfSlotBundle
-    {
-        public ChallengeChainSubSlot ChallengeChain { get; init; }
-        public InfusedChallengeChainSubSlot InfusedChallengeChain { get; init; }
-        public RewardChainSubSlot RewardChain { get; init; }
-        public SubSlotProofs Proofs { get; init; }
-    }
-
     public record ProofOfSpace
     {
         public string Challenge { get; init; }

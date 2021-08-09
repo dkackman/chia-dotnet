@@ -19,16 +19,18 @@ namespace chia.dotnet.tests
             return new HttpRpcClient(endpoint);
         }
         /// <summary>
-        /// Create a daemon instance from a hardcoded address
+        /// Create a rpc client instance from a hardcoded address
         /// </summary>
         /// <returns><see cref="DaemonProxy"/></returns>
         public static WebSocketRpcClient CreateRpcClientFromHardcodedLocation()
         {
-            //# warning YOU MIGHT BE USING A PRODUCTION NODE
-            //var endpoint = Config.Open().GetEndpoint("ui");
+            ///*
+            # warning YOU MIGHT BE USING A PRODUCTION NODE
+            var endpoint = Config.Open().GetEndpoint("ui");
+            //*/
 
-                        
-            // this is an example using a WS instance running locally
+            /*      
+            
             var endpoint = new EndpointInfo()
             {
                 Uri = new Uri("wss://172.26.210.216:55400"),
@@ -38,7 +40,7 @@ namespace chia.dotnet.tests
                 //CertPath = @"/home/don/.chia/mainnet/config/ssl/daemon/private_daemon.crt",
                 //KeyPath = @"/home/don/.chia/mainnet/config/ssl/daemon/private_daemon.key",
             };
-            
+            */
             return new WebSocketRpcClient(endpoint);
         }
 

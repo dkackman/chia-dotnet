@@ -199,6 +199,15 @@ namespace chia.dotnet.tests
             var sp = await _theFullNode.GetRecentSignagePoint("3bb0fbe6bd0fbbb69eb058f839999e6306b34e033c66b4c08405a19cf81b7c6e", cts.Token);
             Assert.IsNotNull(sp);
         }
+
+        [TestMethod()]
+        public async Task GetRecentEOS()
+        {
+            using var cts = new CancellationTokenSource(15000);
+            
+            var eos = await _theFullNode.GetRecentEOS("0x75d2076397bb607408f49963a12bfcaac287b652fc27ad61f8cce9c125873349", cts.Token);
+            Assert.IsNotNull(eos);
+        }
         
         [TestMethod()]
         public async Task GetPuzzleAndSolution()
