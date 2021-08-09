@@ -114,12 +114,11 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
-        [Ignore] // only works on mainnet
         public async Task OpenConnection()
         {
             using var cts = new CancellationTokenSource(15000);
 
-            await _theFarmer.OpenConnection("node.chia.net", 8444, cts.Token);
+            await _theFarmer.OpenConnection("testnet-node.chia.net", 58444, cts.Token);
         }
     }
 }

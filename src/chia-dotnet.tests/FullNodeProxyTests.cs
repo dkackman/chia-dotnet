@@ -105,11 +105,10 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
-        [Ignore] // only works on mainnet with the address here
         public async Task OpenConnection()
         {
             using var cts = new CancellationTokenSource(15000);
-            await _theFullNode.OpenConnection("node.chia.net", 8444, cts.Token);
+            await _theFullNode.OpenConnection("testnet-node.chia.net", 58444, cts.Token);
         }
 
         [TestMethod()]
@@ -160,7 +159,7 @@ namespace chia.dotnet.tests
         public async Task GetAdditionsAndRemovals()
         {
             using var cts = new CancellationTokenSource(15000);
-            var additionsAndRemovals = await _theFullNode.GetAdditionsAndRemovals("7d83874e532ea08b0a5882ce8df705a5f45fc94bdeae4b1f568f05ce3010c6ae", cts.Token);
+            var additionsAndRemovals = await _theFullNode.GetAdditionsAndRemovals("68a8e65132da09549ef764c20bfb2b9e5b7e705d5e6bae78cfceab889389ff13", cts.Token);
             Assert.IsNotNull(additionsAndRemovals);
         }
 
