@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace chia.dotnet
 {
     public record SignagePoint

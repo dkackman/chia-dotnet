@@ -187,7 +187,7 @@ namespace chia.dotnet.tests
             Assert.IsNotNull(ids);
             Assert.IsTrue(ids.Count() > 0);
 
-            var item = await _theFullNode.GetMemmpooItemByTxId((string)ids.First(), cts.Token);
+            var item = await _theFullNode.GetMemmpooItemByTxId(ids.First(), cts.Token);
             Assert.IsNotNull(item);
         }
 

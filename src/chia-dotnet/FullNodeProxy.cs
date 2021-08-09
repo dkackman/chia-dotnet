@@ -224,11 +224,11 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a list of tx_ids</returns>
-        public async Task<IEnumerable<dynamic>> GetAllMemmpoolTxIds(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<string>> GetAllMemmpoolTxIds(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_all_mempool_tx_ids", cancellationToken);
 
-            return response.tx_ids;
+            return Converters.ToStrings(response.tx_ids);
         }
 
         /// <summary>
@@ -237,14 +237,12 @@ namespace chia.dotnet
         /// <param name="txId">Trasnaction id</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a list of tx_ids</returns>
-        public async Task<dynamic> GetMemmpooItemByTxId(string txId, CancellationToken cancellationToken = default)
+        public async Task<MempoolItem> GetMemmpooItemByTxId(string txId, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.tx_id = txId;
 
-            var response = await SendMessage("get_mempool_item_by_tx_id", cancellationToken);
-
-            return response.mempool_item;
+            return await SendMessage<MempoolItem>("get_mempool_item_by_tx_id", data, "mempool_item", cancellationToken);
         }
 
         /// <summary>

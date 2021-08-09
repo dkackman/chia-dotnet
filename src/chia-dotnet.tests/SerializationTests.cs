@@ -49,5 +49,17 @@ namespace chia.dotnet.tests
 
             Assert.IsNotNull(block);
         }
+
+        [TestMethod]
+        public void DeserializeMempoolItem()
+        {
+            var file = new FileInfo("mempoolItem.json");
+            using var reader = file.OpenText();
+            var json = reader.ReadToEnd();
+
+            var item = Converters.ToObject<MempoolItem>(json);
+
+            Assert.IsNotNull(item);
+        }
     }
 }
