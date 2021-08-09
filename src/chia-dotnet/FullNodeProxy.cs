@@ -189,12 +189,13 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Retrieves the additions and removals (state transitions) for a certain block. Returns coin records for each addition and removal.
+        /// Retrieves the additions and removals (state transitions) for a certain block. 
+        /// Returns coin records for each addition and removal.
         /// </summary>
         /// <param name="headerhash">The header hash</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of additions and a list of removals</returns>
-        public async Task<(IEnumerable<Coin> Additions, IEnumerable<Coin> Removals)> GetAdditionsAndRemovals(string headerhash, CancellationToken cancellationToken = default)
+        public async Task<(IEnumerable<CoinRecord> Additions, IEnumerable<CoinRecord> Removals)> GetAdditionsAndRemovals(string headerhash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.header_hash = headerhash;
@@ -202,8 +203,8 @@ namespace chia.dotnet
             var response = await SendMessage("get_additions_and_removals", data, cancellationToken);
 
             return (
-                Converters.ToObject<IEnumerable<Coin>>(response.additions),
-                Converters.ToObject<IEnumerable<Coin>>(response.removals));
+                Converters.ToObject<IEnumerable<CoinRecord>>(response.additions),
+                Converters.ToObject<IEnumerable<CoinRecord>>(response.removals));
         }
 
         /// <summary>

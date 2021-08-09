@@ -64,9 +64,9 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetBlocks()
         {
-            var state = await _theFullNode.GetBlockchainState();
-            
-            using var cts = new CancellationTokenSource(15000);
+            using var cts = new CancellationTokenSource(30000);
+            var state = await _theFullNode.GetBlockchainState(cts.Token);
+            Assert.IsNotNull(state.Peak, "peak not retreived yet");
             var blocks = await _theFullNode.GetBlocks(state.Peak.Height - 5, state.Peak.Height - 1, false, cts.Token);
 
             Assert.IsNotNull(blocks);
@@ -115,16 +115,20 @@ namespace chia.dotnet.tests
         [TestMethod()]
         public async Task GetBlockRecordByHeight()
         {
-            using var cts = new CancellationTokenSource(15000);
-            var blockRecord = await _theFullNode.GetBlockRecordByHeight(400568, cts.Token);
+            using var cts = new CancellationTokenSource(30000);
+            var state = await _theFullNode.GetBlockchainState(cts.Token);
+            Assert.IsNotNull(state.Peak, "peak not retreived yet");
+            var blockRecord = await _theFullNode.GetBlockRecordByHeight(state.Peak.Height - 1, cts.Token);
             Assert.IsNotNull(blockRecord);
         }
 
         [TestMethod()]
         public async Task GetBlockRecords()
         {
-            using var cts = new CancellationTokenSource(15000);
-            var blockRecords = await _theFullNode.GetBlockRecords(419019, 419021, cts.Token);
+            using var cts = new CancellationTokenSource(30000);
+            var state = await _theFullNode.GetBlockchainState(cts.Token);
+            Assert.IsNotNull(state.Peak, "peak not retreived yet");
+            var blockRecords = await _theFullNode.GetBlockRecords(state.Peak.Height - 5, state.Peak.Height - 1, cts.Token);
             Assert.IsNotNull(blockRecords);
         }
 
