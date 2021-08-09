@@ -212,11 +212,9 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a list of mempool items</returns>
-        public async Task<IEnumerable<dynamic>> GetAllMempoolItems(CancellationToken cancellationToken = default)
+        public async Task<IDictionary<string, MempoolItem>> GetAllMempoolItems(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_all_mempool_items", cancellationToken);
-
-            return response.mempool_items;
+            return await SendMessage<IDictionary<string, MempoolItem>>("get_all_mempool_items", "mempool_items", cancellationToken);
         }
 
         /// <summary>
