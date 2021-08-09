@@ -311,7 +311,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="challengeHash">challenge hash</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A signange _point or an eos</returns>
+        /// <returns>A signange_point or an eos</returns>
         public async Task<(dynamic eos, double timeReceived, bool reverted)> GetRecentEOS(string challengeHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -322,23 +322,20 @@ namespace chia.dotnet
             return (response.eos, response.time_received, response.reverted);
         }
 
-
         /// <summary>
         /// Gets a coin solution 
         /// </summary>
-        /// <param name="coinId">Id of the coin</param>
-        /// <param name="height">Block height</param> 
+        /// <param name="coinId">Id/name  of the coin</param>
+        /// <param name="height">Block height at which the coin was spent 'spent_block_index'</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A coin_solution</returns>
-        public async Task<dynamic> GetPuzzleAndSolution(string coinId, uint height, CancellationToken cancellationToken = default)
+        public async Task<CoinSpend> GetPuzzleAndSolution(string coinId, uint height, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.coin_id = coinId;
             data.height = height;
 
-            var response = await SendMessage("get_puzzle_and_solution", data, cancellationToken);
-
-            return response.coin_solution;
+            return await SendMessage<CoinSpend>("get_puzzle_and_solution", data, "coin_solution", cancellationToken);
         }
     }
 }

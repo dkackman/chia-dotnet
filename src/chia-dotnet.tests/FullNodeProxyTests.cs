@@ -151,7 +151,7 @@ namespace chia.dotnet.tests
         public async Task GetCoinRecordByName()
         {
             using var cts = new CancellationTokenSource(15000);
-            var coinRecord = await _theFullNode.GetCoinRecordByName("0x2b83ca807d305cd142e0e91d4e7a18f8e57df0ac6b4fa403bff249d0d491c609", cts.Token);
+            var coinRecord = await _theFullNode.GetCoinRecordByName("0xd2ab06f9568607ea6a6f66b8c81095f9685656d3ea789cf51f6ffa401bba3473", cts.Token);
             Assert.IsNotNull(coinRecord);
         }
 
@@ -196,6 +196,14 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
             var sp = await _theFullNode.GetRecentSignagePoint("0xf3ca7a33ce723b38c9a72156252b3b2395ead751213eef5d8ed40c941c6a9017", cts.Token);
+            Assert.IsNotNull(sp);
+        }
+        
+        [TestMethod()]
+        public async Task GetPuzzleAndSolution()
+        {
+            using var cts = new CancellationTokenSource(15000);
+            var sp = await _theFullNode.GetPuzzleAndSolution("0xd2ab06f9568607ea6a6f66b8c81095f9685656d3ea789cf51f6ffa401bba3473", 691928, cts.Token);
             Assert.IsNotNull(sp);
         }
     }
