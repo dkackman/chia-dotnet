@@ -31,12 +31,12 @@ namespace chia.dotnet.tests
             // this is an example using a WS instance running locally
             var endpoint = new EndpointInfo()
             {
-                //Uri = new Uri("wss://172.26.210.216:55400"),
-                //CertPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/daemon/private_daemon.crt",
-                //KeyPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/daemon/private_daemon.key",
-                Uri = new Uri("wss://localhost:55400"),
-                CertPath = @"/home/don/.chia/mainnet/config/ssl/daemon/private_daemon.crt",
-                KeyPath = @"/home/don/.chia/mainnet/config/ssl/daemon/private_daemon.key",
+                Uri = new Uri("wss://172.26.210.216:55400"),
+                CertPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/daemon/private_daemon.crt",
+                KeyPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/daemon/private_daemon.key",
+                //Uri = new Uri("wss://localhost:55400"),
+                //CertPath = @"/home/don/.chia/mainnet/config/ssl/daemon/private_daemon.crt",
+                //KeyPath = @"/home/don/.chia/mainnet/config/ssl/daemon/private_daemon.key",
             };
             
             return new WebSocketRpcClient(endpoint);

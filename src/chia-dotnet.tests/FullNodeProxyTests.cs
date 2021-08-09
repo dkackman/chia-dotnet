@@ -159,7 +159,7 @@ namespace chia.dotnet.tests
         public async Task GetAdditionsAndRemovals()
         {
             using var cts = new CancellationTokenSource(15000);
-            var additionsAndRemovals = await _theFullNode.GetAdditionsAndRemovals("68a8e65132da09549ef764c20bfb2b9e5b7e705d5e6bae78cfceab889389ff13", cts.Token);
+            var additionsAndRemovals = await _theFullNode.GetAdditionsAndRemovals("ca9519a98a38857e6bb6acf1460b8ddcbc3bdf45ad856b8fca639fd9a6ed1eb9", cts.Token);
             Assert.IsNotNull(additionsAndRemovals);
         }
 
