@@ -23,6 +23,9 @@ namespace chia.dotnet
         public SubSlotProofs Proofs { get; init; }
     }
 
+    /// <summary>
+    /// Same as a FullBlock but without TransactionInfo and Generator, used by light clients
+    /// </summary>
     public record UnfinishedHeaderBlock
     {
         public ICollection<EndOfSubSlotBundle> FinishedSubSlots { get; init; }

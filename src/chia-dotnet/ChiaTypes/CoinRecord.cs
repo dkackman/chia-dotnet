@@ -1,12 +1,10 @@
 using System;
-using System.Numerics;
-using System.Collections.Generic;
 
 namespace chia.dotnet
 {
-    /*
-    This structure is used in the body for the reward and fees genesis coins.
-    */
+    /// <summary>
+    /// This structure is used in the body for the reward and fees genesis coins.
+    /// </summary>
     public record Coin
     {
         public string ParentCoinInfo { get; init; }
@@ -14,10 +12,10 @@ namespace chia.dotnet
         public ulong Amount { get; init; }
     }
 
-    /*
-    These are values that correspond to a CoinName that are used
-    in keeping track of the unspent database.
-    */
+    /// <summary>
+    /// These are values that correspond to a CoinName that are used
+    /// in keeping track of the unspent database.
+    /// </summary>
     public record CoinRecord
     {
         public Coin Coin { get; init; }
@@ -26,5 +24,7 @@ namespace chia.dotnet
         public bool Spent { get; init; }
         public bool Coinbase { get; init; }
         public ulong Timestamp { get; init; }
+
+        public DateTime? DateTimestamp => Timestamp.ToDateTime();
     }
 }

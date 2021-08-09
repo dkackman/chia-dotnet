@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
 using System.Collections.Generic;
 
 namespace chia.dotnet
@@ -17,6 +18,11 @@ namespace chia.dotnet
         public string Data { get; init; }
     }
 
+    /// <summary>
+    /// This class is not included or hashed into the blockchain, but it is kept in memory as a more
+    /// efficient way to maintain data about the blockchain. This allows us to validate future blocks,
+    /// difficulty adjustments, etc, without saving the whole header block in memory.
+    /// </summary>
     public record BlockRecord
     {
         public string ChallengeBlockInfoHash { get; init; } //0xc6fc0cfdff1b11ad9b2f44b5b3bff871b240fb6b10b6ab7de6d4b4f9462ecf8apublic object ,
@@ -41,8 +47,10 @@ namespace chia.dotnet
         public byte SignagePointIndex { get; init; } //60,
         public SubEpochSummary SubEpochSummaryIncluded { get; init; } //null,
         public ulong SubSlotIters { get; init; } //105381888,
-        public double? Timestamp { get; init; } //null,
+        public ulong? Timestamp { get; init; } //null,
         public BigInteger TotalIters { get; init; } //968286176191,
         public BigInteger Weight { get; init; } //41305748871
+
+        public DateTime? DateTimestamp => Timestamp.ToDateTime();
     }
 }

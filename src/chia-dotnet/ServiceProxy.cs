@@ -77,9 +77,9 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of connections</returns>
-        public async Task<IEnumerable<Connection>> GetConnections(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<ConnectionInfo>> GetConnections(CancellationToken cancellationToken = default)
         {
-            return await SendMessage<IEnumerable<Connection>>("get_connections", "connections", cancellationToken);
+            return await SendMessage<IEnumerable<ConnectionInfo>>("get_connections", "connections", cancellationToken);
         }
 
         /// <summary>

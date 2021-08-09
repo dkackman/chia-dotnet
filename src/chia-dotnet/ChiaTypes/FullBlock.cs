@@ -1,3 +1,4 @@
+using System;
 using System.Numerics;
 using System.Collections.Generic;
 
@@ -120,6 +121,8 @@ namespace chia.dotnet
         public string AdditionsRoot { get; init; }
         public string RemovalsRoot { get; init; }
         public string TransactionsInfoHash { get; init; }
+
+        public DateTime? DateTimestamp => Timestamp.ToDateTime();
     }
 
     public record TransactionsInfo
@@ -132,6 +135,9 @@ namespace chia.dotnet
         public ICollection<Coin> RewardClaimsIncorporated { get; init; }
     }
 
+    /// <summary>
+    /// All the information required to validate a block
+    /// </summary>
     public record FullBlock
     {
         public ICollection<EndOfSlotBundle> FinishedSubSlots { get; init; }

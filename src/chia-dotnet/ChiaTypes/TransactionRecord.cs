@@ -6,10 +6,10 @@ using Newtonsoft.Json;
 
 namespace chia.dotnet
 {
-    /*
-    # Represents the list of peers that we sent the transaction to, whether each one
-    # included it in the mempool, and what the error message (if any) was
-    */
+    /// <summary>
+    /// Represents the list of peers that we sent the transaction to, whether each one
+    /// included it in the mempool, and what the error message (if any) was
+    /// </summary>
     [JsonConverter(typeof(SendPeerConverter))]
     public record SendPeer
     {
@@ -47,11 +47,11 @@ namespace chia.dotnet
         }
     }
 
-    /*
-        This is a rather disparate data structure that validates coin transfers. It's generally populated
-    with data from different sources, since burned coins are identified by name, so it is built up
-    more often that it is streamed.
-    */
+    /// <summary>
+    /// This is a rather disparate data structure that validates coin transfers. It's generally populated
+    /// with data from different sources, since burned coins are identified by name, so it is built up
+    /// more often that it is streamed.
+    /// </summary>
     public record CoinSpend
     {
         public Coin Coin { get; init; }
@@ -59,21 +59,21 @@ namespace chia.dotnet
         public string Solution { get; init; }
     }
 
-    /*     
-    This is a list of coins being spent along with their solution programs, and a single
-    aggregated signature. This is the object that most closely corresponds to a bitcoin
-    transaction (although because of non-interactive signature aggregation, the boundaries
-    between transactions are more flexible than in bitcoin). 
-    */
+    /// <summary> 
+    /// This is a list of coins being spent along with their solution programs, and a single
+    /// aggregated signature. This is the object that most closely corresponds to a bitcoin
+    /// transaction (although because of non-interactive signature aggregation, the boundaries
+    /// between transactions are more flexible than in bitcoin). 
+    /// </summary>
     public record SpendBundle
     {
         public string AggregatedSignature { get; init; }
         public ICollection<CoinSpend> CoinSpends { get; init; }
     }
 
-    /*
-    Used for storing transaction data and status in wallets.
-    */
+    /// <summary>
+    /// Used for storing transaction data and status in wallets.
+    /// </summary>
     public record TransactionRecord
     {
         public ICollection<Coin> Additions { get; init; }

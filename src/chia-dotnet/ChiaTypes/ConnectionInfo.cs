@@ -3,9 +3,9 @@
 namespace chia.dotnet
 {
     /// <summary>
-    /// Chia's representation of a connect form node to node
+    /// Chia's representation of a connection from node to node
     /// </summary>
-    public record Connection
+    public record ConnectionInfo
     {
         public uint? BytesRead { get; init; } // 16112675,
         public uint? BytesWritten { get; init; } // 1613222,

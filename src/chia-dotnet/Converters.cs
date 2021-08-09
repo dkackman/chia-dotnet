@@ -54,6 +54,22 @@ namespace chia.dotnet
             return ((IEnumerable<dynamic>)stringEnumerable).Select<dynamic, string>(item => item.ToString());
         }
 
+        public static DateTime? ToDateTime(this ulong? epoch)
+        {
+            if (epoch.HasValue)
+            {
+                var start = new DateTime(1970, 1, 1, 0, 0, 0, 0); //from start epoch time
+                return start.AddSeconds(epoch.Value); //add the seconds to the start DateTime
+            }
+            return null;
+        }
+
+        public static DateTime ToDateTime(this ulong epoch)
+        {
+            var start = new DateTime(1970, 1, 1, 0, 0, 0, 0); //from start epoch time
+            return start.AddSeconds(epoch); //add the seconds to the start DateTime
+        }
+
         public static DateTime ToDateTime(this double epoch)
         {
             var start = new DateTime(1970, 1, 1, 0, 0, 0, 0); //from start epoch time
