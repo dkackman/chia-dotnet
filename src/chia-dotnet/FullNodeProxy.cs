@@ -195,7 +195,7 @@ namespace chia.dotnet
         /// <param name="headerhash">The header hash</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of additions and a list of removals</returns>
-        public async Task<(IEnumerable<CoinRecord> Additions, IEnumerable<CoinRecord> Removals)> GetAdditionsAndRemovals(string headerhash, CancellationToken cancellationToken = default)
+        public async Task<(ICollection<CoinRecord> Additions, ICollection<CoinRecord> Removals)> GetAdditionsAndRemovals(string headerhash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.header_hash = headerhash;
@@ -203,8 +203,8 @@ namespace chia.dotnet
             var response = await SendMessage("get_additions_and_removals", data, cancellationToken);
 
             return (
-                Converters.ToObject<IEnumerable<CoinRecord>>(response.additions),
-                Converters.ToObject<IEnumerable<CoinRecord>>(response.removals));
+                Converters.ToObject<ICollection<CoinRecord>>(response.additions),
+                Converters.ToObject<ICollection<CoinRecord>>(response.removals));
         }
 
         /// <summary>
