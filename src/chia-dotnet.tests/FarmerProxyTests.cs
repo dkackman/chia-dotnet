@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -71,8 +72,10 @@ namespace chia.dotnet.tests
         public async Task GetSignagePoint()
         {
             using var cts = new CancellationTokenSource(15000);
-
-            var sp = await _theFarmer.GetSignagePoint("57e6de9b6b3edc197cbdab2c474a1c6017e2ab721bc026d26c357bcb8660ec38", cts.Token);
+            var signagePoints = await _theFarmer.GetSignagePoints(cts.Token);
+            var spInfo = signagePoints.FirstOrDefault();
+            Assert.IsNotNull(spInfo);
+            var sp = await _theFarmer.GetSignagePoint(spInfo.SignagePoint.ChallengeChainSp, cts.Token);
 
             Assert.IsNotNull(sp);
         }
@@ -85,6 +88,20 @@ namespace chia.dotnet.tests
             var state = await _theFarmer.GetPoolState(cts.Token);
 
             Assert.IsNotNull(state);
+        }
+
+        [TestMethod]
+        public async Task GetPoolLoginLink()
+        {
+            using var cts = new CancellationTokenSource(15000);
+            var state = await _theFarmer.GetPoolState(cts.Token);
+            var pool = state.FirstOrDefault();
+            Assert.IsNotNull(pool);
+            Assert.IsNotNull(pool.PoolConfig);
+
+            var link = await _theFarmer.GetPoolLoginLink(pool.PoolConfig.LauncherId, cts.Token);
+
+            Assert.IsNotNull(link);
         }
 
         [TestMethod]

@@ -109,7 +109,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_pool_login_link", data, cancellationToken);
 
-            return response.login_link?.ToString();
+            return response.login_link;
         }
 
         /// <summary>

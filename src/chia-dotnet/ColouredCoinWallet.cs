@@ -67,9 +67,9 @@ namespace chia.dotnet
         /// <summary>
         /// Spend a coloured coin
         /// </summary>
-        /// <param name="innerAddress">inner address for the spend</param>
-        /// <param name="amount">the amount to put in the wallet (in units of mojos)</param> 
-        /// <param name="fee">fee to create the wallet (in units of mojos)</param>
+        /// <param name="innerAddress">The inner address for the spend</param>
+        /// <param name="amount">The amount to put in the wallet (in units of mojos)</param> 
+        /// <param name="fee">The fee to create the wallet (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> Spend(string innerAddress, ulong amount, ulong fee, CancellationToken cancellationToken = default)

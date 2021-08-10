@@ -47,6 +47,7 @@ namespace chia.dotnet
             UriBuilder builder = new();
             dynamic ssl;
 
+            // any daemon connection uses wss:
             if (serviceName == "ui") // this is the daemon that the ui connects to
             {
                 builder.Scheme = "wss";
@@ -55,7 +56,7 @@ namespace chia.dotnet
                 builder.Port = Convert.ToInt32(section.daemon_port);
                 ssl = section.daemon_ssl;
             }
-            else if (serviceName == "daemon" || serviceName == "chia plots create") // this is the local daemon
+            else if (serviceName is "daemon" or "chia plots create") // this is the local daemon
             {
                 builder.Scheme = "wss";
                 builder.Host = Contents.self_hostname;
