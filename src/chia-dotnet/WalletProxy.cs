@@ -312,7 +312,7 @@ namespace chia.dotnet
         /// <param name="fee">fee to create the wallet (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(uint Id, byte Type, dynamic origin, string pubkey)> CreateRateLimitedAdminWallet(string pubkey, ulong interval, ulong limit, ulong amount, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<(uint Id, byte Type, Coin origin, string pubkey)> CreateRateLimitedAdminWallet(string pubkey, ulong interval, ulong limit, ulong amount, ulong fee, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_type = "rl_wallet";
@@ -326,7 +326,12 @@ namespace chia.dotnet
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
-            return (response.id, response.type, response.origin, response.pubkey);
+            return (
+                response.id,
+                response.type,
+                Converters.ToObject<Coin>(response.origin),
+                response.pubkey
+                );
         }
 
         /// <summary>
@@ -394,7 +399,8 @@ namespace chia.dotnet
                     response.newpuzhash,
                     response.pubkey,
                     response.backup_dids,
-                    response.num_verifications_required);
+                    response.num_verifications_required
+                    );
         }
 
         /// <summary>
@@ -423,7 +429,8 @@ namespace chia.dotnet
             return (
                     Converters.ToObject<TransactionRecord>(response.transaction),
                     response.launcher_id,
-                    response.p2_singleton_puzzle_hash);
+                    response.p2_singleton_puzzle_hash
+                    );
         }
 
         /// <summary>
@@ -447,7 +454,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="filename">path to the offer file</param>         
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>The dicrepencies</returns>
+        /// <returns>The discrepencies</returns>
         public async Task<dynamic> GetDiscrepenciesForOffer(string filename, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
