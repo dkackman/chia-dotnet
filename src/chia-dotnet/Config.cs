@@ -11,7 +11,8 @@ using YamlDotNet.Serialization;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Represents a chia config yaml file and its contents. Used to find the uri and ssl certs needed to connect via a <see cref="System.Net.WebSockets.WebSocket"/>
+    /// Represents a chia config yaml file and its contents. 
+    /// Used to find the uri and ssl certs needed to connect 
     /// </summary>
     public sealed class Config
     {
@@ -40,10 +41,13 @@ namespace chia.dotnet
                 throw new ArgumentNullException(nameof(serviceName));
             }
 
+            // this allows a ServicesNames member to used
+            serviceName = serviceName.Replace("chia_", "");
+
             UriBuilder builder = new();
             dynamic ssl;
 
-            if (serviceName == "ui")
+            if (serviceName == "ui") // this is the daemon that the ui connects to
             {
                 builder.Scheme = "wss";
                 dynamic section = Contents.ui;
@@ -51,14 +55,14 @@ namespace chia.dotnet
                 builder.Port = Convert.ToInt32(section.daemon_port);
                 ssl = section.daemon_ssl;
             }
-            else if (serviceName == "daemon")
+            else if (serviceName == "daemon" || serviceName == "chia plots create") // this is the local daemon
             {
                 builder.Scheme = "wss";
                 builder.Host = Contents.self_hostname;
                 builder.Port = Convert.ToInt32(Contents.daemon_port);
                 ssl = Contents.daemon_ssl;
             }
-            else
+            else // all other endpoints are https direct connections
             {
                 builder.Scheme = "https";
                 builder.Host = Contents.self_hostname;
@@ -87,7 +91,7 @@ namespace chia.dotnet
         /// Opens a chia config yaml file
         /// </summary>
         /// <param name="fullPath">The full filesystem path to the config file</param>
-        /// <returns>A <see cref="Config"/> instance</returns>
+        /// <returns>The config <see cref="Config"/> instance</returns>
         public static Config Open(string fullPath)
         {
             if (string.IsNullOrEmpty(fullPath))
@@ -119,7 +123,7 @@ namespace chia.dotnet
         /// <summary>
         /// Opens the <see cref="Config"/> from <see cref="DefaultRootPath"/> plus 'config' and 'config.yaml'
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The user's chia install <see cref="Config"/> instance</returns>
         public static Config Open()
         {
             return Open(Path.Combine(DefaultRootPath, "config", "config.yaml"));
