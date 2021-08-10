@@ -27,7 +27,6 @@ namespace chia.dotnet
     {
         public string CoinName { get; init; }
         public string PuzzleHash { get; init; }
-
         public ICollection<Condition> Conditions { get; init; }
     }
 

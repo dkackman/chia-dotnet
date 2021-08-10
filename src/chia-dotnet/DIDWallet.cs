@@ -167,14 +167,20 @@ namespace chia.dotnet
         /// </summary>       
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A spendbundle and information about the attest</returns>
-        public async Task<(string MyDID, string CoinName, string NewPuzzleHash, string PublicKey, IEnumerable<dynamic> BackUpIds)> GetInformationNeededForRecovery(CancellationToken cancellationToken = default)
+        public async Task<(string MyDID, string CoinName, string NewPuzzleHash, string PublicKey, ICollection<byte> BackUpIds)> GetInformationNeededForRecovery(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
             var response = await WalletProxy.SendMessage("did_get_information_needed_for_recovery", data, cancellationToken);
 
-            return (response.my_did, response.coin_name, response.newpuzhash, response.pubkey, response.backup_dids);
+            return (
+                response.my_did,
+                response.coin_name,
+                response.newpuzhash,
+                response.pubkey,
+                Converters.ToObject<ICollection<byte>>(response.backup_dids)
+                );
         }
 
         /// <summary>
