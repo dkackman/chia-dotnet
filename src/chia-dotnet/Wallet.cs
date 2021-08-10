@@ -63,13 +63,14 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("get_wallet_balance", data, cancellationToken);
 
-            return (response.wallet_balance.confirmed_wallet_balance,
-                    response.wallet_balance.unconfirmed_wallet_balance,
-                    response.wallet_balance.spendable_balance,
-                    response.wallet_balance.pending_change,
-                    response.wallet_balance.max_send_amount,
-                    response.wallet_balance.unspent_coin_count,
-                    response.wallet_balance.pending_coin_removal_count
+            return (
+                response.wallet_balance.confirmed_wallet_balance,
+                response.wallet_balance.unconfirmed_wallet_balance,
+                response.wallet_balance.spendable_balance,
+                response.wallet_balance.pending_change,
+                response.wallet_balance.max_send_amount,
+                response.wallet_balance.unspent_coin_count,
+                response.wallet_balance.pending_coin_removal_count
                 );
         }
 
