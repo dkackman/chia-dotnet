@@ -179,7 +179,7 @@ namespace chia.dotnet
                 response.coin_name,
                 response.newpuzhash,
                 response.pubkey,
-                Converters.ToObject<ICollection<byte>>(response.backup_dids)
+                Converters.ConvertList<byte>(response.backup_dids)
                 );
         }
 
