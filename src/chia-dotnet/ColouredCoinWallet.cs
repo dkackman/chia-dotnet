@@ -53,7 +53,7 @@ namespace chia.dotnet
         /// Get the colour of a wallet's coloured coin
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>The colout as a string</returns>
+        /// <returns>The colour as a string</returns>
         public async Task<string> GetColour(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -71,7 +71,7 @@ namespace chia.dotnet
         /// <param name="amount">the amount to put in the wallet (in units of mojos)</param> 
         /// <param name="fee">fee to create the wallet (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A transaction</returns>
+        /// <returns>A <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> Spend(string innerAddress, ulong amount, ulong fee, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
