@@ -151,7 +151,7 @@ namespace chia.dotnet.tests
         public async Task GetCoinRecordByName()
         {
             using var cts = new CancellationTokenSource(15000);
-            var coinRecord = await _theFullNode.GetCoinRecordByName("0x2b83ca807d305cd142e0e91d4e7a18f8e57df0ac6b4fa403bff249d0d491c609", cts.Token);
+            var coinRecord = await _theFullNode.GetCoinRecordByName("0xd2ab06f9568607ea6a6f66b8c81095f9685656d3ea789cf51f6ffa401bba3473", cts.Token);
             Assert.IsNotNull(coinRecord);
         }
 
@@ -187,7 +187,7 @@ namespace chia.dotnet.tests
             Assert.IsNotNull(ids);
             Assert.IsTrue(ids.Count() > 0);
 
-            var item = await _theFullNode.GetMemmpooItemByTxId((string)ids.First(), cts.Token);
+            var item = await _theFullNode.GetMemmpooItemByTxId(ids.First(), cts.Token);
             Assert.IsNotNull(item);
         }
 
@@ -195,7 +195,25 @@ namespace chia.dotnet.tests
         public async Task GetRecentSignagePoint()
         {
             using var cts = new CancellationTokenSource(15000);
-            var sp = await _theFullNode.GetRecentSignagePoint("0xf3ca7a33ce723b38c9a72156252b3b2395ead751213eef5d8ed40c941c6a9017", cts.Token);
+            
+            var sp = await _theFullNode.GetRecentSignagePoint("3bb0fbe6bd0fbbb69eb058f839999e6306b34e033c66b4c08405a19cf81b7c6e", cts.Token);
+            Assert.IsNotNull(sp);
+        }
+
+        [TestMethod()]
+        public async Task GetRecentEOS()
+        {
+            using var cts = new CancellationTokenSource(15000);
+            
+            var eos = await _theFullNode.GetRecentEOS("0x75d2076397bb607408f49963a12bfcaac287b652fc27ad61f8cce9c125873349", cts.Token);
+            Assert.IsNotNull(eos);
+        }
+        
+        [TestMethod()]
+        public async Task GetPuzzleAndSolution()
+        {
+            using var cts = new CancellationTokenSource(15000);
+            var sp = await _theFullNode.GetPuzzleAndSolution("0xd2ab06f9568607ea6a6f66b8c81095f9685656d3ea789cf51f6ffa401bba3473", 691928, cts.Token);
             Assert.IsNotNull(sp);
         }
     }

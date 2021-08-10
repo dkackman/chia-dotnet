@@ -76,7 +76,7 @@ namespace chia.dotnet
         /// Get connections that the service has
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A list of connections</returns>
+        /// <returns>A list of <see cref="ConnectionInfo"/>s</returns>
         public async Task<IEnumerable<ConnectionInfo>> GetConnections(CancellationToken cancellationToken = default)
         {
             return await SendMessage<IEnumerable<ConnectionInfo>>("get_connections", "connections", cancellationToken);

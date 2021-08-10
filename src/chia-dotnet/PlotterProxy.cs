@@ -25,7 +25,7 @@ namespace chia.dotnet
         /// Registers this instance as a plotter and retreives the plot queue
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>The plot queue</returns>
+        /// <returns>The list of <see cref="QueuedPlotInfo"/>s</returns>
         public async Task<IEnumerable<QueuedPlotInfo>> RegisterPlotter(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();

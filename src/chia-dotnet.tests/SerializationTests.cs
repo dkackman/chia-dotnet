@@ -29,12 +29,12 @@ namespace chia.dotnet.tests
             // if we can go from json -> object -> json -> object 
             // the derialization and desrialziation is doing the correct things in aggregate
             var transaction = Converters.ToObject<TransactionRecord>(json);
+            Assert.IsNotNull(transaction);
 
             string t = transaction.ToJson();
             Assert.IsFalse(string.IsNullOrEmpty(t));
 
             var transaction2 = Converters.ToObject<TransactionRecord>(t);
-
             Assert.IsNotNull(transaction2);
         }
 
@@ -48,6 +48,37 @@ namespace chia.dotnet.tests
             var block = Converters.ToObject<FullBlock>(json);
 
             Assert.IsNotNull(block);
+        }
+
+        [TestMethod]
+        public void DeserializeMempoolItem()
+        {
+            var file = new FileInfo("mempoolItem.json");
+            using var reader = file.OpenText();
+            var json = reader.ReadToEnd();
+
+            var item = Converters.ToObject<MempoolItem>(json);
+
+            Assert.IsNotNull(item);
+        }
+
+        [TestMethod]
+        public void SerializeMempoolItem()
+        {
+            var file = new FileInfo("mempoolItem.json");
+            using var reader = file.OpenText();
+            var json = reader.ReadToEnd();
+
+            // if we can go from json -> object -> json -> object 
+            // the derialization and desrialziation is doing the correct things in aggregate
+            var item = Converters.ToObject<MempoolItem>(json);
+            Assert.IsNotNull(item);
+
+            string s = item.ToJson();
+            Assert.IsFalse(string.IsNullOrEmpty(s));
+
+            var item2 = Converters.ToObject<MempoolItem>(s);
+            Assert.IsNotNull(item2);
         }
     }
 }

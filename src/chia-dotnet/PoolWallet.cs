@@ -27,7 +27,7 @@ namespace chia.dotnet
         /// <param name="poolUrl">Url of the pool to join</param>
         /// <param name="relativeLockHeight">Relative lock height</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A transaction</returns>
+        /// <returns>The resulting <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> JoinPool(string targetPuzzlehash, string poolUrl, uint relativeLockHeight, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -45,7 +45,7 @@ namespace chia.dotnet
         /// Then we transition to FARMING_TO_POOL or SELF_POOLING
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A transaction</returns>
+        /// <returns>The resulting <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> SelfPool(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();

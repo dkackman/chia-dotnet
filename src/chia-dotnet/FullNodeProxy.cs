@@ -1,4 +1,5 @@
-﻿using System.Dynamic;
+﻿using System;
+using System.Dynamic;
 using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
@@ -212,11 +213,9 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a list of mempool items</returns>
-        public async Task<IEnumerable<dynamic>> GetAllMempoolItems(CancellationToken cancellationToken = default)
+        public async Task<IDictionary<string, MempoolItem>> GetAllMempoolItems(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_all_mempool_items", cancellationToken);
-
-            return response.mempool_items;
+            return await SendMessage<IDictionary<string, MempoolItem>>("get_all_mempool_items", "mempool_items", cancellationToken);
         }
 
         /// <summary>
@@ -224,11 +223,11 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a list of tx_ids</returns>
-        public async Task<IEnumerable<dynamic>> GetAllMemmpoolTxIds(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<string>> GetAllMemmpoolTxIds(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_all_mempool_tx_ids", cancellationToken);
 
-            return response.tx_ids;
+            return Converters.ToStrings(response.tx_ids);
         }
 
         /// <summary>
@@ -237,14 +236,12 @@ namespace chia.dotnet
         /// <param name="txId">Trasnaction id</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a list of tx_ids</returns>
-        public async Task<dynamic> GetMemmpooItemByTxId(string txId, CancellationToken cancellationToken = default)
+        public async Task<MempoolItem> GetMemmpooItemByTxId(string txId, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.tx_id = txId;
 
-            var response = await SendMessage("get_mempool_item_by_tx_id", cancellationToken);
-
-            return response.mempool_item;
+            return await SendMessage<MempoolItem>("get_mempool_item_by_tx_id", data, "mempool_item", cancellationToken);
         }
 
         /// <summary>
@@ -300,14 +297,19 @@ namespace chia.dotnet
         /// <param name="spHash">signage point hash</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Indicator of whether the spend bundle was successfully included in the mempool</returns>
-        public async Task<(dynamic signagePoint, double timeReceived, bool reverted)> GetRecentSignagePoint(string spHash, CancellationToken cancellationToken = default)
+        public async Task<(SignagePoint SignagePoint, double TimeReceived, bool Reverted, DateTime DateTimeReceived)> GetRecentSignagePoint(string spHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.sp_hash = spHash;
 
             var response = await SendMessage("get_recent_signage_point_or_eos", data, cancellationToken);
 
-            return (response.signage_point, response.time_received, response.reverted);
+            return (
+                Converters.ToObject<SignagePoint>(response.signage_point),
+                response.time_received,
+                response.reverted,
+                Converters.ToDateTime((double)response.time_received)
+                );
         }
 
         /// <summary>
@@ -315,34 +317,36 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="challengeHash">challenge hash</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A signange _point or an eos</returns>
-        public async Task<(dynamic eos, double timeReceived, bool reverted)> GetRecentEOS(string challengeHash, CancellationToken cancellationToken = default)
+        /// <returns>A signange_point or an eos</returns>
+        public async Task<(EndOfSlotBundle eos, double timeReceived, bool reverted, DateTime DateTimeReceived)> GetRecentEOS(string challengeHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.challenge_hash = challengeHash;
 
             var response = await SendMessage("get_recent_signage_point_or_eos", data, cancellationToken);
 
-            return (response.eos, response.time_received, response.reverted);
+            return (
+                Converters.ToObject<EndOfSlotBundle>(response.eos),
+                response.time_received,
+                response.reverted,
+                Converters.ToDateTime((double)response.time_received)
+                );
         }
-
 
         /// <summary>
         /// Gets a coin solution 
         /// </summary>
-        /// <param name="coinId">Id of the coin</param>
-        /// <param name="height">Block height</param> 
+        /// <param name="coinId">Id/name  of the coin</param>
+        /// <param name="height">Block height at which the coin was spent 'spent_block_index'</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A coin_solution</returns>
-        public async Task<dynamic> GetPuzzleAndSolution(string coinId, uint height, CancellationToken cancellationToken = default)
+        public async Task<CoinSpend> GetPuzzleAndSolution(string coinId, uint height, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.coin_id = coinId;
             data.height = height;
 
-            var response = await SendMessage("get_puzzle_and_solution", data, cancellationToken);
-
-            return response.coin_solution;
+            return await SendMessage<CoinSpend>("get_puzzle_and_solution", data, "coin_solution", cancellationToken);
         }
     }
 }

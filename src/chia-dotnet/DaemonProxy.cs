@@ -102,7 +102,7 @@ namespace chia.dotnet
             _ = await SendMessage("stop_service", CreateDataObject(service), cancellationToken);
         }
 
-        private dynamic CreateDataObject(string service)
+        private object CreateDataObject(string service)
         {
             if (string.IsNullOrEmpty(service))
             {

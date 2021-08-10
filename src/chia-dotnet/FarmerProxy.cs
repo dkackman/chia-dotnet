@@ -57,14 +57,14 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>List of signage points</returns>
-        public async Task<IEnumerable<(IEnumerable<dynamic> Proofs, SignagePoint SignagePoint)>> GetSignagePoints(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<(IEnumerable<dynamic> Proofs, FarmerSignagePoint SignagePoint)>> GetSignagePoints(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_signage_points", cancellationToken);
 
-            var list = new List<(IEnumerable<dynamic> Proofs, SignagePoint SignagePoint)>();
+            var list = new List<(IEnumerable<dynamic> Proofs, FarmerSignagePoint SignagePoint)>();
             foreach (var d in response.signage_points)
             {
-                list.Add((d.proofs, Converters.ToObject<SignagePoint>(d.signage_point)));
+                list.Add((d.proofs, Converters.ToObject<FarmerSignagePoint>(d.signage_point)));
             }
 
             return list;
@@ -76,14 +76,14 @@ namespace chia.dotnet
         /// <param name="spHash">signage point hash</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a signage point and proofs of space</returns>
-        public async Task<(IEnumerable<dynamic> Proofs, SignagePoint SignagePoint)> GetSignagePoint(string spHash, CancellationToken cancellationToken = default)
+        public async Task<(IEnumerable<dynamic> Proofs, FarmerSignagePoint SignagePoint)> GetSignagePoint(string spHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.sp_hash = spHash;
 
             var response = await SendMessage("get_signage_point", data, cancellationToken);
 
-            return (response.proofs, Converters.ToObject<SignagePoint>(response.signage_point));
+            return (response.proofs, Converters.ToObject<FarmerSignagePoint>(response.signage_point));
         }
 
         /// <summary>
