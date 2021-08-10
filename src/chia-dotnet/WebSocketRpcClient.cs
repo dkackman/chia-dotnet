@@ -44,7 +44,7 @@ namespace chia.dotnet
         /// Opens the websocket and starts the receive loop
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Awaitable Task</returns>
+        /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task Connect(CancellationToken cancellationToken = default)
         {
             if (disposedValue)
