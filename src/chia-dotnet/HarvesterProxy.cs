@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Proxy that communicates with the harvester via the daemon
+    /// Proxy that communicates with the harvester
     /// </summary>
     public sealed class HarvesterProxy : ServiceProxy
     {

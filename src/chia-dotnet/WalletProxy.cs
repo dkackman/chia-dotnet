@@ -7,7 +7,7 @@ using System.Linq;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Proxy that communicates with the wallet via the daemon
+    /// Proxy that communicates with the wallet endpoint
     /// </summary>
     public sealed class WalletProxy : ServiceProxy
     {

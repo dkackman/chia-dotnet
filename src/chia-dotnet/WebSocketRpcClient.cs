@@ -13,7 +13,6 @@ namespace chia.dotnet
 {
     /// <summary>
     /// Base class that handles core websocket communication with the rpc endpoint
-    /// and synchronizes request and response messages
     /// </summary>
     public class WebSocketRpcClient : IDisposable, IRpcClient
     {

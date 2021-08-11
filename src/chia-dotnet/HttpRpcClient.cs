@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Net.Security;
 using System.Net.Http;
-using System.Net.Http.Json;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using System.Text;
 namespace chia.dotnet
 {
     /// <summary>
     /// Base class that handles core communication with the rpc endpoint using http(s)
-    /// and synchronizes request and response messages
     /// </summary>
     public class HttpRpcClient : IDisposable, IRpcClient
     {

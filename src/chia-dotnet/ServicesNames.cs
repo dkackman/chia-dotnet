@@ -1,4 +1,3 @@
-
 namespace chia.dotnet
 {
     /// <summary>

@@ -9,7 +9,7 @@ using System.Linq;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Proxy that communicates with the full node via the daemon
+    /// Proxy that communicates with the full node 
     /// </summary>
     public sealed class FullNodeProxy : ServiceProxy
     {

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 namespace chia.dotnet
 {
     /// <summary>
-    /// <see cref="WebSocketRpcClient"/> for the daemon interface. The daemon can be used to proxy messages to and from other chia services.
+    /// <see cref="WebSocketRpcClient"/> for the daemon interface. 
+    /// The daemon can be used to proxy messages to and from other chia services as well
+    /// as controlling the <see cref="PlotterProxy"/> and having it's own procedures
     /// </summary>
     public sealed class DaemonProxy : ServiceProxy
     {
