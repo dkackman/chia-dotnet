@@ -57,6 +57,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>List of signage points</returns>
+        // TODO - what is this type
         public async Task<IEnumerable<(IEnumerable<dynamic> Proofs, FarmerSignagePoint SignagePoint)>> GetSignagePoints(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_signage_points", cancellationToken);
@@ -76,6 +77,7 @@ namespace chia.dotnet
         /// <param name="spHash">signage point hash</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a signage point and proofs of space</returns>
+        // TODO - what is this type
         public async Task<(IEnumerable<dynamic> Proofs, FarmerSignagePoint SignagePoint)> GetSignagePoint(string spHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();

@@ -380,6 +380,7 @@ namespace chia.dotnet
         /// <param name="filename">Filename to recover from</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the wallet</returns>
+        // TODO - what is this type
         public async Task<(uint Type, string myDID, uint walletId, string coinName, IEnumerable<dynamic> coinList, string newPuzHash, string pubkey, IEnumerable<dynamic> backupDIDs, ulong numVerificationsRequired)>
             RecoverDIDWallet(string filename, CancellationToken cancellationToken = default)
         {
@@ -455,6 +456,7 @@ namespace chia.dotnet
         /// <param name="filename">path to the offer file</param>         
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The discrepencies</returns>
+        // TODO - what is this type
         public async Task<dynamic> GetDiscrepenciesForOffer(string filename, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();

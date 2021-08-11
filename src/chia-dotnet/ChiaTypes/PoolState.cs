@@ -42,6 +42,7 @@ namespace chia.dotnet
         public ICollection<PoolPoint> PointsFound24h { get; init; }
         public ulong PointsFoundSinceStart { get; init; }
         public PoolConfig PoolConfig { get; init; }
+        // TODO - what is this type
         public ICollection<dynamic> PoolErrors24h { get; init; }
 
         public DateTime NextFarmerUpdateDateTime => NextFarmerUpdate.ToDateTime();
