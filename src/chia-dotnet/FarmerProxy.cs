@@ -57,18 +57,31 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>List of signage points</returns>
-        // TODO - what is this type
-        public async Task<IEnumerable<(IEnumerable<dynamic> Proofs, FarmerSignagePoint SignagePoint)>> GetSignagePoints(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<(IEnumerable<(string SpHash, ProofOfSpace ProofOfSpace)> Proofs, FarmerSignagePoint SignagePoint)>> GetSignagePoints(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_signage_points", cancellationToken);
 
-            var list = new List<(IEnumerable<dynamic> Proofs, FarmerSignagePoint SignagePoint)>();
-            foreach (var d in response.signage_points)
+            // proofs are List[Tuple[str, ProofOfSpace]]
+            var list = new List<(IEnumerable<(string SpHash, ProofOfSpace ProofOfSpace)> Proofs, FarmerSignagePoint SignagePoint)>();
+            foreach (var sp in response.signage_points)
             {
-                list.Add((d.proofs, Converters.ToObject<FarmerSignagePoint>(d.signage_point)));
+                list.Add(ConvertSignagePoint(sp));
             }
 
             return list;
+        }
+
+        private static (IEnumerable<(string SpHash, ProofOfSpace ProofOfSpace)> Proofs, FarmerSignagePoint SignagePoint) ConvertSignagePoint(dynamic sp)
+        {
+            var proofs = new List<(string SpHash, ProofOfSpace ProofOfSpace)>();
+            foreach (var proof in sp.proofs)
+            {
+                var hash = proof[0];
+                var proofOfSpace = Converters.ToObject<ProofOfSpace>(hash[1]);
+                proofs.Add((hash, proofOfSpace));
+            }
+            var signagePoint = Converters.ToObject<FarmerSignagePoint>(sp.signage_point);
+            return (proofs, signagePoint);
         }
 
         /// <summary>
@@ -77,15 +90,14 @@ namespace chia.dotnet
         /// <param name="spHash">signage point hash</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a signage point and proofs of space</returns>
-        // TODO - what is this type
-        public async Task<(IEnumerable<dynamic> Proofs, FarmerSignagePoint SignagePoint)> GetSignagePoint(string spHash, CancellationToken cancellationToken = default)
+        public async Task<(IEnumerable<(string SpHash, ProofOfSpace ProofOfSpace)> Proofs, FarmerSignagePoint SignagePoint)> GetSignagePoint(string spHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.sp_hash = spHash;
 
             var response = await SendMessage("get_signage_point", data, cancellationToken);
 
-            return (response.proofs, Converters.ToObject<FarmerSignagePoint>(response.signage_point));
+            return ConvertSignagePoint(response);
         }
 
         /// <summary>
