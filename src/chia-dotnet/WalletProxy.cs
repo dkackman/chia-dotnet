@@ -457,14 +457,18 @@ namespace chia.dotnet
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The discrepencies</returns>
         // TODO - what is this type
-        public async Task<dynamic> GetDiscrepenciesForOffer(string filename, CancellationToken cancellationToken = default)
+        public async Task<IDictionary<string, int>> GetDiscrepenciesForOffer(string filename, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.filename = filename;
 
             var response = await SendMessage("get_discrepancies_for_offer", data, cancellationToken);
-
-            return response.discrepancies;
+            // this response is Tuple[bool, Optional[Dict], Optional[Exception]] - the dictionary is the interesting part
+            if (response.discrepancies is not null && response.discrepancies[0] == true)
+            {
+                return Converters.ToObject<IDictionary<string, int>>(response.discrepancies[1]);
+            }
+            return new Dictionary<string, int>();
         }
 
         /// <summary>

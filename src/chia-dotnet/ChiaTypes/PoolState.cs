@@ -21,7 +21,6 @@ namespace chia.dotnet
     {
         public double TimeFound { get; init; }
         public ulong Difficulty { get; init; }
-
         public DateTime DateTimeFound => TimeFound.ToDateTime();
     }
 
@@ -33,11 +32,9 @@ namespace chia.dotnet
         public double NextFarmerUpdate { get; init; }
         public double NextPoolInfoUpdate { get; init; }
         public string P2SingletonPuzzleHash { get; init; }
-
         [JsonProperty("points_acknowledged_24h")]
         public ICollection<PoolPoint> PointsAcknowledged24h { get; init; }
         public ulong PointsAcknowledgedSinceStart { get; init; }
-
         [JsonProperty("points_found_24h")]
         public ICollection<PoolPoint> PointsFound24h { get; init; }
         public ulong PointsFoundSinceStart { get; init; }

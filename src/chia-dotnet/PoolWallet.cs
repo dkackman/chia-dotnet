@@ -87,7 +87,7 @@ namespace chia.dotnet
             var response = await WalletProxy.SendMessage("pw_status", data, cancellationToken);
 
             return (
-                Converters.ToObject<PoolWalletInfo>(response.state), 
+                Converters.ToObject<PoolWalletInfo>(response.state),
                 Converters.ToObject<IEnumerable<TransactionRecord>>(response.unconfirmed_transactions)
             );
         }
