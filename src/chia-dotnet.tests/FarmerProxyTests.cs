@@ -11,7 +11,6 @@ namespace chia.dotnet.tests
     /// </summary>
     [TestClass]
     [TestCategory("Integration")]
-    //[Ignore] // uncomment to suppress completely
     public class FarmerProxyTests
     {
         private static FarmerProxy _theFarmer;

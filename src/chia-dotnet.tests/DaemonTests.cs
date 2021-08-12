@@ -11,7 +11,6 @@ namespace chia.dotnet.tests
     /// </summary>
     [TestClass]
     [TestCategory("Integration")]
-    //[Ignore] // uncomment to suppress completely
     public class DaemonTests
     {
         private static DaemonProxy _theDaemon;
@@ -53,7 +52,7 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
-        [Ignore]
+        [Ignore("CAUTION")]
         public async Task ExitDaemon()
         {
             using var cts = new CancellationTokenSource(15000);
