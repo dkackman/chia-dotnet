@@ -380,8 +380,7 @@ namespace chia.dotnet
         /// <param name="filename">Filename to recover from</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the wallet</returns>
-        // TODO - what is this type
-        public async Task<(uint Type, string myDID, uint walletId, string coinName, IEnumerable<dynamic> coinList, string newPuzHash, string pubkey, IEnumerable<dynamic> backupDIDs, ulong numVerificationsRequired)>
+        public async Task<(uint Type, string myDID, uint walletId, string coinName, Coin coin, string newPuzHash, string pubkey, IEnumerable<byte> backupDIDs, ulong numVerificationsRequired)>
             RecoverDIDWallet(string filename, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -391,15 +390,23 @@ namespace chia.dotnet
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
+            // this gets serialzied back as an unnamed tuple [self.parent_coin_info, self.puzzle_hash, self.amount]
+            var coinList = response.coin_list;
+            var coin = new Coin()
+            {
+                ParentCoinInfo = coinList[0],
+                PuzzleHash = coinList[1],
+                Amount = coinList[2]
+            };
             return (
                     response.type,
                     response.my_did,
                     response.wallet_id,
                     response.coin_name,
-                    response.coin_list,
+                    coin,
                     response.newpuzhash,
                     response.pubkey,
-                    response.backup_dids,
+                    Converters.ConvertList<byte>(response.backup_dids),
                     response.num_verifications_required
                     );
         }
@@ -456,7 +463,6 @@ namespace chia.dotnet
         /// <param name="filename">path to the offer file</param>         
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The discrepencies</returns>
-        // TODO - what is this type
         public async Task<IDictionary<string, int>> GetDiscrepenciesForOffer(string filename, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
