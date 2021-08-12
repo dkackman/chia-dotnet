@@ -49,6 +49,7 @@ namespace chia.dotnet.tests
 
         [TestMethod]
         [TestCategory("CAUTION")]
+        [Ignore("CAUTION")]
         public async Task SetRewardTargets()
         {
             using var cts = new CancellationTokenSource(15000);
@@ -64,6 +65,14 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
 
             var signagePoints = await _theFarmer.GetSignagePoints(cts.Token);
+
+            foreach (var sp in signagePoints)
+            {
+                if (sp.Proofs.Count() > 0)
+                {
+                    System.Diagnostics.Debug.WriteLine("here");
+                }
+            }
 
             Assert.IsNotNull(signagePoints);
         }
@@ -96,12 +105,18 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
             var state = await _theFarmer.GetPoolState(cts.Token);
             var pool = state.FirstOrDefault();
-            Assert.IsNotNull(pool);
-            Assert.IsNotNull(pool.PoolConfig);
+            if (pool is not null)
+            {
+                Assert.IsNotNull(pool.PoolConfig);
 
-            var link = await _theFarmer.GetPoolLoginLink(pool.PoolConfig.LauncherId, cts.Token);
+                var link = await _theFarmer.GetPoolLoginLink(pool.PoolConfig.LauncherId, cts.Token);
 
-            Assert.IsNotNull(link);
+                Assert.IsNotNull(link);
+            }
+            else
+            {
+                Assert.Inconclusive("This node isn't part of a pool");
+            }
         }
 
         [TestMethod]
