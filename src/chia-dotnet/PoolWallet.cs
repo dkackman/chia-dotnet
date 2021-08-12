@@ -79,15 +79,17 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Wallet state and list of unconfirmed transactions</returns>
-        // TODO - what is this type
-        public async Task<(dynamic State, IEnumerable<dynamic> UnconfirmedTransactions)> Status(CancellationToken cancellationToken = default)
+        public async Task<(PoolWalletInfo State, IEnumerable<TransactionRecord> UnconfirmedTransactions)> Status(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
             var response = await WalletProxy.SendMessage("pw_status", data, cancellationToken);
 
-            return (response.state, response.unconfirmed_transactions);
+            return (
+                Converters.ToObject<PoolWalletInfo>(response.state), 
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.unconfirmed_transactions)
+            );
         }
     }
 }
