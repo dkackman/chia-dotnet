@@ -19,6 +19,7 @@ namespace chia.dotnet.tests
         public static async Task Initialize(TestContext context)
         {
             using var cts = new CancellationTokenSource(15000);
+
             var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
             await rpcClient.Connect(cts.Token);
 
@@ -80,6 +81,7 @@ namespace chia.dotnet.tests
         public async Task GetSignagePoint()
         {
             using var cts = new CancellationTokenSource(15000);
+
             var signagePoints = await _theFarmer.GetSignagePoints(cts.Token);
             var spInfo = signagePoints.FirstOrDefault();
             Assert.IsNotNull(spInfo);
@@ -102,6 +104,7 @@ namespace chia.dotnet.tests
         public async Task GetPoolLoginLink()
         {
             using var cts = new CancellationTokenSource(15000);
+
             var state = await _theFarmer.GetPoolState(cts.Token);
             var pool = state.FirstOrDefault();
             if (pool is not null)
@@ -124,6 +127,7 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
 
             var harvesters = await _theFarmer.GetHarvesters(cts.Token);
+
             Assert.IsNotNull(harvesters);
         }
 
@@ -141,6 +145,7 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
 
             var connections = await _theFarmer.GetConnections(cts.Token);
+
             Assert.IsNotNull(connections);
         }
 

@@ -7,11 +7,11 @@ namespace chia.dotnet.tests
     /// </summary>
     internal static class Factory
     {
-        public static HttpRpcClient CreateDirectRpcClientFromHardcodedLocation()
+        public static HttpRpcClient CreateDirectRpcClientFromHardcodedLocation(int port)
         {
             var endpoint = new EndpointInfo()
             {
-                Uri = new Uri("https://172.26.210.216:8555"),
+                Uri = new Uri($"https://172.17.50.223:{port}"),
                 CertPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.crt",
                 KeyPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.key",
             };

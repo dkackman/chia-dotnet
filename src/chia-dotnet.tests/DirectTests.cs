@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -14,10 +15,13 @@ namespace chia.dotnet.tests
         {
             try
             {
-                using var rpcClient = Factory.CreateDirectRpcClientFromHardcodedLocation();
+                using var cts = new CancellationTokenSource(15000);
+
+                using var rpcClient = Factory.CreateDirectRpcClientFromHardcodedLocation(8555);
                 var fullNode = new FullNodeProxy(rpcClient, "unit_tests");
 
-                var connections = await fullNode.GetConnections();
+                var connections = await fullNode.GetConnections(cts.Token);
+
                 Assert.IsNotNull(connections);
             }
             catch (Exception e)
@@ -32,10 +36,13 @@ namespace chia.dotnet.tests
         {
             try
             {
-                using var rpcClient = Factory.CreateDirectRpcClientFromHardcodedLocation();
+                using var cts = new CancellationTokenSource(15000);
+
+                using var rpcClient = Factory.CreateDirectRpcClientFromHardcodedLocation(8555);
                 var fullNode = new FullNodeProxy(rpcClient, "unit_tests");
 
-                var state = await fullNode.GetBlockchainState();
+                var state = await fullNode.GetBlockchainState(cts.Token);
+
                 Assert.IsNotNull(state);
             }
             catch (Exception e)
@@ -54,10 +61,12 @@ namespace chia.dotnet.tests
                 var config = Config.Open();
                 var endpoint = config.GetEndpoint("full_node");
 
+                using var cts = new CancellationTokenSource(15000);
+
                 using var rpcClient = new HttpRpcClient(endpoint);
                 var fullNode = new FullNodeProxy(rpcClient, "unit_tests");
 
-                var state = await fullNode.GetBlockchainState();
+                var state = await fullNode.GetBlockchainState(cts.Token);
             }
             catch (Exception e)
             {

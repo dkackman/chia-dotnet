@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -17,7 +18,7 @@ namespace chia.dotnet.tests
             var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
             await rpcClient.Connect();
 
-            var daemon = new DaemonProxy(rpcClient, "unit_tests");            
+            var daemon = new DaemonProxy(rpcClient, "unit_tests");
             await daemon.RegisterService();
 
             var walletProxy = new WalletProxy(rpcClient, "unit_tests");
@@ -36,7 +37,9 @@ namespace chia.dotnet.tests
         [TestMethod()]
         public async Task GetPubKey()
         {
-            var pubkey = await _theWallet.GetPubKey();
+            using var cts = new CancellationTokenSource(15000);
+
+            var pubkey = await _theWallet.GetPubKey(cts.Token);
 
             Assert.IsNotNull(pubkey);
         }

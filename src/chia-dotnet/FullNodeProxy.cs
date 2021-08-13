@@ -205,7 +205,8 @@ namespace chia.dotnet
 
             return (
                 Converters.ToObject<ICollection<CoinRecord>>(response.additions),
-                Converters.ToObject<ICollection<CoinRecord>>(response.removals));
+                Converters.ToObject<ICollection<CoinRecord>>(response.removals)
+                );
         }
 
         /// <summary>
@@ -317,7 +318,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="challengeHash">challenge hash</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returnsThe <see cref="EndOfSlotBundle"/></returns>
+        /// <returns>The <see cref="EndOfSlotBundle"/></returns>
         public async Task<(EndOfSlotBundle eos, double timeReceived, bool reverted, DateTime DateTimeReceived)> GetRecentEOS(string challengeHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();

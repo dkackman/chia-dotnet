@@ -470,11 +470,9 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_discrepancies_for_offer", data, cancellationToken);
             // this response is Tuple[bool, Optional[Dict], Optional[Exception]] - the dictionary is the interesting part
-            if (response.discrepancies is not null && response.discrepancies[0] == true)
-            {
-                return Converters.ToObject<IDictionary<string, int>>(response.discrepancies[1]);
-            }
-            return new Dictionary<string, int>();
+            return response.discrepancies is not null && response.discrepancies[0] == true
+                ? Converters.ToObject<IDictionary<string, int>>(response.discrepancies[1])
+                : new Dictionary<string, int>();
         }
 
         /// <summary>
