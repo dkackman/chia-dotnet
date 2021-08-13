@@ -34,6 +34,7 @@ namespace chia.dotnet.tests
         public async Task GetPlots()
         {
             using var cts = new CancellationTokenSource(15000);
+
             var plots = await _theHarvester.GetPlots(cts.Token);
 
             Assert.IsNotNull(plots);
@@ -41,9 +42,11 @@ namespace chia.dotnet.tests
 
         [TestMethod()]
         [TestCategory("CAUTION")]
+        [Ignore("CAUTION")]
         public async Task DeletePlot()
         {
             using var cts = new CancellationTokenSource(15000);
+
             await _theHarvester.DeletePlot("<plot name>", cts.Token);
         }
 
@@ -51,6 +54,7 @@ namespace chia.dotnet.tests
         public async Task GetPlotDirectories()
         {
             using var cts = new CancellationTokenSource(15000);
+
             var directories = await _theHarvester.GetPlotDirectories(cts.Token);
 
             Assert.IsNotNull(directories);
@@ -58,9 +62,11 @@ namespace chia.dotnet.tests
 
         [TestMethod()]
         [TestCategory("CAUTION")]
+        [Ignore("CAUTION")]
         public async Task AddPlotDirectory()
         {
             using var cts = new CancellationTokenSource(15000);
+
             await _theHarvester.AddPlotDirectory("/home/don/plots", cts.Token);
         }
 
@@ -68,14 +74,17 @@ namespace chia.dotnet.tests
         public async Task Ping()
         {
             using var cts = new CancellationTokenSource(15000);
+            
             await _theHarvester.Ping(cts.Token);
         }
 
         [TestMethod()]
         [TestCategory("CAUTION")]
+        [Ignore("CAUTION")]
         public async Task RemovePlotDirectory()
         {
             using var cts = new CancellationTokenSource(15000);
+
             await _theHarvester.RemovePlotDirectory("/home/don/plots", cts.Token);
         }
 
@@ -83,6 +92,7 @@ namespace chia.dotnet.tests
         public async Task RefreshPlots()
         {
             using var cts = new CancellationTokenSource(15000);
+
             await _theHarvester.RefreshPlots(cts.Token);
         }
     }

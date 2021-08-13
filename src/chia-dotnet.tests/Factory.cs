@@ -32,7 +32,7 @@ namespace chia.dotnet.tests
             ///*                  
             var endpoint = new EndpointInfo()
             {
-                Uri = new Uri("wss://172.17.50.223:55400"),
+                Uri = new Uri("wss://172.17.54.116:55400"),
                 CertPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/daemon/private_daemon.crt",
                 KeyPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/daemon/private_daemon.key",
                 //Uri = new Uri("wss://localhost:55400"),
