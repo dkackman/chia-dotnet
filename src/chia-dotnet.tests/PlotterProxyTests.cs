@@ -16,6 +16,7 @@ namespace chia.dotnet.tests
         public static async Task Initialize(TestContext context)
         {
             using var cts = new CancellationTokenSource(15000);
+
             var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
             await rpcClient.Connect(cts.Token);
 
@@ -35,9 +36,9 @@ namespace chia.dotnet.tests
         [ExpectedException(typeof(InvalidOperationException))]
         public async Task FailOnInvalidConfig()
         {
-            var config = new PlotterConfig();
             using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
 
+            var config = new PlotterConfig();
             await _thePlotter.StartPlotting(config, cts.Token);
         }
 
@@ -45,6 +46,8 @@ namespace chia.dotnet.tests
         [TestCategory("CAUTION")]
         public async Task StartPlotting()
         {
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+
             var config = new PlotterConfig()
             {
                 Size = KValues.K25,
@@ -54,9 +57,7 @@ namespace chia.dotnet.tests
             };
 
             await _thePlotter.StartPlotting(config);
-
-            // this seems like the only way to get the plot queue
-            var q = await _thePlotter.RegisterPlotter();
+            var q = await _thePlotter.RegisterPlotter(cts.Token);
 
             Assert.IsNotNull(q);
         }
@@ -64,7 +65,9 @@ namespace chia.dotnet.tests
         [TestMethod()]
         public async Task RegisterPlotter()
         {
-            var q = await _thePlotter.RegisterPlotter();
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+
+            var q = await _thePlotter.RegisterPlotter(cts.Token);
 
             Assert.IsNotNull(q);
         }
