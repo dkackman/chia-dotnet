@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Numerics;
 using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -137,9 +136,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("did_get_recovery_list", data, cancellationToken);
 
-            var recoverList = ((IEnumerable<dynamic>)response.recover_list).Select<dynamic, string>(i => i.ToString());
-
-            return (recoverList, response.num_required);
+            return (Converters.ToStrings(response.recover_list), response.num_required);
         }
 
         /// <summary>
@@ -151,7 +148,7 @@ namespace chia.dotnet
         /// <param name="puzHash">The puzzlehash</param>        
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A spendbundle and information about the attest</returns>
-        public async Task<(dynamic MessageSpendBundle, dynamic Info)> CreateAttest(string filename, string coinName, string pubkey, string puzHash, CancellationToken cancellationToken = default)
+        public async Task<(string MessageSpendBundle, (string Parent, string InnerPuzzleHash, ulong Amount) Info)> CreateAttest(string filename, string coinName, string pubkey, string puzHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -162,7 +159,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("did_create_attest", data, cancellationToken);
 
-            return (response.message_spend_bundle, response.info);
+            return (response.message_spend_bundle, (response.info[0], response.info[1], response.info[2]));
         }
 
         /// <summary>
@@ -170,14 +167,20 @@ namespace chia.dotnet
         /// </summary>       
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A spendbundle and information about the attest</returns>
-        public async Task<(string MyDID, string CoinName, string NewPuzzleHash, string PublicKey, IEnumerable<dynamic> BackUpIds)> GetInformationNeededForRecovery(CancellationToken cancellationToken = default)
+        public async Task<(string MyDID, string CoinName, string NewPuzzleHash, string PublicKey, ICollection<byte> BackUpIds)> GetInformationNeededForRecovery(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
             var response = await WalletProxy.SendMessage("did_get_information_needed_for_recovery", data, cancellationToken);
 
-            return (response.my_did, response.coin_name, response.newpuzhash, response.pubkey, response.backup_dids);
+            return (
+                response.my_did,
+                response.coin_name,
+                response.newpuzhash,
+                response.pubkey,
+                Converters.ConvertList<byte>(response.backup_dids)
+                );
         }
 
         /// <summary>

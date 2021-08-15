@@ -1,5 +1,4 @@
-﻿using System.Numerics;
-using System.Dynamic;
+﻿using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -46,16 +45,14 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Information about the transaction</returns>
-        public async Task<dynamic> SendClawbackTransaction(ulong fee, CancellationToken cancellationToken = default)
+        /// <returns>The <see cref="TransactionRecord"/></returns>
+        public async Task<TransactionRecord> SendClawbackTransaction(ulong fee, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
             data.fee = fee;
 
-            var response = await WalletProxy.SendMessage("send_clawback_transaction", data, cancellationToken);
-
-            return response.transaction;
+            return await WalletProxy.SendMessage<TransactionRecord>("send_clawback_transaction", data, "transaction", cancellationToken);
         }
 
         /// <summary>

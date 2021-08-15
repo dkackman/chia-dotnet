@@ -3,20 +3,16 @@ using System.Collections.Concurrent;
 using System.IO;
 using System.Net.Security;
 using System.Net.WebSockets;
-using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-[assembly: InternalsVisibleTo("chia-dotnet.tests")]
-
 namespace chia.dotnet
 {
     /// <summary>
     /// Base class that handles core websocket communication with the rpc endpoint
-    /// and synchronizes request and response messages
     /// </summary>
     public class WebSocketRpcClient : IDisposable, IRpcClient
     {
@@ -47,7 +43,7 @@ namespace chia.dotnet
         /// Opens the websocket and starts the receive loop
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Awaitable Task</returns>
+        /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task Connect(CancellationToken cancellationToken = default)
         {
             if (disposedValue)
@@ -175,8 +171,8 @@ namespace chia.dotnet
                 throw new ArgumentNullException(nameof(message));
             }
 
-            Debug.WriteLine("Broadcast message:");
-            Debug.WriteLine(message.ToJson());
+            // Debug.WriteLine("Broadcast message:");
+            // Debug.WriteLine(message.ToJson());
 
             BroadcastMessageReceived?.Invoke(this, message);
         }
@@ -203,7 +199,7 @@ namespace chia.dotnet
                 _ = ms.Seek(0, SeekOrigin.Begin);
                 using var reader = new StreamReader(ms, Encoding.UTF8);
                 var response = await reader.ReadToEndAsync();
-                var message = Message.FromJson(response);
+                var message = response.ToObject<Message>();
 
                 // if we have a message pending with this id, capture the response and remove the request from the pending dictionary                
                 if (_pendingRequests.TryRemove(message.RequestId, out _))

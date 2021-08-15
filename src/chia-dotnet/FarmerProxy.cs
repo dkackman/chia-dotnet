@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Proxy that communicates with the farmer via the daemon
+    /// Proxy that communicates with the farmer
     /// </summary>
     public sealed class FarmerProxy : ServiceProxy
     {
@@ -57,11 +57,31 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>List of signage points</returns>
-        public async Task<IEnumerable<dynamic>> GetSignagePoints(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<(IEnumerable<(string SpHash, ProofOfSpace ProofOfSpace)> Proofs, FarmerSignagePoint SignagePoint)>> GetSignagePoints(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_signage_points", cancellationToken);
 
-            return response.signage_points;
+            // proofs are List[Tuple[str, ProofOfSpace]]
+            var list = new List<(IEnumerable<(string SpHash, ProofOfSpace ProofOfSpace)> Proofs, FarmerSignagePoint SignagePoint)>();
+            foreach (var sp in response.signage_points)
+            {
+                list.Add(ConvertSignagePoint(sp));
+            }
+
+            return list;
+        }
+
+        private static (IEnumerable<(string SpHash, ProofOfSpace ProofOfSpace)> Proofs, FarmerSignagePoint SignagePoint) ConvertSignagePoint(dynamic sp)
+        {
+            var proofs = new List<(string SpHash, ProofOfSpace ProofOfSpace)>();
+            foreach (var proof in sp.proofs)
+            {
+                var hash = proof[0];
+                var proofOfSpace = Converters.ToObject<ProofOfSpace>(hash[1]);
+                proofs.Add((hash, proofOfSpace));
+            }
+            var signagePoint = Converters.ToObject<FarmerSignagePoint>(sp.signage_point);
+            return (proofs, signagePoint);
         }
 
         /// <summary>
@@ -70,14 +90,14 @@ namespace chia.dotnet
         /// <param name="spHash">signage point hash</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>a signage point and proofs of space</returns>
-        public async Task<(dynamic SignagePoint, IEnumerable<dynamic> Proofs)> GetSignagePoint(string spHash, CancellationToken cancellationToken = default)
+        public async Task<(IEnumerable<(string SpHash, ProofOfSpace ProofOfSpace)> Proofs, FarmerSignagePoint SignagePoint)> GetSignagePoint(string spHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.sp_hash = spHash;
 
             var response = await SendMessage("get_signage_point", data, cancellationToken);
 
-            return (response.signage_point, response.proofs);
+            return ConvertSignagePoint(response);
         }
 
         /// <summary>
@@ -85,11 +105,9 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of harvesters</returns>
-        public async Task<IEnumerable<dynamic>> GetHarvesters(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<HarvesterInfo>> GetHarvesters(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_harvesters", cancellationToken);
-
-            return response.harvesters;
+            return await SendMessage<IEnumerable<HarvesterInfo>>("get_harvesters", "harvesters", cancellationToken);
         }
 
         /// <summary>
@@ -105,7 +123,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_pool_login_link", data, cancellationToken);
 
-            return response.login_link?.ToString();
+            return response.login_link;
         }
 
         /// <summary>
@@ -113,11 +131,9 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of pool states</returns>
-        public async Task<IEnumerable<dynamic>> GetPoolState(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<PoolStateInfo>> GetPoolState(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_pool_state", cancellationToken);
-
-            return response.pool_state;
+            return await SendMessage<IEnumerable<PoolStateInfo>>("get_pool_state", "pool_state", cancellationToken);
         }
 
         /// <summary>

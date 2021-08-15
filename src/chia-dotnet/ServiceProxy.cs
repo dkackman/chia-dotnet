@@ -76,12 +76,10 @@ namespace chia.dotnet
         /// Get connections that the service has
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A list of connections</returns>
-        public async Task<IEnumerable<dynamic>> GetConnections(CancellationToken cancellationToken = default)
+        /// <returns>A list of <see cref="ConnectionInfo"/>s</returns>
+        public async Task<IEnumerable<ConnectionInfo>> GetConnections(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_connections", cancellationToken);
-
-            return response.connections;
+            return await SendMessage<IEnumerable<ConnectionInfo>>("get_connections", "connections", cancellationToken);
         }
 
         /// <summary>
@@ -124,15 +122,53 @@ namespace chia.dotnet
             _ = await SendMessage("close_connection", data, cancellationToken);
         }
 
-        internal async Task<dynamic> SendMessage(string command, CancellationToken cancellationToken)
+        //
+        // These methods are the important ones that package up the request for the rpc lcient and then
+        // parse and convert the response for the requester
+        //
+        internal async Task<dynamic> SendMessage(string command, dynamic data, CancellationToken cancellationToken = default)
+        {
+            var message = Message.Create(command, data, DestinationService, OriginService);
+
+            try
+            {
+                return await RpcClient.SendMessage(message, cancellationToken);
+            }
+            catch (ResponseException)
+            {
+                throw;
+            }
+            catch (TaskCanceledException)
+            {
+                throw;
+            }
+            catch (Exception e) // wrap eveything else in a resposne exception - this will include websocket or http specific failures
+            {
+                throw new ResponseException(message, "Something went wrong sending the rpc message. Inspect the InnerException for details.", e);
+            }
+        }
+
+        internal async Task<dynamic> SendMessage(string command, CancellationToken cancellationToken = default)
         {
             return await SendMessage(command, null, cancellationToken);
         }
 
-        internal async Task<dynamic> SendMessage(string command, dynamic data, CancellationToken cancellationToken)
+        //
+        // If the return is a collection, specify the collection type in the caller e.g. ICollection<SomeConcreteType>, IList, IEnumerable
+        //
+        internal async Task<T> SendMessage<T>(string command, string childItem = null, CancellationToken cancellationToken = default)
         {
-            var message = Message.Create(command, data, DestinationService, OriginService);
-            return await RpcClient.SendMessage(message, cancellationToken);
+            return await SendMessage<T>(command, null, childItem, cancellationToken);
+        }
+
+        //
+        // If the return is a collection, specify the collection type in the caller e.g. ICollection<SomeConcreteType>, IList, IEnumerable
+        //
+        internal async Task<T> SendMessage<T>(string command, dynamic data, string childItem = null, CancellationToken cancellationToken = default)
+        {
+            var d = await SendMessage(command, data, cancellationToken);
+
+            return Converters.ToObject<T>(d, childItem);
         }
     }
 }

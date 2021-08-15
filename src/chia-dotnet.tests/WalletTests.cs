@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -13,16 +14,18 @@ namespace chia.dotnet.tests
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
-            var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
-            await rpcClient.Connect();
+            using var cts = new CancellationTokenSource(15000);
 
-            var daemon = new DaemonProxy(rpcClient, "unit_tests");            
-            await daemon.RegisterService();
+            var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
+            await rpcClient.Connect(cts.Token);
+
+            var daemon = new DaemonProxy(rpcClient, "unit_tests");
+            await daemon.RegisterService(cts.Token);
 
             var walletProxy = new WalletProxy(rpcClient, "unit_tests");
 
             _theWallet = new Wallet(1, walletProxy);
-            _ = await _theWallet.Login();
+            _ = await _theWallet.Login(cts.Token);
         }
 
         [ClassCleanup()]
@@ -34,7 +37,9 @@ namespace chia.dotnet.tests
         [TestMethod()]
         public async Task GetWalletBalance()
         {
-            var balance = await _theWallet.GetBalance();
+            using var cts = new CancellationTokenSource(15000);
+
+            var balance = await _theWallet.GetBalance(cts.Token);
 
             Assert.IsNotNull(balance);
         }
@@ -42,7 +47,9 @@ namespace chia.dotnet.tests
         [TestMethod()]
         public async Task GetTransactions()
         {
-            var transactions = await _theWallet.GetTransactions();
+            using var cts = new CancellationTokenSource(15000);
+
+            var transactions = await _theWallet.GetTransactions(cts.Token);
 
             Assert.IsNotNull(transactions);
         }
@@ -50,7 +57,9 @@ namespace chia.dotnet.tests
         [TestMethod()]
         public async Task GetWalletAddress()
         {
-            var address = await _theWallet.GetNextAddress(false);
+            using var cts = new CancellationTokenSource(15000);
+
+            var address = await _theWallet.GetNextAddress(false, cts.Token);
 
             Assert.IsNotNull(address);
         }
@@ -59,8 +68,10 @@ namespace chia.dotnet.tests
         [TestCategory("CAUTION")]
         public async Task CreateNewWalletAddress()
         {
-            var address = await _theWallet.GetNextAddress(false);
-            var newAddress = await _theWallet.GetNextAddress(true);
+            using var cts = new CancellationTokenSource(15000);
+
+            var address = await _theWallet.GetNextAddress(false, cts.Token);
+            var newAddress = await _theWallet.GetNextAddress(true, cts.Token);
 
             Assert.AreNotEqual(address, newAddress);
         }
@@ -68,7 +79,9 @@ namespace chia.dotnet.tests
         [TestMethod()]
         public async Task GetTransactionCount()
         {
-            var count = await _theWallet.GetTransactionCount();
+            using var cts = new CancellationTokenSource(15000);
+
+            var count = await _theWallet.GetTransactionCount(cts.Token);
 
             Assert.IsNotNull(count);
         }
@@ -77,14 +90,18 @@ namespace chia.dotnet.tests
         [TestCategory("CAUTION")]
         public async Task DeleteUnconfirmedTransactions()
         {
-            await _theWallet.DeleteUnconfirmedTransactions();
+            using var cts = new CancellationTokenSource(15000);
+
+            await _theWallet.DeleteUnconfirmedTransactions(cts.Token);
         }
 
         [TestMethod()]
         [TestCategory("CAUTION")]
         public async Task SendTransaction()
         {
-            var transaction = await _theWallet.SendTransaction("txch1em43zsczg2fv79jlg00ucedl9x3atvpnfa09uuk5pgd7v9039sdsashhuq", 1, 1);
+            using var cts = new CancellationTokenSource(15000);
+
+            var transaction = await _theWallet.SendTransaction("txch1em43zsczg2fv79jlg00ucedl9x3atvpnfa09uuk5pgd7v9039sdsashhuq", 1, 1, cts.Token);
 
             Assert.IsNotNull(transaction);
         }

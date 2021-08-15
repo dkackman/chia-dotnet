@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Numerics;
 using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -28,8 +27,8 @@ namespace chia.dotnet
         /// <param name="poolUrl">Url of the pool to join</param>
         /// <param name="relativeLockHeight">Relative lock height</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A transaction</returns>
-        public async Task<dynamic> JoinPool(string targetPuzzlehash, string poolUrl, uint relativeLockHeight, CancellationToken cancellationToken = default)
+        /// <returns>The resulting <see cref="TransactionRecord"/></returns>
+        public async Task<TransactionRecord> JoinPool(string targetPuzzlehash, string poolUrl, uint relativeLockHeight, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -37,9 +36,7 @@ namespace chia.dotnet
             data.pool_url = poolUrl;
             data.relative_lock_height = relativeLockHeight;
 
-            var response = await WalletProxy.SendMessage("pw_join_pool", data, cancellationToken);
-
-            return response.transaction;
+            return await WalletProxy.SendMessage<TransactionRecord>("pw_join_pool", data, "transaction", cancellationToken);
         }
 
         /// <summary>
@@ -48,15 +45,13 @@ namespace chia.dotnet
         /// Then we transition to FARMING_TO_POOL or SELF_POOLING
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A transaction</returns>
-        public async Task<dynamic> SelfPool(CancellationToken cancellationToken = default)
+        /// <returns>The resulting <see cref="TransactionRecord"/></returns>
+        public async Task<TransactionRecord> SelfPool(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
-            var response = await WalletProxy.SendMessage("pw_self_pool", data, cancellationToken);
-
-            return response.transaction;
+            return await WalletProxy.SendMessage<TransactionRecord>("pw_self_pool", data, "transaction", cancellationToken);
         }
 
         /// <summary>
@@ -65,7 +60,7 @@ namespace chia.dotnet
         /// <param name="fee">Transaction fee (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Wallet state and transaction</returns>
-        public async Task<(dynamic State, dynamic Transaction)> AbsorbRewards(ulong fee, CancellationToken cancellationToken = default)
+        public async Task<(PoolWalletInfo State, TransactionRecord Transaction)> AbsorbRewards(ulong fee, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -73,7 +68,10 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("pw_absorb_rewards", cancellationToken);
 
-            return (response.state, response.transaction);
+            return (
+                Converters.ToObject<PoolWalletInfo>(response.state),
+                Converters.ToObject<TransactionRecord>(response.transaction)
+                );
         }
 
         /// <summary>
@@ -81,14 +79,17 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Wallet state and list of unconfirmed transactions</returns>
-        public async Task<(dynamic State, IEnumerable<dynamic> UnconfirmedTransactions)> Status(CancellationToken cancellationToken = default)
+        public async Task<(PoolWalletInfo State, IEnumerable<TransactionRecord> UnconfirmedTransactions)> Status(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
             var response = await WalletProxy.SendMessage("pw_status", data, cancellationToken);
 
-            return (response.state, response.unconfirmed_transactions);
+            return (
+                Converters.ToObject<PoolWalletInfo>(response.state),
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.unconfirmed_transactions)
+            );
         }
     }
 }

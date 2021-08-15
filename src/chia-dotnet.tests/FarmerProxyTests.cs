@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -10,7 +11,6 @@ namespace chia.dotnet.tests
     /// </summary>
     [TestClass]
     [TestCategory("Integration")]
-    //[Ignore] // uncomment to suppress completely
     public class FarmerProxyTests
     {
         private static FarmerProxy _theFarmer;
@@ -19,6 +19,7 @@ namespace chia.dotnet.tests
         public static async Task Initialize(TestContext context)
         {
             using var cts = new CancellationTokenSource(15000);
+
             var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
             await rpcClient.Connect(cts.Token);
 
@@ -48,6 +49,7 @@ namespace chia.dotnet.tests
 
         [TestMethod]
         [TestCategory("CAUTION")]
+        [Ignore("CAUTION")]
         public async Task SetRewardTargets()
         {
             using var cts = new CancellationTokenSource(15000);
@@ -64,16 +66,59 @@ namespace chia.dotnet.tests
 
             var signagePoints = await _theFarmer.GetSignagePoints(cts.Token);
 
+            foreach (var sp in signagePoints)
+            {
+                if (sp.Proofs.Count() > 0)
+                {
+                    System.Diagnostics.Debug.WriteLine("here");
+                }
+            }
+
             Assert.IsNotNull(signagePoints);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ResponseException))]
         public async Task GetSignagePoint()
         {
             using var cts = new CancellationTokenSource(15000);
 
-            _ = await _theFarmer.GetSignagePoint("fake", cts.Token);
+            var signagePoints = await _theFarmer.GetSignagePoints(cts.Token);
+            var spInfo = signagePoints.FirstOrDefault();
+            Assert.IsNotNull(spInfo);
+            var sp = await _theFarmer.GetSignagePoint(spInfo.SignagePoint.ChallengeChainSp, cts.Token);
+
+            Assert.IsNotNull(sp);
+        }
+
+        [TestMethod]
+        public async Task GetPoolState()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            var state = await _theFarmer.GetPoolState(cts.Token);
+
+            Assert.IsNotNull(state);
+        }
+
+        [TestMethod]
+        public async Task GetPoolLoginLink()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            var state = await _theFarmer.GetPoolState(cts.Token);
+            var pool = state.FirstOrDefault();
+            if (pool is not null)
+            {
+                Assert.IsNotNull(pool.PoolConfig);
+
+                var link = await _theFarmer.GetPoolLoginLink(pool.PoolConfig.LauncherId, cts.Token);
+
+                Assert.IsNotNull(link);
+            }
+            else
+            {
+                Assert.Inconclusive("This node isn't part of a pool");
+            }
         }
 
         [TestMethod]
@@ -82,6 +127,7 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
 
             var harvesters = await _theFarmer.GetHarvesters(cts.Token);
+
             Assert.IsNotNull(harvesters);
         }
 
@@ -99,16 +145,16 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
 
             var connections = await _theFarmer.GetConnections(cts.Token);
+
             Assert.IsNotNull(connections);
         }
 
         [TestMethod]
-        [Ignore] // only works on mainnet
         public async Task OpenConnection()
         {
             using var cts = new CancellationTokenSource(15000);
 
-            await _theFarmer.OpenConnection("node.chia.net", 8444, cts.Token);
+            await _theFarmer.OpenConnection("testnet-node.chia.net", 58444, cts.Token);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -10,21 +11,18 @@ namespace chia.dotnet.tests
     {
         [TestMethod]
         [TestCategory("Integration")]
-        public async Task ConnectDirectlyToFullNode()
+        public async Task GetConnectionsDirect()
         {
             try
             {
-                var endpoint = new EndpointInfo()
-                {
-                    Uri = new Uri("https://172.26.210.216:8555"),
-                    CertPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.crt",
-                    KeyPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.key",
-                };
+                using var cts = new CancellationTokenSource(15000);
 
-                using var rpcClient = new HttpRpcClient(endpoint);
+                using var rpcClient = Factory.CreateDirectRpcClientFromHardcodedLocation(8555);
                 var fullNode = new FullNodeProxy(rpcClient, "unit_tests");
 
-                var state = await fullNode.GetBlockchainState();
+                var connections = await fullNode.GetConnections(cts.Token);
+
+                Assert.IsNotNull(connections);
             }
             catch (Exception e)
             {
@@ -32,9 +30,30 @@ namespace chia.dotnet.tests
             }
         }
 
+        [TestMethod]
+        [TestCategory("Integration")]
+        public async Task GetBlockchainStateDirect()
+        {
+            try
+            {
+                using var cts = new CancellationTokenSource(15000);
+
+                using var rpcClient = Factory.CreateDirectRpcClientFromHardcodedLocation(8555);
+                var fullNode = new FullNodeProxy(rpcClient, "unit_tests");
+
+                var state = await fullNode.GetBlockchainState(cts.Token);
+
+                Assert.IsNotNull(state);
+            }
+            catch (Exception e)
+            {
+                Assert.Fail(e.Message);
+            }
+        }
 
         [TestMethod]
         [TestCategory("Integration")]
+        [Ignore]
         public async Task ConnectDirectlyUsingConfigEndpoint()
         {
             try
@@ -42,10 +61,12 @@ namespace chia.dotnet.tests
                 var config = Config.Open();
                 var endpoint = config.GetEndpoint("full_node");
 
+                using var cts = new CancellationTokenSource(15000);
+
                 using var rpcClient = new HttpRpcClient(endpoint);
                 var fullNode = new FullNodeProxy(rpcClient, "unit_tests");
 
-                var state = await fullNode.GetBlockchainState();
+                var state = await fullNode.GetBlockchainState(cts.Token);
             }
             catch (Exception e)
             {

@@ -1,5 +1,4 @@
-﻿using System.Numerics;
-using System.Dynamic;
+﻿using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -54,7 +53,7 @@ namespace chia.dotnet
         /// Get the colour of a wallet's coloured coin
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>The colout as a string</returns>
+        /// <returns>The colour as a string</returns>
         public async Task<string> GetColour(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -68,12 +67,12 @@ namespace chia.dotnet
         /// <summary>
         /// Spend a coloured coin
         /// </summary>
-        /// <param name="innerAddress">inner address for the spend</param>
-        /// <param name="amount">the amount to put in the wallet (in units of mojos)</param> 
-        /// <param name="fee">fee to create the wallet (in units of mojos)</param>
+        /// <param name="innerAddress">The inner address for the spend</param>
+        /// <param name="amount">The amount to put in the wallet (in units of mojos)</param> 
+        /// <param name="fee">The fee to create the wallet (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A transaction</returns>
-        public async Task<dynamic> Spend(string innerAddress, ulong amount, ulong fee, CancellationToken cancellationToken = default)
+        /// <returns>A <see cref="TransactionRecord"/></returns>
+        public async Task<TransactionRecord> Spend(string innerAddress, ulong amount, ulong fee, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
@@ -81,9 +80,7 @@ namespace chia.dotnet
             data.amount = amount;
             data.fee = fee;
 
-            var response = await WalletProxy.SendMessage("cc_spend", data, cancellationToken);
-
-            return response.transaction;
+            return await WalletProxy.SendMessage<TransactionRecord>("cc_spend", data, "transaction", cancellationToken);
         }
     }
 }

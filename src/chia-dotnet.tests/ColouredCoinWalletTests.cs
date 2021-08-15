@@ -6,6 +6,7 @@ namespace chia.dotnet.tests
 {
     [TestClass]
     [TestCategory("Integration")]
+    [Ignore("Needs a coloured coin wallet")]
     public class ColouredCoinWalletTests
     {
         private static ColouredCoinWallet _theWallet;

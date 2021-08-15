@@ -16,6 +16,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
         /// <param name="originService"><see cref="Message.Origin"/></param>
+        /// <remarks>The daemon endpoint handles plotting commands, so the rpc client should use the daemon endpoint</remarks>
         public PlotterProxy(WebSocketRpcClient rpcClient, string originService)
             : base(rpcClient, ServiceNames.Daemon, originService)
         {
@@ -25,15 +26,13 @@ namespace chia.dotnet
         /// Registers this instance as a plotter and retreives the plot queue
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>The plot queue</returns>
-        public async Task<IEnumerable<dynamic>> RegisterPlotter(CancellationToken cancellationToken = default)
+        /// <returns>The list of <see cref="QueuedPlotInfo"/>s</returns>
+        public async Task<IEnumerable<QueuedPlotInfo>> RegisterPlotter(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.service = ServiceNames.Plotter;
 
-            var response = await SendMessage("register_service", data, cancellationToken);
-
-            return response.queue;
+            return await SendMessage<IEnumerable<QueuedPlotInfo>>("register_service", data, "queue", cancellationToken);
         }
 
         /// <summary>

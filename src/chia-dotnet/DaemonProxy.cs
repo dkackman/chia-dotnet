@@ -6,21 +6,9 @@ using System.Threading.Tasks;
 namespace chia.dotnet
 {
     /// <summary>
-    /// The names of chia services. These are used as <see cref="Message.Destination"/> values
-    /// </summary>
-    public struct ServiceNames
-    {
-        public const string FullNode = "chia_full_node";
-        public const string Wallet = "chia_wallet";
-        public const string Farmer = "chia_farmer";
-        public const string Harvester = "chia_harvester";
-        public const string Simulator = "chia_full_node_simulator";
-        public const string Plotter = "chia plots create";
-        public const string Daemon = "daemon";
-    }
-
-    /// <summary>
-    /// <see cref="WebSocketRpcClient"/> for the daemon interface. The daemon can be used to proxy messages to and from other chia services.
+    /// <see cref="WebSocketRpcClient"/> for the daemon interface. 
+    /// The daemon can be used to proxy messages to and from other chia services as well
+    /// as controlling the <see cref="PlotterProxy"/> and having it's own procedures
     /// </summary>
     public sealed class DaemonProxy : ServiceProxy
     {
@@ -37,7 +25,7 @@ namespace chia.dotnet
         /// <summary>
         /// Tells the daemon at the RPC endpoint to exit.
         /// </summary>
-        /// <remarks>There isn't a way to start the daemon remotely via RPC so take care that you have access to the RPC host if needed</remarks>
+        /// <remarks>There isn't a way to start the daemon remotely via RPC, so take care that you have access to the RPC host if needed</remarks>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task Exit(CancellationToken cancellationToken = default)
@@ -50,7 +38,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="service">The <see cref="ServiceNames"/> of the service</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>Awaitable <see cref="Task"/> with the boolean value indicating whether the service is running</returns>
+        /// <returns>A boolean value indicating whether the service is running</returns>
         public async Task<bool> IsServiceRunning(string service, CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("is_running", CreateDataObject(service), cancellationToken);
@@ -102,7 +90,7 @@ namespace chia.dotnet
             _ = await SendMessage("stop_service", CreateDataObject(service), cancellationToken);
         }
 
-        private dynamic CreateDataObject(string service)
+        private object CreateDataObject(string service)
         {
             if (string.IsNullOrEmpty(service))
             {
