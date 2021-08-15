@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace chia.dotnet
 {
@@ -13,8 +13,13 @@ namespace chia.dotnet
         public uint SpentBlockIndex { get; init; }
         public bool Spent { get; init; }
         public bool Coinbase { get; init; }
+        /// <summary>
+        /// Timestamp of the block at height confirmed_block_index
+        /// </summary>
         public ulong Timestamp { get; init; }
-
+        /// <summary>
+        /// Timestamp of the block at height confirmed_block_index
+        /// </summary>
         public DateTime? DateTimestamp => Timestamp.ToDateTime();
     }
 }

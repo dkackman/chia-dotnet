@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Numerics;
 using System.Collections.Generic;
 
@@ -11,6 +11,9 @@ namespace chia.dotnet
 
     public record VDFInfo
     {
+        /// <summary>
+        /// Used to generate the discriminant (VDF group)
+        /// </summary>
         public string Challenge { get; init; }
         public ulong NumberOfIterations { get; init; }
         public ClassGroupElement VdfOutput { get; init; }
@@ -19,9 +22,21 @@ namespace chia.dotnet
     public record ChallengeChainSubSlot
     {
         public VDFInfo ChallengeChainEndOfSlotVdf { get; init; }
+        /// <summary>
+        /// Only at the end of a slot
+        /// </summary>
         public string InfusedChallengeChainSubSlotHash { get; init; }
+        /// <summary>
+        /// Only once per sub-epoch, and one sub-epoch delayed
+        /// </summary>
         public string SubepochSummaryHash { get; init; }
+        /// <summary>
+        /// Only at the end of epoch, sub-epoch, and slot
+        /// </summary>
         public ulong? NewSubSlotIters { get; init; }
+        /// <summary>
+        /// Only at the end of epoch, sub-epoch, and slot
+        /// </summary>
         public ulong? NewDifficulty { get; init; }
     }
 
@@ -132,7 +147,7 @@ namespace chia.dotnet
     /// </summary>
     public record FullBlock
     {
-        public ICollection<EndOfSlotBundle> FinishedSubSlots { get; init; }
+        public ICollection<EndOfSubSlotBundle> FinishedSubSlots { get; init; }
         public RewardChainBlock RewardChainBlock { get; init; }
         public VDFProof ChallengeChainSpProof { get; init; }
         public VDFProof ChallengeChainIpProof { get; init; }

@@ -318,8 +318,8 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="challengeHash">challenge hash</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>The <see cref="EndOfSlotBundle"/></returns>
-        public async Task<(EndOfSlotBundle eos, double timeReceived, bool reverted, DateTime DateTimeReceived)> GetRecentEOS(string challengeHash, CancellationToken cancellationToken = default)
+        /// <returns>The <see cref="EndOfSubSlotBundle"/></returns>
+        public async Task<(EndOfSubSlotBundle eos, double timeReceived, bool reverted, DateTime DateTimeReceived)> GetRecentEOS(string challengeHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.challenge_hash = challengeHash;
@@ -327,7 +327,7 @@ namespace chia.dotnet
             var response = await SendMessage("get_recent_signage_point_or_eos", data, cancellationToken);
 
             return (
-                Converters.ToObject<EndOfSlotBundle>(response.eos),
+                Converters.ToObject<EndOfSubSlotBundle>(response.eos),
                 response.time_received,
                 response.reverted,
                 Converters.ToDateTime((double)response.time_received)

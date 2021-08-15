@@ -1,8 +1,4 @@
-using System;
-using System.Numerics;
-using System.Collections.Generic;
-
-namespace chia.dotnet
+﻿namespace chia.dotnet
 {
     /// <summary>
     /// Response in error case for all endpoints of the pool protocol
