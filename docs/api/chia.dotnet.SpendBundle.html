@@ -73,7 +73,11 @@
   
   <h1 id="chia_dotnet_SpendBundle" data-uid="chia.dotnet.SpendBundle" class="text-break">Class SpendBundle
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>This is a list of coins being spent along with their solution programs, and a single
+aggregated signature. This is the object that most closely corresponds to a bitcoin
+transaction (although because of non-interactive signature aggregation, the boundaries
+between transactions are more flexible than in bitcoin).</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -121,7 +125,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_SpendBundle_AggregatedSignature.md&amp;value=---%0Auid%3A%20chia.dotnet.SpendBundle.AggregatedSignature%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/SpendBundle.cs/#L56">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L40">View Source</a>
   </span>
   <a id="chia_dotnet_SpendBundle_AggregatedSignature_" data-uid="chia.dotnet.SpendBundle.AggregatedSignature*"></a>
   <h4 id="chia_dotnet_SpendBundle_AggregatedSignature" data-uid="chia.dotnet.SpendBundle.AggregatedSignature">AggregatedSignature</h4>
@@ -129,8 +133,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;aggregated_signature&quot;)]
-public string AggregatedSignature { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string AggregatedSignature { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -149,19 +152,18 @@ public string AggregatedSignature { get; set; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_SpendBundle_CoinSolutions.md&amp;value=---%0Auid%3A%20chia.dotnet.SpendBundle.CoinSolutions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_SpendBundle_CoinSpends.md&amp;value=---%0Auid%3A%20chia.dotnet.SpendBundle.CoinSpends%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/SpendBundle.cs/#L53">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L41">View Source</a>
   </span>
-  <a id="chia_dotnet_SpendBundle_CoinSolutions_" data-uid="chia.dotnet.SpendBundle.CoinSolutions*"></a>
-  <h4 id="chia_dotnet_SpendBundle_CoinSolutions" data-uid="chia.dotnet.SpendBundle.CoinSolutions">CoinSolutions</h4>
+  <a id="chia_dotnet_SpendBundle_CoinSpends_" data-uid="chia.dotnet.SpendBundle.CoinSpends*"></a>
+  <h4 id="chia_dotnet_SpendBundle_CoinSpends" data-uid="chia.dotnet.SpendBundle.CoinSpends">CoinSpends</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;coin_solutions&quot;)]
-public CoinSolution[] CoinSolutions { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ICollection&lt;CoinSpend&gt; CoinSpends { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -173,7 +175,7 @@ public CoinSolution[] CoinSolutions { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="chia.dotnet.CoinSolution.html">CoinSolution</a>[]</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="chia.dotnet.CoinSpend.html">CoinSpend</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -193,7 +195,7 @@ public CoinSolution[] CoinSolutions { get; set; }</code></pre>
                     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_SpendBundle.md&amp;value=---%0Auid%3A%20chia.dotnet.SpendBundle%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/SpendBundle.cs/#L50" class="contribution-link">View Source</a>
+                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L38" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

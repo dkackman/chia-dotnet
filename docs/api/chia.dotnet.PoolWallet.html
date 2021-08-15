@@ -112,10 +112,10 @@
       <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransaction_System_String_System_UInt64_System_UInt64_System_Threading_CancellationToken_">Wallet.SendTransaction(String, UInt64, UInt64, CancellationToken)</a>
     </div>
     <div>
-      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_System_Object__System_Collections_Generic_IEnumerable_System_Object__System_UInt64_System_Threading_CancellationToken_">Wallet.SendTransactionMulti(IEnumerable&lt;Object&gt;, IEnumerable&lt;Object&gt;, UInt64, CancellationToken)</a>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_UInt64_System_Threading_CancellationToken_">Wallet.SendTransactionMulti(IEnumerable&lt;Coin&gt;, IEnumerable&lt;Coin&gt;, UInt64, CancellationToken)</a>
     </div>
     <div>
-      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_System_Object__System_UInt64_System_Threading_CancellationToken_">Wallet.SendTransactionMulti(IEnumerable&lt;Object&gt;, UInt64, CancellationToken)</a>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_UInt64_System_Threading_CancellationToken_">Wallet.SendTransactionMulti(IEnumerable&lt;Coin&gt;, UInt64, CancellationToken)</a>
     </div>
     <div>
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_">Object.Equals(Object)</a>
@@ -152,7 +152,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PoolWallet__ctor_System_UInt32_chia_dotnet_WalletProxy_.md&amp;value=---%0Auid%3A%20chia.dotnet.PoolWallet.%23ctor(System.UInt32%2Cchia.dotnet.WalletProxy)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L19">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L18">View Source</a>
   </span>
   <a id="chia_dotnet_PoolWallet__ctor_" data-uid="chia.dotnet.PoolWallet.#ctor*"></a>
   <h4 id="chia_dotnet_PoolWallet__ctor_System_UInt32_chia_dotnet_WalletProxy_" data-uid="chia.dotnet.PoolWallet.#ctor(System.UInt32,chia.dotnet.WalletProxy)">PoolWallet(UInt32, WalletProxy)</h4>
@@ -194,7 +194,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PoolWallet_AbsorbRewards_System_UInt64_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.PoolWallet.AbsorbRewards(System.UInt64%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L68">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L63">View Source</a>
   </span>
   <a id="chia_dotnet_PoolWallet_AbsorbRewards_" data-uid="chia.dotnet.PoolWallet.AbsorbRewards*"></a>
   <h4 id="chia_dotnet_PoolWallet_AbsorbRewards_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.PoolWallet.AbsorbRewards(System.UInt64,System.Threading.CancellationToken)">AbsorbRewards(UInt64, CancellationToken)</h4>
@@ -203,7 +203,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;(dynamic State, dynamic Transaction)&gt; AbsorbRewards(ulong fee, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;(PoolWalletInfo State, TransactionRecord Transaction)&gt; AbsorbRewards(ulong fee, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -239,7 +239,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.valuetuple-2">(T1, T2)</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;&gt;</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.valuetuple-2">(T1, T2)</a>&lt;<a class="xref" href="chia.dotnet.PoolWalletInfo.html">PoolWalletInfo</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt;&gt;</td>
         <td><p>Wallet state and transaction</p>
 </td>
       </tr>
@@ -250,7 +250,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PoolWallet_JoinPool_System_String_System_String_System_UInt32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.PoolWallet.JoinPool(System.String%2CSystem.String%2CSystem.UInt32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L32">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L31">View Source</a>
   </span>
   <a id="chia_dotnet_PoolWallet_JoinPool_" data-uid="chia.dotnet.PoolWallet.JoinPool*"></a>
   <h4 id="chia_dotnet_PoolWallet_JoinPool_System_String_System_String_System_UInt32_System_Threading_CancellationToken_" data-uid="chia.dotnet.PoolWallet.JoinPool(System.String,System.String,System.UInt32,System.Threading.CancellationToken)">JoinPool(String, String, UInt32, CancellationToken)</h4>
@@ -259,7 +259,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;dynamic&gt; JoinPool(string targetPuzzlehash, string poolUrl, uint relativeLockHeight, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;TransactionRecord&gt; JoinPool(string targetPuzzlehash, string poolUrl, uint relativeLockHeight, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -307,8 +307,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
-        <td><p>A transaction</p>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt;</td>
+        <td><p>The resulting <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a></p>
 </td>
       </tr>
     </tbody>
@@ -318,7 +318,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PoolWallet_SelfPool_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.PoolWallet.SelfPool(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L52">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L49">View Source</a>
   </span>
   <a id="chia_dotnet_PoolWallet_SelfPool_" data-uid="chia.dotnet.PoolWallet.SelfPool*"></a>
   <h4 id="chia_dotnet_PoolWallet_SelfPool_System_Threading_CancellationToken_" data-uid="chia.dotnet.PoolWallet.SelfPool(System.Threading.CancellationToken)">SelfPool(CancellationToken)</h4>
@@ -329,7 +329,7 @@ Then we transition to FARMING_TO_POOL or SELF_POOLING</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;dynamic&gt; SelfPool(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;TransactionRecord&gt; SelfPool(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -359,8 +359,8 @@ Then we transition to FARMING_TO_POOL or SELF_POOLING</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
-        <td><p>A transaction</p>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt;</td>
+        <td><p>The resulting <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a></p>
 </td>
       </tr>
     </tbody>
@@ -370,7 +370,7 @@ Then we transition to FARMING_TO_POOL or SELF_POOLING</p>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PoolWallet_Status_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.PoolWallet.Status(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L84">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L82">View Source</a>
   </span>
   <a id="chia_dotnet_PoolWallet_Status_" data-uid="chia.dotnet.PoolWallet.Status*"></a>
   <h4 id="chia_dotnet_PoolWallet_Status_System_Threading_CancellationToken_" data-uid="chia.dotnet.PoolWallet.Status(System.Threading.CancellationToken)">Status(CancellationToken)</h4>
@@ -379,7 +379,7 @@ Then we transition to FARMING_TO_POOL or SELF_POOLING</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;(dynamic State, IEnumerable&lt;dynamic&gt; UnconfirmedTransactions)&gt; Status(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;(PoolWalletInfo State, IEnumerable&lt;TransactionRecord&gt; UnconfirmedTransactions)&gt; Status(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -409,7 +409,7 @@ Then we transition to FARMING_TO_POOL or SELF_POOLING</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.valuetuple-2">(T1, T2)</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;&gt;&gt;</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.valuetuple-2">(T1, T2)</a>&lt;<a class="xref" href="chia.dotnet.PoolWalletInfo.html">PoolWalletInfo</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt;&gt;&gt;</td>
         <td><p>Wallet state and list of unconfirmed transactions</p>
 </td>
       </tr>
@@ -426,7 +426,7 @@ Then we transition to FARMING_TO_POOL or SELF_POOLING</p>
                     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PoolWallet.md&amp;value=---%0Auid%3A%20chia.dotnet.PoolWallet%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L11" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -1,0 +1,710 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class TransactionRecord
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class TransactionRecord
+   ">
+    <meta name="generator" content="docfx 2.58.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="chia.dotnet.TransactionRecord">
+  
+  
+  <h1 id="chia_dotnet_TransactionRecord" data-uid="chia.dotnet.TransactionRecord" class="text-break">Class TransactionRecord
+  </h1>
+  <div class="markdown level0 summary"><p>Used for storing transaction data and status in wallets.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">TransactionRecord</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_System_Object_">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gethashcode#System_Object_GetHashCode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gettype#System_Object_GetType">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.memberwiseclone#System_Object_MemberwiseClone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.referenceequals#System_Object_ReferenceEquals_System_Object_System_Object_">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#System_Object_ToString">Object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="chia.dotnet.html">chia.dotnet</a></h6>
+  <h6><strong>Assembly</strong>: chia-dotnet.dll</h6>
+  <h5 id="chia_dotnet_TransactionRecord_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TransactionRecord : IEquatable&lt;TransactionRecord&gt;</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TransactionRecord_Additions.md&amp;value=---%0Auid%3A%20chia.dotnet.TransactionRecord.Additions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L59">View Source</a>
+  </span>
+  <a id="chia_dotnet_TransactionRecord_Additions_" data-uid="chia.dotnet.TransactionRecord.Additions*"></a>
+  <h4 id="chia_dotnet_TransactionRecord_Additions" data-uid="chia.dotnet.TransactionRecord.Additions">Additions</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;Coin&gt; Additions { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="chia.dotnet.Coin.html">Coin</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TransactionRecord_Amount.md&amp;value=---%0Auid%3A%20chia.dotnet.TransactionRecord.Amount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L60">View Source</a>
+  </span>
+  <a id="chia_dotnet_TransactionRecord_Amount_" data-uid="chia.dotnet.TransactionRecord.Amount*"></a>
+  <h4 id="chia_dotnet_TransactionRecord_Amount" data-uid="chia.dotnet.TransactionRecord.Amount">Amount</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong Amount { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint64">UInt64</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TransactionRecord_Confirmed.md&amp;value=---%0Auid%3A%20chia.dotnet.TransactionRecord.Confirmed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L61">View Source</a>
+  </span>
+  <a id="chia_dotnet_TransactionRecord_Confirmed_" data-uid="chia.dotnet.TransactionRecord.Confirmed*"></a>
+  <h4 id="chia_dotnet_TransactionRecord_Confirmed" data-uid="chia.dotnet.TransactionRecord.Confirmed">Confirmed</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Confirmed { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TransactionRecord_ConfirmedAtHeight.md&amp;value=---%0Auid%3A%20chia.dotnet.TransactionRecord.ConfirmedAtHeight%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L62">View Source</a>
+  </span>
+  <a id="chia_dotnet_TransactionRecord_ConfirmedAtHeight_" data-uid="chia.dotnet.TransactionRecord.ConfirmedAtHeight*"></a>
+  <h4 id="chia_dotnet_TransactionRecord_ConfirmedAtHeight" data-uid="chia.dotnet.TransactionRecord.ConfirmedAtHeight">ConfirmedAtHeight</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint ConfirmedAtHeight { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint32">UInt32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TransactionRecord_CreatedAtDateTime.md&amp;value=---%0Auid%3A%20chia.dotnet.TransactionRecord.CreatedAtDateTime%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L87">View Source</a>
+  </span>
+  <a id="chia_dotnet_TransactionRecord_CreatedAtDateTime_" data-uid="chia.dotnet.TransactionRecord.CreatedAtDateTime*"></a>
+  <h4 id="chia_dotnet_TransactionRecord_CreatedAtDateTime" data-uid="chia.dotnet.TransactionRecord.CreatedAtDateTime">CreatedAtDateTime</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime CreatedAtDateTime { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime">DateTime</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TransactionRecord_CreatedAtTime.md&amp;value=---%0Auid%3A%20chia.dotnet.TransactionRecord.CreatedAtTime%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L63">View Source</a>
+  </span>
+  <a id="chia_dotnet_TransactionRecord_CreatedAtTime_" data-uid="chia.dotnet.TransactionRecord.CreatedAtTime*"></a>
+  <h4 id="chia_dotnet_TransactionRecord_CreatedAtTime" data-uid="chia.dotnet.TransactionRecord.CreatedAtTime">CreatedAtTime</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double CreatedAtTime { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TransactionRecord_FeeAmount.md&amp;value=---%0Auid%3A%20chia.dotnet.TransactionRecord.FeeAmount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L64">View Source</a>
+  </span>
+  <a id="chia_dotnet_TransactionRecord_FeeAmount_" data-uid="chia.dotnet.TransactionRecord.FeeAmount*"></a>
+  <h4 id="chia_dotnet_TransactionRecord_FeeAmount" data-uid="chia.dotnet.TransactionRecord.FeeAmount">FeeAmount</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong FeeAmount { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint64">UInt64</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TransactionRecord_Name.md&amp;value=---%0Auid%3A%20chia.dotnet.TransactionRecord.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L69">View Source</a>
+  </span>
+  <a id="chia_dotnet_TransactionRecord_Name_" data-uid="chia.dotnet.TransactionRecord.Name*"></a>
+  <h4 id="chia_dotnet_TransactionRecord_Name" data-uid="chia.dotnet.TransactionRecord.Name">Name</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TransactionRecord_Removals.md&amp;value=---%0Auid%3A%20chia.dotnet.TransactionRecord.Removals%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L70">View Source</a>
+  </span>
+  <a id="chia_dotnet_TransactionRecord_Removals_" data-uid="chia.dotnet.TransactionRecord.Removals*"></a>
+  <h4 id="chia_dotnet_TransactionRecord_Removals" data-uid="chia.dotnet.TransactionRecord.Removals">Removals</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;Coin&gt; Removals { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="chia.dotnet.Coin.html">Coin</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TransactionRecord_Sent.md&amp;value=---%0Auid%3A%20chia.dotnet.TransactionRecord.Sent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L71">View Source</a>
+  </span>
+  <a id="chia_dotnet_TransactionRecord_Sent_" data-uid="chia.dotnet.TransactionRecord.Sent*"></a>
+  <h4 id="chia_dotnet_TransactionRecord_Sent" data-uid="chia.dotnet.TransactionRecord.Sent">Sent</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint Sent { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint32">UInt32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TransactionRecord_SentTo.md&amp;value=---%0Auid%3A%20chia.dotnet.TransactionRecord.SentTo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L76">View Source</a>
+  </span>
+  <a id="chia_dotnet_TransactionRecord_SentTo_" data-uid="chia.dotnet.TransactionRecord.SentTo*"></a>
+  <h4 id="chia_dotnet_TransactionRecord_SentTo" data-uid="chia.dotnet.TransactionRecord.SentTo">SentTo</h4>
+  <div class="markdown level1 summary"><p>Represents the list of peers that we sent the transaction to, whether each one
+included it in the mempool, and what the error message (if any) was</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;SendPeer&gt; SentTo { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="chia.dotnet.SendPeer.html">SendPeer</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TransactionRecord_SpendBundle.md&amp;value=---%0Auid%3A%20chia.dotnet.TransactionRecord.SpendBundle%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L77">View Source</a>
+  </span>
+  <a id="chia_dotnet_TransactionRecord_SpendBundle_" data-uid="chia.dotnet.TransactionRecord.SpendBundle*"></a>
+  <h4 id="chia_dotnet_TransactionRecord_SpendBundle" data-uid="chia.dotnet.TransactionRecord.SpendBundle">SpendBundle</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SpendBundle SpendBundle { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TransactionRecord_ToAddress.md&amp;value=---%0Auid%3A%20chia.dotnet.TransactionRecord.ToAddress%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L78">View Source</a>
+  </span>
+  <a id="chia_dotnet_TransactionRecord_ToAddress_" data-uid="chia.dotnet.TransactionRecord.ToAddress*"></a>
+  <h4 id="chia_dotnet_TransactionRecord_ToAddress" data-uid="chia.dotnet.TransactionRecord.ToAddress">ToAddress</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ToAddress { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TransactionRecord_ToPuzzleHash.md&amp;value=---%0Auid%3A%20chia.dotnet.TransactionRecord.ToPuzzleHash%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L79">View Source</a>
+  </span>
+  <a id="chia_dotnet_TransactionRecord_ToPuzzleHash_" data-uid="chia.dotnet.TransactionRecord.ToPuzzleHash*"></a>
+  <h4 id="chia_dotnet_TransactionRecord_ToPuzzleHash" data-uid="chia.dotnet.TransactionRecord.ToPuzzleHash">ToPuzzleHash</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ToPuzzleHash { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TransactionRecord_TradeId.md&amp;value=---%0Auid%3A%20chia.dotnet.TransactionRecord.TradeId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L80">View Source</a>
+  </span>
+  <a id="chia_dotnet_TransactionRecord_TradeId_" data-uid="chia.dotnet.TransactionRecord.TradeId*"></a>
+  <h4 id="chia_dotnet_TransactionRecord_TradeId" data-uid="chia.dotnet.TransactionRecord.TradeId">TradeId</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string TradeId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TransactionRecord_TransactionId.md&amp;value=---%0Auid%3A%20chia.dotnet.TransactionRecord.TransactionId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L68">View Source</a>
+  </span>
+  <a id="chia_dotnet_TransactionRecord_TransactionId_" data-uid="chia.dotnet.TransactionRecord.TransactionId*"></a>
+  <h4 id="chia_dotnet_TransactionRecord_TransactionId" data-uid="chia.dotnet.TransactionRecord.TransactionId">TransactionId</h4>
+  <div class="markdown level1 summary"><p>chia pyhton aliases the <a class="xref" href="chia.dotnet.TransactionRecord.html#chia_dotnet_TransactionRecord_Name">Name</a> property to return this along with the record</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string TransactionId { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TransactionRecord_Type.md&amp;value=---%0Auid%3A%20chia.dotnet.TransactionRecord.Type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L84">View Source</a>
+  </span>
+  <a id="chia_dotnet_TransactionRecord_Type_" data-uid="chia.dotnet.TransactionRecord.Type*"></a>
+  <h4 id="chia_dotnet_TransactionRecord_Type" data-uid="chia.dotnet.TransactionRecord.Type">Type</h4>
+  <div class="markdown level1 summary"><p>TransactionType</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TransactionType Type { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="chia.dotnet.TransactionType.html">TransactionType</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TransactionRecord_WalletId.md&amp;value=---%0Auid%3A%20chia.dotnet.TransactionRecord.WalletId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L85">View Source</a>
+  </span>
+  <a id="chia_dotnet_TransactionRecord_WalletId_" data-uid="chia.dotnet.TransactionRecord.WalletId*"></a>
+  <h4 id="chia_dotnet_TransactionRecord_WalletId" data-uid="chia.dotnet.TransactionRecord.WalletId">WalletId</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint WalletId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint32">UInt32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.iequatable-1">System.IEquatable&lt;T&gt;</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TransactionRecord.md&amp;value=---%0Auid%3A%20chia.dotnet.TransactionRecord%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/TransactionRecord.cs/#L57" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
