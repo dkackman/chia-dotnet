@@ -52,6 +52,10 @@ namespace chia.dotnet
         public uint ConfirmedAtHeight { get; init; }
         public double CreatedAtTime { get; init; }
         public ulong FeeAmount { get; init; }
+        /// <summary>
+        /// chia pyhton aliases the <see cref="Name"/> property to return this along with the record
+        /// </summary>
+        public string TransactionId => Name;
         public string Name { get; init; }
         public ICollection<Coin> Removals { get; init; }
         public uint Sent { get; init; }
