@@ -73,7 +73,8 @@
   
   <h1 id="chia_dotnet_Coin" data-uid="chia.dotnet.Coin" class="text-break">Class Coin
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>This structure is used in the body for the reward and fees genesis coins.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -118,19 +119,18 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Coin_Coinbase.md&amp;value=---%0Auid%3A%20chia.dotnet.Coin.Coinbase%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/static-types/apiSpec/new?filename=chia_dotnet_Coin_Amount.md&amp;value=---%0Auid%3A%20chia.dotnet.Coin.Amount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/SpendBundle.cs/#L29">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/static-types/src/chia-dotnet/ChiaTypes/Coin.cs/#L10">View Source</a>
   </span>
-  <a id="chia_dotnet_Coin_Coinbase_" data-uid="chia.dotnet.Coin.Coinbase*"></a>
-  <h4 id="chia_dotnet_Coin_Coinbase" data-uid="chia.dotnet.Coin.Coinbase">Coinbase</h4>
+  <a id="chia_dotnet_Coin_Amount_" data-uid="chia.dotnet.Coin.Amount*"></a>
+  <h4 id="chia_dotnet_Coin_Amount" data-uid="chia.dotnet.Coin.Amount">Amount</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;coinbase&quot;)]
-public bool Coinbase { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ulong Amount { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -142,26 +142,25 @@ public bool Coinbase { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint64">UInt64</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Coin_ConfirmedBlockIndex.md&amp;value=---%0Auid%3A%20chia.dotnet.Coin.ConfirmedBlockIndex%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/static-types/apiSpec/new?filename=chia_dotnet_Coin_ParentCoinInfo.md&amp;value=---%0Auid%3A%20chia.dotnet.Coin.ParentCoinInfo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/SpendBundle.cs/#L20">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/static-types/src/chia-dotnet/ChiaTypes/Coin.cs/#L8">View Source</a>
   </span>
-  <a id="chia_dotnet_Coin_ConfirmedBlockIndex_" data-uid="chia.dotnet.Coin.ConfirmedBlockIndex*"></a>
-  <h4 id="chia_dotnet_Coin_ConfirmedBlockIndex" data-uid="chia.dotnet.Coin.ConfirmedBlockIndex">ConfirmedBlockIndex</h4>
+  <a id="chia_dotnet_Coin_ParentCoinInfo_" data-uid="chia.dotnet.Coin.ParentCoinInfo*"></a>
+  <h4 id="chia_dotnet_Coin_ParentCoinInfo" data-uid="chia.dotnet.Coin.ParentCoinInfo">ParentCoinInfo</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;confirmed_block_index&quot;)]
-public uint ConfirmedBlockIndex { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string ParentCoinInfo { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -173,26 +172,25 @@ public uint ConfirmedBlockIndex { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint32">UInt32</a></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Coin_Spent.md&amp;value=---%0Auid%3A%20chia.dotnet.Coin.Spent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/static-types/apiSpec/new?filename=chia_dotnet_Coin_PuzzleHash.md&amp;value=---%0Auid%3A%20chia.dotnet.Coin.PuzzleHash%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/SpendBundle.cs/#L26">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/static-types/src/chia-dotnet/ChiaTypes/Coin.cs/#L9">View Source</a>
   </span>
-  <a id="chia_dotnet_Coin_Spent_" data-uid="chia.dotnet.Coin.Spent*"></a>
-  <h4 id="chia_dotnet_Coin_Spent" data-uid="chia.dotnet.Coin.Spent">Spent</h4>
+  <a id="chia_dotnet_Coin_PuzzleHash_" data-uid="chia.dotnet.Coin.PuzzleHash*"></a>
+  <h4 id="chia_dotnet_Coin_PuzzleHash" data-uid="chia.dotnet.Coin.PuzzleHash">PuzzleHash</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;spent&quot;)]
-public bool Spent { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string PuzzleHash { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -204,100 +202,7 @@ public bool Spent { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Coin_SpentBlockIndex.md&amp;value=---%0Auid%3A%20chia.dotnet.Coin.SpentBlockIndex%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/SpendBundle.cs/#L23">View Source</a>
-  </span>
-  <a id="chia_dotnet_Coin_SpentBlockIndex_" data-uid="chia.dotnet.Coin.SpentBlockIndex*"></a>
-  <h4 id="chia_dotnet_Coin_SpentBlockIndex" data-uid="chia.dotnet.Coin.SpentBlockIndex">SpentBlockIndex</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;spent_block_index&quot;)]
-public uint SpentBlockIndex { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint32">UInt32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Coin_WalletId.md&amp;value=---%0Auid%3A%20chia.dotnet.Coin.WalletId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/SpendBundle.cs/#L35">View Source</a>
-  </span>
-  <a id="chia_dotnet_Coin_WalletId_" data-uid="chia.dotnet.Coin.WalletId*"></a>
-  <h4 id="chia_dotnet_Coin_WalletId" data-uid="chia.dotnet.Coin.WalletId">WalletId</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;wallet_id&quot;)]
-public uint WalletId { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint32">UInt32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Coin_WalletType.md&amp;value=---%0Auid%3A%20chia.dotnet.Coin.WalletType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/SpendBundle.cs/#L32">View Source</a>
-  </span>
-  <a id="chia_dotnet_Coin_WalletType_" data-uid="chia.dotnet.Coin.WalletType*"></a>
-  <h4 id="chia_dotnet_Coin_WalletType" data-uid="chia.dotnet.Coin.WalletType">WalletType</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;wallet_type&quot;)]
-public WalletType WalletType { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="chia.dotnet.WalletType.html">WalletType</a></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -314,10 +219,10 @@ public WalletType WalletType { get; set; }</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Coin.md&amp;value=---%0Auid%3A%20chia.dotnet.Coin%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/dkackman/chia-dotnet/new/static-types/apiSpec/new?filename=chia_dotnet_Coin.md&amp;value=---%0Auid%3A%20chia.dotnet.Coin%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/SpendBundle.cs/#L18" class="contribution-link">View Source</a>
+                    <a href="https://github.com/dkackman/chia-dotnet/blob/static-types/src/chia-dotnet/ChiaTypes/Coin.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
