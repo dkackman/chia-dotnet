@@ -99,6 +99,16 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
+        public async Task GetAllTrades()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            var trades = await _theWallet.GetAllTrades(cts.Token);
+
+            Assert.IsNotNull(trades);
+        }
+
+        [TestMethod()]
         public async Task GetHeightInfo()
         {
             using var cts = new CancellationTokenSource(15000);

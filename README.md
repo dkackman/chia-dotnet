@@ -14,8 +14,9 @@ https://dkackman.github.io/chia-dotnet/
 
 - Coverage of all of chia's rpc endpoints
   - Daemon, Full Node, Farmer, Harvester Wallet, Plotter
-- Complete coverage the methods ate each endpoint
+- Coverage of all of the methods at each endpoint
   - as of 1.2.3 (if you find something missing please create an issue)
+- Static types for chia input and outputs
 - Supports connecting via teh `daemon` on `wss` or directly to each service over `https`
   - both `https` and `wss` use tha same interfaces so switching is seemless
   
@@ -35,6 +36,7 @@ await daemon.RegisterService();
 
 var fullNode = new FullNodeProxy(rpcClient, "unit_tests");
 var state = await fullNode.GetBlockchainState(e);
+Console.Log($"This node is synced: {state.Sync.Synced}")
 ```
 
 #### Send me some chia
@@ -78,7 +80,7 @@ In addition to static vs dynamic typing, C# and Python have very different conve
 - The chia RPC uses unsigned integers where dotnet might use signed. In cases where chia expects an unsigned number, it is unsigned on the dotnet side.
 - `ulong` is used for the python 64 bit unsigned int.
 - `BigInteger` is used for the python 128 bit unsigned int.
-- Where the RPC return a scalar value, the dotnet code will as well.
+- Where the RPC return a scalar value, the dotnet code will as well. If it is optional in python it will be `Nullable<T>` in dotnet
 - Where the RPC returns a list of named scalar values, they are returned as a Tuple with named fields.
 - Complex types and structs are currently returned as a `dynamic` [`ExpandoObject`](https://docs.microsoft.com/en-us/dotnet/api/system.dynamic.expandoobject?view=net-5.0). This may change in the future.
 - Lists of things are returned as [`IEnumberable<T>`](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-5.0).

@@ -1,7 +1,10 @@
-using System;
+﻿using System;
 
 namespace chia.dotnet
 {
+    /// <summary>
+    /// Info about a plot file
+    /// </summary>
     public record PlotInfo
     {
         public int FileSize { get; init; }

@@ -1,7 +1,7 @@
 ﻿namespace chia.dotnet
 {
     /// <summary>
-    /// Chia's representation of an entry on the plotter queue
+    /// An entry on the plotter queue
     /// </summary>
     public record QueuedPlotInfo
     {

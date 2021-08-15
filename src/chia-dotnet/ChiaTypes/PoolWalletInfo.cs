@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-
-using Newtonsoft.Json;
-
-namespace chia.dotnet
+﻿namespace chia.dotnet
 {
     /// <summary>
     /// Internal Pool Wallet state, not destined for the blockchain. This can be completely derived with
@@ -16,8 +11,14 @@ namespace chia.dotnet
         public Coin LauncherCoin { get; init; }
         public string LauncherId { get; init; }
         public string P2SingletonPuzzleHash { get; init; }
-        public string CurrentInner { get; init; }  //# Inner puzzle in current singleton, not revealed yet
+        /// <summary>
+        /// Inner puzzle in current singleton, not revealed yet
+        /// </summary>
+        public string CurrentInner { get; init; }
         public string TipSingletonCoinId { get; init; }
-        public uint SingletonBlockHeight { get; init; }    //# Block height that current PoolState is from
+        /// <summary>
+        /// Block height that current PoolState is from
+        /// </summary>
+        public uint SingletonBlockHeight { get; init; }
     }
 }
