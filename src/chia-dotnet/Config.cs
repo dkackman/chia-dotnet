@@ -69,6 +69,10 @@ namespace chia.dotnet
                 builder.Host = Contents.self_hostname;
 
                 var d = Contents as IDictionary<string, object>;
+                if (!d.ContainsKey(serviceName))
+                {
+                    throw new InvalidOperationException($"A configuration section with the name {serviceName} cannot be found");
+                }
                 dynamic section = d[serviceName];
 
                 builder.Port = Convert.ToInt32(section.rpc_port);
@@ -104,6 +108,7 @@ namespace chia.dotnet
             {
                 throw new FileNotFoundException($"confgi file {fullPath} not found");
             }
+
             using var input = new StreamReader(fullPath);
             var deserializer = new DeserializerBuilder()
                 .WithTagMapping("tag:yaml.org,2002:set", typeof(YamlSet<object>))
