@@ -3307,6 +3307,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.PlotterConfig.ExcludeFinalDir
   nameWithType: PlotterConfig.ExcludeFinalDir
+- uid: chia.dotnet.PlotterConfig.FarmerPublicKey
+  name: FarmerPublicKey
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_FarmerPublicKey
+  commentId: P:chia.dotnet.PlotterConfig.FarmerPublicKey
+  fullName: chia.dotnet.PlotterConfig.FarmerPublicKey
+  nameWithType: PlotterConfig.FarmerPublicKey
+- uid: chia.dotnet.PlotterConfig.FarmerPublicKey*
+  name: FarmerPublicKey
+  href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_FarmerPublicKey_
+  commentId: Overload:chia.dotnet.PlotterConfig.FarmerPublicKey
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterConfig.FarmerPublicKey
+  nameWithType: PlotterConfig.FarmerPublicKey
 - uid: chia.dotnet.PlotterConfig.Memo
   name: Memo
   href: api/chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_Memo
