@@ -15,7 +15,7 @@ namespace chia.dotnet
         EndpointInfo Endpoint { get; init; }
 
         /// <summary>
-        /// Posts a <see cref="Message"/> to the websocket but does not wait for a response
+        /// Posts a <see cref="Message"/> to the <see cref="Endpoint"/> but does not wait for a response
         /// </summary>
         /// <param name="message">The message to post</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
@@ -24,7 +24,7 @@ namespace chia.dotnet
         Task PostMessage(Message message, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Sends a <see cref="Message"/> to the endpoint and waits for a response
+        /// Sends a <see cref="Message"/> to the <see cref="Endpoint"/> and waits for a response
         /// </summary>
         /// <param name="message">The message to send</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
