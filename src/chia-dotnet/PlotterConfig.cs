@@ -30,51 +30,52 @@ namespace chia.dotnet
     public record PlotterConfig
     {
         /// <summary>
-        /// Defaults to 0
+        /// The number of seconds to delay before beginning the plotting
         /// </summary>
+        /// <value>Defaults to 0</value>
         [JsonProperty("delay")]
         public int Delay { get; init; } = 0;
-        /// <summary>
+        /// <value>
         /// Defaults to false
-        /// </summary>
+        /// </value>
         [JsonProperty("parallel")]
         public bool Parallel { get; init; } = false;
         /// <summary>
         /// The number of plots that will be made, in sequence.
-        /// Defaults to 1
         /// </summary>
+        /// <value>Defaults to 1</value>
         [JsonProperty("n")]
         public int Number { get; init; } = 1;
         /// <summary>
         /// Define the size of the plot(s). 
-        /// Defualts to <see cref="KValues.K32"/>
         /// </summary>
+        /// <value>Defaults to <see cref="KValues.K32"/></value>
         [JsonProperty("k")]
         public KValues Size { get; init; } = KValues.K32;
-        /// <summary>
-        /// Defauls to default
-        /// </summary>
+        /// <value>
+        /// Defauls to "default"
+        /// </value>
         [JsonProperty("queue")]
         public string Queue { get; init; } = "default";
         /// <summary>
         /// Define the temporary directory for plot creation. This is where Plotting 
         /// Phase 1 (Forward Propagation) and Phase 2 (Backpropagation) both occur. 
         /// The -t dir requires the largest working space: normally about 2.5 times the size of the final plot.
-        /// No default - must be set
         /// </summary>
+        /// <value>Mo default - must be set</value>
         [JsonProperty("t")]
         public string TempDir { get; init; }
         /// <summary>
         /// Define a secondary temporary directory for plot creation. This is where Plotting Phase 3 (Compression) and Phase 4 (Checkpoints) occur.
-        /// If not set defaults to <see cref="TempDir"/>
         /// </summary>
+        /// <value>If not set defaults to <see cref="TempDir"/></value>
         [JsonProperty("t2")]
         public string TempDir2 { get; init; }
         /// <summary>
         /// Define the final location for plot(s). Of course, -d should have enough free space as the final size of the
         /// plot. This directory is automatically added to your ~/.chia/VERSION/config/config.yaml file.
-        /// No default - must be set
         /// </summary>
+        /// <value>No default - must be set</value>
         [JsonProperty("d")]
         public string DestinationDir { get; init; }
         /// <summary>
@@ -84,14 +85,15 @@ namespace chia.dotnet
         /// plotting algorithm alone. Code, container, libraries etc. 
         /// will require additional RAM from your system.
         /// </summary>
+        /// <value>Defaults to 4608</value>
         [JsonProperty("b")]
-        public int Buffer { get; init; } = 4096;
+        public int Buffer { get; init; } = 4608;
         /// <summary>
         /// More buckets require less RAM but more random seeks to disk. With spinning disks 
         /// you want less buckets and with NVMe more buckets. There is no significant benefit 
-        /// from using smaller buckets - just use 128.
-        /// Defaults to 128
+        /// from using smaller buckets - just use 128.       
         /// </summary>
+        /// <value>Defaults to 128</value>
         [JsonProperty("u")]
         public int Buckets { get; init; } = 128;
         /// <summary>
@@ -120,24 +122,26 @@ namespace chia.dotnet
         /// <summary>
         /// Setting to true will disable the bitfield plotting algorithm, 
         /// and revert back to the older b17 plotting style. After 1.0.4 it’s better to use bitfield for most cases
-        /// Defaults to false
         /// </summary>
+        /// <value>Defaults to false</value>
         [JsonProperty("e")]
         public bool NoBitField { get; init; } = false;
         /// <summary>
-        /// Defaults to 2
+        /// The number of threads to devote to each plot
         /// </summary>
+        /// <value>Defaults to 2</value>
         [JsonProperty("r")]
         public int NumThreads { get; init; } = 2;
         /// <summary>
         /// Skips adding [final dir] to harvester for farming.
-        /// Defaults to false
         /// </summary>
+        /// <value>Defaults to false</value>
         [JsonProperty("x")]
         public bool ExcludeFinalDir { get; init; } = false;
         /// <summary>
-        /// Defaults to false. Only needed when <see cref="Size"/> is set to <see cref="KValues.K25"/>
+        /// Only needed when <see cref="Size"/> is set to <see cref="KValues.K25"/>
         /// </summary>
+        /// <value>Defaults to false.</value>
         [JsonProperty("overrideK")]
         public bool? OverrideK { get; init; }
 
