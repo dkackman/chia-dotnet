@@ -56,7 +56,7 @@ namespace chia.dotnet.tests
         public async Task ExitDaemon()
         {
             using var cts = new CancellationTokenSource(15000);
-            
+
             await _theDaemon.Exit(cts.Token);
 
             // if no exception the daemon was stopped successfully

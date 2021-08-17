@@ -1,11 +1,10 @@
-using System;
-using System.Linq;
-using System.Diagnostics;
+﻿using System;
 using System.Collections.Generic;
-
+using System.Diagnostics;
+using System.Linq;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 
 namespace chia.dotnet
 {
@@ -51,7 +50,7 @@ namespace chia.dotnet
         {
             Debug.Assert(enumerable is not null);
 
-            return ((IEnumerable<dynamic>)enumerable).Select<dynamic, T>(item => (T)item);
+            return ((IEnumerable<dynamic>)enumerable).Select(item => (T)item);
         }
 
         public static IEnumerable<string> ToStrings(dynamic stringEnumerable)

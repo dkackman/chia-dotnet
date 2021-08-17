@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Net.Security;
 using System.Net.Http;
+using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Text;
+
 namespace chia.dotnet
 {
     /// <summary>
@@ -83,7 +84,7 @@ namespace chia.dotnet
             using var response = await _httpClient.PostAsync(message.Command, content, cancellationToken);
             _ = response.EnsureSuccessStatusCode();
 
-            var responseJson = await response.Content.ReadAsStringAsync();
+            var responseJson = await response.Content.ReadAsStringAsync(cancellationToken);
             var responseData = responseJson.ToObject<dynamic>();
 
             return responseData?.success == false ? throw new ResponseException(message, responseData?.error?.ToString()) : (dynamic)responseData;

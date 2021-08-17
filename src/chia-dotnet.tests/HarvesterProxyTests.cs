@@ -74,7 +74,7 @@ namespace chia.dotnet.tests
         public async Task Ping()
         {
             using var cts = new CancellationTokenSource(15000);
-            
+
             await _theHarvester.Ping(cts.Token);
         }
 

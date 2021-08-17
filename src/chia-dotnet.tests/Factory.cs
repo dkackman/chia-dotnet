@@ -18,7 +18,7 @@ namespace chia.dotnet.tests
                 CertPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.crt",
                 KeyPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.key",
             };
-        
+
             return new HttpRpcClient(endpoint);
         }
         /// <summary>
