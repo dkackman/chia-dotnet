@@ -25,11 +25,6 @@ namespace chia.dotnet
         public ulong? NewSubSlotIters { get; init; }
     }
 
-    public record VdfOutput
-    {
-        public string Data { get; init; }
-    }
-
     /// <summary>
     /// This class is not included or hashed into the blockchain, but it is kept in memory as a more
     /// efficient way to maintain data about the blockchain. This allows us to validate future blocks,
@@ -44,7 +39,7 @@ namespace chia.dotnet
         /// <summary>
         /// This is the intermediary VDF output at ip_iters in challenge chain
         /// </summary>
-        public VdfOutput ChallengeVdfOutput { get; init; }
+        public ClassgroupElement ChallengeVdfOutput { get; init; }
         /// <summary>
         /// A deficit of 16 is an overflow block after an infusion. Deficit of 15 is a challenge block
         /// </summary>
@@ -71,7 +66,7 @@ namespace chia.dotnet
         /// <summary>
         /// This is the intermediary VDF output at ip_iters in infused cc, if deficit less than or equal to 3
         /// </summary>
-        public VdfOutput InfusedChallengeVdfOutput { get; init; }
+        public ClassgroupElement InfusedChallengeVdfOutput { get; init; }
         public bool Overflow { get; init; }
         /// <summary>
         ///  Need to keep track of these because Coins are created in a future block

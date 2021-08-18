@@ -9,7 +9,7 @@ namespace chia.dotnet
     /// a compressed representation. VDF outputs are a single classgroup element. VDF proofs can also be one classgroup
     /// element(or multiple).
     /// </summary>
-    public record ClassGroupElement
+    public record ClassgroupElement
     {
         public string Data { get; init; }
     }
@@ -21,7 +21,7 @@ namespace chia.dotnet
         /// </summary>
         public string Challenge { get; init; }
         public ulong NumberOfIterations { get; init; }
-        public ClassGroupElement VdfOutput { get; init; }
+        public ClassgroupElement VdfOutput { get; init; }
     }
 
     public record ChallengeChainSubSlot
