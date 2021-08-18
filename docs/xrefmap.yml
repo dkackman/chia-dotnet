@@ -519,25 +519,25 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.ChallengeChainSubSlot.SubepochSummaryHash
   nameWithType: ChallengeChainSubSlot.SubepochSummaryHash
-- uid: chia.dotnet.ClassGroupElement
-  name: ClassGroupElement
-  href: api/chia.dotnet.ClassGroupElement.html
-  commentId: T:chia.dotnet.ClassGroupElement
-  fullName: chia.dotnet.ClassGroupElement
-  nameWithType: ClassGroupElement
-- uid: chia.dotnet.ClassGroupElement.Data
+- uid: chia.dotnet.ClassgroupElement
+  name: ClassgroupElement
+  href: api/chia.dotnet.ClassgroupElement.html
+  commentId: T:chia.dotnet.ClassgroupElement
+  fullName: chia.dotnet.ClassgroupElement
+  nameWithType: ClassgroupElement
+- uid: chia.dotnet.ClassgroupElement.Data
   name: Data
-  href: api/chia.dotnet.ClassGroupElement.html#chia_dotnet_ClassGroupElement_Data
-  commentId: P:chia.dotnet.ClassGroupElement.Data
-  fullName: chia.dotnet.ClassGroupElement.Data
-  nameWithType: ClassGroupElement.Data
-- uid: chia.dotnet.ClassGroupElement.Data*
+  href: api/chia.dotnet.ClassgroupElement.html#chia_dotnet_ClassgroupElement_Data
+  commentId: P:chia.dotnet.ClassgroupElement.Data
+  fullName: chia.dotnet.ClassgroupElement.Data
+  nameWithType: ClassgroupElement.Data
+- uid: chia.dotnet.ClassgroupElement.Data*
   name: Data
-  href: api/chia.dotnet.ClassGroupElement.html#chia_dotnet_ClassGroupElement_Data_
-  commentId: Overload:chia.dotnet.ClassGroupElement.Data
+  href: api/chia.dotnet.ClassgroupElement.html#chia_dotnet_ClassgroupElement_Data_
+  commentId: Overload:chia.dotnet.ClassgroupElement.Data
   isSpec: "True"
-  fullName: chia.dotnet.ClassGroupElement.Data
-  nameWithType: ClassGroupElement.Data
+  fullName: chia.dotnet.ClassgroupElement.Data
+  nameWithType: ClassgroupElement.Data
 - uid: chia.dotnet.Coin
   name: Coin
   href: api/chia.dotnet.Coin.html
@@ -6042,25 +6042,6 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.VDFInfo.VdfOutput
   nameWithType: VDFInfo.VdfOutput
-- uid: chia.dotnet.VdfOutput
-  name: VdfOutput
-  href: api/chia.dotnet.VdfOutput.html
-  commentId: T:chia.dotnet.VdfOutput
-  fullName: chia.dotnet.VdfOutput
-  nameWithType: VdfOutput
-- uid: chia.dotnet.VdfOutput.Data
-  name: Data
-  href: api/chia.dotnet.VdfOutput.html#chia_dotnet_VdfOutput_Data
-  commentId: P:chia.dotnet.VdfOutput.Data
-  fullName: chia.dotnet.VdfOutput.Data
-  nameWithType: VdfOutput.Data
-- uid: chia.dotnet.VdfOutput.Data*
-  name: Data
-  href: api/chia.dotnet.VdfOutput.html#chia_dotnet_VdfOutput_Data_
-  commentId: Overload:chia.dotnet.VdfOutput.Data
-  isSpec: "True"
-  fullName: chia.dotnet.VdfOutput.Data
-  nameWithType: VdfOutput.Data
 - uid: chia.dotnet.VDFProof
   name: VDFProof
   href: api/chia.dotnet.VDFProof.html
