@@ -82,7 +82,6 @@ In addition to static vs dynamic typing, C# and Python have very different conve
 - `BigInteger` is used for the python 128 bit unsigned int.
 - Where the RPC return a scalar value, the dotnet code will as well. If it is optional in python it will be `Nullable<T>` in dotnet
 - Where the RPC returns a list of named scalar values, they are returned as a Tuple with named fields.
-- Complex types and structs are currently returned as a `dynamic` [`ExpandoObject`](https://docs.microsoft.com/en-us/dotnet/api/system.dynamic.expandoobject?view=net-5.0). Static types are [coming soon](https://github.com/dkackman/chia-dotnet/discussions/13).
 - Lists of things are returned as [`IEnumberable<T>`](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-5.0).
 - Where the python code returns a differently shaped object based on its input or logic, the dotnet code is turned into multiple methods.
 - When the RPC returns a success flag equal to `false`, the dotnet code throws an exception.
