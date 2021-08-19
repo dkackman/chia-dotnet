@@ -21,7 +21,7 @@ namespace chia.dotnet
         /// </summary>
         public string Challenge { get; init; }
         public ulong NumberOfIterations { get; init; }
-        public ClassgroupElement VdfOutput { get; init; }
+        public ClassgroupElement Output { get; init; }
     }
 
     public record ChallengeChainSubSlot
