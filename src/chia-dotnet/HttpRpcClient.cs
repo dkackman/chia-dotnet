@@ -12,7 +12,7 @@ namespace chia.dotnet
     /// <summary>
     /// Base class that handles core communication with the rpc endpoint using http(s)
     /// </summary>
-    public class HttpRpcClient : IDisposable, IRpcClient
+    public class HttpRpcClient : IRpcClient
     {
         private readonly HttpClient _httpClient;
 

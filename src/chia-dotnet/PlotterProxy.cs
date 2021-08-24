@@ -16,7 +16,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
         /// <param name="originService"><see cref="Message.Origin"/></param>
-        /// <remarks>The daemon endpoint handles plotting commands, so the rpc client should use the daemon endpoint</remarks>
+        /// <remarks>The daemon endpoint handles plotting commands, so the rpc client has to us a websocket client and dameon endpoint</remarks>
         public PlotterProxy(WebSocketRpcClient rpcClient, string originService)
             : base(rpcClient, ServiceNames.Daemon, originService)
         {
@@ -57,7 +57,7 @@ namespace chia.dotnet
         /// Stops the plot with the given id
         /// </summary>
         /// <param name="id">The id of the plot to stop. Can be found by inspecting the plot queue returned from <see cref="RegisterPlotter(CancellationToken)"/></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="cancellationToken">A <see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task StopPlotting(string id, CancellationToken cancellationToken = default)
         {
