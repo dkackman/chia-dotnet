@@ -18,7 +18,7 @@ https://dkackman.github.io/chia-dotnet/
 - Coverage of all of the methods at each endpoint
   - as of 1.2.3 (if you find something missing please create an issue)
 - Static types for chia input and outputs
-- Supports connecting via teh `daemon` on `wss` or directly to each service over `https`
+- Supports connecting via the `daemon` on `wss` or directly to each service with `https`
   - both `https` and `wss` use tha same interfaces so switching is seemless
   
 ### Examples
