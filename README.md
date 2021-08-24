@@ -2,8 +2,8 @@
 
 A [.net 5](https://dotnet.microsoft.com/download/dotnet/5.0) client library for [chia](https://github.com/Chia-Network/chia-blockchain)™ RPC interfaces that runs on linux and windows.
 
-![build](https://github.com/dkackman/chia-dotnet/actions/workflows/dotnet.yml/badge.svg)
-![NuGet](https://img.shields.io/nuget/dt/chia-dotnet)
+[![build](https://github.com/dkackman/chia-dotnet/actions/workflows/dotnet.yml/badge.svg)](https://github.com/dkackman/chia-dotnet/actions)
+[![NuGet](https://img.shields.io/nuget/dt/chia-dotnet)](https://www.nuget.org/packages/chia-dotnet/)
 
 ## Getting Started
 

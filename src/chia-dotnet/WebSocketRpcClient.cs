@@ -15,7 +15,7 @@ namespace chia.dotnet
     /// <summary>
     /// Base class that handles core websocket communication with the rpc endpoint
     /// </summary>
-    public class WebSocketRpcClient : IDisposable, IRpcClient
+    public class WebSocketRpcClient : IRpcClient
     {
         private readonly ClientWebSocket _webSocket = new();
         private readonly CancellationTokenSource _receiveCancellationTokenSource = new();
@@ -209,7 +209,7 @@ namespace chia.dotnet
                 {
                     _pendingResponses[message.RequestId] = message;
                 }
-                else
+                else if (message.RequestId != string.Empty) // only broadcast if it's an actual response
                 {
                     OnBroadcastMessageReceived(message);
                 }
