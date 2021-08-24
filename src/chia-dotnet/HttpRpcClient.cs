@@ -50,7 +50,7 @@ namespace chia.dotnet
         {
             if (disposedValue)
             {
-                throw new ObjectDisposedException(nameof(WebSocketRpcClient));
+                throw new ObjectDisposedException(nameof(HttpRpcClient));
             }
 
             // need to use our json to ensure we get the snake case resolver
@@ -74,7 +74,7 @@ namespace chia.dotnet
         {
             if (disposedValue)
             {
-                throw new ObjectDisposedException(nameof(WebSocketRpcClient));
+                throw new ObjectDisposedException(nameof(HttpRpcClient));
             }
 
             // need to use our json to ensure we get the snake case resolver
