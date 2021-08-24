@@ -41,13 +41,13 @@ namespace chia.dotnet
     /// </summary>
     public record PoolWalletConfig
     {
-        public string LauncherId { get; init; }
-        public string PoolUrl { get; init; }
-        public string PayoutInstructions { get; init; }
-        public string TargetPuzzleHash { get; init; }
-        public string P2SingletonPuzzleHash { get; init; }
-        public string OwnerPublicKey { get; init; }
-        public string AuthenticationPublicKey { get; init; }
+        public string LauncherId { get; init; } = string.Empty;
+        public string PoolUrl { get; init; } = string.Empty;
+        public string PayoutInstructions { get; init; } = string.Empty;
+        public string TargetPuzzleHash { get; init; } = string.Empty;
+        public string P2SingletonPuzzleHash { get; init; } = string.Empty;
+        public string OwnerPublicKey { get; init; } = string.Empty;
+        public string AuthenticationPublicKey { get; init; } = string.Empty;
     }
 
     [JsonConverter(typeof(PoolPointConverter))]
@@ -55,6 +55,7 @@ namespace chia.dotnet
     {
         public double TimeFound { get; init; }
         public ulong Difficulty { get; init; }
+        [JsonIgnore]
         public DateTime DateTimeFound => TimeFound.ToDateTime();
     }
 
@@ -69,16 +70,18 @@ namespace chia.dotnet
         public ulong CurrentPoints { get; init; }
         public double NextFarmerUpdate { get; init; }
         public double NextPoolInfoUpdate { get; init; }
-        public string P2SingletonPuzzleHash { get; init; }
+        public string P2SingletonPuzzleHash { get; init; } = string.Empty;
         [JsonProperty("points_acknowledged_24h")]
-        public ICollection<PoolPoint> PointsAcknowledged24h { get; init; }
+        public ICollection<PoolPoint> PointsAcknowledged24h { get; init; } = new List<PoolPoint>();
         public ulong PointsAcknowledgedSinceStart { get; init; }
         [JsonProperty("points_found_24h")]
-        public ICollection<PoolPoint> PointsFound24h { get; init; }
+        public ICollection<PoolPoint> PointsFound24h { get; init; } = new List<PoolPoint>();
         public ulong PointsFoundSinceStart { get; init; }
-        public PoolWalletConfig PoolConfig { get; init; }
-        public ICollection<ErrorResponse> PoolErrors24h { get; init; }
+        public PoolWalletConfig PoolConfig { get; init; } = new();
+        public ICollection<ErrorResponse> PoolErrors24h { get; init; } = new List<ErrorResponse>();
+        [JsonIgnore]
         public DateTime NextFarmerUpdateDateTime => NextFarmerUpdate.ToDateTime();
+        [JsonIgnore]
         public DateTime NextPoolInfoUpdateDateTime => NextFarmerUpdate.ToDateTime();
     }
 
@@ -101,12 +104,12 @@ namespace chia.dotnet
         /// When self-farming, this is a main wallet address
         /// When farming-to-pool, the pool sends this to the farmer during pool protocol setup
         /// </summary>
-        public string TargetPuzzleHash { get; init; }
+        public string TargetPuzzleHash { get; init; } = string.Empty;
         /// <summary>
         /// owner_pubkey is set by the wallet, once
         /// </summary>
-        public string OwnerPubkey { get; init; }
-        public string PoolUrl { get; init; }
+        public string OwnerPubkey { get; init; } = string.Empty;
+        public string? PoolUrl { get; init; }
         public uint RelativeLockHeight { get; init; }
     }
 }

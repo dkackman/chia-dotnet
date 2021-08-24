@@ -126,7 +126,7 @@ namespace chia.dotnet
         // These methods are the important ones that package up the request for the rpc lcient and then
         // parse and convert the response for the requester
         //
-        internal async Task<dynamic> SendMessage(string command, dynamic data, CancellationToken cancellationToken = default)
+        internal async Task<dynamic> SendMessage(string command, dynamic? data, CancellationToken cancellationToken = default)
         {
             var message = Message.Create(command, data, DestinationService, OriginService);
 
@@ -156,7 +156,7 @@ namespace chia.dotnet
         //
         // If the return is a collection, specify the collection type in the caller e.g. ICollection<SomeConcreteType>, IList, IEnumerable
         //
-        internal async Task<T> SendMessage<T>(string command, string childItem = null, CancellationToken cancellationToken = default)
+        internal async Task<T> SendMessage<T>(string command, string? childItem = null, CancellationToken cancellationToken = default)
         {
             return await SendMessage<T>(command, null, childItem, cancellationToken);
         }
@@ -164,7 +164,7 @@ namespace chia.dotnet
         //
         // If the return is a collection, specify the collection type in the caller e.g. ICollection<SomeConcreteType>, IList, IEnumerable
         //
-        internal async Task<T> SendMessage<T>(string command, dynamic data, string childItem = null, CancellationToken cancellationToken = default)
+        internal async Task<T> SendMessage<T>(string command, dynamic? data, string? childItem = null, CancellationToken cancellationToken = default)
         {
             var d = await SendMessage(command, data, cancellationToken);
 

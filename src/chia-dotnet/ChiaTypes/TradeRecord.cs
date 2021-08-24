@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using Newtonsoft.Json;
+
 namespace chia.dotnet
 {
     /// <summary>
@@ -16,21 +18,22 @@ namespace chia.dotnet
         /// <summary>
         /// This in not complete spendbundle
         /// </summary>
-        public SpendBundle SpendBundle { get; init; }
+        public SpendBundle SpendBundle { get; init; } = new();
         /// <summary>
         /// this is full trade
         /// </summary>
-        public SpendBundle TxSpendBundle { get; init; }
-        public ICollection<Coin> Additions { get; init; }
-        public ICollection<Coin> Removals { get; init; }
-        public string TradeId { get; init; }
+        public SpendBundle? TxSpendBundle { get; init; }
+        public ICollection<Coin> Additions { get; init; } = new List<Coin>();
+        public ICollection<Coin> Removals { get; init; } = new List<Coin>();
+        public string TradeId { get; init; } = string.Empty;
         /// <summary>
         /// TradeStatus, enum not streamable
         /// </summary>
-        public string Status { get; init; }
-        public ICollection<SendPeer> SentTo { get; init; }
-
+        public string Status { get; init; } = string.Empty;
+        public ICollection<SendPeer> SentTo { get; init; } = new List<SendPeer>();
+        [JsonIgnore]
         public DateTime? AcceptedAtDateTime => AcceptedAtTime.ToDateTime();
+        [JsonIgnore]
         public DateTime CreatedAtDateTime => CreatedAtTime.ToDateTime();
     }
 }

@@ -6,16 +6,16 @@
     /// </summary>
     public record PoolWalletInfo
     {
-        public PoolState Current { get; init; }
-        public PoolState target { get; init; }
-        public Coin LauncherCoin { get; init; }
-        public string LauncherId { get; init; }
-        public string P2SingletonPuzzleHash { get; init; }
+        public PoolState Current { get; init; } = new();
+        public PoolState? target { get; init; }
+        public Coin LauncherCoin { get; init; } = new();
+        public string LauncherId { get; init; } = string.Empty;
+        public string P2SingletonPuzzleHash { get; init; } = string.Empty;
         /// <summary>
         /// Inner puzzle in current singleton, not revealed yet
         /// </summary>
-        public string CurrentInner { get; init; }
-        public string TipSingletonCoinId { get; init; }
+        public string CurrentInner { get; init; } = string.Empty;
+        public string TipSingletonCoinId { get; init; } = string.Empty;
         /// <summary>
         /// Block height that current PoolState is from
         /// </summary>

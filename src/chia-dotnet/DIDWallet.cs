@@ -73,7 +73,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A DID and optional CoinID</returns>
-        public async Task<(string MyDID, string CoinID)> GetDID(CancellationToken cancellationToken = default)
+        public async Task<(string MyDID, string? CoinID)> GetDID(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;

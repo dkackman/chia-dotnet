@@ -63,20 +63,20 @@ namespace chia.dotnet
         /// </summary>
         /// <value>Mo default - must be set</value>
         [JsonProperty("t")]
-        public string TempDir { get; init; }
+        public string TempDir { get; init; } = string.Empty;
         /// <summary>
         /// Define a secondary temporary directory for plot creation. This is where Plotting Phase 3 (Compression) and Phase 4 (Checkpoints) occur.
         /// </summary>
         /// <value>If not set defaults to <see cref="TempDir"/></value>
         [JsonProperty("t2")]
-        public string TempDir2 { get; init; }
+        public string? TempDir2 { get; init; }
         /// <summary>
         /// Define the final location for plot(s). Of course, -d should have enough free space as the final size of the
         /// plot. This directory is automatically added to your ~/.chia/VERSION/config/config.yaml file.
         /// </summary>
         /// <value>No default - must be set</value>
         [JsonProperty("d")]
-        public string DestinationDir { get; init; }
+        public string DestinationDir { get; init; } = string.Empty;
         /// <summary>
         /// Define memory/RAM usage. Default is 4608 (4.6 GiB).
         /// More RAM will marginally increase speed of plot creation. 
@@ -103,21 +103,21 @@ namespace chia.dotnet
         public uint? AltFingerprint { get; init; }
 
         [JsonProperty("c")]
-        public string PoolContractAddress { get; init; }
+        public string? PoolContractAddress { get; init; }
         /// <summary>
         /// This is your "Pool Public Key". Utilise this when you want to 
         /// create plots on other machines for which you do not want to give full chia account access.
         /// </summary>
         [JsonProperty("p")]
-        public string PoolPublicKey { get; init; }
+        public string? PoolPublicKey { get; init; }
         /// <summary>
         /// This is your "Farmer Public Key". Utilise this when you want to create plots on other 
         /// machines for which you do not want to give full chia account access
         /// </summary>
         [JsonProperty("f")]
-        public string FarmerPublicKey { get; init; }
+        public string? FarmerPublicKey { get; init; }
         [JsonProperty("memo")]
-        public string Memo { get; init; }
+        public string? Memo { get; init; }
         /// <summary>
         /// Setting to true will disable the bitfield plotting algorithm, 
         /// and revert back to the older b17 plotting style. After 1.0.4 it’s better to use bitfield for most cases
@@ -179,8 +179,10 @@ namespace chia.dotnet
 
                     // now find out the serialization name
                     var attr = p.GetCustomAttribute<JsonPropertyAttribute>();
-
-                    dict.Add(attr.PropertyName, v);
+                    if (attr is not null && attr.PropertyName is not null)
+                    {
+                        dict.Add(attr.PropertyName, v);
+                    }
                 }
             }
 

@@ -10,8 +10,8 @@ namespace chia.dotnet
     /// </summary>
     public record ConditionWithArgs
     {
-        public string Opcode { get; init; }
-        public ICollection<string> Vars { get; init; }
+        public string Opcode { get; init; } = string.Empty;
+        public ICollection<string> Vars { get; init; } = new List<string>();
     }
 
     /// <summary>
@@ -23,21 +23,21 @@ namespace chia.dotnet
     [JsonConverter(typeof(ConditionConverter))]
     public record Condition
     {
-        public string ConditionOpcode { get; init; }
-        public ICollection<ConditionWithArgs> Args { get; init; }
+        public string ConditionOpcode { get; init; } = string.Empty;
+        public ICollection<ConditionWithArgs> Args { get; init; } = new List<ConditionWithArgs>();
     }
 
     public record NPC
     {
-        public string CoinName { get; init; }
-        public string PuzzleHash { get; init; }
-        public ICollection<Condition> Conditions { get; init; }
+        public string CoinName { get; init; } = string.Empty;
+        public string PuzzleHash { get; init; } = string.Empty;
+        public ICollection<Condition> Conditions { get; init; } = new List<Condition>();
     }
 
     public record NPCResult
     {
         public ushort? Error { get; init; }
-        public ICollection<NPC> NpcList { get; init; }
+        public ICollection<NPC> NpcList { get; init; } = new List<NPC>();
         /// <summary>
         /// CLVM cost only, cost of conditions and tx size is not included
         /// </summary>
@@ -46,13 +46,13 @@ namespace chia.dotnet
 
     public record MempoolItem
     {
-        public SpendBundle SpendBundle { get; init; }
+        public SpendBundle SpendBundle { get; init; } = new();
         public ulong Fee { get; init; }
-        public NPCResult NPCResult { get; init; }
+        public NPCResult NPCResult { get; init; } = new();
         public ulong Cost { get; init; }
-        public string SpendBudndleName { get; init; }
-        public ICollection<Coin> Additions { get; init; }
-        public ICollection<Coin> Removals { get; init; }
-        public string Program { get; init; }
+        public string SpendBudndleName { get; init; } = string.Empty;
+        public ICollection<Coin> Additions { get; init; } = new List<Coin>();
+        public ICollection<Coin> Removals { get; init; } = new List<Coin>();
+        public string Program { get; init; } = string.Empty;
     }
 }

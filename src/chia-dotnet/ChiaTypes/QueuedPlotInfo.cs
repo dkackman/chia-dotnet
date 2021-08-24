@@ -7,13 +7,13 @@
     {
         public int Delay { get; init; }
         public bool Deleted { get; init; }
-        public string Error { get; init; }
-        public string Id { get; init; }
-        public string Log { get; init; }
-        public string LogNew { get; init; }
+        public string Error { get; init; } = string.Empty;
+        public string Id { get; init; } = string.Empty;
+        public string Log { get; init; } = string.Empty;
+        public string LogNew { get; init; } = string.Empty;
         public bool Parallel { get; init; }
-        public string Queue { get; init; }
+        public string Queue { get; init; } = string.Empty;
         public KValues Size { get; init; }
-        public string State { get; init; }
+        public string State { get; init; } = string.Empty;
     }
 }

@@ -6,6 +6,6 @@
     public record ErrorResponse
     {
         public ushort ErrorCode { get; init; }
-        public string ErrorMessage { get; init; }
+        public string? ErrorMessage { get; init; }
     }
 }

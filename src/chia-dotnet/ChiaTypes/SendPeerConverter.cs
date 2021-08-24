@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Globalization;
 
 using Newtonsoft.Json;
@@ -7,7 +7,7 @@ namespace chia.dotnet
 {
     internal sealed class SendPeerConverter : JsonConverter<SendPeer>
     {
-        public override SendPeer ReadJson(JsonReader reader, Type objectType, SendPeer existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override SendPeer? ReadJson(JsonReader reader, Type objectType, SendPeer? existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
             // these things are stored as an array of two numbers [string, byte, string] - pivot those into an object
             var peer = reader.ReadAsString();
@@ -17,18 +17,21 @@ namespace chia.dotnet
 
             return new SendPeer()
             {
-                Peer = peer,
+                Peer = peer ?? string.Empty,
                 IncludedInMempool = includedInMempool,
-                ErrorMessage = error
+                ErrorMessage = error ?? string.Empty
             };
         }
 
-        public override void WriteJson(JsonWriter writer, SendPeer value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, SendPeer? value, JsonSerializer serializer)
         {
             writer.WriteStartArray();
-            writer.WriteValue(value.Peer);
-            writer.WriteValue(value.IncludedInMempool);
-            writer.WriteValue(value.ErrorMessage);
+            if (value is not null)
+            {
+                writer.WriteValue(value.Peer);
+                writer.WriteValue(value.IncludedInMempool);
+                writer.WriteValue(value.ErrorMessage);
+            }
             writer.WriteEndArray();
         }
     }

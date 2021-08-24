@@ -1,5 +1,7 @@
 ﻿using System;
 
+using Newtonsoft.Json;
+
 namespace chia.dotnet
 {
     /// <summary>
@@ -8,7 +10,7 @@ namespace chia.dotnet
     /// </summary>
     public record CoinRecord
     {
-        public Coin Coin { get; init; }
+        public Coin Coin { get; init; } = new();
         public uint ConfirmedBlockIndex { get; init; }
         public uint SpentBlockIndex { get; init; }
         public bool Spent { get; init; }
@@ -20,6 +22,7 @@ namespace chia.dotnet
         /// <summary>
         /// Timestamp of the block at height confirmed_block_index
         /// </summary>
+        [JsonIgnore]
         public DateTime? DateTimestamp => Timestamp.ToDateTime();
     }
 }

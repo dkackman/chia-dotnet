@@ -33,7 +33,7 @@ namespace chia.dotnet
         /// <param name="request">The request sent to the service</param>
         /// <param name="message"><see cref="Exception.Message"/></param>
         /// <param name="innerException"><see cref="Exception.InnerException"/></param>
-        public ResponseException(Message request, string message, Exception innerException)
+        public ResponseException(Message request, string message, Exception? innerException)
             : base(message, innerException)
         {
             Request = request;

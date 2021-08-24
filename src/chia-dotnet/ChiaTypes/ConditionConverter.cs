@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 using Newtonsoft.Json;
@@ -7,7 +7,7 @@ namespace chia.dotnet
 {
     internal sealed class ConditionConverter : JsonConverter<Condition>
     {
-        public override Condition ReadJson(JsonReader reader, Type objectType, Condition existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override Condition? ReadJson(JsonReader reader, Type objectType, Condition? existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
             if (reader.TokenType == JsonToken.Null)
             {
@@ -21,16 +21,19 @@ namespace chia.dotnet
 
             return new Condition()
             {
-                ConditionOpcode = opcode,
-                Args = args
+                ConditionOpcode = opcode ?? string.Empty,
+                Args = args ?? new List<ConditionWithArgs>()
             };
         }
 
-        public override void WriteJson(JsonWriter writer, Condition value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, Condition? value, JsonSerializer serializer)
         {
             writer.WriteStartArray();
-            writer.WriteValue(value.ConditionOpcode);
-            serializer.Serialize(writer, value.Args);
+            if (value is not null)
+            {
+                writer.WriteValue(value.ConditionOpcode);
+                serializer.Serialize(writer, value.Args);
+            }
             writer.WriteEndArray();
         }
     }

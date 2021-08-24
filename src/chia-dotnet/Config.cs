@@ -68,7 +68,7 @@ namespace chia.dotnet
                 builder.Scheme = "https";
                 builder.Host = Contents.self_hostname;
 
-                var d = Contents as IDictionary<string, object>;
+                var d = (IDictionary<string, object>)Contents;
                 if (!d.ContainsKey(serviceName))
                 {
                     throw new InvalidOperationException($"A configuration section with the name {serviceName} cannot be found");
@@ -113,15 +113,19 @@ namespace chia.dotnet
             var deserializer = new DeserializerBuilder()
                 .WithTagMapping("tag:yaml.org,2002:set", typeof(YamlSet<object>))
                 .Build();
-            var yamlObject = deserializer.Deserialize(input);
+            var yamlObject = deserializer.Deserialize(input) ?? throw new Exception("Couldn't open config. It might be corrupt.");
             var serializer = new SerializerBuilder()
                 .JsonCompatible()
                 .Build();
 
-            var json = serializer.Serialize(yamlObject);
-            dynamic config = JsonConvert.DeserializeObject<ExpandoObject>(json, new ExpandoObjectConverter());
 
-            var chiaRoot = Directory.GetParent(Path.GetDirectoryName(fullPath));
+            var json = serializer.Serialize(yamlObject) ?? throw new Exception("Couldn't open config. It might be corrupt.");
+
+            dynamic config = JsonConvert.DeserializeObject<ExpandoObject>(json, new ExpandoObjectConverter()) ?? throw new Exception("Couldn't open config. It might be corrupt.");
+
+            var dir = Path.GetDirectoryName(fullPath) ?? Path.GetPathRoot(fullPath) ?? throw new Exception($"Could not open config file from location {fullPath}.");
+
+            var chiaRoot = Directory.GetParent(dir) ?? new DirectoryInfo(dir);
 
             return new Config(chiaRoot.FullName, config);
         }
@@ -135,6 +139,8 @@ namespace chia.dotnet
             return Open(Path.Combine(DefaultRootPath, "config", "config.yaml"));
         }
 
+#pragma warning disable CS8714 // The type cannot be used as type parameter in the generic type or method. Nullability of type argument doesn't match 'notnull' constraint.
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         // sigh... YAML
         // https://stackoverflow.com/questions/32757084/yamldotnet-how-to-handle-set
         private class YamlSet<T> : HashSet<T>, IDictionary<T, object>
@@ -197,6 +203,7 @@ namespace chia.dotnet
             IEnumerator<KeyValuePair<T, object>> IEnumerable<KeyValuePair<T, object>>.GetEnumerator()
             {
                 IDictionary<T, object> dict = new Dictionary<T, object>();
+
                 var keys = new T[Count];
                 CopyTo(keys);
                 foreach (var k in keys)
@@ -211,5 +218,8 @@ namespace chia.dotnet
                 return GetEnumerator();
             }
         }
+
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
+#pragma warning restore CS8714 // The type cannot be used as type parameter in the generic type or method. Nullability of type argument doesn't match 'notnull' constraint.
     }
 }

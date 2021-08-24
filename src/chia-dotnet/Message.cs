@@ -11,22 +11,22 @@ namespace chia.dotnet
         /// <summary>
         /// The command to be processed by the endpoint service
         /// </summary>
-        public string Command { get; init; }
+        public string Command { get; init; } = string.Empty;
 
         /// <summary>
         /// Data to go along with the command
         /// </summary>
-        public dynamic Data { get; init; }
+        public dynamic? Data { get; init; }
 
         /// <summary>
         /// The name of the origin service
         /// </summary>
-        public string Origin { get; init; }
+        public string Origin { get; init; } = string.Empty;
 
         /// <summary>
         /// The name of the destination service
         /// </summary>
-        public string Destination { get; init; }
+        public string Destination { get; init; } = string.Empty;
 
         /// <summary>
         /// Indication whether message is an acknowledgement (i.e response)
@@ -36,7 +36,7 @@ namespace chia.dotnet
         /// <summary>
         /// Unique correlation id of the message. This will round trip to the RPC server and back in its response
         /// </summary>
-        public string RequestId { get; init; }
+        public string RequestId { get; init; } = string.Empty;
 
         /// <summary>
         /// Inidcates whether this is a response (<see cref="Ack"/> is true) and the success flag is also true
@@ -52,7 +52,7 @@ namespace chia.dotnet
         /// <param name="origin"><see cref="Origin"/></param>
         /// <returns>A populated <see cref="Message"/></returns>
         /// <remarks>Ensure that <see cref="Data"/> and <see cref="RequestId"/> are set appropriately</remarks>
-        public static Message Create(string command, object data, string destination, string origin)
+        public static Message Create(string command, object? data, string destination, string origin)
         {
             return string.IsNullOrEmpty(command)
                 ? throw new ArgumentNullException(nameof(command))

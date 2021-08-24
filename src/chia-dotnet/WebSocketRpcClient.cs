@@ -8,6 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Dynamic;
 
 namespace chia.dotnet
 {
@@ -139,7 +140,7 @@ namespace chia.dotnet
 
             // wait here until a response shows up or we get cancelled
             Message response;
-            while (!_pendingResponses.TryRemove(message.RequestId, out response) && !cancellationToken.IsCancellationRequested)
+            while (!_pendingResponses.TryRemove(message.RequestId, out response!) && !cancellationToken.IsCancellationRequested)
             {
                 await Task.Delay(10, cancellationToken);
             }
@@ -150,7 +151,7 @@ namespace chia.dotnet
                 _ = _pendingRequests.TryRemove(message.RequestId, out _);
             }
 
-            return !response.IsSuccessfulResponse ? throw new ResponseException(message, response.Data?.error?.ToString()) : response.Data;
+            return !response.IsSuccessfulResponse ? throw new ResponseException(message, response.Data?.error?.ToString()) : response.Data ?? new ExpandoObject();
         }
 
         /// <summary>
@@ -158,7 +159,7 @@ namespace chia.dotnet
         /// or was a response from a posted message (i.e. we didn't register to receive the response)
         /// Pooling state_changed messages come through this event
         /// </summary>
-        public event EventHandler<Message> BroadcastMessageReceived;
+        public event EventHandler<Message>? BroadcastMessageReceived;
 
         /// <summary>
         /// Raises the <see cref="BroadcastMessageReceived"/> event
@@ -188,7 +189,9 @@ namespace chia.dotnet
                 do
                 {
                     result = await _webSocket.ReceiveAsync(buffer, _receiveCancellationTokenSource.Token);
+#pragma warning disable CS8604 // Possible null reference argument.
                     ms.Write(buffer.Array, buffer.Offset, result.Count);
+#pragma warning restore CS8604 // Possible null reference argument.
                 } while (!result.EndOfMessage);
 
                 if (result.MessageType == WebSocketMessageType.Close)
@@ -199,7 +202,7 @@ namespace chia.dotnet
                 _ = ms.Seek(0, SeekOrigin.Begin);
                 using var reader = new StreamReader(ms, Encoding.UTF8);
                 var response = await reader.ReadToEndAsync();
-                var message = response.ToObject<Message>();
+                var message = response.ToObject<Message>() ?? new Message();
 
                 // if we have a message pending with this id, capture the response and remove the request from the pending dictionary                
                 if (_pendingRequests.TryRemove(message.RequestId, out _))
@@ -213,7 +216,7 @@ namespace chia.dotnet
             } while (!_receiveCancellationTokenSource.IsCancellationRequested);
         }
 
-        private static bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        private static bool ValidateServerCertificate(object sender, X509Certificate? certificate, X509Chain? chain, SslPolicyErrors sslPolicyErrors)
         {
             // uncomment these checks to change remote cert validaiton requirements
 

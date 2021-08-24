@@ -10,31 +10,37 @@ namespace chia.dotnet
 {
     internal static class Converters
     {
-        public static T ToObject<T>(JObject j, string childItem)
+        public static T? ToObject<T>(JObject? j, string childItem)
         {
-            Debug.Assert(j is not null);
-
-            var token = string.IsNullOrEmpty(childItem) ? j : j.GetValue(childItem);
-
-            return ToObject<T>(token);
-        }
-
-        public static T ToObject<T>(JToken token)
-        {
-            Debug.Assert(token is not null);
-
-            var serializerSettings = new JsonSerializerSettings
+            if (j is not null)
             {
-                ContractResolver = new DefaultContractResolver
-                {
-                    NamingStrategy = new SnakeCaseNamingStrategy()
-                }
-            };
+                var token = string.IsNullOrEmpty(childItem) ? j : j.GetValue(childItem);
 
-            return token.ToObject<T>(JsonSerializer.Create(serializerSettings));
+                return ToObject<T>(token);
+            }
+
+            return default;
         }
 
-        public static T ToObject<T>(this string json)
+        public static T? ToObject<T>(JToken? token)
+        {
+            if (token is not null)
+            {
+                var serializerSettings = new JsonSerializerSettings
+                {
+                    ContractResolver = new DefaultContractResolver
+                    {
+                        NamingStrategy = new SnakeCaseNamingStrategy()
+                    }
+                };
+
+                return token.ToObject<T>(JsonSerializer.Create(serializerSettings));
+            }
+
+            return default;
+        }
+
+        public static T? ToObject<T>(this string json)
         {
             var serializerSettings = new JsonSerializerSettings
             {

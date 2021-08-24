@@ -3,7 +3,7 @@
     /// <summary>
     /// Wallet Types
     /// </summary>
-    public enum WalletType
+    public enum WalletType : byte
     {
         STANDARD_WALLET = 0,
         RATE_LIMITED = 1,
@@ -29,8 +29,8 @@
     public record WalletInfo
     {
         public uint Id { get; init; }
-        public string Name { get; init; }
+        public string Name { get; init; } = string.Empty;
         public WalletType Type { get; init; }
-        public string Data { get; init; }
+        public string Data { get; init; } = string.Empty;
     }
 }

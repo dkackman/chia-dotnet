@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,7 +19,7 @@ namespace chia.dotnet.tests
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
-            using var cts = new CancellationTokenSource(15000);
+            using var cts = new CancellationTokenSource(2000);
 
             var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
             await rpcClient.Connect(cts.Token);
@@ -83,11 +84,18 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
 
             var signagePoints = await _theFarmer.GetSignagePoints(cts.Token);
-            var spInfo = signagePoints.FirstOrDefault();
-            Assert.IsNotNull(spInfo);
-            var sp = await _theFarmer.GetSignagePoint(spInfo.SignagePoint.ChallengeChainSp, cts.Token);
 
-            Assert.IsNotNull(sp);
+            try
+            {
+                var spInfo = signagePoints.First();
+                var sp = await _theFarmer.GetSignagePoint(spInfo.SignagePoint.ChallengeChainSp, cts.Token);
+
+                Assert.IsNotNull(sp);
+            }
+            catch (InvalidOperationException)
+            {
+                Assert.Inconclusive("Node has no signage points");
+            }
         }
 
         [TestMethod]

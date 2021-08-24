@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Dynamic;
 
 namespace chia.dotnet
 {
@@ -13,7 +14,6 @@ namespace chia.dotnet
     /// </summary>
     public class HttpRpcClient : IDisposable, IRpcClient
     {
-        private readonly SocketsHttpHandler _httpHandler = new();
         private readonly HttpClient _httpClient;
 
         private bool disposedValue;
@@ -21,15 +21,16 @@ namespace chia.dotnet
         /// <summary>
         /// ctor
         /// </summary>
-        /// <param name="endpoint">Details of the websocket endpoint</param>        
+        /// <param name="endpoint">Details of the service endpoint</param>        
         public HttpRpcClient(EndpointInfo endpoint)
         {
             Endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
 
-            _httpHandler.SslOptions.ClientCertificates = CertLoader.GetCerts(Endpoint.CertPath, Endpoint.KeyPath);
-            _httpHandler.SslOptions.RemoteCertificateValidationCallback += ValidateServerCertificate;
+            var handler = new SocketsHttpHandler();
+            handler.SslOptions.ClientCertificates = CertLoader.GetCerts(Endpoint.CertPath, Endpoint.KeyPath);
+            handler.SslOptions.RemoteCertificateValidationCallback += ValidateServerCertificate;
 
-            _httpClient = new(_httpHandler);
+            _httpClient = new(handler, true);
             _httpClient.BaseAddress = Endpoint.Uri;
         }
 
@@ -39,7 +40,7 @@ namespace chia.dotnet
         public EndpointInfo Endpoint { get; init; }
 
         /// <summary>
-        /// Posts a <see cref="Message"/> to the websocket but does not wait for a response
+        /// Posts a <see cref="Message"/> to the <see cref="Endpoint"/> but does not wait for a response
         /// </summary>
         /// <param name="message">The message to send</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
@@ -87,10 +88,10 @@ namespace chia.dotnet
             var responseJson = await response.Content.ReadAsStringAsync(cancellationToken);
             var responseData = responseJson.ToObject<dynamic>();
 
-            return responseData?.success == false ? throw new ResponseException(message, responseData?.error?.ToString()) : (dynamic)responseData;
+            return responseData?.success == false ? throw new ResponseException(message, responseData?.error?.ToString()) : responseData ?? new ExpandoObject();
         }
 
-        private static bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        private static bool ValidateServerCertificate(object sender, X509Certificate? certificate, X509Chain? chain, SslPolicyErrors sslPolicyErrors)
         {
             // uncomment these checks to change remote cert validaiton requirements
 

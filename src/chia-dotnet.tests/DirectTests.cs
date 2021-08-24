@@ -15,7 +15,7 @@ namespace chia.dotnet.tests
         {
             try
             {
-                using var cts = new CancellationTokenSource(15000);
+                using var cts = new CancellationTokenSource(2000);
 
                 using var rpcClient = Factory.CreateDirectRpcClientFromHardcodedLocation(8555);
                 var fullNode = new FullNodeProxy(rpcClient, "unit_tests");
