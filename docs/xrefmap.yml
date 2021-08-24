@@ -5333,6 +5333,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.SyncState.SyncProgressHeight
   nameWithType: SyncState.SyncProgressHeight
+- uid: chia.dotnet.SyncState.SyncProgressPercent
+  name: SyncProgressPercent
+  href: api/chia.dotnet.SyncState.html#chia_dotnet_SyncState_SyncProgressPercent
+  commentId: P:chia.dotnet.SyncState.SyncProgressPercent
+  fullName: chia.dotnet.SyncState.SyncProgressPercent
+  nameWithType: SyncState.SyncProgressPercent
+- uid: chia.dotnet.SyncState.SyncProgressPercent*
+  name: SyncProgressPercent
+  href: api/chia.dotnet.SyncState.html#chia_dotnet_SyncState_SyncProgressPercent_
+  commentId: Overload:chia.dotnet.SyncState.SyncProgressPercent
+  isSpec: "True"
+  fullName: chia.dotnet.SyncState.SyncProgressPercent
+  nameWithType: SyncState.SyncProgressPercent
 - uid: chia.dotnet.SyncState.SyncTipHeight
   name: SyncTipHeight
   href: api/chia.dotnet.SyncState.html#chia_dotnet_SyncState_SyncTipHeight
@@ -6029,19 +6042,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.VDFInfo.NumberOfIterations
   nameWithType: VDFInfo.NumberOfIterations
-- uid: chia.dotnet.VDFInfo.VdfOutput
-  name: VdfOutput
-  href: api/chia.dotnet.VDFInfo.html#chia_dotnet_VDFInfo_VdfOutput
-  commentId: P:chia.dotnet.VDFInfo.VdfOutput
-  fullName: chia.dotnet.VDFInfo.VdfOutput
-  nameWithType: VDFInfo.VdfOutput
-- uid: chia.dotnet.VDFInfo.VdfOutput*
-  name: VdfOutput
-  href: api/chia.dotnet.VDFInfo.html#chia_dotnet_VDFInfo_VdfOutput_
-  commentId: Overload:chia.dotnet.VDFInfo.VdfOutput
+- uid: chia.dotnet.VDFInfo.Output
+  name: Output
+  href: api/chia.dotnet.VDFInfo.html#chia_dotnet_VDFInfo_Output
+  commentId: P:chia.dotnet.VDFInfo.Output
+  fullName: chia.dotnet.VDFInfo.Output
+  nameWithType: VDFInfo.Output
+- uid: chia.dotnet.VDFInfo.Output*
+  name: Output
+  href: api/chia.dotnet.VDFInfo.html#chia_dotnet_VDFInfo_Output_
+  commentId: Overload:chia.dotnet.VDFInfo.Output
   isSpec: "True"
-  fullName: chia.dotnet.VDFInfo.VdfOutput
-  nameWithType: VDFInfo.VdfOutput
+  fullName: chia.dotnet.VDFInfo.Output
+  nameWithType: VDFInfo.Output
 - uid: chia.dotnet.VDFProof
   name: VDFProof
   href: api/chia.dotnet.VDFProof.html
