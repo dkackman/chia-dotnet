@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Threading;
@@ -29,6 +30,11 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task UpdateRecoveryIds(IEnumerable<string> newList, CancellationToken cancellationToken = default)
         {
+            if (newList is null)
+            {
+                throw new ArgumentNullException(nameof(newList));
+            }
+
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
             data.new_list = newList.ToList();
@@ -45,6 +51,11 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task UpdateRecoveryIds(IEnumerable<string> newList, ulong numVerificationsRequired, CancellationToken cancellationToken = default)
         {
+            if (newList is null)
+            {
+                throw new ArgumentNullException(nameof(newList));
+            }
+
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
             data.new_list = newList.ToList();
@@ -109,6 +120,11 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task RecoverySpend(IEnumerable<string> attestFilenames, string pubkey, string puzzlehash, CancellationToken cancellationToken = default)
         {
+            if (attestFilenames is null)
+            {
+                throw new ArgumentNullException(nameof(attestFilenames));
+            }
+
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
             data.attest_filenames = attestFilenames.ToList();

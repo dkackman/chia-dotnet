@@ -161,6 +161,11 @@ namespace chia.dotnet
         /// <returns>The <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, IEnumerable<Coin>? coins, ulong fee, CancellationToken cancellationToken = default)
         {
+            if (additions is null)
+            {
+                throw new ArgumentNullException(nameof(additions));
+            }
+
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
             data.additions = additions.ToList();

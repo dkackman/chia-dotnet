@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Threading;
@@ -120,8 +121,8 @@ namespace chia.dotnet
             var response = await SendMessage("get_sync_status", cancellationToken);
 
             return (
-                response.genesis_initialized, 
-                response.synced, 
+                response.genesis_initialized,
+                response.synced,
                 response.syncing
                 );
         }
@@ -187,6 +188,11 @@ namespace chia.dotnet
         /// <returns>The new key's fingerprint</returns>
         public async Task<uint> AddKey(IEnumerable<string> mnemonic, bool skipImport, CancellationToken cancellationToken = default)
         {
+            if (mnemonic is null)
+            {
+                throw new ArgumentNullException(nameof(mnemonic));
+            }
+
             dynamic data = new ExpandoObject();
             data.mnemonic = mnemonic.ToList();
             data.type = skipImport ? "skip" : "new_wallet";
@@ -296,8 +302,8 @@ namespace chia.dotnet
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
             return (
-                response.type, 
-                response.colour, 
+                response.type,
+                response.colour,
                 response.wallet_id
                 );
         }
@@ -368,8 +374,8 @@ namespace chia.dotnet
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
             return (
-                response.id, 
-                response.type, 
+                response.id,
+                response.type,
                 response.pubkey
                 );
         }
@@ -384,6 +390,11 @@ namespace chia.dotnet
         /// <returns>Information about the wallet</returns>
         public async Task<(uint Type, string myDID, uint walletId)> CreateDIDWallet(IEnumerable<string> backupDIDs, ulong numOfBackupIdsNeeded, ulong amount, CancellationToken cancellationToken = default)
         {
+            if (backupDIDs is null)
+            {
+                throw new ArgumentNullException(nameof(backupDIDs));
+            }
+
             dynamic data = new ExpandoObject();
             data.wallet_type = "did_wallet";
             data.did_type = "new";
@@ -395,8 +406,8 @@ namespace chia.dotnet
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
             return (
-                response.type, 
-                response.my_did, 
+                response.type,
+                response.my_did,
                 response.wallet_id
                 );
         }
@@ -426,16 +437,16 @@ namespace chia.dotnet
                 Amount = coinList[2]
             };
             return (
-                    response.type,
-                    response.my_did,
-                    response.wallet_id,
-                    response.coin_name,
-                    coin,
-                    response.newpuzhash,
-                    response.pubkey,
-                    Converters.ConvertList<byte>(response.backup_dids),
-                    response.num_verifications_required
-                    );
+                response.type,
+                response.my_did,
+                response.wallet_id,
+                response.coin_name,
+                coin,
+                response.newpuzhash,
+                response.pubkey,
+                Converters.ConvertList<byte>(response.backup_dids),
+                response.num_verifications_required
+                );
         }
 
         /// <summary>
@@ -462,10 +473,10 @@ namespace chia.dotnet
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
             return (
-                    Converters.ToObject<TransactionRecord>(response.transaction),
-                    response.launcher_id,
-                    response.p2_singleton_puzzle_hash
-                    );
+                Converters.ToObject<TransactionRecord>(response.transaction),
+                response.launcher_id,
+                response.p2_singleton_puzzle_hash
+                );
         }
 
         /// <summary>
@@ -566,10 +577,10 @@ namespace chia.dotnet
             var response = await SendMessage("get_farmed_amount", cancellationToken);
 
             return (
-                response.farmed_amount, 
-                response.farmer_reward_amount, 
-                response.fee_amount, 
-                response.last_height_farmed, 
+                response.farmed_amount,
+                response.farmer_reward_amount,
+                response.fee_amount,
+                response.last_height_farmed,
                 response.pool_reward_amount
                 );
         }
@@ -584,6 +595,11 @@ namespace chia.dotnet
         /// <returns>The signed <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> CreateSignedTransaction(IEnumerable<Coin> additions, IEnumerable<Coin>? coins, ulong fee, CancellationToken cancellationToken = default)
         {
+            if (additions is null)
+            {
+                throw new ArgumentNullException(nameof(additions));
+            }
+
             dynamic data = new ExpandoObject();
             data.additions = additions.ToList();
             data.fee = fee;
