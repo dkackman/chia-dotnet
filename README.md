@@ -18,7 +18,7 @@ https://dkackman.github.io/chia-dotnet/
 - Coverage of all of the methods at each endpoint
   - as of 1.2.3 (if you find something missing please create an issue)
 - Static types for chia input and outputs
-- Supports connecting via teh `daemon` on `wss` or directly to each service over `https`
+- Supports connecting via the `daemon` on `wss` or directly to each service with `https`
   - both `https` and `wss` use tha same interfaces so switching is seemless
   
 ### Examples
@@ -51,7 +51,7 @@ var wallet = new Wallet(1, new WalletProxy(rpcClient, "unit_tests"));
 _ = await wallet.Login();
 
 // this is my receive address. feel free to run this code on mainnet as often as you like :-)
-var transaction = await wallet.SendTransaction("xch1zr49kksq5t27lx5gu3wnfgfxscnkvh3xqyldqz9xg5amsm26x86sh0kzhl", 1, 1);
+var transaction = await wallet.SendTransaction("xch1ls2w9l2tksmp8u3a8xewhn86na3fjhxq79gnsccxr0v3rpa5ejcsuugha7", 1, 1);
 ```
 
 ### Build
