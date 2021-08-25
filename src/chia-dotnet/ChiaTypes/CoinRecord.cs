@@ -23,6 +23,6 @@ namespace chia.dotnet
         /// Timestamp of the block at height confirmed_block_index
         /// </summary>
         [JsonIgnore]
-        public DateTime? DateTimestamp => Timestamp.ToDateTime();
+        public DateTime DateTimestamp => Timestamp.ToDateTime();
     }
 }

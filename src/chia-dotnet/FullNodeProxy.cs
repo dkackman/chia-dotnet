@@ -269,7 +269,7 @@ namespace chia.dotnet
         /// <summary>
         /// Gets a mempool item by tx id.
         /// </summary>
-        /// <param name="txId">Trasnaction id</param>
+        /// <param name="txId">Transaction id</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The <see cref="MempoolItem"/></returns>
         public async Task<MempoolItem> GetMemmpooItemByTxId(string txId, CancellationToken cancellationToken = default)
@@ -406,6 +406,7 @@ namespace chia.dotnet
         /// <param name="height">Block height at which the coin was spent 'spent_block_index'</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A <see cref="CoinSpend"/></returns>
+        /// <remarks>coinId is the coin name</remarks>
         public async Task<CoinSpend> GetPuzzleAndSolution(string coinId, uint height, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(coinId))

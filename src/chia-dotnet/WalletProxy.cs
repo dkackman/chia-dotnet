@@ -304,8 +304,8 @@ namespace chia.dotnet
         /// <summary>
         /// Create a new colour coin wallet
         /// </summary>
-        /// <param name="amount">the amount to put in the wallet (in units of mojos)</param>
-        /// <param name="fee">fee to create the wallet (in units of mojos)</param>
+        /// <param name="amount">The amount to put in the wallet (in units of mojos)</param>
+        /// <param name="fee">Fee to create the wallet (in units of mojos)</param>
         /// <param name="colour">The coin Colour</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the wallet</returns>
@@ -363,8 +363,8 @@ namespace chia.dotnet
         /// <param name="pubkey">admin pubkey</param>
         /// <param name="interval">The limit interval</param>
         /// <param name="limit">The limit amount</param>
-        /// <param name="amount">the amount to put in the wallet (in units of mojos)</param>     
-        /// <param name="fee">fee to create the wallet (in units of mojos)</param>
+        /// <param name="amount">The amount to put in the wallet (in units of mojos)</param>     
+        /// <param name="fee">Fee to create the wallet (in units of mojos)</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the wallet</returns>
         public async Task<(uint Id, byte Type, Coin origin, string pubkey)> CreateRateLimitedAdminWallet(string pubkey, ulong interval, ulong limit, ulong amount, ulong fee, CancellationToken cancellationToken = default)
@@ -420,7 +420,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="backupDIDs">Backup DIDs</param>
         /// <param name="numOfBackupIdsNeeded">The number of back ids needed to create the wallet</param>
-        /// <param name="amount">the amount to put in the wallet (in units of mojos)</param>           
+        /// <param name="amount">The amount to put in the wallet (in units of mojos)</param>           
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the wallet</returns>
         public async Task<(uint Type, string myDID, uint walletId)> CreateDIDWallet(IEnumerable<string> backupDIDs, ulong numOfBackupIdsNeeded, ulong amount, CancellationToken cancellationToken = default)
@@ -528,7 +528,7 @@ namespace chia.dotnet
         /// Create an offer file from a set of id's
         /// </summary>
         /// <param name="ids">The set of ids</param>
-        /// <param name="filename">path to the offer file to create</param>   
+        /// <param name="filename">Path to the offer file to create</param>   
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task CreateOfferForIds(IDictionary<int, int> ids, string filename, CancellationToken cancellationToken = default)
@@ -553,7 +553,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get offer discrepencies
         /// </summary>
-        /// <param name="filename">path to the offer file</param>         
+        /// <param name="filename">Path to the offer file</param>         
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The discrepencies</returns>
         public async Task<IDictionary<string, int>> GetDiscrepenciesForOffer(string filename, CancellationToken cancellationToken = default)
@@ -576,7 +576,7 @@ namespace chia.dotnet
         /// <summary>
         /// Respond to an offer
         /// </summary>
-        /// <param name="filename">path to the offer file</param>        
+        /// <param name="filename">Path to the offer file</param>        
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task RespondToOffer(string filename, CancellationToken cancellationToken = default)
