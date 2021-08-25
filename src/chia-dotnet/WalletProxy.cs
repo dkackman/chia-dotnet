@@ -298,7 +298,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("generate_mnemonic", cancellationToken);
 
-            return Converters.ToStrings(response.mnemonic);
+            return Converters.ConvertList<string>(response.mnemonic);
         }
 
         /// <summary>

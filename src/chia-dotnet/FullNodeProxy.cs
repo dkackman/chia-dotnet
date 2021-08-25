@@ -263,7 +263,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_all_mempool_tx_ids", cancellationToken);
 
-            return Converters.ToStrings(response.tx_ids);
+            return Converters.ConvertList<string>(response.tx_ids);
         }
 
         /// <summary>

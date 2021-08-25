@@ -157,7 +157,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("did_get_recovery_list", data, cancellationToken);
 
-            return (Converters.ToStrings(response.recover_list), response.num_required);
+            return (Converters.ConvertList<string>(response.recover_list), response.num_required);
         }
 
         /// <summary>

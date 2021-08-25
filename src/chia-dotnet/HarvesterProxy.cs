@@ -66,7 +66,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_plot_directories", cancellationToken);
 
-            return Converters.ToStrings(response.directories);
+            return Converters.ConvertList<string>(response.directories);
         }
 
         /// <summary>

@@ -59,13 +59,6 @@ namespace chia.dotnet
             return ((IEnumerable<dynamic>)enumerable).Select(item => (T)item);
         }
 
-        public static IEnumerable<string> ToStrings(dynamic stringEnumerable)
-        {
-            Debug.Assert(stringEnumerable is not null);
-
-            return ((IEnumerable<dynamic>)stringEnumerable).Select<dynamic, string>(item => item.ToString());
-        }
-
         public static DateTime? ToDateTime(this ulong? epoch)
         {
             if (epoch.HasValue)
