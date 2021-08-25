@@ -6,53 +6,6 @@ using Newtonsoft.Json;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Represents the list of peers that we sent the transaction to, whether each one
-    /// included it in the mempool, and what the error message (if any) was
-    /// </summary>
-    /// <remarks>Represented as `List[Tuple[str, uint8, Optional[str]]]` in python</remarks>
-    [JsonConverter(typeof(SendPeerConverter))]
-    public record SendPeer
-    {
-        public string Peer { get; init; } = string.Empty;
-        public byte IncludedInMempool { get; init; }
-        public string? ErrorMessage { get; init; }
-    }
-
-    /// <summary>
-    /// This is a rather disparate data structure that validates coin transfers. It's generally populated
-    /// with data from different sources, since burned coins are identified by name, so it is built up
-    /// more often that it is streamed.
-    /// </summary>
-    public record CoinSpend
-    {
-        public Coin Coin { get; init; } = new();
-        public string PuzzleReveal { get; init; } = string.Empty;
-        public string Solution { get; init; } = string.Empty;
-    }
-
-    /// <summary> 
-    /// This is a list of coins being spent along with their solution programs, and a single
-    /// aggregated signature. This is the object that most closely corresponds to a bitcoin
-    /// transaction (although because of non-interactive signature aggregation, the boundaries
-    /// between transactions are more flexible than in bitcoin). 
-    /// </summary>
-    public record SpendBundle
-    {
-        public string AggregatedSignature { get; init; } = string.Empty;
-        public ICollection<CoinSpend> CoinSpends { get; init; } = new List<CoinSpend>();
-    }
-
-    public enum TransactionType
-    {
-        INCOMING_TX = 0,
-        OUTGOING_TX = 1,
-        COINBASE_REWARD = 2,
-        FEE_REWARD = 3,
-        INCOMING_TRADE = 4,
-        OUTGOING_TRADE = 5
-    }
-
-    /// <summary>
     /// Used for storing transaction data and status in wallets.
     /// </summary>
     public record TransactionRecord
