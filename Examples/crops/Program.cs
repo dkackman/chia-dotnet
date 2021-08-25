@@ -10,6 +10,8 @@ namespace crops
 {
     static class Program
     {
+        public const string Name = "crops";
+        
         private static int ReturnCode = 0;
         static int Main(string[] args)
         {

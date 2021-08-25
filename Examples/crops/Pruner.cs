@@ -18,7 +18,7 @@ namespace crops
             {
                 throw new InvalidOperationException("Only connecting via the daemon works right now");
             }
-            
+
             var endpoint = new EndpointInfo()
             {
                 Uri = new Uri(options.Uri),
@@ -26,17 +26,17 @@ namespace crops
                 KeyPath = options.KeyPath
             };
 
+            // give ourselves 10 seconds to connect and register etc
             using var cts = new CancellationTokenSource(10000);
             using var rpcClient = new WebSocketRpcClient(endpoint);
             await rpcClient.Connect(cts.Token);
 
-            var daemon = new DaemonProxy(rpcClient, "crops");
+            var daemon = new DaemonProxy(rpcClient, Program.Name);
             await daemon.RegisterService(cts.Token);
 
-            var fullnode = new FullNodeProxy(rpcClient, "crops");
-            var connections = await fullnode.GetConnections(cts.Token);
-
+            var fullnode = new FullNodeProxy(rpcClient, Program.Name);
             var state = await fullnode.GetBlockchainState(cts.Token);
+            
             if (state.Peak is null)
             {
                 options.Message("No blockchain has been found yet. Nothing to prune", true);
@@ -46,6 +46,7 @@ namespace crops
             var peak = state.Peak.Height + 1;
             options.Message($"Pruning connections with a height less than {peak}");
 
+            var connections = await fullnode.GetConnections(cts.Token);
             int n = 0;
             foreach (var connection in connections.Where(c => c.Type == 1)) // only prune other full nodes, not famers, harvester,, and wallets etc
             {
