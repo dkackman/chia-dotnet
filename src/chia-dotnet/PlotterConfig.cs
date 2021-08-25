@@ -61,7 +61,7 @@ namespace chia.dotnet
         /// Phase 1 (Forward Propagation) and Phase 2 (Backpropagation) both occur. 
         /// The -t dir requires the largest working space: normally about 2.5 times the size of the final plot.
         /// </summary>
-        /// <value>Mo default - must be set</value>
+        /// <value>No default - must be set</value>
         [JsonProperty("t")]
         public string TempDir { get; init; } = string.Empty;
         /// <summary>
@@ -150,10 +150,12 @@ namespace chia.dotnet
             {
                 throw new InvalidOperationException($"{nameof(DestinationDir)} must be specified");
             }
+
             if (string.IsNullOrEmpty(TempDir))
             {
                 throw new InvalidOperationException($"{nameof(TempDir)} must be specified");
             }
+
             if (Size == KValues.K25 && OverrideK == false)
             {
                 throw new InvalidOperationException($"Using a {nameof(Size)} of {KValues.K25} requires {OverrideK} to be true");

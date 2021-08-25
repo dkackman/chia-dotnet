@@ -159,7 +159,13 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("did_create_attest", data, cancellationToken);
 
-            return (response.message_spend_bundle, (response.info[0], response.info[1], response.info[2]));
+            return (
+                response.message_spend_bundle, (
+                    response.info[0],
+                    response.info[1],
+                    response.info[2]
+                    )
+                );
         }
 
         /// <summary>

@@ -100,7 +100,14 @@ namespace chia.dotnet
 
             var response = await SendMessage("get_private_key", data, cancellationToken);
 
-            return (response.private_key.fingerprint, response.private_key.sk, response.private_key.pk, response.private_key.farmer_pk, response.private_key.pool_pk, response.private_key.seed);
+            return (
+                response.private_key.fingerprint,
+                response.private_key.sk,
+                response.private_key.pk,
+                response.private_key.farmer_pk,
+                response.private_key.pool_pk,
+                response.private_key.seed
+                );
         }
 
         /// <summary>
@@ -112,7 +119,11 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_sync_status", cancellationToken);
 
-            return (response.genesis_initialized, response.synced, response.syncing);
+            return (
+                response.genesis_initialized, 
+                response.synced, 
+                response.syncing
+                );
         }
 
         /// <summary>
@@ -235,7 +246,11 @@ namespace chia.dotnet
 
             var response = await SendMessage("check_delete_key", data, cancellationToken);
 
-            return (response.used_for_farmer_rewards, response.used_for_pool_rewards, response.wallet_balance);
+            return (
+                response.used_for_farmer_rewards,
+                response.used_for_pool_rewards,
+                response.wallet_balance
+                );
         }
 
         /// <summary>
@@ -280,7 +295,11 @@ namespace chia.dotnet
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
-            return (response.type, response.colour, response.wallet_id);
+            return (
+                response.type, 
+                response.colour, 
+                response.wallet_id
+                );
         }
 
         /// <summary>
@@ -348,7 +367,11 @@ namespace chia.dotnet
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
-            return (response.id, response.type, response.pubkey);
+            return (
+                response.id, 
+                response.type, 
+                response.pubkey
+                );
         }
 
         /// <summary>
@@ -371,7 +394,11 @@ namespace chia.dotnet
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken);
 
-            return (response.type, response.my_did, response.wallet_id);
+            return (
+                response.type, 
+                response.my_did, 
+                response.wallet_id
+                );
         }
 
         /// <summary>
@@ -538,7 +565,13 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_farmed_amount", cancellationToken);
 
-            return (response.farmed_amount, response.farmer_reward_amount, response.fee_amount, response.last_height_farmed, response.pool_reward_amount);
+            return (
+                response.farmed_amount, 
+                response.farmer_reward_amount, 
+                response.fee_amount, 
+                response.last_height_farmed, 
+                response.pool_reward_amount
+                );
         }
 
         /// <summary>
