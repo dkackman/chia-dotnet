@@ -14,6 +14,11 @@ namespace crops
     {
         public async Task Prune(PruneOptions options)
         {
+            if (options.Uri.Scheme != "wss")
+            {
+                throw new InvalidOperationException("Only connecting via the daemon works right now");
+            }
+            
             var endpoint = new EndpointInfo()
             {
                 Uri = new Uri(options.Uri),
