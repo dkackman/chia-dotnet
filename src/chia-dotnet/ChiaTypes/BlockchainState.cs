@@ -2,6 +2,9 @@
 
 namespace chia.dotnet
 {
+    /// <summary>
+    /// The node's view of the blockchain.
+    /// </summary>
     public record BlockchainState
     {
         public ulong Difficulty { get; init; }
