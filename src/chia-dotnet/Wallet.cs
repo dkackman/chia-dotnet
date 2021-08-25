@@ -142,6 +142,11 @@ namespace chia.dotnet
         /// <returns>The <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> SendTransaction(string address, ulong amount, ulong fee, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(address))
+            {
+                throw new ArgumentNullException($"{nameof(address)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
             data.address = address;

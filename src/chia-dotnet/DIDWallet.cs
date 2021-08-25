@@ -72,6 +72,11 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task Spend(string puzzlehash, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(puzzlehash))
+            {
+                throw new ArgumentNullException($"{nameof(puzzlehash)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
             data.puzzlehash = puzzlehash;
@@ -118,7 +123,7 @@ namespace chia.dotnet
         /// <param name="puzzlehash">The puzzlehash of the spend</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task RecoverySpend(IEnumerable<string> attestFilenames, string pubkey, string puzzlehash, CancellationToken cancellationToken = default)
+        public async Task RecoverySpend(IEnumerable<string> attestFilenames, string? pubkey, string? puzzlehash, CancellationToken cancellationToken = default)
         {
             if (attestFilenames is null)
             {
@@ -166,6 +171,26 @@ namespace chia.dotnet
         /// <returns>A spendbundle and information about the attest</returns>
         public async Task<(string MessageSpendBundle, (string Parent, string InnerPuzzleHash, ulong Amount) Info)> CreateAttest(string filename, string coinName, string pubkey, string puzHash, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(filename))
+            {
+                throw new ArgumentNullException($"{nameof(filename)} cannot be null or empty");
+            }
+
+            if (string.IsNullOrEmpty(coinName))
+            {
+                throw new ArgumentNullException($"{nameof(coinName)} cannot be null or empty");
+            }
+
+            if (string.IsNullOrEmpty(pubkey))
+            {
+                throw new ArgumentNullException($"{nameof(pubkey)} cannot be null or empty");
+            }
+
+            if (string.IsNullOrEmpty(puzHash))
+            {
+                throw new ArgumentNullException($"{nameof(puzHash)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
             data.filename = filename;
@@ -208,11 +233,16 @@ namespace chia.dotnet
         /// <summary>
         /// Create a backup file of the wallet
         /// </summary>
-        /// <param name="filename">The filename ot create</param>
+        /// <param name="filename">The filename to create</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task CreateBackupFile(IEnumerable<string> filename, CancellationToken cancellationToken = default)
+        public async Task CreateBackupFile(string filename, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(filename))
+            {
+                throw new ArgumentNullException($"{nameof(filename)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.attest_filenames = WalletId;
             data.filename = filename;

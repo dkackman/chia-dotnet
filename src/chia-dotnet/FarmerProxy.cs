@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Diagnostics;
+using System.Collections.Generic;
 using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -45,6 +47,16 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task SetRewardTargets(string farmerTarget, string poolTarget, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(farmerTarget))
+            {
+                throw new ArgumentNullException($"{nameof(farmerTarget)} cannot be null or empty");
+            }
+
+            if (string.IsNullOrEmpty(poolTarget))
+            {
+                throw new ArgumentNullException($"{nameof(poolTarget)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.farmer_target = farmerTarget;
             data.pool_target = poolTarget;
@@ -65,14 +77,18 @@ namespace chia.dotnet
             var list = new List<(IEnumerable<(string SpHash, ProofOfSpace ProofOfSpace)> Proofs, FarmerSignagePoint SignagePoint)>();
             foreach (var sp in response.signage_points)
             {
-                list.Add(ConvertSignagePoint(sp));
+                if (sp is not null)
+                {
+                    list.Add(ConvertSignagePoint(sp));
+                }
             }
-
             return list;
         }
 
         private static (IEnumerable<(string SpHash, ProofOfSpace ProofOfSpace)> Proofs, FarmerSignagePoint SignagePoint) ConvertSignagePoint(dynamic sp)
         {
+            Debug.Assert(sp is not null);
+
             var proofs = new List<(string SpHash, ProofOfSpace ProofOfSpace)>();
             foreach (var proof in sp.proofs)
             {
@@ -92,6 +108,11 @@ namespace chia.dotnet
         /// <returns>a signage point and proofs of space</returns>
         public async Task<(IEnumerable<(string SpHash, ProofOfSpace ProofOfSpace)> Proofs, FarmerSignagePoint SignagePoint)> GetSignagePoint(string spHash, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(spHash))
+            {
+                throw new ArgumentNullException($"{nameof(spHash)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.sp_hash = spHash;
 
@@ -118,6 +139,11 @@ namespace chia.dotnet
         /// <returns>The link</returns>
         public async Task<string> GetPoolLoginLink(string launcherID, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(launcherID))
+            {
+                throw new ArgumentNullException($"{nameof(launcherID)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.launcher_id = launcherID;
 
@@ -145,6 +171,16 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task SetPayoutInstructions(string launcherID, string payoutInstructions, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(launcherID))
+            {
+                throw new ArgumentNullException($"{nameof(launcherID)} cannot be null or empty");
+            }
+
+            if (string.IsNullOrEmpty(payoutInstructions))
+            {
+                throw new ArgumentNullException($"{nameof(payoutInstructions)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.launcher_id = launcherID;
             data.payout_instructions = payoutInstructions;

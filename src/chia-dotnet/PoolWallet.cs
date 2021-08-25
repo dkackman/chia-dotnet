@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -30,6 +31,16 @@ namespace chia.dotnet
         /// <returns>The resulting <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> JoinPool(string targetPuzzlehash, string poolUrl, uint relativeLockHeight, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(targetPuzzlehash))
+            {
+                throw new ArgumentNullException($"{nameof(targetPuzzlehash)} cannot be null or empty");
+            }
+
+            if (string.IsNullOrEmpty(poolUrl))
+            {
+                throw new ArgumentNullException($"{nameof(poolUrl)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
             data.target_puzzlehash = targetPuzzlehash;

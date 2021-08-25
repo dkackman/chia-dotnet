@@ -1,4 +1,5 @@
-﻿using System.Dynamic;
+﻿using System;
+using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -24,12 +25,34 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="interval">The limit interval</param>
         /// <param name="limit">The limit amount</param>
-        /// <param name="origin">Origin infomration about the wallet</param> 
+        /// <param name="parentCoinInfo">Origin parent coin</param> 
+        /// <param name="puzzleHash">Origin puzzle hash</param> 
+        /// <param name="amount">Origin amount</param> 
         /// <param name="adminPubkey">The wallet admin pubkey</param> 
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task SetUserInfo(ulong interval, ulong limit, (string parent_coin_info, string puzzle_hash, ulong amount) origin, string adminPubkey, CancellationToken cancellationToken = default)
+        public async Task SetUserInfo(ulong interval, ulong limit, string parentCoinInfo, string puzzleHash, ulong amount, string adminPubkey, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(parentCoinInfo))
+            {
+                throw new ArgumentNullException($"{nameof(parentCoinInfo)} cannot be null or empty");
+            }
+
+            if (string.IsNullOrEmpty(puzzleHash))
+            {
+                throw new ArgumentNullException($"{nameof(puzzleHash)} cannot be null or empty");
+            }
+
+            if (string.IsNullOrEmpty(adminPubkey))
+            {
+                throw new ArgumentNullException($"{nameof(adminPubkey)} cannot be null or empty");
+            }
+
+            dynamic origin = new ExpandoObject();
+            origin.parent_coin_info = parentCoinInfo;
+            origin.puzzle_hash = puzzleHash;
+            origin.amount = amount;
+
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
             data.interval = interval;

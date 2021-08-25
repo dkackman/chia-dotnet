@@ -24,12 +24,12 @@ namespace chia.dotnet
 
             if (string.IsNullOrEmpty(destinationService))
             {
-                throw new ArgumentNullException(nameof(destinationService));
+                throw new ArgumentNullException($"{nameof(destinationService)} cannot be null or empty");
             }
 
             if (string.IsNullOrEmpty(originService))
             {
-                throw new ArgumentNullException(nameof(originService));
+                throw new ArgumentNullException($"{nameof(originService)} cannot be null or empty");
             }
 
             DestinationService = destinationService;
@@ -93,7 +93,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(host))
             {
-                throw new ArgumentNullException(nameof(host));
+                throw new ArgumentNullException($"{nameof(host)} cannot be null or empty");
             }
 
             dynamic data = new ExpandoObject();
@@ -113,7 +113,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(nodeId))
             {
-                throw new ArgumentNullException(nameof(nodeId));
+                throw new ArgumentNullException($"{nameof(nodeId)} cannot be null or empty");
             }
 
             dynamic data = new ExpandoObject();

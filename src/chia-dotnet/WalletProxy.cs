@@ -55,6 +55,11 @@ namespace chia.dotnet
         /// <returns>The key fingerprint</returns>
         public async Task<uint> LogInAndRestoreBackup(uint fingerprint, string filePath, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(filePath))
+            {
+                throw new ArgumentNullException($"{nameof(filePath)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
             data.type = "restore_backup";
@@ -159,6 +164,11 @@ namespace chia.dotnet
         /// <returns>The <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> GetTransaction(string transactionId, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(transactionId))
+            {
+                throw new ArgumentNullException($"{nameof(transactionId)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.transaction_id = transactionId;
 
@@ -173,6 +183,11 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task CreateBackup(string filePath, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(filePath))
+            {
+                throw new ArgumentNullException($"{nameof(filePath)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.file_path = filePath;
 
@@ -211,6 +226,11 @@ namespace chia.dotnet
         /// <returns>The key's fingerprint</returns>
         public async Task<uint> AddKeyAndRestoreBackup(uint fingerprint, string filePath, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(filePath))
+            {
+                throw new ArgumentNullException($"{nameof(filePath)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
             data.type = "restore_backup";
@@ -291,6 +311,11 @@ namespace chia.dotnet
         /// <returns>Information about the wallet</returns>
         public async Task<(byte Type, string Colour, uint WalletId)> CreateColourCoinWallet(ulong amount, ulong fee, string colour, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(colour))
+            {
+                throw new ArgumentNullException($"{nameof(colour)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.wallet_type = "cc_wallet";
             data.host = DefaultBackupHost;
@@ -316,6 +341,11 @@ namespace chia.dotnet
         /// <returns>The wallet type</returns>
         public async Task<byte> CreateColouredCoinForColour(string colour, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(colour))
+            {
+                throw new ArgumentNullException($"{nameof(colour)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.wallet_type = "cc_wallet";
             data.host = DefaultBackupHost;
@@ -339,6 +369,11 @@ namespace chia.dotnet
         /// <returns>Information about the wallet</returns>
         public async Task<(uint Id, byte Type, Coin origin, string pubkey)> CreateRateLimitedAdminWallet(string pubkey, ulong interval, ulong limit, ulong amount, ulong fee, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(pubkey))
+            {
+                throw new ArgumentNullException($"{nameof(pubkey)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.wallet_type = "rl_wallet";
             data.rl_type = "admin";
@@ -421,6 +456,11 @@ namespace chia.dotnet
         public async Task<(uint Type, string myDID, uint walletId, string coinName, Coin coin, string newPuzHash, string pubkey, IEnumerable<byte> backupDIDs, ulong numVerificationsRequired)>
             RecoverDIDWallet(string filename, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(filename))
+            {
+                throw new ArgumentNullException($"{nameof(filename)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.wallet_type = "did_wallet";
             data.did_type = "recovery";
@@ -458,8 +498,13 @@ namespace chia.dotnet
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the wallet</returns>
         public async Task<(TransactionRecord transaction, string launcherId, string p2SingletonHash)>
-            CreatePoolWallet(PoolState initialTargetState, ulong p2SingletonDelayTime, string p2SingletonDelayedPH, CancellationToken cancellationToken = default)
+            CreatePoolWallet(PoolState initialTargetState, ulong p2SingletonDelayTime, string? p2SingletonDelayedPH, CancellationToken cancellationToken = default)
         {
+            if (initialTargetState is null)
+            {
+                throw new ArgumentNullException(nameof(initialTargetState));
+            }
+
             dynamic data = new ExpandoObject();
             data.wallet_type = "pool_wallet";
             data.mode = "new";
@@ -488,6 +533,16 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task CreateOfferForIds(IDictionary<int, int> ids, string filename, CancellationToken cancellationToken = default)
         {
+            if (ids is null)
+            {
+                throw new ArgumentNullException(nameof(ids));
+            }
+
+            if (string.IsNullOrEmpty(filename))
+            {
+                throw new ArgumentNullException($"{nameof(filename)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.ids = ids;
             data.filename = filename;
@@ -503,6 +558,11 @@ namespace chia.dotnet
         /// <returns>The discrepencies</returns>
         public async Task<IDictionary<string, int>> GetDiscrepenciesForOffer(string filename, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(filename))
+            {
+                throw new ArgumentNullException($"{nameof(filename)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.filename = filename;
 
@@ -521,6 +581,11 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task RespondToOffer(string filename, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(filename))
+            {
+                throw new ArgumentNullException($"{nameof(filename)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.filename = filename;
 
@@ -535,6 +600,11 @@ namespace chia.dotnet
         /// <returns>The <see cref="TradeRecord"/></returns>
         public async Task<TradeRecord> GetTrade(string tradeId, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(tradeId))
+            {
+                throw new ArgumentNullException($"{nameof(tradeId)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.trade_id = tradeId;
 
@@ -560,6 +630,11 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task CancelTrade(string tradeId, bool secure, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(tradeId))
+            {
+                throw new ArgumentNullException($"{nameof(tradeId)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.trade_id = tradeId;
             data.secure = secure;

@@ -1,4 +1,5 @@
-﻿using System.Dynamic;
+﻿using System;
+using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -42,6 +43,11 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task SetName(string name, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentNullException($"{nameof(name)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
             data.name = name;
@@ -74,6 +80,11 @@ namespace chia.dotnet
         /// <returns>A <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> Spend(string innerAddress, ulong amount, ulong fee, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(innerAddress))
+            {
+                throw new ArgumentNullException($"{nameof(innerAddress)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
             data.inner_address = innerAddress;

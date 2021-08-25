@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -45,6 +46,11 @@ namespace chia.dotnet
         /// <remarks><strong>Calling this DELETES the plot file. Proceed with caution.</strong></remarks>
         public async Task DeletePlot(string filename, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(filename))
+            {
+                throw new ArgumentNullException($"{nameof(filename)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.filename = filename;
 
@@ -71,6 +77,11 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task AddPlotDirectory(string dirname, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(dirname))
+            {
+                throw new ArgumentNullException($"{nameof(dirname)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.dirname = dirname;
 
@@ -85,6 +96,11 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task RemovePlotDirectory(string dirname, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(dirname))
+            {
+                throw new ArgumentNullException($"{nameof(dirname)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.dirname = dirname;
 

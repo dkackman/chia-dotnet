@@ -41,6 +41,11 @@ namespace chia.dotnet
         /// <returns>The <see cref="FullBlock"/></returns>
         public async Task<FullBlock> GetBlock(string headerhash, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(headerhash))
+            {
+                throw new ArgumentNullException($"{nameof(headerhash)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.header_hash = headerhash;
 
@@ -73,6 +78,11 @@ namespace chia.dotnet
         /// <returns>The <see cref="BlockRecord"/></returns>
         public async Task<BlockRecord> GetBlockRecord(string headerhash, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(headerhash))
+            {
+                throw new ArgumentNullException($"{nameof(headerhash)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.header_hash = headerhash;
 
@@ -128,6 +138,11 @@ namespace chia.dotnet
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
         public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHash(string puzzlehash, bool includeSpendCoins, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(puzzlehash))
+            {
+                throw new ArgumentNullException($"{nameof(puzzlehash)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.puzzle_hash = puzzlehash;
             data.include_spend_coins = includeSpendCoins;
@@ -146,6 +161,11 @@ namespace chia.dotnet
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
         public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHash(string puzzlehash, uint startHeight, uint endHeight, bool includeSpendCoins, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(puzzlehash))
+            {
+                throw new ArgumentNullException($"{nameof(puzzlehash)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.puzzle_hash = puzzlehash;
             data.start_height = startHeight;
@@ -166,6 +186,11 @@ namespace chia.dotnet
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
         public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHashes(IEnumerable<string> puzzlehashes, uint startHeight, uint endHeight, bool includeSpendCoins, CancellationToken cancellationToken = default)
         {
+            if (puzzlehashes is null)
+            {
+                throw new ArgumentNullException(nameof(puzzlehashes));
+            }
+
             dynamic data = new ExpandoObject();
             data.puzzle_hash = puzzlehashes.ToList();
             data.start_height = startHeight;
@@ -183,6 +208,11 @@ namespace chia.dotnet
         /// <returns>A <see cref="CoinRecord"/></returns>
         public async Task<CoinRecord> GetCoinRecordByName(string name, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentNullException($"{nameof(name)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.name = name;
 
@@ -198,6 +228,11 @@ namespace chia.dotnet
         /// <returns>A list of additions and a list of removals</returns>
         public async Task<(ICollection<CoinRecord> Additions, ICollection<CoinRecord> Removals)> GetAdditionsAndRemovals(string headerhash, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(headerhash))
+            {
+                throw new ArgumentNullException($"{nameof(headerhash)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.header_hash = headerhash;
 
@@ -239,6 +274,11 @@ namespace chia.dotnet
         /// <returns>The <see cref="MempoolItem"/></returns>
         public async Task<MempoolItem> GetMemmpooItemByTxId(string txId, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(txId))
+            {
+                throw new ArgumentNullException($"{nameof(txId)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.tx_id = txId;
 
@@ -254,6 +294,16 @@ namespace chia.dotnet
         /// <returns><see cref="BigInteger"/> of network space in bytes</returns>
         public async Task<BigInteger> GetNetworkSpace(string newerBlockHeaderhash, string olderBlockHeaderhash, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(newerBlockHeaderhash))
+            {
+                throw new ArgumentNullException($"{nameof(newerBlockHeaderhash)} cannot be null or empty");
+            }
+
+            if (string.IsNullOrEmpty(olderBlockHeaderhash))
+            {
+                throw new ArgumentNullException($"{nameof(olderBlockHeaderhash)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.newer_block_header_hash = newerBlockHeaderhash;
             data.older_block_header_hash = olderBlockHeaderhash;
@@ -284,6 +334,11 @@ namespace chia.dotnet
         /// <returns>Indicator of whether the spend bundle was successfully included in the mempool</returns>
         public async Task<bool> PushTx(SpendBundle spendBundle, CancellationToken cancellationToken = default)
         {
+            if (spendBundle is null)
+            {
+                throw new ArgumentNullException(nameof(spendBundle));
+            }
+
             dynamic data = new ExpandoObject();
             data.spend_bundle = spendBundle;
 
@@ -300,6 +355,11 @@ namespace chia.dotnet
         /// <returns>The <see cref="SignagePoint"/></returns>
         public async Task<(SignagePoint SignagePoint, double TimeReceived, bool Reverted, DateTime DateTimeReceived)> GetRecentSignagePoint(string spHash, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(spHash))
+            {
+                throw new ArgumentNullException($"{nameof(spHash)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.sp_hash = spHash;
 
@@ -321,6 +381,11 @@ namespace chia.dotnet
         /// <returns>The <see cref="EndOfSubSlotBundle"/></returns>
         public async Task<(EndOfSubSlotBundle eos, double timeReceived, bool reverted, DateTime DateTimeReceived)> GetRecentEOS(string challengeHash, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(challengeHash))
+            {
+                throw new ArgumentNullException($"{nameof(challengeHash)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.challenge_hash = challengeHash;
 
@@ -343,6 +408,11 @@ namespace chia.dotnet
         /// <returns>A <see cref="CoinSpend"/></returns>
         public async Task<CoinSpend> GetPuzzleAndSolution(string coinId, uint height, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(coinId))
+            {
+                throw new ArgumentNullException($"{nameof(coinId)} cannot be null or empty");
+            }
+
             dynamic data = new ExpandoObject();
             data.coin_id = coinId;
             data.height = height;
