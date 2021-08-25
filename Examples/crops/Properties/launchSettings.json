@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "crops": {
+      "commandName": "Project",
+      "commandLineArgs": "prune -u wss://farmer:55400 -c \"C:\\Users\\dkack\\.chia\\mainnet\\config\\ssl\\ui\\private_daemon.crt\" -k \"C:\\Users\\dkack\\.chia\\mainnet\\config\\ssl\\ui\\private_daemon.key\"",
+      "sqlDebugging": false
+    }
+  }
+}
