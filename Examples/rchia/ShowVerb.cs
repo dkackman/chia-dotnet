@@ -11,10 +11,22 @@ using CommandLine;
 namespace rchia
 {
     [Verb("show", HelpText = "Shows various properties of a full node")]
-    class ShowOptions : SharedOptions
+    class ShowVerb : SharedOptions
     {
         [Option('s', "state", HelpText = "Show the current state of the blockchain")]
-        public bool ProneOld { get; set; }
+        public bool State { get; set; }
+
+        [Option('e', "exit-node", HelpText = "Shut down the running Full Node")]
+        public bool Exit { get; set; }
+
+        [Option('c', "connections", HelpText = "List nodes connected to this Full Node")]
+        public bool Connections { get; set; }
+
+        [Option('a', "add-connection", HelpText = "Connect to another Full Node by ip:port")]
+        public string AddConnection { get; set; }
+
+        [Option('r', "remove-connection", HelpText = "Remove a Node by the first 8 characters of NodeID")]
+        public string RemoveConnection { get; set; }
 
         public override async Task<int> Run()
         {
