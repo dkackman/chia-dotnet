@@ -20,20 +20,38 @@ namespace crops
                 CertPath = options.CertPath,
                 KeyPath = options.KeyPath
             };
-            
+
+            using var rpcClient = await CreateRpcClient(endpoint);
+
+            await PruneByHeight(options, rpcClient);
+        }
+
+        private static async Task<IRpcClient> CreateRpcClient(EndpointInfo endpoint)
+        {
             if (endpoint.Uri.Scheme != "wss")
             {
-                throw new InvalidOperationException("Only connecting via the daemon works right now");
+                using var cts = new CancellationTokenSource(5000);
+
+                var rpcClient = new WebSocketRpcClient(endpoint);
+                await rpcClient.Connect(cts.Token);
+
+                var daemon = new DaemonProxy(rpcClient, Program.Name);
+                await daemon.RegisterService(cts.Token);
+
+                return rpcClient;
             }
 
-            // give ourselves 10 seconds to connect and register etc
-            using var cts = new CancellationTokenSource(10000);
-            using var rpcClient = new WebSocketRpcClient(endpoint);
-            await rpcClient.Connect(cts.Token);
+            if (endpoint.Uri.Scheme != "https")
+            {
+                return new HttpRpcClient(endpoint);
+            }
 
-            var daemon = new DaemonProxy(rpcClient, Program.Name);
-            await daemon.RegisterService(cts.Token);
+            throw new InvalidOperationException($"Unrecognized endpoint Uri scheme {endpoint.Uri.Scheme}");
+        }
 
+        private static async Task PruneByHeight(PruneOptions options, IRpcClient rpcClient)
+        {
+            using var cts = new CancellationTokenSource(5000);
             var fullnode = new FullNodeProxy(rpcClient, Program.Name);
             var state = await fullnode.GetBlockchainState(cts.Token);
 
