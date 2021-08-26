@@ -41,6 +41,9 @@ namespace crops
     [Verb("prune", HelpText = "Prune connections that have a lower peak height than the node")]
     public class PruneOptions : SharedOptions, IVerb
     {
+        [Option('o', "ProneOld", HelpText = "Prune connections that havent sent data in the last 24 hours")]
+        public bool ProneOld { get; set; }
+
         public async Task<int> Run()
         {
             try
@@ -52,7 +55,8 @@ namespace crops
             }
             catch (Exception e)
             {
-                Console.Write(e.Message);
+                Message(e.Message, true);
+
                 return -1;
             }
         }

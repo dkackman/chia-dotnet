@@ -16,12 +16,43 @@ namespace crops
         {
             using var rpcClient = await ClientFactory.CreateRpcClient(options, ServiceNames.FullNode);
 
-            await PruneByHeight(options, rpcClient);
+            if (options.ProneOld)
+            {
+                await PruneOldConnections(options, rpcClient);
+            }
+            else
+            {
+                await PruneByHeight(options, rpcClient);
+            }
+        }
+
+        private static async Task PruneOldConnections(PruneOptions options, IRpcClient rpcClient)
+        {
+            using var cts = new CancellationTokenSource(2000);
+            var fullnode = new FullNodeProxy(rpcClient, Program.Name);
+
+            var cutoff = DateTime.Now - new TimeSpan(24, 0, 0);
+            options.Message($"Pruning connections that haven't sent a message since {cutoff}");
+
+            var connections = await fullnode.GetConnections(cts.Token);
+            int n = 0;
+            foreach (var connection in connections.Where(c => c.Type == 1)) // only prune other full nodes, not famers, harvesters, and wallets etc
+            {
+                if (connection.LastMessageDateTime < cutoff)
+                {
+                    using var cts1 = new CancellationTokenSource(1000);
+                    await fullnode.CloseConnection(connection.NodeId, cts1.Token);
+                    options.Message($"Closed connection at {connection.PeerHost}:{connection.PeerServerPort} that last updated {connection.LastMessageDateTime}");
+                    n++;
+                }
+            }
+
+            options.Message($"Pruned {n} connections", true);
         }
 
         private static async Task PruneByHeight(PruneOptions options, IRpcClient rpcClient)
         {
-            using var cts = new CancellationTokenSource(5000);
+            using var cts = new CancellationTokenSource(4000);
             var fullnode = new FullNodeProxy(rpcClient, Program.Name);
             var state = await fullnode.GetBlockchainState(cts.Token);
 
