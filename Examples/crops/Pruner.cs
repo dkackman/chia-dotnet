@@ -14,39 +14,9 @@ namespace crops
     {
         public async Task Prune(PruneOptions options)
         {
-            var endpoint = new EndpointInfo()
-            {
-                Uri = new Uri(options.Uri),
-                CertPath = options.CertPath,
-                KeyPath = options.KeyPath
-            };
-
-            using var rpcClient = await CreateRpcClient(endpoint);
+            using var rpcClient = await ClientFactory.CreateRpcClient(options);
 
             await PruneByHeight(options, rpcClient);
-        }
-
-        private static async Task<IRpcClient> CreateRpcClient(EndpointInfo endpoint)
-        {
-            if (endpoint.Uri.Scheme != "wss")
-            {
-                using var cts = new CancellationTokenSource(5000);
-
-                var rpcClient = new WebSocketRpcClient(endpoint);
-                await rpcClient.Connect(cts.Token);
-
-                var daemon = new DaemonProxy(rpcClient, Program.Name);
-                await daemon.RegisterService(cts.Token);
-
-                return rpcClient;
-            }
-
-            if (endpoint.Uri.Scheme != "https")
-            {
-                return new HttpRpcClient(endpoint);
-            }
-
-            throw new InvalidOperationException($"Unrecognized endpoint Uri scheme {endpoint.Uri.Scheme}");
         }
 
         private static async Task PruneByHeight(PruneOptions options, IRpcClient rpcClient)
