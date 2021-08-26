@@ -28,10 +28,15 @@ namespace crops
 
         private static async Task PruneOldConnections(PruneOptions options, IRpcClient rpcClient)
         {
+            if (options.Age < 1)
+            {
+                throw new InvalidOperationException("Age must be 1 or more");
+            }
+
             using var cts = new CancellationTokenSource(2000);
             var fullnode = new FullNodeProxy(rpcClient, Program.Name);
 
-            var cutoff = DateTime.Now - new TimeSpan(24, 0, 0);
+            var cutoff = DateTime.UtcNow - new TimeSpan(options.Age, 0, 0);
             options.Message($"Pruning connections that haven't sent a message since {cutoff}");
 
             var connections = await fullnode.GetConnections(cts.Token);

@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
-
 using System.Threading.Tasks;
 
 using CommandLine;
 
 namespace crops
 {
-    public class SharedOptions
+    public abstract class SharedOptions : IVerb
     {
         [Option('v', "verbose", HelpText = "Set output to verbose messages.")]
         public bool Verbose { get; set; }
@@ -27,7 +26,7 @@ namespace crops
         [Option('u', "UseDefaultConfig", SetName = "Config", HelpText = "Flag indicating to use the default path to the chia config file")]
         public bool UseDefaultConfig { get; set; }
 
-        internal void Message(string msg, bool important = false)
+        public void Message(string msg, bool important = false)
         {
             if (Verbose || important)
             {
@@ -36,29 +35,7 @@ namespace crops
 
             Debug.WriteLine(msg);
         }
-    }
 
-    [Verb("prune", HelpText = "Prune connections that have a lower peak height than the node")]
-    public class PruneOptions : SharedOptions, IVerb
-    {
-        [Option('o', "ProneOld", HelpText = "Prune connections that havent sent data in the last 24 hours instead of by height")]
-        public bool ProneOld { get; set; }
-
-        public async Task<int> Run()
-        {
-            try
-            {
-                var pruner = new Pruner();
-                await pruner.Prune(this);
-
-                return 0;
-            }
-            catch (Exception e)
-            {
-                Message(e.Message, true);
-
-                return -1;
-            }
-        }
+        public abstract Task<int> Run();
     }
 }
