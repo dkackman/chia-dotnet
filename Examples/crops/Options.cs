@@ -9,17 +9,20 @@ namespace crops
 {
     public class SharedOptions
     {
-        [Option('v', "verbose", Required = false, HelpText = "Set output to verbose messages.")]
+        [Option('v', "verbose", HelpText = "Set output to verbose messages.")]
         public bool Verbose { get; set; }
-        
-        [Option('u', Required = true, HelpText = "The uri of the rpc endpoint, including the proper port and wss/https scheme prefix")]
+
+        [Option('u', "Uri", SetName = "Endpoint", HelpText = "The uri of the rpc endpoint, including the proper port and wss/https scheme prefix")]
         public string Uri { get; set; }
 
-        [Option('c', Required = true, HelpText = "The full path to the .crt file to use for authentication")]
+        [Option('c', "CertPath", SetName = "Endpoint", HelpText = "The full path to the .crt file to use for authentication")]
         public string CertPath { get; set; }
 
-        [Option('k', Required = true, HelpText = "The full path to the .key file to use for authentication")]
+        [Option('k', "KeyPath", SetName = "Endpoint", HelpText = "The full path to the .key file to use for authentication")]
         public string KeyPath { get; set; }
+
+        [Option('p', "ConfigPath", SetName = "Config", HelpText = "The full path to a chia config yaml file")]
+        public string ConfigPath { get; set; }
 
         internal void Message(string msg, bool important = false)
         {
