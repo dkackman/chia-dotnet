@@ -21,7 +21,7 @@ namespace chia.dotnet
         public string PeerHost { get; init; } = string.Empty;
         public int PeerPort { get; init; }
         public int PeerServerPort { get; init; }
-        public byte Type { get; init; }
+        public NodeType Type { get; init; }
         [JsonIgnore]
         public DateTime CreationDateTime => CreationTime.ToDateTime();
         [JsonIgnore]
