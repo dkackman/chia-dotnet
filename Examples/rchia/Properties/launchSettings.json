@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "rchia": {
+      "commandName": "Project",
+      "commandLineArgs": "show -e https://172.30.65.64:8555 -c \"\\\\wsl$\\Ubuntu-20.04\\home\\don\\.chia\\mainnet\\config\\ssl\\full_node\\private_full_node.crt\" -k \"\\\\wsl$\\Ubuntu-20.04\\home\\don\\.chia\\mainnet\\config\\ssl\\full_node\\private_full_node.key\" -v"
+    }
+  }
+}

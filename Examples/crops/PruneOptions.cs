@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 
+using chia.dotnet.console;
+
 using CommandLine;
 
 namespace crops

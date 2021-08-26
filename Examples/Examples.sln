@@ -3,9 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crops", "crops\crops.csproj", "{7DB3D463-6288-4A63-A2FF-3E7F80CEEC81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "crops", "crops\crops.csproj", "{7DB3D463-6288-4A63-A2FF-3E7F80CEEC81}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "rchia", "rchia\rchia.csproj", "{8AE515F5-F6DC-40F0-94BE-42F06FB16255}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "shared", "shared\shared.shproj", "{64D8A879-E8F2-4AEB-9A83-41EEBC97718C}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		shared\shared.projitems*{64d8a879-e8f2-4aeb-9a83-41eebc97718c}*SharedItemsImports = 13
+		shared\shared.projitems*{7db3d463-6288-4a63-a2ff-3e7f80ceec81}*SharedItemsImports = 5
+		shared\shared.projitems*{8ae515f5-f6dc-40f0-94be-42f06fb16255}*SharedItemsImports = 5
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -15,6 +24,10 @@ Global
 		{7DB3D463-6288-4A63-A2FF-3E7F80CEEC81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DB3D463-6288-4A63-A2FF-3E7F80CEEC81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DB3D463-6288-4A63-A2FF-3E7F80CEEC81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AE515F5-F6DC-40F0-94BE-42F06FB16255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AE515F5-F6DC-40F0-94BE-42F06FB16255}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AE515F5-F6DC-40F0-94BE-42F06FB16255}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AE515F5-F6DC-40F0-94BE-42F06FB16255}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

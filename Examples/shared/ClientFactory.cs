@@ -2,15 +2,20 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-using chia.dotnet;
-
-namespace crops
+namespace chia.dotnet.console
 {
-    internal static class ClientFactory
+    internal class ClientFactory
     {
-        public static async Task<IRpcClient> CreateRpcClient(SharedOptions options, string name)
+        public ClientFactory(string originService)
         {
-            var endpoint = GetEndpointInfo(options, name);
+            OriginService = originService;
+        }
+
+        public string OriginService { get; init; }
+
+        public async Task<IRpcClient> CreateRpcClient(SharedOptions options, string serviceName)
+        {
+            var endpoint = GetEndpointInfo(options, serviceName);
 
             if (endpoint.Uri.Scheme == "wss")
             {
@@ -19,7 +24,7 @@ namespace crops
                 var rpcClient = new WebSocketRpcClient(endpoint);
                 await rpcClient.Connect(cts.Token);
 
-                var daemon = new DaemonProxy(rpcClient, Program.Name);
+                var daemon = new DaemonProxy(rpcClient, OriginService);
                 await daemon.RegisterService(cts.Token);
 
                 return rpcClient;
@@ -33,16 +38,16 @@ namespace crops
             throw new InvalidOperationException($"Unrecognized endpoint Uri scheme {endpoint.Uri.Scheme}");
         }
 
-        private static EndpointInfo GetEndpointInfo(SharedOptions options, string name)
+        private static EndpointInfo GetEndpointInfo(SharedOptions options, string serviceName)
         {
             if (options.UseDefaultConfig)
             {
-                return Config.Open().GetEndpoint(name);
+                return Config.Open().GetEndpoint(serviceName);
             }
 
             if (!string.IsNullOrEmpty(options.ConfigPath))
             {
-                return Config.Open(options.ConfigPath).GetEndpoint(name);
+                return Config.Open(options.ConfigPath).GetEndpoint(serviceName);
             }
 
             return new EndpointInfo()

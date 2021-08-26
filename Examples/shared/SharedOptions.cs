@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 using CommandLine;
 
-namespace crops
+namespace chia.dotnet.console
 {
     public abstract class SharedOptions : IVerb
     {

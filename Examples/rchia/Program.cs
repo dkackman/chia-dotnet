@@ -6,11 +6,11 @@ using CommandLine;
 
 using chia.dotnet.console;
 
-namespace crops
+namespace rchia
 {
-    static class Program
+    class Program
     {
-        internal static readonly ClientFactory Factory = new("crops");
+        internal static readonly ClientFactory Factory = new("rchia");
 
         static int Main(string[] args)
         {

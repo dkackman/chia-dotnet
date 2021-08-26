@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace crops
+namespace chia.dotnet.console
 {
     interface IVerb
     {

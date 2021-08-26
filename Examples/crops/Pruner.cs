@@ -12,9 +12,10 @@ namespace crops
     /// </summary>
     sealed class Pruner
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>")]
         public async Task Prune(PruneOptions options)
         {
-            using var rpcClient = await ClientFactory.CreateRpcClient(options, ServiceNames.FullNode);
+            using var rpcClient = await Program.Factory.CreateRpcClient(options, ServiceNames.FullNode);
 
             if (options.ProneOld)
             {
@@ -34,14 +35,14 @@ namespace crops
             }
 
             using var cts = new CancellationTokenSource(2000);
-            var fullnode = new FullNodeProxy(rpcClient, Program.Name);
+            var fullnode = new FullNodeProxy(rpcClient, Program.Factory.OriginService);
 
             var cutoff = DateTime.UtcNow - new TimeSpan(options.Age, 0, 0);
             options.Message($"Pruning connections that haven't sent a message since {cutoff}");
 
             var connections = await fullnode.GetConnections(cts.Token);
             int n = 0;
-            foreach (var connection in connections.Where(c => c.Type == 1)) // only prune other full nodes, not famers, harvesters, and wallets etc
+            foreach (var connection in connections.Where(c => c.Type == NodeType.FULL_NODE)) // only prune other full nodes, not famers, harvesters, and wallets etc
             {
                 if (connection.LastMessageDateTime < cutoff)
                 {
@@ -58,7 +59,7 @@ namespace crops
         private static async Task PruneByHeight(PruneOptions options, IRpcClient rpcClient)
         {
             using var cts = new CancellationTokenSource(4000);
-            var fullnode = new FullNodeProxy(rpcClient, Program.Name);
+            var fullnode = new FullNodeProxy(rpcClient, Program.Factory.OriginService);
             var state = await fullnode.GetBlockchainState(cts.Token);
 
             if (state.Peak is null)
@@ -72,7 +73,7 @@ namespace crops
 
             var connections = await fullnode.GetConnections(cts.Token);
             int n = 0;
-            foreach (var connection in connections.Where(c => c.Type == 1)) // only prune other full nodes, not famers, harvesters, and wallets etc
+            foreach (var connection in connections.Where(c => c.Type == NodeType.FULL_NODE)) // only prune other full nodes, not famers, harvesters, and wallets etc
             {
                 if (connection.PeakHeight < peak)
                 {
