@@ -12,7 +12,7 @@ namespace crops
         [Option('v', "verbose", HelpText = "Set output to verbose messages.")]
         public bool Verbose { get; set; }
 
-        [Option('u', "Uri", SetName = "Endpoint", HelpText = "The uri of the rpc endpoint, including the proper port and wss/https scheme prefix")]
+        [Option('e', "EndpointUri", SetName = "Endpoint", HelpText = "The uri of the rpc endpoint, including the proper port and wss/https scheme prefix")]
         public string Uri { get; set; }
 
         [Option('c', "CertPath", SetName = "Endpoint", HelpText = "The full path to the .crt file to use for authentication")]
@@ -23,6 +23,9 @@ namespace crops
 
         [Option('p', "ConfigPath", SetName = "Config", HelpText = "The full path to a chia config yaml file")]
         public string ConfigPath { get; set; }
+
+        [Option('u', "UseDefaultConfig", SetName = "Config", HelpText = "Flag indicating to use the default path to the chia config file")]
+        public bool UseDefaultConfig { get; set; }
 
         internal void Message(string msg, bool important = false)
         {

@@ -14,7 +14,7 @@ namespace crops
     {
         public async Task Prune(PruneOptions options)
         {
-            using var rpcClient = await ClientFactory.CreateRpcClient(options);
+            using var rpcClient = await ClientFactory.CreateRpcClient(options, ServiceNames.FullNode);
 
             await PruneByHeight(options, rpcClient);
         }
