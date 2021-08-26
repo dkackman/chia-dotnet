@@ -25,6 +25,10 @@ https://dkackman.github.io/chia-dotnet/
 
 _Test carefully and in one of the testnets!_
 
+#### Example app
+
+Try the [`crops` command line utility](https://github.com/dkackman/chia-dotnet/discussions/17) and [example code](https://github.com/dkackman/chia-dotnet/tree/main/Examples/crops).
+
 #### Connect to the Node and find out about the blockchain
 
 ```csharp
@@ -70,11 +74,11 @@ dotnet add package chia-dotnet
 
 There are various unit and integration tests in the test project that have example usage. Tests attributes with `[TestCategory("Integration")]` will use the local install of chia and the mainnet configuration to resolve RPC endpoints.
 
-Tests decorated with `[TestCategory("CAUTION")]` update the state of whatever they are interacting with. Run these tests with caution. If run against a production node on `mainnet`, they might change things, up to and including deleting keys or sending chia.
+Tests decorated with `[TestCategory("CAUTION")]` update the state of whatever they are interacting with. Run these tests with caution. If run against a production node on `mainnet`, they might change things, up to and including deleting keys or sending chia out of your wallet.
 
 ### Some Notes About Types and Naming
 
-In addition to static vs dynamic typing, C# and Python have very different conventions for naming and formatting. For the most part I've tried to make this library fit into dotnet conventions.
+In addition to static vs dynamic typing, C# and Python have very different conventions for naming and formatting. For the most part I've tried to make this library fit into dotnet conventions. Please open an issue if somethign doesn't feel `dotnet-y`.
 
 - Method and property names are `ProperCased`.
 - Parameter names are `camelCased`.
