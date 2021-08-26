@@ -14,17 +14,17 @@ namespace crops
     {
         public async Task Prune(PruneOptions options)
         {
-            if (options.Uri.Scheme != "wss")
-            {
-                throw new InvalidOperationException("Only connecting via the daemon works right now");
-            }
-
             var endpoint = new EndpointInfo()
             {
                 Uri = new Uri(options.Uri),
                 CertPath = options.CertPath,
                 KeyPath = options.KeyPath
             };
+            
+            if (endpoint.Uri.Scheme != "wss")
+            {
+                throw new InvalidOperationException("Only connecting via the daemon works right now");
+            }
 
             // give ourselves 10 seconds to connect and register etc
             using var cts = new CancellationTokenSource(10000);
@@ -36,7 +36,7 @@ namespace crops
 
             var fullnode = new FullNodeProxy(rpcClient, Program.Name);
             var state = await fullnode.GetBlockchainState(cts.Token);
-            
+
             if (state.Peak is null)
             {
                 options.Message("No blockchain has been found yet. Nothing to prune", true);
@@ -48,7 +48,7 @@ namespace crops
 
             var connections = await fullnode.GetConnections(cts.Token);
             int n = 0;
-            foreach (var connection in connections.Where(c => c.Type == 1)) // only prune other full nodes, not famers, harvester,, and wallets etc
+            foreach (var connection in connections.Where(c => c.Type == 1)) // only prune other full nodes, not famers, harvesters, and wallets etc
             {
                 if (connection.PeakHeight < peak)
                 {

@@ -11,7 +11,7 @@ namespace crops
     static class Program
     {
         public const string Name = "crops";
-        
+
         private static int ReturnCode = 0;
         static int Main(string[] args)
         {
@@ -22,7 +22,7 @@ namespace crops
                   .WithParsed(Run)
                   .WithNotParsed(HandleErrors);
 
-            Console.WriteLine("Exit code {0}", ReturnCode);
+            Debug.WriteLine("Exit code {0}", ReturnCode);
             return ReturnCode;
         }
 
