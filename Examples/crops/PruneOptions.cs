@@ -8,10 +8,10 @@ namespace crops
     [Verb("prune", HelpText = "Prune stale connections - by default nodes with smaller peak heights")]
     public class PruneOptions : SharedOptions
     {
-        [Option('o', "ProneOld", HelpText = "Prune connections that havent sent data reccently instead of by height")]
+        [Option('o', "prune-old", HelpText = "Prune connections that haven't sent data reccently instead of by height")]
         public bool ProneOld { get; set; }
 
-        [Option('a', "Age", Default = 12, HelpText = "Maximum age, in hours, when useing PruneOld")]
+        [Option('a', "age", Default = 12, HelpText = "Maximum age, in hours, when using prune-old")]
         public int Age { get; set; } = 12;
 
         public override async Task<int> Run()

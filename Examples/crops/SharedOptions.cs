@@ -11,19 +11,19 @@ namespace crops
         [Option('v', "verbose", HelpText = "Set output to verbose messages.")]
         public bool Verbose { get; set; }
 
-        [Option('e', "EndpointUri", SetName = "Endpoint", HelpText = "The uri of the rpc endpoint, including the proper port and wss/https scheme prefix")]
+        [Option('e', "endpoint-uri", SetName = "Endpoint", HelpText = "The uri of the rpc endpoint, including the proper port and wss/https scheme prefix")]
         public string Uri { get; set; }
 
-        [Option('c', "CertPath", SetName = "Endpoint", HelpText = "The full path to the .crt file to use for authentication")]
+        [Option('c', "cert-path", SetName = "Endpoint", HelpText = "The full path to the .crt file to use for authentication")]
         public string CertPath { get; set; }
 
-        [Option('k', "KeyPath", SetName = "Endpoint", HelpText = "The full path to the .key file to use for authentication")]
+        [Option('k', "key-path", SetName = "Endpoint", HelpText = "The full path to the .key file to use for authentication")]
         public string KeyPath { get; set; }
 
-        [Option('p', "ConfigPath", SetName = "Config", HelpText = "The full path to a chia config yaml file")]
+        [Option('p', "config-path", SetName = "Config", HelpText = "The full path to a chia config yaml file")]
         public string ConfigPath { get; set; }
 
-        [Option('u', "UseDefaultConfig", SetName = "Config", HelpText = "Flag indicating to use the default path to the chia config file")]
+        [Option('u', "use-default-config", SetName = "Config", HelpText = "Flag indicating to use the default path to the chia config file")]
         public bool UseDefaultConfig { get; set; }
 
         public void Message(string msg, bool important = false)
