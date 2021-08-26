@@ -35,17 +35,17 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(parentCoinInfo))
             {
-                throw new ArgumentNullException($"{nameof(parentCoinInfo)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(parentCoinInfo));
             }
 
             if (string.IsNullOrEmpty(puzzleHash))
             {
-                throw new ArgumentNullException($"{nameof(puzzleHash)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(puzzleHash));
             }
 
             if (string.IsNullOrEmpty(adminPubkey))
             {
-                throw new ArgumentNullException($"{nameof(adminPubkey)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(adminPubkey));
             }
 
             dynamic origin = new ExpandoObject();

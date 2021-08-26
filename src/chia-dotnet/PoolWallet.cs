@@ -33,12 +33,12 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(targetPuzzlehash))
             {
-                throw new ArgumentNullException($"{nameof(targetPuzzlehash)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(targetPuzzlehash));
             }
 
             if (string.IsNullOrEmpty(poolUrl))
             {
-                throw new ArgumentNullException($"{nameof(poolUrl)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(poolUrl));
             }
 
             dynamic data = new ExpandoObject();

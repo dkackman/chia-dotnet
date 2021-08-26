@@ -74,7 +74,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(puzzlehash))
             {
-                throw new ArgumentNullException($"{nameof(puzzlehash)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(puzzlehash));
             }
 
             dynamic data = new ExpandoObject();
@@ -173,22 +173,22 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(filename))
             {
-                throw new ArgumentNullException($"{nameof(filename)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(filename));
             }
 
             if (string.IsNullOrEmpty(coinName))
             {
-                throw new ArgumentNullException($"{nameof(coinName)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(coinName));
             }
 
             if (string.IsNullOrEmpty(pubkey))
             {
-                throw new ArgumentNullException($"{nameof(pubkey)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(pubkey));
             }
 
             if (string.IsNullOrEmpty(puzHash))
             {
-                throw new ArgumentNullException($"{nameof(puzHash)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(puzHash));
             }
 
             dynamic data = new ExpandoObject();
@@ -240,7 +240,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(filename))
             {
-                throw new ArgumentNullException($"{nameof(filename)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(filename));
             }
 
             dynamic data = new ExpandoObject();

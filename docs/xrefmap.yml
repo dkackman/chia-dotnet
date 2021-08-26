@@ -1247,15 +1247,12 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DIDWallet.CreateAttest
   nameWithType: DIDWallet.CreateAttest
-- uid: chia.dotnet.DIDWallet.CreateBackupFile(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)
-  name: CreateBackupFile(IEnumerable<String>, CancellationToken)
-  href: api/chia.dotnet.DIDWallet.html#chia_dotnet_DIDWallet_CreateBackupFile_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.DIDWallet.CreateBackupFile(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)
-  name.vb: CreateBackupFile(IEnumerable(Of String), CancellationToken)
-  fullName: chia.dotnet.DIDWallet.CreateBackupFile(System.Collections.Generic.IEnumerable<System.String>, System.Threading.CancellationToken)
-  fullName.vb: chia.dotnet.DIDWallet.CreateBackupFile(System.Collections.Generic.IEnumerable(Of System.String), System.Threading.CancellationToken)
-  nameWithType: DIDWallet.CreateBackupFile(IEnumerable<String>, CancellationToken)
-  nameWithType.vb: DIDWallet.CreateBackupFile(IEnumerable(Of String), CancellationToken)
+- uid: chia.dotnet.DIDWallet.CreateBackupFile(System.String,System.Threading.CancellationToken)
+  name: CreateBackupFile(String, CancellationToken)
+  href: api/chia.dotnet.DIDWallet.html#chia_dotnet_DIDWallet_CreateBackupFile_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DIDWallet.CreateBackupFile(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DIDWallet.CreateBackupFile(System.String, System.Threading.CancellationToken)
+  nameWithType: DIDWallet.CreateBackupFile(String, CancellationToken)
 - uid: chia.dotnet.DIDWallet.CreateBackupFile*
   name: CreateBackupFile
   href: api/chia.dotnet.DIDWallet.html#chia_dotnet_DIDWallet_CreateBackupFile_
@@ -3010,6 +3007,48 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.Message.RequestId
   nameWithType: Message.RequestId
+- uid: chia.dotnet.NodeType
+  name: NodeType
+  href: api/chia.dotnet.NodeType.html
+  commentId: T:chia.dotnet.NodeType
+  fullName: chia.dotnet.NodeType
+  nameWithType: NodeType
+- uid: chia.dotnet.NodeType.FARMER
+  name: FARMER
+  href: api/chia.dotnet.NodeType.html#chia_dotnet_NodeType_FARMER
+  commentId: F:chia.dotnet.NodeType.FARMER
+  fullName: chia.dotnet.NodeType.FARMER
+  nameWithType: NodeType.FARMER
+- uid: chia.dotnet.NodeType.FULL_NODE
+  name: FULL_NODE
+  href: api/chia.dotnet.NodeType.html#chia_dotnet_NodeType_FULL_NODE
+  commentId: F:chia.dotnet.NodeType.FULL_NODE
+  fullName: chia.dotnet.NodeType.FULL_NODE
+  nameWithType: NodeType.FULL_NODE
+- uid: chia.dotnet.NodeType.HARVESTER
+  name: HARVESTER
+  href: api/chia.dotnet.NodeType.html#chia_dotnet_NodeType_HARVESTER
+  commentId: F:chia.dotnet.NodeType.HARVESTER
+  fullName: chia.dotnet.NodeType.HARVESTER
+  nameWithType: NodeType.HARVESTER
+- uid: chia.dotnet.NodeType.INTRODUCER
+  name: INTRODUCER
+  href: api/chia.dotnet.NodeType.html#chia_dotnet_NodeType_INTRODUCER
+  commentId: F:chia.dotnet.NodeType.INTRODUCER
+  fullName: chia.dotnet.NodeType.INTRODUCER
+  nameWithType: NodeType.INTRODUCER
+- uid: chia.dotnet.NodeType.TIMELORD
+  name: TIMELORD
+  href: api/chia.dotnet.NodeType.html#chia_dotnet_NodeType_TIMELORD
+  commentId: F:chia.dotnet.NodeType.TIMELORD
+  fullName: chia.dotnet.NodeType.TIMELORD
+  nameWithType: NodeType.TIMELORD
+- uid: chia.dotnet.NodeType.WALLET
+  name: WALLET
+  href: api/chia.dotnet.NodeType.html#chia_dotnet_NodeType_WALLET
+  commentId: F:chia.dotnet.NodeType.WALLET
+  fullName: chia.dotnet.NodeType.WALLET
+  nameWithType: NodeType.WALLET
 - uid: chia.dotnet.NPC
   name: NPC
   href: api/chia.dotnet.NPC.html
@@ -4450,15 +4489,12 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.RateLimitedWallet.SendClawbackTransaction
   nameWithType: RateLimitedWallet.SendClawbackTransaction
-- uid: chia.dotnet.RateLimitedWallet.SetUserInfo(System.UInt64,System.UInt64,System.ValueTuple{System.String,System.String,System.UInt64},System.String,System.Threading.CancellationToken)
-  name: SetUserInfo(UInt64, UInt64, (String parent_coin_info, String puzzle_hash, UInt64 amount), String, CancellationToken)
-  href: api/chia.dotnet.RateLimitedWallet.html#chia_dotnet_RateLimitedWallet_SetUserInfo_System_UInt64_System_UInt64_System_ValueTuple_System_String_System_String_System_UInt64__System_String_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.RateLimitedWallet.SetUserInfo(System.UInt64,System.UInt64,System.ValueTuple{System.String,System.String,System.UInt64},System.String,System.Threading.CancellationToken)
-  name.vb: SetUserInfo(UInt64, UInt64, (parent_coin_info As String, puzzle_hash As String, amount As UInt64)(Of String, String, UInt64), String, CancellationToken)
-  fullName: chia.dotnet.RateLimitedWallet.SetUserInfo(System.UInt64, System.UInt64, System.ValueTuple<System.String, System.String, System.UInt64>, System.String, System.Threading.CancellationToken)
-  fullName.vb: chia.dotnet.RateLimitedWallet.SetUserInfo(System.UInt64, System.UInt64, System.ValueTuple(Of System.String, System.String, System.UInt64), System.String, System.Threading.CancellationToken)
-  nameWithType: RateLimitedWallet.SetUserInfo(UInt64, UInt64, (String parent_coin_info, String puzzle_hash, UInt64 amount), String, CancellationToken)
-  nameWithType.vb: RateLimitedWallet.SetUserInfo(UInt64, UInt64, (parent_coin_info As String, puzzle_hash As String, amount As UInt64)(Of String, String, UInt64), String, CancellationToken)
+- uid: chia.dotnet.RateLimitedWallet.SetUserInfo(System.UInt64,System.UInt64,System.String,System.String,System.UInt64,System.String,System.Threading.CancellationToken)
+  name: SetUserInfo(UInt64, UInt64, String, String, UInt64, String, CancellationToken)
+  href: api/chia.dotnet.RateLimitedWallet.html#chia_dotnet_RateLimitedWallet_SetUserInfo_System_UInt64_System_UInt64_System_String_System_String_System_UInt64_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.RateLimitedWallet.SetUserInfo(System.UInt64,System.UInt64,System.String,System.String,System.UInt64,System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.RateLimitedWallet.SetUserInfo(System.UInt64, System.UInt64, System.String, System.String, System.UInt64, System.String, System.Threading.CancellationToken)
+  nameWithType: RateLimitedWallet.SetUserInfo(UInt64, UInt64, String, String, UInt64, String, CancellationToken)
 - uid: chia.dotnet.RateLimitedWallet.SetUserInfo*
   name: SetUserInfo
   href: api/chia.dotnet.RateLimitedWallet.html#chia_dotnet_RateLimitedWallet_SetUserInfo_

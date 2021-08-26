@@ -57,7 +57,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(filePath))
             {
-                throw new ArgumentNullException($"{nameof(filePath)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(filePath));
             }
 
             dynamic data = new ExpandoObject();
@@ -166,7 +166,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(transactionId))
             {
-                throw new ArgumentNullException($"{nameof(transactionId)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(transactionId));
             }
 
             dynamic data = new ExpandoObject();
@@ -185,7 +185,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(filePath))
             {
-                throw new ArgumentNullException($"{nameof(filePath)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(filePath));
             }
 
             dynamic data = new ExpandoObject();
@@ -228,7 +228,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(filePath))
             {
-                throw new ArgumentNullException($"{nameof(filePath)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(filePath));
             }
 
             dynamic data = new ExpandoObject();
@@ -313,7 +313,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(colour))
             {
-                throw new ArgumentNullException($"{nameof(colour)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(colour));
             }
 
             dynamic data = new ExpandoObject();
@@ -343,7 +343,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(colour))
             {
-                throw new ArgumentNullException($"{nameof(colour)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(colour));
             }
 
             dynamic data = new ExpandoObject();
@@ -371,7 +371,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(pubkey))
             {
-                throw new ArgumentNullException($"{nameof(pubkey)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(pubkey));
             }
 
             dynamic data = new ExpandoObject();
@@ -458,7 +458,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(filename))
             {
-                throw new ArgumentNullException($"{nameof(filename)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(filename));
             }
 
             dynamic data = new ExpandoObject();
@@ -540,7 +540,7 @@ namespace chia.dotnet
 
             if (string.IsNullOrEmpty(filename))
             {
-                throw new ArgumentNullException($"{nameof(filename)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(filename));
             }
 
             dynamic data = new ExpandoObject();
@@ -560,7 +560,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(filename))
             {
-                throw new ArgumentNullException($"{nameof(filename)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(filename));
             }
 
             dynamic data = new ExpandoObject();
@@ -583,7 +583,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(filename))
             {
-                throw new ArgumentNullException($"{nameof(filename)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(filename));
             }
 
             dynamic data = new ExpandoObject();
@@ -602,7 +602,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(tradeId))
             {
-                throw new ArgumentNullException($"{nameof(tradeId)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(tradeId));
             }
 
             dynamic data = new ExpandoObject();
@@ -632,7 +632,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(tradeId))
             {
-                throw new ArgumentNullException($"{nameof(tradeId)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(tradeId));
             }
 
             dynamic data = new ExpandoObject();

@@ -48,7 +48,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(filename))
             {
-                throw new ArgumentNullException($"{nameof(filename)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(filename));
             }
 
             dynamic data = new ExpandoObject();
@@ -79,7 +79,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(dirname))
             {
-                throw new ArgumentNullException($"{nameof(dirname)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(dirname));
             }
 
             dynamic data = new ExpandoObject();
@@ -98,7 +98,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(dirname))
             {
-                throw new ArgumentNullException($"{nameof(dirname)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(dirname));
             }
 
             dynamic data = new ExpandoObject();

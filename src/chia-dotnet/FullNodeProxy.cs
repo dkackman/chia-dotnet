@@ -43,7 +43,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(headerhash))
             {
-                throw new ArgumentNullException($"{nameof(headerhash)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(headerhash));
             }
 
             dynamic data = new ExpandoObject();
@@ -80,7 +80,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(headerhash))
             {
-                throw new ArgumentNullException($"{nameof(headerhash)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(headerhash));
             }
 
             dynamic data = new ExpandoObject();
@@ -140,7 +140,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(puzzlehash))
             {
-                throw new ArgumentNullException($"{nameof(puzzlehash)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(puzzlehash));
             }
 
             dynamic data = new ExpandoObject();
@@ -163,7 +163,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(puzzlehash))
             {
-                throw new ArgumentNullException($"{nameof(puzzlehash)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(puzzlehash));
             }
 
             dynamic data = new ExpandoObject();
@@ -210,7 +210,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(name))
             {
-                throw new ArgumentNullException($"{nameof(name)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(name));
             }
 
             dynamic data = new ExpandoObject();
@@ -230,7 +230,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(headerhash))
             {
-                throw new ArgumentNullException($"{nameof(headerhash)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(headerhash));
             }
 
             dynamic data = new ExpandoObject();
@@ -276,7 +276,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(txId))
             {
-                throw new ArgumentNullException($"{nameof(txId)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(txId));
             }
 
             dynamic data = new ExpandoObject();
@@ -296,12 +296,12 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(newerBlockHeaderhash))
             {
-                throw new ArgumentNullException($"{nameof(newerBlockHeaderhash)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(newerBlockHeaderhash));
             }
 
             if (string.IsNullOrEmpty(olderBlockHeaderhash))
             {
-                throw new ArgumentNullException($"{nameof(olderBlockHeaderhash)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(olderBlockHeaderhash));
             }
 
             dynamic data = new ExpandoObject();
@@ -357,7 +357,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(spHash))
             {
-                throw new ArgumentNullException($"{nameof(spHash)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(spHash));
             }
 
             dynamic data = new ExpandoObject();
@@ -383,7 +383,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(challengeHash))
             {
-                throw new ArgumentNullException($"{nameof(challengeHash)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(challengeHash));
             }
 
             dynamic data = new ExpandoObject();
@@ -411,7 +411,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(coinId))
             {
-                throw new ArgumentNullException($"{nameof(coinId)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(coinId));
             }
 
             dynamic data = new ExpandoObject();

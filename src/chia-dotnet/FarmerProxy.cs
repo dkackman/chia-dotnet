@@ -49,12 +49,12 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(farmerTarget))
             {
-                throw new ArgumentNullException($"{nameof(farmerTarget)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(farmerTarget));
             }
 
             if (string.IsNullOrEmpty(poolTarget))
             {
-                throw new ArgumentNullException($"{nameof(poolTarget)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(poolTarget));
             }
 
             dynamic data = new ExpandoObject();
@@ -110,7 +110,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(spHash))
             {
-                throw new ArgumentNullException($"{nameof(spHash)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(spHash));
             }
 
             dynamic data = new ExpandoObject();
@@ -141,7 +141,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(launcherID))
             {
-                throw new ArgumentNullException($"{nameof(launcherID)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(launcherID));
             }
 
             dynamic data = new ExpandoObject();
@@ -173,12 +173,12 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(launcherID))
             {
-                throw new ArgumentNullException($"{nameof(launcherID)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(launcherID));
             }
 
             if (string.IsNullOrEmpty(payoutInstructions))
             {
-                throw new ArgumentNullException($"{nameof(payoutInstructions)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(payoutInstructions));
             }
 
             dynamic data = new ExpandoObject();

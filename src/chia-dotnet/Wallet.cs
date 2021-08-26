@@ -144,7 +144,7 @@ namespace chia.dotnet
         {
             if (string.IsNullOrEmpty(address))
             {
-                throw new ArgumentNullException($"{nameof(address)} cannot be null or empty");
+                throw new ArgumentNullException(nameof(address));
             }
 
             dynamic data = new ExpandoObject();

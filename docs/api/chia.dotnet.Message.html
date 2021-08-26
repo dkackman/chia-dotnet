@@ -122,7 +122,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Message_Ack.md&amp;value=---%0Auid%3A%20chia.dotnet.Message.Ack%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L34">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L36">View Source</a>
   </span>
   <a id="chia_dotnet_Message_Ack_" data-uid="chia.dotnet.Message.Ack*"></a>
   <h4 id="chia_dotnet_Message_Ack" data-uid="chia.dotnet.Message.Ack">Ack</h4>
@@ -153,7 +153,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Message_Command.md&amp;value=---%0Auid%3A%20chia.dotnet.Message.Command%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L14">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L16">View Source</a>
   </span>
   <a id="chia_dotnet_Message_Command_" data-uid="chia.dotnet.Message.Command*"></a>
   <h4 id="chia_dotnet_Message_Command" data-uid="chia.dotnet.Message.Command">Command</h4>
@@ -184,7 +184,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Message_Data.md&amp;value=---%0Auid%3A%20chia.dotnet.Message.Data%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L19">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L21">View Source</a>
   </span>
   <a id="chia_dotnet_Message_Data_" data-uid="chia.dotnet.Message.Data*"></a>
   <h4 id="chia_dotnet_Message_Data" data-uid="chia.dotnet.Message.Data">Data</h4>
@@ -215,7 +215,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Message_Destination.md&amp;value=---%0Auid%3A%20chia.dotnet.Message.Destination%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L29">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L31">View Source</a>
   </span>
   <a id="chia_dotnet_Message_Destination_" data-uid="chia.dotnet.Message.Destination*"></a>
   <h4 id="chia_dotnet_Message_Destination" data-uid="chia.dotnet.Message.Destination">Destination</h4>
@@ -246,7 +246,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Message_IsSuccessfulResponse.md&amp;value=---%0Auid%3A%20chia.dotnet.Message.IsSuccessfulResponse%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L44">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L46">View Source</a>
   </span>
   <a id="chia_dotnet_Message_IsSuccessfulResponse_" data-uid="chia.dotnet.Message.IsSuccessfulResponse*"></a>
   <h4 id="chia_dotnet_Message_IsSuccessfulResponse" data-uid="chia.dotnet.Message.IsSuccessfulResponse">IsSuccessfulResponse</h4>
@@ -255,7 +255,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsSuccessfulResponse { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+public bool IsSuccessfulResponse { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -277,7 +278,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Message_Origin.md&amp;value=---%0Auid%3A%20chia.dotnet.Message.Origin%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L24">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L26">View Source</a>
   </span>
   <a id="chia_dotnet_Message_Origin_" data-uid="chia.dotnet.Message.Origin*"></a>
   <h4 id="chia_dotnet_Message_Origin" data-uid="chia.dotnet.Message.Origin">Origin</h4>
@@ -308,7 +309,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Message_RequestId.md&amp;value=---%0Auid%3A%20chia.dotnet.Message.RequestId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L39">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L41">View Source</a>
   </span>
   <a id="chia_dotnet_Message_RequestId_" data-uid="chia.dotnet.Message.RequestId*"></a>
   <h4 id="chia_dotnet_Message_RequestId" data-uid="chia.dotnet.Message.RequestId">RequestId</h4>
@@ -341,7 +342,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Message_Create_System_String_System_Object_System_String_System_String_.md&amp;value=---%0Auid%3A%20chia.dotnet.Message.Create(System.String%2CSystem.Object%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L55">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L58">View Source</a>
   </span>
   <a id="chia_dotnet_Message_Create_" data-uid="chia.dotnet.Message.Create*"></a>
   <h4 id="chia_dotnet_Message_Create_System_String_System_Object_System_String_System_String_" data-uid="chia.dotnet.Message.Create(System.String,System.Object,System.String,System.String)">Create(String, Object, String, String)</h4>
@@ -422,7 +423,7 @@
                     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Message.md&amp;value=---%0Auid%3A%20chia.dotnet.Message%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Message.cs/#L11" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
