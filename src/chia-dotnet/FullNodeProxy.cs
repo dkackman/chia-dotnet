@@ -130,13 +130,15 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Retrieves the coins for a given puzzlehash, by default returns unspent coins.
+        /// Retrieves the coins for a given puzzlehash
         /// </summary>
+        /// <param name="includeSpentCoins">whether to include spent coins too, instead of just unspent</param>
         /// <param name="puzzlehash">The puzzle hash</param>
-        /// <param name="includeSpendCoins">whether to include spent coins too, instead of just unspent</param>
+        /// <param name="startHeight">confirmation start height for search</param>
+        /// <param name="endHeight">confirmation end height for search</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
-        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHash(string puzzlehash, bool includeSpendCoins, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHash(string puzzlehash, bool includeSpentCoins, int? startHeight, int? endHeight, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(puzzlehash))
             {
@@ -145,46 +147,64 @@ namespace chia.dotnet
 
             dynamic data = new ExpandoObject();
             data.puzzle_hash = puzzlehash;
-            data.include_spend_coins = includeSpendCoins;
+            data.include_spent_coins = includeSpentCoins;
+
+            if (startHeight.HasValue)
+            {
+                data.start_height = startHeight.Value;
+            }
+
+            if (endHeight.HasValue)
+            {
+                data.end_height = endHeight.Value;
+            }
 
             return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_puzzle_hash", data, "coin_records", cancellationToken);
         }
 
         /// <summary>
-        /// Retrieves the coins for a given puzzlehash, by default returns unspent coins.
+        /// Retrieves the coins for given coin IDs
         /// </summary>
-        /// <param name="puzzlehash">The puzzle hash</param>
+        /// <param name="names">The coin names</param>
+        /// <param name="includeSpentCoins">Flag indicating whether to include spent coins or not</param>
         /// <param name="startHeight">confirmation start height for search</param>
         /// <param name="endHeight">confirmation end height for search</param>
-        /// <param name="includeSpendCoins">whether to include spent coins too, instead of just unspent</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
-        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHash(string puzzlehash, uint startHeight, uint endHeight, bool includeSpendCoins, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByNames(IEnumerable<string> names, bool includeSpentCoins, int? startHeight = null, int? endHeight = null, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(puzzlehash))
+            if (names is null)
             {
-                throw new ArgumentNullException(nameof(puzzlehash));
+                throw new ArgumentNullException(nameof(names));
             }
 
             dynamic data = new ExpandoObject();
-            data.puzzle_hash = puzzlehash;
-            data.start_height = startHeight;
-            data.end_height = endHeight;
-            data.include_spend_coins = includeSpendCoins;
+            data.names = names.ToList();
+            data.include_spent_coins = includeSpentCoins;
 
-            return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_puzzle_hash", data, "coin_records", cancellationToken);
+            if (startHeight.HasValue)
+            {
+                data.start_height = startHeight.Value;
+            }
+
+            if (endHeight.HasValue)
+            {
+                data.end_height = endHeight.Value;
+            }
+
+            return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_names", data, "coin_records", cancellationToken);
         }
 
         /// <summary>
         /// Retrieves the coins for a given list of puzzlehashes, by default returns unspent coins.
         /// </summary>
         /// <param name="puzzlehashes">The list of puzzle hashes</param>
+        /// <param name="includeSpentCoins">whether to include spent coins too, instead of just unspent</param>
         /// <param name="startHeight">confirmation start height for search</param>
         /// <param name="endHeight">confirmation end height for search</param>
-        /// <param name="includeSpendCoins">whether to include spent coins too, instead of just unspent</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
-        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHashes(IEnumerable<string> puzzlehashes, uint startHeight, uint endHeight, bool includeSpendCoins, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHashes(IEnumerable<string> puzzlehashes, bool includeSpentCoins, int? startHeight, int? endHeight, CancellationToken cancellationToken = default)
         {
             if (puzzlehashes is null)
             {
@@ -193,11 +213,53 @@ namespace chia.dotnet
 
             dynamic data = new ExpandoObject();
             data.puzzle_hash = puzzlehashes.ToList();
-            data.start_height = startHeight;
-            data.end_height = endHeight;
-            data.include_spend_coins = includeSpendCoins;
+            data.include_spent_coins = includeSpentCoins;
+
+            if (startHeight.HasValue)
+            {
+                data.start_height = startHeight.Value;
+            }
+
+            if (endHeight.HasValue)
+            {
+                data.end_height = endHeight.Value;
+            }
 
             return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_puzzle_hashes", data, "coin_records", cancellationToken);
+        }
+
+
+        /// <summary>
+        /// Retrieves the coins for a given list of parent ids
+        /// </summary>
+        /// <param name="parentIds">The list of parent ids hashes</param>
+        /// <param name="includeSpentCoins">whether to include spent coins too, instead of just unspent</param>
+        /// <param name="startHeight">confirmation start height for search</param>
+        /// <param name="endHeight">confirmation end height for search</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>A list of <see cref="CoinRecord"/>s</returns>
+        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByParentIds(IEnumerable<string> parentIds, bool includeSpentCoins, int? startHeight, int? endHeight, CancellationToken cancellationToken = default)
+        {
+            if (parentIds is null)
+            {
+                throw new ArgumentNullException(nameof(parentIds));
+            }
+
+            dynamic data = new ExpandoObject();
+            data.parent_ids = parentIds.ToList();
+            data.include_spent_coins = includeSpentCoins;
+
+            if (startHeight.HasValue)
+            {
+                data.start_height = startHeight.Value;
+            }
+
+            if (endHeight.HasValue)
+            {
+                data.end_height = endHeight.Value;
+            }
+
+            return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_parent_ids", data, "coin_records", cancellationToken);
         }
 
         /// <summary>
