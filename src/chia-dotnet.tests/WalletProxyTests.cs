@@ -138,6 +138,7 @@ namespace chia.dotnet.tests
 
         [TestMethod()]
         [TestCategory("CAUTION")]
+        [Ignore("CAUTION")]
         public async Task FullCircleKey()
         {
             using var cts = new CancellationTokenSource(15000);

@@ -170,7 +170,7 @@ namespace chia.dotnet.tests
 
             var state = await _theFullNode.GetBlockchainState(cts.Token);
             Assert.IsNotNull(state.Peak, "peak not retreived yet");
-            var records = await _theFullNode.GetCoinRecordsByPuzzleHash(state.Peak.FarmerPuzzleHash, true, cts.Token);
+            var records = await _theFullNode.GetCoinRecordsByPuzzleHash(state.Peak.FarmerPuzzleHash, true, null, null, cts.Token);
 
             Assert.IsNotNull(records);
         }
