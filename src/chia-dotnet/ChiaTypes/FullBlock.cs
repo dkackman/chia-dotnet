@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 
+using Newtonsoft.Json;
+
 namespace chia.dotnet
 {
     /// <summary>
@@ -49,5 +51,10 @@ namespace chia.dotnet
         /// List of block heights of previous generators referenced in this block
         /// </summary>
         public ICollection<uint> TransactionsGeneratorRefList { get; init; } = new List<uint>();
+        /// <summary>
+        /// Is this block from a transaction
+        /// </summary>
+        [JsonIgnore]
+        public bool IsTransactionBlock => TransactionsInfo is not null;
     }
 }
