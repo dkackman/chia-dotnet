@@ -9,7 +9,7 @@ namespace chia.dotnet
     /// </summary>
     public record PlotInfo
     {
-        public int FileSize { get; init; }
+        public ulong FileSize { get; init; }
         public string Filename { get; init; } = string.Empty;
         public string PlotId { get; init; } = string.Empty;
         public string? PlotPublicKey { get; init; }
