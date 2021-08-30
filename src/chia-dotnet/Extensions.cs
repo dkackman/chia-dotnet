@@ -9,6 +9,60 @@ namespace chia.dotnet
     public static class Extensions
     {
         /// <summary>
+        /// Converts an mount of mojo to the same amount in chia
+        /// </summary>
+        /// <param name="mojo">The amount of mojo</param>
+        /// <returns>The amount of chia</returns>
+        public static double ToChia(this ulong mojo)
+        {
+            return mojo / Math.Pow(10, 12);
+        }
+
+        /// <summary>
+        /// Formats a value expressed in mojo to chia
+        /// </summary>
+        /// <param name="mojo">The amount of mojo</param>
+        /// <returns>Formatted string expressed in a unit of chia</returns>
+        public static string AsChia(this ulong mojo)
+        {
+            return mojo.ToChia().ToString();
+        }
+
+        /// <summary>
+        /// Formats a value expressed in mojo to chia
+        /// </summary>
+        /// <param name="mojo">The amount of mojo</param>
+        /// <param name="provider"> An object that supplies culture-specific formatting information.</param>
+        /// <returns>Formatted string expressed in a unit of chia</returns>
+        public static string AsChia(this ulong mojo, IFormatProvider? provider)
+        {
+            return mojo.ToChia().ToString(provider);
+        }
+
+        /// <summary>
+        /// Formats a value expressed in mojo to chia
+        /// </summary>
+        /// <param name="mojo">The amount of mojo</param>
+        /// <param name="format">A numeric format string.</param>
+        /// <returns>Formatted string expressed in a unit of chia</returns>
+        public static string AsChia(this ulong mojo, string? format)
+        {
+            return mojo.ToChia().ToString(format);
+        }
+
+        /// <summary>
+        /// Formats a value expressed in mojo to chia
+        /// </summary>
+        /// <param name="mojo">The amount of mojo</param>
+        /// <param name="format">A numeric format string.</param>
+        /// <param name="provider"> An object that supplies culture-specific formatting information.</param>
+        /// <returns>Formatted string expressed in a unit of chia</returns>
+        public static string AsChia(this ulong mojo, string? format, IFormatProvider? provider)
+        {
+            return mojo.ToChia().ToString(format, provider);
+        }
+
+        /// <summary>
         /// Format a number of bytes in human readable format 
         /// </summary>
         /// <param name="byteCount">The number of bytes</param>
