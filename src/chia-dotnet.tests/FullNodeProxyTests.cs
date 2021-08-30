@@ -271,6 +271,16 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
+        public async Task GetAverageBlockTime()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            var timeSpan = await _theFullNode.GetAverageBlockTime(cts.Token);
+
+            Assert.IsNotNull(timeSpan);
+        }
+
+        [TestMethod()]
         [Ignore("not sure how to easily get coin name and solution height")]
         public async Task GetPuzzleAndSolution()
         {

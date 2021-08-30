@@ -99,5 +99,7 @@ namespace chia.dotnet
         public BigInteger Weight { get; init; }
         [JsonIgnore]
         public DateTime? DateTimestamp => Timestamp.ToDateTime();
+        [JsonIgnore]
+        public bool IsTransactionBlock => Timestamp.HasValue;
     }
 }

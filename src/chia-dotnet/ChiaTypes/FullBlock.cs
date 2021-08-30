@@ -55,6 +55,6 @@ namespace chia.dotnet
         /// Is this block from a transaction
         /// </summary>
         [JsonIgnore]
-        public bool IsTransactionBlock => TransactionsInfo is not null;
+        public bool IsTransactionBlock => RewardChainBlock.IsTransactionBlock;
     }
 }

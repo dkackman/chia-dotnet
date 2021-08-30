@@ -482,5 +482,52 @@ namespace chia.dotnet
 
             return await SendMessage<CoinSpend>("get_puzzle_and_solution", data, "coin_solution", cancellationToken);
         }
+
+        /// <summary>
+        /// Estimates the average time it is taking to process the last 500 blocks
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>The <see cref="TimeSpan"/> estimation</returns>
+        public async Task<TimeSpan> GetAverageBlockTime(CancellationToken cancellationToken = default)
+        {
+            var SECONDS_PER_BLOCK = TimeSpan.FromSeconds(24 * 3600 / 4608);
+            const int blocks_to_compare = 500;
+            try
+            {
+                var blockchain_state = await GetBlockchainState(cancellationToken);
+                var curr = blockchain_state.Peak;
+
+                if (curr is null || curr.Height < (blocks_to_compare + 100))
+                {
+                    return SECONDS_PER_BLOCK;
+                }
+
+                while (curr is not null && curr.Height > 0 && !curr.IsTransactionBlock)
+                {
+                    curr = await GetBlockRecord(curr.PrevHash, cancellationToken);
+                }
+
+                if (curr is null)
+                {
+                    return SECONDS_PER_BLOCK;
+                }
+
+                var past_curr = await GetBlockRecordByHeight(curr.Height - blocks_to_compare, cancellationToken);
+
+                while (past_curr is not null && past_curr.Height > 0 && !past_curr.IsTransactionBlock)
+                {
+                    past_curr = await GetBlockRecord(past_curr.PrevHash, cancellationToken);
+                }
+
+                return curr.Timestamp is null || past_curr is null || past_curr.Timestamp is null
+                    ? SECONDS_PER_BLOCK
+                    : TimeSpan.FromSeconds(((double)curr.Timestamp - (double)past_curr.Timestamp) / (curr.Height - past_curr.Height));
+            }
+
+            catch
+            {
+                return SECONDS_PER_BLOCK;
+            }
+        }
     }
 }
