@@ -21,6 +21,11 @@ namespace chia.dotnet
         public string PeerHost { get; init; } = string.Empty;
         public int PeerPort { get; init; }
         public int PeerServerPort { get; init; }
+        /// <summary>
+        /// Flag indiciating whether the peer connection is local to the node
+        /// </summary>
+        [JsonIgnore]
+        public bool IsLocal => PeerHost is "127.0.0.1" or "localhost" or "::1" or "0:0:0:0:0:0:0:1";
         public NodeType Type { get; init; }
         [JsonIgnore]
         public DateTime CreationDateTime => CreationTime.ToDateTime();
