@@ -43,11 +43,10 @@ namespace chia.dotnet
         {
             var fingerprints = await WalletProxy.GetPublicKeys(cancellationToken);
 
-            // not 100% sure this applies in all cases but wallets seem to come back in id order
-            // haven't figured out a different or better way to get a fingerprint from an id
-            var fingerprint = fingerprints.First();
-
-            return await WalletProxy.LogIn(fingerprint, true, cancellationToken);
+            var skipped = fingerprints.Skip((int)WalletId - 1);
+            return !skipped.Any()
+                ? throw new InvalidOperationException($"No wallet with an id of {WalletId}")
+                : await WalletProxy.LogIn(skipped.First(), true, cancellationToken);
         }
 
         /// <summary>
