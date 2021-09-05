@@ -54,7 +54,7 @@ namespace chia.dotnet
         /// </summary>      
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>The wallet balance (in units of mojos)</returns>
-        public async Task<(BigInteger ConfirmedWalletBalance, BigInteger UnconfirmedWalletBalance, BigInteger SpendableBalance, BigInteger PendingChange, BigInteger MaxSendAmount, int UnspentCoinCount, int PendingCoinRemovalCount)>
+        public async Task<(ulong ConfirmedWalletBalance, ulong UnconfirmedWalletBalance, ulong SpendableBalance, ulong PendingChange, ulong MaxSendAmount, int UnspentCoinCount, int PendingCoinRemovalCount)>
             GetBalance(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
