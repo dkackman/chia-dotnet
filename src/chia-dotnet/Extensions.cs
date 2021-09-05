@@ -68,7 +68,7 @@ namespace chia.dotnet
         /// <param name="byteCount">The number of bytes</param>
         /// <returns>A human readable string</returns>
         /// <remarks>Adapted from https://stackoverflow.com/questions/281640/how-do-i-get-a-human-readable-file-size-in-bytes-abbreviation-using-net </remarks>
-        public static string ToBytesStringl(BigInteger byteCount, string format = "N3")
+        public static string ToBytesString(this BigInteger byteCount, string format = "N3")
         {
             string[] suf = { "B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "YiB" };
             if (byteCount.IsZero)
