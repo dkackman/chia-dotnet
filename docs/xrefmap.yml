@@ -1564,24 +1564,42 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.Extensions.AsChia
   nameWithType: Extensions.AsChia
-- uid: chia.dotnet.Extensions.ToBytesString(System.Numerics.BigInteger)
-  name: ToBytesString(BigInteger)
-  href: api/chia.dotnet.Extensions.html#chia_dotnet_Extensions_ToBytesString_System_Numerics_BigInteger_
-  commentId: M:chia.dotnet.Extensions.ToBytesString(System.Numerics.BigInteger)
-  fullName: chia.dotnet.Extensions.ToBytesString(System.Numerics.BigInteger)
-  nameWithType: Extensions.ToBytesString(BigInteger)
-- uid: chia.dotnet.Extensions.ToBytesString(System.UInt32)
-  name: ToBytesString(UInt32)
-  href: api/chia.dotnet.Extensions.html#chia_dotnet_Extensions_ToBytesString_System_UInt32_
-  commentId: M:chia.dotnet.Extensions.ToBytesString(System.UInt32)
-  fullName: chia.dotnet.Extensions.ToBytesString(System.UInt32)
-  nameWithType: Extensions.ToBytesString(UInt32)
-- uid: chia.dotnet.Extensions.ToBytesString(System.UInt64)
-  name: ToBytesString(UInt64)
-  href: api/chia.dotnet.Extensions.html#chia_dotnet_Extensions_ToBytesString_System_UInt64_
-  commentId: M:chia.dotnet.Extensions.ToBytesString(System.UInt64)
-  fullName: chia.dotnet.Extensions.ToBytesString(System.UInt64)
-  nameWithType: Extensions.ToBytesString(UInt64)
+- uid: chia.dotnet.Extensions.ToBytesString(System.Double,System.String)
+  name: ToBytesString(Double, String)
+  href: api/chia.dotnet.Extensions.html#chia_dotnet_Extensions_ToBytesString_System_Double_System_String_
+  commentId: M:chia.dotnet.Extensions.ToBytesString(System.Double,System.String)
+  fullName: chia.dotnet.Extensions.ToBytesString(System.Double, System.String)
+  nameWithType: Extensions.ToBytesString(Double, String)
+- uid: chia.dotnet.Extensions.ToBytesString(System.Int32,System.String)
+  name: ToBytesString(Int32, String)
+  href: api/chia.dotnet.Extensions.html#chia_dotnet_Extensions_ToBytesString_System_Int32_System_String_
+  commentId: M:chia.dotnet.Extensions.ToBytesString(System.Int32,System.String)
+  fullName: chia.dotnet.Extensions.ToBytesString(System.Int32, System.String)
+  nameWithType: Extensions.ToBytesString(Int32, String)
+- uid: chia.dotnet.Extensions.ToBytesString(System.Int64,System.String)
+  name: ToBytesString(Int64, String)
+  href: api/chia.dotnet.Extensions.html#chia_dotnet_Extensions_ToBytesString_System_Int64_System_String_
+  commentId: M:chia.dotnet.Extensions.ToBytesString(System.Int64,System.String)
+  fullName: chia.dotnet.Extensions.ToBytesString(System.Int64, System.String)
+  nameWithType: Extensions.ToBytesString(Int64, String)
+- uid: chia.dotnet.Extensions.ToBytesString(System.Numerics.BigInteger,System.String)
+  name: ToBytesString(BigInteger, String)
+  href: api/chia.dotnet.Extensions.html#chia_dotnet_Extensions_ToBytesString_System_Numerics_BigInteger_System_String_
+  commentId: M:chia.dotnet.Extensions.ToBytesString(System.Numerics.BigInteger,System.String)
+  fullName: chia.dotnet.Extensions.ToBytesString(System.Numerics.BigInteger, System.String)
+  nameWithType: Extensions.ToBytesString(BigInteger, String)
+- uid: chia.dotnet.Extensions.ToBytesString(System.UInt32,System.String)
+  name: ToBytesString(UInt32, String)
+  href: api/chia.dotnet.Extensions.html#chia_dotnet_Extensions_ToBytesString_System_UInt32_System_String_
+  commentId: M:chia.dotnet.Extensions.ToBytesString(System.UInt32,System.String)
+  fullName: chia.dotnet.Extensions.ToBytesString(System.UInt32, System.String)
+  nameWithType: Extensions.ToBytesString(UInt32, String)
+- uid: chia.dotnet.Extensions.ToBytesString(System.UInt64,System.String)
+  name: ToBytesString(UInt64, String)
+  href: api/chia.dotnet.Extensions.html#chia_dotnet_Extensions_ToBytesString_System_UInt64_System_String_
+  commentId: M:chia.dotnet.Extensions.ToBytesString(System.UInt64,System.String)
+  fullName: chia.dotnet.Extensions.ToBytesString(System.UInt64, System.String)
+  nameWithType: Extensions.ToBytesString(UInt64, String)
 - uid: chia.dotnet.Extensions.ToBytesString*
   name: ToBytesString
   href: api/chia.dotnet.Extensions.html#chia_dotnet_Extensions_ToBytesString_

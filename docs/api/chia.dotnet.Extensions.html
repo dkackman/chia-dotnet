@@ -339,19 +339,184 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Extensions_ToBytesString_System_Numerics_BigInteger_.md&amp;value=---%0Auid%3A%20chia.dotnet.Extensions.ToBytesString(System.Numerics.BigInteger)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Extensions_ToBytesString_System_Double_System_String_.md&amp;value=---%0Auid%3A%20chia.dotnet.Extensions.ToBytesString(System.Double%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Extensions.cs/#L71">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Extensions.cs/#L145">View Source</a>
   </span>
   <a id="chia_dotnet_Extensions_ToBytesString_" data-uid="chia.dotnet.Extensions.ToBytesString*"></a>
-  <h4 id="chia_dotnet_Extensions_ToBytesString_System_Numerics_BigInteger_" data-uid="chia.dotnet.Extensions.ToBytesString(System.Numerics.BigInteger)">ToBytesString(BigInteger)</h4>
+  <h4 id="chia_dotnet_Extensions_ToBytesString_System_Double_System_String_" data-uid="chia.dotnet.Extensions.ToBytesString(System.Double,System.String)">ToBytesString(Double, String)</h4>
   <div class="markdown level1 summary"><p>Format a number of bytes in human readable format</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string ToBytesString(this BigInteger byteCount)</code></pre>
+    <pre><code class="lang-csharp hljs">public static string ToBytesString(this double byteCount, string format = &quot;N3&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td><span class="parametername">byteCount</span></td>
+        <td><p>The number of bytes</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><p>A human readable string</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Extensions_ToBytesString_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20chia.dotnet.Extensions.ToBytesString(System.Int32%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Extensions.cs/#L125">View Source</a>
+  </span>
+  <a id="chia_dotnet_Extensions_ToBytesString_" data-uid="chia.dotnet.Extensions.ToBytesString*"></a>
+  <h4 id="chia_dotnet_Extensions_ToBytesString_System_Int32_System_String_" data-uid="chia.dotnet.Extensions.ToBytesString(System.Int32,System.String)">ToBytesString(Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Format a number of bytes in human readable format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToBytesString(this int byteCount, string format = &quot;N3&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">byteCount</span></td>
+        <td><p>The number of bytes</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><p>A human readable string</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Extensions_ToBytesString_System_Int64_System_String_.md&amp;value=---%0Auid%3A%20chia.dotnet.Extensions.ToBytesString(System.Int64%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Extensions.cs/#L135">View Source</a>
+  </span>
+  <a id="chia_dotnet_Extensions_ToBytesString_" data-uid="chia.dotnet.Extensions.ToBytesString*"></a>
+  <h4 id="chia_dotnet_Extensions_ToBytesString_System_Int64_System_String_" data-uid="chia.dotnet.Extensions.ToBytesString(System.Int64,System.String)">ToBytesString(Int64, String)</h4>
+  <div class="markdown level1 summary"><p>Format a number of bytes in human readable format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToBytesString(this long byteCount, string format = &quot;N3&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int64">Int64</a></td>
+        <td><span class="parametername">byteCount</span></td>
+        <td><p>The number of bytes</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><p>A human readable string</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Extensions_ToBytesString_System_Numerics_BigInteger_System_String_.md&amp;value=---%0Auid%3A%20chia.dotnet.Extensions.ToBytesString(System.Numerics.BigInteger%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Extensions.cs/#L71">View Source</a>
+  </span>
+  <a id="chia_dotnet_Extensions_ToBytesString_" data-uid="chia.dotnet.Extensions.ToBytesString*"></a>
+  <h4 id="chia_dotnet_Extensions_ToBytesString_System_Numerics_BigInteger_System_String_" data-uid="chia.dotnet.Extensions.ToBytesString(System.Numerics.BigInteger,System.String)">ToBytesString(BigInteger, String)</h4>
+  <div class="markdown level1 summary"><p>Format a number of bytes in human readable format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToBytesString(this BigInteger byteCount, string format = &quot;N3&quot;)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -369,6 +534,11 @@
         <td><p>The number of bytes</p>
 </td>
       </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -387,24 +557,24 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="chia_dotnet_Extensions_ToBytesString_System_Numerics_BigInteger__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>byteCount will be cast to ulong</p>
+  <h5 id="chia_dotnet_Extensions_ToBytesString_System_Numerics_BigInteger_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Adapted from <a href="https://stackoverflow.com/questions/281640/how-do-i-get-a-human-readable-file-size-in-bytes-abbreviation-using-net">https://stackoverflow.com/questions/281640/how-do-i-get-a-human-readable-file-size-in-bytes-abbreviation-using-net</a></p>
 </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Extensions_ToBytesString_System_UInt32_.md&amp;value=---%0Auid%3A%20chia.dotnet.Extensions.ToBytesString(System.UInt32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Extensions_ToBytesString_System_UInt32_System_String_.md&amp;value=---%0Auid%3A%20chia.dotnet.Extensions.ToBytesString(System.UInt32%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Extensions.cs/#L81">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Extensions.cs/#L115">View Source</a>
   </span>
   <a id="chia_dotnet_Extensions_ToBytesString_" data-uid="chia.dotnet.Extensions.ToBytesString*"></a>
-  <h4 id="chia_dotnet_Extensions_ToBytesString_System_UInt32_" data-uid="chia.dotnet.Extensions.ToBytesString(System.UInt32)">ToBytesString(UInt32)</h4>
+  <h4 id="chia_dotnet_Extensions_ToBytesString_System_UInt32_System_String_" data-uid="chia.dotnet.Extensions.ToBytesString(System.UInt32,System.String)">ToBytesString(UInt32, String)</h4>
   <div class="markdown level1 summary"><p>Format a number of bytes in human readable format</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string ToBytesString(this uint byteCount)</code></pre>
+    <pre><code class="lang-csharp hljs">public static string ToBytesString(this uint byteCount, string format = &quot;N3&quot;)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -422,6 +592,11 @@
         <td><p>The number of bytes</p>
 </td>
       </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -442,19 +617,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Extensions_ToBytesString_System_UInt64_.md&amp;value=---%0Auid%3A%20chia.dotnet.Extensions.ToBytesString(System.UInt64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Extensions_ToBytesString_System_UInt64_System_String_.md&amp;value=---%0Auid%3A%20chia.dotnet.Extensions.ToBytesString(System.UInt64%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Extensions.cs/#L92">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Extensions.cs/#L96">View Source</a>
   </span>
   <a id="chia_dotnet_Extensions_ToBytesString_" data-uid="chia.dotnet.Extensions.ToBytesString*"></a>
-  <h4 id="chia_dotnet_Extensions_ToBytesString_System_UInt64_" data-uid="chia.dotnet.Extensions.ToBytesString(System.UInt64)">ToBytesString(UInt64)</h4>
+  <h4 id="chia_dotnet_Extensions_ToBytesString_System_UInt64_System_String_" data-uid="chia.dotnet.Extensions.ToBytesString(System.UInt64,System.String)">ToBytesString(UInt64, String)</h4>
   <div class="markdown level1 summary"><p>Format a number of bytes in human readable format</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string ToBytesString(this ulong byteCount)</code></pre>
+    <pre><code class="lang-csharp hljs">public static string ToBytesString(this ulong byteCount, string format = &quot;N3&quot;)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -471,6 +646,11 @@
         <td><span class="parametername">byteCount</span></td>
         <td><p>The number of bytes</p>
 </td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -490,7 +670,7 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="chia_dotnet_Extensions_ToBytesString_System_UInt64__remarks">Remarks</h5>
+  <h5 id="chia_dotnet_Extensions_ToBytesString_System_UInt64_System_String__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Adapted from <a href="https://stackoverflow.com/questions/281640/how-do-i-get-a-human-readable-file-size-in-bytes-abbreviation-using-net">https://stackoverflow.com/questions/281640/how-do-i-get-a-human-readable-file-size-in-bytes-abbreviation-using-net</a></p>
 </div>
   <span class="small pull-right mobile-hide">
