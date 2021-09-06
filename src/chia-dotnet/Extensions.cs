@@ -9,7 +9,7 @@ namespace chia.dotnet
     public static class Extensions
     {
         /// <summary>
-        /// Converts an mount of mojo to the same amount in chia, converting from ulong to double
+        /// Converts an mount of mojo to the same amount in chia, converting from <see cref="ulong"/> to <see cref="decimal"/>
         /// </summary>
         /// <param name="mojo">The amount of mojo</param>
         /// <returns>The amount of chia</returns>
@@ -19,7 +19,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Converts an mount of chia to the same amount in mojo, converting from double to ulong
+        /// Converts an mount of chia to the same amount in mojo, converting from <see cref="decimal"/> to <see cref="ulong"/>
         /// </summary>
         /// <param name="mojo">The amount of chia</param>
         /// <returns>The amount of mojo</returns>
