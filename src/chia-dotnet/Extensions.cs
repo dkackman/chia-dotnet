@@ -9,13 +9,18 @@ namespace chia.dotnet
     public static class Extensions
     {
         /// <summary>
+        /// There are 1 tillion mojo in a chia
+        /// </summary>
+        public const decimal OneTrillion = 1000000000000M;
+
+        /// <summary>
         /// Converts an amount of mojo to the same amount in chia, converting from <see cref="ulong"/> to <see cref="decimal"/>
         /// </summary>
         /// <param name="mojo">The amount of mojo</param>
         /// <returns>The amount of chia</returns>
         public static decimal ToChia(this ulong mojo)
         {
-            return mojo / Convert.ToDecimal(Math.Pow(10, 12));
+            return mojo / OneTrillion;
         }
 
         /// <summary>
@@ -25,7 +30,7 @@ namespace chia.dotnet
         /// <returns>The amount of mojo</returns>
         public static ulong ToMojo(this decimal chia)
         {
-            return Convert.ToUInt64(Math.Floor(chia * Convert.ToDecimal(Math.Pow(10, 12))));
+            return decimal.ToUInt64(Math.Floor(chia * OneTrillion));
         }
 
         /// <summary>

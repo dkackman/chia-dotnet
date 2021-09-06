@@ -1,10 +1,18 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace chia.dotnet.tests
 {
     [TestClass]
     public class ConversionTests
     {
+        [TestMethod]
+        public void OnTrillion()
+        {
+            Assert.AreEqual(Extensions.OneTrillion, Convert.ToDecimal(Math.Pow(10, 12)));
+        }
+
         [TestMethod]
         public void MojoToChiaToMojo()
         {
