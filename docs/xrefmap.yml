@@ -1620,6 +1620,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.Extensions.ToChia
   nameWithType: Extensions.ToChia
+- uid: chia.dotnet.Extensions.ToMojo(System.Decimal)
+  name: ToMojo(Decimal)
+  href: api/chia.dotnet.Extensions.html#chia_dotnet_Extensions_ToMojo_System_Decimal_
+  commentId: M:chia.dotnet.Extensions.ToMojo(System.Decimal)
+  fullName: chia.dotnet.Extensions.ToMojo(System.Decimal)
+  nameWithType: Extensions.ToMojo(Decimal)
+- uid: chia.dotnet.Extensions.ToMojo*
+  name: ToMojo
+  href: api/chia.dotnet.Extensions.html#chia_dotnet_Extensions_ToMojo_
+  commentId: Overload:chia.dotnet.Extensions.ToMojo
+  isSpec: "True"
+  fullName: chia.dotnet.Extensions.ToMojo
+  nameWithType: Extensions.ToMojo
 - uid: chia.dotnet.FarmerProxy
   name: FarmerProxy
   href: api/chia.dotnet.FarmerProxy.html
@@ -2974,6 +2987,30 @@ references:
   commentId: F:chia.dotnet.KValues.K35
   fullName: chia.dotnet.KValues.K35
   nameWithType: KValues.K35
+- uid: chia.dotnet.MempoolInclusionStatus
+  name: MempoolInclusionStatus
+  href: api/chia.dotnet.MempoolInclusionStatus.html
+  commentId: T:chia.dotnet.MempoolInclusionStatus
+  fullName: chia.dotnet.MempoolInclusionStatus
+  nameWithType: MempoolInclusionStatus
+- uid: chia.dotnet.MempoolInclusionStatus.FAILED
+  name: FAILED
+  href: api/chia.dotnet.MempoolInclusionStatus.html#chia_dotnet_MempoolInclusionStatus_FAILED
+  commentId: F:chia.dotnet.MempoolInclusionStatus.FAILED
+  fullName: chia.dotnet.MempoolInclusionStatus.FAILED
+  nameWithType: MempoolInclusionStatus.FAILED
+- uid: chia.dotnet.MempoolInclusionStatus.PENDING
+  name: PENDING
+  href: api/chia.dotnet.MempoolInclusionStatus.html#chia_dotnet_MempoolInclusionStatus_PENDING
+  commentId: F:chia.dotnet.MempoolInclusionStatus.PENDING
+  fullName: chia.dotnet.MempoolInclusionStatus.PENDING
+  nameWithType: MempoolInclusionStatus.PENDING
+- uid: chia.dotnet.MempoolInclusionStatus.SUCCESS
+  name: SUCCESS
+  href: api/chia.dotnet.MempoolInclusionStatus.html#chia_dotnet_MempoolInclusionStatus_SUCCESS
+  commentId: F:chia.dotnet.MempoolInclusionStatus.SUCCESS
+  fullName: chia.dotnet.MempoolInclusionStatus.SUCCESS
+  nameWithType: MempoolInclusionStatus.SUCCESS
 - uid: chia.dotnet.MempoolItem
   name: MempoolItem
   href: api/chia.dotnet.MempoolItem.html
@@ -5108,19 +5145,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.SendPeer.ErrorMessage
   nameWithType: SendPeer.ErrorMessage
-- uid: chia.dotnet.SendPeer.IncludedInMempool
-  name: IncludedInMempool
-  href: api/chia.dotnet.SendPeer.html#chia_dotnet_SendPeer_IncludedInMempool
-  commentId: P:chia.dotnet.SendPeer.IncludedInMempool
-  fullName: chia.dotnet.SendPeer.IncludedInMempool
-  nameWithType: SendPeer.IncludedInMempool
-- uid: chia.dotnet.SendPeer.IncludedInMempool*
-  name: IncludedInMempool
-  href: api/chia.dotnet.SendPeer.html#chia_dotnet_SendPeer_IncludedInMempool_
-  commentId: Overload:chia.dotnet.SendPeer.IncludedInMempool
+- uid: chia.dotnet.SendPeer.MempoolInclusionStatus
+  name: MempoolInclusionStatus
+  href: api/chia.dotnet.SendPeer.html#chia_dotnet_SendPeer_MempoolInclusionStatus
+  commentId: P:chia.dotnet.SendPeer.MempoolInclusionStatus
+  fullName: chia.dotnet.SendPeer.MempoolInclusionStatus
+  nameWithType: SendPeer.MempoolInclusionStatus
+- uid: chia.dotnet.SendPeer.MempoolInclusionStatus*
+  name: MempoolInclusionStatus
+  href: api/chia.dotnet.SendPeer.html#chia_dotnet_SendPeer_MempoolInclusionStatus_
+  commentId: Overload:chia.dotnet.SendPeer.MempoolInclusionStatus
   isSpec: "True"
-  fullName: chia.dotnet.SendPeer.IncludedInMempool
-  nameWithType: SendPeer.IncludedInMempool
+  fullName: chia.dotnet.SendPeer.MempoolInclusionStatus
+  nameWithType: SendPeer.MempoolInclusionStatus
 - uid: chia.dotnet.SendPeer.Peer
   name: Peer
   href: api/chia.dotnet.SendPeer.html#chia_dotnet_SendPeer_Peer
@@ -5867,6 +5904,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.TransactionRecord.FeeAmount
   nameWithType: TransactionRecord.FeeAmount
+- uid: chia.dotnet.TransactionRecord.IsInMempool
+  name: IsInMempool
+  href: api/chia.dotnet.TransactionRecord.html#chia_dotnet_TransactionRecord_IsInMempool
+  commentId: P:chia.dotnet.TransactionRecord.IsInMempool
+  fullName: chia.dotnet.TransactionRecord.IsInMempool
+  nameWithType: TransactionRecord.IsInMempool
+- uid: chia.dotnet.TransactionRecord.IsInMempool*
+  name: IsInMempool
+  href: api/chia.dotnet.TransactionRecord.html#chia_dotnet_TransactionRecord_IsInMempool_
+  commentId: Overload:chia.dotnet.TransactionRecord.IsInMempool
+  isSpec: "True"
+  fullName: chia.dotnet.TransactionRecord.IsInMempool
+  nameWithType: TransactionRecord.IsInMempool
 - uid: chia.dotnet.TransactionRecord.Name
   name: Name
   href: api/chia.dotnet.TransactionRecord.html#chia_dotnet_TransactionRecord_Name
@@ -6926,6 +6976,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.GetTransaction
   nameWithType: WalletProxy.GetTransaction
+- uid: chia.dotnet.WalletProxy.GetWalletId(System.UInt32,System.Threading.CancellationToken)
+  name: GetWalletId(UInt32, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetWalletId_System_UInt32_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.GetWalletId(System.UInt32,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.GetWalletId(System.UInt32, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.GetWalletId(UInt32, CancellationToken)
+- uid: chia.dotnet.WalletProxy.GetWalletId*
+  name: GetWalletId
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetWalletId_
+  commentId: Overload:chia.dotnet.WalletProxy.GetWalletId
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.GetWalletId
+  nameWithType: WalletProxy.GetWalletId
 - uid: chia.dotnet.WalletProxy.GetWallets(System.Threading.CancellationToken)
   name: GetWallets(CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetWallets_System_Threading_CancellationToken_
@@ -6939,6 +7002,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.GetWallets
   nameWithType: WalletProxy.GetWallets
+- uid: chia.dotnet.WalletProxy.GetWalletsEx(System.Threading.CancellationToken)
+  name: GetWalletsEx(CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetWalletsEx_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.GetWalletsEx(System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.GetWalletsEx(System.Threading.CancellationToken)
+  nameWithType: WalletProxy.GetWalletsEx(CancellationToken)
+- uid: chia.dotnet.WalletProxy.GetWalletsEx*
+  name: GetWalletsEx
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetWalletsEx_
+  commentId: Overload:chia.dotnet.WalletProxy.GetWalletsEx
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.GetWalletsEx
+  nameWithType: WalletProxy.GetWalletsEx
 - uid: chia.dotnet.WalletProxy.LogIn(System.UInt32,System.Boolean,System.Threading.CancellationToken)
   name: LogIn(UInt32, Boolean, CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_LogIn_System_UInt32_System_Boolean_System_Threading_CancellationToken_
