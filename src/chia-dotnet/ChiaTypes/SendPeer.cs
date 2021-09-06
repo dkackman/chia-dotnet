@@ -1,4 +1,4 @@
-
+﻿
 using Newtonsoft.Json;
 
 namespace chia.dotnet
@@ -12,7 +12,7 @@ namespace chia.dotnet
     public record SendPeer
     {
         public string Peer { get; init; } = string.Empty;
-        public byte IncludedInMempool { get; init; }
+        public MempoolInclusionStatus MempoolInclusionStatus { get; init; }
         public string? ErrorMessage { get; init; }
     }
 }

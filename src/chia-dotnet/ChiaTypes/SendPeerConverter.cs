@@ -18,7 +18,7 @@ namespace chia.dotnet
             return new SendPeer()
             {
                 Peer = peer ?? string.Empty,
-                IncludedInMempool = includedInMempool,
+                MempoolInclusionStatus = (MempoolInclusionStatus)includedInMempool,
                 ErrorMessage = error ?? string.Empty
             };
         }
@@ -29,7 +29,7 @@ namespace chia.dotnet
             if (value is not null)
             {
                 writer.WriteValue(value.Peer);
-                writer.WriteValue(value.IncludedInMempool);
+                writer.WriteValue((byte)value.MempoolInclusionStatus);
                 writer.WriteValue(value.ErrorMessage);
             }
             writer.WriteEndArray();

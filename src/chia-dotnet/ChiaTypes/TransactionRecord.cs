@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 using Newtonsoft.Json;
@@ -29,6 +30,12 @@ namespace chia.dotnet
         /// included it in the mempool, and what the error message (if any) was
         /// </summary>
         public ICollection<SendPeer> SentTo { get; init; } = new List<SendPeer>();
+        /// <summary>
+        /// If one of the nodes we sent it to responded with success, we set it to success
+        /// </summary>
+        /// <remarks>Note, transactions pending inclusion (pending) return false</remarks>
+        [JsonIgnore]
+        public bool IsInMempool => SentTo.Any(peer => peer.MempoolInclusionStatus == MempoolInclusionStatus.SUCCESS);
         public SpendBundle? SpendBundle { get; init; }
         public string ToAddress { get; init; } = string.Empty;
         public string ToPuzzleHash { get; init; } = string.Empty;
