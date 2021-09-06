@@ -30,7 +30,7 @@ namespace chia.dotnet
         /// <returns>The amount of mojo</returns>
         public static ulong ToMojo(this decimal chia)
         {
-            return decimal.ToUInt64(Math.Floor(chia * OneTrillion));
+            return decimal.ToUInt64(decimal.Floor(chia * OneTrillion));
         }
 
         /// <summary>
@@ -88,18 +88,18 @@ namespace chia.dotnet
             string[] suf = { "B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "YiB" };
             if (byteCount.IsZero)
             {
-                return "0 " + suf[0];
+                return $"{0.0.ToString(format)} {suf[0]}";
             }
 
             var place = Convert.ToInt32(Math.Floor(BigInteger.Log(byteCount, 1024)));
             var pow = Math.Pow(1024, place);
 
-            // since we need to do this with inegral math get the quotent and remainder
+            // since we need to do this with integral math get the quotient and remainder
             var quotient = BigInteger.DivRem(byteCount, new BigInteger(pow), out var remainder);
-            // convert the remainder to a ratio< 0 and add both back together as doubles
+            // convert the remainder to a ratio and add both back together as doubles
             var num = Math.Floor((double)quotient) + ((double)remainder / pow);
 
-            return num.ToString(format) + " " + suf[place];
+            return $"{num.ToString(format)} {suf[place]}";
         }
 
         /// <summary>
@@ -113,13 +113,13 @@ namespace chia.dotnet
             string[] suf = { "B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "YiB" };
             if (byteCount == 0)
             {
-                return "0 " + suf[0];
+                return $"{0.0.ToString(format)} {suf[0]}";
             }
 
             var place = Convert.ToInt32(Math.Floor(Math.Log(byteCount, 1024)));
             var num = Math.Round(byteCount / Math.Pow(1024, place), 1);
 
-            return num.ToString(format) + " " + suf[place];
+            return $"{num.ToString(format)} {suf[place]}";
         }
 
         /// <summary>
