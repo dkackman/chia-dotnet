@@ -9,13 +9,23 @@ namespace chia.dotnet
     public static class Extensions
     {
         /// <summary>
-        /// Converts an mount of mojo to the same amount in chia
+        /// Converts an mount of mojo to the same amount in chia, converting from ulong to double
         /// </summary>
         /// <param name="mojo">The amount of mojo</param>
         /// <returns>The amount of chia</returns>
-        public static double ToChia(this ulong mojo)
+        public static decimal ToChia(this ulong mojo)
         {
-            return mojo / Math.Pow(10, 12);
+            return mojo / Convert.ToDecimal(Math.Pow(10, 12));
+        }
+
+        /// <summary>
+        /// Converts an mount of chia to the same amount in mojo, converting from double to ulong
+        /// </summary>
+        /// <param name="mojo">The amount of chia</param>
+        /// <returns>The amount of mojo</returns>
+        public static ulong ToMojo(this decimal chia)
+        {
+            return Convert.ToUInt64(Math.Floor(chia * Convert.ToDecimal(Math.Pow(10, 12))));
         }
 
         /// <summary>
