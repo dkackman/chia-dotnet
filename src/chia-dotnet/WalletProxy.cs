@@ -72,6 +72,44 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Gets the wallet id from a given fingerprint
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>The <see cref="WalletInfo.Id"/> for the fingerprint</returns>
+        public async Task<uint> GetWalletId(uint fingerprint, CancellationToken cancellationToken = default)
+        {
+            var wallets = await GetWalletsEx(cancellationToken);
+            if (wallets.Any())
+            {
+                var walletInfo = wallets.First(info => info.Fingerprint == fingerprint);
+
+                return walletInfo.Wallet.Id;
+            }
+
+            throw new InvalidOperationException($"No wallet found with a fingerprint of {fingerprint}");
+        }
+
+        /// <summary>
+        /// Same as <see cref="GetWallets(CancellationToken)"/> but also indcludes the fingerprint for each wallet
+        /// </summary>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>A list of <see cref="WalletInfo"/>s and fingerprints</returns>
+        public async Task<IEnumerable<(WalletInfo Wallet, uint Fingerprint)>> GetWalletsEx(CancellationToken cancellationToken = default)
+        {
+            var wallets = await GetWallets(cancellationToken);
+
+            if (wallets.Any())
+            {
+                var fingerprints = await GetPublicKeys(cancellationToken);
+
+                return wallets.Zip(fingerprints);
+            }
+
+            return Enumerable.Empty<(WalletInfo Wallet, uint Fingerprint)>();
+        }
+
+        /// <summary>
         /// Get the list of wallets
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
