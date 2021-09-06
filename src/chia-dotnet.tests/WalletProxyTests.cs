@@ -196,6 +196,28 @@ namespace chia.dotnet.tests
             Assert.AreEqual(transaction1.TransactionId, transaction2.TransactionId);
         }
 
+
+        [TestMethod()]
+        public async Task GetTrade()
+        {
+            using var cts = new CancellationTokenSource(150000);
+
+            var wallet = new Wallet(1, _theWallet);
+            _ = await wallet.Login(cts.Token);
+
+            var transactions = await wallet.GetTransactions(cts.Token);
+            var transaction1 = transactions.FirstOrDefault(tx => tx.TradeId is not null);
+            if (transaction1 is null)
+            {
+                Assert.Inconclusive("This wallet has no trades");
+            }
+            else
+            {
+                var trade = await _theWallet.GetTrade(transaction1.TradeId, cts.Token);
+                Assert.IsNotNull(trade);
+            }
+        }
+
         [TestMethod()]
         [Ignore("CAUTION")]
         public async Task CreateOfferForIds()

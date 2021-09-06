@@ -29,7 +29,9 @@ namespace chia.dotnet
         /// <summary>
         /// TradeStatus, enum not streamable
         /// </summary>
-        public string Status { get; init; } = string.Empty;
+        public uint Status { get; init; }
+        [JsonIgnore]
+        public TradeStatus TradeStatus => (TradeStatus)Status;
         public ICollection<SendPeer> SentTo { get; init; } = new List<SendPeer>();
         [JsonIgnore]
         public DateTime? AcceptedAtDateTime => AcceptedAtTime.ToDateTime();
