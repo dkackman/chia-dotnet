@@ -1,4 +1,7 @@
-﻿namespace chia.dotnet
+﻿using System;
+using Newtonsoft.Json;
+
+namespace chia.dotnet
 {
     /// <summary>
     /// An entry on the plotter queue
@@ -15,5 +18,7 @@
         public string Queue { get; init; } = string.Empty;
         public KValues Size { get; init; }
         public string State { get; init; } = string.Empty;
+        [JsonIgnore]
+        public PlotState PlotState => Enum.Parse<PlotState>(State);
     }
 }
