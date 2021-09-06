@@ -1,4 +1,4 @@
-namespace chia.dotnet
+﻿namespace chia.dotnet
 {
     public record ProofOfSpace
     {
@@ -9,7 +9,7 @@ namespace chia.dotnet
         public string? PublicPoolKey { get; init; }
         public string? PoolContractPuzzleHash { get; init; }
         public string PlotPublicKey { get; init; } = string.Empty;
-        public byte Size { get; init; }
+        public KValues Size { get; init; }
         public string Proof { get; init; } = string.Empty;
     }
 }
