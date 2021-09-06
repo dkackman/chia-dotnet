@@ -16,7 +16,7 @@
     <RepositoryUrl>https://github.com/dkackman/chia-dotnet</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>chia</PackageTags>
-    <PackageReleaseNotes>0.5.2 bug fix
+    <PackageReleaseNotes>0.5.3 bug fix &amp; type refinements
 </PackageReleaseNotes>
     <PackageIcon>chia-leaf-logo-384x384.png</PackageIcon>
     <PackageIconUrl />

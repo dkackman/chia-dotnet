@@ -1564,6 +1564,12 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.Extensions.AsChia
   nameWithType: Extensions.AsChia
+- uid: chia.dotnet.Extensions.OneTrillion
+  name: OneTrillion
+  href: api/chia.dotnet.Extensions.html#chia_dotnet_Extensions_OneTrillion
+  commentId: F:chia.dotnet.Extensions.OneTrillion
+  fullName: chia.dotnet.Extensions.OneTrillion
+  nameWithType: Extensions.OneTrillion
 - uid: chia.dotnet.Extensions.ToBytesString(System.Double,System.String)
   name: ToBytesString(Double, String)
   href: api/chia.dotnet.Extensions.html#chia_dotnet_Extensions_ToBytesString_System_Double_System_String_
@@ -3486,6 +3492,36 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.PlotInfo.TimeModified
   nameWithType: PlotInfo.TimeModified
+- uid: chia.dotnet.PlotState
+  name: PlotState
+  href: api/chia.dotnet.PlotState.html
+  commentId: T:chia.dotnet.PlotState
+  fullName: chia.dotnet.PlotState
+  nameWithType: PlotState
+- uid: chia.dotnet.PlotState.FINISHED
+  name: FINISHED
+  href: api/chia.dotnet.PlotState.html#chia_dotnet_PlotState_FINISHED
+  commentId: F:chia.dotnet.PlotState.FINISHED
+  fullName: chia.dotnet.PlotState.FINISHED
+  nameWithType: PlotState.FINISHED
+- uid: chia.dotnet.PlotState.REMOVING
+  name: REMOVING
+  href: api/chia.dotnet.PlotState.html#chia_dotnet_PlotState_REMOVING
+  commentId: F:chia.dotnet.PlotState.REMOVING
+  fullName: chia.dotnet.PlotState.REMOVING
+  nameWithType: PlotState.REMOVING
+- uid: chia.dotnet.PlotState.RUNNING
+  name: RUNNING
+  href: api/chia.dotnet.PlotState.html#chia_dotnet_PlotState_RUNNING
+  commentId: F:chia.dotnet.PlotState.RUNNING
+  fullName: chia.dotnet.PlotState.RUNNING
+  nameWithType: PlotState.RUNNING
+- uid: chia.dotnet.PlotState.SUBMITTED
+  name: SUBMITTED
+  href: api/chia.dotnet.PlotState.html#chia_dotnet_PlotState_SUBMITTED
+  commentId: F:chia.dotnet.PlotState.SUBMITTED
+  fullName: chia.dotnet.PlotState.SUBMITTED
+  nameWithType: PlotState.SUBMITTED
 - uid: chia.dotnet.PlotterConfig
   name: PlotterConfig
   href: api/chia.dotnet.PlotterConfig.html
@@ -4629,6 +4665,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.QueuedPlotInfo.Parallel
   nameWithType: QueuedPlotInfo.Parallel
+- uid: chia.dotnet.QueuedPlotInfo.PlotState
+  name: PlotState
+  href: api/chia.dotnet.QueuedPlotInfo.html#chia_dotnet_QueuedPlotInfo_PlotState
+  commentId: P:chia.dotnet.QueuedPlotInfo.PlotState
+  fullName: chia.dotnet.QueuedPlotInfo.PlotState
+  nameWithType: QueuedPlotInfo.PlotState
+- uid: chia.dotnet.QueuedPlotInfo.PlotState*
+  name: PlotState
+  href: api/chia.dotnet.QueuedPlotInfo.html#chia_dotnet_QueuedPlotInfo_PlotState_
+  commentId: Overload:chia.dotnet.QueuedPlotInfo.PlotState
+  isSpec: "True"
+  fullName: chia.dotnet.QueuedPlotInfo.PlotState
+  nameWithType: QueuedPlotInfo.PlotState
 - uid: chia.dotnet.QueuedPlotInfo.Queue
   name: Queue
   href: api/chia.dotnet.QueuedPlotInfo.html#chia_dotnet_QueuedPlotInfo_Queue
@@ -5794,6 +5843,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.TradeRecord.TradeId
   nameWithType: TradeRecord.TradeId
+- uid: chia.dotnet.TradeRecord.TradeStatus
+  name: TradeStatus
+  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_TradeStatus
+  commentId: P:chia.dotnet.TradeRecord.TradeStatus
+  fullName: chia.dotnet.TradeRecord.TradeStatus
+  nameWithType: TradeRecord.TradeStatus
+- uid: chia.dotnet.TradeRecord.TradeStatus*
+  name: TradeStatus
+  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_TradeStatus_
+  commentId: Overload:chia.dotnet.TradeRecord.TradeStatus
+  isSpec: "True"
+  fullName: chia.dotnet.TradeRecord.TradeStatus
+  nameWithType: TradeRecord.TradeStatus
 - uid: chia.dotnet.TradeRecord.TxSpendBundle
   name: TxSpendBundle
   href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_TxSpendBundle
@@ -5807,6 +5869,48 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.TradeRecord.TxSpendBundle
   nameWithType: TradeRecord.TxSpendBundle
+- uid: chia.dotnet.TradeStatus
+  name: TradeStatus
+  href: api/chia.dotnet.TradeStatus.html
+  commentId: T:chia.dotnet.TradeStatus
+  fullName: chia.dotnet.TradeStatus
+  nameWithType: TradeStatus
+- uid: chia.dotnet.TradeStatus.CANCELED
+  name: CANCELED
+  href: api/chia.dotnet.TradeStatus.html#chia_dotnet_TradeStatus_CANCELED
+  commentId: F:chia.dotnet.TradeStatus.CANCELED
+  fullName: chia.dotnet.TradeStatus.CANCELED
+  nameWithType: TradeStatus.CANCELED
+- uid: chia.dotnet.TradeStatus.CONFIRMED
+  name: CONFIRMED
+  href: api/chia.dotnet.TradeStatus.html#chia_dotnet_TradeStatus_CONFIRMED
+  commentId: F:chia.dotnet.TradeStatus.CONFIRMED
+  fullName: chia.dotnet.TradeStatus.CONFIRMED
+  nameWithType: TradeStatus.CONFIRMED
+- uid: chia.dotnet.TradeStatus.FAILED
+  name: FAILED
+  href: api/chia.dotnet.TradeStatus.html#chia_dotnet_TradeStatus_FAILED
+  commentId: F:chia.dotnet.TradeStatus.FAILED
+  fullName: chia.dotnet.TradeStatus.FAILED
+  nameWithType: TradeStatus.FAILED
+- uid: chia.dotnet.TradeStatus.PENDING_ACCEPT
+  name: PENDING_ACCEPT
+  href: api/chia.dotnet.TradeStatus.html#chia_dotnet_TradeStatus_PENDING_ACCEPT
+  commentId: F:chia.dotnet.TradeStatus.PENDING_ACCEPT
+  fullName: chia.dotnet.TradeStatus.PENDING_ACCEPT
+  nameWithType: TradeStatus.PENDING_ACCEPT
+- uid: chia.dotnet.TradeStatus.PENDING_CANCEL
+  name: PENDING_CANCEL
+  href: api/chia.dotnet.TradeStatus.html#chia_dotnet_TradeStatus_PENDING_CANCEL
+  commentId: F:chia.dotnet.TradeStatus.PENDING_CANCEL
+  fullName: chia.dotnet.TradeStatus.PENDING_CANCEL
+  nameWithType: TradeStatus.PENDING_CANCEL
+- uid: chia.dotnet.TradeStatus.PENDING_CONFIRM
+  name: PENDING_CONFIRM
+  href: api/chia.dotnet.TradeStatus.html#chia_dotnet_TradeStatus_PENDING_CONFIRM
+  commentId: F:chia.dotnet.TradeStatus.PENDING_CONFIRM
+  fullName: chia.dotnet.TradeStatus.PENDING_CONFIRM
+  nameWithType: TradeStatus.PENDING_CONFIRM
 - uid: chia.dotnet.TransactionRecord
   name: TransactionRecord
   href: api/chia.dotnet.TransactionRecord.html

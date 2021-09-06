@@ -213,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.Extensions.html",
-          "hash": "+3V0YoBuA0us6crYcnFhPfcxOIAWbCsN0y9qfSd5EHM="
+          "hash": "422B3FYKMtmuntd0+KliFAbTiXbKXmppWYXPvUCpafw="
         }
       },
       "is_incremental": false,
@@ -333,7 +333,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.HarvesterProxy.html",
-          "hash": "4u4hl8Ad32MFowi9BL3iK2K7yFuRjMZuJF7FQSQHNUM="
+          "hash": "HfykgL5Ki9QdtOQUidcAHk7uaMLLMYBBc3GNgSwJX+0="
         }
       },
       "is_incremental": false,
@@ -473,6 +473,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.PlotState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.PlotState.html",
+          "hash": "a3x1OhOldKFpoQUFtHsoW+T8sEdEJnup8kfGyqookJo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/chia.dotnet.PlotterConfig.yml",
       "output": {
         ".html": {
@@ -597,7 +609,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.ProofOfSpace.html",
-          "hash": "cOQ35uiOkceGtA3o4SWH5JA5WgpM56zkKwGA3aGm4Bw="
+          "hash": "mUZLJ6LwQmITvpzqmwY90WDOoai3xbGQOWCj4L9I2k8="
         }
       },
       "is_incremental": false,
@@ -609,7 +621,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.QueuedPlotInfo.html",
-          "hash": "YqmdX6idAne9FBTrhTYYppLPb15qiS/HJel1XzOrlW0="
+          "hash": "1b6dY0ew/I5r5cb/aSFOAzqdK3jpioffPh+ZDgtHAJI="
         }
       },
       "is_incremental": false,
@@ -777,7 +789,19 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.TradeRecord.html",
-          "hash": "fO+WoZkLFLJqgUKEWqrXs/o1VWy68mHVrKd3TGxCmzU="
+          "hash": "fTLi781KJ02r1kdjJD1wCwK7+fAj4I2xSAQ6NPTgWnY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.TradeStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.TradeStatus.html",
+          "hash": "lFkiiZTkoSB9p88Ps8D0NpPPALMTxziZXnztwoL5NMo="
         }
       },
       "is_incremental": false,
@@ -921,7 +945,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.html",
-          "hash": "oHjyznP3dyqWySBpQUNqpaYsxE3YBXKlI1wYJ9G4ZYI="
+          "hash": "+v+ZkwxN//2GoKl+89MTE1Ign36/Um4UmeboW8j2WDs="
         }
       },
       "is_incremental": false,
@@ -945,7 +969,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "REEgVh8Gi1ItamP7XY4E7+TpwrbElMhdoudCZ2FG0HU="
+          "hash": "uz0WsGz1RhstWXgNV3p4xjiDQEvu10zJr1s5Hjrkr8s="
         }
       },
       "is_incremental": false,
@@ -1018,7 +1042,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 77,
+          "total_file_count": 79,
           "skipped_file_count": 71
         },
         "TocDocumentProcessor": {
