@@ -21,7 +21,7 @@ namespace chia.dotnet
         /// <summary>
         /// Converts an amount of chia to the same amount in mojo, converting from <see cref="decimal"/> to <see cref="ulong"/>
         /// </summary>
-        /// <param name="mojo">The amount of chia</param>
+        /// <param name="chia">The amount of chia</param>
         /// <returns>The amount of mojo</returns>
         public static ulong ToMojo(this decimal chia)
         {
