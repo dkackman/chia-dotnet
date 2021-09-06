@@ -28,7 +28,7 @@ _Test carefully and in one of the testnets!_
 
 #### Example app
 
-Try the [`crops` command line utility](https://github.com/dkackman/chia-dotnet/discussions/17) and [example code](https://github.com/dkackman/chia-dotnet/tree/main/Examples/crops).
+Try the [example code](https://github.com/dkackman/chia-dotnet/tree/main/Examples/crops) or take a look at [`rchia` remote chia management CLI](https://github.com/dkackman/rchia). 
 
 #### Connect to the Node and find out about the blockchain
 
