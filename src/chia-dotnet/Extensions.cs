@@ -85,21 +85,22 @@ namespace chia.dotnet
         /// <remarks>Adapted from https://stackoverflow.com/questions/281640/how-do-i-get-a-human-readable-file-size-in-bytes-abbreviation-using-net </remarks>
         public static string ToBytesString(this BigInteger byteCount, string format = "N3")
         {
-            string[] suf = { "B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "YiB" };
+            string[] suffixes = { "B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "YiB" };
             if (byteCount.IsZero)
             {
-                return $"{0.0.ToString(format)} {suf[0]}";
+                return $"{0.0.ToString(format)} {suffixes[0]}";
             }
 
-            var place = Convert.ToInt32(Math.Floor(BigInteger.Log(byteCount, 1024)));
+            var abs = BigInteger.Abs(byteCount); // in case byteCount is negative
+            var place = Convert.ToInt32(Math.Floor(BigInteger.Log(abs, 1024)));
             var pow = Math.Pow(1024, place);
 
-            // since we need to do this with integral math get the quotient and remainder
-            var quotient = BigInteger.DivRem(byteCount, new BigInteger(pow), out var remainder);
-            // convert the remainder to a ratio and add both back together as doubles
-            var num = Math.Floor((double)quotient) + ((double)remainder / pow);
+            // since we need to do this with integer math, get the quotient and remainder
+            var quotient = BigInteger.DivRem(abs, new BigInteger(pow), out var remainder);
+            // convert the remainder to a ratio and add both back together as doubles, putting the sign back
+            var num = byteCount.Sign * (Math.Floor((double)quotient) + ((double)remainder / pow));
 
-            return $"{num.ToString(format)} {suf[place]}";
+            return $"{num.ToString(format)} {suffixes[place]}";
         }
 
         /// <summary>
@@ -110,16 +111,16 @@ namespace chia.dotnet
         /// <remarks>Adapted from https://stackoverflow.com/questions/281640/how-do-i-get-a-human-readable-file-size-in-bytes-abbreviation-using-net </remarks>
         public static string ToBytesString(this ulong byteCount, string format = "N3")
         {
-            string[] suf = { "B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "YiB" };
+            string[] suffixes = { "B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "YiB" };
             if (byteCount == 0)
             {
-                return $"{0.0.ToString(format)} {suf[0]}";
+                return $"{0.0.ToString(format)} {suffixes[0]}";
             }
 
             var place = Convert.ToInt32(Math.Floor(Math.Log(byteCount, 1024)));
             var num = Math.Round(byteCount / Math.Pow(1024, place), 1);
 
-            return $"{num.ToString(format)} {suf[place]}";
+            return $"{num.ToString(format)} {suffixes[place]}";
         }
 
         /// <summary>
