@@ -7,7 +7,7 @@
     public record PoolWalletInfo
     {
         public PoolState Current { get; init; } = new();
-        public PoolState? target { get; init; }
+        public PoolState? Target { get; init; }
         public Coin LauncherCoin { get; init; } = new();
         public string LauncherId { get; init; } = string.Empty;
         public string P2SingletonPuzzleHash { get; init; } = string.Empty;
