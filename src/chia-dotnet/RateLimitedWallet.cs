@@ -21,6 +21,15 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Validtes that <see cref="Wallet.WalletId"/> is a <see cref="WalletType.RATE_LIMITED"/>
+        /// </summary>
+        /// <returns>True if the wallet if of the expected type</returns>
+        public override async Task Validate(CancellationToken cancellationToken = default)
+        {
+            await Validate(WalletType.RATE_LIMITED, cancellationToken);
+        }
+
+        /// <summary>
         /// Sets user info for the wallet
         /// </summary>
         /// <param name="interval">The limit interval</param>

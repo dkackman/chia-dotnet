@@ -22,6 +22,15 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Validtes that <see cref="Wallet.WalletId"/> is a <see cref="WalletType.POOLING_WALLET"/>
+        /// </summary>
+        /// <returns>True if the wallet if of the expected type</returns>
+        public override async Task Validate(CancellationToken cancellationToken = default)
+        {
+            await Validate(WalletType.POOLING_WALLET, cancellationToken);
+        }
+
+        /// <summary>
         /// Join the wallet to a pool
         /// </summary>
         /// <param name="targetPuzzlehash">Puzzle hash</param>

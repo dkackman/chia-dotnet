@@ -23,6 +23,15 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Validtes that <see cref="Wallet.WalletId"/> is a <see cref="WalletType.DISTRIBUTED_ID"/>
+        /// </summary>
+        /// <returns>True if the wallet if of the expected type</returns>
+        public override async Task Validate(CancellationToken cancellationToken = default)
+        {
+            await Validate(WalletType.DISTRIBUTED_ID, cancellationToken);
+        }
+
+        /// <summary>
         /// Updates recovery ID's
         /// </summary>
         /// <param name="newList">The new ids</param>

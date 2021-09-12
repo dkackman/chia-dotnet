@@ -21,6 +21,15 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Validtes that <see cref="Wallet.WalletId"/> is a <see cref="WalletType.COLOURED_COIN"/>
+        /// </summary>
+        /// <returns>True if the wallet if of the expected type</returns>
+        public override async Task Validate(CancellationToken cancellationToken = default)
+        {
+            await Validate(WalletType.COLOURED_COIN, cancellationToken);
+        }
+
+        /// <summary>
         /// Get the name of a wallet's coloured coin
         /// </summary>
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>

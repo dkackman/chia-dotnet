@@ -23,9 +23,8 @@ namespace chia.dotnet.tests
             await daemon.RegisterService(cts.Token);
 
             var walletProxy = new WalletProxy(rpcClient, "unit_tests");
-
+            _ = await walletProxy.LogIn(false, cts.Token);
             _theWallet = new Wallet(1, walletProxy);
-            _ = await _theWallet.Login(cts.Token);
         }
 
         [ClassCleanup()]
@@ -104,6 +103,17 @@ namespace chia.dotnet.tests
             var transaction = await _theWallet.SendTransaction("txch1em43zsczg2fv79jlg00ucedl9x3atvpnfa09uuk5pgd7v9039sdsashhuq", 1, 1, cts.Token);
 
             Assert.IsNotNull(transaction);
+        }
+
+
+        [TestMethod()]
+        public async Task ValidateTwo()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            var wallet = new PoolWallet(2, _theWallet.WalletProxy);
+            await wallet.Validate();
+
         }
     }
 }

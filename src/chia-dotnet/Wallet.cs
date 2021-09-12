@@ -34,18 +34,39 @@ namespace chia.dotnet
         public WalletProxy WalletProxy { get; init; }
 
         /// <summary>
-        /// Login to the wallet
+        /// Validtes that <see cref="WalletId"/> is a <see cref="WalletType.STANDARD_WALLET"/>
         /// </summary>
-        /// <remarks>Always login before interacting with the wallet. Logged in state is kept on the serve so might have changed</remarks>
-        /// <returns>The wallet fingerprint</returns>
-        public async Task<uint> Login(CancellationToken cancellationToken = default)
+        /// <returns>True if the wallet if of the expected type</returns>
+        /// <remarks>Intended to be overriden by derived classes of specific <see cref="WalletType"/></remarks>
+        public virtual async Task Validate(CancellationToken cancellationToken = default)
         {
-            var fingerprints = await WalletProxy.GetPublicKeys(cancellationToken);
+            await Validate(WalletType.STANDARD_WALLET, cancellationToken);
+        }
 
-            var skipped = fingerprints.Skip((int)WalletId - 1);
-            return !skipped.Any()
-                ? throw new InvalidOperationException($"No wallet with an id of {WalletId}")
-                : await WalletProxy.LogIn(skipped.First(), true, cancellationToken);
+        /// <summary>
+        /// Validates that <see cref="WalletId"/> exists and is of <see cref="WalletType"/>
+        /// </summary>
+        /// <param name="walletType">The expected type of wallet</param>
+        /// <returns>true if the wallet is of the expected type</returns>
+        /// <remarks>Throws n exception if the wallet does not exist</remarks>
+        protected virtual async Task Validate(WalletType walletType, CancellationToken cancellationToken)
+        {
+            var info = await GetWalletInfo(cancellationToken);
+            if (info.Type != walletType)
+            {
+                throw new InvalidOperationException($"Wallet {WalletId} if of type {info.Type} not {walletType}");
+            }
+        }
+
+        /// <summary>
+        /// Retrieves information about this wallet
+        /// </summary>
+        /// <returns><see cref="WalletInfo"/> and the wallet pubkey fingerprint</returns>
+        public async Task<WalletInfo> GetWalletInfo(CancellationToken cancellationToken = default)
+        {
+            var wallets = await WalletProxy.GetWallets(cancellationToken);
+            var info = wallets.FirstOrDefault(i => i.Id == WalletId);
+            return info is null ? throw new InvalidOperationException($"No wallet with an id of {WalletId} was found") : info;
         }
 
         /// <summary>

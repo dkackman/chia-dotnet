@@ -15,17 +15,17 @@ namespace chia.dotnet.tests
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
+            using var cts = new CancellationTokenSource(30000);
             var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
-            await rpcClient.Connect();
+            await rpcClient.Connect(cts.Token);
 
             var daemon = new DaemonProxy(rpcClient, "unit_tests");
             await daemon.RegisterService();
 
             var walletProxy = new WalletProxy(rpcClient, "unit_tests");
-
+            _ = await walletProxy.LogIn(false, cts.Token);
             // SET this wallet ID to a coloroured coin wallet 
             _theWallet = new DIDWallet(2, walletProxy);
-            _ = await _theWallet.Login();
         }
 
         [ClassCleanup()]

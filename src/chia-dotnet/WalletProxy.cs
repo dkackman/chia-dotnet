@@ -4,6 +4,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace chia.dotnet
 {
@@ -28,6 +29,25 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// The fingerprint used to login to the wallet.
+        /// </summary>
+        /// <remarks>Will be null until login is called</remarks>
+        public uint? Fingerprint { get; private set; }
+
+        /// <summary>
+        /// Sets the first key key to active.
+        /// </summary>       
+        /// <param name="skipImport">Indicator whether to skip the import at login</param>          
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>The key fingerprint</returns>
+        public async Task<uint> LogIn(bool skipImport, CancellationToken cancellationToken = default)
+        {
+            var fingerprints = await GetPublicKeys(cancellationToken);
+
+            return await LogIn(fingerprints.First(), skipImport, cancellationToken);
+        }
+
+        /// <summary>
         /// Sets a key to active.
         /// </summary>
         /// <param name="fingerprint">The fingerprint</param>          
@@ -43,7 +63,8 @@ namespace chia.dotnet
 
             var response = await SendMessage("log_in", data, cancellationToken);
 
-            return (uint)response.fingerprint;
+            Fingerprint = (uint)response.fingerprint;
+            return Fingerprint.Value;
         }
 
         /// <summary>
@@ -69,44 +90,6 @@ namespace chia.dotnet
             var response = await SendMessage("log_in", data, cancellationToken);
 
             return (uint)response.fingerprint;
-        }
-
-        /// <summary>
-        /// Gets the wallet id from a given fingerprint
-        /// </summary>
-        /// <param name="fingerprint">The fingerprint</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>The <see cref="WalletInfo.Id"/> for the fingerprint</returns>
-        public async Task<uint> GetWalletId(uint fingerprint, CancellationToken cancellationToken = default)
-        {
-            var wallets = await GetWalletsEx(cancellationToken);
-            if (wallets.Any())
-            {
-                var walletInfo = wallets.First(info => info.Fingerprint == fingerprint);
-
-                return walletInfo.Wallet.Id;
-            }
-
-            throw new InvalidOperationException($"No wallet found with a fingerprint of {fingerprint}");
-        }
-
-        /// <summary>
-        /// Same as <see cref="GetWallets(CancellationToken)"/> but also indcludes the fingerprint for each wallet
-        /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <returns>A list of <see cref="WalletInfo"/>s and fingerprints</returns>
-        public async Task<IEnumerable<(WalletInfo Wallet, uint Fingerprint)>> GetWalletsEx(CancellationToken cancellationToken = default)
-        {
-            var wallets = await GetWallets(cancellationToken);
-
-            if (wallets.Any())
-            {
-                var fingerprints = await GetPublicKeys(cancellationToken);
-
-                return wallets.Zip(fingerprints);
-            }
-
-            return Enumerable.Empty<(WalletInfo Wallet, uint Fingerprint)>();
         }
 
         /// <summary>
@@ -528,6 +511,23 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Gets basic info about a pool that is used for pool wallet creation
+        /// </summary>
+        /// <param name="poolUri">The uri of the pool (not including 'pool_info')</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns><see cref="PoolInfo"/> that can be used to create a pool wallet and join this pool</returns>
+        public static async Task<PoolInfo> GetPoolInfo(Uri poolUri, CancellationToken cancellationToken = default)
+        {
+            var infoUri = new Uri(poolUri, "pool_info");
+            using var httpClient = new HttpClient(new SocketsHttpHandler(), true);
+            var response = await httpClient.GetAsync(infoUri, cancellationToken);
+            _ = response.EnsureSuccessStatusCode();
+
+            var responseJson = await response.Content.ReadAsStringAsync(cancellationToken);
+            return responseJson.ToObject<PoolInfo>() ?? new PoolInfo();
+        }
+
+        /// <summary>
         /// Creates a new pool wallet
         /// </summary>
         /// <param name="initialTargetState">The desired intiial state of the wallet</param>
@@ -536,7 +536,7 @@ namespace chia.dotnet
         /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <returns>Information about the wallet</returns>
         public async Task<(TransactionRecord transaction, string launcherId, string p2SingletonHash)>
-            CreatePoolWallet(PoolState initialTargetState, ulong p2SingletonDelayTime, string? p2SingletonDelayedPH, CancellationToken cancellationToken = default)
+            CreatePoolWallet(PoolState initialTargetState, ulong? p2SingletonDelayTime, string? p2SingletonDelayedPH, CancellationToken cancellationToken = default)
         {
             if (initialTargetState is null)
             {
@@ -546,8 +546,14 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_type = "pool_wallet";
             data.mode = "new";
+            data.host = DefaultBackupHost;
             data.initial_target_state = initialTargetState;
-            data.p2_singleton_delay_time = p2SingletonDelayTime;
+
+            if (p2SingletonDelayTime is not null)
+            {
+                data.p2_singleton_delay_time = p2SingletonDelayTime;
+            }
+
             if (!string.IsNullOrEmpty(p2SingletonDelayedPH))
             {
                 data.p2_singleton_delayed_ph = p2SingletonDelayedPH;

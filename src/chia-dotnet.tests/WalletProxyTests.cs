@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace chia.dotnet.tests
             await daemon.RegisterService(cts.Token);
 
             _theWallet = new WalletProxy(rpcClient, "unit_tests");
+            _ = await _theWallet.LogIn(false, cts.Token);
         }
 
         [ClassCleanup()]
@@ -50,20 +52,6 @@ namespace chia.dotnet.tests
             var keys = await _theWallet.GetPublicKeys(cts.Token);
 
             Assert.IsNotNull(keys);
-        }
-
-        [TestMethod()]
-        public async Task Login()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            var fingerprints = await _theWallet.GetPublicKeys(cts.Token);
-            Assert.IsNotNull(fingerprints);
-            Assert.IsTrue(fingerprints.Count() > 0);
-
-            var fingerprint = await _theWallet.LogIn(fingerprints.First(), true, cts.Token);
-
-            Assert.IsFalse(fingerprint == 0);
         }
 
         [TestMethod()]
@@ -158,7 +146,6 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            await LoginToFirstWallet();
             var walletInfo = await _theWallet.CreateColourCoinWallet(1, 1, "dkackman.colouredwallet.1", cts.Token);
 
             Assert.IsNotNull(walletInfo);
@@ -171,7 +158,6 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            await LoginToFirstWallet();
             var backupIDs = new List<string>();
             var walletInfo = await _theWallet.CreateDIDWallet(backupIDs, 1, 1, cts.Token);
 
@@ -183,8 +169,8 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(150000);
 
+            _ = await _theWallet.LogIn(false, cts.Token);
             var wallet = new Wallet(1, _theWallet);
-            _ = await wallet.Login(cts.Token);
 
             var transactions = await wallet.GetTransactions(cts.Token);
             var transaction1 = transactions.FirstOrDefault();
@@ -196,6 +182,39 @@ namespace chia.dotnet.tests
             Assert.AreEqual(transaction1.TransactionId, transaction2.TransactionId);
         }
 
+        [TestMethod]
+        [TestCategory("Integration")]
+        public async Task LetsJoinAPool()
+        {
+            var poolUri = new Uri("https://testpool.xchpool.org");
+            using var cts1 = new CancellationTokenSource(30000);
+            var poolInfo = await WalletProxy.GetPoolInfo(poolUri, cts1.Token);
+
+            var poolState = new PoolState()
+            {
+                PoolUrl = poolUri.ToString(),
+                State = PoolSingletonState.FARMING_TO_POOL,
+                TargetPuzzleHash = poolInfo.TargetPuzzleHash.Substring(2),
+                RelativeLockHeight = poolInfo.RelativeLockHeight
+            };
+
+            using var cts = new CancellationTokenSource(300000);
+
+            var (transaction, launcherId, p2SingletonHash) = await _theWallet.CreatePoolWallet(poolState, null, null, cts.Token);
+            Console.WriteLine($"Launcher Id: {launcherId}");
+            Console.WriteLine($"Do rchia wallet get-transaction -tx 0x{transaction.Name} to get status");
+        }
+
+        [TestMethod]
+        [TestCategory("Integration")]
+        public async Task GetPoolInfo()
+        {
+            using var cts = new CancellationTokenSource(150000);
+
+            var info = await WalletProxy.GetPoolInfo(new Uri("https://na1.pool.space/"), cts.Token);
+
+            Assert.IsNotNull(info);
+        }
 
         [TestMethod()]
         public async Task GetTrade()
@@ -203,7 +222,6 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(150000);
 
             var wallet = new Wallet(1, _theWallet);
-            _ = await wallet.Login(cts.Token);
 
             var transactions = await wallet.GetTransactions(cts.Token);
             var transaction1 = transactions.FirstOrDefault(tx => tx.TradeId is not null);
@@ -250,15 +268,6 @@ namespace chia.dotnet.tests
             var amount = await _theWallet.GetFarmedAmount(cts.Token);
 
             Assert.IsNotNull(amount);
-        }
-
-        private async Task LoginToFirstWallet()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            var fingerprints = await _theWallet.GetPublicKeys();
-
-            _ = await _theWallet.LogIn(fingerprints.First(), true, cts.Token);
         }
     }
 }
