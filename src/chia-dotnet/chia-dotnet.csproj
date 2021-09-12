@@ -5,7 +5,7 @@
     <RootNamespace>chia.dotnet</RootNamespace>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.5.8</Version>
+    <Version>0.5.9</Version>
     <Authors>dkackman</Authors>
     <Company>dkackman</Company>
     <Description>A .net 5 client library for chia™ RPC interfaces that runs on linux and windows.</Description>
@@ -16,14 +16,11 @@
     <RepositoryUrl>https://github.com/dkackman/chia-dotnet</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>chia</PackageTags>
-    <PackageReleaseNotes>0.5.6 add GetPoolInfo
-  - interrface refinements
-  - validate wallet type
-  - redo login approach</PackageReleaseNotes>
+    <PackageReleaseNotes>0.5.9 .ConfigureAwait(false) everywhere</PackageReleaseNotes>
     <PackageIcon>chia-leaf-logo-384x384.png</PackageIcon>
     <PackageIconUrl />
-    <AssemblyVersion>0.5.8.0</AssemblyVersion>
-    <FileVersion>0.5.8.0</FileVersion>
+    <AssemblyVersion>0.5.9.0</AssemblyVersion>
+    <FileVersion>0.5.9.0</FileVersion>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
