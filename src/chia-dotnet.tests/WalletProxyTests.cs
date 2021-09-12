@@ -194,7 +194,7 @@ namespace chia.dotnet.tests
             {
                 PoolUrl = poolUri.ToString(),
                 State = PoolSingletonState.FARMING_TO_POOL,
-                TargetPuzzleHash = poolInfo.TargetPuzzleHash.Substring(2),
+                TargetPuzzleHash = poolInfo.TargetPuzzleHash[2..],
                 RelativeLockHeight = poolInfo.RelativeLockHeight
             };
 

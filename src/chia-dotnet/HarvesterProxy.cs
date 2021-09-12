@@ -28,7 +28,7 @@ namespace chia.dotnet
         /// <returns>A list of plots</returns>
         public async Task<(IEnumerable<string> FailedToOpenFilenames, IEnumerable<string> NotFoundFileNames, IEnumerable<PlotInfo> Plots)> GetPlots(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_plots", cancellationToken);
+            var response = await SendMessage("get_plots", cancellationToken).ConfigureAwait(false);
 
             return (
                 Converters.ToObject<IEnumerable<string>>(response.failed_to_open_filenames),
@@ -54,7 +54,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.filename = filename;
 
-            _ = await SendMessage("delete_plot", data, cancellationToken);
+            _ = await SendMessage("delete_plot", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace chia.dotnet
         /// <returns>List of directories</returns>
         public async Task<IEnumerable<string>> GetPlotDirectories(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_plot_directories", cancellationToken);
+            var response = await SendMessage("get_plot_directories", cancellationToken).ConfigureAwait(false);
 
             return Converters.ConvertList<string>(response.directories);
         }
@@ -85,7 +85,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.dirname = dirname;
 
-            _ = await SendMessage("add_plot_directory", data, cancellationToken);
+            _ = await SendMessage("add_plot_directory", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.dirname = dirname;
 
-            _ = await SendMessage("remove_plot_directory", data, cancellationToken);
+            _ = await SendMessage("remove_plot_directory", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task RefreshPlots(CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("refresh_plots", cancellationToken);
+            _ = await SendMessage("refresh_plots", cancellationToken).ConfigureAwait(false);
         }
     }
 }

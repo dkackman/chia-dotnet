@@ -30,7 +30,7 @@ namespace chia.dotnet
         /// <returns>The <see cref="BlockchainState"/></returns>
         public async Task<BlockchainState> GetBlockchainState(CancellationToken cancellationToken = default)
         {
-            return await SendMessage<BlockchainState>("get_blockchain_state", "blockchain_state", cancellationToken);
+            return await SendMessage<BlockchainState>("get_blockchain_state", "blockchain_state", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.header_hash = headerhash;
 
-            return await SendMessage<FullBlock>("get_block", data, "block", cancellationToken);
+            return await SendMessage<FullBlock>("get_block", data, "block", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace chia.dotnet
             data.end = end;
             data.exclude_header_hash = excludeHeaderhash;
 
-            return await SendMessage<IEnumerable<FullBlock>>("get_blocks", data, "blocks", cancellationToken);
+            return await SendMessage<IEnumerable<FullBlock>>("get_blocks", data, "blocks", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.header_hash = headerhash;
 
-            return await SendMessage<BlockRecord>("get_block_record", data, "block_record", cancellationToken);
+            return await SendMessage<BlockRecord>("get_block_record", data, "block_record", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.height = height;
 
-            return await SendMessage<BlockRecord>("get_block_record_by_height", data, "block_record", cancellationToken);
+            return await SendMessage<BlockRecord>("get_block_record_by_height", data, "block_record", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace chia.dotnet
             data.start = start;
             data.end = end;
 
-            return await SendMessage<IEnumerable<BlockRecord>>("get_block_records", data, "block_records", cancellationToken);
+            return await SendMessage<IEnumerable<BlockRecord>>("get_block_records", data, "block_records", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace chia.dotnet
         /// <returns>A list of <see cref="UnfinishedHeaderBlock"/>s</returns>
         public async Task<IEnumerable<UnfinishedHeaderBlock>> GetUnfinishedBlockHeaders(CancellationToken cancellationToken = default)
         {
-            return await SendMessage<IEnumerable<UnfinishedHeaderBlock>>("get_unfinished_block_headers", "headers", cancellationToken);
+            return await SendMessage<IEnumerable<UnfinishedHeaderBlock>>("get_unfinished_block_headers", "headers", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace chia.dotnet
                 data.end_height = endHeight.Value;
             }
 
-            return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_puzzle_hash", data, "coin_records", cancellationToken);
+            return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_puzzle_hash", data, "coin_records", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace chia.dotnet
                 data.end_height = endHeight.Value;
             }
 
-            return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_names", data, "coin_records", cancellationToken);
+            return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_names", data, "coin_records", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace chia.dotnet
                 data.end_height = endHeight.Value;
             }
 
-            return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_puzzle_hashes", data, "coin_records", cancellationToken);
+            return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_puzzle_hashes", data, "coin_records", cancellationToken).ConfigureAwait(false);
         }
 
 
@@ -259,7 +259,7 @@ namespace chia.dotnet
                 data.end_height = endHeight.Value;
             }
 
-            return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_parent_ids", data, "coin_records", cancellationToken);
+            return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_parent_ids", data, "coin_records", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -278,7 +278,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.name = name;
 
-            return await SendMessage<CoinRecord>("get_coin_record_by_name", data, "coin_record", cancellationToken);
+            return await SendMessage<CoinRecord>("get_coin_record_by_name", data, "coin_record", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -298,7 +298,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.header_hash = headerhash;
 
-            var response = await SendMessage("get_additions_and_removals", data, cancellationToken);
+            var response = await SendMessage("get_additions_and_removals", data, cancellationToken).ConfigureAwait(false);
 
             return (
                 Converters.ToObject<ICollection<CoinRecord>>(response.additions),
@@ -313,7 +313,7 @@ namespace chia.dotnet
         /// <returns>A dictionary of mempool items</returns>
         public async Task<IDictionary<string, MempoolItem>> GetAllMempoolItems(CancellationToken cancellationToken = default)
         {
-            return await SendMessage<IDictionary<string, MempoolItem>>("get_all_mempool_items", "mempool_items", cancellationToken);
+            return await SendMessage<IDictionary<string, MempoolItem>>("get_all_mempool_items", "mempool_items", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -323,7 +323,7 @@ namespace chia.dotnet
         /// <returns>a list of tx_ids</returns>
         public async Task<IEnumerable<string>> GetAllMemmpoolTxIds(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_all_mempool_tx_ids", cancellationToken);
+            var response = await SendMessage("get_all_mempool_tx_ids", cancellationToken).ConfigureAwait(false);
 
             return Converters.ConvertList<string>(response.tx_ids);
         }
@@ -344,7 +344,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.tx_id = txId;
 
-            return await SendMessage<MempoolItem>("get_mempool_item_by_tx_id", data, "mempool_item", cancellationToken);
+            return await SendMessage<MempoolItem>("get_mempool_item_by_tx_id", data, "mempool_item", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -370,7 +370,7 @@ namespace chia.dotnet
             data.newer_block_header_hash = newerBlockHeaderhash;
             data.older_block_header_hash = olderBlockHeaderhash;
 
-            var response = await SendMessage("get_network_space", data, cancellationToken);
+            var response = await SendMessage("get_network_space", data, cancellationToken).ConfigureAwait(false);
 
             return response.space;
         }
@@ -382,7 +382,7 @@ namespace chia.dotnet
         /// <returns>The network name and coin prefix</returns>
         public async Task<(string NetworkName, string NetworkPrefix)> GetNetworkInfo(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_network_info", cancellationToken);
+            var response = await SendMessage("get_network_info", cancellationToken).ConfigureAwait(false);
 
             return (response.network_name, response.network_prefix);
         }
@@ -404,7 +404,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.spend_bundle = spendBundle;
 
-            var response = await SendMessage("push_tx", data, cancellationToken);
+            var response = await SendMessage("push_tx", data, cancellationToken).ConfigureAwait(false);
 
             return response.status?.ToString() == "SUCCESS";
         }
@@ -425,7 +425,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.sp_hash = spHash;
 
-            var response = await SendMessage("get_recent_signage_point_or_eos", data, cancellationToken);
+            var response = await SendMessage("get_recent_signage_point_or_eos", data, cancellationToken).ConfigureAwait(false);
 
             return (
                 Converters.ToObject<SignagePoint>(response.signage_point),
@@ -451,7 +451,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.challenge_hash = challengeHash;
 
-            var response = await SendMessage("get_recent_signage_point_or_eos", data, cancellationToken);
+            var response = await SendMessage("get_recent_signage_point_or_eos", data, cancellationToken).ConfigureAwait(false);
 
             return (
                 Converters.ToObject<EndOfSubSlotBundle>(response.eos),
@@ -480,7 +480,7 @@ namespace chia.dotnet
             data.coin_id = coinId;
             data.height = height;
 
-            return await SendMessage<CoinSpend>("get_puzzle_and_solution", data, "coin_solution", cancellationToken);
+            return await SendMessage<CoinSpend>("get_puzzle_and_solution", data, "coin_solution", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -494,7 +494,7 @@ namespace chia.dotnet
             const int blocks_to_compare = 500;
             try
             {
-                var blockchain_state = await GetBlockchainState(cancellationToken);
+                var blockchain_state = await GetBlockchainState(cancellationToken).ConfigureAwait(false);
                 var curr = blockchain_state.Peak;
 
                 if (curr is null || curr.Height < (blocks_to_compare + 100))
@@ -504,7 +504,7 @@ namespace chia.dotnet
 
                 while (curr is not null && curr.Height > 0 && !curr.IsTransactionBlock)
                 {
-                    curr = await GetBlockRecord(curr.PrevHash, cancellationToken);
+                    curr = await GetBlockRecord(curr.PrevHash, cancellationToken).ConfigureAwait(false);
                 }
 
                 if (curr is null)
@@ -512,11 +512,11 @@ namespace chia.dotnet
                     return SECONDS_PER_BLOCK;
                 }
 
-                var past_curr = await GetBlockRecordByHeight(curr.Height - blocks_to_compare, cancellationToken);
+                var past_curr = await GetBlockRecordByHeight(curr.Height - blocks_to_compare, cancellationToken).ConfigureAwait(false);
 
                 while (past_curr is not null && past_curr.Height > 0 && !past_curr.IsTransactionBlock)
                 {
-                    past_curr = await GetBlockRecord(past_curr.PrevHash, cancellationToken);
+                    past_curr = await GetBlockRecord(past_curr.PrevHash, cancellationToken).ConfigureAwait(false);
                 }
 
                 return curr.Timestamp is null || past_curr is null || past_curr.Timestamp is null

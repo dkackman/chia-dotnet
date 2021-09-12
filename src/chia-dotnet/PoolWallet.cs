@@ -27,7 +27,7 @@ namespace chia.dotnet
         /// <returns>True if the wallet if of the expected type</returns>
         public override async Task Validate(CancellationToken cancellationToken = default)
         {
-            await Validate(WalletType.POOLING_WALLET, cancellationToken);
+            await Validate(WalletType.POOLING_WALLET, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace chia.dotnet
             data.pool_url = poolUrl;
             data.relative_lock_height = relativeLockHeight;
 
-            return await WalletProxy.SendMessage<TransactionRecord>("pw_join_pool", data, "transaction", cancellationToken);
+            return await WalletProxy.SendMessage<TransactionRecord>("pw_join_pool", data, "transaction", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
-            return await WalletProxy.SendMessage<TransactionRecord>("pw_self_pool", data, "transaction", cancellationToken);
+            return await WalletProxy.SendMessage<TransactionRecord>("pw_self_pool", data, "transaction", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace chia.dotnet
             data.wallet_id = WalletId;
             data.fee = fee;
 
-            var response = await WalletProxy.SendMessage("pw_absorb_rewards", cancellationToken);
+            var response = await WalletProxy.SendMessage("pw_absorb_rewards", cancellationToken).ConfigureAwait(false);
 
             return (
                 Converters.ToObject<PoolWalletInfo>(response.state),
@@ -104,7 +104,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
-            var response = await WalletProxy.SendMessage("pw_status", data, cancellationToken);
+            var response = await WalletProxy.SendMessage("pw_status", data, cancellationToken).ConfigureAwait(false);
 
             return (
                 Converters.ToObject<PoolWalletInfo>(response.state),

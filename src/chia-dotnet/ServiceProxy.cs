@@ -59,7 +59,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task Ping(CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("ping", cancellationToken);
+            _ = await SendMessage("ping", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task StopNode(CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("stop_node", cancellationToken);
+            _ = await SendMessage("stop_node", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace chia.dotnet
         /// <returns>A list of <see cref="ConnectionInfo"/>s</returns>
         public async Task<IEnumerable<ConnectionInfo>> GetConnections(CancellationToken cancellationToken = default)
         {
-            return await SendMessage<IEnumerable<ConnectionInfo>>("get_connections", "connections", cancellationToken);
+            return await SendMessage<IEnumerable<ConnectionInfo>>("get_connections", "connections", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace chia.dotnet
             data.host = host;
             data.port = port;
 
-            _ = await SendMessage("open_connection", data, cancellationToken);
+            _ = await SendMessage("open_connection", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.node_id = nodeId;
 
-            _ = await SendMessage("close_connection", data, cancellationToken);
+            _ = await SendMessage("close_connection", data, cancellationToken).ConfigureAwait(false);
         }
 
         //
@@ -132,7 +132,7 @@ namespace chia.dotnet
 
             try
             {
-                return await RpcClient.SendMessage(message, cancellationToken);
+                return await RpcClient.SendMessage(message, cancellationToken).ConfigureAwait(false);
             }
             catch (ResponseException)
             {
@@ -150,7 +150,7 @@ namespace chia.dotnet
 
         internal async Task<dynamic> SendMessage(string command, CancellationToken cancellationToken = default)
         {
-            return await SendMessage(command, null, cancellationToken);
+            return await SendMessage(command, null, cancellationToken).ConfigureAwait(false);
         }
 
         //
@@ -158,7 +158,7 @@ namespace chia.dotnet
         //
         internal async Task<T> SendMessage<T>(string command, string? childItem = null, CancellationToken cancellationToken = default)
         {
-            return await SendMessage<T>(command, null, childItem, cancellationToken);
+            return await SendMessage<T>(command, null, childItem, cancellationToken).ConfigureAwait(false);
         }
 
         //
@@ -166,7 +166,7 @@ namespace chia.dotnet
         //
         internal async Task<T> SendMessage<T>(string command, dynamic? data, string? childItem = null, CancellationToken cancellationToken = default)
         {
-            var d = await SendMessage(command, data, cancellationToken);
+            var d = await SendMessage(command, data, cancellationToken).ConfigureAwait(false);
 
             return Converters.ToObject<T>(d, childItem);
         }

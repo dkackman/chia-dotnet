@@ -40,7 +40,7 @@ namespace chia.dotnet
         /// <remarks>Intended to be overriden by derived classes of specific <see cref="WalletType"/></remarks>
         public virtual async Task Validate(CancellationToken cancellationToken = default)
         {
-            await Validate(WalletType.STANDARD_WALLET, cancellationToken);
+            await Validate(WalletType.STANDARD_WALLET, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace chia.dotnet
         /// <remarks>Throws n exception if the wallet does not exist</remarks>
         protected virtual async Task Validate(WalletType walletType, CancellationToken cancellationToken)
         {
-            var info = await GetWalletInfo(cancellationToken);
+            var info = await GetWalletInfo(cancellationToken).ConfigureAwait(false);
             if (info.Type != walletType)
             {
                 throw new InvalidOperationException($"Wallet {WalletId} if of type {info.Type} not {walletType}");
@@ -64,7 +64,7 @@ namespace chia.dotnet
         /// <returns><see cref="WalletInfo"/> and the wallet pubkey fingerprint</returns>
         public async Task<WalletInfo> GetWalletInfo(CancellationToken cancellationToken = default)
         {
-            var wallets = await WalletProxy.GetWallets(cancellationToken);
+            var wallets = await WalletProxy.GetWallets(cancellationToken).ConfigureAwait(false);
             var info = wallets.FirstOrDefault(i => i.Id == WalletId);
             return info is null ? throw new InvalidOperationException($"No wallet with an id of {WalletId} was found") : info;
         }
@@ -80,7 +80,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
-            var response = await WalletProxy.SendMessage("get_wallet_balance", data, cancellationToken);
+            var response = await WalletProxy.SendMessage("get_wallet_balance", data, cancellationToken).ConfigureAwait(false);
 
             return (
                 response.wallet_balance.confirmed_wallet_balance,
@@ -103,7 +103,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
-            return await WalletProxy.SendMessage<IEnumerable<TransactionRecord>>("get_transactions", data, "transactions", cancellationToken);
+            return await WalletProxy.SendMessage<IEnumerable<TransactionRecord>>("get_transactions", data, "transactions", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace chia.dotnet
             data.wallet_id = WalletId;
             data.new_address = newAddress;
 
-            var response = await WalletProxy.SendMessage("get_next_address", data, cancellationToken);
+            var response = await WalletProxy.SendMessage("get_next_address", data, cancellationToken).ConfigureAwait(false);
 
             return response.address;
         }
@@ -133,7 +133,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
-            var response = await WalletProxy.SendMessage("get_transaction_count", data, cancellationToken);
+            var response = await WalletProxy.SendMessage("get_transaction_count", data, cancellationToken).ConfigureAwait(false);
 
             return response.count;
         }
@@ -148,7 +148,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
-            _ = await WalletProxy.SendMessage("delete_unconfirmed_transactions", data, cancellationToken);
+            _ = await WalletProxy.SendMessage("delete_unconfirmed_transactions", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace chia.dotnet
             data.amount = amount;
             data.fee = fee;
 
-            return await WalletProxy.SendMessage<TransactionRecord>("send_transaction", data, "transaction", cancellationToken);
+            return await WalletProxy.SendMessage<TransactionRecord>("send_transaction", data, "transaction", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace chia.dotnet
                 data.coins = coins.ToList();
             }
 
-            return await WalletProxy.SendMessage<TransactionRecord>("send_transaction_multi", data, "transaction", cancellationToken);
+            return await WalletProxy.SendMessage<TransactionRecord>("send_transaction_multi", data, "transaction", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace chia.dotnet
         /// <returns>The <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, ulong fee, CancellationToken cancellationToken = default)
         {
-            return await SendTransactionMulti(additions, null, fee, cancellationToken);
+            return await SendTransactionMulti(additions, null, fee, cancellationToken).ConfigureAwait(false);
         }
     }
 }

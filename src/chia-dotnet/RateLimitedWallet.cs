@@ -26,7 +26,7 @@ namespace chia.dotnet
         /// <returns>True if the wallet if of the expected type</returns>
         public override async Task Validate(CancellationToken cancellationToken = default)
         {
-            await Validate(WalletType.RATE_LIMITED, cancellationToken);
+            await Validate(WalletType.RATE_LIMITED, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace chia.dotnet
             data.origin = origin;
             data.admin_pubkey = adminPubkey;
 
-            _ = await WalletProxy.SendMessage("rl_set_user_info", data, cancellationToken);
+            _ = await WalletProxy.SendMessage("rl_set_user_info", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace chia.dotnet
             data.wallet_id = WalletId;
             data.fee = fee;
 
-            return await WalletProxy.SendMessage<TransactionRecord>("send_clawback_transaction", data, "transaction", cancellationToken);
+            return await WalletProxy.SendMessage<TransactionRecord>("send_clawback_transaction", data, "transaction", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace chia.dotnet
             data.amount = amount;
             data.fee = fee;
 
-            _ = await WalletProxy.SendMessage("add_rate_limited_funds", data, cancellationToken);
+            _ = await WalletProxy.SendMessage("add_rate_limited_funds", data, cancellationToken).ConfigureAwait(false);
         }
     }
 }

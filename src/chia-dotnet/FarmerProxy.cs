@@ -33,7 +33,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.search_for_private_key = searchForPrivateKey;
 
-            var response = await SendMessage("get_reward_targets", data, cancellationToken);
+            var response = await SendMessage("get_reward_targets", data, cancellationToken).ConfigureAwait(false);
 
             return (response.farmer_target, response.pool_target);
         }
@@ -61,7 +61,7 @@ namespace chia.dotnet
             data.farmer_target = farmerTarget;
             data.pool_target = poolTarget;
 
-            _ = await SendMessage("set_reward_targets", data, cancellationToken);
+            _ = await SendMessage("set_reward_targets", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace chia.dotnet
         /// <returns>List of signage points</returns>
         public async Task<IEnumerable<(IEnumerable<(string SpHash, ProofOfSpace ProofOfSpace)> Proofs, FarmerSignagePoint SignagePoint)>> GetSignagePoints(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_signage_points", cancellationToken);
+            var response = await SendMessage("get_signage_points", cancellationToken).ConfigureAwait(false);
 
             // proofs are List[Tuple[str, ProofOfSpace]]
             var list = new List<(IEnumerable<(string SpHash, ProofOfSpace ProofOfSpace)> Proofs, FarmerSignagePoint SignagePoint)>();
@@ -116,7 +116,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.sp_hash = spHash;
 
-            var response = await SendMessage("get_signage_point", data, cancellationToken);
+            var response = await SendMessage("get_signage_point", data, cancellationToken).ConfigureAwait(false);
 
             return ConvertSignagePoint(response);
         }
@@ -128,7 +128,7 @@ namespace chia.dotnet
         /// <returns>A list of harvesters</returns>
         public async Task<IEnumerable<HarvesterInfo>> GetHarvesters(CancellationToken cancellationToken = default)
         {
-            return await SendMessage<IEnumerable<HarvesterInfo>>("get_harvesters", "harvesters", cancellationToken);
+            return await SendMessage<IEnumerable<HarvesterInfo>>("get_harvesters", "harvesters", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.launcher_id = launcherID;
 
-            var response = await SendMessage("get_pool_login_link", data, cancellationToken);
+            var response = await SendMessage("get_pool_login_link", data, cancellationToken).ConfigureAwait(false);
 
             return response.login_link;
         }
@@ -159,7 +159,7 @@ namespace chia.dotnet
         /// <returns>A list of pool states</returns>
         public async Task<IEnumerable<PoolStateInfo>> GetPoolState(CancellationToken cancellationToken = default)
         {
-            return await SendMessage<IEnumerable<PoolStateInfo>>("get_pool_state", "pool_state", cancellationToken);
+            return await SendMessage<IEnumerable<PoolStateInfo>>("get_pool_state", "pool_state", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace chia.dotnet
             data.launcher_id = launcherID;
             data.payout_instructions = payoutInstructions;
 
-            _ = await SendMessage("set_payout_instructions", data, cancellationToken);
+            _ = await SendMessage("set_payout_instructions", data, cancellationToken).ConfigureAwait(false);
         }
     }
 }

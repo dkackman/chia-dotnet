@@ -26,7 +26,7 @@ namespace chia.dotnet
         /// <returns>True if the wallet if of the expected type</returns>
         public override async Task Validate(CancellationToken cancellationToken = default)
         {
-            await Validate(WalletType.COLOURED_COIN, cancellationToken);
+            await Validate(WalletType.COLOURED_COIN, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
-            var response = await WalletProxy.SendMessage("cc_get_name", data, cancellationToken);
+            var response = await WalletProxy.SendMessage("cc_get_name", data, cancellationToken).ConfigureAwait(false);
 
             return response.name.ToString();
         }
@@ -61,7 +61,7 @@ namespace chia.dotnet
             data.wallet_id = WalletId;
             data.name = name;
 
-            _ = await WalletProxy.SendMessage("cc_set_name", data, cancellationToken);
+            _ = await WalletProxy.SendMessage("cc_set_name", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
-            var response = await WalletProxy.SendMessage("cc_get_colour", data, cancellationToken);
+            var response = await WalletProxy.SendMessage("cc_get_colour", data, cancellationToken).ConfigureAwait(false);
 
             return response.colour;
         }
@@ -100,7 +100,7 @@ namespace chia.dotnet
             data.amount = amount;
             data.fee = fee;
 
-            return await WalletProxy.SendMessage<TransactionRecord>("cc_spend", data, "transaction", cancellationToken);
+            return await WalletProxy.SendMessage<TransactionRecord>("cc_spend", data, "transaction", cancellationToken).ConfigureAwait(false);
         }
     }
 }

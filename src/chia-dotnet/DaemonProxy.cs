@@ -30,7 +30,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task Exit(CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("exit", cancellationToken);
+            _ = await SendMessage("exit", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace chia.dotnet
         /// <returns>A boolean value indicating whether the service is running</returns>
         public async Task<bool> IsServiceRunning(string service, CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("is_running", CreateDataObject(service), cancellationToken);
+            var response = await SendMessage("is_running", CreateDataObject(service), cancellationToken).ConfigureAwait(false);
 
             return response.is_running;
         }
@@ -54,7 +54,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task RegisterService(CancellationToken cancellationToken = default)
         {
-            await RegisterService(OriginService, cancellationToken);
+            await RegisterService(OriginService, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task RegisterService(string service, CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("register_service", CreateDataObject(service), cancellationToken);
+            _ = await SendMessage("register_service", CreateDataObject(service), cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task StartService(string service, CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("start_service", CreateDataObject(service), cancellationToken);
+            _ = await SendMessage("start_service", CreateDataObject(service), cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task StopService(string service, CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("stop_service", CreateDataObject(service), cancellationToken);
+            _ = await SendMessage("stop_service", CreateDataObject(service), cancellationToken).ConfigureAwait(false);
         }
 
         private static object CreateDataObject(string service)

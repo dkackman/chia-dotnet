@@ -59,7 +59,7 @@ namespace chia.dotnet
 
             _webSocket.Options.ClientCertificates = CertLoader.GetCerts(Endpoint.CertPath, Endpoint.KeyPath);
 
-            await _webSocket.ConnectAsync(Endpoint.Uri, cancellationToken);
+            await _webSocket.ConnectAsync(Endpoint.Uri, cancellationToken).ConfigureAwait(false);
             _ = Task.Factory.StartNew(ReceiveLoop, _receiveCancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
             OnConnected();
         }
@@ -85,7 +85,7 @@ namespace chia.dotnet
             }
 
             _receiveCancellationTokenSource.Cancel();
-            await _webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "bye", cancellationToken);
+            await _webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "bye", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace chia.dotnet
             }
 
             var json = message.ToJson();
-            await _webSocket.SendAsync(Encoding.UTF8.GetBytes(json), WebSocketMessageType.Text, true, cancellationToken);
+            await _webSocket.SendAsync(Encoding.UTF8.GetBytes(json), WebSocketMessageType.Text, true, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace chia.dotnet
 
             try
             {
-                await PostMessage(message, cancellationToken);
+                await PostMessage(message, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception e)
             {
@@ -142,7 +142,7 @@ namespace chia.dotnet
             Message response;
             while (!_pendingResponses.TryRemove(message.RequestId, out response!) && !cancellationToken.IsCancellationRequested)
             {
-                await Task.Delay(10, cancellationToken);
+                await Task.Delay(10, cancellationToken).ConfigureAwait(false);
             }
 
             // the receive loop cleans up but make sure we do so on cancellation too
@@ -188,7 +188,7 @@ namespace chia.dotnet
                 WebSocketReceiveResult result;
                 do
                 {
-                    result = await _webSocket.ReceiveAsync(buffer, _receiveCancellationTokenSource.Token);
+                    result = await _webSocket.ReceiveAsync(buffer, _receiveCancellationTokenSource.Token).ConfigureAwait(false);
 #pragma warning disable CS8604 // Possible null reference argument.
                     ms.Write(buffer.Array, buffer.Offset, result.Count);
 #pragma warning restore CS8604 // Possible null reference argument.
@@ -201,7 +201,7 @@ namespace chia.dotnet
 
                 _ = ms.Seek(0, SeekOrigin.Begin);
                 using var reader = new StreamReader(ms, Encoding.UTF8);
-                var response = await reader.ReadToEndAsync();
+                var response = await reader.ReadToEndAsync().ConfigureAwait(false);
                 var message = response.ToObject<Message>() ?? new Message();
 
                 // if we have a message pending with this id, capture the response and remove the request from the pending dictionary                
