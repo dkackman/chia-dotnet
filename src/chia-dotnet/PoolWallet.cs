@@ -86,7 +86,7 @@ namespace chia.dotnet
             data.wallet_id = WalletId;
             data.fee = fee;
 
-            var response = await WalletProxy.SendMessage("pw_absorb_rewards", cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("pw_absorb_rewards", data, cancellationToken).ConfigureAwait(false);
 
             return (
                 Converters.ToObject<PoolWalletInfo>(response.state),
