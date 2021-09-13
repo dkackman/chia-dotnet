@@ -518,9 +518,8 @@ namespace chia.dotnet
         /// <returns><see cref="PoolInfo"/> that can be used to create a pool wallet and join this pool</returns>
         public static async Task<PoolInfo> GetPoolInfo(Uri poolUri, CancellationToken cancellationToken = default)
         {
-            var infoUri = new Uri(poolUri, "pool_info");
             using var httpClient = new HttpClient(new SocketsHttpHandler(), true);
-            var response = await httpClient.GetAsync(infoUri, cancellationToken).ConfigureAwait(false);
+            var response = await httpClient.GetAsync(new Uri(poolUri, "pool_info"), cancellationToken).ConfigureAwait(false);
             _ = response.EnsureSuccessStatusCode();
 
             var responseJson = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);

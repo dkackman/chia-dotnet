@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 using Newtonsoft.Json;
@@ -11,8 +11,8 @@ namespace chia.dotnet
     /// </summary>
     public record PoolStateInfo
     {
-        public int AuthenticationTokenTimeout { get; init; }
-        public ulong CurrentDifficulty { get; init; }
+        public int? AuthenticationTokenTimeout { get; init; }
+        public ulong? CurrentDifficulty { get; init; }
         public ulong CurrentPoints { get; init; }
         public double NextFarmerUpdate { get; init; }
         public double NextPoolInfoUpdate { get; init; }

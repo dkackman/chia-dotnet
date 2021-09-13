@@ -69,7 +69,7 @@ namespace chia.dotnet.tests
 
             foreach (var sp in signagePoints)
             {
-                if (sp.Proofs.Count() > 0)
+                if (sp.Proofs.Any())
                 {
                     System.Diagnostics.Debug.WriteLine("here");
                 }
@@ -101,7 +101,7 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetPoolState()
         {
-            using var cts = new CancellationTokenSource(15000);
+            using var cts = new CancellationTokenSource(150000);
 
             var state = await _theFarmer.GetPoolState(cts.Token);
 

@@ -234,7 +234,7 @@ namespace chia.dotnet.tests
 
             var ids = await _theFullNode.GetAllMemmpoolTxIds(cts.Token);
             Assert.IsNotNull(ids);
-            Assert.IsTrue(ids.Count() > 0);
+            Assert.IsTrue(ids.Any());
 
             var item = await _theFullNode.GetMemmpooItemByTxId(ids.First(), cts.Token);
 
