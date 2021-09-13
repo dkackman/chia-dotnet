@@ -1,0 +1,7 @@
+{"dependency_type":"metadata","from_file_path":"C:\\Users\\dkack\\src\\github\\dkackman\\chia-dotnet\\src\\docfx\\api\\index.md","to_file_path":"C:\\Users\\dkack\\src\\github\\dkackman\\chia-dotnet\\src\\docfx\\api\\toc.yml"}
+{"dependency_type":"metadata","from_file_path":"C:\\Users\\dkack\\src\\github\\dkackman\\chia-dotnet\\src\\docfx\\articles\\intro.md","to_file_path":"C:\\Users\\dkack\\src\\github\\dkackman\\chia-dotnet\\src\\docfx\\articles\\toc.yml"}
+{"dependency_type":"file","from_file_path":"C:\\Users\\dkack\\src\\github\\dkackman\\chia-dotnet\\src\\docfx\\articles\\toc.yml","to_file_path":"C:\\Users\\dkack\\src\\github\\dkackman\\chia-dotnet\\src\\docfx\\articles\\intro.md"}
+{"dependency_type":"metadata","from_file_path":"C:\\Users\\dkack\\src\\github\\dkackman\\chia-dotnet\\src\\docfx\\index.md","to_file_path":"C:\\Users\\dkack\\src\\github\\dkackman\\chia-dotnet\\src\\docfx\\toc.yml"}
+{"dependency_type":"include","from_file_path":"C:\\Users\\dkack\\src\\github\\dkackman\\chia-dotnet\\src\\docfx\\toc.yml","to_file_path":"C:\\Users\\dkack\\src\\github\\dkackman\\chia-dotnet\\src\\docfx\\api\\toc.yml"}
+{"dependency_type":"file","from_file_path":"C:\\Users\\dkack\\src\\github\\dkackman\\chia-dotnet\\src\\docfx\\toc.yml","to_file_path":"C:\\Users\\dkack\\src\\github\\dkackman\\chia-dotnet\\src\\docfx\\articles\\intro.md"}
+{"dependency_type":"include","from_file_path":"C:\\Users\\dkack\\src\\github\\dkackman\\chia-dotnet\\src\\docfx\\toc.yml","to_file_path":"C:\\Users\\dkack\\src\\github\\dkackman\\chia-dotnet\\src\\docfx\\articles\\toc.yml"}
