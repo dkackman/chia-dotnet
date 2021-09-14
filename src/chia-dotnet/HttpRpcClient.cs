@@ -83,9 +83,13 @@ namespace chia.dotnet
 
             using var content = new StringContent(json, Encoding.UTF8, "application/json");
             using var response = await _httpClient.PostAsync(message.Command, content, cancellationToken).ConfigureAwait(false);
-            _ = response.EnsureSuccessStatusCode();
 
-            var responseJson = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+            var responseJson = await response
+                .EnsureSuccessStatusCode()
+                .Content
+                .ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+
             var responseData = responseJson.ToObject<dynamic>();
 
             return responseData?.success == false ? throw new ResponseException(message, responseData?.error?.ToString()) : responseData ?? new ExpandoObject();

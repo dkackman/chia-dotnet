@@ -44,7 +44,9 @@ namespace chia.dotnet
         {
             var fingerprints = await GetPublicKeys(cancellationToken).ConfigureAwait(false);
 
-            return await LogIn(fingerprints.First(), skipImport, cancellationToken).ConfigureAwait(false);
+            return fingerprints.Any()
+                ? await LogIn(fingerprints.First(), skipImport, cancellationToken).ConfigureAwait(false)
+                : throw new InvalidOperationException("There are no public keys present'");
         }
 
         /// <summary>
@@ -520,9 +522,12 @@ namespace chia.dotnet
         {
             using var httpClient = new HttpClient(new SocketsHttpHandler(), true);
             var response = await httpClient.GetAsync(new Uri(poolUri, "pool_info"), cancellationToken).ConfigureAwait(false);
-            _ = response.EnsureSuccessStatusCode();
 
-            var responseJson = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+            var responseJson = await response
+                .EnsureSuccessStatusCode()
+                .Content
+                .ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             return responseJson.ToObject<PoolInfo>() ?? new PoolInfo();
         }
 
