@@ -103,6 +103,24 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_id = WalletId;
 
+            var count = await GetTransactionCount(cancellationToken).ConfigureAwait(false);
+            return await GetTransactions(0, count, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get the list of transactions
+        /// </summary>
+        /// <param name="start">the start index of transactions (zero based)</param>
+        /// <param name="end">The end index of transactions (max of <see cref="GetTransactionCount(CancellationToken)"/></param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>A list of <see cref="TransactionRecord"/>s</returns>
+        public async Task<IEnumerable<TransactionRecord>> GetTransactions(uint start, uint end, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_id = WalletId;
+            data.start = start;
+            data.end = end;
+
             return await WalletProxy.SendMessage<IEnumerable<TransactionRecord>>("get_transactions", data, "transactions", cancellationToken).ConfigureAwait(false);
         }
 

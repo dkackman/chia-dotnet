@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -47,10 +48,36 @@ namespace chia.dotnet.tests
         public async Task GetTransactions()
         {
             using var cts = new CancellationTokenSource(15000);
+            var count = await _theWallet.GetTransactionCount(cts.Token);
+            if (count == 0)
+            {
+                Assert.Inconclusive("no transactions");
+            }
+            else
+            {
+                var transactions = await _theWallet.GetTransactions(cts.Token);
 
-            var transactions = await _theWallet.GetTransactions(cts.Token);
+                Assert.AreEqual((int)count, transactions.Count());
+            }
+        }
 
-            Assert.IsNotNull(transactions);
+        [TestMethod()]
+        public async Task GetLimitedNumberOfTransactions()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            var count = await _theWallet.GetTransactionCount(cts.Token);
+            if (count == 0)
+            {
+                Assert.Inconclusive("no transactions");
+            }
+            else
+            {
+                var transactions = await _theWallet.GetTransactions(2, 4, cts.Token);
+
+                Assert.IsNotNull(transactions);
+                Assert.AreEqual(transactions.Count(), 2);
+            }
         }
 
         [TestMethod()]

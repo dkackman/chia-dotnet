@@ -202,7 +202,7 @@ namespace chia.dotnet.tests
 
             var (transaction, launcherId, p2SingletonHash) = await _theWallet.CreatePoolWallet(poolState, null, null, cts.Token);
             Console.WriteLine($"Launcher Id: {launcherId}");
-            Console.WriteLine($"Do rchia wallet get-transaction -tx 0x{transaction.Name} to get status");
+            Console.WriteLine($"Do rchia wallet get-transaction -tx {transaction.Name} to get status");
         }
 
         [TestMethod]
