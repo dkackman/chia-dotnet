@@ -6729,6 +6729,12 @@ references:
   commentId: M:chia.dotnet.Wallet.GetTransactions(System.Threading.CancellationToken)
   fullName: chia.dotnet.Wallet.GetTransactions(System.Threading.CancellationToken)
   nameWithType: Wallet.GetTransactions(CancellationToken)
+- uid: chia.dotnet.Wallet.GetTransactions(System.UInt32,System.UInt32,System.Threading.CancellationToken)
+  name: GetTransactions(UInt32, UInt32, CancellationToken)
+  href: api/chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetTransactions_System_UInt32_System_UInt32_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.Wallet.GetTransactions(System.UInt32,System.UInt32,System.Threading.CancellationToken)
+  fullName: chia.dotnet.Wallet.GetTransactions(System.UInt32, System.UInt32, System.Threading.CancellationToken)
+  nameWithType: Wallet.GetTransactions(UInt32, UInt32, CancellationToken)
 - uid: chia.dotnet.Wallet.GetTransactions*
   name: GetTransactions
   href: api/chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetTransactions_

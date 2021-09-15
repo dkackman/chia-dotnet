@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Wallet
    ">
-    <meta name="generator" content="docfx 2.58.0.0">
+    <meta name="generator" content="docfx 2.58.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -228,7 +228,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Wallet_DeleteUnconfirmedTransactions_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.Wallet.DeleteUnconfirmedTransactions(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Wallet.cs/#L146">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Wallet.cs/#L164">View Source</a>
   </span>
   <a id="chia_dotnet_Wallet_DeleteUnconfirmedTransactions_" data-uid="chia.dotnet.Wallet.DeleteUnconfirmedTransactions*"></a>
   <h4 id="chia_dotnet_Wallet_DeleteUnconfirmedTransactions_System_Threading_CancellationToken_" data-uid="chia.dotnet.Wallet.DeleteUnconfirmedTransactions(System.Threading.CancellationToken)">DeleteUnconfirmedTransactions(CancellationToken)</h4>
@@ -328,7 +328,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Wallet_GetNextAddress_System_Boolean_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.Wallet.GetNextAddress(System.Boolean%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Wallet.cs/#L115">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Wallet.cs/#L133">View Source</a>
   </span>
   <a id="chia_dotnet_Wallet_GetNextAddress_" data-uid="chia.dotnet.Wallet.GetNextAddress*"></a>
   <h4 id="chia_dotnet_Wallet_GetNextAddress_System_Boolean_System_Threading_CancellationToken_" data-uid="chia.dotnet.Wallet.GetNextAddress(System.Boolean,System.Threading.CancellationToken)">GetNextAddress(Boolean, CancellationToken)</h4>
@@ -384,7 +384,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Wallet_GetTransactionCount_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.Wallet.GetTransactionCount(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Wallet.cs/#L131">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Wallet.cs/#L149">View Source</a>
   </span>
   <a id="chia_dotnet_Wallet_GetTransactionCount_" data-uid="chia.dotnet.Wallet.GetTransactionCount*"></a>
   <h4 id="chia_dotnet_Wallet_GetTransactionCount_System_Threading_CancellationToken_" data-uid="chia.dotnet.Wallet.GetTransactionCount(System.Threading.CancellationToken)">GetTransactionCount(CancellationToken)</h4>
@@ -481,6 +481,68 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Wallet_GetTransactions_System_UInt32_System_UInt32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.Wallet.GetTransactions(System.UInt32%2CSystem.UInt32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Wallet.cs/#L117">View Source</a>
+  </span>
+  <a id="chia_dotnet_Wallet_GetTransactions_" data-uid="chia.dotnet.Wallet.GetTransactions*"></a>
+  <h4 id="chia_dotnet_Wallet_GetTransactions_System_UInt32_System_UInt32_System_Threading_CancellationToken_" data-uid="chia.dotnet.Wallet.GetTransactions(System.UInt32,System.UInt32,System.Threading.CancellationToken)">GetTransactions(UInt32, UInt32, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Get the list of transactions</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;TransactionRecord&gt;&gt; GetTransactions(uint start, uint end, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint32">UInt32</a></td>
+        <td><span class="parametername">start</span></td>
+        <td><p>the start index of transactions (zero based)</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint32">UInt32</a></td>
+        <td><span class="parametername">end</span></td>
+        <td><p>The end index of transactions (max of <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetTransactionCount_System_Threading_CancellationToken_">GetTransactionCount(CancellationToken)</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt;&gt;</td>
+        <td><p>A list of <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>s</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Wallet_GetWalletInfo_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.Wallet.GetWalletInfo(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -533,7 +595,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Wallet_SendTransaction_System_String_System_UInt64_System_UInt64_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.Wallet.SendTransaction(System.String%2CSystem.UInt64%2CSystem.UInt64%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Wallet.cs/#L162">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Wallet.cs/#L180">View Source</a>
   </span>
   <a id="chia_dotnet_Wallet_SendTransaction_" data-uid="chia.dotnet.Wallet.SendTransaction*"></a>
   <h4 id="chia_dotnet_Wallet_SendTransaction_System_String_System_UInt64_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.Wallet.SendTransaction(System.String,System.UInt64,System.UInt64,System.Threading.CancellationToken)">SendTransaction(String, UInt64, UInt64, CancellationToken)</h4>
@@ -601,7 +663,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_UInt64_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable%7Bchia.dotnet.Coin%7D%2CSystem.Collections.Generic.IEnumerable%7Bchia.dotnet.Coin%7D%2CSystem.UInt64%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Wallet.cs/#L186">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Wallet.cs/#L204">View Source</a>
   </span>
   <a id="chia_dotnet_Wallet_SendTransactionMulti_" data-uid="chia.dotnet.Wallet.SendTransactionMulti*"></a>
   <h4 id="chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.UInt64,System.Threading.CancellationToken)">SendTransactionMulti(IEnumerable&lt;Coin&gt;, IEnumerable&lt;Coin&gt;, UInt64, CancellationToken)</h4>
@@ -669,7 +731,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_UInt64_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable%7Bchia.dotnet.Coin%7D%2CSystem.UInt64%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Wallet.cs/#L212">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/Wallet.cs/#L230">View Source</a>
   </span>
   <a id="chia_dotnet_Wallet_SendTransactionMulti_" data-uid="chia.dotnet.Wallet.SendTransactionMulti*"></a>
   <h4 id="chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.UInt64,System.Threading.CancellationToken)">SendTransactionMulti(IEnumerable&lt;Coin&gt;, UInt64, CancellationToken)</h4>
