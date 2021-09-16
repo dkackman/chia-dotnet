@@ -168,7 +168,7 @@
           "hash": "5QDILkW3Nda5nGvTeE72oTgwFKYBcmlTictosdSAfSU="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -228,7 +228,7 @@
           "hash": "YbxGPtBVUkYV3LyzQ4ffCMqCVSd/K1SIKjrrMOfyON8="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -300,7 +300,7 @@
           "hash": "2WRD9NLk0vLhYMf21XEaKjkG48rXXlFjDWm0khpkIPw="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -336,7 +336,7 @@
           "hash": "tIFe+zrKDaGy7LOpvmoZwyuqqfF94b3x6Ttz4+JBfg8="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -504,7 +504,7 @@
           "hash": "NS7QyEhtxZ0z79e8V0Idmq90DeuK7RPE5BKh/+w8MLI="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -513,10 +513,10 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.PoolInfo.html",
-          "hash": "vQ0GXK52S2ce2w+XgmCQ7syUNeXNYndPqDHrB3lp74o="
+          "hash": "7RIXF/Mcw7EWt4MJsWqB8YMTndvTdvHI5tClmuWuOdM="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -540,7 +540,7 @@
           "hash": "rvSGbCIY8tzWvG/1/kzfqVp5vXcV9khv2enoJJkGYbQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -549,7 +549,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.PoolState.html",
-          "hash": "fkzgoTNCmdjPygKsiqgiyXhA61l8JJ5PAsrBZJqHGvU="
+          "hash": "Gd+CUINLQYHPx8FA2MrueHPUyX8aa6HwpKRdmaicP7w="
         }
       },
       "is_incremental": false,
@@ -564,7 +564,7 @@
           "hash": "cJWE23noAYYSF6M2ZOxE8S4c42OF1fiJquibeBkO+Qg="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -612,7 +612,7 @@
           "hash": "dfagD+0dhUjHE5EsSigBgL8AqqSWIq90v8umkADOvz0="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -732,7 +732,7 @@
           "hash": "7KuM5o1uTuOVlB/P+SzYHWhipqzukHP1dpnSG5PfHwM="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {

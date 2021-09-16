@@ -9,7 +9,9 @@
     /// </summary>
     public record PoolState
     {
-        public byte Version { get; init; }
+        private string? poolUrl;
+
+        public byte Version { get; init; } = PoolInfo.POOL_PROTOCOL_VERSION;
         /// <summary>
         ///  PoolSingletonState
         /// </summary>
@@ -24,7 +26,10 @@
         /// owner_pubkey is set by the wallet, once
         /// </summary>
         public string OwnerPubkey { get; init; } = string.Empty;
-        public string? PoolUrl { get; init; }
+
+        // the blockchain doesn't like it when the trailing slash is encoded into the nft (won't be able to decode and find wallet info)
+        public string? PoolUrl { get => poolUrl is not null ? poolUrl.TrimEnd('/') : null; init => poolUrl = value; }
+
         public uint RelativeLockHeight { get; init; }
     }
 }

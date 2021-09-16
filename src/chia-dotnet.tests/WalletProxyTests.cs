@@ -198,7 +198,7 @@ namespace chia.dotnet.tests
                 RelativeLockHeight = poolInfo.RelativeLockHeight
             };
 
-            using var cts = new CancellationTokenSource(300000);
+            using var cts = new CancellationTokenSource(30000);
 
             var (transaction, launcherId, p2SingletonHash) = await _theWallet.CreatePoolWallet(poolState, null, null, cts.Token);
             Console.WriteLine($"Launcher Id: {launcherId}");
@@ -209,9 +209,9 @@ namespace chia.dotnet.tests
         [TestCategory("Integration")]
         public async Task GetPoolInfo()
         {
-            using var cts = new CancellationTokenSource(150000);
+            using var cts = new CancellationTokenSource(15000);
 
-            var info = await WalletProxy.GetPoolInfo(new Uri("https://na1.pool.space/"), cts.Token);
+            var info = await WalletProxy.GetPoolInfo(new Uri("https://testpool.xchpool.org"), cts.Token);
 
             Assert.IsNotNull(info);
         }
@@ -219,7 +219,7 @@ namespace chia.dotnet.tests
         [TestMethod()]
         public async Task GetTrade()
         {
-            using var cts = new CancellationTokenSource(150000);
+            using var cts = new CancellationTokenSource(15000);
 
             var wallet = new Wallet(1, _theWallet);
 

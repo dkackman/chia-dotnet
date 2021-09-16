@@ -8,7 +8,7 @@ namespace chia.dotnet.tests
     internal static class Factory
     {
         // this is the ip address of the chia node
-        private const string NodeHostAddress = "172.22.214.192";
+        private const string NodeHostAddress = "172.25.175.129";
 
         public static HttpRpcClient CreateDirectRpcClientFromHardcodedLocation(int port)
         {

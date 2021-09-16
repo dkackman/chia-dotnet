@@ -3959,6 +3959,12 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.PoolInfo.Name
   nameWithType: PoolInfo.Name
+- uid: chia.dotnet.PoolInfo.POOL_PROTOCOL_VERSION
+  name: POOL_PROTOCOL_VERSION
+  href: api/chia.dotnet.PoolInfo.html#chia_dotnet_PoolInfo_POOL_PROTOCOL_VERSION
+  commentId: F:chia.dotnet.PoolInfo.POOL_PROTOCOL_VERSION
+  fullName: chia.dotnet.PoolInfo.POOL_PROTOCOL_VERSION
+  nameWithType: PoolInfo.POOL_PROTOCOL_VERSION
 - uid: chia.dotnet.PoolInfo.ProtocolVersion
   name: ProtocolVersion
   href: api/chia.dotnet.PoolInfo.html#chia_dotnet_PoolInfo_ProtocolVersion
