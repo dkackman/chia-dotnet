@@ -41,6 +41,18 @@ namespace chia.dotnet.tests
             Assert.IsTrue(running);
         }
 
+
+        [TestMethod]
+        public async Task CreateFullNodeFrom()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            await _theDaemon.RegisterService(cts.Token);
+            var fullNode = _theDaemon.CreateProxyFrom<FullNodeProxy>();
+            var state = await fullNode.GetBlockchainState(cts.Token);
+            Assert.IsNotNull(state);
+        }
+
         [TestMethod]
         public async Task GetHarvesterIsRunning()
         {

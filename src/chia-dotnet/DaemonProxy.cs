@@ -23,6 +23,22 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Create a new derived <see cref="ServiceProxy"/> instance sharing this daemon's <see cref="ServiceProxy.RpcClient"/>
+        /// </summary>
+        /// <typeparam name="T">The type of <see cref="ServiceProxy"/> to create</typeparam>
+        /// <returns>The <see cref="ServiceProxy"/></returns>
+        /// <remarks>This only works for daemons because they can forward messages to other services through their <see cref="WebSocketRpcClient"/></remarks>
+        public T CreateProxyFrom<T>() where T : ServiceProxy
+        {
+            var constructor = typeof(T).GetConstructor(new Type[] { typeof(IRpcClient), typeof(string) });
+            return constructor is null
+                ? throw new InvalidOperationException($"Cannot create a {typeof(T).Name}")
+                : constructor.Invoke(new object[] { RpcClient, OriginService }) is not T proxy
+                ? throw new InvalidOperationException($"Cannot create a {typeof(T).Name}")
+                : proxy;
+        }
+
+        /// <summary>
         /// Tells the daemon at the RPC endpoint to exit.
         /// </summary>
         /// <remarks>There isn't a way to start the daemon remotely via RPC, so take care that you have access to the RPC host if needed</remarks>
