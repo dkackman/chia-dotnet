@@ -63,7 +63,7 @@ namespace chia.dotnet
         {
             if (epoch.HasValue)
             {
-                var start = new DateTime(1970, 1, 1, 0, 0, 0, 0); //from start epoch time
+                var start = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc); //from start epoch time
                 return start.AddSeconds(epoch.Value); //add the seconds to the start DateTime
             }
             return null;
@@ -71,13 +71,13 @@ namespace chia.dotnet
 
         public static DateTime ToDateTime(this ulong epoch)
         {
-            var start = new DateTime(1970, 1, 1, 0, 0, 0, 0); //from start epoch time
+            var start = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc); //from start epoch time
             return start.AddSeconds(epoch); //add the seconds to the start DateTime
         }
 
         public static DateTime ToDateTime(this double epoch)
         {
-            var start = new DateTime(1970, 1, 1, 0, 0, 0, 0); //from start epoch time
+            var start = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc); //from start epoch time
             return start.AddSeconds(epoch); //add the seconds to the start DateTime
         }
 
