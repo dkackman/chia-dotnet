@@ -184,10 +184,62 @@ as controlling the <a class="xref" href="chia.dotnet.PlotterProxy.html">PlotterP
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DaemonProxy_Exit_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DaemonProxy.Exit(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DaemonProxy_CreateProxyFrom__1.md&amp;value=---%0Auid%3A%20chia.dotnet.DaemonProxy.CreateProxyFrom%60%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L31">View Source</a>
+  </span>
+  <a id="chia_dotnet_DaemonProxy_CreateProxyFrom_" data-uid="chia.dotnet.DaemonProxy.CreateProxyFrom*"></a>
+  <h4 id="chia_dotnet_DaemonProxy_CreateProxyFrom__1" data-uid="chia.dotnet.DaemonProxy.CreateProxyFrom``1">CreateProxyFrom&lt;T&gt;()</h4>
+  <div class="markdown level1 summary"><p>Create a new derived <a class="xref" href="chia.dotnet.ServiceProxy.html">ServiceProxy</a> instance sharing this daemon's <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_RpcClient">RpcClient</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T CreateProxyFrom&lt;T&gt;()
+    where T : ServiceProxy</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><p>The <a class="xref" href="chia.dotnet.ServiceProxy.html">ServiceProxy</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of <a class="xref" href="chia.dotnet.ServiceProxy.html">ServiceProxy</a> to create</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="chia_dotnet_DaemonProxy_CreateProxyFrom__1_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This only works for daemons because they can forward messages to other services through their <a class="xref" href="chia.dotnet.WebSocketRpcClient.html">WebSocketRpcClient</a></p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DaemonProxy_Exit_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DaemonProxy.Exit(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L47">View Source</a>
   </span>
   <a id="chia_dotnet_DaemonProxy_Exit_" data-uid="chia.dotnet.DaemonProxy.Exit*"></a>
   <h4 id="chia_dotnet_DaemonProxy_Exit_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.Exit(System.Threading.CancellationToken)">Exit(CancellationToken)</h4>
@@ -240,7 +292,7 @@ as controlling the <a class="xref" href="chia.dotnet.PlotterProxy.html">PlotterP
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DaemonProxy_IsServiceRunning_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DaemonProxy.IsServiceRunning(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L42">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L58">View Source</a>
   </span>
   <a id="chia_dotnet_DaemonProxy_IsServiceRunning_" data-uid="chia.dotnet.DaemonProxy.IsServiceRunning*"></a>
   <h4 id="chia_dotnet_DaemonProxy_IsServiceRunning_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.IsServiceRunning(System.String,System.Threading.CancellationToken)">IsServiceRunning(String, CancellationToken)</h4>
@@ -296,7 +348,7 @@ as controlling the <a class="xref" href="chia.dotnet.PlotterProxy.html">PlotterP
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DaemonProxy_RegisterService_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DaemonProxy.RegisterService(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L67">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L83">View Source</a>
   </span>
   <a id="chia_dotnet_DaemonProxy_RegisterService_" data-uid="chia.dotnet.DaemonProxy.RegisterService*"></a>
   <h4 id="chia_dotnet_DaemonProxy_RegisterService_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.RegisterService(System.String,System.Threading.CancellationToken)">RegisterService(String, CancellationToken)</h4>
@@ -353,7 +405,7 @@ This is not a <a class="xref" href="chia.dotnet.ServiceNames.html">ServiceNames<
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DaemonProxy_RegisterService_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DaemonProxy.RegisterService(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L55">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L71">View Source</a>
   </span>
   <a id="chia_dotnet_DaemonProxy_RegisterService_" data-uid="chia.dotnet.DaemonProxy.RegisterService*"></a>
   <h4 id="chia_dotnet_DaemonProxy_RegisterService_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.RegisterService(System.Threading.CancellationToken)">RegisterService(CancellationToken)</h4>
@@ -404,7 +456,7 @@ This is needed to receive responses from services other than the daemon.</p>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DaemonProxy_StartService_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DaemonProxy.StartService(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L78">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L94">View Source</a>
   </span>
   <a id="chia_dotnet_DaemonProxy_StartService_" data-uid="chia.dotnet.DaemonProxy.StartService*"></a>
   <h4 id="chia_dotnet_DaemonProxy_StartService_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.StartService(System.String,System.Threading.CancellationToken)">StartService(String, CancellationToken)</h4>
@@ -460,7 +512,7 @@ This is needed to receive responses from services other than the daemon.</p>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DaemonProxy_StopService_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DaemonProxy.StopService(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L89">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L105">View Source</a>
   </span>
   <a id="chia_dotnet_DaemonProxy_StopService_" data-uid="chia.dotnet.DaemonProxy.StopService*"></a>
   <h4 id="chia_dotnet_DaemonProxy_StopService_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.StopService(System.String,System.Threading.CancellationToken)">StopService(String, CancellationToken)</h4>

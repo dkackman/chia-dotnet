@@ -1183,6 +1183,22 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DaemonProxy.DaemonProxy
   nameWithType: DaemonProxy.DaemonProxy
+- uid: chia.dotnet.DaemonProxy.CreateProxyFrom*
+  name: CreateProxyFrom
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_CreateProxyFrom_
+  commentId: Overload:chia.dotnet.DaemonProxy.CreateProxyFrom
+  isSpec: "True"
+  fullName: chia.dotnet.DaemonProxy.CreateProxyFrom
+  nameWithType: DaemonProxy.CreateProxyFrom
+- uid: chia.dotnet.DaemonProxy.CreateProxyFrom``1
+  name: CreateProxyFrom<T>()
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_CreateProxyFrom__1
+  commentId: M:chia.dotnet.DaemonProxy.CreateProxyFrom``1
+  name.vb: CreateProxyFrom(Of T)()
+  fullName: chia.dotnet.DaemonProxy.CreateProxyFrom<T>()
+  fullName.vb: chia.dotnet.DaemonProxy.CreateProxyFrom(Of T)()
+  nameWithType: DaemonProxy.CreateProxyFrom<T>()
+  nameWithType.vb: DaemonProxy.CreateProxyFrom(Of T)()
 - uid: chia.dotnet.DaemonProxy.Exit(System.Threading.CancellationToken)
   name: Exit(CancellationToken)
   href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_Exit_System_Threading_CancellationToken_

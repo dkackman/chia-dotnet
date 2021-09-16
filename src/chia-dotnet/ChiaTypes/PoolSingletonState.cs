@@ -1,3 +1,6 @@
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
 namespace chia.dotnet
 {
     /// <summary>
@@ -12,7 +15,8 @@ namespace chia.dotnet
     /// 
     /// `CLAIMING_SELF_POOLED_REWARDS`: We have submitted a transaction to sweep our
     ///     self-pooled funds.
-    /// </summary>
+    /// </summary>    
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum PoolSingletonState
     {
         /// <summary>

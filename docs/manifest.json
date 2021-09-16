@@ -96,7 +96,7 @@
           "hash": "eox0OaD5jgrnx4vtD3yRV6Wl10l2ElS5UkICR23PvEw="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -156,7 +156,7 @@
           "hash": "gLL+O8QmXNrWzC1Nu3EM1TStdN91T8Jb/aGWvdK4i7w="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -165,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.DaemonProxy.html",
-          "hash": "w90PMs4ZOgVR5jHTJDFESbNIKwbqv9aMS9Jf2RBOjg0="
+          "hash": "5QDILkW3Nda5nGvTeE72oTgwFKYBcmlTictosdSAfSU="
         }
       },
       "is_incremental": false,
@@ -348,7 +348,7 @@
           "hash": "VPb6KrRMwwNQbbOcmsCSajMPVXIDN8z9Cx/aJkK4QRE="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -537,10 +537,10 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.PoolSingletonState.html",
-          "hash": "PaePS8jQhR0a9FZdM6W97ZrFG+cv6mHjiJZMfzY5vPk="
+          "hash": "rvSGbCIY8tzWvG/1/kzfqVp5vXcV9khv2enoJJkGYbQ="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -552,7 +552,7 @@
           "hash": "fkzgoTNCmdjPygKsiqgiyXhA61l8JJ5PAsrBZJqHGvU="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -564,7 +564,7 @@
           "hash": "cJWE23noAYYSF6M2ZOxE8S4c42OF1fiJquibeBkO+Qg="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -588,7 +588,7 @@
           "hash": "ZQdyAf+7JG11IfaHDSYvWdAV3Zp/vd7kLembv9L/lQw="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -648,7 +648,7 @@
           "hash": "UBK2d2suQcOwHuqNuHUFfr3fjvC9dbpLDqm3/cXavBw="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -900,7 +900,7 @@
           "hash": "xM9gCHZ0MWc1J74IQ2W+1cdnNWG5fYjS7dWisXie83s="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1055,7 +1055,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 80,
-          "skipped_file_count": 72
+          "skipped_file_count": 78
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
