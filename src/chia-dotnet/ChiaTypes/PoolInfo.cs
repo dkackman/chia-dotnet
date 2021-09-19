@@ -4,6 +4,9 @@ namespace chia.dotnet
 {
     public record PoolInfo
     {
+        /// <summary>
+        /// The current version of the pool protocol
+        /// </summary>
         public const byte POOL_PROTOCOL_VERSION = 1;
 
         public string Name { get; init; } = string.Empty;
@@ -14,6 +17,6 @@ namespace chia.dotnet
         public decimal Fee { get; init; }
         public string Description { get; init; } = string.Empty;
         public string? TargetPuzzleHash { get; init; }
-        public int AuthenticationTokenTimeout { get; init; }
+        public byte AuthenticationTokenTimeout { get; init; }
     }
 }

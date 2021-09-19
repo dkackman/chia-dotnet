@@ -11,7 +11,7 @@ namespace chia.dotnet
     /// </summary>
     public record PoolStateInfo
     {
-        public int? AuthenticationTokenTimeout { get; init; }
+        public byte? AuthenticationTokenTimeout { get; init; }
         public ulong? CurrentDifficulty { get; init; }
         public ulong CurrentPoints { get; init; }
         public double NextFarmerUpdate { get; init; }
