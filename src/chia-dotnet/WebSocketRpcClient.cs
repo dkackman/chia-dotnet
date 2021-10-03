@@ -151,7 +151,10 @@ namespace chia.dotnet
                 _ = _pendingRequests.TryRemove(message.RequestId, out _);
             }
 
-            return !response.IsSuccessfulResponse ? throw new ResponseException(message, response.Data?.error?.ToString()) : response.Data ?? new ExpandoObject();
+            return response is null
+                ? throw new ResponseException(message, "The websocket did not respond")
+                : !response.IsSuccessfulResponse ? throw new ResponseException(message, response.Data?.error?.ToString())
+                : response.Data ?? new ExpandoObject();
         }
 
         /// <summary>
