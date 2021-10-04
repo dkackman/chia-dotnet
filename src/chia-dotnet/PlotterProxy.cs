@@ -41,7 +41,7 @@ namespace chia.dotnet
         /// <param name="config">The config of the plot. Maps 1:1 to the chia plot create command line</param>
         /// <param name="cancellationToken">A <see cref="CancellationToken"/></param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task StartPlotting(PlotterConfig config, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<string>> StartPlotting(PlotterConfig config, CancellationToken cancellationToken = default)
         {
             if (config == null)
             {
@@ -49,8 +49,7 @@ namespace chia.dotnet
             }
 
             dynamic data = config.PrepareForSerialization();
-
-            _ = await SendMessage("start_plotting", data, cancellationToken);
+            return await SendMessage<IEnumerable<string>>("start_plotting", data, "ids", cancellationToken);
         }
 
         /// <summary>

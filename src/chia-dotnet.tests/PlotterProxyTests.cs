@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -39,7 +40,7 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
 
             var config = new PlotterConfig();
-            await _thePlotter.StartPlotting(config, cts.Token);
+            _ = await _thePlotter.StartPlotting(config, cts.Token);
         }
 
         [TestMethod()]
@@ -56,10 +57,9 @@ namespace chia.dotnet.tests
                 DestinationDir = "/home/don/plots"
             };
 
-            await _thePlotter.StartPlotting(config);
-            var q = await _thePlotter.RegisterPlotter(cts.Token);
-
-            Assert.IsNotNull(q);
+            var ids = await _thePlotter.StartPlotting(config);
+            Assert.IsNotNull(ids);
+            Assert.AreEqual(1, ids.Count());
         }
 
         [TestMethod()]
