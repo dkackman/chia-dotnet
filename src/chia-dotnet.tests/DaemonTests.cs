@@ -32,6 +32,15 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
+        public async Task GetVersion()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            var version = await _theDaemon.GetVersion(cts.Token);
+            Assert.IsFalse(string.IsNullOrEmpty(version));
+        }
+
+        [TestMethod]
         public async Task GetFarmerIsRunning()
         {
             using var cts = new CancellationTokenSource(15000);
