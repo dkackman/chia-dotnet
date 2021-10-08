@@ -1212,6 +1212,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DaemonProxy.Exit
   nameWithType: DaemonProxy.Exit
+- uid: chia.dotnet.DaemonProxy.GetVersion(System.Threading.CancellationToken)
+  name: GetVersion(CancellationToken)
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_GetVersion_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DaemonProxy.GetVersion(System.Threading.CancellationToken)
+  fullName: chia.dotnet.DaemonProxy.GetVersion(System.Threading.CancellationToken)
+  nameWithType: DaemonProxy.GetVersion(CancellationToken)
+- uid: chia.dotnet.DaemonProxy.GetVersion*
+  name: GetVersion
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_GetVersion_
+  commentId: Overload:chia.dotnet.DaemonProxy.GetVersion
+  isSpec: "True"
+  fullName: chia.dotnet.DaemonProxy.GetVersion
+  nameWithType: DaemonProxy.GetVersion
 - uid: chia.dotnet.DaemonProxy.IsServiceRunning(System.String,System.Threading.CancellationToken)
   name: IsServiceRunning(String, CancellationToken)
   href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_IsServiceRunning_System_String_System_Threading_CancellationToken_
