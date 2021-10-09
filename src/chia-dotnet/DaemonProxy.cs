@@ -61,6 +61,25 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Get the installed version of chia at the endpoint
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns>Version as a string</returns>
+        public async Task<string> GetVersion(CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                var response = await SendMessage("get_version", cancellationToken).ConfigureAwait(false);
+
+                return response.version;
+            }
+            catch (ResponseException)
+            {
+                return "1.2.9 or earlier";
+            }
+        }
+
+        /// <summary>
         /// Registers this websocket to receive messages using <see cref="ServiceProxy.OriginService"/> 
         /// This is needed to receive responses from services other than the daemon.
         /// </summary>
