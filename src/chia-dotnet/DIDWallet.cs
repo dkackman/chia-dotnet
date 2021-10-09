@@ -35,7 +35,7 @@ namespace chia.dotnet
         /// Updates recovery ID's
         /// </summary>
         /// <param name="newList">The new ids</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task UpdateRecoveryIds(IEnumerable<string> newList, CancellationToken cancellationToken = default)
         {
@@ -56,7 +56,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="newList">The new ids</param>
         /// <param name="numVerificationsRequired">The number of verifications required</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task UpdateRecoveryIds(IEnumerable<string> newList, ulong numVerificationsRequired, CancellationToken cancellationToken = default)
         {
@@ -77,7 +77,7 @@ namespace chia.dotnet
         /// Spend from the DID wallet
         /// </summary>
         /// <param name="puzzlehash">The puzzlehash to spend</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task Spend(string puzzlehash, CancellationToken cancellationToken = default)
         {
@@ -96,7 +96,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get the distributed identity and coin if present
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A DID and optional CoinID</returns>
         public async Task<(string MyDID, string? CoinID)> GetDID(CancellationToken cancellationToken = default)
         {
@@ -112,7 +112,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get the wallet pubkey
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The pubkey</returns>
         public async Task<string> GetPubKey(CancellationToken cancellationToken = default)
         {
@@ -130,7 +130,7 @@ namespace chia.dotnet
         /// <param name="attestFilenames">List of attest files. Must be >= num_of_backup_ids_needed</param>
         /// <param name="pubkey">The public key</param>
         /// <param name="puzzlehash">The puzzlehash of the spend</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task RecoverySpend(IEnumerable<string> attestFilenames, string? pubkey, string? puzzlehash, CancellationToken cancellationToken = default)
         {
@@ -158,7 +158,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get the recover list
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The recover list and num required property of the wallet</returns>
         public async Task<(IEnumerable<string> RecoverList, int NumRequired)> GetRecoveryList(CancellationToken cancellationToken = default)
         {
@@ -177,7 +177,7 @@ namespace chia.dotnet
         /// <param name="coinName">The coin name</param>
         /// <param name="pubkey">The public key</param>
         /// <param name="puzHash">The puzzlehash</param>        
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A spendbundle and information about the attest</returns>
         public async Task<(string MessageSpendBundle, (string Parent, string InnerPuzzleHash, ulong Amount) Info)> CreateAttest(string filename, string coinName, string pubkey, string puzHash, CancellationToken cancellationToken = default)
         {
@@ -222,7 +222,7 @@ namespace chia.dotnet
         /// <summary>
         /// Create an attest file
         /// </summary>       
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A spendbundle and information about the attest</returns>
         public async Task<(string MyDID, string CoinName, string NewPuzzleHash, string PublicKey, ICollection<byte> BackUpIds)> GetInformationNeededForRecovery(CancellationToken cancellationToken = default)
         {
@@ -244,7 +244,7 @@ namespace chia.dotnet
         /// Create a backup file of the wallet
         /// </summary>
         /// <param name="filename">The filename to create</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task CreateBackupFile(string filename, CancellationToken cancellationToken = default)
         {

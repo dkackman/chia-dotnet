@@ -25,7 +25,7 @@ namespace chia.dotnet
         /// <summary>
         /// Registers this instance as a plotter and retreives the plot queue
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The list of <see cref="QueuedPlotInfo"/>s</returns>
         public async Task<IEnumerable<QueuedPlotInfo>> RegisterPlotter(CancellationToken cancellationToken = default)
         {
@@ -39,7 +39,7 @@ namespace chia.dotnet
         /// Starts plotting. Returns after plot is added to the plotting queue. Does not wiat for plot to finish
         /// </summary>
         /// <param name="config">The config of the plot. Maps 1:1 to the chia plot create command line</param>
-        /// <param name="cancellationToken">A <see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task<IEnumerable<string>> StartPlotting(PlotterConfig config, CancellationToken cancellationToken = default)
         {
@@ -56,7 +56,7 @@ namespace chia.dotnet
         /// Stops the plot with the given id
         /// </summary>
         /// <param name="id">The id of the plot to stop. Can be found by inspecting the plot queue returned from <see cref="RegisterPlotter(CancellationToken)"/></param>
-        /// <param name="cancellationToken">A <see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task StopPlotting(string id, CancellationToken cancellationToken = default)
         {

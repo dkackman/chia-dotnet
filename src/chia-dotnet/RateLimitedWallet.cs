@@ -38,7 +38,7 @@ namespace chia.dotnet
         /// <param name="puzzleHash">Origin puzzle hash</param> 
         /// <param name="amount">Origin amount</param> 
         /// <param name="adminPubkey">The wallet admin pubkey</param> 
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task SetUserInfo(ulong interval, ulong limit, string parentCoinInfo, string puzzleHash, ulong amount, string adminPubkey, CancellationToken cancellationToken = default)
         {
@@ -76,7 +76,7 @@ namespace chia.dotnet
         /// Sends a clawback transaction
         /// </summary>
         /// <param name="fee">Fee amount (in units of mojos)</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> SendClawbackTransaction(ulong fee, CancellationToken cancellationToken = default)
         {
@@ -92,7 +92,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="amount">The amount to add (in units of mojos)</param>
         /// <param name="fee">Transaction fee (in units of mojos)</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task AddFunds(ulong amount, ulong fee, CancellationToken cancellationToken = default)
         {

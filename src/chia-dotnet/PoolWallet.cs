@@ -36,7 +36,7 @@ namespace chia.dotnet
         /// <param name="targetPuzzlehash">Puzzle hash</param>
         /// <param name="poolUrl">Url of the pool to join</param>
         /// <param name="relativeLockHeight">Relative lock height</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The resulting <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> JoinPool(string targetPuzzlehash, string poolUrl, uint relativeLockHeight, CancellationToken cancellationToken = default)
         {
@@ -64,7 +64,7 @@ namespace chia.dotnet
         /// First we transition to PoolSingletonState.LEAVING_POOL
         /// Then we transition to FARMING_TO_POOL or SELF_POOLING
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The resulting <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> SelfPool(CancellationToken cancellationToken = default)
         {
@@ -78,7 +78,7 @@ namespace chia.dotnet
         /// Perform a sweep of the p2_singleton rewards controlled by the pool wallet singleton
         /// </summary>
         /// <param name="fee">Transaction fee (in units of mojos)</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Wallet state and transaction</returns>
         public async Task<(PoolWalletInfo State, TransactionRecord Transaction)> AbsorbRewards(ulong fee, CancellationToken cancellationToken = default)
         {
@@ -97,7 +97,7 @@ namespace chia.dotnet
         /// <summary>
         /// Perform a sweep of the p2_singleton rewards controlled by the pool wallet singleton
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Wallet state and list of unconfirmed transactions</returns>
         public async Task<(PoolWalletInfo State, IEnumerable<TransactionRecord> UnconfirmedTransactions)> Status(CancellationToken cancellationToken = default)
         {

@@ -26,7 +26,7 @@ namespace chia.dotnet
         /// <summary>
         /// Returns a summary of the node's view of the blockchain.
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="BlockchainState"/></returns>
         public async Task<BlockchainState> GetBlockchainState(CancellationToken cancellationToken = default)
         {
@@ -37,7 +37,7 @@ namespace chia.dotnet
         /// Get a block by a header hash
         /// </summary>
         /// <param name="headerhash">The header hash</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="FullBlock"/></returns>
         public async Task<FullBlock> GetBlock(string headerhash, CancellationToken cancellationToken = default)
         {
@@ -58,7 +58,7 @@ namespace chia.dotnet
         /// <param name="start">Start height</param>
         /// <param name="end">End Height - non-inclusive</param>
         /// <param name="excludeHeaderhash">Flag indicating whether to include the header hash in the result or not</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="FullBlock"/>s</returns>
         public async Task<IEnumerable<FullBlock>> GetBlocks(uint start, uint end, bool excludeHeaderhash, CancellationToken cancellationToken = default)
         {
@@ -74,7 +74,7 @@ namespace chia.dotnet
         /// Get a block record by a header hash
         /// </summary>
         /// <param name="headerhash">The header hash</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="BlockRecord"/></returns>
         public async Task<BlockRecord> GetBlockRecord(string headerhash, CancellationToken cancellationToken = default)
         {
@@ -93,7 +93,7 @@ namespace chia.dotnet
         /// Retrieves a block record by height (assuming the height is less then or equal peak height)
         /// </summary>
         /// <param name="height">the height to get</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="BlockRecord"/></returns>
         public async Task<BlockRecord> GetBlockRecordByHeight(uint height, CancellationToken cancellationToken = default)
         {
@@ -108,7 +108,7 @@ namespace chia.dotnet
         /// </summary>        
         /// <param name="start">Start height</param>
         /// <param name="end">End Height - non-inclusive</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>list of <see cref="BlockRecord"/>s</returns>
         public async Task<IEnumerable<BlockRecord>> GetBlockRecords(uint start, uint end, CancellationToken cancellationToken = default)
         {
@@ -122,7 +122,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get unfinished block headers
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="UnfinishedHeaderBlock"/>s</returns>
         public async Task<IEnumerable<UnfinishedHeaderBlock>> GetUnfinishedBlockHeaders(CancellationToken cancellationToken = default)
         {
@@ -136,7 +136,7 @@ namespace chia.dotnet
         /// <param name="puzzlehash">The puzzle hash</param>
         /// <param name="startHeight">confirmation start height for search</param>
         /// <param name="endHeight">confirmation end height for search</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
         public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHash(string puzzlehash, bool includeSpentCoins, int? startHeight, int? endHeight, CancellationToken cancellationToken = default)
         {
@@ -169,7 +169,7 @@ namespace chia.dotnet
         /// <param name="includeSpentCoins">Flag indicating whether to include spent coins or not</param>
         /// <param name="startHeight">confirmation start height for search</param>
         /// <param name="endHeight">confirmation end height for search</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
         public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByNames(IEnumerable<string> names, bool includeSpentCoins, int? startHeight = null, int? endHeight = null, CancellationToken cancellationToken = default)
         {
@@ -202,7 +202,7 @@ namespace chia.dotnet
         /// <param name="includeSpentCoins">whether to include spent coins too, instead of just unspent</param>
         /// <param name="startHeight">confirmation start height for search</param>
         /// <param name="endHeight">confirmation end height for search</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
         public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHashes(IEnumerable<string> puzzlehashes, bool includeSpentCoins, int? startHeight, int? endHeight, CancellationToken cancellationToken = default)
         {
@@ -236,7 +236,7 @@ namespace chia.dotnet
         /// <param name="includeSpentCoins">whether to include spent coins too, instead of just unspent</param>
         /// <param name="startHeight">confirmation start height for search</param>
         /// <param name="endHeight">confirmation end height for search</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
         public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByParentIds(IEnumerable<string> parentIds, bool includeSpentCoins, int? startHeight, int? endHeight, CancellationToken cancellationToken = default)
         {
@@ -266,7 +266,7 @@ namespace chia.dotnet
         /// Retrieves a coin record by its name/id.
         /// </summary>
         /// <param name="name">The coin name</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A <see cref="CoinRecord"/></returns>
         public async Task<CoinRecord> GetCoinRecordByName(string name, CancellationToken cancellationToken = default)
         {
@@ -286,7 +286,7 @@ namespace chia.dotnet
         /// Returns coin records for each addition and removal.
         /// </summary>
         /// <param name="headerhash">The header hash</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of additions and a list of removals</returns>
         public async Task<(ICollection<CoinRecord> Additions, ICollection<CoinRecord> Removals)> GetAdditionsAndRemovals(string headerhash, CancellationToken cancellationToken = default)
         {
@@ -309,7 +309,7 @@ namespace chia.dotnet
         /// <summary>
         /// Returns all items in the mempool.
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A dictionary of mempool items</returns>
         public async Task<IDictionary<string, MempoolItem>> GetAllMempoolItems(CancellationToken cancellationToken = default)
         {
@@ -319,7 +319,7 @@ namespace chia.dotnet
         /// <summary>
         /// Returns a list of all transaction IDs (spend bundle hashes) in the mempool.
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>a list of tx_ids</returns>
         public async Task<IEnumerable<string>> GetAllMemmpoolTxIds(CancellationToken cancellationToken = default)
         {
@@ -332,7 +332,7 @@ namespace chia.dotnet
         /// Gets a mempool item by tx id.
         /// </summary>
         /// <param name="txId">Transaction id</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="MempoolItem"/></returns>
         public async Task<MempoolItem> GetMemmpooItemByTxId(string txId, CancellationToken cancellationToken = default)
         {
@@ -352,7 +352,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="newerBlockHeaderhash"></param>
         /// <param name="olderBlockHeaderhash"></param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns><see cref="BigInteger"/> of network space in bytes</returns>
         public async Task<BigInteger> GetNetworkSpace(string newerBlockHeaderhash, string olderBlockHeaderhash, CancellationToken cancellationToken = default)
         {
@@ -378,7 +378,7 @@ namespace chia.dotnet
         /// <summary>
         /// Retrieves information about the current network
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The network name and coin prefix</returns>
         public async Task<(string NetworkName, string NetworkPrefix)> GetNetworkInfo(CancellationToken cancellationToken = default)
         {
@@ -392,7 +392,7 @@ namespace chia.dotnet
         /// Returns whether the spend bundle was successfully included into the mempool
         /// </summary>
         /// <param name="spendBundle"></param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Indicator of whether the spend bundle was successfully included in the mempool</returns>
         public async Task<bool> PushTx(SpendBundle spendBundle, CancellationToken cancellationToken = default)
         {
@@ -413,7 +413,7 @@ namespace chia.dotnet
         /// Gets a recent signage point
         /// </summary>
         /// <param name="spHash">signage point hash</param> 
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="SignagePoint"/></returns>
         public async Task<(SignagePoint SignagePoint, double TimeReceived, bool Reverted, DateTime DateTimeReceived)> GetRecentSignagePoint(string spHash, CancellationToken cancellationToken = default)
         {
@@ -439,7 +439,7 @@ namespace chia.dotnet
         /// Gets a recent end of slot
         /// </summary>
         /// <param name="challengeHash">challenge hash</param> 
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="EndOfSubSlotBundle"/></returns>
         public async Task<(EndOfSubSlotBundle eos, double timeReceived, bool reverted, DateTime DateTimeReceived)> GetRecentEOS(string challengeHash, CancellationToken cancellationToken = default)
         {
@@ -466,7 +466,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="coinId">Id/name  of the coin</param>
         /// <param name="height">Block height at which the coin was spent 'spent_block_index'</param> 
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A <see cref="CoinSpend"/></returns>
         /// <remarks>coinId is the coin name</remarks>
         public async Task<CoinSpend> GetPuzzleAndSolution(string coinId, uint height, CancellationToken cancellationToken = default)
@@ -486,7 +486,7 @@ namespace chia.dotnet
         /// <summary>
         /// Estimates the average time it is taking to process the last 500 blocks
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TimeSpan"/> estimation</returns>
         public async Task<TimeSpan> GetAverageBlockTime(CancellationToken cancellationToken = default)
         {

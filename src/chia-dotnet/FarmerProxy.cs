@@ -26,7 +26,7 @@ namespace chia.dotnet
         /// Get the farm and pool reward targets 
         /// </summary>
         /// <param name="searchForPrivateKey">Include private key in search</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>the farm and pool reward targets</returns>
         public async Task<(string FarmerTarget, string PoolTarget)> GetRewardTargets(bool searchForPrivateKey, CancellationToken cancellationToken = default)
         {
@@ -43,7 +43,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="farmerTarget">Farmer target</param>
         /// <param name="poolTarget">Pool target</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task SetRewardTargets(string farmerTarget, string poolTarget, CancellationToken cancellationToken = default)
         {
@@ -67,7 +67,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get signage points
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>List of signage points</returns>
         public async Task<IEnumerable<(IEnumerable<(string SpHash, ProofOfSpace ProofOfSpace)> Proofs, FarmerSignagePoint SignagePoint)>> GetSignagePoints(CancellationToken cancellationToken = default)
         {
@@ -104,7 +104,7 @@ namespace chia.dotnet
         /// Get's a signage point by hash
         /// </summary>
         /// <param name="spHash">signage point hash</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>a signage point and proofs of space</returns>
         public async Task<(IEnumerable<(string SpHash, ProofOfSpace ProofOfSpace)> Proofs, FarmerSignagePoint SignagePoint)> GetSignagePoint(string spHash, CancellationToken cancellationToken = default)
         {
@@ -124,7 +124,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get the list of harvesters
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of harvesters</returns>
         public async Task<IEnumerable<HarvesterInfo>> GetHarvesters(CancellationToken cancellationToken = default)
         {
@@ -135,7 +135,7 @@ namespace chia.dotnet
         /// Get's the pool login link, if any
         /// </summary>
         /// <param name="launcherID">The id of the pool launcher</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The link</returns>
         public async Task<string> GetPoolLoginLink(string launcherID, CancellationToken cancellationToken = default)
         {
@@ -155,7 +155,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get's the state of the pool
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of pool states</returns>
         public async Task<IEnumerable<PoolStateInfo>> GetPoolState(CancellationToken cancellationToken = default)
         {
@@ -167,7 +167,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="launcherID">The id of the pool launcher</param>
         /// <param name="payoutInstructions">The instructions</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task SetPayoutInstructions(string launcherID, string payoutInstructions, CancellationToken cancellationToken = default)
         {

@@ -32,7 +32,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get the name of a wallet's coloured coin
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The coin name</returns>
         public async Task<string> GetName(CancellationToken cancellationToken = default)
         {
@@ -48,7 +48,7 @@ namespace chia.dotnet
         /// Set the name of a wallet's coloured coin
         /// </summary>
         /// <param name="name">The new name</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task SetName(string name, CancellationToken cancellationToken = default)
         {
@@ -67,7 +67,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get the colour of a wallet's coloured coin
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The colour as a string</returns>
         public async Task<string> GetColour(CancellationToken cancellationToken = default)
         {
@@ -85,7 +85,7 @@ namespace chia.dotnet
         /// <param name="innerAddress">The inner address for the spend</param>
         /// <param name="amount">The amount to put in the wallet (in units of mojos)</param> 
         /// <param name="fee">The fee to create the wallet (in units of mojos)</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> Spend(string innerAddress, ulong amount, ulong fee, CancellationToken cancellationToken = default)
         {

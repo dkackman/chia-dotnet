@@ -38,7 +38,7 @@ namespace chia.dotnet
         /// Sets the first key key to active.
         /// </summary>       
         /// <param name="skipImport">Indicator whether to skip the import at login</param>          
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The key fingerprint</returns>
         public async Task<uint> LogIn(bool skipImport, CancellationToken cancellationToken = default)
         {
@@ -54,7 +54,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="fingerprint">The fingerprint</param>          
         /// <param name="skipImport">Indicator whether to skip the import at login</param>          
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The key fingerprint</returns>
         public async Task<uint> LogIn(uint fingerprint, bool skipImport, CancellationToken cancellationToken = default)
         {
@@ -74,7 +74,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="fingerprint">The fingerprint</param>
         /// <param name="filePath">The path to the backup file</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The key fingerprint</returns>
         public async Task<uint> LogInAndRestoreBackup(uint fingerprint, string filePath, CancellationToken cancellationToken = default)
         {
@@ -97,7 +97,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get the list of wallets
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The list of wallets</returns>
         public async Task<IEnumerable<WalletInfo>> GetWallets(CancellationToken cancellationToken = default)
         {
@@ -107,7 +107,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get all root public keys accessible by the wallet
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>All root public keys accessible by the wallet</returns>
         public async Task<IEnumerable<uint>> GetPublicKeys(CancellationToken cancellationToken = default)
         {
@@ -120,7 +120,7 @@ namespace chia.dotnet
         /// Get the private key accessible by the wallet
         /// </summary>
         /// <param name="fingerprint">The fingerprint</param>          
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The private key for the fingerprint</returns>
         public async Task<(uint Fingerprint, string Sk, string Pk, string FarmerPk, string PoolPk, string Seed)> GetPrivateKey(uint fingerprint, CancellationToken cancellationToken = default)
         {
@@ -142,7 +142,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get the wallet's sync status
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The current sync status</returns>
         public async Task<(bool GenesisInitialized, bool Synced, bool Syncing)> GetSyncStatus(CancellationToken cancellationToken = default)
         {
@@ -158,7 +158,7 @@ namespace chia.dotnet
         /// <summary>
         /// Retrieves information about the current network
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The current network name and prefix</returns>
         public async Task<(string NetworkName, string NetworkPrefix)> GetNetworkInfo(CancellationToken cancellationToken = default)
         {
@@ -170,7 +170,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get blockchain height info
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Current block height</returns>
         public async Task<uint> GetHeightInfo(CancellationToken cancellationToken = default)
         {
@@ -183,7 +183,7 @@ namespace chia.dotnet
         /// Get a specific transaction
         /// </summary>
         /// <param name="transactionId">The id of the transaction to find</param> 
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> GetTransaction(string transactionId, CancellationToken cancellationToken = default)
         {
@@ -202,7 +202,7 @@ namespace chia.dotnet
         /// Backup the wallet
         /// </summary>
         /// <param name="filePath">Path to the backup file to create</param> 
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task CreateBackup(string filePath, CancellationToken cancellationToken = default)
         {
@@ -222,7 +222,7 @@ namespace chia.dotnet
         /// </summary>        
         /// <param name="mnemonic">The key mnemonic</param>
         /// <param name="skipImport">Indicator whether to skip the import at login</param>                
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The new key's fingerprint</returns>
         public async Task<uint> AddKey(IEnumerable<string> mnemonic, bool skipImport, CancellationToken cancellationToken = default)
         {
@@ -245,7 +245,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="fingerprint">The fingerprint</param>
         /// <param name="filePath">The path to the backup file</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The key's fingerprint</returns>
         public async Task<uint> AddKeyAndRestoreBackup(uint fingerprint, string filePath, CancellationToken cancellationToken = default)
         {
@@ -268,7 +268,7 @@ namespace chia.dotnet
         /// Deletes a specific key from the wallet
         /// </summary>        
         /// <param name="fingerprint">The key's fingerprint</param>  
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task DeleteKey(uint fingerprint, CancellationToken cancellationToken = default)
         {
@@ -284,7 +284,7 @@ namespace chia.dotnet
         /// checks if any wallets have a non-zero balance
         /// </summary>        
         /// <param name="fingerprint">The key's fingerprint</param>  
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>
         /// Indicators of how wallet is used
         /// </returns>
@@ -305,7 +305,7 @@ namespace chia.dotnet
         /// <summary>
         /// Deletes all keys from the wallet
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task DeleteAllKeys(CancellationToken cancellationToken = default)
         {
@@ -315,7 +315,7 @@ namespace chia.dotnet
         /// <summary>
         /// Generates a new mnemonic phrase
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The new mnemonic as an <see cref="IEnumerable{T}"/> of 24 words</returns>
         public async Task<IEnumerable<string>> GenerateMnemonic(CancellationToken cancellationToken = default)
         {
@@ -330,7 +330,7 @@ namespace chia.dotnet
         /// <param name="amount">The amount to put in the wallet (in units of mojos)</param>
         /// <param name="fee">Fee to create the wallet (in units of mojos)</param>
         /// <param name="colour">The coin Colour</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
         public async Task<(byte Type, string Colour, uint WalletId)> CreateColourCoinWallet(ulong amount, ulong fee, string colour, CancellationToken cancellationToken = default)
         {
@@ -360,7 +360,7 @@ namespace chia.dotnet
         /// Create a coloured coin wallet for an existing colour
         /// </summary>
         /// <param name="colour">The coin Colour</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>        
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>        
         /// <returns>The wallet type</returns>
         public async Task<byte> CreateColouredCoinForColour(string colour, CancellationToken cancellationToken = default)
         {
@@ -388,7 +388,7 @@ namespace chia.dotnet
         /// <param name="limit">The limit amount</param>
         /// <param name="amount">The amount to put in the wallet (in units of mojos)</param>     
         /// <param name="fee">Fee to create the wallet (in units of mojos)</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
         public async Task<(uint Id, byte Type, Coin origin, string pubkey)> CreateRateLimitedAdminWallet(string pubkey, ulong interval, ulong limit, ulong amount, ulong fee, CancellationToken cancellationToken = default)
         {
@@ -420,7 +420,7 @@ namespace chia.dotnet
         /// <summary>
         /// Creates a new User Rate Limited wallet
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
         public async Task<(uint Id, byte Type, string pubkey)> CreateRateLimitedUserWallet(CancellationToken cancellationToken = default)
         {
@@ -444,7 +444,7 @@ namespace chia.dotnet
         /// <param name="backupDIDs">Backup DIDs</param>
         /// <param name="numOfBackupIdsNeeded">The number of back ids needed to create the wallet</param>
         /// <param name="amount">The amount to put in the wallet (in units of mojos)</param>           
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
         public async Task<(uint Type, string myDID, uint walletId)> CreateDIDWallet(IEnumerable<string> backupDIDs, ulong numOfBackupIdsNeeded, ulong amount, CancellationToken cancellationToken = default)
         {
@@ -474,7 +474,7 @@ namespace chia.dotnet
         /// Recover a DID wallet
         /// </summary>
         /// <param name="filename">Filename to recover from</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
         public async Task<(uint Type, string myDID, uint walletId, string coinName, Coin coin, string newPuzHash, string pubkey, IEnumerable<byte> backupDIDs, ulong numVerificationsRequired)>
             RecoverDIDWallet(string filename, CancellationToken cancellationToken = default)
@@ -516,7 +516,7 @@ namespace chia.dotnet
         /// Gets basic info about a pool that is used for pool wallet creation
         /// </summary>
         /// <param name="poolUri">The uri of the pool (not including 'pool_info')</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns><see cref="PoolInfo"/> that can be used to create a pool wallet and join this pool</returns>
         public static async Task<PoolInfo> GetPoolInfo(Uri poolUri, CancellationToken cancellationToken = default)
         {
@@ -537,7 +537,7 @@ namespace chia.dotnet
         /// <param name="initialTargetState">The desired intiial state of the wallet</param>
         /// <param name="p2SingletonDelayedPH">A delayed address (can be null or empty to not use)</param>
         /// <param name="p2SingletonDelayTime">Delay time to create the wallet</param>           
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
         public async Task<(TransactionRecord transaction, string launcherId, string p2SingletonHash)>
             CreatePoolWallet(PoolState initialTargetState, ulong? p2SingletonDelayTime, string? p2SingletonDelayedPH, CancellationToken cancellationToken = default)
@@ -577,7 +577,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="ids">The set of ids</param>
         /// <param name="filename">Path to the offer file to create</param>   
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task CreateOfferForIds(IDictionary<int, int> ids, string filename, CancellationToken cancellationToken = default)
         {
@@ -602,7 +602,7 @@ namespace chia.dotnet
         /// Get offer discrepencies
         /// </summary>
         /// <param name="filename">Path to the offer file</param>         
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The discrepencies</returns>
         public async Task<IDictionary<string, int>> GetDiscrepenciesForOffer(string filename, CancellationToken cancellationToken = default)
         {
@@ -625,7 +625,7 @@ namespace chia.dotnet
         /// Respond to an offer
         /// </summary>
         /// <param name="filename">Path to the offer file</param>        
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task RespondToOffer(string filename, CancellationToken cancellationToken = default)
         {
@@ -644,7 +644,7 @@ namespace chia.dotnet
         /// Get a trade
         /// </summary>
         /// <param name="tradeId">The id of the trade to find</param>         
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TradeRecord"/></returns>
         public async Task<TradeRecord> GetTrade(string tradeId, CancellationToken cancellationToken = default)
         {
@@ -662,7 +662,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get all trades
         /// </summary>        
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TradeRecord"/>s</returns>
         public async Task<IEnumerable<TradeRecord>> GetAllTrades(CancellationToken cancellationToken = default)
         {
@@ -674,7 +674,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="tradeId">The id of the trade to find</param>         
         /// <param name="secure">Flag indicating whether to cancel pedning offer securely or not</param>         
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task CancelTrade(string tradeId, bool secure, CancellationToken cancellationToken = default)
         {
@@ -693,7 +693,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get the amount farmed
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The amount farmed</returns>
         public async Task<(ulong FarmedAmount, ulong FarmerRewardAmount, ulong FeeAmount, uint LastHeightFarmed, ulong PoolRewardAmount)> GetFarmedAmount(CancellationToken cancellationToken = default)
         {
@@ -714,7 +714,7 @@ namespace chia.dotnet
         /// <param name="additions">Additions to the block chain</param>
         /// <param name="coins">Coins to include</param>
         /// <param name="fee">Fee amount (in units of mojos)</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The signed <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> CreateSignedTransaction(IEnumerable<Coin> additions, IEnumerable<Coin>? coins, ulong fee, CancellationToken cancellationToken = default)
         {
@@ -739,7 +739,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="additions">Additions to the block chain</param>
         /// <param name="fee">Fee amount (in units of mojos)</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The signed <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> CreateSignedTransaction(IEnumerable<Coin> additions, ulong fee, CancellationToken cancellationToken = default)
         {

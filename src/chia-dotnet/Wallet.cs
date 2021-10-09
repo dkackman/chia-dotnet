@@ -72,7 +72,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get the balance of a specific wallet
         /// </summary>      
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The wallet balance (in units of mojos)</returns>
         public async Task<(ulong ConfirmedWalletBalance, ulong UnconfirmedWalletBalance, ulong SpendableBalance, ulong PendingChange, ulong MaxSendAmount, int UnspentCoinCount, int PendingCoinRemovalCount)>
             GetBalance(CancellationToken cancellationToken = default)
@@ -96,7 +96,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get the list of transactions
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="TransactionRecord"/>s</returns>
         public async Task<IEnumerable<TransactionRecord>> GetTransactions(CancellationToken cancellationToken = default)
         {
@@ -112,7 +112,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="start">the start index of transactions (zero based)</param>
         /// <param name="end">The end index of transactions (max of <see cref="GetTransactionCount(CancellationToken)"/></param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="TransactionRecord"/>s</returns>
         public async Task<IEnumerable<TransactionRecord>> GetTransactions(uint start, uint end, CancellationToken cancellationToken = default)
         {
@@ -128,7 +128,7 @@ namespace chia.dotnet
         /// Get the last address or create a new one
         /// </summary>
         /// <param name="newAddress">Whether to generate a new address</param> 
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An address</returns>
         public async Task<string> GetNextAddress(bool newAddress, CancellationToken cancellationToken = default)
         {
@@ -144,7 +144,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get the number of transactions
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The number of transactions</returns>
         public async Task<uint> GetTransactionCount(CancellationToken cancellationToken = default)
         {
@@ -159,7 +159,7 @@ namespace chia.dotnet
         /// <summary>
         /// Delete unconfirmed transactions from the wallet
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task DeleteUnconfirmedTransactions(CancellationToken cancellationToken = default)
         {
@@ -175,7 +175,7 @@ namespace chia.dotnet
         /// <param name="address">The receiving address</param>
         /// <param name="amount">The amount to send (in units of mojos)</param>
         /// <param name="fee">Fee amount (in units of mojos)</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> SendTransaction(string address, ulong amount, ulong fee, CancellationToken cancellationToken = default)
         {
@@ -199,7 +199,7 @@ namespace chia.dotnet
         /// <param name="additions">Additions to the block chain</param>
         /// <param name="coins">Coins to include</param>
         /// <param name="fee">Fee amount (in units of mojos)</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, IEnumerable<Coin>? coins, ulong fee, CancellationToken cancellationToken = default)
         {
@@ -225,7 +225,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="additions">Additions to the block chain</param>
         /// <param name="fee">Fee amount (in units of mojo)</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, ulong fee, CancellationToken cancellationToken = default)
         {

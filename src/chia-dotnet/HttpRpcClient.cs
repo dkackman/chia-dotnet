@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Base class that handles core communication with the rpc endpoint using http(s)
+    /// Class that handles core communication with the rpc endpoint using http(s)
     /// </summary>
     public class HttpRpcClient : IRpcClient
     {
@@ -43,7 +43,7 @@ namespace chia.dotnet
         /// Posts a <see cref="Message"/> to the <see cref="Endpoint"/> but does not wait for a response
         /// </summary>
         /// <param name="message">The message to send</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <remarks>Awaiting this method waits for the message to be sent only. It doesn't await a response.</remarks>
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task PostMessage(Message message, CancellationToken cancellationToken = default)
@@ -66,8 +66,8 @@ namespace chia.dotnet
         /// Sends a <see cref="Message"/> to the endpoint and waits for a response
         /// </summary>
         /// <param name="message">The message to send</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <remarks>Awaiting this method will block until a response is received from the rpc endpoint or the <see cref="CancellationToken"/> is cancelled</remarks>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <remarks>Awaiting this method will block until a response is received from the rpc endpoint or the A token to allow the call to be cancelled is cancelled</remarks>
         /// <returns>The response message</returns>
         /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
         public async Task<dynamic> SendMessage(Message message, CancellationToken cancellationToken = default)

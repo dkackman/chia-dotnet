@@ -40,7 +40,7 @@ namespace chia.dotnet
         /// Tells the daemon at the RPC endpoint to exit.
         /// </summary>
         /// <remarks>There isn't a way to start the daemon remotely via RPC, so take care that you have access to the RPC host if needed</remarks>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task Exit(CancellationToken cancellationToken = default)
         {
@@ -51,7 +51,7 @@ namespace chia.dotnet
         /// Determines if the named service is running
         /// </summary>
         /// <param name="service">The <see cref="ServiceNames"/> of the service</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A boolean value indicating whether the service is running</returns>
         public async Task<bool> IsServiceRunning(string service, CancellationToken cancellationToken = default)
         {
@@ -63,8 +63,8 @@ namespace chia.dotnet
         /// <summary>
         /// Get the installed version of chia at the endpoint
         /// </summary>
-        /// <param name="cancellationToken"></param>
-        /// <returns>Version as a string</returns>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The chia version as a string</returns>
         public async Task<string> GetVersion(CancellationToken cancellationToken = default)
         {
             try
@@ -83,7 +83,7 @@ namespace chia.dotnet
         /// Registers this websocket to receive messages using <see cref="ServiceProxy.OriginService"/> 
         /// This is needed to receive responses from services other than the daemon.
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task RegisterService(CancellationToken cancellationToken = default)
         {
@@ -95,7 +95,7 @@ namespace chia.dotnet
         /// This is not a <see cref="ServiceNames"/> but usually the name of the consumer application such as 'wallet_ui'
         /// </summary>
         /// <param name="service">The name to register</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task RegisterService(string service, CancellationToken cancellationToken = default)
         {
@@ -106,7 +106,7 @@ namespace chia.dotnet
         /// Starts the named service.
         /// </summary>
         /// <param name="service">The <see cref="ServiceNames"/> of the service</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task StartService(string service, CancellationToken cancellationToken = default)
         {
@@ -117,7 +117,7 @@ namespace chia.dotnet
         /// Stops the named service
         /// </summary>
         /// <param name="service">The <see cref="ServiceNames"/> of the service</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task StopService(string service, CancellationToken cancellationToken = default)
         {

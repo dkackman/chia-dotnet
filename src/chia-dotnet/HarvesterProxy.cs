@@ -24,7 +24,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get the list of plot files
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of plots</returns>
         public async Task<(IEnumerable<string> FailedToOpenFilenames, IEnumerable<string> NotFoundFileNames, IEnumerable<PlotInfo> Plots)> GetPlots(CancellationToken cancellationToken = default)
         {
@@ -41,7 +41,7 @@ namespace chia.dotnet
         /// Permanently delete a plot file
         /// </summary>
         /// <param name="filename">the file name of the plot</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         /// <remarks><strong>Calling this DELETES the plot file. Proceed with caution.</strong></remarks>
         public async Task DeletePlot(string filename, CancellationToken cancellationToken = default)
@@ -60,7 +60,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get the list of plot directories from the harvester configuration
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>List of directories</returns>
         public async Task<IEnumerable<string>> GetPlotDirectories(CancellationToken cancellationToken = default)
         {
@@ -73,7 +73,7 @@ namespace chia.dotnet
         /// Add a plot directory to the harvester configuration
         /// </summary>
         /// <param name="dirname">The plot directory to add</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task AddPlotDirectory(string dirname, CancellationToken cancellationToken = default)
         {
@@ -92,7 +92,7 @@ namespace chia.dotnet
         /// Removes a plot directory from the harveser configuration
         /// </summary>
         /// <param name="dirname">The plot directory to remove</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task RemovePlotDirectory(string dirname, CancellationToken cancellationToken = default)
         {
@@ -110,7 +110,7 @@ namespace chia.dotnet
         /// <summary>
         /// Refresh the list of plots
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task RefreshPlots(CancellationToken cancellationToken = default)
         {

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Base class that handles core websocket communication with the rpc endpoint
+    /// Class that handles core communication with the rpc endpoint using a websocket (wss)
     /// </summary>
     public class WebSocketRpcClient : IRpcClient
     {
@@ -43,7 +43,7 @@ namespace chia.dotnet
         /// <summary>
         /// Opens the websocket and starts the receive loop
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task Connect(CancellationToken cancellationToken = default)
         {
@@ -75,7 +75,7 @@ namespace chia.dotnet
         /// <summary>
         /// Cancels the receive loop and closes the websocket
         /// </summary>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task Close(CancellationToken cancellationToken = default)
         {
@@ -92,7 +92,7 @@ namespace chia.dotnet
         /// Posts a <see cref="Message"/> to the websocket but does not wait for a response
         /// </summary>
         /// <param name="message">The message to post</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <remarks>Awaiting this method waits for the message to be sent only. It doesn't await a response.</remarks>
         /// <returns>Awaitable <see cref="Task"/></returns>
         public virtual async Task PostMessage(Message message, CancellationToken cancellationToken = default)
@@ -110,8 +110,8 @@ namespace chia.dotnet
         /// Sends a <see cref="Message"/> to the endpoint and waits for a response
         /// </summary>
         /// <param name="message">The message to send</param>
-        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
-        /// <remarks>Awaiting this method will block until a response is received from the <see cref="WebSocket"/> or the <see cref="CancellationToken"/> is cancelled</remarks>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <remarks>Awaiting this method will block until a response is received from the <see cref="WebSocket"/> or the A token to allow the call to be cancelled is cancelled</remarks>
         /// <returns>The response message</returns>
         /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
         public async Task<dynamic> SendMessage(Message message, CancellationToken cancellationToken = default)
