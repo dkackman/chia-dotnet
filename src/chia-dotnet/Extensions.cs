@@ -160,7 +160,16 @@ namespace chia.dotnet
         /// <returns>A human readable string</returns>
         public static string ToBytesString(this double byteCount, string format = "N3")
         {
-            return ((ulong)byteCount).ToBytesString(format);
+            string[] suffixes = { "B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "YiB" };
+            if (byteCount == 0)
+            {
+                return $"{0.0.ToString(format)} {suffixes[0]}";
+            }
+
+            var place = Convert.ToInt32(Math.Floor(Math.Log(byteCount, 1024)));
+            var num = Math.Round(byteCount / Math.Pow(1024, place), 1);
+
+            return $"{num.ToString(format)} {suffixes[place]}";
         }
     }
 }
