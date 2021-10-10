@@ -82,11 +82,14 @@ namespace chia.dotnet
             var json = Converters.ToJson(message.Data);
 
             using var content = new StringContent(json, Encoding.UTF8, "application/json");
-            using var response = await _httpClient.PostAsync(message.Command, content, cancellationToken).ConfigureAwait(false);
-
-            var responseJson = await response
+            using var response = await _httpClient
+                .PostAsync(message.Command, content, cancellationToken)
+                .ConfigureAwait(false);
+            using var responseContent = response
                 .EnsureSuccessStatusCode()
-                .Content
+                .Content;
+
+            var responseJson = await responseContent
                 .ReadAsStringAsync(cancellationToken)
                 .ConfigureAwait(false);
 

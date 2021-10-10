@@ -521,13 +521,17 @@ namespace chia.dotnet
         public static async Task<PoolInfo> GetPoolInfo(Uri poolUri, CancellationToken cancellationToken = default)
         {
             using var httpClient = new HttpClient(new SocketsHttpHandler(), true);
-            var response = await httpClient.GetAsync(new Uri(poolUri, "pool_info"), cancellationToken).ConfigureAwait(false);
-
-            var responseJson = await response
+            using var response = await httpClient
+                .GetAsync(new Uri(poolUri, "pool_info"), cancellationToken)
+                .ConfigureAwait(false);
+            using var responseContent = response
                 .EnsureSuccessStatusCode()
-                .Content
+                .Content;
+
+            var responseJson = await responseContent
                 .ReadAsStringAsync(cancellationToken)
                 .ConfigureAwait(false);
+
             return responseJson.ToObject<PoolInfo>() ?? new PoolInfo();
         }
 
