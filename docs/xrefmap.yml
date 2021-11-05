@@ -3830,6 +3830,64 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.PlotterConfig.TempDir2
   nameWithType: PlotterConfig.TempDir2
+- uid: chia.dotnet.PlotterInfo
+  name: PlotterInfo
+  href: api/chia.dotnet.PlotterInfo.html
+  commentId: T:chia.dotnet.PlotterInfo
+  fullName: chia.dotnet.PlotterInfo
+  nameWithType: PlotterInfo
+- uid: chia.dotnet.PlotterInfo.CanInstall
+  name: CanInstall
+  href: api/chia.dotnet.PlotterInfo.html#chia_dotnet_PlotterInfo_CanInstall
+  commentId: P:chia.dotnet.PlotterInfo.CanInstall
+  fullName: chia.dotnet.PlotterInfo.CanInstall
+  nameWithType: PlotterInfo.CanInstall
+- uid: chia.dotnet.PlotterInfo.CanInstall*
+  name: CanInstall
+  href: api/chia.dotnet.PlotterInfo.html#chia_dotnet_PlotterInfo_CanInstall_
+  commentId: Overload:chia.dotnet.PlotterInfo.CanInstall
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterInfo.CanInstall
+  nameWithType: PlotterInfo.CanInstall
+- uid: chia.dotnet.PlotterInfo.DisplayName
+  name: DisplayName
+  href: api/chia.dotnet.PlotterInfo.html#chia_dotnet_PlotterInfo_DisplayName
+  commentId: P:chia.dotnet.PlotterInfo.DisplayName
+  fullName: chia.dotnet.PlotterInfo.DisplayName
+  nameWithType: PlotterInfo.DisplayName
+- uid: chia.dotnet.PlotterInfo.DisplayName*
+  name: DisplayName
+  href: api/chia.dotnet.PlotterInfo.html#chia_dotnet_PlotterInfo_DisplayName_
+  commentId: Overload:chia.dotnet.PlotterInfo.DisplayName
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterInfo.DisplayName
+  nameWithType: PlotterInfo.DisplayName
+- uid: chia.dotnet.PlotterInfo.Installed
+  name: Installed
+  href: api/chia.dotnet.PlotterInfo.html#chia_dotnet_PlotterInfo_Installed
+  commentId: P:chia.dotnet.PlotterInfo.Installed
+  fullName: chia.dotnet.PlotterInfo.Installed
+  nameWithType: PlotterInfo.Installed
+- uid: chia.dotnet.PlotterInfo.Installed*
+  name: Installed
+  href: api/chia.dotnet.PlotterInfo.html#chia_dotnet_PlotterInfo_Installed_
+  commentId: Overload:chia.dotnet.PlotterInfo.Installed
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterInfo.Installed
+  nameWithType: PlotterInfo.Installed
+- uid: chia.dotnet.PlotterInfo.Version
+  name: Version
+  href: api/chia.dotnet.PlotterInfo.html#chia_dotnet_PlotterInfo_Version
+  commentId: P:chia.dotnet.PlotterInfo.Version
+  fullName: chia.dotnet.PlotterInfo.Version
+  nameWithType: PlotterInfo.Version
+- uid: chia.dotnet.PlotterInfo.Version*
+  name: Version
+  href: api/chia.dotnet.PlotterInfo.html#chia_dotnet_PlotterInfo_Version_
+  commentId: Overload:chia.dotnet.PlotterInfo.Version
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterInfo.Version
+  nameWithType: PlotterInfo.Version
 - uid: chia.dotnet.PlotterProxy
   name: PlotterProxy
   href: api/chia.dotnet.PlotterProxy.html
@@ -3849,6 +3907,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.PlotterProxy.PlotterProxy
   nameWithType: PlotterProxy.PlotterProxy
+- uid: chia.dotnet.PlotterProxy.GetPlotters(System.Threading.CancellationToken)
+  name: GetPlotters(CancellationToken)
+  href: api/chia.dotnet.PlotterProxy.html#chia_dotnet_PlotterProxy_GetPlotters_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.PlotterProxy.GetPlotters(System.Threading.CancellationToken)
+  fullName: chia.dotnet.PlotterProxy.GetPlotters(System.Threading.CancellationToken)
+  nameWithType: PlotterProxy.GetPlotters(CancellationToken)
+- uid: chia.dotnet.PlotterProxy.GetPlotters*
+  name: GetPlotters
+  href: api/chia.dotnet.PlotterProxy.html#chia_dotnet_PlotterProxy_GetPlotters_
+  commentId: Overload:chia.dotnet.PlotterProxy.GetPlotters
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterProxy.GetPlotters
+  nameWithType: PlotterProxy.GetPlotters
 - uid: chia.dotnet.PlotterProxy.RegisterPlotter(System.Threading.CancellationToken)
   name: RegisterPlotter(CancellationToken)
   href: api/chia.dotnet.PlotterProxy.html#chia_dotnet_PlotterProxy_RegisterPlotter_System_Threading_CancellationToken_
