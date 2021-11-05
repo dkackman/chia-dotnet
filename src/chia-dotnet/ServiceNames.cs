@@ -1,4 +1,4 @@
-namespace chia.dotnet
+﻿namespace chia.dotnet
 {
     /// <summary>
     /// The names of chia services. These are used as <see cref="Message.Destination"/> values
@@ -10,7 +10,7 @@ namespace chia.dotnet
         public const string Farmer = "chia_farmer";
         public const string Harvester = "chia_harvester";
         public const string Simulator = "chia_full_node_simulator";
-        public const string Plotter = "chia plots create";
+        public const string Plotter = "chia_plotter";
         public const string Daemon = "daemon";
     }
 }
