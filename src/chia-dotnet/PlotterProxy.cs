@@ -32,7 +32,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.service = ServiceNames.Plotter;
 
-            return await SendMessage<IEnumerable<QueuedPlotInfo>>("register_service", data, "queue", cancellationToken);
+            return await SendMessage<IEnumerable<QueuedPlotInfo>>("register_service", data, "queue", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -49,7 +49,17 @@ namespace chia.dotnet
             }
 
             dynamic data = config.PrepareForSerialization();
-            return await SendMessage<IEnumerable<string>>("start_plotting", data, "ids", cancellationToken);
+            return await SendMessage<IEnumerable<string>>("start_plotting", data, "ids", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get info about installed and installable plotters
+        /// </summary>
+        /// <param name="cancellationToken">A A token to allow the call to be cancelled</param>
+        /// <returns>Dictionary of supported plotters</returns>
+        public async Task<IDictionary<string, PlotterInfo>> GetPlotters(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<IDictionary<string, PlotterInfo>>("get_plotters", "plotters", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -68,7 +78,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.id = id;
 
-            _ = await SendMessage("stop_plotting", data, cancellationToken);
+            _ = await SendMessage("stop_plotting", data, cancellationToken).ConfigureAwait(false);
         }
     }
 }

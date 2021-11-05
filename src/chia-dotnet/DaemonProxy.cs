@@ -75,7 +75,7 @@ namespace chia.dotnet
             }
             catch (ResponseException)
             {
-                return "1.2.9 or earlier";
+                return "unknown";
             }
         }
 

@@ -523,7 +523,6 @@ namespace chia.dotnet
                     ? SECONDS_PER_BLOCK
                     : TimeSpan.FromSeconds(((double)curr.Timestamp - (double)past_curr.Timestamp) / (curr.Height - past_curr.Height));
             }
-
             catch
             {
                 return SECONDS_PER_BLOCK;
