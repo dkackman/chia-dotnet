@@ -79,7 +79,7 @@ Tests decorated with `[TestCategory("CAUTION")]` update the state of whatever th
 
 ### Some Notes About Types and Naming
 
-In addition to static vs dynamic typing, C# and Python have very different conventions for naming and formatting. For the most part I've tried to make this library fit into dotnet conventions. Please open an issue if somethign doesn't feel `dotnet-y`.
+In addition to static vs dynamic typing, C# and Python have very different conventions for naming and formatting. For the most part I've tried to make this library fit into dotnet conventions. Please open an issue if something doesn't feel `dotnet-y`.
 
 - Method and property names are `ProperCased`.
 - Parameter names are `camelCased`.
