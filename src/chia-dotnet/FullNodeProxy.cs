@@ -325,7 +325,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_all_mempool_tx_ids", cancellationToken).ConfigureAwait(false);
 
-            return Converters.ConvertList<string>(response.tx_ids);
+            return Converters.ToEnumerable<string>(response.tx_ids);
         }
 
         /// <summary>

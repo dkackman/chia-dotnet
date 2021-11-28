@@ -13,7 +13,9 @@ using System.Threading.Tasks;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Class that handles core communication with the rpc endpoint using a websocket (wss)
+    /// Class that handles core communication with the rpc endpoint using a websocket (wss).
+    /// Only the daemon endpoint supports websockets, but it can proxy communication to other services.
+    /// <see cref="Message.Destination"/>
     /// </summary>
     public class WebSocketRpcClient : IRpcClient
     {
@@ -60,7 +62,7 @@ namespace chia.dotnet
             _webSocket.Options.ClientCertificates = CertLoader.GetCerts(Endpoint.CertPath, Endpoint.KeyPath);
 
             await _webSocket.ConnectAsync(Endpoint.Uri, cancellationToken).ConfigureAwait(false);
-            _ = Task.Factory.StartNew(ReceiveLoop, _receiveCancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
+            _ = Task.Factory.StartNew(ReceiveLoop, _receiveCancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default).ConfigureAwait(false);
             OnConnected();
         }
 
@@ -153,7 +155,8 @@ namespace chia.dotnet
 
             return response is null
                 ? throw new ResponseException(message, "The websocket did not respond")
-                : !response.IsSuccessfulResponse ? throw new ResponseException(message, response.Data?.error?.ToString())
+                : !response.IsSuccessfulResponse 
+                ? throw new ResponseException(message, response.Data?.error?.ToString())
                 : response.Data ?? new ExpandoObject();
         }
 

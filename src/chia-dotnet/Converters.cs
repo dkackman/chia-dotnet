@@ -24,35 +24,23 @@ namespace chia.dotnet
 
         public static T? ToObject<T>(JToken? token)
         {
-            if (token is not null)
-            {
-                var serializerSettings = new JsonSerializerSettings
+            return token is not null
+                ? token.ToObject<T>(JsonSerializer.Create(new JsonSerializerSettings
                 {
-                    ContractResolver = new DefaultContractResolver
-                    {
-                        NamingStrategy = new SnakeCaseNamingStrategy()
-                    }
-                };
-
-                return token.ToObject<T>(JsonSerializer.Create(serializerSettings));
-            }
-
-            return default;
+                    ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() }
+                }))
+                : default;
         }
 
         public static T? ToObject<T>(this string json)
         {
-            var serializerSettings = new JsonSerializerSettings
+            return JsonConvert.DeserializeObject<T>(json, new JsonSerializerSettings
             {
-                ContractResolver = new DefaultContractResolver
-                {
-                    NamingStrategy = new SnakeCaseNamingStrategy()
-                }
-            };
-            return JsonConvert.DeserializeObject<T>(json, serializerSettings);
+                ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() }
+            });
         }
 
-        public static IEnumerable<T> ConvertList<T>(dynamic enumerable)
+        public static IEnumerable<T> ToEnumerable<T>(dynamic enumerable)
         {
             Debug.Assert(enumerable is not null);
 
@@ -64,33 +52,33 @@ namespace chia.dotnet
             if (epoch.HasValue)
             {
                 var start = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc); //from start epoch time
+
                 return start.AddSeconds(epoch.Value); //add the seconds to the start DateTime
             }
+
             return null;
         }
 
         public static DateTime ToDateTime(this ulong epoch)
         {
             var start = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc); //from start epoch time
+
             return start.AddSeconds(epoch); //add the seconds to the start DateTime
         }
 
         public static DateTime ToDateTime(this double epoch)
         {
             var start = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc); //from start epoch time
+
             return start.AddSeconds(epoch); //add the seconds to the start DateTime
         }
 
         public static string ToJson(this object o)
         {
-            var serializerSettings = new JsonSerializerSettings
+            return JsonConvert.SerializeObject(o, new JsonSerializerSettings
             {
-                ContractResolver = new DefaultContractResolver
-                {
-                    NamingStrategy = new SnakeCaseNamingStrategy()
-                }
-            };
-            return JsonConvert.SerializeObject(o, serializerSettings);
+                ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() }
+            });
         }
     }
 }

@@ -34,28 +34,33 @@ namespace chia.dotnet
         /// <value>Defaults to 0</value>
         [JsonProperty("delay")]
         public int Delay { get; init; } = 0;
+
         /// <value>
         /// Defaults to false
         /// </value>
         [JsonProperty("parallel")]
         public bool Parallel { get; init; } = false;
+
         /// <summary>
         /// The number of plots that will be made, in sequence.
         /// </summary>
         /// <value>Defaults to 1</value>
         [JsonProperty("n")]
         public int Number { get; init; } = 1;
+
         /// <summary>
         /// Define the size of the plot(s). 
         /// </summary>
         /// <value>Defaults to <see cref="KValues.K32"/></value>
         [JsonProperty("k")]
         public KValues Size { get; init; } = KValues.K32;
+
         /// <value>
-        /// Defauls to "default"
+        /// Defaults to "default"
         /// </value>
         [JsonProperty("queue")]
         public string Queue { get; init; } = "default";
+
         /// <summary>
         /// Define the temporary directory for plot creation. This is where Plotting 
         /// Phase 1 (Forward Propagation) and Phase 2 (Backpropagation) both occur. 
@@ -64,12 +69,14 @@ namespace chia.dotnet
         /// <value>No default - must be set</value>
         [JsonProperty("t")]
         public string TempDir { get; init; } = string.Empty;
+
         /// <summary>
         /// Define a secondary temporary directory for plot creation. This is where Plotting Phase 3 (Compression) and Phase 4 (Checkpoints) occur.
         /// </summary>
         /// <value>If not set defaults to <see cref="TempDir"/></value>
         [JsonProperty("t2")]
         public string? TempDir2 { get; init; }
+
         /// <summary>
         /// Define the final location for plot(s). Of course, -d should have enough free space as the final size of the
         /// plot. This directory is automatically added to your ~/.chia/VERSION/config/config.yaml file.
@@ -77,6 +84,7 @@ namespace chia.dotnet
         /// <value>No default - must be set</value>
         [JsonProperty("d")]
         public string DestinationDir { get; init; } = string.Empty;
+
         /// <summary>
         /// Define memory/RAM usage. Default is 4608 (4.6 GiB).
         /// More RAM will marginally increase speed of plot creation. 
@@ -87,6 +95,7 @@ namespace chia.dotnet
         /// <value>Defaults to 4608</value>
         [JsonProperty("b")]
         public int Buffer { get; init; } = 4608;
+
         /// <summary>
         /// More buckets require less RAM but more random seeks to disk. With spinning disks 
         /// you want less buckets and with NVMe more buckets. There is no significant benefit 
@@ -95,6 +104,7 @@ namespace chia.dotnet
         /// <value>Defaults to 128</value>
         [JsonProperty("u")]
         public int Buckets { get; init; } = 128;
+
         /// <summary>
         /// This is the key Fingerprint used to select both the Farmer and Pool Public Keys to use. 
         /// Utilize this when you want to select one key out of several in your keychain. 
@@ -104,20 +114,27 @@ namespace chia.dotnet
 
         [JsonProperty("c")]
         public string? PoolContractAddress { get; init; }
+
         /// <summary>
         /// This is your "Pool Public Key". Utilise this when you want to 
         /// create plots on other machines for which you do not want to give full chia account access.
         /// </summary>
         [JsonProperty("p")]
         public string? PoolPublicKey { get; init; }
+
         /// <summary>
         /// This is your "Farmer Public Key". Utilise this when you want to create plots on other 
         /// machines for which you do not want to give full chia account access
         /// </summary>
         [JsonProperty("f")]
         public string? FarmerPublicKey { get; init; }
+
+        /// <summary>
+        /// Debug purposes only
+        /// </summary>
         [JsonProperty("memo")]
         public string? Memo { get; init; }
+
         /// <summary>
         /// Setting to true will disable the bitfield plotting algorithm, 
         /// and revert back to the older b17 plotting style. After 1.0.4 it’s better to use bitfield for most cases
@@ -125,18 +142,21 @@ namespace chia.dotnet
         /// <value>Defaults to false</value>
         [JsonProperty("e")]
         public bool NoBitField { get; init; } = false;
+
         /// <summary>
         /// The number of threads to devote to each plot
         /// </summary>
         /// <value>Defaults to 2</value>
         [JsonProperty("r")]
         public int NumThreads { get; init; } = 2;
+
         /// <summary>
         /// Skips adding [final dir] to harvester for farming.
         /// </summary>
         /// <value>Defaults to false</value>
         [JsonProperty("x")]
         public bool ExcludeFinalDir { get; init; } = false;
+
         /// <summary>
         /// Only needed when <see cref="Size"/> is set to <see cref="KValues.K25"/>
         /// </summary>

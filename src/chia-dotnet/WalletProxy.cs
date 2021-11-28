@@ -113,7 +113,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("get_public_keys", cancellationToken).ConfigureAwait(false);
 
-            return Converters.ConvertList<uint>(response.public_key_fingerprints);
+            return Converters.ToEnumerable<uint>(response.public_key_fingerprints);
         }
 
         /// <summary>
@@ -321,7 +321,7 @@ namespace chia.dotnet
         {
             var response = await SendMessage("generate_mnemonic", cancellationToken).ConfigureAwait(false);
 
-            return Converters.ConvertList<string>(response.mnemonic);
+            return Converters.ToEnumerable<string>(response.mnemonic);
         }
 
         /// <summary>
@@ -507,7 +507,7 @@ namespace chia.dotnet
                 coin,
                 response.newpuzhash,
                 response.pubkey,
-                Converters.ConvertList<byte>(response.backup_dids),
+                Converters.ToEnumerable<byte>(response.backup_dids),
                 response.num_verifications_required
                 );
         }
