@@ -34,9 +34,21 @@ namespace chia.dotnet
         public WalletProxy WalletProxy { get; init; }
 
         /// <summary>
-        /// Validtes that <see cref="WalletId"/> is a <see cref="WalletType.STANDARD_WALLET"/>
+        /// Creates a dynamic object and sets its wallet_id property to <see cref="WalletId"/>
         /// </summary>
-        /// <returns>True if the wallet if of the expected type</returns>
+        /// <returns>A dynamic object</returns>
+        protected dynamic CreateWalletDataObject()
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_id = WalletId;
+
+            return data;
+        }
+
+        /// <summary>
+        /// Validates that <see cref="WalletId"/> is a <see cref="WalletType.STANDARD_WALLET"/>
+        /// </summary>
+        /// <returns>True if the wallet is of the expected type</returns>
         /// <remarks>Intended to be overriden by derived classes of specific <see cref="WalletType"/></remarks>
         public virtual async Task Validate(CancellationToken cancellationToken = default)
         {
@@ -44,17 +56,17 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Validates that <see cref="WalletId"/> exists and is of <see cref="WalletType"/>
+        /// Validates that <see cref="WalletId"/> exists and is of the correct <see cref="WalletType"/>
         /// </summary>
         /// <param name="walletType">The expected type of wallet</param>
         /// <returns>true if the wallet is of the expected type</returns>
         /// <remarks>Throws n exception if the wallet does not exist</remarks>
-        protected virtual async Task Validate(WalletType walletType, CancellationToken cancellationToken)
+        protected async Task Validate(WalletType walletType, CancellationToken cancellationToken)
         {
             var info = await GetWalletInfo(cancellationToken).ConfigureAwait(false);
             if (info.Type != walletType)
             {
-                throw new InvalidOperationException($"Wallet {WalletId} if of type {info.Type} not {walletType}");
+                throw new InvalidOperationException($"Wallet {WalletId} is of type {info.Type}; not {walletType}");
             }
         }
 
@@ -77,10 +89,7 @@ namespace chia.dotnet
         public async Task<(ulong ConfirmedWalletBalance, ulong UnconfirmedWalletBalance, ulong SpendableBalance, ulong PendingChange, ulong MaxSendAmount, int UnspentCoinCount, int PendingCoinRemovalCount)>
             GetBalance(CancellationToken cancellationToken = default)
         {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
-
-            var response = await WalletProxy.SendMessage("get_wallet_balance", data, cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("get_wallet_balance", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
 
             return (
                 response.wallet_balance.confirmed_wallet_balance,
@@ -100,9 +109,6 @@ namespace chia.dotnet
         /// <returns>A list of <see cref="TransactionRecord"/>s</returns>
         public async Task<IEnumerable<TransactionRecord>> GetTransactions(CancellationToken cancellationToken = default)
         {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
-
             var count = await GetTransactionCount(cancellationToken).ConfigureAwait(false);
             return await GetTransactions(0, count, cancellationToken).ConfigureAwait(false);
         }
@@ -116,8 +122,7 @@ namespace chia.dotnet
         /// <returns>A list of <see cref="TransactionRecord"/>s</returns>
         public async Task<IEnumerable<TransactionRecord>> GetTransactions(uint start, uint end, CancellationToken cancellationToken = default)
         {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
+            dynamic data = CreateWalletDataObject();
             data.start = start;
             data.end = end;
 
@@ -132,8 +137,7 @@ namespace chia.dotnet
         /// <returns>An address</returns>
         public async Task<string> GetNextAddress(bool newAddress, CancellationToken cancellationToken = default)
         {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
+            dynamic data = CreateWalletDataObject();
             data.new_address = newAddress;
 
             var response = await WalletProxy.SendMessage("get_next_address", data, cancellationToken).ConfigureAwait(false);
@@ -148,10 +152,7 @@ namespace chia.dotnet
         /// <returns>The number of transactions</returns>
         public async Task<uint> GetTransactionCount(CancellationToken cancellationToken = default)
         {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
-
-            var response = await WalletProxy.SendMessage("get_transaction_count", data, cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("get_transaction_count", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
 
             return response.count;
         }
@@ -163,10 +164,7 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task DeleteUnconfirmedTransactions(CancellationToken cancellationToken = default)
         {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
-
-            _ = await WalletProxy.SendMessage("delete_unconfirmed_transactions", data, cancellationToken).ConfigureAwait(false);
+            _ = await WalletProxy.SendMessage("delete_unconfirmed_transactions", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -184,8 +182,7 @@ namespace chia.dotnet
                 throw new ArgumentNullException(nameof(address));
             }
 
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
+            dynamic data = CreateWalletDataObject();
             data.address = address;
             data.amount = amount;
             data.fee = fee;
@@ -208,8 +205,7 @@ namespace chia.dotnet
                 throw new ArgumentNullException(nameof(additions));
             }
 
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
+            dynamic data = CreateWalletDataObject();
             data.additions = additions.ToList();
             data.fee = fee;
             if (coins != null) // coins are optional

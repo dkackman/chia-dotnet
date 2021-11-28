@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -23,9 +22,9 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Validtes that <see cref="Wallet.WalletId"/> is a <see cref="WalletType.DISTRIBUTED_ID"/>
+        /// Validates that <see cref="Wallet.WalletId"/> is a <see cref="WalletType.DISTRIBUTED_ID"/>
         /// </summary>
-        /// <returns>True if the wallet if of the expected type</returns>
+        /// <returns>True if the wallet is a DID wallet</returns>
         public override async Task Validate(CancellationToken cancellationToken = default)
         {
             await Validate(WalletType.DISTRIBUTED_ID, cancellationToken).ConfigureAwait(false);
@@ -44,8 +43,7 @@ namespace chia.dotnet
                 throw new ArgumentNullException(nameof(newList));
             }
 
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
+            dynamic data = CreateWalletDataObject();
             data.new_list = newList.ToList();
 
             _ = await WalletProxy.SendMessage("did_update_recovery_ids", data, cancellationToken).ConfigureAwait(false);
@@ -65,8 +63,7 @@ namespace chia.dotnet
                 throw new ArgumentNullException(nameof(newList));
             }
 
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
+            dynamic data = CreateWalletDataObject();
             data.new_list = newList.ToList();
             data.num_verifications_required = numVerificationsRequired;
 
@@ -86,8 +83,7 @@ namespace chia.dotnet
                 throw new ArgumentNullException(nameof(puzzlehash));
             }
 
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
+            dynamic data = CreateWalletDataObject();
             data.puzzlehash = puzzlehash;
 
             _ = await WalletProxy.SendMessage("did_spend", data, cancellationToken).ConfigureAwait(false);
@@ -100,10 +96,7 @@ namespace chia.dotnet
         /// <returns>A DID and optional CoinID</returns>
         public async Task<(string MyDID, string? CoinID)> GetDID(CancellationToken cancellationToken = default)
         {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
-
-            var response = await WalletProxy.SendMessage("did_get_did", data, cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("did_get_did", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
 
             // coin_id might be null
             return (response.my_did.ToString(), response.coin_id?.ToString());
@@ -116,10 +109,7 @@ namespace chia.dotnet
         /// <returns>The pubkey</returns>
         public async Task<string> GetPubKey(CancellationToken cancellationToken = default)
         {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
-
-            var response = await WalletProxy.SendMessage("did_get_pubkey", data, cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("did_get_pubkey", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
 
             return response.pubkey.ToString();
         }
@@ -139,8 +129,7 @@ namespace chia.dotnet
                 throw new ArgumentNullException(nameof(attestFilenames));
             }
 
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
+            dynamic data = CreateWalletDataObject();
             data.attest_filenames = attestFilenames.ToList();
             if (!string.IsNullOrEmpty(pubkey))
             {
@@ -162,12 +151,9 @@ namespace chia.dotnet
         /// <returns>The recover list and num required property of the wallet</returns>
         public async Task<(IEnumerable<string> RecoverList, int NumRequired)> GetRecoveryList(CancellationToken cancellationToken = default)
         {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
+            var response = await WalletProxy.SendMessage("did_get_recovery_list", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
 
-            var response = await WalletProxy.SendMessage("did_get_recovery_list", data, cancellationToken).ConfigureAwait(false);
-
-            return (Converters.ConvertList<string>(response.recover_list), response.num_required);
+            return (Converters.ToEnumerable<string>(response.recover_list), response.num_required);
         }
 
         /// <summary>
@@ -201,8 +187,7 @@ namespace chia.dotnet
                 throw new ArgumentNullException(nameof(puzHash));
             }
 
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
+            dynamic data = CreateWalletDataObject();
             data.filename = filename;
             data.coin_name = coinName;
             data.pubkey = pubkey;
@@ -226,17 +211,14 @@ namespace chia.dotnet
         /// <returns>A spendbundle and information about the attest</returns>
         public async Task<(string MyDID, string CoinName, string NewPuzzleHash, string PublicKey, ICollection<byte> BackUpIds)> GetInformationNeededForRecovery(CancellationToken cancellationToken = default)
         {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
-
-            var response = await WalletProxy.SendMessage("did_get_information_needed_for_recovery", data, cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("did_get_information_needed_for_recovery", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
 
             return (
                 response.my_did,
                 response.coin_name,
                 response.newpuzhash,
                 response.pubkey,
-                Converters.ConvertList<byte>(response.backup_dids)
+                Converters.ToEnumerable<byte>(response.backup_dids)
                 );
         }
 
@@ -253,8 +235,7 @@ namespace chia.dotnet
                 throw new ArgumentNullException(nameof(filename));
             }
 
-            dynamic data = new ExpandoObject();
-            data.attest_filenames = WalletId;
+            dynamic data = CreateWalletDataObject();
             data.filename = filename;
 
             _ = await WalletProxy.SendMessage("did_create_backup_file", data, cancellationToken).ConfigureAwait(false);

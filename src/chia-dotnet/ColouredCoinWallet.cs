@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,9 +20,9 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Validtes that <see cref="Wallet.WalletId"/> is a <see cref="WalletType.COLOURED_COIN"/>
+        /// Validates that <see cref="Wallet.WalletId"/> is a <see cref="WalletType.COLOURED_COIN"/>
         /// </summary>
-        /// <returns>True if the wallet if of the expected type</returns>
+        /// <returns>True if the wallet is a CC wallet</returns>
         public override async Task Validate(CancellationToken cancellationToken = default)
         {
             await Validate(WalletType.COLOURED_COIN, cancellationToken).ConfigureAwait(false);
@@ -36,10 +35,7 @@ namespace chia.dotnet
         /// <returns>The coin name</returns>
         public async Task<string> GetName(CancellationToken cancellationToken = default)
         {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
-
-            var response = await WalletProxy.SendMessage("cc_get_name", data, cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("cc_get_name", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
 
             return response.name.ToString();
         }
@@ -57,8 +53,7 @@ namespace chia.dotnet
                 throw new ArgumentNullException(nameof(name));
             }
 
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
+            dynamic data = CreateWalletDataObject();
             data.name = name;
 
             _ = await WalletProxy.SendMessage("cc_set_name", data, cancellationToken).ConfigureAwait(false);
@@ -71,10 +66,7 @@ namespace chia.dotnet
         /// <returns>The colour as a string</returns>
         public async Task<string> GetColour(CancellationToken cancellationToken = default)
         {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
-
-            var response = await WalletProxy.SendMessage("cc_get_colour", data, cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("cc_get_colour", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
 
             return response.colour;
         }
@@ -94,8 +86,7 @@ namespace chia.dotnet
                 throw new ArgumentNullException(nameof(innerAddress));
             }
 
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
+            dynamic data = CreateWalletDataObject();
             data.inner_address = innerAddress;
             data.amount = amount;
             data.fee = fee;

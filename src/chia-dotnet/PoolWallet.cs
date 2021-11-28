@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -22,9 +21,9 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Validtes that <see cref="Wallet.WalletId"/> is a <see cref="WalletType.POOLING_WALLET"/>
+        /// Validates that <see cref="Wallet.WalletId"/> is a <see cref="WalletType.POOLING_WALLET"/>
         /// </summary>
-        /// <returns>True if the wallet if of the expected type</returns>
+        /// <returns>True if the wallet is a pooling wallet</returns>
         public override async Task Validate(CancellationToken cancellationToken = default)
         {
             await Validate(WalletType.POOLING_WALLET, cancellationToken).ConfigureAwait(false);
@@ -50,8 +49,7 @@ namespace chia.dotnet
                 throw new ArgumentNullException(nameof(poolUrl));
             }
 
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
+            dynamic data = CreateWalletDataObject();
             data.target_puzzlehash = targetPuzzlehash;
             data.pool_url = poolUrl.TrimEnd('/'); // the blocchain doesn't like the trailing /
             data.relative_lock_height = relativeLockHeight;
@@ -68,10 +66,7 @@ namespace chia.dotnet
         /// <returns>The resulting <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> SelfPool(CancellationToken cancellationToken = default)
         {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
-
-            return await WalletProxy.SendMessage<TransactionRecord>("pw_self_pool", data, "transaction", cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<TransactionRecord>("pw_self_pool", CreateWalletDataObject(), "transaction", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -82,8 +77,7 @@ namespace chia.dotnet
         /// <returns>Wallet state and transaction</returns>
         public async Task<(PoolWalletInfo State, TransactionRecord Transaction)> AbsorbRewards(ulong fee, CancellationToken cancellationToken = default)
         {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
+            dynamic data = CreateWalletDataObject();
             data.fee = fee;
 
             var response = await WalletProxy.SendMessage("pw_absorb_rewards", data, cancellationToken).ConfigureAwait(false);
@@ -101,10 +95,7 @@ namespace chia.dotnet
         /// <returns>Wallet state and list of unconfirmed transactions</returns>
         public async Task<(PoolWalletInfo State, IEnumerable<TransactionRecord> UnconfirmedTransactions)> Status(CancellationToken cancellationToken = default)
         {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
-
-            var response = await WalletProxy.SendMessage("pw_status", data, cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("pw_status", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
 
             return (
                 Converters.ToObject<PoolWalletInfo>(response.state),

@@ -21,9 +21,9 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Validtes that <see cref="Wallet.WalletId"/> is a <see cref="WalletType.RATE_LIMITED"/>
+        /// Validates that <see cref="Wallet.WalletId"/> is a <see cref="WalletType.RATE_LIMITED"/>
         /// </summary>
-        /// <returns>True if the wallet if of the expected type</returns>
+        /// <returns>True if the wallet is Rate Limited</returns>
         public override async Task Validate(CancellationToken cancellationToken = default)
         {
             await Validate(WalletType.RATE_LIMITED, cancellationToken).ConfigureAwait(false);
@@ -62,8 +62,7 @@ namespace chia.dotnet
             origin.puzzle_hash = puzzleHash;
             origin.amount = amount;
 
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
+            dynamic data = CreateWalletDataObject();
             data.interval = interval;
             data.limit = limit;
             data.origin = origin;
@@ -80,8 +79,7 @@ namespace chia.dotnet
         /// <returns>The <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> SendClawbackTransaction(ulong fee, CancellationToken cancellationToken = default)
         {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
+            dynamic data = CreateWalletDataObject();
             data.fee = fee;
 
             return await WalletProxy.SendMessage<TransactionRecord>("send_clawback_transaction", data, "transaction", cancellationToken).ConfigureAwait(false);
@@ -96,8 +94,7 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task AddFunds(ulong amount, ulong fee, CancellationToken cancellationToken = default)
         {
-            dynamic data = new ExpandoObject();
-            data.wallet_id = WalletId;
+            dynamic data = CreateWalletDataObject();
             data.amount = amount;
             data.fee = fee;
 
