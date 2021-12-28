@@ -10,6 +10,7 @@ namespace chia.dotnet
     /// <summary>
     /// Base class representing a specific wallet (i.e. anything with a WalletID)
     /// </summary>
+    /// <remarks>When not dervied from this represents a <see cref="WalletType.STANDARD_WALLET"/></remarks>
     public class Wallet
     {
         /// <summary>
