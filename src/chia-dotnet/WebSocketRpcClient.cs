@@ -155,7 +155,7 @@ namespace chia.dotnet
 
             return response is null
                 ? throw new ResponseException(message, "The websocket did not respond")
-                : !response.IsSuccessfulResponse 
+                : !response.IsSuccessfulResponse
                 ? throw new ResponseException(message, response.Data?.error?.ToString())
                 : response.Data ?? new ExpandoObject();
         }

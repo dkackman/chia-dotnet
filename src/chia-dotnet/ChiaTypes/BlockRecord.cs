@@ -6,7 +6,6 @@ using Newtonsoft.Json;
 
 namespace chia.dotnet
 {
-
     /// <summary>
     /// This class is not included or hashed into the blockchain, but it is kept in memory as a more
     /// efficient way to maintain data about the blockchain. This allows us to validate future blocks,
