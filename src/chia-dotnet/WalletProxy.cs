@@ -31,11 +31,11 @@ namespace chia.dotnet
         /// <summary>
         /// The fingerprint used to login to the wallet.
         /// </summary>
-        /// <remarks>Will be null until login is called</remarks>
+        /// <remarks>Will be null until <see cref="LogIn(bool, CancellationToken)"/> is called</remarks>
         public uint? Fingerprint { get; private set; }
 
         /// <summary>
-        /// Sets the first key key to active.
+        /// Sets the first key to active.
         /// </summary>       
         /// <param name="skipImport">Indicator whether to skip the import at login</param>          
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>

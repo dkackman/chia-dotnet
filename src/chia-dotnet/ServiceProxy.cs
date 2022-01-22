@@ -142,7 +142,7 @@ namespace chia.dotnet
             {
                 throw;
             }
-            catch (Exception e) // wrap eveything else in a resposne exception - this will include websocket or http specific failures
+            catch (Exception e) // wrap eveything else in a response exception - this will include websocket or http specific failures
             {
                 throw new ResponseException(message, "Something went wrong sending the rpc message. Inspect the InnerException for details.", e);
             }
