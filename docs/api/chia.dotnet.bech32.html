@@ -5,16 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>chia-dotnet </title>
+    <title>Namespace chia.dotnet.bech32
+   </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="chia-dotnet ">
+    <meta name="title" content="Namespace chia.dotnet.bech32
+   ">
     <meta name="generator" content="docfx 2.58.9.0">
     
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="stylesheet" href="styles/docfx.vendor.css">
-    <link rel="stylesheet" href="styles/docfx.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <meta property="docfx:navrel" content="toc.html">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
     
     
@@ -34,8 +36,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="index.html">
-                <img id="logo" class="svg" src="logo.svg" alt="">
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -57,25 +59,32 @@
         </div>
       </header>
       <div role="main" class="container body-content hide-when-search">
-        <div class="article row grid">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="">
-<h1 id="chia-dotnet">chia-dotnet</h1>
-
-<p>Cross-platform .Net5 <a href="https://github.com/dkackman/chia-dotnet">rpc client library</a> for <a href="https://chia.net">chia</a>.</p>
-<p><em>Browse the <a href="https://dkackman.github.io/chia-dotnet/api/chia.dotnet.html">api documentation</a> and
-<a href="https://github.com/dkackman/chia-dotnet/tree/main/src/chia-dotnet.tests">integration test code</a> for more info and examples.</em></p>
-<h2 id="quick-start-notes">Quick Start Notes</h2>
-<pre><code class="lang-csharp">var endpoint = Config.Open().GetEndpoint(&quot;daemon&quot;);
-using var rpcClient = new WebSocketRpcClient(endpoint);
-await rpcClient.Connect();
-
-var daemon = new DaemonProxy(rpcClient, &quot;unit_tests&quot;);
-await daemon.RegisterService();
-
-var fullNode = new FullNodeProxy(rpcClient, &quot;unit_tests&quot;);
-var state = await fullNode.GetBlockchainState(e);
-</code></pre>
+            <article class="content wrap" id="_content" data-uid="chia.dotnet.bech32">
+  
+  <h1 id="chia_dotnet_bech32" data-uid="chia.dotnet.bech32" class="text-break">Namespace chia.dotnet.bech32
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="chia.dotnet.bech32.Bech32M.html">Bech32M</a></h4>
+      <section><p>Bech32M implementation for encoding addresses</p>
+</section>
+    <h3 id="structs">Structs
+  </h3>
+      <h4><a class="xref" href="chia.dotnet.bech32.HexBytes.html">HexBytes</a></h4>
+      <section><p>Utility to perform operations on an array of bytes and represent them as a Hex string</p>
+</section>
 </article>
           </div>
           
@@ -83,9 +92,6 @@ var state = await fullNode.GetBlockchainState(e);
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/docfx/index.md/#L1" class="contribution-link">Improve this Doc</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
@@ -111,8 +117,8 @@ var state = await fullNode.GetBlockchainState(e);
       </footer>
     </div>
     
-    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="styles/docfx.js"></script>
-    <script type="text/javascript" src="styles/main.js"></script>
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>

@@ -7,6 +7,314 @@ references:
   commentId: N:chia.dotnet
   fullName: chia.dotnet
   nameWithType: chia.dotnet
+- uid: chia.dotnet.bech32
+  name: chia.dotnet.bech32
+  href: api/chia.dotnet.bech32.html
+  commentId: N:chia.dotnet.bech32
+  fullName: chia.dotnet.bech32
+  nameWithType: chia.dotnet.bech32
+- uid: chia.dotnet.bech32.Bech32M
+  name: Bech32M
+  href: api/chia.dotnet.bech32.Bech32M.html
+  commentId: T:chia.dotnet.bech32.Bech32M
+  fullName: chia.dotnet.bech32.Bech32M
+  nameWithType: Bech32M
+- uid: chia.dotnet.bech32.Bech32M.#ctor(System.String)
+  name: Bech32M(String)
+  href: api/chia.dotnet.bech32.Bech32M.html#chia_dotnet_bech32_Bech32M__ctor_System_String_
+  commentId: M:chia.dotnet.bech32.Bech32M.#ctor(System.String)
+  fullName: chia.dotnet.bech32.Bech32M.Bech32M(System.String)
+  nameWithType: Bech32M.Bech32M(String)
+- uid: chia.dotnet.bech32.Bech32M.#ctor*
+  name: Bech32M
+  href: api/chia.dotnet.bech32.Bech32M.html#chia_dotnet_bech32_Bech32M__ctor_
+  commentId: Overload:chia.dotnet.bech32.Bech32M.#ctor
+  isSpec: "True"
+  fullName: chia.dotnet.bech32.Bech32M.Bech32M
+  nameWithType: Bech32M.Bech32M
+- uid: chia.dotnet.bech32.Bech32M.AddressPrefix
+  name: AddressPrefix
+  href: api/chia.dotnet.bech32.Bech32M.html#chia_dotnet_bech32_Bech32M_AddressPrefix
+  commentId: P:chia.dotnet.bech32.Bech32M.AddressPrefix
+  fullName: chia.dotnet.bech32.Bech32M.AddressPrefix
+  nameWithType: Bech32M.AddressPrefix
+- uid: chia.dotnet.bech32.Bech32M.AddressPrefix*
+  name: AddressPrefix
+  href: api/chia.dotnet.bech32.Bech32M.html#chia_dotnet_bech32_Bech32M_AddressPrefix_
+  commentId: Overload:chia.dotnet.bech32.Bech32M.AddressPrefix
+  isSpec: "True"
+  fullName: chia.dotnet.bech32.Bech32M.AddressPrefix
+  nameWithType: Bech32M.AddressPrefix
+- uid: chia.dotnet.bech32.Bech32M.AddressToPuzzleHash(System.String)
+  name: AddressToPuzzleHash(String)
+  href: api/chia.dotnet.bech32.Bech32M.html#chia_dotnet_bech32_Bech32M_AddressToPuzzleHash_System_String_
+  commentId: M:chia.dotnet.bech32.Bech32M.AddressToPuzzleHash(System.String)
+  fullName: chia.dotnet.bech32.Bech32M.AddressToPuzzleHash(System.String)
+  nameWithType: Bech32M.AddressToPuzzleHash(String)
+- uid: chia.dotnet.bech32.Bech32M.AddressToPuzzleHash*
+  name: AddressToPuzzleHash
+  href: api/chia.dotnet.bech32.Bech32M.html#chia_dotnet_bech32_Bech32M_AddressToPuzzleHash_
+  commentId: Overload:chia.dotnet.bech32.Bech32M.AddressToPuzzleHash
+  isSpec: "True"
+  fullName: chia.dotnet.bech32.Bech32M.AddressToPuzzleHash
+  nameWithType: Bech32M.AddressToPuzzleHash
+- uid: chia.dotnet.bech32.Bech32M.AddressToPuzzleHashString(System.String)
+  name: AddressToPuzzleHashString(String)
+  href: api/chia.dotnet.bech32.Bech32M.html#chia_dotnet_bech32_Bech32M_AddressToPuzzleHashString_System_String_
+  commentId: M:chia.dotnet.bech32.Bech32M.AddressToPuzzleHashString(System.String)
+  fullName: chia.dotnet.bech32.Bech32M.AddressToPuzzleHashString(System.String)
+  nameWithType: Bech32M.AddressToPuzzleHashString(String)
+- uid: chia.dotnet.bech32.Bech32M.AddressToPuzzleHashString*
+  name: AddressToPuzzleHashString
+  href: api/chia.dotnet.bech32.Bech32M.html#chia_dotnet_bech32_Bech32M_AddressToPuzzleHashString_
+  commentId: Overload:chia.dotnet.bech32.Bech32M.AddressToPuzzleHashString
+  isSpec: "True"
+  fullName: chia.dotnet.bech32.Bech32M.AddressToPuzzleHashString
+  nameWithType: Bech32M.AddressToPuzzleHashString
+- uid: chia.dotnet.bech32.Bech32M.PuzzleHashToAddress(chia.dotnet.bech32.HexBytes)
+  name: PuzzleHashToAddress(HexBytes)
+  href: api/chia.dotnet.bech32.Bech32M.html#chia_dotnet_bech32_Bech32M_PuzzleHashToAddress_chia_dotnet_bech32_HexBytes_
+  commentId: M:chia.dotnet.bech32.Bech32M.PuzzleHashToAddress(chia.dotnet.bech32.HexBytes)
+  fullName: chia.dotnet.bech32.Bech32M.PuzzleHashToAddress(chia.dotnet.bech32.HexBytes)
+  nameWithType: Bech32M.PuzzleHashToAddress(HexBytes)
+- uid: chia.dotnet.bech32.Bech32M.PuzzleHashToAddress(System.String)
+  name: PuzzleHashToAddress(String)
+  href: api/chia.dotnet.bech32.Bech32M.html#chia_dotnet_bech32_Bech32M_PuzzleHashToAddress_System_String_
+  commentId: M:chia.dotnet.bech32.Bech32M.PuzzleHashToAddress(System.String)
+  fullName: chia.dotnet.bech32.Bech32M.PuzzleHashToAddress(System.String)
+  nameWithType: Bech32M.PuzzleHashToAddress(String)
+- uid: chia.dotnet.bech32.Bech32M.PuzzleHashToAddress*
+  name: PuzzleHashToAddress
+  href: api/chia.dotnet.bech32.Bech32M.html#chia_dotnet_bech32_Bech32M_PuzzleHashToAddress_
+  commentId: Overload:chia.dotnet.bech32.Bech32M.PuzzleHashToAddress
+  isSpec: "True"
+  fullName: chia.dotnet.bech32.Bech32M.PuzzleHashToAddress
+  nameWithType: Bech32M.PuzzleHashToAddress
+- uid: chia.dotnet.bech32.HexBytes
+  name: HexBytes
+  href: api/chia.dotnet.bech32.HexBytes.html
+  commentId: T:chia.dotnet.bech32.HexBytes
+  fullName: chia.dotnet.bech32.HexBytes
+  nameWithType: HexBytes
+- uid: chia.dotnet.bech32.HexBytes.#ctor(System.String,System.Byte[])
+  name: HexBytes(String, Byte[])
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes__ctor_System_String_System_Byte___
+  commentId: M:chia.dotnet.bech32.HexBytes.#ctor(System.String,System.Byte[])
+  name.vb: HexBytes(String, Byte())
+  fullName: chia.dotnet.bech32.HexBytes.HexBytes(System.String, System.Byte[])
+  fullName.vb: chia.dotnet.bech32.HexBytes.HexBytes(System.String, System.Byte())
+  nameWithType: HexBytes.HexBytes(String, Byte[])
+  nameWithType.vb: HexBytes.HexBytes(String, Byte())
+- uid: chia.dotnet.bech32.HexBytes.#ctor*
+  name: HexBytes
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes__ctor_
+  commentId: Overload:chia.dotnet.bech32.HexBytes.#ctor
+  isSpec: "True"
+  fullName: chia.dotnet.bech32.HexBytes.HexBytes
+  nameWithType: HexBytes.HexBytes
+- uid: chia.dotnet.bech32.HexBytes.Bytes
+  name: Bytes
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_Bytes
+  commentId: P:chia.dotnet.bech32.HexBytes.Bytes
+  fullName: chia.dotnet.bech32.HexBytes.Bytes
+  nameWithType: HexBytes.Bytes
+- uid: chia.dotnet.bech32.HexBytes.Bytes*
+  name: Bytes
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_Bytes_
+  commentId: Overload:chia.dotnet.bech32.HexBytes.Bytes
+  isSpec: "True"
+  fullName: chia.dotnet.bech32.HexBytes.Bytes
+  nameWithType: HexBytes.Bytes
+- uid: chia.dotnet.bech32.HexBytes.Empty
+  name: Empty
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_Empty
+  commentId: P:chia.dotnet.bech32.HexBytes.Empty
+  fullName: chia.dotnet.bech32.HexBytes.Empty
+  nameWithType: HexBytes.Empty
+- uid: chia.dotnet.bech32.HexBytes.Empty*
+  name: Empty
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_Empty_
+  commentId: Overload:chia.dotnet.bech32.HexBytes.Empty
+  isSpec: "True"
+  fullName: chia.dotnet.bech32.HexBytes.Empty
+  nameWithType: HexBytes.Empty
+- uid: chia.dotnet.bech32.HexBytes.Equals(System.Object)
+  name: Equals(Object)
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_Equals_System_Object_
+  commentId: M:chia.dotnet.bech32.HexBytes.Equals(System.Object)
+  fullName: chia.dotnet.bech32.HexBytes.Equals(System.Object)
+  nameWithType: HexBytes.Equals(Object)
+- uid: chia.dotnet.bech32.HexBytes.Equals*
+  name: Equals
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_Equals_
+  commentId: Overload:chia.dotnet.bech32.HexBytes.Equals
+  isSpec: "True"
+  fullName: chia.dotnet.bech32.HexBytes.Equals
+  nameWithType: HexBytes.Equals
+- uid: chia.dotnet.bech32.HexBytes.FromBytes(System.Byte[])
+  name: FromBytes(Byte[])
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_FromBytes_System_Byte___
+  commentId: M:chia.dotnet.bech32.HexBytes.FromBytes(System.Byte[])
+  name.vb: FromBytes(Byte())
+  fullName: chia.dotnet.bech32.HexBytes.FromBytes(System.Byte[])
+  fullName.vb: chia.dotnet.bech32.HexBytes.FromBytes(System.Byte())
+  nameWithType: HexBytes.FromBytes(Byte[])
+  nameWithType.vb: HexBytes.FromBytes(Byte())
+- uid: chia.dotnet.bech32.HexBytes.FromBytes*
+  name: FromBytes
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_FromBytes_
+  commentId: Overload:chia.dotnet.bech32.HexBytes.FromBytes
+  isSpec: "True"
+  fullName: chia.dotnet.bech32.HexBytes.FromBytes
+  nameWithType: HexBytes.FromBytes
+- uid: chia.dotnet.bech32.HexBytes.FromHex(System.String)
+  name: FromHex(String)
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_FromHex_System_String_
+  commentId: M:chia.dotnet.bech32.HexBytes.FromHex(System.String)
+  fullName: chia.dotnet.bech32.HexBytes.FromHex(System.String)
+  nameWithType: HexBytes.FromHex(String)
+- uid: chia.dotnet.bech32.HexBytes.FromHex*
+  name: FromHex
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_FromHex_
+  commentId: Overload:chia.dotnet.bech32.HexBytes.FromHex
+  isSpec: "True"
+  fullName: chia.dotnet.bech32.HexBytes.FromHex
+  nameWithType: HexBytes.FromHex
+- uid: chia.dotnet.bech32.HexBytes.GetHashCode
+  name: GetHashCode()
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_GetHashCode
+  commentId: M:chia.dotnet.bech32.HexBytes.GetHashCode
+  fullName: chia.dotnet.bech32.HexBytes.GetHashCode()
+  nameWithType: HexBytes.GetHashCode()
+- uid: chia.dotnet.bech32.HexBytes.GetHashCode*
+  name: GetHashCode
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_GetHashCode_
+  commentId: Overload:chia.dotnet.bech32.HexBytes.GetHashCode
+  isSpec: "True"
+  fullName: chia.dotnet.bech32.HexBytes.GetHashCode
+  nameWithType: HexBytes.GetHashCode
+- uid: chia.dotnet.bech32.HexBytes.Hex
+  name: Hex
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_Hex
+  commentId: P:chia.dotnet.bech32.HexBytes.Hex
+  fullName: chia.dotnet.bech32.HexBytes.Hex
+  nameWithType: HexBytes.Hex
+- uid: chia.dotnet.bech32.HexBytes.Hex*
+  name: Hex
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_Hex_
+  commentId: Overload:chia.dotnet.bech32.HexBytes.Hex
+  isSpec: "True"
+  fullName: chia.dotnet.bech32.HexBytes.Hex
+  nameWithType: HexBytes.Hex
+- uid: chia.dotnet.bech32.HexBytes.IsEmpty
+  name: IsEmpty
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_IsEmpty
+  commentId: P:chia.dotnet.bech32.HexBytes.IsEmpty
+  fullName: chia.dotnet.bech32.HexBytes.IsEmpty
+  nameWithType: HexBytes.IsEmpty
+- uid: chia.dotnet.bech32.HexBytes.IsEmpty*
+  name: IsEmpty
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_IsEmpty_
+  commentId: Overload:chia.dotnet.bech32.HexBytes.IsEmpty
+  isSpec: "True"
+  fullName: chia.dotnet.bech32.HexBytes.IsEmpty
+  nameWithType: HexBytes.IsEmpty
+- uid: chia.dotnet.bech32.HexBytes.op_Addition(chia.dotnet.bech32.HexBytes,chia.dotnet.bech32.HexBytes)
+  name: Addition(HexBytes, HexBytes)
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_op_Addition_chia_dotnet_bech32_HexBytes_chia_dotnet_bech32_HexBytes_
+  commentId: M:chia.dotnet.bech32.HexBytes.op_Addition(chia.dotnet.bech32.HexBytes,chia.dotnet.bech32.HexBytes)
+  fullName: chia.dotnet.bech32.HexBytes.Addition(chia.dotnet.bech32.HexBytes, chia.dotnet.bech32.HexBytes)
+  nameWithType: HexBytes.Addition(HexBytes, HexBytes)
+- uid: chia.dotnet.bech32.HexBytes.op_Addition(chia.dotnet.bech32.HexBytes,System.Byte[])
+  name: Addition(HexBytes, Byte[])
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_op_Addition_chia_dotnet_bech32_HexBytes_System_Byte___
+  commentId: M:chia.dotnet.bech32.HexBytes.op_Addition(chia.dotnet.bech32.HexBytes,System.Byte[])
+  name.vb: Addition(HexBytes, Byte())
+  fullName: chia.dotnet.bech32.HexBytes.Addition(chia.dotnet.bech32.HexBytes, System.Byte[])
+  fullName.vb: chia.dotnet.bech32.HexBytes.Addition(chia.dotnet.bech32.HexBytes, System.Byte())
+  nameWithType: HexBytes.Addition(HexBytes, Byte[])
+  nameWithType.vb: HexBytes.Addition(HexBytes, Byte())
+- uid: chia.dotnet.bech32.HexBytes.op_Addition(chia.dotnet.bech32.HexBytes,System.String)
+  name: Addition(HexBytes, String)
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_op_Addition_chia_dotnet_bech32_HexBytes_System_String_
+  commentId: M:chia.dotnet.bech32.HexBytes.op_Addition(chia.dotnet.bech32.HexBytes,System.String)
+  fullName: chia.dotnet.bech32.HexBytes.Addition(chia.dotnet.bech32.HexBytes, System.String)
+  nameWithType: HexBytes.Addition(HexBytes, String)
+- uid: chia.dotnet.bech32.HexBytes.op_Addition*
+  name: Addition
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_op_Addition_
+  commentId: Overload:chia.dotnet.bech32.HexBytes.op_Addition
+  isSpec: "True"
+  fullName: chia.dotnet.bech32.HexBytes.Addition
+  nameWithType: HexBytes.Addition
+- uid: chia.dotnet.bech32.HexBytes.op_Equality(chia.dotnet.bech32.HexBytes,chia.dotnet.bech32.HexBytes)
+  name: Equality(HexBytes, HexBytes)
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_op_Equality_chia_dotnet_bech32_HexBytes_chia_dotnet_bech32_HexBytes_
+  commentId: M:chia.dotnet.bech32.HexBytes.op_Equality(chia.dotnet.bech32.HexBytes,chia.dotnet.bech32.HexBytes)
+  fullName: chia.dotnet.bech32.HexBytes.Equality(chia.dotnet.bech32.HexBytes, chia.dotnet.bech32.HexBytes)
+  nameWithType: HexBytes.Equality(HexBytes, HexBytes)
+- uid: chia.dotnet.bech32.HexBytes.op_Equality*
+  name: Equality
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_op_Equality_
+  commentId: Overload:chia.dotnet.bech32.HexBytes.op_Equality
+  isSpec: "True"
+  fullName: chia.dotnet.bech32.HexBytes.Equality
+  nameWithType: HexBytes.Equality
+- uid: chia.dotnet.bech32.HexBytes.op_Inequality(chia.dotnet.bech32.HexBytes,chia.dotnet.bech32.HexBytes)
+  name: Inequality(HexBytes, HexBytes)
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_op_Inequality_chia_dotnet_bech32_HexBytes_chia_dotnet_bech32_HexBytes_
+  commentId: M:chia.dotnet.bech32.HexBytes.op_Inequality(chia.dotnet.bech32.HexBytes,chia.dotnet.bech32.HexBytes)
+  fullName: chia.dotnet.bech32.HexBytes.Inequality(chia.dotnet.bech32.HexBytes, chia.dotnet.bech32.HexBytes)
+  nameWithType: HexBytes.Inequality(HexBytes, HexBytes)
+- uid: chia.dotnet.bech32.HexBytes.op_Inequality*
+  name: Inequality
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_op_Inequality_
+  commentId: Overload:chia.dotnet.bech32.HexBytes.op_Inequality
+  isSpec: "True"
+  fullName: chia.dotnet.bech32.HexBytes.Inequality
+  nameWithType: HexBytes.Inequality
+- uid: chia.dotnet.bech32.HexBytes.Sha256
+  name: Sha256()
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_Sha256
+  commentId: M:chia.dotnet.bech32.HexBytes.Sha256
+  fullName: chia.dotnet.bech32.HexBytes.Sha256()
+  nameWithType: HexBytes.Sha256()
+- uid: chia.dotnet.bech32.HexBytes.Sha256*
+  name: Sha256
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_Sha256_
+  commentId: Overload:chia.dotnet.bech32.HexBytes.Sha256
+  isSpec: "True"
+  fullName: chia.dotnet.bech32.HexBytes.Sha256
+  nameWithType: HexBytes.Sha256
+- uid: chia.dotnet.bech32.HexBytes.ToString
+  name: ToString()
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_ToString
+  commentId: M:chia.dotnet.bech32.HexBytes.ToString
+  fullName: chia.dotnet.bech32.HexBytes.ToString()
+  nameWithType: HexBytes.ToString()
+- uid: chia.dotnet.bech32.HexBytes.ToString*
+  name: ToString
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_ToString_
+  commentId: Overload:chia.dotnet.bech32.HexBytes.ToString
+  isSpec: "True"
+  fullName: chia.dotnet.bech32.HexBytes.ToString
+  nameWithType: HexBytes.ToString
+- uid: chia.dotnet.bech32.HexBytes.TryFromHex(System.String,chia.dotnet.bech32.HexBytes@)
+  name: TryFromHex(String, out HexBytes)
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_TryFromHex_System_String_chia_dotnet_bech32_HexBytes__
+  commentId: M:chia.dotnet.bech32.HexBytes.TryFromHex(System.String,chia.dotnet.bech32.HexBytes@)
+  name.vb: TryFromHex(String, ByRef HexBytes)
+  fullName: chia.dotnet.bech32.HexBytes.TryFromHex(System.String, out chia.dotnet.bech32.HexBytes)
+  fullName.vb: chia.dotnet.bech32.HexBytes.TryFromHex(System.String, ByRef chia.dotnet.bech32.HexBytes)
+  nameWithType: HexBytes.TryFromHex(String, out HexBytes)
+  nameWithType.vb: HexBytes.TryFromHex(String, ByRef HexBytes)
+- uid: chia.dotnet.bech32.HexBytes.TryFromHex*
+  name: TryFromHex
+  href: api/chia.dotnet.bech32.HexBytes.html#chia_dotnet_bech32_HexBytes_TryFromHex_
+  commentId: Overload:chia.dotnet.bech32.HexBytes.TryFromHex
+  isSpec: "True"
+  fullName: chia.dotnet.bech32.HexBytes.TryFromHex
+  nameWithType: HexBytes.TryFromHex
 - uid: chia.dotnet.BlockchainState
   name: BlockchainState
   href: api/chia.dotnet.BlockchainState.html
@@ -6777,6 +7085,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.Wallet.Wallet
   nameWithType: Wallet.Wallet
+- uid: chia.dotnet.Wallet.CreateWalletDataObject
+  name: CreateWalletDataObject()
+  href: api/chia.dotnet.Wallet.html#chia_dotnet_Wallet_CreateWalletDataObject
+  commentId: M:chia.dotnet.Wallet.CreateWalletDataObject
+  fullName: chia.dotnet.Wallet.CreateWalletDataObject()
+  nameWithType: Wallet.CreateWalletDataObject()
+- uid: chia.dotnet.Wallet.CreateWalletDataObject*
+  name: CreateWalletDataObject
+  href: api/chia.dotnet.Wallet.html#chia_dotnet_Wallet_CreateWalletDataObject_
+  commentId: Overload:chia.dotnet.Wallet.CreateWalletDataObject
+  isSpec: "True"
+  fullName: chia.dotnet.Wallet.CreateWalletDataObject
+  nameWithType: Wallet.CreateWalletDataObject
 - uid: chia.dotnet.Wallet.DeleteUnconfirmedTransactions(System.Threading.CancellationToken)
   name: DeleteUnconfirmedTransactions(CancellationToken)
   href: api/chia.dotnet.Wallet.html#chia_dotnet_Wallet_DeleteUnconfirmedTransactions_System_Threading_CancellationToken_
