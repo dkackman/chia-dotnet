@@ -27,12 +27,12 @@ namespace chia.dotnet.tests
         /// <returns><see cref="DaemonProxy"/></returns>
         public static WebSocketRpcClient CreateRpcClientFromHardcodedLocation()
         {
-            /*
+            //*
 #warning YOU MIGHT BE USING A PRODUCTION NODE
             var endpoint = Config.Open().GetEndpoint("ui");
-            */
+            //*/
 
-            ///*                  
+            /*                  
             var endpoint = new EndpointInfo()
             {
                 Uri = new Uri($"wss://{NodeHostAddress}:55400"),
@@ -42,7 +42,7 @@ namespace chia.dotnet.tests
                 //CertPath = @"/home/don/.chia/mainnet/config/ssl/daemon/private_daemon.crt",
                 //KeyPath = @"/home/don/.chia/mainnet/config/ssl/daemon/private_daemon.key",
             };
-            //*/
+            */
             return new WebSocketRpcClient(endpoint);
         }
 

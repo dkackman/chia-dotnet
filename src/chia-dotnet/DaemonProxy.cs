@@ -124,6 +124,16 @@ namespace chia.dotnet
             _ = await SendMessage("stop_service", CreateDataObject(service), cancellationToken).ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// Retrieves the status of teh keyring
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        public async Task<KeyringStatus> GetKeyringStatus(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<KeyringStatus>("keyring_status", null, cancellationToken).ConfigureAwait(false);
+        }
+
         private static object CreateDataObject(string service)
         {
             if (string.IsNullOrEmpty(service))

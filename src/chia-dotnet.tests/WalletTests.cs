@@ -62,22 +62,32 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        public async Task GetLimitedNumberOfTransactions()
+        public async Task GetTransactionsIncremental()
         {
-            using var cts = new CancellationTokenSource(15000);
+            using var cts = new CancellationTokenSource(150000);
 
             var count = await _theWallet.GetTransactionCount(cts.Token);
-            if (count == 0)
-            {
-                Assert.Inconclusive("no transactions");
-            }
-            else
-            {
-                var transactions = await _theWallet.GetTransactions(2, 4, cts.Token);
+            Assert.IsTrue(count > 4);
 
-                Assert.IsNotNull(transactions);
-                Assert.AreEqual(transactions.Count(), 2);
-            }
+            var transactions1 = await _theWallet.GetTransactions(0, 2, cts.Token);
+            var transactions2 = await _theWallet.GetTransactions(3, 5, cts.Token);
+
+            Assert.IsNotNull(transactions1);
+            Assert.AreEqual(transactions1.Count(), 2);
+
+            Assert.IsNotNull(transactions2);
+            Assert.AreEqual(transactions2.Count(), 2);
+
+            var list1 = transactions1.ToList();
+            var start1 = list1[0];
+            var end1 = list1[1];
+
+            var list2 = transactions2.ToList();
+            var start2 = list2[0];
+            var end2 = list2[1];
+
+            Assert.AreNotEqual(start1.TransactionId, start2.TransactionId); //FAILS
+            Assert.AreNotEqual(end1.TransactionId, end2.TransactionId);
         }
 
         [TestMethod()]

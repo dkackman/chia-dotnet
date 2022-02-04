@@ -51,7 +51,7 @@ namespace chia.dotnet.tests
 
             var config = new PlotterConfig()
             {
-                Size = KValues.K25,
+                Size = KSize.K25,
                 OverrideK = true,
                 TempDir = "/home/don/plots",
                 DestinationDir = "/home/don/plots"

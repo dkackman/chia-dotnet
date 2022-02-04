@@ -61,7 +61,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="walletType">The expected type of wallet</param>
         /// <returns>true if the wallet is of the expected type</returns>
-        /// <remarks>Throws n exception if the wallet does not exist</remarks>
+        /// <remarks>Throws an exception if the wallet does not exist</remarks>
         protected async Task Validate(WalletType walletType, CancellationToken cancellationToken)
         {
             var info = await GetWalletInfo(cancellationToken).ConfigureAwait(false);
@@ -75,6 +75,7 @@ namespace chia.dotnet
         /// Retrieves information about this wallet
         /// </summary>
         /// <returns><see cref="WalletInfo"/> and the wallet pubkey fingerprint</returns>
+        /// <remarks>Throws an exception if the wallet does not exist</remarks>
         public async Task<WalletInfo> GetWalletInfo(CancellationToken cancellationToken = default)
         {
             var wallets = await WalletProxy.GetWallets(cancellationToken).ConfigureAwait(false);
@@ -87,20 +88,9 @@ namespace chia.dotnet
         /// </summary>      
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The wallet balance (in units of mojos)</returns>
-        public async Task<(ulong ConfirmedWalletBalance, ulong UnconfirmedWalletBalance, ulong SpendableBalance, ulong PendingChange, ulong MaxSendAmount, int UnspentCoinCount, int PendingCoinRemovalCount)>
-            GetBalance(CancellationToken cancellationToken = default)
+        public async Task<WalletBalance> GetBalance(CancellationToken cancellationToken = default)
         {
-            var response = await WalletProxy.SendMessage("get_wallet_balance", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
-
-            return (
-                response.wallet_balance.confirmed_wallet_balance,
-                response.wallet_balance.unconfirmed_wallet_balance,
-                response.wallet_balance.spendable_balance,
-                response.wallet_balance.pending_change,
-                response.wallet_balance.max_send_amount,
-                response.wallet_balance.unspent_coin_count,
-                response.wallet_balance.pending_coin_removal_count
-                );
+            return await WalletProxy.SendMessage<WalletBalance>("get_wallet_balance", CreateWalletDataObject(), "wallet_balance", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

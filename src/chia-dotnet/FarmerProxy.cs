@@ -25,17 +25,31 @@ namespace chia.dotnet
         /// <summary>
         /// Get the farm and pool reward targets 
         /// </summary>
-        /// <param name="searchForPrivateKey">Include private key in search</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>the farm and pool reward targets</returns>
-        public async Task<(string FarmerTarget, string PoolTarget)> GetRewardTargets(bool searchForPrivateKey, CancellationToken cancellationToken = default)
+        public async Task<(string FarmerTarget, string PoolTarget)> GetRewardTargets(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
-            data.search_for_private_key = searchForPrivateKey;
+            data.search_for_private_key = false;
 
             var response = await SendMessage("get_reward_targets", data, cancellationToken).ConfigureAwait(false);
 
             return (response.farmer_target, response.pool_target);
+        }
+
+        /// <summary>
+        /// Get the farm and pool reward targets, including private keys in the search
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>the farm and pool reward targets</returns>
+        public async Task<(string FarmerTarget, string PoolTarget, bool HaveFarmerSk, bool HavePoolSk)> GetRewardTargetsincludingPrivateKey(CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.search_for_private_key = true;
+
+            var response = await SendMessage("get_reward_targets", data, cancellationToken).ConfigureAwait(false);
+
+            return (response.farmer_target, response.pool_target, response.have_farmer_sk, response.have_pool_sk);
         }
 
         /// <summary>

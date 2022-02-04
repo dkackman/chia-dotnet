@@ -15,7 +15,7 @@ namespace chia.dotnet
         public string? PlotPublicKey { get; init; }
         public string PoolContractPuzzleHash { get; init; } = string.Empty;
         public string? PoolPublicKey { get; init; }
-        public KValues Size { get; init; }
+        public KSize Size { get; init; }
         public double TimeModified { get; init; }
         [JsonIgnore]
         public DateTime DateTimeModified => TimeModified.ToDateTime();

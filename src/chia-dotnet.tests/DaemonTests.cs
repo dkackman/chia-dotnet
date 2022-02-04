@@ -41,6 +41,14 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
+        public async Task GetKeyringStatus()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            var status = await _theDaemon.GetKeyringStatus(cts.Token);
+            Assert.IsNotNull(status);
+        }
+        [TestMethod]
         public async Task GetFarmerIsRunning()
         {
             using var cts = new CancellationTokenSource(15000);

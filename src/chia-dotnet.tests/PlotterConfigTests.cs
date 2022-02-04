@@ -12,7 +12,7 @@ namespace chia.dotnet.tests
             {
                 DestinationDir = "C:\tmp",
                 TempDir = @"C:\tmp",
-                Size = KValues.K32
+                Size = KSize.K32
             };
 
             dynamic serializable = config.PrepareForSerialization();
@@ -27,7 +27,7 @@ namespace chia.dotnet.tests
             {
                 DestinationDir = "C:\tmp",
                 TempDir = @"C:\tmp",
-                Size = KValues.K32
+                Size = KSize.K32
             };
 
             dynamic serializable = config.PrepareForSerialization();

@@ -16,7 +16,7 @@ namespace chia.dotnet
         public string LogNew { get; init; } = string.Empty;
         public bool Parallel { get; init; }
         public string Queue { get; init; } = string.Empty;
-        public KValues Size { get; init; }
+        public KSize Size { get; init; }
         public string State { get; init; } = string.Empty;
         [JsonIgnore]
         public PlotState PlotState => Enum.Parse<PlotState>(State);

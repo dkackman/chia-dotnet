@@ -7,22 +7,6 @@ using Newtonsoft.Json;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Valid plot sizes
-    /// https://github.com/Chia-Network/chia-blockchain/wiki/k-sizes
-    /// </summary>
-    public enum KValues
-    {
-        /// <summary>
-        /// Valid for testing only - <see cref="PlotterConfig.OverrideK"/> must be true in order to use
-        /// </summary>
-        K25 = 25,
-        K32 = 32,
-        K33 = 33,
-        K34 = 34,
-        K35 = 35,
-    }
-
-    /// <summary>
     /// Configuration settings for the plotter. (equivalent to chia plots create command line args)
     /// https://github.com/Chia-Network/chia-blockchain/wiki/CLI-Commands-Reference
     /// </summary>
@@ -51,9 +35,9 @@ namespace chia.dotnet
         /// <summary>
         /// Define the size of the plot(s). 
         /// </summary>
-        /// <value>Defaults to <see cref="KValues.K32"/></value>
+        /// <value>Defaults to <see cref="KSize.K32"/></value>
         [JsonProperty("k")]
-        public KValues Size { get; init; } = KValues.K32;
+        public KSize Size { get; init; } = KSize.K32;
 
         /// <value>
         /// Defaults to "default"
@@ -158,7 +142,7 @@ namespace chia.dotnet
         public bool ExcludeFinalDir { get; init; } = false;
 
         /// <summary>
-        /// Only needed when <see cref="Size"/> is set to <see cref="KValues.K25"/>
+        /// Only needed when <see cref="Size"/> is set to <see cref="KSize.K25"/>
         /// </summary>
         /// <value>Defaults to false.</value>
         [JsonProperty("overrideK")]
@@ -176,9 +160,9 @@ namespace chia.dotnet
                 throw new InvalidOperationException($"{nameof(TempDir)} must be specified");
             }
 
-            if (Size == KValues.K25 && OverrideK == false)
+            if (Size == KSize.K25 && OverrideK == false)
             {
-                throw new InvalidOperationException($"Using a {nameof(Size)} of {KValues.K25} requires {OverrideK} to be true");
+                throw new InvalidOperationException($"Using a {nameof(Size)} of {KSize.K25} requires {OverrideK} to be true");
             }
 
             dynamic data = new ExpandoObject();

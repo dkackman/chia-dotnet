@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System;
+using System.Diagnostics;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -18,20 +20,27 @@ namespace chia.dotnet.tests
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
-            using var cts = new CancellationTokenSource(2000);
-            var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
-            await rpcClient.Connect(cts.Token);
+            try
+            {
+                using var cts = new CancellationTokenSource(2000);
+                var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
+                await rpcClient.Connect(cts.Token);
 
-            var daemon = new DaemonProxy(rpcClient, "unit_tests");
-            await daemon.RegisterService(cts.Token);
+                var daemon = new DaemonProxy(rpcClient, "unit_tests");
+                await daemon.RegisterService(cts.Token);
 
-            _theFullNode = new FullNodeProxy(rpcClient, "unit_tests");
+                _theFullNode = new FullNodeProxy(rpcClient, "unit_tests");
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+            }
         }
 
         [ClassCleanup()]
         public static void ClassCleanup()
         {
-            _theFullNode.RpcClient?.Dispose();
+            _theFullNode?.RpcClient?.Dispose();
         }
 
         [TestMethod]

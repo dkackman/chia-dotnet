@@ -41,7 +41,7 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            var targets = await _theFarmer.GetRewardTargets(false);
+            var targets = await _theFarmer.GetRewardTargets(cts.Token);
 
             Assert.IsNotNull(targets);
             Assert.IsFalse(string.IsNullOrEmpty(targets.FarmerTarget));
@@ -81,16 +81,21 @@ namespace chia.dotnet.tests
         [TestMethod]
         public async Task GetSignagePoint()
         {
-            using var cts = new CancellationTokenSource(15000);
+            using var cts = new CancellationTokenSource(1005000);
 
             var signagePoints = await _theFarmer.GetSignagePoints(cts.Token);
 
             try
             {
-                var spInfo = signagePoints.First();
-                var sp = await _theFarmer.GetSignagePoint(spInfo.SignagePoint.ChallengeChainSp, cts.Token);
-
-                Assert.IsNotNull(sp);
+                foreach (var spInfo in signagePoints)
+                {
+                    var sp = await _theFarmer.GetSignagePoint(spInfo.SignagePoint.ChallengeChainSp, cts.Token);
+                    if (sp.Proofs.Any())
+                    {
+                        break;
+                    }
+                    Assert.IsNotNull(sp);
+                }
             }
             catch (InvalidOperationException)
             {
