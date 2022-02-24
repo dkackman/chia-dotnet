@@ -12,10 +12,10 @@ namespace chia.dotnet
     internal static class CertLoader
     {
         /// <summary>
-        /// Constructs an ephemeral <see cref="X509Certificate2"/> from crt and keys stored as files
+        /// Constructs an ephemeral <see cref="X509Certificate2"/> from a crt and key stored as files
         /// </summary>
-        /// <param name="certPath">The full path the the .crt public cert</param>
-        /// <param name="keyPath">The full path to the RSA encoded private key</param>
+        /// <param name="certPath">The full path the public cert (.crt)</param>
+        /// <param name="keyPath">The full path to the RSA encoded private key (.key)</param>
         /// <returns>An ephemeral certificate that can be used for WebSocket authentication</returns>
         public static X509Certificate2Collection GetCerts(string certPath, string keyPath)
         {
@@ -42,9 +42,9 @@ namespace chia.dotnet
             rsa.ImportRSAPrivateKey(Convert.FromBase64String(base64), out _);
 
             using var certWithKey = cert.CopyWithPrivateKey(rsa);
-            var ephermeralCert = new X509Certificate2(certWithKey.Export(X509ContentType.Pkcs12));
+            var ephemeralCert = new X509Certificate2(certWithKey.Export(X509ContentType.Pkcs12));
 
-            return new X509Certificate2Collection(ephermeralCert);
+            return new X509Certificate2Collection(ephemeralCert);
         }
     }
 }
