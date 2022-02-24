@@ -262,6 +262,16 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Deletes all keys from the keychain
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        public async Task DeleteAllKeys(CancellationToken cancellationToken = default)
+        {
+            _ = await SendMessage("delete_all_keys", null, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Returns the first private key
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
