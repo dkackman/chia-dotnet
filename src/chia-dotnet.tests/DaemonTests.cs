@@ -105,6 +105,14 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
+        public async Task SetKeyringPassphrase()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            await _theDaemon.SetKeyringPassphrase("sp00n3!!", "sp00n3!!!", "super duper secure utensil", true, cts.Token);
+        }
+
+        [TestMethod]
         public async Task IsKeyringLocked()
         {
             using var cts = new CancellationTokenSource(15000);

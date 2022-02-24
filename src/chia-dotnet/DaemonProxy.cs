@@ -181,7 +181,7 @@ namespace chia.dotnet
         /// <param name="cleanupLegacyKeyring">Should the legacy keyring be cleaned up</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task MigrateKeyring(string passphrase, string passphraseHint, bool savePassphrase, bool cleanupLegacyKeyring, CancellationToken cancellationToken = default)
+        public async Task MigrateKeyring(string passphrase, string passphraseHint, bool savePassphrase = false, bool cleanupLegacyKeyring = false, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.passphrase = passphrase;
@@ -190,6 +190,26 @@ namespace chia.dotnet
             data.cleanup_legacy_keyring = cleanupLegacyKeyring;
 
             await SendMessage("migrate_keyring", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Update the key ring passphrase
+        /// </summary>
+        /// <param name="currentPassphrase">The current keyring passphrase</param>
+        /// <param name="newPassphrase">The new keyring passphrase</param>
+        /// <param name="passphraseHint">A passphrase hint</param>
+        /// <param name="savePassphrase">Should the passphrase be saved</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        public async Task SetKeyringPassphrase(string currentPassphrase, string newPassphrase, string passphraseHint, bool savePassphrase = false, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.current_passphrase = currentPassphrase;
+            data.new_passphrase = newPassphrase;
+            data.passphrase_hint = passphraseHint;
+            data.save_passphrase = savePassphrase;
+
+            await SendMessage("set_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
         }
 
         private static object CreateDataObject(string service)
