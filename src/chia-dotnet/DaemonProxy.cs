@@ -272,6 +272,23 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Adds a private key to the keychain, with the given entropy and passphrase.
+        /// The keychain itself will store the public key, and the entropy bytes, but not the passphrase.
+        /// </summary>
+        /// <param name="mnemonic">Mnemonic entropy of the key</param>
+        /// <param name="passphrase">Keyring passphrase</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        public async Task AddPrivateKey(string mnemonic, string passphrase, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.mnemonic = mnemonic;
+            data.passphrase = passphrase;
+
+            _ = await SendMessage("add_private_key", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Returns the first private key
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
