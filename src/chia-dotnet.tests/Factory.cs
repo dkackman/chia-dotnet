@@ -8,7 +8,7 @@ namespace chia.dotnet.tests
     internal static class Factory
     {
         // this is the ip address of the chia node
-        private const string NodeHostAddress = "172.29.147.134";
+        private const string NodeHostAddress = "172.26.135.119";
 
         public static HttpRpcClient CreateDirectRpcClientFromHardcodedLocation(int port)
         {
@@ -27,22 +27,22 @@ namespace chia.dotnet.tests
         /// <returns><see cref="DaemonProxy"/></returns>
         public static WebSocketRpcClient CreateRpcClientFromHardcodedLocation()
         {
-            //*
+            /*
 #warning YOU MIGHT BE USING A PRODUCTION NODE
             var endpoint = Config.Open().GetEndpoint("ui");
-            //*/
+            */
 
-            /*                  
+            ///*                  
             var endpoint = new EndpointInfo()
             {
                 Uri = new Uri($"wss://{NodeHostAddress}:55400"),
-                CertPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/daemon/private_daemon.crt",
-                KeyPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/daemon/private_daemon.key",
+                CertPath = @"\\wsl.localhost\Ubuntu\home\don\.chia\mainnet\config\ssl\daemon\private_daemon.crt",
+                KeyPath = @"\\wsl.localhost\Ubuntu\home\don\.chia\mainnet\config\ssl\daemon\private_daemon.key",
                 //Uri = new Uri("wss://localhost:55400"),
                 //CertPath = @"/home/don/.chia/mainnet/config/ssl/daemon/private_daemon.crt",
                 //KeyPath = @"/home/don/.chia/mainnet/config/ssl/daemon/private_daemon.key",
             };
-            */
+            //*/
             return new WebSocketRpcClient(endpoint);
         }
 

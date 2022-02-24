@@ -125,13 +125,26 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Retrieves the status of teh keyring
+        /// Retrieves the status of the keyring
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task<KeyringStatus> GetKeyringStatus(CancellationToken cancellationToken = default)
         {
             return await SendMessage<KeyringStatus>("keyring_status", null, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Test the validity of a passphrase
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        public async Task ValidateKeyringPassphrase(string key, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.key = key;
+
+            await SendMessage("validate_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
         }
 
         private static object CreateDataObject(string service)

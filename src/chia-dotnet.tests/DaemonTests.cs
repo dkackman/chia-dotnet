@@ -18,11 +18,19 @@ namespace chia.dotnet.tests
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
-            using var cts = new CancellationTokenSource(2000);
-            var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
-            await rpcClient.Connect(cts.Token);
+            try
+            {
+                using var cts = new CancellationTokenSource(2000);
+                var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
+                await rpcClient.Connect(cts.Token);
 
-            _theDaemon = new DaemonProxy(rpcClient, "unit_tests");
+                _theDaemon = new DaemonProxy(rpcClient, "unit_tests");
+            }
+            catch (System.Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                throw;
+            }
         }
 
         [ClassCleanup()]
@@ -56,6 +64,15 @@ namespace chia.dotnet.tests
 
             var running = await _theDaemon.IsServiceRunning(ServiceNames.Farmer, cts.Token);
             Assert.IsTrue(running);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ResponseException))]
+        public async Task ValidateInvalidKeyringPassphrase()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            await _theDaemon.ValidateKeyringPassphrase("spoon", cts.Token);
         }
 
         [TestMethod]

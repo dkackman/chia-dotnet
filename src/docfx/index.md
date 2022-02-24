@@ -18,3 +18,8 @@ await daemon.RegisterService();
 var fullNode = new FullNodeProxy(rpcClient, "unit_tests");
 var state = await fullNode.GetBlockchainState(e);
 ```
+
+## 1.3 breaking changes
+
+- Changed `KValues` to `KSize` to match python naming
+
