@@ -141,6 +141,15 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
+        [Ignore("This seems to put the daemon out to lunch")]
+        public async Task CheckKeys()
+        {
+            using var cts = new CancellationTokenSource(30000);
+
+            await _theDaemon.CheckKeys("~/.chia/mainnet/config", cts.Token);
+        }
+
+        [TestMethod]
         public async Task CreateFullNodeFrom()
         {
             using var cts = new CancellationTokenSource(15000);

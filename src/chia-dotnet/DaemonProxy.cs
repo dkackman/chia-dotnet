@@ -240,6 +240,21 @@ namespace chia.dotnet
             return (response.pk, response.entropy);
         }
 
+        /// <summary>
+        /// Checks the keys
+        /// </summary>
+        /// <param name="rootPath">key root path</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        /// <remarks>This seems to send the daemon out to lunch</remarks>
+        public async Task CheckKeys(string rootPath, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.root_path = rootPath;
+
+            await SendMessage("check_keys", data, cancellationToken).ConfigureAwait(false);
+        }
+
+
         private static object CreateDataObject(string service)
         {
             if (string.IsNullOrEmpty(service))
