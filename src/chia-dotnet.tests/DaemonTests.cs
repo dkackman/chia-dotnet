@@ -1,6 +1,7 @@
 ﻿
 using System.Threading;
 using System.Threading.Tasks;
+using System.Linq;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -138,6 +139,17 @@ namespace chia.dotnet.tests
             var key = await _theDaemon.GetKeyForFingerprint(1531304830, cts.Token);
 
             Assert.IsNotNull(key);
+        }
+
+        [TestMethod]
+        public async Task GetAllPrivateKeys()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            var keys = await _theDaemon.GetAllPrivateKeys(cts.Token);
+
+            Assert.IsNotNull(keys);
+            Assert.IsTrue(keys.Any());
         }
 
         [TestMethod]

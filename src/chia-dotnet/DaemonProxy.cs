@@ -2,6 +2,7 @@
 using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace chia.dotnet
 {
@@ -217,6 +218,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="currentPassphrase">The current keyring passphrase</param>
         /// <returns>Awaitable <see cref="Task"/></returns>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         public async Task RemoveKeyringPassphrase(string currentPassphrase, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -226,36 +228,50 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Remove the key ring passphrase
+        /// Gets the private key associated with the given fingerprint
         /// </summary>
-        /// <param name="currentPassphrase">The current keyring passphrase</param>
-        /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task<(string pk, string entropy)> GetKeyForFingerprint(uint fingerprint, CancellationToken cancellationToken = default)
+        /// <param name="fingerprint">The fingerprint</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The <see cref="PrivateKey"/></returns>
+        public async Task<PrivateKey> GetKeyForFingerprint(uint fingerprint, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
 
             var response = await SendMessage("get_key_for_fingerprint", data, cancellationToken).ConfigureAwait(false);
 
-            return (response.pk, response.entropy);
+            return new PrivateKey()
+            {
+                PK = response.pk,
+                Entropy = response.entropy
+            };
         }
 
         /// <summary>
-        /// Remove the key ring passphrase
+        /// Returns the first private key
         /// </summary>
-        /// <param name="currentPassphrase">The current keyring passphrase</param>
-        /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task<(string pk, string entropy)> GetFirstPrivateKey(CancellationToken cancellationToken = default)
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The first <see cref="PrivateKey"/></returns>
+        public async Task<PrivateKey> GetFirstPrivateKey(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_first_private_key", null, cancellationToken).ConfigureAwait(false);
+            return await SendMessage<PrivateKey>("get_first_private_key", null, "private_key", cancellationToken).ConfigureAwait(false);
+        }
 
-            return (response.private_key.pk, response.private_key.entropy);
+        /// <summary>
+        /// Returns all private keys as a tuple of key, and entropy bytes (i.e. mnemonic) for each key.
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>All of the <see cref="PrivateKey"/>s</returns>
+        public async Task<IEnumerable<PrivateKey>> GetAllPrivateKeys(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<IEnumerable<PrivateKey>>("get_all_private_keys", null, "private_keys", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Checks the keys
         /// </summary>
         /// <param name="rootPath">The config root path</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Awaitable <see cref="Task"/></returns>
         /// <remarks>This seems to send the daemon out to lunch</remarks>
         public async Task CheckKeys(string rootPath, CancellationToken cancellationToken = default)
@@ -265,7 +281,6 @@ namespace chia.dotnet
 
             await SendMessage("check_keys", data, cancellationToken).ConfigureAwait(false);
         }
-
 
         private static object CreateDataObject(string service)
         {
