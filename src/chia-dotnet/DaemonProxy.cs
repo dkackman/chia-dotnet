@@ -163,9 +163,22 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Determine if the keyring is locked
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Boolean indicator as to wheteher the keyring is locked</returns>
+        public async Task<bool> IsKeyringLocked(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<bool>("is_keyring_locked", "is_keyring_locked", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Migrate from key phrase to key ring
         /// </summary>
-        /// <param name="key">Keyring passphrase</param>
+        /// <param name="passphrase">The new keyring passphrase</param>
+        /// <param name="passphraseHint">A passphrase hint</param>
+        /// <param name="savePassphrase">Should the passphrase be saved</param>
+        /// <param name="cleanupLegacyKeyring">Should the legacy keyring be cleaned up</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task MigrateKeyring(string passphrase, string passphraseHint, bool savePassphrase, bool cleanupLegacyKeyring, CancellationToken cancellationToken = default)

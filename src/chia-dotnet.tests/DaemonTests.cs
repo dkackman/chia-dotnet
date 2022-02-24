@@ -90,6 +90,10 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
 
             await _theDaemon.UnlockKeyring("sp00n3!!", cts.Token);
+
+            var locked = await _theDaemon.IsKeyringLocked(cts.Token);
+
+            Assert.IsFalse(locked);
         }
 
         [TestMethod]
@@ -98,6 +102,16 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
 
             await _theDaemon.MigrateKeyring("sp00n3!!", "super secure utensil", true, false, cts.Token);
+        }
+
+        [TestMethod]
+        public async Task IsKeyringLocked()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            var locked = await _theDaemon.IsKeyringLocked(cts.Token);
+
+            Assert.IsTrue(locked);
         }
 
         [TestMethod]
