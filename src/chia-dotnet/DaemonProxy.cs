@@ -225,6 +225,21 @@ namespace chia.dotnet
             await SendMessage("remove_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// Remove the key ring passphrase
+        /// </summary>
+        /// <param name="currentPassphrase">The current keyring passphrase</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        public async Task<(string pk, string entropy)> GetKeyForFingerprint(uint fingerprint, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+
+            var response = await SendMessage("get_key_for_fingerprint", data, cancellationToken).ConfigureAwait(false);
+
+            return (response.pk, response.entropy);
+        }
+
         private static object CreateDataObject(string service)
         {
             if (string.IsNullOrEmpty(service))

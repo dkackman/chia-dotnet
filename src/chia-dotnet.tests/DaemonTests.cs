@@ -131,6 +131,16 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
+        public async Task GetKeyForFingerprint()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            var key = await _theDaemon.GetKeyForFingerprint(1531304830, cts.Token);
+
+            Assert.IsNotNull(key);
+        }
+
+        [TestMethod]
         public async Task CreateFullNodeFrom()
         {
             using var cts = new CancellationTokenSource(15000);
