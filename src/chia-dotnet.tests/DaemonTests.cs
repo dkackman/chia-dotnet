@@ -74,6 +74,7 @@ namespace chia.dotnet.tests
 
             await _theDaemon.ValidateKeyringPassphrase("spoon", cts.Token);
         }
+
         [TestMethod]
         [ExpectedException(typeof(ResponseException))]
         public async Task UnlockKeyringInvalid()
@@ -83,6 +84,21 @@ namespace chia.dotnet.tests
             await _theDaemon.UnlockKeyring("spoon", cts.Token);
         }
 
+        [TestMethod]
+        public async Task UnlockKeyringValid()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            await _theDaemon.UnlockKeyring("sp00n3!!", cts.Token);
+        }
+
+        [TestMethod]
+        public async Task MigrateKeyring()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            await _theDaemon.MigrateKeyring("sp00n3!!", "super secure utensil", true, false, cts.Token);
+        }
 
         [TestMethod]
         public async Task CreateFullNodeFrom()

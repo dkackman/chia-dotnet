@@ -149,7 +149,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// unlock the keyring
+        /// Unlock the keyring
         /// </summary>
         /// <param name="key">Keyring passphrase</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
@@ -160,6 +160,23 @@ namespace chia.dotnet
             data.key = key;
 
             await SendMessage("unlock_keyring", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Migrate from key phrase to key ring
+        /// </summary>
+        /// <param name="key">Keyring passphrase</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        public async Task MigrateKeyring(string passphrase, string passphraseHint, bool savePassphrase, bool cleanupLegacyKeyring, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.passphrase = passphrase;
+            data.passphrase_hint = passphraseHint;
+            data.save_passphrase = savePassphrase;
+            data.cleanup_legacy_keyring = cleanupLegacyKeyring;
+
+            await SendMessage("migrate_keyring", data, cancellationToken).ConfigureAwait(false);
         }
 
         private static object CreateDataObject(string service)
