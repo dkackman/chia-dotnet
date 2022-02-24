@@ -212,6 +212,19 @@ namespace chia.dotnet
             await SendMessage("set_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// Remove the key ring passphrase
+        /// </summary>
+        /// <param name="currentPassphrase">The current keyring passphrase</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        public async Task RemoveKeyringPassphrase(string currentPassphrase, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.current_passphrase = currentPassphrase;
+
+            await SendMessage("remove_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
+        }
+
         private static object CreateDataObject(string service)
         {
             if (string.IsNullOrEmpty(service))
