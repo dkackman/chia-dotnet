@@ -137,6 +137,7 @@ namespace chia.dotnet
         /// <summary>
         /// Test the validity of a passphrase
         /// </summary>
+        /// <param name="key">Keyring passphrase</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task ValidateKeyringPassphrase(string key, CancellationToken cancellationToken = default)
@@ -145,6 +146,20 @@ namespace chia.dotnet
             data.key = key;
 
             await SendMessage("validate_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// unlock the keyring
+        /// </summary>
+        /// <param name="key">Keyring passphrase</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        public async Task UnlockKeyring(string key, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.key = key;
+
+            await SendMessage("unlock_keyring", data, cancellationToken).ConfigureAwait(false);
         }
 
         private static object CreateDataObject(string service)

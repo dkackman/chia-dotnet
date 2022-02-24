@@ -74,6 +74,15 @@ namespace chia.dotnet.tests
 
             await _theDaemon.ValidateKeyringPassphrase("spoon", cts.Token);
         }
+        [TestMethod]
+        [ExpectedException(typeof(ResponseException))]
+        public async Task UnlockKeyringInvalid()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            await _theDaemon.UnlockKeyring("spoon", cts.Token);
+        }
+
 
         [TestMethod]
         public async Task CreateFullNodeFrom()
