@@ -146,7 +146,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.key = key;
 
-            await SendMessage("validate_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
+            _ = await SendMessage("validate_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.key = key;
 
-            await SendMessage("unlock_keyring", data, cancellationToken).ConfigureAwait(false);
+            _ = await SendMessage("unlock_keyring", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace chia.dotnet
             data.save_passphrase = savePassphrase;
             data.cleanup_legacy_keyring = cleanupLegacyKeyring;
 
-            await SendMessage("migrate_keyring", data, cancellationToken).ConfigureAwait(false);
+            _ = await SendMessage("migrate_keyring", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -210,21 +210,21 @@ namespace chia.dotnet
             data.passphrase_hint = passphraseHint;
             data.save_passphrase = savePassphrase;
 
-            await SendMessage("set_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
+            _ = await SendMessage("set_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Remove the key ring passphrase
         /// </summary>
         /// <param name="currentPassphrase">The current keyring passphrase</param>
-        /// <returns>Awaitable <see cref="Task"/></returns>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task RemoveKeyringPassphrase(string currentPassphrase, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.current_passphrase = currentPassphrase;
 
-            await SendMessage("remove_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
+            _ = await SendMessage("remove_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -245,6 +245,20 @@ namespace chia.dotnet
                 PK = response.pk,
                 Entropy = response.entropy
             };
+        }
+
+        /// <summary>
+        /// Deletes all keys which have the given public key fingerprint
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        public async Task DeleteKeyByFingerprint(uint fingerprint, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+
+            _ = await SendMessage("delete_key_by_fingerprint", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -279,7 +293,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.root_path = rootPath;
 
-            await SendMessage("check_keys", data, cancellationToken).ConfigureAwait(false);
+            _ = await SendMessage("check_keys", data, cancellationToken).ConfigureAwait(false);
         }
 
         private static object CreateDataObject(string service)
