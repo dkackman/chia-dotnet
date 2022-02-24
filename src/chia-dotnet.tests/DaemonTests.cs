@@ -150,6 +150,16 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
+        public async Task GetFirstPrivateKey()
+        {
+            using var cts = new CancellationTokenSource(30000);
+
+            var key = await _theDaemon.GetFirstPrivateKey(cts.Token);
+
+            Assert.IsNotNull(key);
+        }
+
+        [TestMethod]
         public async Task CreateFullNodeFrom()
         {
             using var cts = new CancellationTokenSource(15000);

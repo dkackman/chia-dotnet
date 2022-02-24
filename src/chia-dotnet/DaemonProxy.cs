@@ -241,9 +241,21 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Remove the key ring passphrase
+        /// </summary>
+        /// <param name="currentPassphrase">The current keyring passphrase</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        public async Task<(string pk, string entropy)> GetFirstPrivateKey(CancellationToken cancellationToken = default)
+        {
+            var response = await SendMessage("get_first_private_key", null, cancellationToken).ConfigureAwait(false);
+
+            return (response.private_key.pk, response.private_key.entropy);
+        }
+
+        /// <summary>
         /// Checks the keys
         /// </summary>
-        /// <param name="rootPath">key root path</param>
+        /// <param name="rootPath">The config root path</param>
         /// <returns>Awaitable <see cref="Task"/></returns>
         /// <remarks>This seems to send the daemon out to lunch</remarks>
         public async Task CheckKeys(string rootPath, CancellationToken cancellationToken = default)
