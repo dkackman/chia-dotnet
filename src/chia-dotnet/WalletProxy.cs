@@ -14,11 +14,6 @@ namespace chia.dotnet
     public sealed class WalletProxy : ServiceProxy
     {
         /// <summary>
-        /// Default location for backups
-        /// </summary>
-        public const string DefaultBackupHost = "https://backup.chia.net";
-
-        /// <summary>
         /// ctor
         /// </summary>
         /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
@@ -292,8 +287,7 @@ namespace chia.dotnet
             }
 
             dynamic data = new ExpandoObject();
-            data.wallet_type = "cc_wallet";
-            data.host = DefaultBackupHost;
+            data.wallet_type = "cat_wallet";
             data.amount = amount;
             data.fee = fee;
             data.mode = "new";
@@ -323,7 +317,6 @@ namespace chia.dotnet
 
             dynamic data = new ExpandoObject();
             data.wallet_type = "cc_wallet";
-            data.host = DefaultBackupHost;
             data.mode = "existing";
             data.colour = colour;
 
@@ -352,7 +345,6 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_type = "rl_wallet";
             data.rl_type = "admin";
-            data.host = DefaultBackupHost;
             data.pubkey = pubkey;
             data.amount = amount;
             data.fee = fee;
@@ -379,7 +371,6 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_type = "rl_wallet";
             data.rl_type = "user";
-            data.host = DefaultBackupHost;
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
 
@@ -411,7 +402,6 @@ namespace chia.dotnet
             data.backup_dids = backupDIDs.ToList();
             data.num_of_backup_ids_needed = numOfBackupIdsNeeded;
             data.amount = amount;
-            data.host = DefaultBackupHost;
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
 
@@ -506,7 +496,6 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_type = "pool_wallet";
             data.mode = "new";
-            data.host = DefaultBackupHost;
             data.initial_target_state = initialTargetState;
 
             if (p2SingletonDelayTime is not null)
