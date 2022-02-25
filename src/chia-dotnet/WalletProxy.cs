@@ -541,7 +541,7 @@ namespace chia.dotnet
             data.fee = fee;
             data.validate_only = validateOnly;
 
-            return await SendMessage<OfferRecord>("create_offer_for_ids", data, cancellationToken).ConfigureAwait(false);
+            return await SendMessage<OfferRecord>("create_offer_for_ids", data, null, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

@@ -244,14 +244,14 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        [Ignore("CAUTION")]
+        //[Ignore("CAUTION")]
         public async Task CreateOfferForIds()
         {
             using var cts = new CancellationTokenSource(15000);
 
             var ids = new Dictionary<string, int>()
             {
-                { "one", 1 }
+                { "1", 1 }
             };
             var offer = await _theWallet.CreateOfferForIds(ids, 1, true, cts.Token);
 

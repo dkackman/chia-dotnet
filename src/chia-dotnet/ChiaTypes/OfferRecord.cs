@@ -11,7 +11,7 @@
         public string Offer { get; init; } = string.Empty;
 
         /// <summary>
-        /// Trade record assocaited with the offer
+        /// Trade record associated with the offer
         /// </summary>
         public TradeRecord TradeRecord { get; init; } = new TradeRecord();
     }
