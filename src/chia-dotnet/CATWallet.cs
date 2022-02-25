@@ -41,6 +41,18 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Get the asset id of a wallet's CAT
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The asset id</returns>
+        public async Task<string> GetAssetId(CancellationToken cancellationToken = default)
+        {
+            var response = await WalletProxy.SendMessage("cat_get_asset_id", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
+
+            return response.asset_id.ToString();
+        }
+
+        /// <summary>
         /// Set the name of the CAT
         /// </summary>
         /// <param name="name">The new name</param>
