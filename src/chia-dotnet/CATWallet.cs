@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Dynamic;
+using System.Linq;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -97,9 +99,10 @@ namespace chia.dotnet
         /// <param name="innerAddress">The inner address for the spend</param>
         /// <param name="amount">The amount to put in the wallet (in units of mojos)</param> 
         /// <param name="fee">The fee to create the wallet (in units of mojos)</param>
+        /// <param name="memos">Optional list of byte string memos to include in the transaction</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> Spend(string innerAddress, ulong amount, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> Spend(string innerAddress, ulong amount, ulong fee, IEnumerable<string>? memos, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(innerAddress))
             {
@@ -110,6 +113,10 @@ namespace chia.dotnet
             data.inner_address = innerAddress;
             data.amount = amount;
             data.fee = fee;
+            if (memos != null)
+            {
+                data.memos = memos.ToList();
+            }
 
             return await WalletProxy.SendMessage<TransactionRecord>("cat_spend", data, "transaction", cancellationToken).ConfigureAwait(false);
         }
