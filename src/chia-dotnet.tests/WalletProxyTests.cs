@@ -69,7 +69,7 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            var key = await _theWallet.GetPrivateKey(1531304830, cts.Token);
+            var key = await _theWallet.GetPrivateKey(_theWallet.Fingerprint.Value, cts.Token);
 
             Assert.IsNotNull(key);
         }
