@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -50,6 +51,25 @@ namespace chia.dotnet
             var response = await WalletProxy.SendMessage("cat_get_asset_id", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
 
             return response.asset_id.ToString();
+        }
+
+        /// <summary>
+        /// Get the CAT name from an asset id
+        /// </summary>
+        /// <param name="assetId">The asset id</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The asset id</returns>
+        public async Task<(uint WalletId, string Name)> AssetIdToName(string assetId, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.asset_id = assetId;
+
+            var response = await WalletProxy.SendMessage("cat_asset_id_to_name", data, cancellationToken).ConfigureAwait(false);
+
+            return (
+                (uint)response.wallet_id,
+                response.name
+                );
         }
 
         /// <summary>
