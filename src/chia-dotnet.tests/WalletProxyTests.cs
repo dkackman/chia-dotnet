@@ -249,11 +249,13 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            var ids = new Dictionary<int, int>()
+            var ids = new Dictionary<string, int>()
             {
-                { 1, 1 }
+                { "one", 1 }
             };
-            await _theWallet.CreateOfferForIds(ids, @"C:\tmp\test.offer", cts.Token);
+            var offer = await _theWallet.CreateOfferForIds(ids, 1, true, cts.Token);
+
+            Assert.IsNotNull(offer);
         }
 
         [TestMethod()]

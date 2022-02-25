@@ -525,26 +525,23 @@ namespace chia.dotnet
         /// Create an offer file from a set of id's
         /// </summary>
         /// <param name="ids">The set of ids</param>
-        /// <param name="filename">Path to the offer file to create</param>   
+        /// <param name="fee">Transaction fee for offer creation</param>   
+        /// <param name="validateOnly">Only validate the offer contents. Do not create.</param>   
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task CreateOfferForIds(IDictionary<int, int> ids, string filename, CancellationToken cancellationToken = default)
+        public async Task<OfferRecord> CreateOfferForIds(IDictionary<string, int> ids, ulong fee, bool validateOnly = false, CancellationToken cancellationToken = default)
         {
             if (ids is null)
             {
                 throw new ArgumentNullException(nameof(ids));
             }
 
-            if (string.IsNullOrEmpty(filename))
-            {
-                throw new ArgumentNullException(nameof(filename));
-            }
-
             dynamic data = new ExpandoObject();
             data.ids = ids;
-            data.filename = filename;
+            data.fee = fee;
+            data.validate_only = validateOnly;
 
-            _ = await SendMessage("create_offer_for_ids", data, cancellationToken).ConfigureAwait(false);
+            return await SendMessage<OfferRecord>("create_offer_for_ids", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
