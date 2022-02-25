@@ -142,11 +142,11 @@ namespace chia.dotnet.tests
         [TestMethod()]
         [TestCategory("CAUTION")]
         [Ignore("CAUTION")]
-        public async Task CreateNewColourCoinWallet()
+        public async Task CreateCATWallet()
         {
             using var cts = new CancellationTokenSource(15000);
 
-            var walletInfo = await _theWallet.CreateColourCoinWallet(1, 1, "dkackman.colouredwallet.1", cts.Token);
+            var walletInfo = await _theWallet.CreateCATWallet(1, 1, "dkackman.cat.1", cts.Token);
 
             Assert.IsNotNull(walletInfo);
         }

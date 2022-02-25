@@ -25,3 +25,4 @@ var state = await fullNode.GetBlockchainState(e);
 - Changed signature of wallet LogIn to match 1.3 changes
 - Removed restore back LogIn overload to match 1.3 changes
 - Introduced PrivateKeyDetails type instead of named tuple for GetPrivateKey
+- Replace "Colour" with "CAT" in multiple places

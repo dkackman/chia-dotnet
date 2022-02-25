@@ -272,18 +272,18 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Create a new colour coin wallet
+        /// Create a new CAT wallet
         /// </summary>
         /// <param name="amount">The amount to put in the wallet (in units of mojos)</param>
         /// <param name="fee">Fee to create the wallet (in units of mojos)</param>
-        /// <param name="colour">The coin Colour</param>
+        /// <param name="name">The CAT name</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(byte Type, string Colour, uint WalletId)> CreateColourCoinWallet(ulong amount, ulong fee, string colour, CancellationToken cancellationToken = default)
+        public async Task<(WalletType Type, string AssetId, uint WalletId)> CreateCATWallet(ulong amount, ulong fee, string name, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(colour))
+            if (string.IsNullOrEmpty(name))
             {
-                throw new ArgumentNullException(nameof(colour));
+                throw new ArgumentNullException(nameof(name));
             }
 
             dynamic data = new ExpandoObject();
@@ -291,38 +291,42 @@ namespace chia.dotnet
             data.amount = amount;
             data.fee = fee;
             data.mode = "new";
-            data.colour = colour;
+            data.name = name;
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
 
             return (
                 response.type,
-                response.colour,
+                response.asset_id,
                 response.wallet_id
                 );
         }
 
         /// <summary>
-        /// Create a coloured coin wallet for an existing colour
+        /// Create a wallet for an existing CAT
         /// </summary>
-        /// <param name="colour">The coin Colour</param>
+        /// <param name="assetId">The id of the CAT</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>        
         /// <returns>The wallet type</returns>
-        public async Task<byte> CreateColouredCoinForColour(string colour, CancellationToken cancellationToken = default)
+        public async Task<(WalletType Type, string AssetID, uint WalletId)> CreateWalletForCAT(string assetId, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(colour))
+            if (string.IsNullOrEmpty(assetId))
             {
-                throw new ArgumentNullException(nameof(colour));
+                throw new ArgumentNullException(nameof(assetId));
             }
 
             dynamic data = new ExpandoObject();
-            data.wallet_type = "cc_wallet";
+            data.wallet_type = "cat_wallet";
             data.mode = "existing";
-            data.colour = colour;
+            data.asset_id = assetId;
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
 
-            return response.type;
+            return (
+                response.type,
+                response.asset_id,
+                (uint)response.wallet_id
+                );
         }
 
         /// <summary>

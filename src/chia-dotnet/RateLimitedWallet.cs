@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Wraps a Coloured Coin wallet
+    /// Wraps a CAT wallet
     /// </summary>
     public sealed class RateLimitedWallet : Wallet
     {

@@ -7,10 +7,10 @@ namespace chia.dotnet.tests
 {
     [TestClass]
     [TestCategory("Integration")]
-    [Ignore("Needs a coloured coin wallet")]
-    public class ColouredCoinWalletTests
+    [Ignore("Needs a CAT wallet")]
+    public class CATWalletTests
     {
-        private static ColouredCoinWallet _theWallet;
+        private static CATWallet _theWallet;
 
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
@@ -26,7 +26,7 @@ namespace chia.dotnet.tests
 
             _ = await walletProxy.LogIn(cts.Token);
             // SET this wallet ID to a coloroured coin wallet 
-            _theWallet = new ColouredCoinWallet(2, walletProxy);
+            _theWallet = new CATWallet(2, walletProxy);
         }
 
         [ClassCleanup()]
@@ -36,19 +36,11 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        public async Task GetColouredCoinName()
+        public async Task GetName()
         {
             var name = await _theWallet.GetName();
 
             Assert.IsNotNull(name);
-        }
-
-        [TestMethod()]
-        public async Task GetColouredCoinColour()
-        {
-            var colour = await _theWallet.GetColour();
-
-            Assert.IsNotNull(colour);
         }
     }
 }
