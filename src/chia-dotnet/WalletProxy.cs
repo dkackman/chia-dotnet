@@ -214,9 +214,9 @@ namespace chia.dotnet
         /// <param name="fingerprint">The key's fingerprint</param>  
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>
-        /// Indicators of how wallet is used
+        /// Indicators of how the wallet is used
         /// </returns>
-        public async Task<(bool UsedForFarmerRewards, bool UsedForPoolRewards, bool WalletBalance)> CheckDeleteKey(uint fingerprint, CancellationToken cancellationToken = default)
+        public async Task<(uint FingerPrint, bool UsedForFarmerRewards, bool UsedForPoolRewards, bool WalletBalance)> CheckDeleteKey(uint fingerprint, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
@@ -224,6 +224,7 @@ namespace chia.dotnet
             var response = await SendMessage("check_delete_key", data, cancellationToken).ConfigureAwait(false);
 
             return (
+                (uint)response.fingerprint,
                 response.used_for_farmer_rewards,
                 response.used_for_pool_rewards,
                 response.wallet_balance
