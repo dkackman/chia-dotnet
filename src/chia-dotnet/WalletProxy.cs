@@ -171,6 +171,29 @@ namespace chia.dotnet
             return await SendMessage<TransactionRecord>("get_transaction", data, "transaction", cancellationToken).ConfigureAwait(false);
         }
 
+
+        /// <summary>
+        /// Pushes a transaction / spend bundle to the mempool and blockchain. 
+        /// Returns whether the spend bundle was successfully included into the mempool
+        /// </summary>
+        /// <param name="spendBundle"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Indicator of whether the spend bundle was successfully included in the mempool</returns>
+        public async Task<bool> PushTx(SpendBundle spendBundle, CancellationToken cancellationToken = default)
+        {
+            if (spendBundle is null)
+            {
+                throw new ArgumentNullException(nameof(spendBundle));
+            }
+
+            dynamic data = new ExpandoObject();
+            data.spend_bundle = spendBundle;
+
+            var response = await SendMessage("push_tx", data, cancellationToken).ConfigureAwait(false);
+
+            return response.status?.ToString() == "SUCCESS";
+        }
+
         /// <summary>
         /// Adds a new key to the wallet
         /// </summary>        
