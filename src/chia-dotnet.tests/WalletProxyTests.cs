@@ -45,6 +45,16 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
+        public async Task GetLoggedInFingerprint()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            var fingerprint = await _theWallet.GetLoggedInFingerprint(cts.Token);
+
+            Assert.AreEqual((uint)1531304830, fingerprint);
+        }
+
+        [TestMethod()]
         public async Task GetPublicKeys()
         {
             using var cts = new CancellationTokenSource(15000);

@@ -87,6 +87,17 @@ namespace chia.dotnet
             return Converters.ToEnumerable<uint>(response.public_key_fingerprints);
         }
 
+
+        /// <summary>
+        /// Retrieves the logged in fingerprint
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The logged in fingerprint</returns>
+        public async Task<uint> GetLoggedInFingerprint(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<uint>("get_logged_in_fingerprint", null, "fingerprint", cancellationToken).ConfigureAwait(false);
+        }
+
         /// <summary>
         /// Get the private key accessible by the wallet
         /// </summary>
