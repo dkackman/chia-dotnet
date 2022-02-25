@@ -7,7 +7,7 @@ namespace chia.dotnet.tests
 {
     [TestClass]
     [TestCategory("Integration")]
-    [Ignore("Needs a CAT wallet")]
+    //[Ignore("Needs a CAT wallet")]
     public class CATWalletTests
     {
         private static CATWallet _theWallet;

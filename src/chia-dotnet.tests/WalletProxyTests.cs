@@ -244,32 +244,6 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        //[Ignore("CAUTION")]
-        public async Task CreateOfferForIds()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            var ids = new Dictionary<string, int>()
-            {
-                { "1", 1 }
-            };
-            var offer = await _theWallet.CreateOfferForIds(ids, 1, true, cts.Token);
-
-            Assert.IsNotNull(offer);
-        }
-
-        [TestMethod()]
-        [Ignore("CAUTION")]
-        public async Task GetDiscrepenciesForOffer()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            var discrepencies = await _theWallet.GetDiscrepenciesForOffer(@"C:\tmp\test.offer", cts.Token);
-
-            Assert.IsNotNull(discrepencies);
-        }
-
-        [TestMethod()]
         public async Task GetFarmedAmount()
         {
             using var cts = new CancellationTokenSource(15000);

@@ -16,3 +16,4 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "<Pending>", Scope = "member", Target = "~M:chia.dotnet.tests.DaemonTests.Initialize(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext)~System.Threading.Tasks.Task")]
 [assembly: SuppressMessage("Style", "IDE0130:Namespace does not match folder structure", Justification = "<Pending>", Scope = "namespace", Target = "~N:chia.dotnet.tests")]
 [assembly: SuppressMessage("Reliability", "CA2007:Consider calling ConfigureAwait on the awaited task", Justification = "<Pending>", Scope = "module")]
+[assembly: SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "<Pending>", Scope = "member", Target = "~M:chia.dotnet.tests.TradeManagerTest.Initialize(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext)~System.Threading.Tasks.Task")]
