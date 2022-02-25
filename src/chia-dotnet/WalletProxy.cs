@@ -279,7 +279,7 @@ namespace chia.dotnet
         /// <param name="name">The CAT name</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(WalletType Type, string AssetId, uint WalletId)> CreateCATWallet(ulong amount, ulong fee, string name, CancellationToken cancellationToken = default)
+        public async Task<(WalletType Type, string AssetId, uint WalletId)> CreateCATWallet(string name, ulong amount, ulong fee, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -288,17 +288,17 @@ namespace chia.dotnet
 
             dynamic data = new ExpandoObject();
             data.wallet_type = "cat_wallet";
-            data.amount = amount;
-            data.fee = fee;
             data.mode = "new";
             data.name = name;
+            data.amount = amount;
+            data.fee = fee;
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
 
             return (
-                response.type,
+                (WalletType)response.type,
                 response.asset_id,
-                response.wallet_id
+                (uint)response.wallet_id
                 );
         }
 
@@ -323,7 +323,7 @@ namespace chia.dotnet
             var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
 
             return (
-                response.type,
+                (WalletType)response.type,
                 response.asset_id,
                 (uint)response.wallet_id
                 );
@@ -339,7 +339,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee to create the wallet (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(uint Id, byte Type, Coin origin, string pubkey)> CreateRateLimitedAdminWallet(string pubkey, ulong interval, ulong limit, ulong amount, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<(uint Id, WalletType Type, Coin origin, string pubkey)> CreateRateLimitedAdminWallet(string pubkey, ulong interval, ulong limit, ulong amount, ulong fee, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(pubkey))
             {
@@ -370,7 +370,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(uint Id, byte Type, string pubkey)> CreateRateLimitedUserWallet(CancellationToken cancellationToken = default)
+        public async Task<(uint Id, WalletType Type, string pubkey)> CreateRateLimitedUserWallet(CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_type = "rl_wallet";
@@ -379,8 +379,8 @@ namespace chia.dotnet
             var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
 
             return (
-                response.id,
-                response.type,
+                (uint)response.id,
+                (WalletType)response.type,
                 response.pubkey
                 );
         }
@@ -393,7 +393,7 @@ namespace chia.dotnet
         /// <param name="amount">The amount to put in the wallet (in units of mojos)</param>           
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(uint Type, string myDID, uint walletId)> CreateDIDWallet(IEnumerable<string> backupDIDs, ulong numOfBackupIdsNeeded, ulong amount, CancellationToken cancellationToken = default)
+        public async Task<(WalletType Type, string myDID, uint walletId)> CreateDIDWallet(IEnumerable<string> backupDIDs, ulong numOfBackupIdsNeeded, ulong amount, CancellationToken cancellationToken = default)
         {
             if (backupDIDs is null)
             {
@@ -410,9 +410,9 @@ namespace chia.dotnet
             var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
 
             return (
-                response.type,
+                (WalletType)response.type,
                 response.my_did,
-                response.wallet_id
+                (uint)response.wallet_id
                 );
         }
 
@@ -422,7 +422,7 @@ namespace chia.dotnet
         /// <param name="filename">Filename to recover from</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(uint Type, string myDID, uint walletId, string coinName, Coin coin, string newPuzHash, string pubkey, IEnumerable<byte> backupDIDs, ulong numVerificationsRequired)>
+        public async Task<(WalletType Type, string myDID, uint walletId, string coinName, Coin coin, string newPuzHash, string pubkey, IEnumerable<byte> backupDIDs, ulong numVerificationsRequired)>
             RecoverDIDWallet(string filename, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(filename))
@@ -446,9 +446,9 @@ namespace chia.dotnet
                 Amount = coinList[2]
             };
             return (
-                response.type,
+                (WalletType)response.type,
                 response.my_did,
-                response.wallet_id,
+                (uint)response.wallet_id,
                 response.coin_name,
                 coin,
                 response.newpuzhash,

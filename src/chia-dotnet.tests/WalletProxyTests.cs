@@ -146,7 +146,7 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            var walletInfo = await _theWallet.CreateCATWallet(1, 1, "dkackman.cat.1", cts.Token);
+            var walletInfo = await _theWallet.CreateCATWallet("dkackman.cat.1", 1, 1, cts.Token);
 
             Assert.IsNotNull(walletInfo);
         }
