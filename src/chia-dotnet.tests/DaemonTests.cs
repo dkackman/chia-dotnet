@@ -118,7 +118,7 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            await _theDaemon.RemoveKeyringPassphrase("sp00n3!!", cts.Token);
+            await _theDaemon.RemoveKeyringPassphrase("sp00n3!!!", cts.Token);
         }
 
         [TestMethod]

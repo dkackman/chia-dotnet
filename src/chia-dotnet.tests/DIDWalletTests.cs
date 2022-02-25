@@ -23,7 +23,7 @@ namespace chia.dotnet.tests
             await daemon.RegisterService(cts.Token);
 
             var walletProxy = new WalletProxy(rpcClient, "unit_tests");
-            _ = await walletProxy.LogIn(false, cts.Token);
+            _ = await walletProxy.LogIn(cts.Token);
             // SET this wallet ID to a coloroured coin wallet 
             _theWallet = new DIDWallet(2, walletProxy);
         }

@@ -37,15 +37,14 @@ namespace chia.dotnet
         /// <summary>
         /// Sets the first key to active.
         /// </summary>       
-        /// <param name="skipImport">Indicator whether to skip the import at login</param>          
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The key fingerprint</returns>
-        public async Task<uint> LogIn(bool skipImport, CancellationToken cancellationToken = default)
+        public async Task<uint> LogIn(CancellationToken cancellationToken = default)
         {
             var fingerprints = await GetPublicKeys(cancellationToken).ConfigureAwait(false);
 
             return fingerprints.Any()
-                ? await LogIn(fingerprints.First(), skipImport, cancellationToken).ConfigureAwait(false)
+                ? await LogIn(fingerprints.First(), cancellationToken).ConfigureAwait(false)
                 : throw new InvalidOperationException("There are no public keys present'");
         }
 
@@ -53,45 +52,17 @@ namespace chia.dotnet
         /// Sets a key to active.
         /// </summary>
         /// <param name="fingerprint">The fingerprint</param>          
-        /// <param name="skipImport">Indicator whether to skip the import at login</param>          
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The key fingerprint</returns>
-        public async Task<uint> LogIn(uint fingerprint, bool skipImport, CancellationToken cancellationToken = default)
+        public async Task<uint> LogIn(uint fingerprint, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
-            data.type = skipImport ? "skip" : "normal";
-            data.host = DefaultBackupHost;
 
             var response = await SendMessage("log_in", data, cancellationToken).ConfigureAwait(false);
 
             Fingerprint = (uint)response.fingerprint;
             return Fingerprint.Value;
-        }
-
-        /// <summary>
-        /// Sets a key to active.
-        /// </summary>
-        /// <param name="fingerprint">The fingerprint</param>
-        /// <param name="filePath">The path to the backup file</param>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The key fingerprint</returns>
-        public async Task<uint> LogInAndRestoreBackup(uint fingerprint, string filePath, CancellationToken cancellationToken = default)
-        {
-            if (string.IsNullOrEmpty(filePath))
-            {
-                throw new ArgumentNullException(nameof(filePath));
-            }
-
-            dynamic data = new ExpandoObject();
-            data.fingerprint = fingerprint;
-            data.type = "restore_backup";
-            data.file_path = filePath;
-            data.host = DefaultBackupHost;
-
-            var response = await SendMessage("log_in", data, cancellationToken).ConfigureAwait(false);
-
-            return (uint)response.fingerprint;
         }
 
         /// <summary>

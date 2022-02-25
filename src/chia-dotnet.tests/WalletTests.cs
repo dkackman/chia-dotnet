@@ -24,7 +24,7 @@ namespace chia.dotnet.tests
             await daemon.RegisterService(cts.Token);
 
             var walletProxy = new WalletProxy(rpcClient, "unit_tests");
-            _ = await walletProxy.LogIn(false, cts.Token);
+            _ = await walletProxy.LogIn(cts.Token);
             _theWallet = new Wallet(1, walletProxy);
         }
 

@@ -16,7 +16,7 @@ namespace chia.dotnet.tests
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
-            using var cts = new CancellationTokenSource(15000);
+            using var cts = new CancellationTokenSource();
 
             var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
             await rpcClient.Connect(cts.Token);
@@ -25,7 +25,7 @@ namespace chia.dotnet.tests
             await daemon.RegisterService(cts.Token);
 
             _theWallet = new WalletProxy(rpcClient, "unit_tests");
-            _ = await _theWallet.LogIn(false, cts.Token);
+            _ = await _theWallet.LogIn(1531304830, cts.Token);
         }
 
         [ClassCleanup()]
@@ -59,8 +59,7 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            var fingerprints = await _theWallet.GetPublicKeys(cts.Token);
-            var key = await _theWallet.GetPrivateKey(fingerprints.First(), cts.Token);
+            var key = await _theWallet.GetPrivateKey(1531304830, cts.Token);
 
             Assert.IsNotNull(key);
         }
@@ -163,13 +162,20 @@ namespace chia.dotnet.tests
 
             Assert.IsNotNull(walletInfo);
         }
+        [TestMethod()]
+        public async Task Login()
+        {
+            using var cts = new CancellationTokenSource(150000);
+
+            _ = await _theWallet.LogIn(cts.Token);
+        }
 
         [TestMethod()]
         public async Task GetTransaction()
         {
             using var cts = new CancellationTokenSource(150000);
 
-            _ = await _theWallet.LogIn(false, cts.Token);
+            _ = await _theWallet.LogIn(cts.Token);
             var wallet = new Wallet(1, _theWallet);
 
             var transactions = await wallet.GetTransactions(cts.Token);
