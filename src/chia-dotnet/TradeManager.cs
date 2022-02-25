@@ -21,9 +21,9 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of CATs</returns>
-        public async Task<IEnumerable<IDictionary<string, string>>> GetCATList(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CATInfo>> GetCATList(CancellationToken cancellationToken = default)
         {
-            return await WalletProxy.SendMessage<IEnumerable<IDictionary<string, string>>>("get_cat_list", null, "cat_list", cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<IEnumerable<CATInfo>>("get_cat_list", null, "cat_list", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
