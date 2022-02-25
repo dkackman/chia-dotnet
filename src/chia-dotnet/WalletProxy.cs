@@ -31,7 +31,7 @@ namespace chia.dotnet
         /// <summary>
         /// The fingerprint used to login to the wallet.
         /// </summary>
-        /// <remarks>Will be null until <see cref="LogIn(bool, CancellationToken)"/> is called</remarks>
+        /// <remarks>Will be null until <see cref="LogIn(CancellationToken)"/> is called</remarks>
         public uint? Fingerprint { get; private set; }
 
         /// <summary>

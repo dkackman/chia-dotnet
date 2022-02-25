@@ -51,7 +51,7 @@ namespace chia.dotnet.tests
 
             var fingerprint = await _theWallet.GetLoggedInFingerprint(cts.Token);
 
-            Assert.AreEqual((uint)1531304830, fingerprint);
+            Assert.AreEqual(_theWallet.Fingerprint.Value, fingerprint);
         }
 
         [TestMethod()]
