@@ -109,7 +109,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
 
-            return await SendMessage< PrivateKeyDetail>("get_private_key", data, "private_key", cancellationToken).ConfigureAwait(false);
+            return await SendMessage<PrivateKeyDetail>("get_private_key", data, "private_key", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -169,25 +169,6 @@ namespace chia.dotnet
             data.transaction_id = transactionId;
 
             return await SendMessage<TransactionRecord>("get_transaction", data, "transaction", cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Backup the wallet
-        /// </summary>
-        /// <param name="filePath">Path to the backup file to create</param> 
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task CreateBackup(string filePath, CancellationToken cancellationToken = default)
-        {
-            if (string.IsNullOrEmpty(filePath))
-            {
-                throw new ArgumentNullException(nameof(filePath));
-            }
-
-            dynamic data = new ExpandoObject();
-            data.file_path = filePath;
-
-            _ = await SendMessage("create_backup", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

@@ -115,15 +115,6 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        [TestCategory("CAUTION")]
-        public async Task CreateBackup()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            await _theWallet.CreateBackup(@"C:\tmp\b.bak", cts.Token);
-        }
-
-        [TestMethod()]
         public async Task GenerateMnemonic()
         {
             using var cts = new CancellationTokenSource(15000);
@@ -141,7 +132,7 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
 
             var mnemonic = await _theWallet.GenerateMnemonic(cts.Token);
-            var fingerprint = await _theWallet.AddKey(mnemonic, true, cts.Token);
+            var fingerprint = await _theWallet.AddKey(mnemonic, cts.Token);
             var key = await _theWallet.GetPrivateKey(fingerprint, cts.Token);
             Assert.IsNotNull(key);
 
