@@ -214,30 +214,6 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Add a new key and restores from backup
-        /// </summary>
-        /// <param name="fingerprint">The fingerprint</param>
-        /// <param name="filePath">The path to the backup file</param>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The key's fingerprint</returns>
-        public async Task<uint> AddKeyAndRestoreBackup(uint fingerprint, string filePath, CancellationToken cancellationToken = default)
-        {
-            if (string.IsNullOrEmpty(filePath))
-            {
-                throw new ArgumentNullException(nameof(filePath));
-            }
-
-            dynamic data = new ExpandoObject();
-            data.fingerprint = fingerprint;
-            data.type = "restore_backup";
-            data.file_path = filePath;
-
-            var response = await SendMessage("log_in", data, cancellationToken).ConfigureAwait(false);
-
-            return (uint)response.fingerprint;
-        }
-
-        /// <summary>
         /// Deletes a specific key from the wallet
         /// </summary>        
         /// <param name="fingerprint">The key's fingerprint</param>  
