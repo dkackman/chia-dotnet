@@ -191,13 +191,12 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Deletes a specific key from the wallet
+        /// Adds a new key to the wallet
         /// </summary>        
         /// <param name="mnemonic">The key mnemonic</param>
-        /// <param name="skipImport">Indicator whether to skip the import at login</param>                
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The new key's fingerprint</returns>
-        public async Task<uint> AddKey(IEnumerable<string> mnemonic, bool skipImport, CancellationToken cancellationToken = default)
+        public async Task<uint> AddKey(IEnumerable<string> mnemonic, CancellationToken cancellationToken = default)
         {
             if (mnemonic is null)
             {
@@ -206,7 +205,6 @@ namespace chia.dotnet
 
             dynamic data = new ExpandoObject();
             data.mnemonic = mnemonic.ToList();
-            data.type = skipImport ? "skip" : "new_wallet";
 
             var response = await SendMessage("add_key", data, cancellationToken).ConfigureAwait(false);
 
