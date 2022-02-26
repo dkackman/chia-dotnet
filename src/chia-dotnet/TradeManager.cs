@@ -67,28 +67,5 @@ namespace chia.dotnet
 
             return await WalletProxy.SendMessage<OfferRecord>("create_offer_for_ids", data, null, cancellationToken).ConfigureAwait(false);
         }
-
-        /// <summary>
-        /// Get offer discrepencies
-        /// </summary>
-        /// <param name="filename">Path to the offer file</param>         
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The discrepencies</returns>
-        public async Task<IDictionary<string, int>> GetDiscrepenciesForOffer(string filename, CancellationToken cancellationToken = default)
-        {
-            if (string.IsNullOrEmpty(filename))
-            {
-                throw new ArgumentNullException(nameof(filename));
-            }
-
-            dynamic data = new ExpandoObject();
-            data.filename = filename;
-
-            var response = await WalletProxy.SendMessage("get_discrepancies_for_offer", data, cancellationToken).ConfigureAwait(false);
-            // this response is Tuple[bool, Optional[Dict], Optional[Exception]] - the dictionary is the interesting part
-            return response.discrepancies is not null && response.discrepancies[0] == true
-                ? Converters.ToObject<IDictionary<string, int>>(response.discrepancies[1])
-                : new Dictionary<string, int>();
-        }
     }
 }

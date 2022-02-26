@@ -57,17 +57,5 @@ namespace chia.dotnet.tests
 
             Assert.IsNotNull(offer);
         }
-
-        [TestMethod()]
-        [Ignore("CAUTION")]
-        public async Task GetDiscrepenciesForOffer()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            var discrepencies = await _theTradeManager.GetDiscrepenciesForOffer(@"C:\tmp\test.offer", cts.Token);
-
-            Assert.IsNotNull(discrepencies);
-        }
-
     }
 }
