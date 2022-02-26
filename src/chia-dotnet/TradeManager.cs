@@ -77,6 +77,25 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Retreives the summary of an offer
+        /// </summary>
+        /// <param name="offer">The bech32 encoded offer hex</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The summary of the offer</returns>
+        public async Task<(IDictionary<string, int> Offered, IDictionary<string, int> Requested)> GetOfferSummary(string offer, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.offer = offer;
+
+            var response = await WalletProxy.SendMessage("get_offer_summary", data, cancellationToken).ConfigureAwait(false);
+
+            return (
+                Converters.ToObject<IDictionary<string, int>>(response.summary.offered),
+                Converters.ToObject<IDictionary<string, int>>(response.summary.requested)
+                );
+        }
+
+        /// <summary>
         /// Create an offer file from a set of id's
         /// </summary>
         /// <param name="ids">The set of ids</param>
