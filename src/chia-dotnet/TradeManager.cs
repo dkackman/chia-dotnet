@@ -109,6 +109,22 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Takes an offer
+        /// </summary>
+        /// <param name="offer">The bech32 encoded offer</param>
+        /// <param name="fee">Transaction fee</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The associated trade record</returns>
+        public async Task<TradeRecord> TakeOffer(string offer, uint fee, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.offer = offer;
+            data.fee = fee;
+
+            return await WalletProxy.SendMessage<TradeRecord>("take_offer", data, "trade_record", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Retreives the summary of an offer
         /// </summary>
         /// <param name="offer">The bech32 encoded offer hex</param>
