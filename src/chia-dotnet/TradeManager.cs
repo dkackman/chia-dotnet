@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Threading;
@@ -29,6 +30,62 @@ namespace chia.dotnet
                 response.my_offers_count,
                 response.taken_offers_count
              );
+        }
+
+        /// <summary>
+        /// Get the list of offers
+        /// </summary>
+        /// <param name="excludeMyOffers">Do not include my offers in the result set</param>
+        /// <param name="excludeTakenOffers">Do not include taken offers in the result set</param>
+        /// <param name="includeCompleted">Do not include completed offers in the result set</param>
+        /// <param name="sortKey">Field to sort results by</param>
+        /// <param name="fileContents">Include the offer value in the result</param>
+        /// <param name="reverse">Reverse the sort order of the results</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of <see cref="OfferRecord"/>s</returns>
+        public async Task<IEnumerable<OfferRecord>> GetOffers(bool excludeMyOffers = false, bool excludeTakenOffers = false, bool includeCompleted = false, string? sortKey = null, bool reverse = false, bool fileContents = false, CancellationToken cancellationToken = default)
+        {
+            var (Total, _, _) = await GetOffersCount(cancellationToken).ConfigureAwait(false);
+            return await GetOffers(0, Total, excludeMyOffers, excludeTakenOffers, includeCompleted, sortKey, reverse, fileContents, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get the list of offers
+        /// </summary>
+        /// <param name="start">the start index of offers (zero based)</param>
+        /// <param name="end">The end index of offers</param>
+        /// <param name="excludeMyOffers">Do not include my offers in the result set</param>
+        /// <param name="excludeTakenOffers">Do not include taken offers in the result set</param>
+        /// <param name="includeCompleted">Do not include completed offers in the result set</param>
+        /// <param name="sortKey">Field to sort results by</param>
+        /// <param name="fileContents">Include the offer value in the result</param>
+        /// <param name="reverse">Reverse the sort order of the results</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of <see cref="OfferRecord"/>s</returns>
+        public async Task<IEnumerable<OfferRecord>> GetOffers(int start, int end, bool excludeMyOffers = false, bool excludeTakenOffers = false, bool includeCompleted = false, string? sortKey = null, bool reverse = false, bool fileContents = false, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.start = start;
+            data.end = end;
+            data.exclude_my_offers = excludeMyOffers;
+            data.exclude_taken_offers = excludeTakenOffers;
+            data.include_completed = includeCompleted;
+            data.sort_key = sortKey;
+            data.reverse = reverse;
+            data.file_contents = fileContents;
+
+            var response = await WalletProxy.SendMessage("get_all_offers", data, cancellationToken).ConfigureAwait(false);
+            var offers = (IEnumerable<string>)Converters.ToEnumerable<string>(response.offers);
+            var tradeRecords = (IEnumerable<TradeRecord>)Converters.ToEnumerable<TradeRecord>(response.trade_records);
+
+            var zipped = offers.Zip(tradeRecords);
+
+            return from zip in zipped
+                   select new OfferRecord()
+                   {
+                       Offer = zip.First,
+                       TradeRecord = zip.Second
+                   };
         }
 
         /// <summary>
