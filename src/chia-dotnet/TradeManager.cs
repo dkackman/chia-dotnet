@@ -60,6 +60,23 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Retreives an offer
+        /// </summary>
+        /// <param name="tradeId">The trade id of the offer</param>
+        /// <param name="fileContents">Indicator as to whether to return the offer contents. 
+        /// <see cref="OfferRecord.Offer"/> will be empty if this is false.</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The OfferRecord</returns>
+        public async Task<OfferRecord> GetOffer(string tradeId, bool fileContents = false, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.trade_id = tradeId;
+            data.file_contents = fileContents;
+
+            return await WalletProxy.SendMessage<OfferRecord>("get_offer", data, null, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Create an offer file from a set of id's
         /// </summary>
         /// <param name="ids">The set of ids</param>
