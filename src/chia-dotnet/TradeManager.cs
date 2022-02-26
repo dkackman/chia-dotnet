@@ -46,6 +46,20 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Checks the validity of an offer
+        /// </summary>
+        /// <param name="offer">The bech32 encoded offer hex</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Indicator of the offer's validity</returns>
+        public async Task<bool> CheckOfferValidity(string offer, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.offer = offer;
+
+            return await WalletProxy.SendMessage<bool>("check_offer_validity", data, "valid", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Create an offer file from a set of id's
         /// </summary>
         /// <param name="ids">The set of ids</param>
