@@ -55,7 +55,7 @@ namespace chia.dotnet.tests
             }
             else
             {
-                var transactions = await _theWallet.GetTransactions(cts.Token);
+                var transactions = await _theWallet.GetTransactions(cancellationToken: cts.Token);
 
                 Assert.AreEqual((int)count, transactions.Count());
             }
@@ -69,8 +69,8 @@ namespace chia.dotnet.tests
             var count = await _theWallet.GetTransactionCount(cts.Token);
             Assert.IsTrue(count > 4);
 
-            var transactions1 = await _theWallet.GetTransactions(0, 2, cts.Token);
-            var transactions2 = await _theWallet.GetTransactions(3, 5, cts.Token);
+            var transactions1 = await _theWallet.GetTransactions(start: 0, end: 2, cancellationToken: cts.Token);
+            var transactions2 = await _theWallet.GetTransactions(start: 3, end: 5, cancellationToken: cts.Token);
 
             Assert.IsNotNull(transactions1);
             Assert.AreEqual(transactions1.Count(), 2);

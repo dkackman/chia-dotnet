@@ -169,7 +169,7 @@ namespace chia.dotnet.tests
             _ = await _theWallet.LogIn(cts.Token);
             var wallet = new Wallet(1, _theWallet);
 
-            var transactions = await wallet.GetTransactions(cts.Token);
+            var transactions = await wallet.GetTransactions(cancellationToken: cts.Token);
             var transaction1 = transactions.FirstOrDefault();
             Assert.IsNotNull(transaction1);
 
