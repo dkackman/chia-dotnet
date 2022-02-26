@@ -1,6 +1,6 @@
 ﻿namespace chia.dotnet
 {
-    public enum TradeStatus
+    public enum TradeStatus : uint
     {
         PENDING_ACCEPT = 0,
         PENDING_CONFIRM = 1,

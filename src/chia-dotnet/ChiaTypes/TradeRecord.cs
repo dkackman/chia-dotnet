@@ -5,6 +5,14 @@ using Newtonsoft.Json;
 
 namespace chia.dotnet
 {
+    // TODO - look in trade_record.py and figure out how these get serialized.
+    /*
+             formatted["summary"] = {
+            "offered": offered,
+            "requested": requested,
+        }
+        formatted["pending"] = offer.get_pending_amounts()
+     */
     /// <summary>
     /// Used for storing transaction data and status in wallets.
     /// </summary>
@@ -13,25 +21,16 @@ namespace chia.dotnet
         public uint ConfirmedAtIndex { get; init; }
         public ulong? AcceptedAtTime { get; init; }
         public ulong CreatedAtTime { get; init; }
-        public bool MyOffer { get; init; }
+        public bool IsMyOffer { get; init; }
         public uint Sent { get; init; }
         /// <summary>
-        /// This in not complete spendbundle
+        /// Bech32 encoded value of the offer
         /// </summary>
-        public SpendBundle SpendBundle { get; init; } = new();
-        /// <summary>
-        /// this is full trade
-        /// </summary>
-        public SpendBundle? TxSpendBundle { get; init; }
-        public ICollection<Coin> Additions { get; init; } = new List<Coin>();
-        public ICollection<Coin> Removals { get; init; } = new List<Coin>();
+        public string Offer { get; init; } = string.Empty;
+        public string? TakenOffer { get; init; }
+        public ICollection<Coin> CoinsOfInterest { get; init; } = new List<Coin>();
         public string TradeId { get; init; } = string.Empty;
-        /// <summary>
-        /// TradeStatus, enum not streamable
-        /// </summary>
-        public uint Status { get; init; }
-        [JsonIgnore]
-        public TradeStatus TradeStatus => (TradeStatus)Status;
+        public TradeStatus Status { get; init; }
         public ICollection<SendPeer> SentTo { get; init; } = new List<SendPeer>();
         [JsonIgnore]
         public DateTime? AcceptedAtDateTime => AcceptedAtTime.ToDateTime();
