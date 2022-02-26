@@ -77,6 +77,38 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Cancels an offer
+        /// </summary>
+        /// <param name="tradeId">The trade id of the offer</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>An awaitable Task</returns>
+        public async Task CancelOffer(string tradeId, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.trade_id = tradeId;
+            data.secure = false;
+
+            await WalletProxy.SendMessage("cancel_offer", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Cancels an offer using a transaction
+        /// </summary>
+        /// <param name="tradeId">The trade id of the offer</param>
+        /// <param name="fee">Transaction fee</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>An awaitable Task</returns>
+        public async Task CancelOffer(string tradeId, uint fee, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.trade_id = tradeId;
+            data.fee = fee;
+            data.secure = true;
+
+            await WalletProxy.SendMessage("cancel_offer", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Retreives the summary of an offer
         /// </summary>
         /// <param name="offer">The bech32 encoded offer hex</param>
