@@ -95,16 +95,6 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        public async Task GetAllTrades()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            var trades = await _theWallet.GetAllTrades(cts.Token);
-
-            Assert.IsNotNull(trades);
-        }
-
-        [TestMethod()]
         public async Task GetHeightInfo()
         {
             using var cts = new CancellationTokenSource(15000);
@@ -221,26 +211,6 @@ namespace chia.dotnet.tests
             var info = await WalletProxy.GetPoolInfo(new Uri("https://testpool.xchpool.org"), cts.Token);
 
             Assert.IsNotNull(info);
-        }
-
-        [TestMethod()]
-        public async Task GetTrade()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            var wallet = new Wallet(1, _theWallet);
-
-            var transactions = await wallet.GetTransactions(cts.Token);
-            var transaction1 = transactions.FirstOrDefault(tx => tx.TradeId is not null);
-            if (transaction1 is null)
-            {
-                Assert.Inconclusive("This wallet has no trades");
-            }
-            else
-            {
-                var trade = await _theWallet.GetTrade(transaction1.TradeId, cts.Token);
-                Assert.IsNotNull(trade);
-            }
         }
 
         [TestMethod()]

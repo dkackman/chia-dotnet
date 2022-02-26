@@ -16,7 +16,7 @@ namespace chia.dotnet.tests
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
-            using var cts = new CancellationTokenSource();
+            using var cts = new CancellationTokenSource(2000);
 
             var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
             await rpcClient.Connect(cts.Token);
@@ -37,9 +37,18 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
+        public async Task GetOffersCount()
+        {
+            using var cts = new CancellationTokenSource(2000);
+            var counts = await _theTradeManager.GetOffersCount(cts.Token);
+            Assert.IsNotNull(counts);
+        }
+
+        [TestMethod()]
         public async Task GetCATList()
         {
-            var cats = await _theTradeManager.GetCATList();
+            using var cts = new CancellationTokenSource(2000);
+            var cats = await _theTradeManager.GetOffersCount(cts.Token);
             Assert.IsNotNull(cats);
         }
 

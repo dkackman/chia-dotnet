@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,7 +16,23 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Get the list of CATs
+        /// Retreives the number of offers.
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The number of offers</returns>
+        public async Task<(int Total, int MyOffersCount, int TakenOffersCount)> GetOffersCount(CancellationToken cancellationToken = default)
+        {
+            var response = await WalletProxy.SendMessage("get_offers_count", null, cancellationToken).ConfigureAwait(false);
+
+            return (
+                response.total,
+                response.my_offers_count,
+                response.taken_offers_count
+             );
+        }
+
+        /// <summary>
+        /// Get the default list of CATs
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of CATs</returns>
@@ -31,7 +46,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="assetId">The asset id</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The asset id</returns>
+        /// <returns>The wallet id and name of the CAT</returns>
         public async Task<(uint WalletId, string Name)> AssetIdToName(string assetId, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();

@@ -82,7 +82,6 @@ namespace chia.dotnet
             return Converters.ToEnumerable<uint>(response.public_key_fingerprints);
         }
 
-
         /// <summary>
         /// Retrieves the logged in fingerprint
         /// </summary>
@@ -165,7 +164,6 @@ namespace chia.dotnet
 
             return await SendMessage<TransactionRecord>("get_transaction", data, "transaction", cancellationToken).ConfigureAwait(false);
         }
-
 
         /// <summary>
         /// Pushes a transaction / spend bundle to the mempool and blockchain. 
@@ -519,75 +517,6 @@ namespace chia.dotnet
                 response.launcher_id,
                 response.p2_singleton_puzzle_hash
                 );
-        }
-
-        /// <summary>
-        /// Respond to an offer
-        /// </summary>
-        /// <param name="filename">Path to the offer file</param>        
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task RespondToOffer(string filename, CancellationToken cancellationToken = default)
-        {
-            if (string.IsNullOrEmpty(filename))
-            {
-                throw new ArgumentNullException(nameof(filename));
-            }
-
-            dynamic data = new ExpandoObject();
-            data.filename = filename;
-
-            _ = await SendMessage("respond_to_offer", data, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Get a trade
-        /// </summary>
-        /// <param name="tradeId">The id of the trade to find</param>         
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The <see cref="TradeRecord"/></returns>
-        public async Task<TradeRecord> GetTrade(string tradeId, CancellationToken cancellationToken = default)
-        {
-            if (string.IsNullOrEmpty(tradeId))
-            {
-                throw new ArgumentNullException(nameof(tradeId));
-            }
-
-            dynamic data = new ExpandoObject();
-            data.trade_id = tradeId;
-
-            return await SendMessage<TradeRecord>("get_trade", data, "trade", cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Get all trades
-        /// </summary>        
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The <see cref="TradeRecord"/>s</returns>
-        public async Task<IEnumerable<TradeRecord>> GetAllTrades(CancellationToken cancellationToken = default)
-        {
-            return await SendMessage<IEnumerable<TradeRecord>>("get_all_trades", "trades", cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Cancel a trade
-        /// </summary>
-        /// <param name="tradeId">The id of the trade to find</param>         
-        /// <param name="secure">Flag indicating whether to cancel pedning offer securely or not</param>         
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task CancelTrade(string tradeId, bool secure, CancellationToken cancellationToken = default)
-        {
-            if (string.IsNullOrEmpty(tradeId))
-            {
-                throw new ArgumentNullException(nameof(tradeId));
-            }
-
-            dynamic data = new ExpandoObject();
-            data.trade_id = tradeId;
-            data.secure = secure;
-
-            _ = await SendMessage("cancel_trade", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
