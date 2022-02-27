@@ -173,9 +173,10 @@ namespace chia.dotnet
         /// <param name="address">The receiving address</param>
         /// <param name="amount">The amount to send (in units of mojos)</param>
         /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="memos">Memos to go along with the transaction</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> SendTransaction(string address, ulong amount, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> SendTransaction(string address, ulong amount, ulong fee, IEnumerable<string>? memos = null, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(address))
             {
@@ -186,6 +187,10 @@ namespace chia.dotnet
             data.address = address;
             data.amount = amount;
             data.fee = fee;
+            if (memos is not null)
+            {
+                data.memos = memos.ToList();
+            }
 
             return await WalletProxy.SendMessage<TransactionRecord>("send_transaction", data, "transaction", cancellationToken).ConfigureAwait(false);
         }
@@ -198,7 +203,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, IEnumerable<Coin>? coins, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, ulong fee, IEnumerable<Coin>? coins = null, CancellationToken cancellationToken = default)
         {
             if (additions is null)
             {
@@ -225,7 +230,7 @@ namespace chia.dotnet
         /// <returns>The <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, ulong fee, CancellationToken cancellationToken = default)
         {
-            return await SendTransactionMulti(additions, null, fee, cancellationToken).ConfigureAwait(false);
+            return await SendTransactionMulti(additions, fee, cancellationToken).ConfigureAwait(false);
         }
     }
 }

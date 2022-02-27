@@ -488,7 +488,7 @@ namespace chia.dotnet
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
         public async Task<(TransactionRecord transaction, string launcherId, string p2SingletonHash)>
-            CreatePoolWallet(PoolState initialTargetState, ulong? p2SingletonDelayTime, string? p2SingletonDelayedPH, CancellationToken cancellationToken = default)
+            CreatePoolWallet(PoolState initialTargetState, ulong? p2SingletonDelayTime = null, string? p2SingletonDelayedPH = null, CancellationToken cancellationToken = default)
         {
             if (initialTargetState is null)
             {
@@ -547,7 +547,7 @@ namespace chia.dotnet
         /// <param name="puzzleAnnouncements">Puzzles to announce</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The signed <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> CreateSignedTransaction(IEnumerable<Coin> additions, ulong fee, IEnumerable<Coin>? coins, IEnumerable<CoinAnnouncement>? coinAnnouncements, IEnumerable<PuzzleAnnouncement>? puzzleAnnouncements, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> CreateSignedTransaction(IEnumerable<Coin> additions, ulong fee, IEnumerable<Coin>? coins = null, IEnumerable<CoinAnnouncement>? coinAnnouncements = null, IEnumerable<PuzzleAnnouncement>? puzzleAnnouncements = null, CancellationToken cancellationToken = default)
         {
             if (additions is null)
             {

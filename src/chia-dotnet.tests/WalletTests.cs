@@ -137,7 +137,7 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            var transaction = await _theWallet.SendTransaction("txch1em43zsczg2fv79jlg00ucedl9x3atvpnfa09uuk5pgd7v9039sdsashhuq", 1, 1, cts.Token);
+            var transaction = await _theWallet.SendTransaction(address: "txch1em43zsczg2fv79jlg00ucedl9x3atvpnfa09uuk5pgd7v9039sdsashhuq", amount: 1, fee: 1, cancellationToken: cts.Token);
 
             Assert.IsNotNull(transaction);
         }
