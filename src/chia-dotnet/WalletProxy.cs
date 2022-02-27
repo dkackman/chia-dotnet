@@ -541,11 +541,13 @@ namespace chia.dotnet
         /// Create but do not send a transaction
         /// </summary>
         /// <param name="additions">Additions to the block chain</param>
-        /// <param name="coins">Coins to include</param>
         /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="coins">Coins to include</param>
+        /// <param name="coinAnnouncements">Coins to announce</param>
+        /// <param name="puzzleAnnouncements">Puzzles to announce</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The signed <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> CreateSignedTransaction(IEnumerable<Coin> additions, IEnumerable<Coin>? coins, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> CreateSignedTransaction(IEnumerable<Coin> additions, ulong fee, IEnumerable<Coin>? coins, IEnumerable<CoinAnnouncement>? coinAnnouncements, IEnumerable<PuzzleAnnouncement>? puzzleAnnouncements, CancellationToken cancellationToken = default)
         {
             if (additions is null)
             {
@@ -555,11 +557,18 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.additions = additions.ToList();
             data.fee = fee;
-            if (coins != null) // coins are optional
+            if (coins is not null) // coins are optional
             {
                 data.coins = coins.ToList();
             }
-
+            if (coinAnnouncements is not null) // coins are optional
+            {
+                data.coin_announcements = coinAnnouncements.ToList();
+            }
+            if (puzzleAnnouncements is not null) // coins are optional
+            {
+                data.puzzle_announcements = puzzleAnnouncements.ToList();
+            }
             return await SendMessage<TransactionRecord>("create_signed_transaction", data, "signed_tx", cancellationToken).ConfigureAwait(false);
         }
 
@@ -572,7 +581,7 @@ namespace chia.dotnet
         /// <returns>The signed <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> CreateSignedTransaction(IEnumerable<Coin> additions, ulong fee, CancellationToken cancellationToken = default)
         {
-            return await CreateSignedTransaction(additions, null, fee, cancellationToken).ConfigureAwait(false);
+            return await CreateSignedTransaction(additions, fee: fee, cancellationToken).ConfigureAwait(false);
         }
     }
 }
