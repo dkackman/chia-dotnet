@@ -274,7 +274,19 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="amount">The amount to put in the wallet (in units of mojos)</param>
         /// <param name="fee">Fee to create the wallet (in units of mojos)</param>
-        /// <param name="name">The CAT name</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Information about the wallet</returns>
+        public async Task<(WalletType Type, string AssetId, uint WalletId)> CreateCATWallet(ulong amount, ulong fee, CancellationToken cancellationToken = default)
+        {
+            return await CreateCATWallet(string.Empty, amount, fee, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Create a new CAT wallet
+        /// </summary>
+        /// <param name="amount">The amount to put in the wallet (in units of mojos)</param>
+        /// <param name="fee">Fee to create the wallet (in units of mojos)</param>
+        /// <param name="name">The wallet name</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
         public async Task<(WalletType Type, string AssetId, uint WalletId)> CreateCATWallet(string name, ulong amount, ulong fee, CancellationToken cancellationToken = default)
@@ -287,9 +299,12 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.wallet_type = "cat_wallet";
             data.mode = "new";
-            data.name = name;
             data.amount = amount;
             data.fee = fee;
+            if (!string.IsNullOrEmpty(name))
+            {
+                data.name = name;
+            }
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
 

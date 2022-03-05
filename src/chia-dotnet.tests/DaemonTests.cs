@@ -21,7 +21,7 @@ namespace chia.dotnet.tests
         {
             try
             {
-                using var cts = new CancellationTokenSource(2000);
+                using var cts = new CancellationTokenSource(20000);
                 var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
                 await rpcClient.Connect(cts.Token);
 
