@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Dynamic;
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading;
@@ -83,7 +82,7 @@ namespace chia.dotnet
         /// <param name="memos">Optional list of byte string memos to include in the transaction</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> Spend(string innerAddress, ulong amount, ulong fee, IEnumerable<string>? memos, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> Spend(string innerAddress, ulong amount, ulong fee, IEnumerable<string>? memos = null, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(innerAddress))
             {
