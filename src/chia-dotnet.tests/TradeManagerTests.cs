@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace chia.dotnet.tests
@@ -14,18 +15,25 @@ namespace chia.dotnet.tests
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
-            using var cts = new CancellationTokenSource(2000);
+            try
+            {
+                using var cts = new CancellationTokenSource(2000);
 
-            var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
-            await rpcClient.Connect(cts.Token);
+                var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
+                await rpcClient.Connect(cts.Token);
 
-            var daemon = new DaemonProxy(rpcClient, "unit_tests");
-            await daemon.RegisterService(cts.Token);
+                var daemon = new DaemonProxy(rpcClient, "unit_tests");
+                await daemon.RegisterService(cts.Token);
 
-            var wallet = new WalletProxy(rpcClient, "unit_tests");
-            _ = await wallet.LogIn(1531304830, cts.Token);
+                var wallet = new WalletProxy(rpcClient, "unit_tests");
+                _ = await wallet.LogIn(cts.Token);
 
-            _theTradeManager = new TradeManager(wallet);
+                _theTradeManager = new TradeManager(wallet);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.Print(e.Message);
+            }
         }
 
         [ClassCleanup()]
