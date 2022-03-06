@@ -107,7 +107,7 @@ namespace chia.dotnet
         /// <param name="assetId">The asset id</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The wallet id and name of the CAT</returns>
-        public async Task<(uint WalletId, string Name)> AssetIdToName(string assetId, CancellationToken cancellationToken = default)
+        public async Task<(uint? WalletId, string Name)> AssetIdToName(string assetId, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.asset_id = assetId;
@@ -115,7 +115,7 @@ namespace chia.dotnet
             var response = await WalletProxy.SendMessage("cat_asset_id_to_name", data, cancellationToken).ConfigureAwait(false);
 
             return (
-                (uint)response.wallet_id,
+                (uint?)response.wallet_id,
                 response.name
                 );
         }
