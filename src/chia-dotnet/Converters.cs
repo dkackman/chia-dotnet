@@ -43,8 +43,8 @@ namespace chia.dotnet
         public static IEnumerable<T> ToEnumerable<T>(dynamic enumerable)
         {
             Debug.Assert(enumerable is not null);
-
-            return ((IEnumerable<dynamic>)enumerable).Select(item => (T)item);
+            var e = (IEnumerable<dynamic>)enumerable;
+            return e is null ? Enumerable.Empty<T>() : e.Select(item => (T)item);
         }
 
         public static DateTime? ToDateTime(this ulong? epoch)

@@ -291,11 +291,6 @@ namespace chia.dotnet
         /// <returns>Information about the wallet</returns>
         public async Task<(WalletType Type, string AssetId, uint WalletId)> CreateCATWallet(string name, ulong amount, ulong fee, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(name))
-            {
-                throw new ArgumentNullException(nameof(name));
-            }
-
             dynamic data = new ExpandoObject();
             data.wallet_type = "cat_wallet";
             data.mode = "new";

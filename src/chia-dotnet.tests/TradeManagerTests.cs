@@ -17,7 +17,7 @@ namespace chia.dotnet.tests
         {
             try
             {
-                using var cts = new CancellationTokenSource(2000);
+                using var cts = new CancellationTokenSource(20000);
 
                 var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
                 await rpcClient.Connect(cts.Token);
@@ -40,6 +40,14 @@ namespace chia.dotnet.tests
         public static void ClassCleanup()
         {
             _theTradeManager.WalletProxy.RpcClient.Dispose();
+        }
+
+        [TestMethod()]
+        public async Task GetAllOffers()
+        {
+            using var cts = new CancellationTokenSource(2000);
+            var offers = await _theTradeManager.GetOffers(cancellationToken: cts.Token);
+            Assert.IsNotNull(offers);
         }
 
         [TestMethod()]
