@@ -173,7 +173,7 @@ namespace chia.dotnet
         /// <param name="fee">Transaction fee</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable Task</returns>
-        public async Task CancelOffer(string tradeId, uint fee, CancellationToken cancellationToken = default)
+        public async Task CancelOffer(string tradeId, ulong fee, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.trade_id = tradeId;
@@ -190,7 +190,7 @@ namespace chia.dotnet
         /// <param name="fee">Transaction fee</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The associated trade record</returns>
-        public async Task<TradeRecord> TakeOffer(string offer, uint fee, CancellationToken cancellationToken = default)
+        public async Task<TradeRecord> TakeOffer(string offer, ulong fee, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.offer = offer;
