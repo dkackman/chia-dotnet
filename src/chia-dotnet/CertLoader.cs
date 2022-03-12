@@ -44,7 +44,7 @@ namespace chia.dotnet
             using var certWithKey = cert.CopyWithPrivateKey(rsa);
             var ephemeralCert = new X509Certificate2(certWithKey.Export(X509ContentType.Pkcs12));
 
-            return new X509Certificate2Collection(ephemeralCert);
+            return new(ephemeralCert);
         }
     }
 }
