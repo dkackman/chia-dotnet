@@ -220,14 +220,14 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Create an offer file from a set of id's
+        /// Create an offer file from a set of id's in the form of wallet_id:amount
         /// </summary>
-        /// <param name="ids">The set of ids</param>
+        /// <param name="ids">The set of ids </param>
         /// <param name="fee">Transaction fee for offer creation</param>   
         /// <param name="validateOnly">Only validate the offer contents. Do not create.</param>   
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task<OfferRecord> CreateOfferForIds(IDictionary<string, int> ids, ulong fee, bool validateOnly = false, CancellationToken cancellationToken = default)
+        public async Task<OfferRecord> CreateOffer(IDictionary<uint, ulong> ids, ulong fee, bool validateOnly = false, CancellationToken cancellationToken = default)
         {
             if (ids is null)
             {
@@ -240,6 +240,40 @@ namespace chia.dotnet
             data.validate_only = validateOnly;
 
             return await WalletProxy.SendMessage<OfferRecord>("create_offer_for_ids", data, null, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Create an offer file from a set of id's in the form of wallet_id:amount
+        /// </summary>
+        /// <param name="offer">Summary of the offer to create</param>
+        /// <param name="fee">Transaction fee for offer creation</param>   
+        /// <param name="validateOnly">Only validate the offer contents. Do not create.</param>   
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>An awaitable <see cref="Task"/></returns>
+        public async Task<OfferRecord> CreateOffer(OfferSummary offer, ulong fee, bool validateOnly = false, CancellationToken cancellationToken = default)
+        {
+            var ids = new Dictionary<uint, ulong>();
+            foreach (var requested in offer.Requested)
+            {
+                var (WalletId, Name) = await AssetIdToName(requested.Key, cancellationToken).ConfigureAwait(false);
+                if (!WalletId.HasValue)
+                {
+                    throw new InvalidOperationException($"There is no wallet for the asset {requested.Key}");
+                }
+                ids.Add(WalletId.Value, requested.Value); // reqeusted value > 0 
+            }
+
+            foreach (var offered in offer.Offered)
+            {
+                var (WalletId, Name) = await AssetIdToName(offered.Key, cancellationToken).ConfigureAwait(false);
+                if (!WalletId.HasValue)
+                {
+                    throw new InvalidOperationException($"There is no wallet for the asset {offered.Key}");
+                }
+                ids.Add(WalletId.Value, offered.Value); // offered value < 0
+            }
+
+            return await CreateOffer(ids, fee, validateOnly, cancellationToken).ConfigureAwait(false);
         }
     }
 }
