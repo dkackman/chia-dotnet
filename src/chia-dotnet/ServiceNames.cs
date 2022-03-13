@@ -12,5 +12,6 @@
         public const string Simulator = "chia_full_node_simulator";
         public const string Plotter = "chia_plotter";
         public const string Daemon = "daemon";
+        public const string Crawler = "chia_crawler";
     }
 }

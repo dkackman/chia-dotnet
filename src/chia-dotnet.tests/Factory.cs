@@ -8,15 +8,19 @@ namespace chia.dotnet.tests
     internal static class Factory
     {
         // this is the ip address of the chia node
-        private const string NodeHostAddress = "172.28.81.78";
+        private const string NodeHostAddress = "chiapas";
 
         public static HttpRpcClient CreateDirectRpcClientFromHardcodedLocation(int port)
         {
             var endpoint = new EndpointInfo()
             {
                 Uri = new Uri($"https://{NodeHostAddress}:{port}"),
-                CertPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.crt",
-                KeyPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.key",
+                //CertPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.crt",
+                //KeyPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.key",
+                CertPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_crawler.crt",
+                KeyPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_crawler.key",
+                //CertPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_full_node.crt",
+                //KeyPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_full_node.key",
             };
 
             return new HttpRpcClient(endpoint);
@@ -36,8 +40,10 @@ namespace chia.dotnet.tests
             var endpoint = new EndpointInfo()
             {
                 Uri = new Uri($"wss://{NodeHostAddress}:55400"),
-                CertPath = @"\\wsl$\Ubuntu-20.04\home\don\.chia\mainnet\config\ssl\daemon\private_daemon.crt",
-                KeyPath = @"\\wsl$\Ubuntu-20.04\home\don\.chia\mainnet\config\ssl\daemon\private_daemon.key",
+                CertPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_daemon.crt",
+                KeyPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_daemon.key",
+                //CertPath = @"\\wsl$\Ubuntu-20.04\home\don\.chia\mainnet\config\ssl\daemon\private_daemon.crt",
+                //KeyPath = @"\\wsl$\Ubuntu-20.04\home\don\.chia\mainnet\config\ssl\daemon\private_daemon.key",
                 //CertPath = @"\\wsl.localhost\Ubuntu\home\don\.chia\mainnet\config\ssl\daemon\private_daemon.crt",
                 //KeyPath = @"\\wsl.localhost\Ubuntu\home\don\.chia\mainnet\config\ssl\daemon\private_daemon.key",
                 //Uri = new Uri("wss://localhost:55400"),

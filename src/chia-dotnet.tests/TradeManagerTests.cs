@@ -72,11 +72,12 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            var ids = new Dictionary<string, int>()
+            var ids = new Dictionary<uint, ulong>()
             {
-                { "1", 1 }
+                { 1, 1 },
+                { 2, 1 }
             };
-            var offer = await _theTradeManager.CreateOfferForIds(ids, 1, true, cts.Token);
+            var offer = await _theTradeManager.CreateOffer(ids, 1, true, cts.Token);
 
             Assert.IsNotNull(offer);
         }

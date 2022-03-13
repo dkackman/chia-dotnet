@@ -66,6 +66,11 @@ namespace chia.dotnet
             return start.AddSeconds(epoch); //add the seconds to the start DateTime
         }
 
+        public static long ToTimestamp(this DateTime epoch)
+        {
+            return (epoch.Ticks - 621355968000000000) / 10000000;
+        }
+
         public static DateTime ToDateTime(this double epoch)
         {
             var start = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc); //from start epoch time
