@@ -19,15 +19,7 @@ namespace chia.dotnet.tests
             {
                 using var cts = new CancellationTokenSource(5000);
                 var rpcClient = Factory.CreateDirectRpcClientFromHardcodedLocation(8561);
-                //await rpcClient.Connect(cts.Token);
 
-                //var daemon = new DaemonProxy(rpcClient, "unit_tests");
-                //await daemon.RegisterService(cts.Token);
-
-                //if (!await daemon.IsServiceRunning(ServiceNames.Crawler, cts.Token))
-                //{
-                //    await daemon.StartService(ServiceNames.Crawler);
-                //}
                 await Task.CompletedTask;
                 _theCrawler = new CrawlerProxy(rpcClient, "unit_tests");
             }
@@ -46,7 +38,7 @@ namespace chia.dotnet.tests
         [TestMethod()]
         public async Task GetPeerCounts()
         {
-            using var cts = new CancellationTokenSource(15000);
+            using var cts = new CancellationTokenSource(20000);
 
             var counts = await _theCrawler.GetPeerCounts(cts.Token);
 
@@ -56,7 +48,7 @@ namespace chia.dotnet.tests
         [TestMethod()]
         public async Task GetIPs()
         {
-            using var cts = new CancellationTokenSource(15000);
+            using var cts = new CancellationTokenSource(20000);
 
             var ips = await _theCrawler.GetIPs(DateTime.Now - TimeSpan.FromDays(2), cancellationToken: cts.Token);
 

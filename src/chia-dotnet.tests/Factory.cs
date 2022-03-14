@@ -8,7 +8,7 @@ namespace chia.dotnet.tests
     internal static class Factory
     {
         // this is the ip address of the chia node
-        private const string NodeHostAddress = "chiapas";
+        private const string NodeHostAddress = "192.168.1.193";
 
         public static HttpRpcClient CreateDirectRpcClientFromHardcodedLocation(int port)
         {
@@ -17,6 +17,8 @@ namespace chia.dotnet.tests
                 Uri = new Uri($"https://{NodeHostAddress}:{port}"),
                 //CertPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.crt",
                 //KeyPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.key",
+                //CertPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_daemon.crt",
+                //KeyPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_daemon.key",
                 CertPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_crawler.crt",
                 KeyPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_crawler.key",
                 //CertPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_full_node.crt",
