@@ -16,7 +16,7 @@ namespace chia.dotnet.tests
         public static async Task Initialize(TestContext context)
         {
             using var cts = new CancellationTokenSource(30000);
-            var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
+            var rpcClient = Factory.CreateDaemon();
             await rpcClient.Connect(cts.Token);
 
             var daemon = new DaemonProxy(rpcClient, "unit_tests");

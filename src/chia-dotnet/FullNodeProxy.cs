@@ -34,6 +34,16 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Retrieves aggregate information about blocks.
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The <see cref="BlockCountMetrics"/></returns>
+        public async Task<BlockCountMetrics> GetBlockCountMetrics(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<BlockCountMetrics>("get_block_count_metrics", "metrics", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Get a block by a header hash
         /// </summary>
         /// <param name="headerhash">The header hash</param>

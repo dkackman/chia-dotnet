@@ -8,7 +8,7 @@ namespace chia.dotnet.tests
     internal static class Factory
     {
         // this is the ip address of the chia node
-        private const string NodeHostAddress = "192.168.1.193";
+        private const string NodeHostAddress = "chiapas";
 
         public static HttpRpcClient CreateDirectRpcClientFromHardcodedLocation(int port)
         {
@@ -31,7 +31,7 @@ namespace chia.dotnet.tests
         /// Create a rpc client instance from a hardcoded address
         /// </summary>
         /// <returns><see cref="DaemonProxy"/></returns>
-        public static WebSocketRpcClient CreateRpcClientFromHardcodedLocation()
+        public static WebSocketRpcClient CreateDaemon()
         {
             /*
 #warning YOU MIGHT BE USING A PRODUCTION NODE
