@@ -51,7 +51,7 @@ namespace chia.dotnet
         {
             var response = await WalletProxy.SendMessage("cat_get_asset_id", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
 
-            return response.asset_id.ToString();
+            return response.asset_id?.ToString() ?? throw new InvalidOperationException("Asset Id not found");
         }
 
         /// <summary>

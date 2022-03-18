@@ -48,7 +48,6 @@ namespace chia.dotnet.tests
             Assert.IsNotNull(name);
         }
 
-
         [TestMethod()]
         public async Task SetName()
         {
@@ -63,6 +62,17 @@ namespace chia.dotnet.tests
 
             Assert.AreEqual(newName, name);
             await _theWallet.SetName(originalName, cts.Token);
+        }
+
+
+        [TestMethod()]
+        public async Task GetAssetId()
+        {
+            using var cts = new CancellationTokenSource(20000);
+
+            var id = await _theWallet.GetAssetId(cts.Token);
+
+            Assert.IsNotNull(id);
         }
     }
 }
