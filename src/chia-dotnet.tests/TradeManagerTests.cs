@@ -62,7 +62,7 @@ namespace chia.dotnet.tests
         public async Task GetCATList()
         {
             using var cts = new CancellationTokenSource(2000);
-            var cats = await _theTradeManager.GetOffersCount(cts.Token);
+            var cats = await _theTradeManager.GetCATList(cts.Token);
             Assert.IsNotNull(cats);
         }
 
@@ -72,10 +72,17 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            var ids = new Dictionary<uint, ulong>()
+            // it is hard to tell from the chia code how this works. The dictionary key is a wallet id
+            // I think the postive values are the requested amounts
+            // and things with negative values are the offered amounts
+            // 
+            // see TradeManager.py _create_offer_for_ids around line 275
+            // im not quite sure whar unit of measure the value is in
+            // MOJO for xch i assume. not sure about CATs
+            var ids = new Dictionary<uint, long>()
             {
                 { 1, 1 },
-                { 2, 1 }
+                { 2, -1 }
             };
             var offer = await _theTradeManager.CreateOffer(ids, 1, true, cts.Token);
 

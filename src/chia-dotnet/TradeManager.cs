@@ -227,7 +227,7 @@ namespace chia.dotnet
         /// <param name="validateOnly">Only validate the offer contents. Do not create.</param>   
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task<OfferRecord> CreateOffer(IDictionary<uint, ulong> ids, ulong fee, bool validateOnly = false, CancellationToken cancellationToken = default)
+        public async Task<OfferRecord> CreateOffer(IDictionary<uint, long> ids, ulong fee, bool validateOnly = false, CancellationToken cancellationToken = default)
         {
             if (ids is null)
             {
@@ -252,7 +252,7 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task<OfferRecord> CreateOffer(OfferSummary offer, ulong fee, bool validateOnly = false, CancellationToken cancellationToken = default)
         {
-            var ids = new Dictionary<uint, ulong>();
+            var ids = new Dictionary<uint, long>();
             foreach (var requested in offer.Requested)
             {
                 var (WalletId, Name) = await AssetIdToName(requested.Key, cancellationToken).ConfigureAwait(false);
@@ -260,7 +260,7 @@ namespace chia.dotnet
                 {
                     throw new InvalidOperationException($"There is no wallet for the asset {requested.Key}");
                 }
-                ids.Add(WalletId.Value, requested.Value); // reqeusted value > 0 
+                ids.Add(WalletId.Value, (long)requested.Value); // reqeusted value > 0 
             }
 
             foreach (var offered in offer.Offered)
@@ -270,7 +270,7 @@ namespace chia.dotnet
                 {
                     throw new InvalidOperationException($"There is no wallet for the asset {offered.Key}");
                 }
-                ids.Add(WalletId.Value, offered.Value); // offered value < 0
+                ids.Add(WalletId.Value, (long)offered.Value); // offered value < 0
             }
 
             return await CreateOffer(ids, fee, validateOnly, cancellationToken).ConfigureAwait(false);
