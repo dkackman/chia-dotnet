@@ -43,6 +43,18 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
+        public async Task AssetIdToName()
+        {
+            using var cts = new CancellationTokenSource(2000);
+            var wallet = new CATWallet(2, _theTradeManager.WalletProxy);
+            var name = await wallet.GetName(cts.Token);
+            var assetId = await wallet.GetAssetId(cts.Token);
+
+            var id = await _theTradeManager.AssetIdToName(assetId, cancellationToken: cts.Token);
+            Assert.AreEqual(name, id.Name);
+        }
+
+        [TestMethod()]
         public async Task GetAllOffers()
         {
             using var cts = new CancellationTokenSource(2000);
