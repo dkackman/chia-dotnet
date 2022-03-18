@@ -25,6 +25,8 @@ namespace chia.dotnet.tests
             var walletProxy = new WalletProxy(rpcClient, "unit_tests");
 
             _ = await walletProxy.LogIn(cts.Token);
+
+            // IMPORTANT
             // SET this wallet ID to a coloroured coin wallet 
             _theWallet = new CATWallet(2, walletProxy);
         }

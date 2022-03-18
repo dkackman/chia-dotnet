@@ -25,7 +25,7 @@ namespace chia.dotnet.tests
             await daemon.RegisterService(cts.Token);
 
             _theWallet = new WalletProxy(rpcClient, "unit_tests");
-            _ = await _theWallet.LogIn(1531304830, cts.Token);
+            _ = await _theWallet.LogIn(cts.Token);
         }
 
         [ClassCleanup()]
@@ -134,7 +134,7 @@ namespace chia.dotnet.tests
         [Ignore("CAUTION")]
         public async Task CreateCATWallet()
         {
-            using var cts = new CancellationTokenSource(15000);
+            using var cts = new CancellationTokenSource(20000);
 
             var walletInfo = await _theWallet.CreateCATWallet("dkackman.cat.1", 1, 1, cts.Token);
 
