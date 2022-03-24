@@ -78,16 +78,29 @@ namespace chia.dotnet
             data.file_contents = fileContents;
 
             var response = await WalletProxy.SendMessage("get_all_offers", data, cancellationToken).ConfigureAwait(false);
-            var offers = (IEnumerable<string>)Converters.ToEnumerable<string>(response.offers);
-            var tradeRecords = (IEnumerable<TradeRecord>)Converters.ToEnumerable<TradeRecord>(response.trade_records);
 
-            var zipped = offers.Zip(tradeRecords);
+            var rTemp = new
+            {
+                response.offers,
+                response.success,
+                response.trade_records
+            };
+
+            if (!(bool)rTemp.success)
+            {
+                throw new ApplicationException($"response.success was false for get_all_offers.  \r\ndata: {data} \r\nresponse: {response}");
+            }
+
+            var tradeRecords = Converters.ToObject<TradeRecord[]>((rTemp.trade_records as object).ToJson());
+            var offers = Converters.ToObject<string[]>((rTemp.offers as object).ToJson());
+
+            var zipped = offers!.Zip(tradeRecords!);
 
             return from zip in zipped
                    select new OfferRecord()
                    {
                        Offer = zip.First,
-                       TradeRecord = zip.Second
+                       TradeRecord = zip.Second with { Offer = zip.First }
                    };
         }
 
@@ -109,6 +122,12 @@ namespace chia.dotnet
         /// <returns>The wallet id and name of the CAT</returns>
         public async Task<(uint? WalletId, string Name)> AssetIdToName(string assetId, CancellationToken cancellationToken = default)
         {
+            // quick return for XCH, copied from print_offer_summary in wallet_funcs.py line 311
+            if (assetId is "xch" or "txch")
+            {
+                return (1, assetId);
+            }
+
             dynamic data = new ExpandoObject();
             data.asset_id = assetId;
 
@@ -152,33 +171,19 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Cancels an offer
-        /// </summary>
-        /// <param name="tradeId">The trade id of the offer</param>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>An awaitable Task</returns>
-        public async Task CancelOffer(string tradeId, CancellationToken cancellationToken = default)
-        {
-            dynamic data = new ExpandoObject();
-            data.trade_id = tradeId;
-            data.secure = false;
-
-            await WalletProxy.SendMessage("cancel_offer", data, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
         /// Cancels an offer using a transaction
         /// </summary>
         /// <param name="tradeId">The trade id of the offer</param>
         /// <param name="fee">Transaction fee</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <param name="secure">This will create a transaction that includes coins that were offered</param>
         /// <returns>An awaitable Task</returns>
-        public async Task CancelOffer(string tradeId, ulong fee, CancellationToken cancellationToken = default)
+        public async Task CancelOffer(string tradeId, bool secure = false, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.trade_id = tradeId;
             data.fee = fee;
-            data.secure = true;
+            data.secure = secure;
 
             await WalletProxy.SendMessage("cancel_offer", data, cancellationToken).ConfigureAwait(false);
         }
@@ -190,7 +195,7 @@ namespace chia.dotnet
         /// <param name="fee">Transaction fee</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The associated trade record</returns>
-        public async Task<TradeRecord> TakeOffer(string offer, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<TradeRecord> TakeOffer(string offer, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.offer = offer;
@@ -222,20 +227,20 @@ namespace chia.dotnet
         /// <summary>
         /// Create an offer file from a set of id's in the form of wallet_id:amount
         /// </summary>
-        /// <param name="ids">The set of ids </param>
+        /// <param name="walletIdsAndMojoAmounts">The set of wallet ids and amounts (in mojo) representing the offer</param>
         /// <param name="fee">Transaction fee for offer creation</param>   
         /// <param name="validateOnly">Only validate the offer contents. Do not create.</param>   
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task<OfferRecord> CreateOffer(IDictionary<uint, long> ids, ulong fee, bool validateOnly = false, CancellationToken cancellationToken = default)
+        public async Task<OfferRecord> CreateOffer(IDictionary<uint, long> walletIdsAndMojoAmounts, ulong fee, bool validateOnly = false, CancellationToken cancellationToken = default)
         {
-            if (ids is null)
+            if (walletIdsAndMojoAmounts is null)
             {
-                throw new ArgumentNullException(nameof(ids));
+                throw new ArgumentNullException(nameof(walletIdsAndMojoAmounts));
             }
 
             dynamic data = new ExpandoObject();
-            data.ids = ids;
+            data.offer = walletIdsAndMojoAmounts;
             data.fee = fee;
             data.validate_only = validateOnly;
 
@@ -250,9 +255,9 @@ namespace chia.dotnet
         /// <param name="validateOnly">Only validate the offer contents. Do not create.</param>   
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task<OfferRecord> CreateOffer(OfferSummary offer, ulong fee, bool validateOnly = false, CancellationToken cancellationToken = default)
+        public async Task<OfferRecord> CreateOffer(OfferSummary offer, ulong fee = 0, bool validateOnly = false, CancellationToken cancellationToken = default)
         {
-            var ids = new Dictionary<uint, long>();
+            var walletIdsAndMojoAmounts = new Dictionary<uint, long>();
             foreach (var requested in offer.Requested)
             {
                 var (WalletId, Name) = await AssetIdToName(requested.Key, cancellationToken).ConfigureAwait(false);
@@ -260,7 +265,7 @@ namespace chia.dotnet
                 {
                     throw new InvalidOperationException($"There is no wallet for the asset {requested.Key}");
                 }
-                ids.Add(WalletId.Value, (long)requested.Value); // reqeusted value > 0 
+                walletIdsAndMojoAmounts.Add(WalletId.Value, (long)requested.Value); // reqeusted value > 0 
             }
 
             foreach (var offered in offer.Offered)
@@ -270,10 +275,10 @@ namespace chia.dotnet
                 {
                     throw new InvalidOperationException($"There is no wallet for the asset {offered.Key}");
                 }
-                ids.Add(WalletId.Value, (long)offered.Value); // offered value < 0
+                walletIdsAndMojoAmounts.Add(WalletId.Value, (long)offered.Value * -1); // offered value flipped to negative for RPC call
             }
 
-            return await CreateOffer(ids, fee, validateOnly, cancellationToken).ConfigureAwait(false);
+            return await CreateOffer(walletIdsAndMojoAmounts, fee, validateOnly, cancellationToken).ConfigureAwait(false);
         }
     }
 }

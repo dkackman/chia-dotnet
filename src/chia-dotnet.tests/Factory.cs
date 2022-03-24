@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace chia.dotnet.tests
 {
@@ -61,11 +62,26 @@ namespace chia.dotnet.tests
         /// </summary>
         /// <param name="filePath">Full path to the chia config file</param>
         /// <returns><see cref="DaemonProxy"/></returns>
-        public static WebSocketRpcClient CreateRpcClientFromConfig(string filePath)
+        private static WebSocketRpcClient CreateRpcClientFromConfig(string filePath)
         {
             var config = Config.Open(filePath);
             var endpoint = config.GetEndpoint("daemon");
             return new WebSocketRpcClient(endpoint);
+        }
+
+        /// <summary>
+        /// Create a daemon instance from default localhost testnet config.yaml
+        /// </summary>
+        /// <returns><see cref="WebSocketRpcClient"/></returns>
+        /// <exception cref="ApplicationException">Thrown if config.yaml not found at the default testnet path</exception>
+        public static WebSocketRpcClient CreateDaemonClientFromDefaultTestnetConfig()
+        {
+            var userPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            var configPath = Path.Combine(userPath, @".chia\testnet\config\config.yaml");
+
+            return !File.Exists(configPath)
+                ? throw new ApplicationException("No config file found for localhost testnet")
+                : CreateRpcClientFromConfig(configPath);
         }
     }
 }
