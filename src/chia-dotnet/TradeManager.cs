@@ -79,17 +79,11 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("get_all_offers", data, cancellationToken).ConfigureAwait(false);
 
-            var rTemp = new
-            {
-                response.offers,
-                response.success,
-                response.trade_records
-            };
+            // need to explicitly decalre these two types to cast away any dynamicness
+            TradeRecord[] tradeRecords = Converters.ToObject<TradeRecord[]>(response.trade_records);
+            string[] offers = Converters.ToObject<string[]>(response.offers);
 
-            var tradeRecords = Converters.ToObject<TradeRecord[]>((rTemp.trade_records as object).ToJson());
-            var offers = Converters.ToObject<string[]>((rTemp.offers as object).ToJson());
-
-            var zipped = offers!.Zip(tradeRecords!);
+            var zipped = offers.Zip(tradeRecords);
 
             return from zip in zipped
                    select new OfferRecord()
