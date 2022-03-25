@@ -86,11 +86,6 @@ namespace chia.dotnet
                 response.trade_records
             };
 
-            if (!(bool)rTemp.success)
-            {
-                throw new ApplicationException($"response.success was false for get_all_offers.  \r\ndata: {data} \r\nresponse: {response}");
-            }
-
             var tradeRecords = Converters.ToObject<TradeRecord[]>((rTemp.trade_records as object).ToJson());
             var offers = Converters.ToObject<string[]>((rTemp.offers as object).ToJson());
 
