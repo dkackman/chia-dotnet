@@ -43,8 +43,8 @@ namespace chia.dotnet
         public static IEnumerable<T> ToEnumerable<T>(dynamic enumerable)
         {
             Debug.Assert(enumerable is not null);
-
-            return ((IEnumerable<dynamic>)enumerable).Select(item => (T)item);
+            var e = (IEnumerable<dynamic>)enumerable;
+            return e is null ? Enumerable.Empty<T>() : e.Select(item => (T)item);
         }
 
         public static DateTime? ToDateTime(this ulong? epoch)
@@ -64,6 +64,11 @@ namespace chia.dotnet
             var start = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc); //from start epoch time
 
             return start.AddSeconds(epoch); //add the seconds to the start DateTime
+        }
+
+        public static long ToTimestamp(this DateTime epoch)
+        {
+            return (epoch.Ticks - 621355968000000000) / 10000000;
         }
 
         public static DateTime ToDateTime(this double epoch)

@@ -17,14 +17,14 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
+            var rpcClient = Factory.CreateWebsocketClient();
             await rpcClient.Connect(cts.Token);
 
             var daemon = new DaemonProxy(rpcClient, "unit_tests");
             await daemon.RegisterService(cts.Token);
 
             var walletProxy = new WalletProxy(rpcClient, "unit_tests");
-            _ = await walletProxy.LogIn(false, cts.Token);
+            _ = await walletProxy.LogIn(cts.Token);
             _theWallet = new Wallet(1, walletProxy);
         }
 
@@ -55,7 +55,7 @@ namespace chia.dotnet.tests
             }
             else
             {
-                var transactions = await _theWallet.GetTransactions(cts.Token);
+                var transactions = await _theWallet.GetTransactions(cancellationToken: cts.Token);
 
                 Assert.AreEqual((int)count, transactions.Count());
             }
@@ -69,8 +69,8 @@ namespace chia.dotnet.tests
             var count = await _theWallet.GetTransactionCount(cts.Token);
             Assert.IsTrue(count > 4);
 
-            var transactions1 = await _theWallet.GetTransactions(0, 2, cts.Token);
-            var transactions2 = await _theWallet.GetTransactions(3, 5, cts.Token);
+            var transactions1 = await _theWallet.GetTransactions(start: 0, end: 2, cancellationToken: cts.Token);
+            var transactions2 = await _theWallet.GetTransactions(start: 3, end: 5, cancellationToken: cts.Token);
 
             Assert.IsNotNull(transactions1);
             Assert.AreEqual(transactions1.Count(), 2);
@@ -137,20 +137,18 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            var transaction = await _theWallet.SendTransaction("txch1em43zsczg2fv79jlg00ucedl9x3atvpnfa09uuk5pgd7v9039sdsashhuq", 1, 1, cts.Token);
+            var transaction = await _theWallet.SendTransaction(address: "txch1em43zsczg2fv79jlg00ucedl9x3atvpnfa09uuk5pgd7v9039sdsashhuq", amount: 1, fee: 1, cancellationToken: cts.Token);
 
             Assert.IsNotNull(transaction);
         }
-
 
         [TestMethod()]
         public async Task ValidateTwo()
         {
             using var cts = new CancellationTokenSource(15000);
 
-            var wallet = new PoolWallet(2, _theWallet.WalletProxy);
+            var wallet = new CATWallet(2, _theWallet.WalletProxy);
             await wallet.Validate();
-
         }
     }
 }

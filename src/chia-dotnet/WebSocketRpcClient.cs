@@ -215,7 +215,7 @@ namespace chia.dotnet
                 {
                     _pendingResponses[message.RequestId] = message;
                 }
-                else if (message.RequestId != string.Empty) // only broadcast if it's an actual response
+                else //if (message.RequestId != string.Empty) // only broadcast if it's an actual response
                 {
                     OnBroadcastMessageReceived(message);
                 }

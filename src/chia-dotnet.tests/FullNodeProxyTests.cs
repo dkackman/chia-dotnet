@@ -23,7 +23,7 @@ namespace chia.dotnet.tests
             try
             {
                 using var cts = new CancellationTokenSource(2000);
-                var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
+                var rpcClient = Factory.CreateWebsocketClient();
                 await rpcClient.Connect(cts.Token);
 
                 var daemon = new DaemonProxy(rpcClient, "unit_tests");
@@ -96,6 +96,16 @@ namespace chia.dotnet.tests
             var info = await _theFullNode.GetNetworkInfo(cts.Token);
 
             Assert.IsNotNull(info);
+        }
+
+        [TestMethod()]
+        public async Task GetBlockCountMetrics()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            var counts = await _theFullNode.GetBlockCountMetrics(cts.Token);
+
+            Assert.IsNotNull(counts);
         }
 
         [TestMethod]

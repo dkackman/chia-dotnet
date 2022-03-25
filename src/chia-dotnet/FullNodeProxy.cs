@@ -34,6 +34,16 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Retrieves aggregate information about blocks.
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The <see cref="BlockCountMetrics"/></returns>
+        public async Task<BlockCountMetrics> GetBlockCountMetrics(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<BlockCountMetrics>("get_block_count_metrics", "metrics", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Get a block by a header hash
         /// </summary>
         /// <param name="headerhash">The header hash</param>
@@ -204,7 +214,7 @@ namespace chia.dotnet
         /// <param name="endHeight">confirmation end height for search</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
-        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHashes(IEnumerable<string> puzzlehashes, bool includeSpentCoins, int? startHeight, int? endHeight, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHashes(IEnumerable<string> puzzlehashes, bool includeSpentCoins, int? startHeight = null, int? endHeight = null, CancellationToken cancellationToken = default)
         {
             if (puzzlehashes is null)
             {
@@ -238,7 +248,7 @@ namespace chia.dotnet
         /// <param name="endHeight">confirmation end height for search</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
-        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByParentIds(IEnumerable<string> parentIds, bool includeSpentCoins, int? startHeight, int? endHeight, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByParentIds(IEnumerable<string> parentIds, bool includeSpentCoins, int? startHeight = null, int? endHeight = null, CancellationToken cancellationToken = default)
         {
             if (parentIds is null)
             {

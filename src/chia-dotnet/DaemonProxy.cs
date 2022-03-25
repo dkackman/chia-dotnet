@@ -2,6 +2,7 @@
 using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace chia.dotnet
 {
@@ -125,13 +126,201 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Retrieves the status of teh keyring
+        /// Retrieves the status of the keyring
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task<KeyringStatus> GetKeyringStatus(CancellationToken cancellationToken = default)
         {
             return await SendMessage<KeyringStatus>("keyring_status", null, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Test the validity of a passphrase
+        /// </summary>
+        /// <param name="key">Keyring passphrase</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        public async Task ValidateKeyringPassphrase(string key, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.key = key;
+
+            _ = await SendMessage("validate_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Unlock the keyring
+        /// </summary>
+        /// <param name="key">Keyring passphrase</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        public async Task UnlockKeyring(string key, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.key = key;
+
+            _ = await SendMessage("unlock_keyring", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Determine if the keyring is locked
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Boolean indicator as to wheteher the keyring is locked</returns>
+        public async Task<bool> IsKeyringLocked(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<bool>("is_keyring_locked", "is_keyring_locked", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Migrate from key phrase to key ring
+        /// </summary>
+        /// <param name="passphrase">The new keyring passphrase</param>
+        /// <param name="passphraseHint">A passphrase hint</param>
+        /// <param name="savePassphrase">Should the passphrase be saved</param>
+        /// <param name="cleanupLegacyKeyring">Should the legacy keyring be cleaned up</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        public async Task MigrateKeyring(string passphrase, string passphraseHint, bool savePassphrase = false, bool cleanupLegacyKeyring = false, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.passphrase = passphrase;
+            data.passphrase_hint = passphraseHint;
+            data.save_passphrase = savePassphrase;
+            data.cleanup_legacy_keyring = cleanupLegacyKeyring;
+
+            _ = await SendMessage("migrate_keyring", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Update the key ring passphrase
+        /// </summary>
+        /// <param name="currentPassphrase">The current keyring passphrase</param>
+        /// <param name="newPassphrase">The new keyring passphrase</param>
+        /// <param name="passphraseHint">A passphrase hint</param>
+        /// <param name="savePassphrase">Should the passphrase be saved</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        public async Task SetKeyringPassphrase(string currentPassphrase, string newPassphrase, string passphraseHint, bool savePassphrase = false, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.current_passphrase = currentPassphrase;
+            data.new_passphrase = newPassphrase;
+            data.passphrase_hint = passphraseHint;
+            data.save_passphrase = savePassphrase;
+
+            _ = await SendMessage("set_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Remove the key ring passphrase
+        /// </summary>
+        /// <param name="currentPassphrase">The current keyring passphrase</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        public async Task RemoveKeyringPassphrase(string currentPassphrase, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.current_passphrase = currentPassphrase;
+
+            _ = await SendMessage("remove_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets the private key associated with the given fingerprint
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The <see cref="PrivateKey"/></returns>
+        public async Task<PrivateKey> GetKeyForFingerprint(uint fingerprint, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+
+            var response = await SendMessage("get_key_for_fingerprint", data, cancellationToken).ConfigureAwait(false);
+
+            return new PrivateKey()
+            {
+                PK = response.pk,
+                Entropy = response.entropy
+            };
+        }
+
+        /// <summary>
+        /// Deletes all keys which have the given public key fingerprint
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        public async Task DeleteKeyByFingerprint(uint fingerprint, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+
+            _ = await SendMessage("delete_key_by_fingerprint", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Deletes all keys from the keychain
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        public async Task DeleteAllKeys(CancellationToken cancellationToken = default)
+        {
+            _ = await SendMessage("delete_all_keys", null, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Adds a private key to the keychain, with the given entropy and passphrase.
+        /// The keychain itself will store the public key, and the entropy bytes, but not the passphrase.
+        /// </summary>
+        /// <param name="mnemonic">Mnemonic entropy of the key</param>
+        /// <param name="passphrase">Keyring passphrase</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        public async Task AddPrivateKey(string mnemonic, string passphrase, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.mnemonic = mnemonic;
+            data.passphrase = passphrase;
+
+            _ = await SendMessage("add_private_key", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Returns the first private key
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The first <see cref="PrivateKey"/></returns>
+        public async Task<PrivateKey> GetFirstPrivateKey(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<PrivateKey>("get_first_private_key", null, "private_key", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Returns all private keys as a tuple of key, and entropy bytes (i.e. mnemonic) for each key.
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>All of the <see cref="PrivateKey"/>s</returns>
+        public async Task<IEnumerable<PrivateKey>> GetAllPrivateKeys(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<IEnumerable<PrivateKey>>("get_all_private_keys", null, "private_keys", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Checks the keys
+        /// </summary>
+        /// <param name="rootPath">The config root path</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        /// <remarks>This seems to send the daemon out to lunch</remarks>
+        public async Task CheckKeys(string rootPath, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.root_path = rootPath;
+
+            _ = await SendMessage("check_keys", data, cancellationToken).ConfigureAwait(false);
         }
 
         private static object CreateDataObject(string service)

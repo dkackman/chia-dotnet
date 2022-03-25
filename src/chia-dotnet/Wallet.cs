@@ -96,12 +96,15 @@ namespace chia.dotnet
         /// <summary>
         /// Get the list of transactions
         /// </summary>
+        /// <param name="toAddress">Restrict results only to this address</param>
+        /// <param name="sortKey">Field to sort results by</param>
+        /// <param name="reverse">Reverse the sort order of the results</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="TransactionRecord"/>s</returns>
-        public async Task<IEnumerable<TransactionRecord>> GetTransactions(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<TransactionRecord>> GetTransactions(string? toAddress = null, string? sortKey = null, bool reverse = false, CancellationToken cancellationToken = default)
         {
             var count = await GetTransactionCount(cancellationToken).ConfigureAwait(false);
-            return await GetTransactions(0, count, cancellationToken).ConfigureAwait(false);
+            return await GetTransactions(0, count, toAddress, sortKey, reverse, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -109,13 +112,19 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="start">the start index of transactions (zero based)</param>
         /// <param name="end">The end index of transactions (max of <see cref="GetTransactionCount(CancellationToken)"/></param>
+        /// <param name="toAddress">Restrict results only to this address</param>
+        /// <param name="sortKey">Field to sort results by</param>
+        /// <param name="reverse">Reverse the sort order of the results</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="TransactionRecord"/>s</returns>
-        public async Task<IEnumerable<TransactionRecord>> GetTransactions(uint start, uint end, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<TransactionRecord>> GetTransactions(uint start, uint end, string? toAddress = null, string? sortKey = null, bool reverse = false, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.start = start;
             data.end = end;
+            data.to_address = toAddress;
+            data.sort_key = sortKey;
+            data.reverse = reverse;
 
             return await WalletProxy.SendMessage<IEnumerable<TransactionRecord>>("get_transactions", data, "transactions", cancellationToken).ConfigureAwait(false);
         }
@@ -164,9 +173,10 @@ namespace chia.dotnet
         /// <param name="address">The receiving address</param>
         /// <param name="amount">The amount to send (in units of mojos)</param>
         /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="memos">Memos to go along with the transaction</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> SendTransaction(string address, ulong amount, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> SendTransaction(string address, ulong amount, ulong fee, IEnumerable<string>? memos = null, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(address))
             {
@@ -177,6 +187,10 @@ namespace chia.dotnet
             data.address = address;
             data.amount = amount;
             data.fee = fee;
+            if (memos is not null)
+            {
+                data.memos = memos.ToList();
+            }
 
             return await WalletProxy.SendMessage<TransactionRecord>("send_transaction", data, "transaction", cancellationToken).ConfigureAwait(false);
         }
@@ -189,7 +203,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, IEnumerable<Coin>? coins, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, ulong fee, IEnumerable<Coin>? coins = null, CancellationToken cancellationToken = default)
         {
             if (additions is null)
             {
@@ -216,7 +230,7 @@ namespace chia.dotnet
         /// <returns>The <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, ulong fee, CancellationToken cancellationToken = default)
         {
-            return await SendTransactionMulti(additions, null, fee, cancellationToken).ConfigureAwait(false);
+            return await SendTransactionMulti(additions, fee, cancellationToken).ConfigureAwait(false);
         }
     }
 }

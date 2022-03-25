@@ -16,16 +16,16 @@ namespace chia.dotnet.tests
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
-            using var cts = new CancellationTokenSource(15000);
+            using var cts = new CancellationTokenSource();
 
-            var rpcClient = Factory.CreateRpcClientFromHardcodedLocation();
+            var rpcClient = Factory.CreateWebsocketClient();
             await rpcClient.Connect(cts.Token);
 
             var daemon = new DaemonProxy(rpcClient, "unit_tests");
             await daemon.RegisterService(cts.Token);
 
             _theWallet = new WalletProxy(rpcClient, "unit_tests");
-            _ = await _theWallet.LogIn(false, cts.Token);
+            _ = await _theWallet.LogIn(cts.Token);
         }
 
         [ClassCleanup()]
@@ -45,6 +45,16 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
+        public async Task GetLoggedInFingerprint()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            var fingerprint = await _theWallet.GetLoggedInFingerprint(cts.Token);
+
+            Assert.AreEqual(_theWallet.Fingerprint.Value, fingerprint);
+        }
+
+        [TestMethod()]
         public async Task GetPublicKeys()
         {
             using var cts = new CancellationTokenSource(15000);
@@ -59,8 +69,7 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            var fingerprints = await _theWallet.GetPublicKeys(cts.Token);
-            var key = await _theWallet.GetPrivateKey(fingerprints.First(), cts.Token);
+            var key = await _theWallet.GetPrivateKey(_theWallet.Fingerprint.Value, cts.Token);
 
             Assert.IsNotNull(key);
         }
@@ -86,16 +95,6 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        public async Task GetAllTrades()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            var trades = await _theWallet.GetAllTrades(cts.Token);
-
-            Assert.IsNotNull(trades);
-        }
-
-        [TestMethod()]
         public async Task GetHeightInfo()
         {
             using var cts = new CancellationTokenSource(15000);
@@ -103,15 +102,6 @@ namespace chia.dotnet.tests
             var height = await _theWallet.GetHeightInfo(cts.Token);
 
             Assert.IsTrue(height > 0);
-        }
-
-        [TestMethod()]
-        [TestCategory("CAUTION")]
-        public async Task CreateBackup()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            await _theWallet.CreateBackup(@"C:\tmp\b.bak", cts.Token);
         }
 
         [TestMethod()]
@@ -132,7 +122,7 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
 
             var mnemonic = await _theWallet.GenerateMnemonic(cts.Token);
-            var fingerprint = await _theWallet.AddKey(mnemonic, true, cts.Token);
+            var fingerprint = await _theWallet.AddKey(mnemonic, cts.Token);
             var key = await _theWallet.GetPrivateKey(fingerprint, cts.Token);
             Assert.IsNotNull(key);
 
@@ -142,11 +132,11 @@ namespace chia.dotnet.tests
         [TestMethod()]
         [TestCategory("CAUTION")]
         [Ignore("CAUTION")]
-        public async Task CreateNewColourCoinWallet()
+        public async Task CreateCATWallet()
         {
-            using var cts = new CancellationTokenSource(15000);
+            using var cts = new CancellationTokenSource(20000);
 
-            var walletInfo = await _theWallet.CreateColourCoinWallet(1, 1, "dkackman.colouredwallet.1", cts.Token);
+            var walletInfo = await _theWallet.CreateCATWallet("dkackman.cat.1", 1, 1, cts.Token);
 
             Assert.IsNotNull(walletInfo);
         }
@@ -163,16 +153,23 @@ namespace chia.dotnet.tests
 
             Assert.IsNotNull(walletInfo);
         }
+        [TestMethod()]
+        public async Task Login()
+        {
+            using var cts = new CancellationTokenSource(150000);
+
+            _ = await _theWallet.LogIn(cts.Token);
+        }
 
         [TestMethod()]
         public async Task GetTransaction()
         {
             using var cts = new CancellationTokenSource(150000);
 
-            _ = await _theWallet.LogIn(false, cts.Token);
+            _ = await _theWallet.LogIn(cts.Token);
             var wallet = new Wallet(1, _theWallet);
 
-            var transactions = await wallet.GetTransactions(cts.Token);
+            var transactions = await wallet.GetTransactions(cancellationToken: cts.Token);
             var transaction1 = transactions.FirstOrDefault();
             Assert.IsNotNull(transaction1);
 
@@ -214,50 +211,6 @@ namespace chia.dotnet.tests
             var info = await WalletProxy.GetPoolInfo(new Uri("https://testpool.xchpool.org"), cts.Token);
 
             Assert.IsNotNull(info);
-        }
-
-        [TestMethod()]
-        public async Task GetTrade()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            var wallet = new Wallet(1, _theWallet);
-
-            var transactions = await wallet.GetTransactions(cts.Token);
-            var transaction1 = transactions.FirstOrDefault(tx => tx.TradeId is not null);
-            if (transaction1 is null)
-            {
-                Assert.Inconclusive("This wallet has no trades");
-            }
-            else
-            {
-                var trade = await _theWallet.GetTrade(transaction1.TradeId, cts.Token);
-                Assert.IsNotNull(trade);
-            }
-        }
-
-        [TestMethod()]
-        [Ignore("CAUTION")]
-        public async Task CreateOfferForIds()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            var ids = new Dictionary<int, int>()
-            {
-                { 1, 1 }
-            };
-            await _theWallet.CreateOfferForIds(ids, @"C:\tmp\test.offer", cts.Token);
-        }
-
-        [TestMethod()]
-        [Ignore("CAUTION")]
-        public async Task GetDiscrepenciesForOffer()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            var discrepencies = await _theWallet.GetDiscrepenciesForOffer(@"C:\tmp\test.offer", cts.Token);
-
-            Assert.IsNotNull(discrepencies);
         }
 
         [TestMethod()]

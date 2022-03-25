@@ -1,47 +1,61 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace chia.dotnet
 {
     /// <summary>
-    /// Wraps a Coloured Coin wallet
+    /// Wraps a CAT wallet
     /// </summary>
-    public sealed class ColouredCoinWallet : Wallet
+    public sealed class CATWallet : Wallet
     {
         /// <summary>
         /// ctor
         /// </summary>
         /// <param name="walletId">The wallet_id to wrap</param>
         /// <param name="walletProxy">Wallet RPC proxy to use for communication</param>
-        public ColouredCoinWallet(uint walletId, WalletProxy walletProxy)
+        public CATWallet(uint walletId, WalletProxy walletProxy)
             : base(walletId, walletProxy)
         {
         }
 
         /// <summary>
-        /// Validates that <see cref="Wallet.WalletId"/> is a <see cref="WalletType.COLOURED_COIN"/>
+        /// Validates that <see cref="Wallet.WalletId"/> is a <see cref="WalletType.CAT"/>
         /// </summary>
-        /// <returns>True if the wallet is a CC wallet</returns>
+        /// <returns>True if the wallet is a CAT wallet</returns>
         public override async Task Validate(CancellationToken cancellationToken = default)
         {
-            await Validate(WalletType.COLOURED_COIN, cancellationToken).ConfigureAwait(false);
+            await Validate(WalletType.CAT, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// Get the name of a wallet's coloured coin
+        /// Get the name of a wallet's CAT
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The coin name</returns>
+        /// <returns>The CAT name</returns>
         public async Task<string> GetName(CancellationToken cancellationToken = default)
         {
-            var response = await WalletProxy.SendMessage("cc_get_name", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("cat_get_name", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
 
             return response.name.ToString();
         }
 
         /// <summary>
-        /// Set the name of a wallet's coloured coin
+        /// Get the asset id of a wallet's CAT
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The asset id</returns>
+        public async Task<string> GetAssetId(CancellationToken cancellationToken = default)
+        {
+            var response = await WalletProxy.SendMessage("cat_get_asset_id", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
+
+            return response.asset_id?.ToString() ?? throw new InvalidOperationException("Asset Id not found");
+        }
+
+        /// <summary>
+        /// Set the name of the CAT
         /// </summary>
         /// <param name="name">The new name</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
@@ -56,30 +70,19 @@ namespace chia.dotnet
             dynamic data = CreateWalletDataObject();
             data.name = name;
 
-            _ = await WalletProxy.SendMessage("cc_set_name", data, cancellationToken).ConfigureAwait(false);
+            _ = await WalletProxy.SendMessage("cat_set_name", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// Get the colour of a wallet's coloured coin
-        /// </summary>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The colour as a string</returns>
-        public async Task<string> GetColour(CancellationToken cancellationToken = default)
-        {
-            var response = await WalletProxy.SendMessage("cc_get_colour", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
-
-            return response.colour;
-        }
-
-        /// <summary>
-        /// Spend a coloured coin
+        /// Spend a CAT
         /// </summary>
         /// <param name="innerAddress">The inner address for the spend</param>
         /// <param name="amount">The amount to put in the wallet (in units of mojos)</param> 
         /// <param name="fee">The fee to create the wallet (in units of mojos)</param>
+        /// <param name="memos">Optional list of byte string memos to include in the transaction</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> Spend(string innerAddress, ulong amount, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> Spend(string innerAddress, ulong amount, ulong fee, IEnumerable<string>? memos = null, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(innerAddress))
             {
@@ -90,8 +93,12 @@ namespace chia.dotnet
             data.inner_address = innerAddress;
             data.amount = amount;
             data.fee = fee;
+            if (memos != null)
+            {
+                data.memos = memos.ToList();
+            }
 
-            return await WalletProxy.SendMessage<TransactionRecord>("cc_spend", data, "transaction", cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<TransactionRecord>("cat_spend", data, "transaction", cancellationToken).ConfigureAwait(false);
         }
     }
 }
