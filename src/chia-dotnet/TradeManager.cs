@@ -20,7 +20,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Retreives the number of offers.
+        /// Retrieves the number of offers.
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The number of offers</returns>
@@ -154,7 +154,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Retreives an offer
+        /// Retrieves an offer
         /// </summary>
         /// <param name="tradeId">The trade id of the offer</param>
         /// <param name="fileContents">Indicator as to whether to return the offer contents. 
@@ -205,7 +205,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Retreives the summary of an offer
+        /// Retrieves the summary of an offer
         /// </summary>
         /// <param name="offer">The bech32 encoded offer hex</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
