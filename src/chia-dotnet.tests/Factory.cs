@@ -32,7 +32,7 @@ namespace chia.dotnet.tests
         /// Create a rpc client instance from a hardcoded address
         /// </summary>
         /// <returns><see cref="DaemonProxy"/></returns>
-        public static WebSocketRpcClient CreateDaemon()
+        public static WebSocketRpcClient CreateWebsocketClient()
         {
             /*
 #warning YOU MIGHT BE USING A PRODUCTION NODE

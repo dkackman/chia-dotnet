@@ -18,7 +18,8 @@ namespace chia.dotnet.tests
         {
             try
             {
-                var rpcClient = Factory.CreateDaemonClientFromDefaultTestnetConfig();
+                //var rpcClient = Factory.CreateDaemonClientFromDefaultTestnetConfig();
+                var rpcClient = Factory.CreateWebsocketClient();
                 using var cts = new CancellationTokenSource(20000);
                 await rpcClient.Connect(cts.Token);
 
@@ -123,10 +124,10 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod()]
-        [Ignore("CAUTION")]
+        //[Ignore("CAUTION")]
         public async Task CreateOfferForIds()
         {
-            uint makerCoinWalletId = 5; // wallet ID for offered coin (must have balance >= 1)
+            uint makerCoinWalletId = 2; // wallet ID for offered coin (must have balance >= 1)
             uint takerCoinWalletId = 1; // wallet ID for requested coin
 
             var idsAndAmounts = new Dictionary<uint, long>()

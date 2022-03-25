@@ -18,7 +18,7 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource();
 
-            var rpcClient = Factory.CreateDaemon();
+            var rpcClient = Factory.CreateWebsocketClient();
             await rpcClient.Connect(cts.Token);
 
             var daemon = new DaemonProxy(rpcClient, "unit_tests");
