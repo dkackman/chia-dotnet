@@ -17,7 +17,7 @@ namespace chia.dotnet.tests
         {
             try
             {
-                var rpcClient = Factory.CreateDirectRpcClientFromHardcodedLocation(8561);
+                var rpcClient = Factory.CreateDirectRpcClientFromHardcodedLocation(8561, "crawler");
 
                 await Task.CompletedTask;
                 _theCrawler = new CrawlerProxy(rpcClient, "unit_tests");

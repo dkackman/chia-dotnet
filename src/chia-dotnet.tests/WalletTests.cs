@@ -142,15 +142,13 @@ namespace chia.dotnet.tests
             Assert.IsNotNull(transaction);
         }
 
-
         [TestMethod()]
         public async Task ValidateTwo()
         {
             using var cts = new CancellationTokenSource(15000);
 
-            var wallet = new PoolWallet(2, _theWallet.WalletProxy);
+            var wallet = new CATWallet(2, _theWallet.WalletProxy);
             await wallet.Validate();
-
         }
     }
 }

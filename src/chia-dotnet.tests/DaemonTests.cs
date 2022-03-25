@@ -89,28 +89,38 @@ namespace chia.dotnet.tests
         public async Task UnlockKeyringValid()
         {
             using var cts = new CancellationTokenSource(15000);
+            var status = await _theDaemon.GetKeyringStatus(cts.Token);
+            if (status.UserPassphraseIsSet)
+            {
+                await _theDaemon.UnlockKeyring("sp00n3!!", cts.Token);
 
-            await _theDaemon.UnlockKeyring("sp00n3!!", cts.Token);
+                var locked = await _theDaemon.IsKeyringLocked(cts.Token);
 
-            var locked = await _theDaemon.IsKeyringLocked(cts.Token);
-
-            Assert.IsFalse(locked);
+                Assert.IsFalse(locked);
+            }
         }
 
         [TestMethod]
+        [Ignore("CAUTION")]
         public async Task MigrateKeyring()
         {
             using var cts = new CancellationTokenSource(15000);
-
-            await _theDaemon.MigrateKeyring("sp00n3!!", "super secure utensil", true, false, cts.Token);
+            var status = await _theDaemon.GetKeyringStatus(cts.Token);
+            if (!status.UserPassphraseIsSet)
+            {
+                await _theDaemon.MigrateKeyring("sp00n3!!", "super secure utensil", true, false, cts.Token);
+            }
         }
 
         [TestMethod]
         public async Task SetKeyringPassphrase()
         {
             using var cts = new CancellationTokenSource(15000);
-
-            await _theDaemon.SetKeyringPassphrase("sp00n3!!", "sp00n3!!!", "super duper secure utensil", true, cts.Token);
+            var status = await _theDaemon.GetKeyringStatus(cts.Token);
+            if (status.UserPassphraseIsSet)
+            {
+                await _theDaemon.SetKeyringPassphrase("sp00n3!!", "sp00n3!!!", "super duper secure utensil", true, cts.Token);
+            }
         }
 
         [TestMethod]
@@ -118,7 +128,11 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            await _theDaemon.RemoveKeyringPassphrase("sp00n3!!!", cts.Token);
+            var status = await _theDaemon.GetKeyringStatus(cts.Token);
+            if (status.UserPassphraseIsSet)
+            {
+                await _theDaemon.RemoveKeyringPassphrase("sp00n3!!!", cts.Token);
+            }
         }
 
         [TestMethod]
@@ -136,7 +150,11 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            var key = await _theDaemon.GetKeyForFingerprint(1531304830, cts.Token);
+            var proxy = _theDaemon.CreateProxyFrom<WalletProxy>();
+            var prints = await proxy.GetPublicKeys(cts.Token);
+            Assert.IsTrue(prints.Any());
+
+            var key = await _theDaemon.GetKeyForFingerprint(prints.First(), cts.Token);
 
             Assert.IsNotNull(key);
         }

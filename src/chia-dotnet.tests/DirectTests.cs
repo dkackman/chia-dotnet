@@ -7,17 +7,17 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace chia.dotnet.tests
 {
     [TestClass]
+    [TestCategory("Integration")]
     public class DirectTests
     {
         [TestMethod]
-        [TestCategory("Integration")]
         public async Task GetConnectionsDirect()
         {
             try
             {
                 using var cts = new CancellationTokenSource(2000);
 
-                using var rpcClient = Factory.CreateDirectRpcClientFromHardcodedLocation(8555);
+                using var rpcClient = Factory.CreateDirectRpcClientFromHardcodedLocation(8555, "full_node");
                 var fullNode = new FullNodeProxy(rpcClient, "unit_tests");
 
                 var connections = await fullNode.GetConnections(cts.Token);
@@ -31,14 +31,13 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
-        [TestCategory("Integration")]
         public async Task GetBlockchainStateDirect()
         {
             try
             {
                 using var cts = new CancellationTokenSource(15000);
 
-                using var rpcClient = Factory.CreateDirectRpcClientFromHardcodedLocation(8555);
+                using var rpcClient = Factory.CreateDirectRpcClientFromHardcodedLocation(8555, "full_node");
                 var fullNode = new FullNodeProxy(rpcClient, "unit_tests");
 
                 var state = await fullNode.GetBlockchainState(cts.Token);
@@ -52,7 +51,6 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
-        [TestCategory("Integration")]
         [Ignore]
         public async Task ConnectDirectlyUsingConfigEndpoint()
         {

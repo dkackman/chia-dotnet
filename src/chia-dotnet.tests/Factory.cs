@@ -11,7 +11,7 @@ namespace chia.dotnet.tests
         // this is the ip address of the chia node
         private const string NodeHostAddress = "chiapas";
 
-        public static HttpRpcClient CreateDirectRpcClientFromHardcodedLocation(int port)
+        public static HttpRpcClient CreateDirectRpcClientFromHardcodedLocation(int port, string endpointName)
         {
             var endpoint = new EndpointInfo()
             {
@@ -20,8 +20,8 @@ namespace chia.dotnet.tests
                 //KeyPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.key",
                 //CertPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_daemon.crt",
                 //KeyPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_daemon.key",
-                CertPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_crawler.crt",
-                KeyPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_crawler.key",
+                CertPath = $@"C:\Users\dkack\.rchia\certs\chiapas\private_{endpointName}.crt",
+                KeyPath = $@"C:\Users\dkack\.rchia\certs\chiapas\private_{endpointName}.key",
                 //CertPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_full_node.crt",
                 //KeyPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_full_node.key",
             };
