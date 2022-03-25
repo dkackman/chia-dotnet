@@ -7,6 +7,51 @@ references:
   commentId: N:chia.dotnet
   fullName: chia.dotnet
   nameWithType: chia.dotnet
+- uid: chia.dotnet.Announcement
+  name: Announcement
+  href: api/chia.dotnet.Announcement.html
+  commentId: T:chia.dotnet.Announcement
+  fullName: chia.dotnet.Announcement
+  nameWithType: Announcement
+- uid: chia.dotnet.Announcement.Message
+  name: Message
+  href: api/chia.dotnet.Announcement.html#chia_dotnet_Announcement_Message
+  commentId: P:chia.dotnet.Announcement.Message
+  fullName: chia.dotnet.Announcement.Message
+  nameWithType: Announcement.Message
+- uid: chia.dotnet.Announcement.Message*
+  name: Message
+  href: api/chia.dotnet.Announcement.html#chia_dotnet_Announcement_Message_
+  commentId: Overload:chia.dotnet.Announcement.Message
+  isSpec: "True"
+  fullName: chia.dotnet.Announcement.Message
+  nameWithType: Announcement.Message
+- uid: chia.dotnet.Announcement.MorphBytes
+  name: MorphBytes
+  href: api/chia.dotnet.Announcement.html#chia_dotnet_Announcement_MorphBytes
+  commentId: P:chia.dotnet.Announcement.MorphBytes
+  fullName: chia.dotnet.Announcement.MorphBytes
+  nameWithType: Announcement.MorphBytes
+- uid: chia.dotnet.Announcement.MorphBytes*
+  name: MorphBytes
+  href: api/chia.dotnet.Announcement.html#chia_dotnet_Announcement_MorphBytes_
+  commentId: Overload:chia.dotnet.Announcement.MorphBytes
+  isSpec: "True"
+  fullName: chia.dotnet.Announcement.MorphBytes
+  nameWithType: Announcement.MorphBytes
+- uid: chia.dotnet.Announcement.OriginInfo
+  name: OriginInfo
+  href: api/chia.dotnet.Announcement.html#chia_dotnet_Announcement_OriginInfo
+  commentId: P:chia.dotnet.Announcement.OriginInfo
+  fullName: chia.dotnet.Announcement.OriginInfo
+  nameWithType: Announcement.OriginInfo
+- uid: chia.dotnet.Announcement.OriginInfo*
+  name: OriginInfo
+  href: api/chia.dotnet.Announcement.html#chia_dotnet_Announcement_OriginInfo_
+  commentId: Overload:chia.dotnet.Announcement.OriginInfo
+  isSpec: "True"
+  fullName: chia.dotnet.Announcement.OriginInfo
+  nameWithType: Announcement.OriginInfo
 - uid: chia.dotnet.bech32
   name: chia.dotnet.bech32
   href: api/chia.dotnet.bech32.html
@@ -412,6 +457,51 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.BlockchainState.Sync
   nameWithType: BlockchainState.Sync
+- uid: chia.dotnet.BlockCountMetrics
+  name: BlockCountMetrics
+  href: api/chia.dotnet.BlockCountMetrics.html
+  commentId: T:chia.dotnet.BlockCountMetrics
+  fullName: chia.dotnet.BlockCountMetrics
+  nameWithType: BlockCountMetrics
+- uid: chia.dotnet.BlockCountMetrics.CompactBlock
+  name: CompactBlock
+  href: api/chia.dotnet.BlockCountMetrics.html#chia_dotnet_BlockCountMetrics_CompactBlock
+  commentId: P:chia.dotnet.BlockCountMetrics.CompactBlock
+  fullName: chia.dotnet.BlockCountMetrics.CompactBlock
+  nameWithType: BlockCountMetrics.CompactBlock
+- uid: chia.dotnet.BlockCountMetrics.CompactBlock*
+  name: CompactBlock
+  href: api/chia.dotnet.BlockCountMetrics.html#chia_dotnet_BlockCountMetrics_CompactBlock_
+  commentId: Overload:chia.dotnet.BlockCountMetrics.CompactBlock
+  isSpec: "True"
+  fullName: chia.dotnet.BlockCountMetrics.CompactBlock
+  nameWithType: BlockCountMetrics.CompactBlock
+- uid: chia.dotnet.BlockCountMetrics.HintCount
+  name: HintCount
+  href: api/chia.dotnet.BlockCountMetrics.html#chia_dotnet_BlockCountMetrics_HintCount
+  commentId: P:chia.dotnet.BlockCountMetrics.HintCount
+  fullName: chia.dotnet.BlockCountMetrics.HintCount
+  nameWithType: BlockCountMetrics.HintCount
+- uid: chia.dotnet.BlockCountMetrics.HintCount*
+  name: HintCount
+  href: api/chia.dotnet.BlockCountMetrics.html#chia_dotnet_BlockCountMetrics_HintCount_
+  commentId: Overload:chia.dotnet.BlockCountMetrics.HintCount
+  isSpec: "True"
+  fullName: chia.dotnet.BlockCountMetrics.HintCount
+  nameWithType: BlockCountMetrics.HintCount
+- uid: chia.dotnet.BlockCountMetrics.UncompactBlocks
+  name: UncompactBlocks
+  href: api/chia.dotnet.BlockCountMetrics.html#chia_dotnet_BlockCountMetrics_UncompactBlocks
+  commentId: P:chia.dotnet.BlockCountMetrics.UncompactBlocks
+  fullName: chia.dotnet.BlockCountMetrics.UncompactBlocks
+  nameWithType: BlockCountMetrics.UncompactBlocks
+- uid: chia.dotnet.BlockCountMetrics.UncompactBlocks*
+  name: UncompactBlocks
+  href: api/chia.dotnet.BlockCountMetrics.html#chia_dotnet_BlockCountMetrics_UncompactBlocks_
+  commentId: Overload:chia.dotnet.BlockCountMetrics.UncompactBlocks
+  isSpec: "True"
+  fullName: chia.dotnet.BlockCountMetrics.UncompactBlocks
+  nameWithType: BlockCountMetrics.UncompactBlocks
 - uid: chia.dotnet.BlockRecord
   name: BlockRecord
   href: api/chia.dotnet.BlockRecord.html
@@ -769,6 +859,138 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.BlockRecord.Weight
   nameWithType: BlockRecord.Weight
+- uid: chia.dotnet.CATInfo
+  name: CATInfo
+  href: api/chia.dotnet.CATInfo.html
+  commentId: T:chia.dotnet.CATInfo
+  fullName: chia.dotnet.CATInfo
+  nameWithType: CATInfo
+- uid: chia.dotnet.CATInfo.AssetId
+  name: AssetId
+  href: api/chia.dotnet.CATInfo.html#chia_dotnet_CATInfo_AssetId
+  commentId: P:chia.dotnet.CATInfo.AssetId
+  fullName: chia.dotnet.CATInfo.AssetId
+  nameWithType: CATInfo.AssetId
+- uid: chia.dotnet.CATInfo.AssetId*
+  name: AssetId
+  href: api/chia.dotnet.CATInfo.html#chia_dotnet_CATInfo_AssetId_
+  commentId: Overload:chia.dotnet.CATInfo.AssetId
+  isSpec: "True"
+  fullName: chia.dotnet.CATInfo.AssetId
+  nameWithType: CATInfo.AssetId
+- uid: chia.dotnet.CATInfo.Name
+  name: Name
+  href: api/chia.dotnet.CATInfo.html#chia_dotnet_CATInfo_Name
+  commentId: P:chia.dotnet.CATInfo.Name
+  fullName: chia.dotnet.CATInfo.Name
+  nameWithType: CATInfo.Name
+- uid: chia.dotnet.CATInfo.Name*
+  name: Name
+  href: api/chia.dotnet.CATInfo.html#chia_dotnet_CATInfo_Name_
+  commentId: Overload:chia.dotnet.CATInfo.Name
+  isSpec: "True"
+  fullName: chia.dotnet.CATInfo.Name
+  nameWithType: CATInfo.Name
+- uid: chia.dotnet.CATInfo.Symbol
+  name: Symbol
+  href: api/chia.dotnet.CATInfo.html#chia_dotnet_CATInfo_Symbol
+  commentId: P:chia.dotnet.CATInfo.Symbol
+  fullName: chia.dotnet.CATInfo.Symbol
+  nameWithType: CATInfo.Symbol
+- uid: chia.dotnet.CATInfo.Symbol*
+  name: Symbol
+  href: api/chia.dotnet.CATInfo.html#chia_dotnet_CATInfo_Symbol_
+  commentId: Overload:chia.dotnet.CATInfo.Symbol
+  isSpec: "True"
+  fullName: chia.dotnet.CATInfo.Symbol
+  nameWithType: CATInfo.Symbol
+- uid: chia.dotnet.CATWallet
+  name: CATWallet
+  href: api/chia.dotnet.CATWallet.html
+  commentId: T:chia.dotnet.CATWallet
+  fullName: chia.dotnet.CATWallet
+  nameWithType: CATWallet
+- uid: chia.dotnet.CATWallet.#ctor(System.UInt32,chia.dotnet.WalletProxy)
+  name: CATWallet(UInt32, WalletProxy)
+  href: api/chia.dotnet.CATWallet.html#chia_dotnet_CATWallet__ctor_System_UInt32_chia_dotnet_WalletProxy_
+  commentId: M:chia.dotnet.CATWallet.#ctor(System.UInt32,chia.dotnet.WalletProxy)
+  fullName: chia.dotnet.CATWallet.CATWallet(System.UInt32, chia.dotnet.WalletProxy)
+  nameWithType: CATWallet.CATWallet(UInt32, WalletProxy)
+- uid: chia.dotnet.CATWallet.#ctor*
+  name: CATWallet
+  href: api/chia.dotnet.CATWallet.html#chia_dotnet_CATWallet__ctor_
+  commentId: Overload:chia.dotnet.CATWallet.#ctor
+  isSpec: "True"
+  fullName: chia.dotnet.CATWallet.CATWallet
+  nameWithType: CATWallet.CATWallet
+- uid: chia.dotnet.CATWallet.GetAssetId(System.Threading.CancellationToken)
+  name: GetAssetId(CancellationToken)
+  href: api/chia.dotnet.CATWallet.html#chia_dotnet_CATWallet_GetAssetId_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.CATWallet.GetAssetId(System.Threading.CancellationToken)
+  fullName: chia.dotnet.CATWallet.GetAssetId(System.Threading.CancellationToken)
+  nameWithType: CATWallet.GetAssetId(CancellationToken)
+- uid: chia.dotnet.CATWallet.GetAssetId*
+  name: GetAssetId
+  href: api/chia.dotnet.CATWallet.html#chia_dotnet_CATWallet_GetAssetId_
+  commentId: Overload:chia.dotnet.CATWallet.GetAssetId
+  isSpec: "True"
+  fullName: chia.dotnet.CATWallet.GetAssetId
+  nameWithType: CATWallet.GetAssetId
+- uid: chia.dotnet.CATWallet.GetName(System.Threading.CancellationToken)
+  name: GetName(CancellationToken)
+  href: api/chia.dotnet.CATWallet.html#chia_dotnet_CATWallet_GetName_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.CATWallet.GetName(System.Threading.CancellationToken)
+  fullName: chia.dotnet.CATWallet.GetName(System.Threading.CancellationToken)
+  nameWithType: CATWallet.GetName(CancellationToken)
+- uid: chia.dotnet.CATWallet.GetName*
+  name: GetName
+  href: api/chia.dotnet.CATWallet.html#chia_dotnet_CATWallet_GetName_
+  commentId: Overload:chia.dotnet.CATWallet.GetName
+  isSpec: "True"
+  fullName: chia.dotnet.CATWallet.GetName
+  nameWithType: CATWallet.GetName
+- uid: chia.dotnet.CATWallet.SetName(System.String,System.Threading.CancellationToken)
+  name: SetName(String, CancellationToken)
+  href: api/chia.dotnet.CATWallet.html#chia_dotnet_CATWallet_SetName_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.CATWallet.SetName(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.CATWallet.SetName(System.String, System.Threading.CancellationToken)
+  nameWithType: CATWallet.SetName(String, CancellationToken)
+- uid: chia.dotnet.CATWallet.SetName*
+  name: SetName
+  href: api/chia.dotnet.CATWallet.html#chia_dotnet_CATWallet_SetName_
+  commentId: Overload:chia.dotnet.CATWallet.SetName
+  isSpec: "True"
+  fullName: chia.dotnet.CATWallet.SetName
+  nameWithType: CATWallet.SetName
+- uid: chia.dotnet.CATWallet.Spend(System.String,System.UInt64,System.UInt64,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)
+  name: Spend(String, UInt64, UInt64, IEnumerable<String>, CancellationToken)
+  href: api/chia.dotnet.CATWallet.html#chia_dotnet_CATWallet_Spend_System_String_System_UInt64_System_UInt64_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.CATWallet.Spend(System.String,System.UInt64,System.UInt64,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)
+  name.vb: Spend(String, UInt64, UInt64, IEnumerable(Of String), CancellationToken)
+  fullName: chia.dotnet.CATWallet.Spend(System.String, System.UInt64, System.UInt64, System.Collections.Generic.IEnumerable<System.String>, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.CATWallet.Spend(System.String, System.UInt64, System.UInt64, System.Collections.Generic.IEnumerable(Of System.String), System.Threading.CancellationToken)
+  nameWithType: CATWallet.Spend(String, UInt64, UInt64, IEnumerable<String>, CancellationToken)
+  nameWithType.vb: CATWallet.Spend(String, UInt64, UInt64, IEnumerable(Of String), CancellationToken)
+- uid: chia.dotnet.CATWallet.Spend*
+  name: Spend
+  href: api/chia.dotnet.CATWallet.html#chia_dotnet_CATWallet_Spend_
+  commentId: Overload:chia.dotnet.CATWallet.Spend
+  isSpec: "True"
+  fullName: chia.dotnet.CATWallet.Spend
+  nameWithType: CATWallet.Spend
+- uid: chia.dotnet.CATWallet.Validate(System.Threading.CancellationToken)
+  name: Validate(CancellationToken)
+  href: api/chia.dotnet.CATWallet.html#chia_dotnet_CATWallet_Validate_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.CATWallet.Validate(System.Threading.CancellationToken)
+  fullName: chia.dotnet.CATWallet.Validate(System.Threading.CancellationToken)
+  nameWithType: CATWallet.Validate(CancellationToken)
+- uid: chia.dotnet.CATWallet.Validate*
+  name: Validate
+  href: api/chia.dotnet.CATWallet.html#chia_dotnet_CATWallet_Validate_
+  commentId: Overload:chia.dotnet.CATWallet.Validate
+  isSpec: "True"
+  fullName: chia.dotnet.CATWallet.Validate
+  nameWithType: CATWallet.Validate
 - uid: chia.dotnet.ChallengeChainSubSlot
   name: ChallengeChainSubSlot
   href: api/chia.dotnet.ChallengeChainSubSlot.html
@@ -904,6 +1126,51 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.Coin.PuzzleHash
   nameWithType: Coin.PuzzleHash
+- uid: chia.dotnet.CoinAnnouncement
+  name: CoinAnnouncement
+  href: api/chia.dotnet.CoinAnnouncement.html
+  commentId: T:chia.dotnet.CoinAnnouncement
+  fullName: chia.dotnet.CoinAnnouncement
+  nameWithType: CoinAnnouncement
+- uid: chia.dotnet.CoinAnnouncement.CoinId
+  name: CoinId
+  href: api/chia.dotnet.CoinAnnouncement.html#chia_dotnet_CoinAnnouncement_CoinId
+  commentId: P:chia.dotnet.CoinAnnouncement.CoinId
+  fullName: chia.dotnet.CoinAnnouncement.CoinId
+  nameWithType: CoinAnnouncement.CoinId
+- uid: chia.dotnet.CoinAnnouncement.CoinId*
+  name: CoinId
+  href: api/chia.dotnet.CoinAnnouncement.html#chia_dotnet_CoinAnnouncement_CoinId_
+  commentId: Overload:chia.dotnet.CoinAnnouncement.CoinId
+  isSpec: "True"
+  fullName: chia.dotnet.CoinAnnouncement.CoinId
+  nameWithType: CoinAnnouncement.CoinId
+- uid: chia.dotnet.CoinAnnouncement.Message
+  name: Message
+  href: api/chia.dotnet.CoinAnnouncement.html#chia_dotnet_CoinAnnouncement_Message
+  commentId: P:chia.dotnet.CoinAnnouncement.Message
+  fullName: chia.dotnet.CoinAnnouncement.Message
+  nameWithType: CoinAnnouncement.Message
+- uid: chia.dotnet.CoinAnnouncement.Message*
+  name: Message
+  href: api/chia.dotnet.CoinAnnouncement.html#chia_dotnet_CoinAnnouncement_Message_
+  commentId: Overload:chia.dotnet.CoinAnnouncement.Message
+  isSpec: "True"
+  fullName: chia.dotnet.CoinAnnouncement.Message
+  nameWithType: CoinAnnouncement.Message
+- uid: chia.dotnet.CoinAnnouncement.MorphBytes
+  name: MorphBytes
+  href: api/chia.dotnet.CoinAnnouncement.html#chia_dotnet_CoinAnnouncement_MorphBytes
+  commentId: P:chia.dotnet.CoinAnnouncement.MorphBytes
+  fullName: chia.dotnet.CoinAnnouncement.MorphBytes
+  nameWithType: CoinAnnouncement.MorphBytes
+- uid: chia.dotnet.CoinAnnouncement.MorphBytes*
+  name: MorphBytes
+  href: api/chia.dotnet.CoinAnnouncement.html#chia_dotnet_CoinAnnouncement_MorphBytes_
+  commentId: Overload:chia.dotnet.CoinAnnouncement.MorphBytes
+  isSpec: "True"
+  fullName: chia.dotnet.CoinAnnouncement.MorphBytes
+  nameWithType: CoinAnnouncement.MorphBytes
 - uid: chia.dotnet.CoinRecord
   name: CoinRecord
   href: api/chia.dotnet.CoinRecord.html
@@ -1046,90 +1313,6 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.CoinSpend.Solution
   nameWithType: CoinSpend.Solution
-- uid: chia.dotnet.ColouredCoinWallet
-  name: ColouredCoinWallet
-  href: api/chia.dotnet.ColouredCoinWallet.html
-  commentId: T:chia.dotnet.ColouredCoinWallet
-  fullName: chia.dotnet.ColouredCoinWallet
-  nameWithType: ColouredCoinWallet
-- uid: chia.dotnet.ColouredCoinWallet.#ctor(System.UInt32,chia.dotnet.WalletProxy)
-  name: ColouredCoinWallet(UInt32, WalletProxy)
-  href: api/chia.dotnet.ColouredCoinWallet.html#chia_dotnet_ColouredCoinWallet__ctor_System_UInt32_chia_dotnet_WalletProxy_
-  commentId: M:chia.dotnet.ColouredCoinWallet.#ctor(System.UInt32,chia.dotnet.WalletProxy)
-  fullName: chia.dotnet.ColouredCoinWallet.ColouredCoinWallet(System.UInt32, chia.dotnet.WalletProxy)
-  nameWithType: ColouredCoinWallet.ColouredCoinWallet(UInt32, WalletProxy)
-- uid: chia.dotnet.ColouredCoinWallet.#ctor*
-  name: ColouredCoinWallet
-  href: api/chia.dotnet.ColouredCoinWallet.html#chia_dotnet_ColouredCoinWallet__ctor_
-  commentId: Overload:chia.dotnet.ColouredCoinWallet.#ctor
-  isSpec: "True"
-  fullName: chia.dotnet.ColouredCoinWallet.ColouredCoinWallet
-  nameWithType: ColouredCoinWallet.ColouredCoinWallet
-- uid: chia.dotnet.ColouredCoinWallet.GetColour(System.Threading.CancellationToken)
-  name: GetColour(CancellationToken)
-  href: api/chia.dotnet.ColouredCoinWallet.html#chia_dotnet_ColouredCoinWallet_GetColour_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.ColouredCoinWallet.GetColour(System.Threading.CancellationToken)
-  fullName: chia.dotnet.ColouredCoinWallet.GetColour(System.Threading.CancellationToken)
-  nameWithType: ColouredCoinWallet.GetColour(CancellationToken)
-- uid: chia.dotnet.ColouredCoinWallet.GetColour*
-  name: GetColour
-  href: api/chia.dotnet.ColouredCoinWallet.html#chia_dotnet_ColouredCoinWallet_GetColour_
-  commentId: Overload:chia.dotnet.ColouredCoinWallet.GetColour
-  isSpec: "True"
-  fullName: chia.dotnet.ColouredCoinWallet.GetColour
-  nameWithType: ColouredCoinWallet.GetColour
-- uid: chia.dotnet.ColouredCoinWallet.GetName(System.Threading.CancellationToken)
-  name: GetName(CancellationToken)
-  href: api/chia.dotnet.ColouredCoinWallet.html#chia_dotnet_ColouredCoinWallet_GetName_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.ColouredCoinWallet.GetName(System.Threading.CancellationToken)
-  fullName: chia.dotnet.ColouredCoinWallet.GetName(System.Threading.CancellationToken)
-  nameWithType: ColouredCoinWallet.GetName(CancellationToken)
-- uid: chia.dotnet.ColouredCoinWallet.GetName*
-  name: GetName
-  href: api/chia.dotnet.ColouredCoinWallet.html#chia_dotnet_ColouredCoinWallet_GetName_
-  commentId: Overload:chia.dotnet.ColouredCoinWallet.GetName
-  isSpec: "True"
-  fullName: chia.dotnet.ColouredCoinWallet.GetName
-  nameWithType: ColouredCoinWallet.GetName
-- uid: chia.dotnet.ColouredCoinWallet.SetName(System.String,System.Threading.CancellationToken)
-  name: SetName(String, CancellationToken)
-  href: api/chia.dotnet.ColouredCoinWallet.html#chia_dotnet_ColouredCoinWallet_SetName_System_String_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.ColouredCoinWallet.SetName(System.String,System.Threading.CancellationToken)
-  fullName: chia.dotnet.ColouredCoinWallet.SetName(System.String, System.Threading.CancellationToken)
-  nameWithType: ColouredCoinWallet.SetName(String, CancellationToken)
-- uid: chia.dotnet.ColouredCoinWallet.SetName*
-  name: SetName
-  href: api/chia.dotnet.ColouredCoinWallet.html#chia_dotnet_ColouredCoinWallet_SetName_
-  commentId: Overload:chia.dotnet.ColouredCoinWallet.SetName
-  isSpec: "True"
-  fullName: chia.dotnet.ColouredCoinWallet.SetName
-  nameWithType: ColouredCoinWallet.SetName
-- uid: chia.dotnet.ColouredCoinWallet.Spend(System.String,System.UInt64,System.UInt64,System.Threading.CancellationToken)
-  name: Spend(String, UInt64, UInt64, CancellationToken)
-  href: api/chia.dotnet.ColouredCoinWallet.html#chia_dotnet_ColouredCoinWallet_Spend_System_String_System_UInt64_System_UInt64_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.ColouredCoinWallet.Spend(System.String,System.UInt64,System.UInt64,System.Threading.CancellationToken)
-  fullName: chia.dotnet.ColouredCoinWallet.Spend(System.String, System.UInt64, System.UInt64, System.Threading.CancellationToken)
-  nameWithType: ColouredCoinWallet.Spend(String, UInt64, UInt64, CancellationToken)
-- uid: chia.dotnet.ColouredCoinWallet.Spend*
-  name: Spend
-  href: api/chia.dotnet.ColouredCoinWallet.html#chia_dotnet_ColouredCoinWallet_Spend_
-  commentId: Overload:chia.dotnet.ColouredCoinWallet.Spend
-  isSpec: "True"
-  fullName: chia.dotnet.ColouredCoinWallet.Spend
-  nameWithType: ColouredCoinWallet.Spend
-- uid: chia.dotnet.ColouredCoinWallet.Validate(System.Threading.CancellationToken)
-  name: Validate(CancellationToken)
-  href: api/chia.dotnet.ColouredCoinWallet.html#chia_dotnet_ColouredCoinWallet_Validate_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.ColouredCoinWallet.Validate(System.Threading.CancellationToken)
-  fullName: chia.dotnet.ColouredCoinWallet.Validate(System.Threading.CancellationToken)
-  nameWithType: ColouredCoinWallet.Validate(CancellationToken)
-- uid: chia.dotnet.ColouredCoinWallet.Validate*
-  name: Validate
-  href: api/chia.dotnet.ColouredCoinWallet.html#chia_dotnet_ColouredCoinWallet_Validate_
-  commentId: Overload:chia.dotnet.ColouredCoinWallet.Validate
-  isSpec: "True"
-  fullName: chia.dotnet.ColouredCoinWallet.Validate
-  nameWithType: ColouredCoinWallet.Validate
 - uid: chia.dotnet.Condition
   name: Condition
   href: api/chia.dotnet.Condition.html
@@ -1472,6 +1655,51 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.ConnectionInfo.Type
   nameWithType: ConnectionInfo.Type
+- uid: chia.dotnet.CrawlerProxy
+  name: CrawlerProxy
+  href: api/chia.dotnet.CrawlerProxy.html
+  commentId: T:chia.dotnet.CrawlerProxy
+  fullName: chia.dotnet.CrawlerProxy
+  nameWithType: CrawlerProxy
+- uid: chia.dotnet.CrawlerProxy.#ctor(chia.dotnet.IRpcClient,System.String)
+  name: CrawlerProxy(IRpcClient, String)
+  href: api/chia.dotnet.CrawlerProxy.html#chia_dotnet_CrawlerProxy__ctor_chia_dotnet_IRpcClient_System_String_
+  commentId: M:chia.dotnet.CrawlerProxy.#ctor(chia.dotnet.IRpcClient,System.String)
+  fullName: chia.dotnet.CrawlerProxy.CrawlerProxy(chia.dotnet.IRpcClient, System.String)
+  nameWithType: CrawlerProxy.CrawlerProxy(IRpcClient, String)
+- uid: chia.dotnet.CrawlerProxy.#ctor*
+  name: CrawlerProxy
+  href: api/chia.dotnet.CrawlerProxy.html#chia_dotnet_CrawlerProxy__ctor_
+  commentId: Overload:chia.dotnet.CrawlerProxy.#ctor
+  isSpec: "True"
+  fullName: chia.dotnet.CrawlerProxy.CrawlerProxy
+  nameWithType: CrawlerProxy.CrawlerProxy
+- uid: chia.dotnet.CrawlerProxy.GetIPs(System.DateTime,System.Int32,System.Int32,System.Threading.CancellationToken)
+  name: GetIPs(DateTime, Int32, Int32, CancellationToken)
+  href: api/chia.dotnet.CrawlerProxy.html#chia_dotnet_CrawlerProxy_GetIPs_System_DateTime_System_Int32_System_Int32_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.CrawlerProxy.GetIPs(System.DateTime,System.Int32,System.Int32,System.Threading.CancellationToken)
+  fullName: chia.dotnet.CrawlerProxy.GetIPs(System.DateTime, System.Int32, System.Int32, System.Threading.CancellationToken)
+  nameWithType: CrawlerProxy.GetIPs(DateTime, Int32, Int32, CancellationToken)
+- uid: chia.dotnet.CrawlerProxy.GetIPs*
+  name: GetIPs
+  href: api/chia.dotnet.CrawlerProxy.html#chia_dotnet_CrawlerProxy_GetIPs_
+  commentId: Overload:chia.dotnet.CrawlerProxy.GetIPs
+  isSpec: "True"
+  fullName: chia.dotnet.CrawlerProxy.GetIPs
+  nameWithType: CrawlerProxy.GetIPs
+- uid: chia.dotnet.CrawlerProxy.GetPeerCounts(System.Threading.CancellationToken)
+  name: GetPeerCounts(CancellationToken)
+  href: api/chia.dotnet.CrawlerProxy.html#chia_dotnet_CrawlerProxy_GetPeerCounts_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.CrawlerProxy.GetPeerCounts(System.Threading.CancellationToken)
+  fullName: chia.dotnet.CrawlerProxy.GetPeerCounts(System.Threading.CancellationToken)
+  nameWithType: CrawlerProxy.GetPeerCounts(CancellationToken)
+- uid: chia.dotnet.CrawlerProxy.GetPeerCounts*
+  name: GetPeerCounts
+  href: api/chia.dotnet.CrawlerProxy.html#chia_dotnet_CrawlerProxy_GetPeerCounts_
+  commentId: Overload:chia.dotnet.CrawlerProxy.GetPeerCounts
+  isSpec: "True"
+  fullName: chia.dotnet.CrawlerProxy.GetPeerCounts
+  nameWithType: CrawlerProxy.GetPeerCounts
 - uid: chia.dotnet.DaemonProxy
   name: DaemonProxy
   href: api/chia.dotnet.DaemonProxy.html
@@ -1491,6 +1719,32 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DaemonProxy.DaemonProxy
   nameWithType: DaemonProxy.DaemonProxy
+- uid: chia.dotnet.DaemonProxy.AddPrivateKey(System.String,System.String,System.Threading.CancellationToken)
+  name: AddPrivateKey(String, String, CancellationToken)
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_AddPrivateKey_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DaemonProxy.AddPrivateKey(System.String,System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DaemonProxy.AddPrivateKey(System.String, System.String, System.Threading.CancellationToken)
+  nameWithType: DaemonProxy.AddPrivateKey(String, String, CancellationToken)
+- uid: chia.dotnet.DaemonProxy.AddPrivateKey*
+  name: AddPrivateKey
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_AddPrivateKey_
+  commentId: Overload:chia.dotnet.DaemonProxy.AddPrivateKey
+  isSpec: "True"
+  fullName: chia.dotnet.DaemonProxy.AddPrivateKey
+  nameWithType: DaemonProxy.AddPrivateKey
+- uid: chia.dotnet.DaemonProxy.CheckKeys(System.String,System.Threading.CancellationToken)
+  name: CheckKeys(String, CancellationToken)
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_CheckKeys_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DaemonProxy.CheckKeys(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DaemonProxy.CheckKeys(System.String, System.Threading.CancellationToken)
+  nameWithType: DaemonProxy.CheckKeys(String, CancellationToken)
+- uid: chia.dotnet.DaemonProxy.CheckKeys*
+  name: CheckKeys
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_CheckKeys_
+  commentId: Overload:chia.dotnet.DaemonProxy.CheckKeys
+  isSpec: "True"
+  fullName: chia.dotnet.DaemonProxy.CheckKeys
+  nameWithType: DaemonProxy.CheckKeys
 - uid: chia.dotnet.DaemonProxy.CreateProxyFrom*
   name: CreateProxyFrom
   href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_CreateProxyFrom_
@@ -1507,6 +1761,32 @@ references:
   fullName.vb: chia.dotnet.DaemonProxy.CreateProxyFrom(Of T)()
   nameWithType: DaemonProxy.CreateProxyFrom<T>()
   nameWithType.vb: DaemonProxy.CreateProxyFrom(Of T)()
+- uid: chia.dotnet.DaemonProxy.DeleteAllKeys(System.Threading.CancellationToken)
+  name: DeleteAllKeys(CancellationToken)
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_DeleteAllKeys_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DaemonProxy.DeleteAllKeys(System.Threading.CancellationToken)
+  fullName: chia.dotnet.DaemonProxy.DeleteAllKeys(System.Threading.CancellationToken)
+  nameWithType: DaemonProxy.DeleteAllKeys(CancellationToken)
+- uid: chia.dotnet.DaemonProxy.DeleteAllKeys*
+  name: DeleteAllKeys
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_DeleteAllKeys_
+  commentId: Overload:chia.dotnet.DaemonProxy.DeleteAllKeys
+  isSpec: "True"
+  fullName: chia.dotnet.DaemonProxy.DeleteAllKeys
+  nameWithType: DaemonProxy.DeleteAllKeys
+- uid: chia.dotnet.DaemonProxy.DeleteKeyByFingerprint(System.UInt32,System.Threading.CancellationToken)
+  name: DeleteKeyByFingerprint(UInt32, CancellationToken)
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_DeleteKeyByFingerprint_System_UInt32_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DaemonProxy.DeleteKeyByFingerprint(System.UInt32,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DaemonProxy.DeleteKeyByFingerprint(System.UInt32, System.Threading.CancellationToken)
+  nameWithType: DaemonProxy.DeleteKeyByFingerprint(UInt32, CancellationToken)
+- uid: chia.dotnet.DaemonProxy.DeleteKeyByFingerprint*
+  name: DeleteKeyByFingerprint
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_DeleteKeyByFingerprint_
+  commentId: Overload:chia.dotnet.DaemonProxy.DeleteKeyByFingerprint
+  isSpec: "True"
+  fullName: chia.dotnet.DaemonProxy.DeleteKeyByFingerprint
+  nameWithType: DaemonProxy.DeleteKeyByFingerprint
 - uid: chia.dotnet.DaemonProxy.Exit(System.Threading.CancellationToken)
   name: Exit(CancellationToken)
   href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_Exit_System_Threading_CancellationToken_
@@ -1520,6 +1800,58 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DaemonProxy.Exit
   nameWithType: DaemonProxy.Exit
+- uid: chia.dotnet.DaemonProxy.GetAllPrivateKeys(System.Threading.CancellationToken)
+  name: GetAllPrivateKeys(CancellationToken)
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_GetAllPrivateKeys_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DaemonProxy.GetAllPrivateKeys(System.Threading.CancellationToken)
+  fullName: chia.dotnet.DaemonProxy.GetAllPrivateKeys(System.Threading.CancellationToken)
+  nameWithType: DaemonProxy.GetAllPrivateKeys(CancellationToken)
+- uid: chia.dotnet.DaemonProxy.GetAllPrivateKeys*
+  name: GetAllPrivateKeys
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_GetAllPrivateKeys_
+  commentId: Overload:chia.dotnet.DaemonProxy.GetAllPrivateKeys
+  isSpec: "True"
+  fullName: chia.dotnet.DaemonProxy.GetAllPrivateKeys
+  nameWithType: DaemonProxy.GetAllPrivateKeys
+- uid: chia.dotnet.DaemonProxy.GetFirstPrivateKey(System.Threading.CancellationToken)
+  name: GetFirstPrivateKey(CancellationToken)
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_GetFirstPrivateKey_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DaemonProxy.GetFirstPrivateKey(System.Threading.CancellationToken)
+  fullName: chia.dotnet.DaemonProxy.GetFirstPrivateKey(System.Threading.CancellationToken)
+  nameWithType: DaemonProxy.GetFirstPrivateKey(CancellationToken)
+- uid: chia.dotnet.DaemonProxy.GetFirstPrivateKey*
+  name: GetFirstPrivateKey
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_GetFirstPrivateKey_
+  commentId: Overload:chia.dotnet.DaemonProxy.GetFirstPrivateKey
+  isSpec: "True"
+  fullName: chia.dotnet.DaemonProxy.GetFirstPrivateKey
+  nameWithType: DaemonProxy.GetFirstPrivateKey
+- uid: chia.dotnet.DaemonProxy.GetKeyForFingerprint(System.UInt32,System.Threading.CancellationToken)
+  name: GetKeyForFingerprint(UInt32, CancellationToken)
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_GetKeyForFingerprint_System_UInt32_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DaemonProxy.GetKeyForFingerprint(System.UInt32,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DaemonProxy.GetKeyForFingerprint(System.UInt32, System.Threading.CancellationToken)
+  nameWithType: DaemonProxy.GetKeyForFingerprint(UInt32, CancellationToken)
+- uid: chia.dotnet.DaemonProxy.GetKeyForFingerprint*
+  name: GetKeyForFingerprint
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_GetKeyForFingerprint_
+  commentId: Overload:chia.dotnet.DaemonProxy.GetKeyForFingerprint
+  isSpec: "True"
+  fullName: chia.dotnet.DaemonProxy.GetKeyForFingerprint
+  nameWithType: DaemonProxy.GetKeyForFingerprint
+- uid: chia.dotnet.DaemonProxy.GetKeyringStatus(System.Threading.CancellationToken)
+  name: GetKeyringStatus(CancellationToken)
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_GetKeyringStatus_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DaemonProxy.GetKeyringStatus(System.Threading.CancellationToken)
+  fullName: chia.dotnet.DaemonProxy.GetKeyringStatus(System.Threading.CancellationToken)
+  nameWithType: DaemonProxy.GetKeyringStatus(CancellationToken)
+- uid: chia.dotnet.DaemonProxy.GetKeyringStatus*
+  name: GetKeyringStatus
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_GetKeyringStatus_
+  commentId: Overload:chia.dotnet.DaemonProxy.GetKeyringStatus
+  isSpec: "True"
+  fullName: chia.dotnet.DaemonProxy.GetKeyringStatus
+  nameWithType: DaemonProxy.GetKeyringStatus
 - uid: chia.dotnet.DaemonProxy.GetVersion(System.Threading.CancellationToken)
   name: GetVersion(CancellationToken)
   href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_GetVersion_System_Threading_CancellationToken_
@@ -1533,6 +1865,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DaemonProxy.GetVersion
   nameWithType: DaemonProxy.GetVersion
+- uid: chia.dotnet.DaemonProxy.IsKeyringLocked(System.Threading.CancellationToken)
+  name: IsKeyringLocked(CancellationToken)
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_IsKeyringLocked_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DaemonProxy.IsKeyringLocked(System.Threading.CancellationToken)
+  fullName: chia.dotnet.DaemonProxy.IsKeyringLocked(System.Threading.CancellationToken)
+  nameWithType: DaemonProxy.IsKeyringLocked(CancellationToken)
+- uid: chia.dotnet.DaemonProxy.IsKeyringLocked*
+  name: IsKeyringLocked
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_IsKeyringLocked_
+  commentId: Overload:chia.dotnet.DaemonProxy.IsKeyringLocked
+  isSpec: "True"
+  fullName: chia.dotnet.DaemonProxy.IsKeyringLocked
+  nameWithType: DaemonProxy.IsKeyringLocked
 - uid: chia.dotnet.DaemonProxy.IsServiceRunning(System.String,System.Threading.CancellationToken)
   name: IsServiceRunning(String, CancellationToken)
   href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_IsServiceRunning_System_String_System_Threading_CancellationToken_
@@ -1546,6 +1891,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DaemonProxy.IsServiceRunning
   nameWithType: DaemonProxy.IsServiceRunning
+- uid: chia.dotnet.DaemonProxy.MigrateKeyring(System.String,System.String,System.Boolean,System.Boolean,System.Threading.CancellationToken)
+  name: MigrateKeyring(String, String, Boolean, Boolean, CancellationToken)
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_MigrateKeyring_System_String_System_String_System_Boolean_System_Boolean_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DaemonProxy.MigrateKeyring(System.String,System.String,System.Boolean,System.Boolean,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DaemonProxy.MigrateKeyring(System.String, System.String, System.Boolean, System.Boolean, System.Threading.CancellationToken)
+  nameWithType: DaemonProxy.MigrateKeyring(String, String, Boolean, Boolean, CancellationToken)
+- uid: chia.dotnet.DaemonProxy.MigrateKeyring*
+  name: MigrateKeyring
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_MigrateKeyring_
+  commentId: Overload:chia.dotnet.DaemonProxy.MigrateKeyring
+  isSpec: "True"
+  fullName: chia.dotnet.DaemonProxy.MigrateKeyring
+  nameWithType: DaemonProxy.MigrateKeyring
 - uid: chia.dotnet.DaemonProxy.RegisterService(System.String,System.Threading.CancellationToken)
   name: RegisterService(String, CancellationToken)
   href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_RegisterService_System_String_System_Threading_CancellationToken_
@@ -1565,6 +1923,32 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DaemonProxy.RegisterService
   nameWithType: DaemonProxy.RegisterService
+- uid: chia.dotnet.DaemonProxy.RemoveKeyringPassphrase(System.String,System.Threading.CancellationToken)
+  name: RemoveKeyringPassphrase(String, CancellationToken)
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_RemoveKeyringPassphrase_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DaemonProxy.RemoveKeyringPassphrase(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DaemonProxy.RemoveKeyringPassphrase(System.String, System.Threading.CancellationToken)
+  nameWithType: DaemonProxy.RemoveKeyringPassphrase(String, CancellationToken)
+- uid: chia.dotnet.DaemonProxy.RemoveKeyringPassphrase*
+  name: RemoveKeyringPassphrase
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_RemoveKeyringPassphrase_
+  commentId: Overload:chia.dotnet.DaemonProxy.RemoveKeyringPassphrase
+  isSpec: "True"
+  fullName: chia.dotnet.DaemonProxy.RemoveKeyringPassphrase
+  nameWithType: DaemonProxy.RemoveKeyringPassphrase
+- uid: chia.dotnet.DaemonProxy.SetKeyringPassphrase(System.String,System.String,System.String,System.Boolean,System.Threading.CancellationToken)
+  name: SetKeyringPassphrase(String, String, String, Boolean, CancellationToken)
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_SetKeyringPassphrase_System_String_System_String_System_String_System_Boolean_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DaemonProxy.SetKeyringPassphrase(System.String,System.String,System.String,System.Boolean,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DaemonProxy.SetKeyringPassphrase(System.String, System.String, System.String, System.Boolean, System.Threading.CancellationToken)
+  nameWithType: DaemonProxy.SetKeyringPassphrase(String, String, String, Boolean, CancellationToken)
+- uid: chia.dotnet.DaemonProxy.SetKeyringPassphrase*
+  name: SetKeyringPassphrase
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_SetKeyringPassphrase_
+  commentId: Overload:chia.dotnet.DaemonProxy.SetKeyringPassphrase
+  isSpec: "True"
+  fullName: chia.dotnet.DaemonProxy.SetKeyringPassphrase
+  nameWithType: DaemonProxy.SetKeyringPassphrase
 - uid: chia.dotnet.DaemonProxy.StartService(System.String,System.Threading.CancellationToken)
   name: StartService(String, CancellationToken)
   href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_StartService_System_String_System_Threading_CancellationToken_
@@ -1591,6 +1975,32 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DaemonProxy.StopService
   nameWithType: DaemonProxy.StopService
+- uid: chia.dotnet.DaemonProxy.UnlockKeyring(System.String,System.Threading.CancellationToken)
+  name: UnlockKeyring(String, CancellationToken)
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_UnlockKeyring_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DaemonProxy.UnlockKeyring(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DaemonProxy.UnlockKeyring(System.String, System.Threading.CancellationToken)
+  nameWithType: DaemonProxy.UnlockKeyring(String, CancellationToken)
+- uid: chia.dotnet.DaemonProxy.UnlockKeyring*
+  name: UnlockKeyring
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_UnlockKeyring_
+  commentId: Overload:chia.dotnet.DaemonProxy.UnlockKeyring
+  isSpec: "True"
+  fullName: chia.dotnet.DaemonProxy.UnlockKeyring
+  nameWithType: DaemonProxy.UnlockKeyring
+- uid: chia.dotnet.DaemonProxy.ValidateKeyringPassphrase(System.String,System.Threading.CancellationToken)
+  name: ValidateKeyringPassphrase(String, CancellationToken)
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_ValidateKeyringPassphrase_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DaemonProxy.ValidateKeyringPassphrase(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DaemonProxy.ValidateKeyringPassphrase(System.String, System.Threading.CancellationToken)
+  nameWithType: DaemonProxy.ValidateKeyringPassphrase(String, CancellationToken)
+- uid: chia.dotnet.DaemonProxy.ValidateKeyringPassphrase*
+  name: ValidateKeyringPassphrase
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_ValidateKeyringPassphrase_
+  commentId: Overload:chia.dotnet.DaemonProxy.ValidateKeyringPassphrase
+  isSpec: "True"
+  fullName: chia.dotnet.DaemonProxy.ValidateKeyringPassphrase
+  nameWithType: DaemonProxy.ValidateKeyringPassphrase
 - uid: chia.dotnet.DIDWallet
   name: DIDWallet
   href: api/chia.dotnet.DIDWallet.html
@@ -2060,12 +2470,12 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FarmerProxy.GetPoolState
   nameWithType: FarmerProxy.GetPoolState
-- uid: chia.dotnet.FarmerProxy.GetRewardTargets(System.Boolean,System.Threading.CancellationToken)
-  name: GetRewardTargets(Boolean, CancellationToken)
-  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetRewardTargets_System_Boolean_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.FarmerProxy.GetRewardTargets(System.Boolean,System.Threading.CancellationToken)
-  fullName: chia.dotnet.FarmerProxy.GetRewardTargets(System.Boolean, System.Threading.CancellationToken)
-  nameWithType: FarmerProxy.GetRewardTargets(Boolean, CancellationToken)
+- uid: chia.dotnet.FarmerProxy.GetRewardTargets(System.Threading.CancellationToken)
+  name: GetRewardTargets(CancellationToken)
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetRewardTargets_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FarmerProxy.GetRewardTargets(System.Threading.CancellationToken)
+  fullName: chia.dotnet.FarmerProxy.GetRewardTargets(System.Threading.CancellationToken)
+  nameWithType: FarmerProxy.GetRewardTargets(CancellationToken)
 - uid: chia.dotnet.FarmerProxy.GetRewardTargets*
   name: GetRewardTargets
   href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetRewardTargets_
@@ -2073,6 +2483,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FarmerProxy.GetRewardTargets
   nameWithType: FarmerProxy.GetRewardTargets
+- uid: chia.dotnet.FarmerProxy.GetRewardTargetsincludingPrivateKey(System.Threading.CancellationToken)
+  name: GetRewardTargetsincludingPrivateKey(CancellationToken)
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetRewardTargetsincludingPrivateKey_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FarmerProxy.GetRewardTargetsincludingPrivateKey(System.Threading.CancellationToken)
+  fullName: chia.dotnet.FarmerProxy.GetRewardTargetsincludingPrivateKey(System.Threading.CancellationToken)
+  nameWithType: FarmerProxy.GetRewardTargetsincludingPrivateKey(CancellationToken)
+- uid: chia.dotnet.FarmerProxy.GetRewardTargetsincludingPrivateKey*
+  name: GetRewardTargetsincludingPrivateKey
+  href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetRewardTargetsincludingPrivateKey_
+  commentId: Overload:chia.dotnet.FarmerProxy.GetRewardTargetsincludingPrivateKey
+  isSpec: "True"
+  fullName: chia.dotnet.FarmerProxy.GetRewardTargetsincludingPrivateKey
+  nameWithType: FarmerProxy.GetRewardTargetsincludingPrivateKey
 - uid: chia.dotnet.FarmerProxy.GetSignagePoint(System.String,System.Threading.CancellationToken)
   name: GetSignagePoint(String, CancellationToken)
   href: api/chia.dotnet.FarmerProxy.html#chia_dotnet_FarmerProxy_GetSignagePoint_System_String_System_Threading_CancellationToken_
@@ -2733,6 +3156,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FullNodeProxy.GetBlockchainState
   nameWithType: FullNodeProxy.GetBlockchainState
+- uid: chia.dotnet.FullNodeProxy.GetBlockCountMetrics(System.Threading.CancellationToken)
+  name: GetBlockCountMetrics(CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetBlockCountMetrics_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetBlockCountMetrics(System.Threading.CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetBlockCountMetrics(System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetBlockCountMetrics(CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetBlockCountMetrics*
+  name: GetBlockCountMetrics
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetBlockCountMetrics_
+  commentId: Overload:chia.dotnet.FullNodeProxy.GetBlockCountMetrics
+  isSpec: "True"
+  fullName: chia.dotnet.FullNodeProxy.GetBlockCountMetrics
+  nameWithType: FullNodeProxy.GetBlockCountMetrics
 - uid: chia.dotnet.FullNodeProxy.GetBlockRecord(System.String,System.Threading.CancellationToken)
   name: GetBlockRecord(String, CancellationToken)
   href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetBlockRecord_System_String_System_Threading_CancellationToken_
@@ -3320,42 +3756,165 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.IRpcClient.SendMessage
   nameWithType: IRpcClient.SendMessage
-- uid: chia.dotnet.KValues
-  name: KValues
-  href: api/chia.dotnet.KValues.html
-  commentId: T:chia.dotnet.KValues
-  fullName: chia.dotnet.KValues
-  nameWithType: KValues
-- uid: chia.dotnet.KValues.K25
+- uid: chia.dotnet.KeyringStatus
+  name: KeyringStatus
+  href: api/chia.dotnet.KeyringStatus.html
+  commentId: T:chia.dotnet.KeyringStatus
+  fullName: chia.dotnet.KeyringStatus
+  nameWithType: KeyringStatus
+- uid: chia.dotnet.KeyringStatus.CanRemoveLegacyKeys
+  name: CanRemoveLegacyKeys
+  href: api/chia.dotnet.KeyringStatus.html#chia_dotnet_KeyringStatus_CanRemoveLegacyKeys
+  commentId: P:chia.dotnet.KeyringStatus.CanRemoveLegacyKeys
+  fullName: chia.dotnet.KeyringStatus.CanRemoveLegacyKeys
+  nameWithType: KeyringStatus.CanRemoveLegacyKeys
+- uid: chia.dotnet.KeyringStatus.CanRemoveLegacyKeys*
+  name: CanRemoveLegacyKeys
+  href: api/chia.dotnet.KeyringStatus.html#chia_dotnet_KeyringStatus_CanRemoveLegacyKeys_
+  commentId: Overload:chia.dotnet.KeyringStatus.CanRemoveLegacyKeys
+  isSpec: "True"
+  fullName: chia.dotnet.KeyringStatus.CanRemoveLegacyKeys
+  nameWithType: KeyringStatus.CanRemoveLegacyKeys
+- uid: chia.dotnet.KeyringStatus.CanSavePassphrase
+  name: CanSavePassphrase
+  href: api/chia.dotnet.KeyringStatus.html#chia_dotnet_KeyringStatus_CanSavePassphrase
+  commentId: P:chia.dotnet.KeyringStatus.CanSavePassphrase
+  fullName: chia.dotnet.KeyringStatus.CanSavePassphrase
+  nameWithType: KeyringStatus.CanSavePassphrase
+- uid: chia.dotnet.KeyringStatus.CanSavePassphrase*
+  name: CanSavePassphrase
+  href: api/chia.dotnet.KeyringStatus.html#chia_dotnet_KeyringStatus_CanSavePassphrase_
+  commentId: Overload:chia.dotnet.KeyringStatus.CanSavePassphrase
+  isSpec: "True"
+  fullName: chia.dotnet.KeyringStatus.CanSavePassphrase
+  nameWithType: KeyringStatus.CanSavePassphrase
+- uid: chia.dotnet.KeyringStatus.CanSetPassphraseHint
+  name: CanSetPassphraseHint
+  href: api/chia.dotnet.KeyringStatus.html#chia_dotnet_KeyringStatus_CanSetPassphraseHint
+  commentId: P:chia.dotnet.KeyringStatus.CanSetPassphraseHint
+  fullName: chia.dotnet.KeyringStatus.CanSetPassphraseHint
+  nameWithType: KeyringStatus.CanSetPassphraseHint
+- uid: chia.dotnet.KeyringStatus.CanSetPassphraseHint*
+  name: CanSetPassphraseHint
+  href: api/chia.dotnet.KeyringStatus.html#chia_dotnet_KeyringStatus_CanSetPassphraseHint_
+  commentId: Overload:chia.dotnet.KeyringStatus.CanSetPassphraseHint
+  isSpec: "True"
+  fullName: chia.dotnet.KeyringStatus.CanSetPassphraseHint
+  nameWithType: KeyringStatus.CanSetPassphraseHint
+- uid: chia.dotnet.KeyringStatus.IsKeyringLocked
+  name: IsKeyringLocked
+  href: api/chia.dotnet.KeyringStatus.html#chia_dotnet_KeyringStatus_IsKeyringLocked
+  commentId: P:chia.dotnet.KeyringStatus.IsKeyringLocked
+  fullName: chia.dotnet.KeyringStatus.IsKeyringLocked
+  nameWithType: KeyringStatus.IsKeyringLocked
+- uid: chia.dotnet.KeyringStatus.IsKeyringLocked*
+  name: IsKeyringLocked
+  href: api/chia.dotnet.KeyringStatus.html#chia_dotnet_KeyringStatus_IsKeyringLocked_
+  commentId: Overload:chia.dotnet.KeyringStatus.IsKeyringLocked
+  isSpec: "True"
+  fullName: chia.dotnet.KeyringStatus.IsKeyringLocked
+  nameWithType: KeyringStatus.IsKeyringLocked
+- uid: chia.dotnet.KeyringStatus.NeedsMigration
+  name: NeedsMigration
+  href: api/chia.dotnet.KeyringStatus.html#chia_dotnet_KeyringStatus_NeedsMigration
+  commentId: P:chia.dotnet.KeyringStatus.NeedsMigration
+  fullName: chia.dotnet.KeyringStatus.NeedsMigration
+  nameWithType: KeyringStatus.NeedsMigration
+- uid: chia.dotnet.KeyringStatus.NeedsMigration*
+  name: NeedsMigration
+  href: api/chia.dotnet.KeyringStatus.html#chia_dotnet_KeyringStatus_NeedsMigration_
+  commentId: Overload:chia.dotnet.KeyringStatus.NeedsMigration
+  isSpec: "True"
+  fullName: chia.dotnet.KeyringStatus.NeedsMigration
+  nameWithType: KeyringStatus.NeedsMigration
+- uid: chia.dotnet.KeyringStatus.PassphraseHint
+  name: PassphraseHint
+  href: api/chia.dotnet.KeyringStatus.html#chia_dotnet_KeyringStatus_PassphraseHint
+  commentId: P:chia.dotnet.KeyringStatus.PassphraseHint
+  fullName: chia.dotnet.KeyringStatus.PassphraseHint
+  nameWithType: KeyringStatus.PassphraseHint
+- uid: chia.dotnet.KeyringStatus.PassphraseHint*
+  name: PassphraseHint
+  href: api/chia.dotnet.KeyringStatus.html#chia_dotnet_KeyringStatus_PassphraseHint_
+  commentId: Overload:chia.dotnet.KeyringStatus.PassphraseHint
+  isSpec: "True"
+  fullName: chia.dotnet.KeyringStatus.PassphraseHint
+  nameWithType: KeyringStatus.PassphraseHint
+- uid: chia.dotnet.KeyringStatus.PassphraseRequirements
+  name: PassphraseRequirements
+  href: api/chia.dotnet.KeyringStatus.html#chia_dotnet_KeyringStatus_PassphraseRequirements
+  commentId: P:chia.dotnet.KeyringStatus.PassphraseRequirements
+  fullName: chia.dotnet.KeyringStatus.PassphraseRequirements
+  nameWithType: KeyringStatus.PassphraseRequirements
+- uid: chia.dotnet.KeyringStatus.PassphraseRequirements*
+  name: PassphraseRequirements
+  href: api/chia.dotnet.KeyringStatus.html#chia_dotnet_KeyringStatus_PassphraseRequirements_
+  commentId: Overload:chia.dotnet.KeyringStatus.PassphraseRequirements
+  isSpec: "True"
+  fullName: chia.dotnet.KeyringStatus.PassphraseRequirements
+  nameWithType: KeyringStatus.PassphraseRequirements
+- uid: chia.dotnet.KeyringStatus.PassphreaseSupportEnabled
+  name: PassphreaseSupportEnabled
+  href: api/chia.dotnet.KeyringStatus.html#chia_dotnet_KeyringStatus_PassphreaseSupportEnabled
+  commentId: P:chia.dotnet.KeyringStatus.PassphreaseSupportEnabled
+  fullName: chia.dotnet.KeyringStatus.PassphreaseSupportEnabled
+  nameWithType: KeyringStatus.PassphreaseSupportEnabled
+- uid: chia.dotnet.KeyringStatus.PassphreaseSupportEnabled*
+  name: PassphreaseSupportEnabled
+  href: api/chia.dotnet.KeyringStatus.html#chia_dotnet_KeyringStatus_PassphreaseSupportEnabled_
+  commentId: Overload:chia.dotnet.KeyringStatus.PassphreaseSupportEnabled
+  isSpec: "True"
+  fullName: chia.dotnet.KeyringStatus.PassphreaseSupportEnabled
+  nameWithType: KeyringStatus.PassphreaseSupportEnabled
+- uid: chia.dotnet.KeyringStatus.UserPassphraseIsSet
+  name: UserPassphraseIsSet
+  href: api/chia.dotnet.KeyringStatus.html#chia_dotnet_KeyringStatus_UserPassphraseIsSet
+  commentId: P:chia.dotnet.KeyringStatus.UserPassphraseIsSet
+  fullName: chia.dotnet.KeyringStatus.UserPassphraseIsSet
+  nameWithType: KeyringStatus.UserPassphraseIsSet
+- uid: chia.dotnet.KeyringStatus.UserPassphraseIsSet*
+  name: UserPassphraseIsSet
+  href: api/chia.dotnet.KeyringStatus.html#chia_dotnet_KeyringStatus_UserPassphraseIsSet_
+  commentId: Overload:chia.dotnet.KeyringStatus.UserPassphraseIsSet
+  isSpec: "True"
+  fullName: chia.dotnet.KeyringStatus.UserPassphraseIsSet
+  nameWithType: KeyringStatus.UserPassphraseIsSet
+- uid: chia.dotnet.KSize
+  name: KSize
+  href: api/chia.dotnet.KSize.html
+  commentId: T:chia.dotnet.KSize
+  fullName: chia.dotnet.KSize
+  nameWithType: KSize
+- uid: chia.dotnet.KSize.K25
   name: K25
-  href: api/chia.dotnet.KValues.html#chia_dotnet_KValues_K25
-  commentId: F:chia.dotnet.KValues.K25
-  fullName: chia.dotnet.KValues.K25
-  nameWithType: KValues.K25
-- uid: chia.dotnet.KValues.K32
+  href: api/chia.dotnet.KSize.html#chia_dotnet_KSize_K25
+  commentId: F:chia.dotnet.KSize.K25
+  fullName: chia.dotnet.KSize.K25
+  nameWithType: KSize.K25
+- uid: chia.dotnet.KSize.K32
   name: K32
-  href: api/chia.dotnet.KValues.html#chia_dotnet_KValues_K32
-  commentId: F:chia.dotnet.KValues.K32
-  fullName: chia.dotnet.KValues.K32
-  nameWithType: KValues.K32
-- uid: chia.dotnet.KValues.K33
+  href: api/chia.dotnet.KSize.html#chia_dotnet_KSize_K32
+  commentId: F:chia.dotnet.KSize.K32
+  fullName: chia.dotnet.KSize.K32
+  nameWithType: KSize.K32
+- uid: chia.dotnet.KSize.K33
   name: K33
-  href: api/chia.dotnet.KValues.html#chia_dotnet_KValues_K33
-  commentId: F:chia.dotnet.KValues.K33
-  fullName: chia.dotnet.KValues.K33
-  nameWithType: KValues.K33
-- uid: chia.dotnet.KValues.K34
+  href: api/chia.dotnet.KSize.html#chia_dotnet_KSize_K33
+  commentId: F:chia.dotnet.KSize.K33
+  fullName: chia.dotnet.KSize.K33
+  nameWithType: KSize.K33
+- uid: chia.dotnet.KSize.K34
   name: K34
-  href: api/chia.dotnet.KValues.html#chia_dotnet_KValues_K34
-  commentId: F:chia.dotnet.KValues.K34
-  fullName: chia.dotnet.KValues.K34
-  nameWithType: KValues.K34
-- uid: chia.dotnet.KValues.K35
+  href: api/chia.dotnet.KSize.html#chia_dotnet_KSize_K34
+  commentId: F:chia.dotnet.KSize.K34
+  fullName: chia.dotnet.KSize.K34
+  nameWithType: KSize.K34
+- uid: chia.dotnet.KSize.K35
   name: K35
-  href: api/chia.dotnet.KValues.html#chia_dotnet_KValues_K35
-  commentId: F:chia.dotnet.KValues.K35
-  fullName: chia.dotnet.KValues.K35
-  nameWithType: KValues.K35
+  href: api/chia.dotnet.KSize.html#chia_dotnet_KSize_K35
+  commentId: F:chia.dotnet.KSize.K35
+  fullName: chia.dotnet.KSize.K35
+  nameWithType: KSize.K35
 - uid: chia.dotnet.MempoolInclusionStatus
   name: MempoolInclusionStatus
   href: api/chia.dotnet.MempoolInclusionStatus.html
@@ -3732,6 +4291,173 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.NPCResult.NpcList
   nameWithType: NPCResult.NpcList
+- uid: chia.dotnet.OfferRecord
+  name: OfferRecord
+  href: api/chia.dotnet.OfferRecord.html
+  commentId: T:chia.dotnet.OfferRecord
+  fullName: chia.dotnet.OfferRecord
+  nameWithType: OfferRecord
+- uid: chia.dotnet.OfferRecord.Offer
+  name: Offer
+  href: api/chia.dotnet.OfferRecord.html#chia_dotnet_OfferRecord_Offer
+  commentId: P:chia.dotnet.OfferRecord.Offer
+  fullName: chia.dotnet.OfferRecord.Offer
+  nameWithType: OfferRecord.Offer
+- uid: chia.dotnet.OfferRecord.Offer*
+  name: Offer
+  href: api/chia.dotnet.OfferRecord.html#chia_dotnet_OfferRecord_Offer_
+  commentId: Overload:chia.dotnet.OfferRecord.Offer
+  isSpec: "True"
+  fullName: chia.dotnet.OfferRecord.Offer
+  nameWithType: OfferRecord.Offer
+- uid: chia.dotnet.OfferRecord.TradeRecord
+  name: TradeRecord
+  href: api/chia.dotnet.OfferRecord.html#chia_dotnet_OfferRecord_TradeRecord
+  commentId: P:chia.dotnet.OfferRecord.TradeRecord
+  fullName: chia.dotnet.OfferRecord.TradeRecord
+  nameWithType: OfferRecord.TradeRecord
+- uid: chia.dotnet.OfferRecord.TradeRecord*
+  name: TradeRecord
+  href: api/chia.dotnet.OfferRecord.html#chia_dotnet_OfferRecord_TradeRecord_
+  commentId: Overload:chia.dotnet.OfferRecord.TradeRecord
+  isSpec: "True"
+  fullName: chia.dotnet.OfferRecord.TradeRecord
+  nameWithType: OfferRecord.TradeRecord
+- uid: chia.dotnet.OfferSummary
+  name: OfferSummary
+  href: api/chia.dotnet.OfferSummary.html
+  commentId: T:chia.dotnet.OfferSummary
+  fullName: chia.dotnet.OfferSummary
+  nameWithType: OfferSummary
+- uid: chia.dotnet.OfferSummary.Offered
+  name: Offered
+  href: api/chia.dotnet.OfferSummary.html#chia_dotnet_OfferSummary_Offered
+  commentId: P:chia.dotnet.OfferSummary.Offered
+  fullName: chia.dotnet.OfferSummary.Offered
+  nameWithType: OfferSummary.Offered
+- uid: chia.dotnet.OfferSummary.Offered*
+  name: Offered
+  href: api/chia.dotnet.OfferSummary.html#chia_dotnet_OfferSummary_Offered_
+  commentId: Overload:chia.dotnet.OfferSummary.Offered
+  isSpec: "True"
+  fullName: chia.dotnet.OfferSummary.Offered
+  nameWithType: OfferSummary.Offered
+- uid: chia.dotnet.OfferSummary.Requested
+  name: Requested
+  href: api/chia.dotnet.OfferSummary.html#chia_dotnet_OfferSummary_Requested
+  commentId: P:chia.dotnet.OfferSummary.Requested
+  fullName: chia.dotnet.OfferSummary.Requested
+  nameWithType: OfferSummary.Requested
+- uid: chia.dotnet.OfferSummary.Requested*
+  name: Requested
+  href: api/chia.dotnet.OfferSummary.html#chia_dotnet_OfferSummary_Requested_
+  commentId: Overload:chia.dotnet.OfferSummary.Requested
+  isSpec: "True"
+  fullName: chia.dotnet.OfferSummary.Requested
+  nameWithType: OfferSummary.Requested
+- uid: chia.dotnet.PassphraseRequirements
+  name: PassphraseRequirements
+  href: api/chia.dotnet.PassphraseRequirements.html
+  commentId: T:chia.dotnet.PassphraseRequirements
+  fullName: chia.dotnet.PassphraseRequirements
+  nameWithType: PassphraseRequirements
+- uid: chia.dotnet.PassphraseRequirements.IsOptional
+  name: IsOptional
+  href: api/chia.dotnet.PassphraseRequirements.html#chia_dotnet_PassphraseRequirements_IsOptional
+  commentId: P:chia.dotnet.PassphraseRequirements.IsOptional
+  fullName: chia.dotnet.PassphraseRequirements.IsOptional
+  nameWithType: PassphraseRequirements.IsOptional
+- uid: chia.dotnet.PassphraseRequirements.IsOptional*
+  name: IsOptional
+  href: api/chia.dotnet.PassphraseRequirements.html#chia_dotnet_PassphraseRequirements_IsOptional_
+  commentId: Overload:chia.dotnet.PassphraseRequirements.IsOptional
+  isSpec: "True"
+  fullName: chia.dotnet.PassphraseRequirements.IsOptional
+  nameWithType: PassphraseRequirements.IsOptional
+- uid: chia.dotnet.PassphraseRequirements.MinLength
+  name: MinLength
+  href: api/chia.dotnet.PassphraseRequirements.html#chia_dotnet_PassphraseRequirements_MinLength
+  commentId: P:chia.dotnet.PassphraseRequirements.MinLength
+  fullName: chia.dotnet.PassphraseRequirements.MinLength
+  nameWithType: PassphraseRequirements.MinLength
+- uid: chia.dotnet.PassphraseRequirements.MinLength*
+  name: MinLength
+  href: api/chia.dotnet.PassphraseRequirements.html#chia_dotnet_PassphraseRequirements_MinLength_
+  commentId: Overload:chia.dotnet.PassphraseRequirements.MinLength
+  isSpec: "True"
+  fullName: chia.dotnet.PassphraseRequirements.MinLength
+  nameWithType: PassphraseRequirements.MinLength
+- uid: chia.dotnet.PeerCounts
+  name: PeerCounts
+  href: api/chia.dotnet.PeerCounts.html
+  commentId: T:chia.dotnet.PeerCounts
+  fullName: chia.dotnet.PeerCounts
+  nameWithType: PeerCounts
+- uid: chia.dotnet.PeerCounts.Ipv4Last5Days
+  name: Ipv4Last5Days
+  href: api/chia.dotnet.PeerCounts.html#chia_dotnet_PeerCounts_Ipv4Last5Days
+  commentId: P:chia.dotnet.PeerCounts.Ipv4Last5Days
+  fullName: chia.dotnet.PeerCounts.Ipv4Last5Days
+  nameWithType: PeerCounts.Ipv4Last5Days
+- uid: chia.dotnet.PeerCounts.Ipv4Last5Days*
+  name: Ipv4Last5Days
+  href: api/chia.dotnet.PeerCounts.html#chia_dotnet_PeerCounts_Ipv4Last5Days_
+  commentId: Overload:chia.dotnet.PeerCounts.Ipv4Last5Days
+  isSpec: "True"
+  fullName: chia.dotnet.PeerCounts.Ipv4Last5Days
+  nameWithType: PeerCounts.Ipv4Last5Days
+- uid: chia.dotnet.PeerCounts.Ipv6Last5Days
+  name: Ipv6Last5Days
+  href: api/chia.dotnet.PeerCounts.html#chia_dotnet_PeerCounts_Ipv6Last5Days
+  commentId: P:chia.dotnet.PeerCounts.Ipv6Last5Days
+  fullName: chia.dotnet.PeerCounts.Ipv6Last5Days
+  nameWithType: PeerCounts.Ipv6Last5Days
+- uid: chia.dotnet.PeerCounts.Ipv6Last5Days*
+  name: Ipv6Last5Days
+  href: api/chia.dotnet.PeerCounts.html#chia_dotnet_PeerCounts_Ipv6Last5Days_
+  commentId: Overload:chia.dotnet.PeerCounts.Ipv6Last5Days
+  isSpec: "True"
+  fullName: chia.dotnet.PeerCounts.Ipv6Last5Days
+  nameWithType: PeerCounts.Ipv6Last5Days
+- uid: chia.dotnet.PeerCounts.ReliableNodes
+  name: ReliableNodes
+  href: api/chia.dotnet.PeerCounts.html#chia_dotnet_PeerCounts_ReliableNodes
+  commentId: P:chia.dotnet.PeerCounts.ReliableNodes
+  fullName: chia.dotnet.PeerCounts.ReliableNodes
+  nameWithType: PeerCounts.ReliableNodes
+- uid: chia.dotnet.PeerCounts.ReliableNodes*
+  name: ReliableNodes
+  href: api/chia.dotnet.PeerCounts.html#chia_dotnet_PeerCounts_ReliableNodes_
+  commentId: Overload:chia.dotnet.PeerCounts.ReliableNodes
+  isSpec: "True"
+  fullName: chia.dotnet.PeerCounts.ReliableNodes
+  nameWithType: PeerCounts.ReliableNodes
+- uid: chia.dotnet.PeerCounts.TotalLast5Days
+  name: TotalLast5Days
+  href: api/chia.dotnet.PeerCounts.html#chia_dotnet_PeerCounts_TotalLast5Days
+  commentId: P:chia.dotnet.PeerCounts.TotalLast5Days
+  fullName: chia.dotnet.PeerCounts.TotalLast5Days
+  nameWithType: PeerCounts.TotalLast5Days
+- uid: chia.dotnet.PeerCounts.TotalLast5Days*
+  name: TotalLast5Days
+  href: api/chia.dotnet.PeerCounts.html#chia_dotnet_PeerCounts_TotalLast5Days_
+  commentId: Overload:chia.dotnet.PeerCounts.TotalLast5Days
+  isSpec: "True"
+  fullName: chia.dotnet.PeerCounts.TotalLast5Days
+  nameWithType: PeerCounts.TotalLast5Days
+- uid: chia.dotnet.PeerCounts.Versions
+  name: Versions
+  href: api/chia.dotnet.PeerCounts.html#chia_dotnet_PeerCounts_Versions
+  commentId: P:chia.dotnet.PeerCounts.Versions
+  fullName: chia.dotnet.PeerCounts.Versions
+  nameWithType: PeerCounts.Versions
+- uid: chia.dotnet.PeerCounts.Versions*
+  name: Versions
+  href: api/chia.dotnet.PeerCounts.html#chia_dotnet_PeerCounts_Versions_
+  commentId: Overload:chia.dotnet.PeerCounts.Versions
+  isSpec: "True"
+  fullName: chia.dotnet.PeerCounts.Versions
+  nameWithType: PeerCounts.Versions
 - uid: chia.dotnet.PlotInfo
   name: PlotInfo
   href: api/chia.dotnet.PlotInfo.html
@@ -5060,6 +5786,122 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.PoolWalletInfo.TipSingletonCoinId
   nameWithType: PoolWalletInfo.TipSingletonCoinId
+- uid: chia.dotnet.PrivateKey
+  name: PrivateKey
+  href: api/chia.dotnet.PrivateKey.html
+  commentId: T:chia.dotnet.PrivateKey
+  fullName: chia.dotnet.PrivateKey
+  nameWithType: PrivateKey
+- uid: chia.dotnet.PrivateKey.Entropy
+  name: Entropy
+  href: api/chia.dotnet.PrivateKey.html#chia_dotnet_PrivateKey_Entropy
+  commentId: P:chia.dotnet.PrivateKey.Entropy
+  fullName: chia.dotnet.PrivateKey.Entropy
+  nameWithType: PrivateKey.Entropy
+- uid: chia.dotnet.PrivateKey.Entropy*
+  name: Entropy
+  href: api/chia.dotnet.PrivateKey.html#chia_dotnet_PrivateKey_Entropy_
+  commentId: Overload:chia.dotnet.PrivateKey.Entropy
+  isSpec: "True"
+  fullName: chia.dotnet.PrivateKey.Entropy
+  nameWithType: PrivateKey.Entropy
+- uid: chia.dotnet.PrivateKey.PK
+  name: PK
+  href: api/chia.dotnet.PrivateKey.html#chia_dotnet_PrivateKey_PK
+  commentId: P:chia.dotnet.PrivateKey.PK
+  fullName: chia.dotnet.PrivateKey.PK
+  nameWithType: PrivateKey.PK
+- uid: chia.dotnet.PrivateKey.PK*
+  name: PK
+  href: api/chia.dotnet.PrivateKey.html#chia_dotnet_PrivateKey_PK_
+  commentId: Overload:chia.dotnet.PrivateKey.PK
+  isSpec: "True"
+  fullName: chia.dotnet.PrivateKey.PK
+  nameWithType: PrivateKey.PK
+- uid: chia.dotnet.PrivateKeyDetail
+  name: PrivateKeyDetail
+  href: api/chia.dotnet.PrivateKeyDetail.html
+  commentId: T:chia.dotnet.PrivateKeyDetail
+  fullName: chia.dotnet.PrivateKeyDetail
+  nameWithType: PrivateKeyDetail
+- uid: chia.dotnet.PrivateKeyDetail.FarmerPk
+  name: FarmerPk
+  href: api/chia.dotnet.PrivateKeyDetail.html#chia_dotnet_PrivateKeyDetail_FarmerPk
+  commentId: P:chia.dotnet.PrivateKeyDetail.FarmerPk
+  fullName: chia.dotnet.PrivateKeyDetail.FarmerPk
+  nameWithType: PrivateKeyDetail.FarmerPk
+- uid: chia.dotnet.PrivateKeyDetail.FarmerPk*
+  name: FarmerPk
+  href: api/chia.dotnet.PrivateKeyDetail.html#chia_dotnet_PrivateKeyDetail_FarmerPk_
+  commentId: Overload:chia.dotnet.PrivateKeyDetail.FarmerPk
+  isSpec: "True"
+  fullName: chia.dotnet.PrivateKeyDetail.FarmerPk
+  nameWithType: PrivateKeyDetail.FarmerPk
+- uid: chia.dotnet.PrivateKeyDetail.Fingerprint
+  name: Fingerprint
+  href: api/chia.dotnet.PrivateKeyDetail.html#chia_dotnet_PrivateKeyDetail_Fingerprint
+  commentId: P:chia.dotnet.PrivateKeyDetail.Fingerprint
+  fullName: chia.dotnet.PrivateKeyDetail.Fingerprint
+  nameWithType: PrivateKeyDetail.Fingerprint
+- uid: chia.dotnet.PrivateKeyDetail.Fingerprint*
+  name: Fingerprint
+  href: api/chia.dotnet.PrivateKeyDetail.html#chia_dotnet_PrivateKeyDetail_Fingerprint_
+  commentId: Overload:chia.dotnet.PrivateKeyDetail.Fingerprint
+  isSpec: "True"
+  fullName: chia.dotnet.PrivateKeyDetail.Fingerprint
+  nameWithType: PrivateKeyDetail.Fingerprint
+- uid: chia.dotnet.PrivateKeyDetail.Pk
+  name: Pk
+  href: api/chia.dotnet.PrivateKeyDetail.html#chia_dotnet_PrivateKeyDetail_Pk
+  commentId: P:chia.dotnet.PrivateKeyDetail.Pk
+  fullName: chia.dotnet.PrivateKeyDetail.Pk
+  nameWithType: PrivateKeyDetail.Pk
+- uid: chia.dotnet.PrivateKeyDetail.Pk*
+  name: Pk
+  href: api/chia.dotnet.PrivateKeyDetail.html#chia_dotnet_PrivateKeyDetail_Pk_
+  commentId: Overload:chia.dotnet.PrivateKeyDetail.Pk
+  isSpec: "True"
+  fullName: chia.dotnet.PrivateKeyDetail.Pk
+  nameWithType: PrivateKeyDetail.Pk
+- uid: chia.dotnet.PrivateKeyDetail.PoolPk
+  name: PoolPk
+  href: api/chia.dotnet.PrivateKeyDetail.html#chia_dotnet_PrivateKeyDetail_PoolPk
+  commentId: P:chia.dotnet.PrivateKeyDetail.PoolPk
+  fullName: chia.dotnet.PrivateKeyDetail.PoolPk
+  nameWithType: PrivateKeyDetail.PoolPk
+- uid: chia.dotnet.PrivateKeyDetail.PoolPk*
+  name: PoolPk
+  href: api/chia.dotnet.PrivateKeyDetail.html#chia_dotnet_PrivateKeyDetail_PoolPk_
+  commentId: Overload:chia.dotnet.PrivateKeyDetail.PoolPk
+  isSpec: "True"
+  fullName: chia.dotnet.PrivateKeyDetail.PoolPk
+  nameWithType: PrivateKeyDetail.PoolPk
+- uid: chia.dotnet.PrivateKeyDetail.Seed
+  name: Seed
+  href: api/chia.dotnet.PrivateKeyDetail.html#chia_dotnet_PrivateKeyDetail_Seed
+  commentId: P:chia.dotnet.PrivateKeyDetail.Seed
+  fullName: chia.dotnet.PrivateKeyDetail.Seed
+  nameWithType: PrivateKeyDetail.Seed
+- uid: chia.dotnet.PrivateKeyDetail.Seed*
+  name: Seed
+  href: api/chia.dotnet.PrivateKeyDetail.html#chia_dotnet_PrivateKeyDetail_Seed_
+  commentId: Overload:chia.dotnet.PrivateKeyDetail.Seed
+  isSpec: "True"
+  fullName: chia.dotnet.PrivateKeyDetail.Seed
+  nameWithType: PrivateKeyDetail.Seed
+- uid: chia.dotnet.PrivateKeyDetail.Sk
+  name: Sk
+  href: api/chia.dotnet.PrivateKeyDetail.html#chia_dotnet_PrivateKeyDetail_Sk
+  commentId: P:chia.dotnet.PrivateKeyDetail.Sk
+  fullName: chia.dotnet.PrivateKeyDetail.Sk
+  nameWithType: PrivateKeyDetail.Sk
+- uid: chia.dotnet.PrivateKeyDetail.Sk*
+  name: Sk
+  href: api/chia.dotnet.PrivateKeyDetail.html#chia_dotnet_PrivateKeyDetail_Sk_
+  commentId: Overload:chia.dotnet.PrivateKeyDetail.Sk
+  isSpec: "True"
+  fullName: chia.dotnet.PrivateKeyDetail.Sk
+  nameWithType: PrivateKeyDetail.Sk
 - uid: chia.dotnet.ProofOfSpace
   name: ProofOfSpace
   href: api/chia.dotnet.ProofOfSpace.html
@@ -5144,6 +5986,51 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.ProofOfSpace.Size
   nameWithType: ProofOfSpace.Size
+- uid: chia.dotnet.PuzzleAnnouncement
+  name: PuzzleAnnouncement
+  href: api/chia.dotnet.PuzzleAnnouncement.html
+  commentId: T:chia.dotnet.PuzzleAnnouncement
+  fullName: chia.dotnet.PuzzleAnnouncement
+  nameWithType: PuzzleAnnouncement
+- uid: chia.dotnet.PuzzleAnnouncement.Message
+  name: Message
+  href: api/chia.dotnet.PuzzleAnnouncement.html#chia_dotnet_PuzzleAnnouncement_Message
+  commentId: P:chia.dotnet.PuzzleAnnouncement.Message
+  fullName: chia.dotnet.PuzzleAnnouncement.Message
+  nameWithType: PuzzleAnnouncement.Message
+- uid: chia.dotnet.PuzzleAnnouncement.Message*
+  name: Message
+  href: api/chia.dotnet.PuzzleAnnouncement.html#chia_dotnet_PuzzleAnnouncement_Message_
+  commentId: Overload:chia.dotnet.PuzzleAnnouncement.Message
+  isSpec: "True"
+  fullName: chia.dotnet.PuzzleAnnouncement.Message
+  nameWithType: PuzzleAnnouncement.Message
+- uid: chia.dotnet.PuzzleAnnouncement.MorphBytes
+  name: MorphBytes
+  href: api/chia.dotnet.PuzzleAnnouncement.html#chia_dotnet_PuzzleAnnouncement_MorphBytes
+  commentId: P:chia.dotnet.PuzzleAnnouncement.MorphBytes
+  fullName: chia.dotnet.PuzzleAnnouncement.MorphBytes
+  nameWithType: PuzzleAnnouncement.MorphBytes
+- uid: chia.dotnet.PuzzleAnnouncement.MorphBytes*
+  name: MorphBytes
+  href: api/chia.dotnet.PuzzleAnnouncement.html#chia_dotnet_PuzzleAnnouncement_MorphBytes_
+  commentId: Overload:chia.dotnet.PuzzleAnnouncement.MorphBytes
+  isSpec: "True"
+  fullName: chia.dotnet.PuzzleAnnouncement.MorphBytes
+  nameWithType: PuzzleAnnouncement.MorphBytes
+- uid: chia.dotnet.PuzzleAnnouncement.PuzzleHash
+  name: PuzzleHash
+  href: api/chia.dotnet.PuzzleAnnouncement.html#chia_dotnet_PuzzleAnnouncement_PuzzleHash
+  commentId: P:chia.dotnet.PuzzleAnnouncement.PuzzleHash
+  fullName: chia.dotnet.PuzzleAnnouncement.PuzzleHash
+  nameWithType: PuzzleAnnouncement.PuzzleHash
+- uid: chia.dotnet.PuzzleAnnouncement.PuzzleHash*
+  name: PuzzleHash
+  href: api/chia.dotnet.PuzzleAnnouncement.html#chia_dotnet_PuzzleAnnouncement_PuzzleHash_
+  commentId: Overload:chia.dotnet.PuzzleAnnouncement.PuzzleHash
+  isSpec: "True"
+  fullName: chia.dotnet.PuzzleAnnouncement.PuzzleHash
+  nameWithType: PuzzleAnnouncement.PuzzleHash
 - uid: chia.dotnet.QueuedPlotInfo
   name: QueuedPlotInfo
   href: api/chia.dotnet.QueuedPlotInfo.html
@@ -5815,6 +6702,12 @@ references:
   commentId: T:chia.dotnet.ServiceNames
   fullName: chia.dotnet.ServiceNames
   nameWithType: ServiceNames
+- uid: chia.dotnet.ServiceNames.Crawler
+  name: Crawler
+  href: api/chia.dotnet.ServiceNames.html#chia_dotnet_ServiceNames_Crawler
+  commentId: F:chia.dotnet.ServiceNames.Crawler
+  fullName: chia.dotnet.ServiceNames.Crawler
+  nameWithType: ServiceNames.Crawler
 - uid: chia.dotnet.ServiceNames.Daemon
   name: Daemon
   href: api/chia.dotnet.ServiceNames.html#chia_dotnet_ServiceNames_Daemon
@@ -6257,6 +7150,183 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.SyncState.SyncTipHeight
   nameWithType: SyncState.SyncTipHeight
+- uid: chia.dotnet.TradeManager
+  name: TradeManager
+  href: api/chia.dotnet.TradeManager.html
+  commentId: T:chia.dotnet.TradeManager
+  fullName: chia.dotnet.TradeManager
+  nameWithType: TradeManager
+- uid: chia.dotnet.TradeManager.#ctor(chia.dotnet.WalletProxy)
+  name: TradeManager(WalletProxy)
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager__ctor_chia_dotnet_WalletProxy_
+  commentId: M:chia.dotnet.TradeManager.#ctor(chia.dotnet.WalletProxy)
+  fullName: chia.dotnet.TradeManager.TradeManager(chia.dotnet.WalletProxy)
+  nameWithType: TradeManager.TradeManager(WalletProxy)
+- uid: chia.dotnet.TradeManager.#ctor*
+  name: TradeManager
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager__ctor_
+  commentId: Overload:chia.dotnet.TradeManager.#ctor
+  isSpec: "True"
+  fullName: chia.dotnet.TradeManager.TradeManager
+  nameWithType: TradeManager.TradeManager
+- uid: chia.dotnet.TradeManager.AssetIdToName(System.String,System.Threading.CancellationToken)
+  name: AssetIdToName(String, CancellationToken)
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_AssetIdToName_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.TradeManager.AssetIdToName(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.TradeManager.AssetIdToName(System.String, System.Threading.CancellationToken)
+  nameWithType: TradeManager.AssetIdToName(String, CancellationToken)
+- uid: chia.dotnet.TradeManager.AssetIdToName*
+  name: AssetIdToName
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_AssetIdToName_
+  commentId: Overload:chia.dotnet.TradeManager.AssetIdToName
+  isSpec: "True"
+  fullName: chia.dotnet.TradeManager.AssetIdToName
+  nameWithType: TradeManager.AssetIdToName
+- uid: chia.dotnet.TradeManager.CancelOffer(System.String,System.Boolean,System.UInt64,System.Threading.CancellationToken)
+  name: CancelOffer(String, Boolean, UInt64, CancellationToken)
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_CancelOffer_System_String_System_Boolean_System_UInt64_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.TradeManager.CancelOffer(System.String,System.Boolean,System.UInt64,System.Threading.CancellationToken)
+  fullName: chia.dotnet.TradeManager.CancelOffer(System.String, System.Boolean, System.UInt64, System.Threading.CancellationToken)
+  nameWithType: TradeManager.CancelOffer(String, Boolean, UInt64, CancellationToken)
+- uid: chia.dotnet.TradeManager.CancelOffer*
+  name: CancelOffer
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_CancelOffer_
+  commentId: Overload:chia.dotnet.TradeManager.CancelOffer
+  isSpec: "True"
+  fullName: chia.dotnet.TradeManager.CancelOffer
+  nameWithType: TradeManager.CancelOffer
+- uid: chia.dotnet.TradeManager.CheckOfferValidity(System.String,System.Threading.CancellationToken)
+  name: CheckOfferValidity(String, CancellationToken)
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_CheckOfferValidity_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.TradeManager.CheckOfferValidity(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.TradeManager.CheckOfferValidity(System.String, System.Threading.CancellationToken)
+  nameWithType: TradeManager.CheckOfferValidity(String, CancellationToken)
+- uid: chia.dotnet.TradeManager.CheckOfferValidity*
+  name: CheckOfferValidity
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_CheckOfferValidity_
+  commentId: Overload:chia.dotnet.TradeManager.CheckOfferValidity
+  isSpec: "True"
+  fullName: chia.dotnet.TradeManager.CheckOfferValidity
+  nameWithType: TradeManager.CheckOfferValidity
+- uid: chia.dotnet.TradeManager.CreateOffer(chia.dotnet.OfferSummary,System.UInt64,System.Boolean,System.Threading.CancellationToken)
+  name: CreateOffer(OfferSummary, UInt64, Boolean, CancellationToken)
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_CreateOffer_chia_dotnet_OfferSummary_System_UInt64_System_Boolean_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.TradeManager.CreateOffer(chia.dotnet.OfferSummary,System.UInt64,System.Boolean,System.Threading.CancellationToken)
+  fullName: chia.dotnet.TradeManager.CreateOffer(chia.dotnet.OfferSummary, System.UInt64, System.Boolean, System.Threading.CancellationToken)
+  nameWithType: TradeManager.CreateOffer(OfferSummary, UInt64, Boolean, CancellationToken)
+- uid: chia.dotnet.TradeManager.CreateOffer(System.Collections.Generic.IDictionary{System.UInt32,System.Int64},System.UInt64,System.Boolean,System.Threading.CancellationToken)
+  name: CreateOffer(IDictionary<UInt32, Int64>, UInt64, Boolean, CancellationToken)
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_CreateOffer_System_Collections_Generic_IDictionary_System_UInt32_System_Int64__System_UInt64_System_Boolean_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.TradeManager.CreateOffer(System.Collections.Generic.IDictionary{System.UInt32,System.Int64},System.UInt64,System.Boolean,System.Threading.CancellationToken)
+  name.vb: CreateOffer(IDictionary(Of UInt32, Int64), UInt64, Boolean, CancellationToken)
+  fullName: chia.dotnet.TradeManager.CreateOffer(System.Collections.Generic.IDictionary<System.UInt32, System.Int64>, System.UInt64, System.Boolean, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.TradeManager.CreateOffer(System.Collections.Generic.IDictionary(Of System.UInt32, System.Int64), System.UInt64, System.Boolean, System.Threading.CancellationToken)
+  nameWithType: TradeManager.CreateOffer(IDictionary<UInt32, Int64>, UInt64, Boolean, CancellationToken)
+  nameWithType.vb: TradeManager.CreateOffer(IDictionary(Of UInt32, Int64), UInt64, Boolean, CancellationToken)
+- uid: chia.dotnet.TradeManager.CreateOffer*
+  name: CreateOffer
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_CreateOffer_
+  commentId: Overload:chia.dotnet.TradeManager.CreateOffer
+  isSpec: "True"
+  fullName: chia.dotnet.TradeManager.CreateOffer
+  nameWithType: TradeManager.CreateOffer
+- uid: chia.dotnet.TradeManager.GetCATList(System.Threading.CancellationToken)
+  name: GetCATList(CancellationToken)
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_GetCATList_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.TradeManager.GetCATList(System.Threading.CancellationToken)
+  fullName: chia.dotnet.TradeManager.GetCATList(System.Threading.CancellationToken)
+  nameWithType: TradeManager.GetCATList(CancellationToken)
+- uid: chia.dotnet.TradeManager.GetCATList*
+  name: GetCATList
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_GetCATList_
+  commentId: Overload:chia.dotnet.TradeManager.GetCATList
+  isSpec: "True"
+  fullName: chia.dotnet.TradeManager.GetCATList
+  nameWithType: TradeManager.GetCATList
+- uid: chia.dotnet.TradeManager.GetOffer(System.String,System.Boolean,System.Threading.CancellationToken)
+  name: GetOffer(String, Boolean, CancellationToken)
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_GetOffer_System_String_System_Boolean_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.TradeManager.GetOffer(System.String,System.Boolean,System.Threading.CancellationToken)
+  fullName: chia.dotnet.TradeManager.GetOffer(System.String, System.Boolean, System.Threading.CancellationToken)
+  nameWithType: TradeManager.GetOffer(String, Boolean, CancellationToken)
+- uid: chia.dotnet.TradeManager.GetOffer*
+  name: GetOffer
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_GetOffer_
+  commentId: Overload:chia.dotnet.TradeManager.GetOffer
+  isSpec: "True"
+  fullName: chia.dotnet.TradeManager.GetOffer
+  nameWithType: TradeManager.GetOffer
+- uid: chia.dotnet.TradeManager.GetOffers(System.Boolean,System.Boolean,System.Boolean,System.String,System.Boolean,System.Boolean,System.Threading.CancellationToken)
+  name: GetOffers(Boolean, Boolean, Boolean, String, Boolean, Boolean, CancellationToken)
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_GetOffers_System_Boolean_System_Boolean_System_Boolean_System_String_System_Boolean_System_Boolean_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.TradeManager.GetOffers(System.Boolean,System.Boolean,System.Boolean,System.String,System.Boolean,System.Boolean,System.Threading.CancellationToken)
+  fullName: chia.dotnet.TradeManager.GetOffers(System.Boolean, System.Boolean, System.Boolean, System.String, System.Boolean, System.Boolean, System.Threading.CancellationToken)
+  nameWithType: TradeManager.GetOffers(Boolean, Boolean, Boolean, String, Boolean, Boolean, CancellationToken)
+- uid: chia.dotnet.TradeManager.GetOffers(System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.String,System.Boolean,System.Boolean,System.Threading.CancellationToken)
+  name: GetOffers(Int32, Int32, Boolean, Boolean, Boolean, String, Boolean, Boolean, CancellationToken)
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_GetOffers_System_Int32_System_Int32_System_Boolean_System_Boolean_System_Boolean_System_String_System_Boolean_System_Boolean_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.TradeManager.GetOffers(System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.String,System.Boolean,System.Boolean,System.Threading.CancellationToken)
+  fullName: chia.dotnet.TradeManager.GetOffers(System.Int32, System.Int32, System.Boolean, System.Boolean, System.Boolean, System.String, System.Boolean, System.Boolean, System.Threading.CancellationToken)
+  nameWithType: TradeManager.GetOffers(Int32, Int32, Boolean, Boolean, Boolean, String, Boolean, Boolean, CancellationToken)
+- uid: chia.dotnet.TradeManager.GetOffers*
+  name: GetOffers
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_GetOffers_
+  commentId: Overload:chia.dotnet.TradeManager.GetOffers
+  isSpec: "True"
+  fullName: chia.dotnet.TradeManager.GetOffers
+  nameWithType: TradeManager.GetOffers
+- uid: chia.dotnet.TradeManager.GetOffersCount(System.Threading.CancellationToken)
+  name: GetOffersCount(CancellationToken)
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_GetOffersCount_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.TradeManager.GetOffersCount(System.Threading.CancellationToken)
+  fullName: chia.dotnet.TradeManager.GetOffersCount(System.Threading.CancellationToken)
+  nameWithType: TradeManager.GetOffersCount(CancellationToken)
+- uid: chia.dotnet.TradeManager.GetOffersCount*
+  name: GetOffersCount
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_GetOffersCount_
+  commentId: Overload:chia.dotnet.TradeManager.GetOffersCount
+  isSpec: "True"
+  fullName: chia.dotnet.TradeManager.GetOffersCount
+  nameWithType: TradeManager.GetOffersCount
+- uid: chia.dotnet.TradeManager.GetOfferSummary(System.String,System.Threading.CancellationToken)
+  name: GetOfferSummary(String, CancellationToken)
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_GetOfferSummary_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.TradeManager.GetOfferSummary(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.TradeManager.GetOfferSummary(System.String, System.Threading.CancellationToken)
+  nameWithType: TradeManager.GetOfferSummary(String, CancellationToken)
+- uid: chia.dotnet.TradeManager.GetOfferSummary*
+  name: GetOfferSummary
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_GetOfferSummary_
+  commentId: Overload:chia.dotnet.TradeManager.GetOfferSummary
+  isSpec: "True"
+  fullName: chia.dotnet.TradeManager.GetOfferSummary
+  nameWithType: TradeManager.GetOfferSummary
+- uid: chia.dotnet.TradeManager.TakeOffer(System.String,System.UInt64,System.Threading.CancellationToken)
+  name: TakeOffer(String, UInt64, CancellationToken)
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_TakeOffer_System_String_System_UInt64_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.TradeManager.TakeOffer(System.String,System.UInt64,System.Threading.CancellationToken)
+  fullName: chia.dotnet.TradeManager.TakeOffer(System.String, System.UInt64, System.Threading.CancellationToken)
+  nameWithType: TradeManager.TakeOffer(String, UInt64, CancellationToken)
+- uid: chia.dotnet.TradeManager.TakeOffer*
+  name: TakeOffer
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_TakeOffer_
+  commentId: Overload:chia.dotnet.TradeManager.TakeOffer
+  isSpec: "True"
+  fullName: chia.dotnet.TradeManager.TakeOffer
+  nameWithType: TradeManager.TakeOffer
+- uid: chia.dotnet.TradeManager.WalletProxy
+  name: WalletProxy
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_WalletProxy
+  commentId: P:chia.dotnet.TradeManager.WalletProxy
+  fullName: chia.dotnet.TradeManager.WalletProxy
+  nameWithType: TradeManager.WalletProxy
+- uid: chia.dotnet.TradeManager.WalletProxy*
+  name: WalletProxy
+  href: api/chia.dotnet.TradeManager.html#chia_dotnet_TradeManager_WalletProxy_
+  commentId: Overload:chia.dotnet.TradeManager.WalletProxy
+  isSpec: "True"
+  fullName: chia.dotnet.TradeManager.WalletProxy
+  nameWithType: TradeManager.WalletProxy
 - uid: chia.dotnet.TradeRecord
   name: TradeRecord
   href: api/chia.dotnet.TradeRecord.html
@@ -6289,19 +7359,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.TradeRecord.AcceptedAtTime
   nameWithType: TradeRecord.AcceptedAtTime
-- uid: chia.dotnet.TradeRecord.Additions
-  name: Additions
-  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_Additions
-  commentId: P:chia.dotnet.TradeRecord.Additions
-  fullName: chia.dotnet.TradeRecord.Additions
-  nameWithType: TradeRecord.Additions
-- uid: chia.dotnet.TradeRecord.Additions*
-  name: Additions
-  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_Additions_
-  commentId: Overload:chia.dotnet.TradeRecord.Additions
+- uid: chia.dotnet.TradeRecord.CoinsOfInterest
+  name: CoinsOfInterest
+  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_CoinsOfInterest
+  commentId: P:chia.dotnet.TradeRecord.CoinsOfInterest
+  fullName: chia.dotnet.TradeRecord.CoinsOfInterest
+  nameWithType: TradeRecord.CoinsOfInterest
+- uid: chia.dotnet.TradeRecord.CoinsOfInterest*
+  name: CoinsOfInterest
+  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_CoinsOfInterest_
+  commentId: Overload:chia.dotnet.TradeRecord.CoinsOfInterest
   isSpec: "True"
-  fullName: chia.dotnet.TradeRecord.Additions
-  nameWithType: TradeRecord.Additions
+  fullName: chia.dotnet.TradeRecord.CoinsOfInterest
+  nameWithType: TradeRecord.CoinsOfInterest
 - uid: chia.dotnet.TradeRecord.ConfirmedAtIndex
   name: ConfirmedAtIndex
   href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_ConfirmedAtIndex
@@ -6341,32 +7411,32 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.TradeRecord.CreatedAtTime
   nameWithType: TradeRecord.CreatedAtTime
-- uid: chia.dotnet.TradeRecord.MyOffer
-  name: MyOffer
-  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_MyOffer
-  commentId: P:chia.dotnet.TradeRecord.MyOffer
-  fullName: chia.dotnet.TradeRecord.MyOffer
-  nameWithType: TradeRecord.MyOffer
-- uid: chia.dotnet.TradeRecord.MyOffer*
-  name: MyOffer
-  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_MyOffer_
-  commentId: Overload:chia.dotnet.TradeRecord.MyOffer
+- uid: chia.dotnet.TradeRecord.IsMyOffer
+  name: IsMyOffer
+  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_IsMyOffer
+  commentId: P:chia.dotnet.TradeRecord.IsMyOffer
+  fullName: chia.dotnet.TradeRecord.IsMyOffer
+  nameWithType: TradeRecord.IsMyOffer
+- uid: chia.dotnet.TradeRecord.IsMyOffer*
+  name: IsMyOffer
+  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_IsMyOffer_
+  commentId: Overload:chia.dotnet.TradeRecord.IsMyOffer
   isSpec: "True"
-  fullName: chia.dotnet.TradeRecord.MyOffer
-  nameWithType: TradeRecord.MyOffer
-- uid: chia.dotnet.TradeRecord.Removals
-  name: Removals
-  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_Removals
-  commentId: P:chia.dotnet.TradeRecord.Removals
-  fullName: chia.dotnet.TradeRecord.Removals
-  nameWithType: TradeRecord.Removals
-- uid: chia.dotnet.TradeRecord.Removals*
-  name: Removals
-  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_Removals_
-  commentId: Overload:chia.dotnet.TradeRecord.Removals
+  fullName: chia.dotnet.TradeRecord.IsMyOffer
+  nameWithType: TradeRecord.IsMyOffer
+- uid: chia.dotnet.TradeRecord.Offer
+  name: Offer
+  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_Offer
+  commentId: P:chia.dotnet.TradeRecord.Offer
+  fullName: chia.dotnet.TradeRecord.Offer
+  nameWithType: TradeRecord.Offer
+- uid: chia.dotnet.TradeRecord.Offer*
+  name: Offer
+  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_Offer_
+  commentId: Overload:chia.dotnet.TradeRecord.Offer
   isSpec: "True"
-  fullName: chia.dotnet.TradeRecord.Removals
-  nameWithType: TradeRecord.Removals
+  fullName: chia.dotnet.TradeRecord.Offer
+  nameWithType: TradeRecord.Offer
 - uid: chia.dotnet.TradeRecord.Sent
   name: Sent
   href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_Sent
@@ -6393,19 +7463,6 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.TradeRecord.SentTo
   nameWithType: TradeRecord.SentTo
-- uid: chia.dotnet.TradeRecord.SpendBundle
-  name: SpendBundle
-  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_SpendBundle
-  commentId: P:chia.dotnet.TradeRecord.SpendBundle
-  fullName: chia.dotnet.TradeRecord.SpendBundle
-  nameWithType: TradeRecord.SpendBundle
-- uid: chia.dotnet.TradeRecord.SpendBundle*
-  name: SpendBundle
-  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_SpendBundle_
-  commentId: Overload:chia.dotnet.TradeRecord.SpendBundle
-  isSpec: "True"
-  fullName: chia.dotnet.TradeRecord.SpendBundle
-  nameWithType: TradeRecord.SpendBundle
 - uid: chia.dotnet.TradeRecord.Status
   name: Status
   href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_Status
@@ -6419,6 +7476,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.TradeRecord.Status
   nameWithType: TradeRecord.Status
+- uid: chia.dotnet.TradeRecord.TakenOffer
+  name: TakenOffer
+  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_TakenOffer
+  commentId: P:chia.dotnet.TradeRecord.TakenOffer
+  fullName: chia.dotnet.TradeRecord.TakenOffer
+  nameWithType: TradeRecord.TakenOffer
+- uid: chia.dotnet.TradeRecord.TakenOffer*
+  name: TakenOffer
+  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_TakenOffer_
+  commentId: Overload:chia.dotnet.TradeRecord.TakenOffer
+  isSpec: "True"
+  fullName: chia.dotnet.TradeRecord.TakenOffer
+  nameWithType: TradeRecord.TakenOffer
 - uid: chia.dotnet.TradeRecord.TradeId
   name: TradeId
   href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_TradeId
@@ -6432,44 +7502,18 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.TradeRecord.TradeId
   nameWithType: TradeRecord.TradeId
-- uid: chia.dotnet.TradeRecord.TradeStatus
-  name: TradeStatus
-  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_TradeStatus
-  commentId: P:chia.dotnet.TradeRecord.TradeStatus
-  fullName: chia.dotnet.TradeRecord.TradeStatus
-  nameWithType: TradeRecord.TradeStatus
-- uid: chia.dotnet.TradeRecord.TradeStatus*
-  name: TradeStatus
-  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_TradeStatus_
-  commentId: Overload:chia.dotnet.TradeRecord.TradeStatus
-  isSpec: "True"
-  fullName: chia.dotnet.TradeRecord.TradeStatus
-  nameWithType: TradeRecord.TradeStatus
-- uid: chia.dotnet.TradeRecord.TxSpendBundle
-  name: TxSpendBundle
-  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_TxSpendBundle
-  commentId: P:chia.dotnet.TradeRecord.TxSpendBundle
-  fullName: chia.dotnet.TradeRecord.TxSpendBundle
-  nameWithType: TradeRecord.TxSpendBundle
-- uid: chia.dotnet.TradeRecord.TxSpendBundle*
-  name: TxSpendBundle
-  href: api/chia.dotnet.TradeRecord.html#chia_dotnet_TradeRecord_TxSpendBundle_
-  commentId: Overload:chia.dotnet.TradeRecord.TxSpendBundle
-  isSpec: "True"
-  fullName: chia.dotnet.TradeRecord.TxSpendBundle
-  nameWithType: TradeRecord.TxSpendBundle
 - uid: chia.dotnet.TradeStatus
   name: TradeStatus
   href: api/chia.dotnet.TradeStatus.html
   commentId: T:chia.dotnet.TradeStatus
   fullName: chia.dotnet.TradeStatus
   nameWithType: TradeStatus
-- uid: chia.dotnet.TradeStatus.CANCELED
-  name: CANCELED
-  href: api/chia.dotnet.TradeStatus.html#chia_dotnet_TradeStatus_CANCELED
-  commentId: F:chia.dotnet.TradeStatus.CANCELED
-  fullName: chia.dotnet.TradeStatus.CANCELED
-  nameWithType: TradeStatus.CANCELED
+- uid: chia.dotnet.TradeStatus.CANCELLED
+  name: CANCELLED
+  href: api/chia.dotnet.TradeStatus.html#chia_dotnet_TradeStatus_CANCELLED
+  commentId: F:chia.dotnet.TradeStatus.CANCELLED
+  fullName: chia.dotnet.TradeStatus.CANCELLED
+  nameWithType: TradeStatus.CANCELLED
 - uid: chia.dotnet.TradeStatus.CONFIRMED
   name: CONFIRMED
   href: api/chia.dotnet.TradeStatus.html#chia_dotnet_TradeStatus_CONFIRMED
@@ -7150,18 +8194,18 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.Wallet.GetTransactionCount
   nameWithType: Wallet.GetTransactionCount
-- uid: chia.dotnet.Wallet.GetTransactions(System.Threading.CancellationToken)
-  name: GetTransactions(CancellationToken)
-  href: api/chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetTransactions_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.Wallet.GetTransactions(System.Threading.CancellationToken)
-  fullName: chia.dotnet.Wallet.GetTransactions(System.Threading.CancellationToken)
-  nameWithType: Wallet.GetTransactions(CancellationToken)
-- uid: chia.dotnet.Wallet.GetTransactions(System.UInt32,System.UInt32,System.Threading.CancellationToken)
-  name: GetTransactions(UInt32, UInt32, CancellationToken)
-  href: api/chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetTransactions_System_UInt32_System_UInt32_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.Wallet.GetTransactions(System.UInt32,System.UInt32,System.Threading.CancellationToken)
-  fullName: chia.dotnet.Wallet.GetTransactions(System.UInt32, System.UInt32, System.Threading.CancellationToken)
-  nameWithType: Wallet.GetTransactions(UInt32, UInt32, CancellationToken)
+- uid: chia.dotnet.Wallet.GetTransactions(System.String,System.String,System.Boolean,System.Threading.CancellationToken)
+  name: GetTransactions(String, String, Boolean, CancellationToken)
+  href: api/chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetTransactions_System_String_System_String_System_Boolean_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.Wallet.GetTransactions(System.String,System.String,System.Boolean,System.Threading.CancellationToken)
+  fullName: chia.dotnet.Wallet.GetTransactions(System.String, System.String, System.Boolean, System.Threading.CancellationToken)
+  nameWithType: Wallet.GetTransactions(String, String, Boolean, CancellationToken)
+- uid: chia.dotnet.Wallet.GetTransactions(System.UInt32,System.UInt32,System.String,System.String,System.Boolean,System.Threading.CancellationToken)
+  name: GetTransactions(UInt32, UInt32, String, String, Boolean, CancellationToken)
+  href: api/chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetTransactions_System_UInt32_System_UInt32_System_String_System_String_System_Boolean_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.Wallet.GetTransactions(System.UInt32,System.UInt32,System.String,System.String,System.Boolean,System.Threading.CancellationToken)
+  fullName: chia.dotnet.Wallet.GetTransactions(System.UInt32, System.UInt32, System.String, System.String, System.Boolean, System.Threading.CancellationToken)
+  nameWithType: Wallet.GetTransactions(UInt32, UInt32, String, String, Boolean, CancellationToken)
 - uid: chia.dotnet.Wallet.GetTransactions*
   name: GetTransactions
   href: api/chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetTransactions_
@@ -7182,12 +8226,15 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.Wallet.GetWalletInfo
   nameWithType: Wallet.GetWalletInfo
-- uid: chia.dotnet.Wallet.SendTransaction(System.String,System.UInt64,System.UInt64,System.Threading.CancellationToken)
-  name: SendTransaction(String, UInt64, UInt64, CancellationToken)
-  href: api/chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransaction_System_String_System_UInt64_System_UInt64_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.Wallet.SendTransaction(System.String,System.UInt64,System.UInt64,System.Threading.CancellationToken)
-  fullName: chia.dotnet.Wallet.SendTransaction(System.String, System.UInt64, System.UInt64, System.Threading.CancellationToken)
-  nameWithType: Wallet.SendTransaction(String, UInt64, UInt64, CancellationToken)
+- uid: chia.dotnet.Wallet.SendTransaction(System.String,System.UInt64,System.UInt64,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)
+  name: SendTransaction(String, UInt64, UInt64, IEnumerable<String>, CancellationToken)
+  href: api/chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransaction_System_String_System_UInt64_System_UInt64_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.Wallet.SendTransaction(System.String,System.UInt64,System.UInt64,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)
+  name.vb: SendTransaction(String, UInt64, UInt64, IEnumerable(Of String), CancellationToken)
+  fullName: chia.dotnet.Wallet.SendTransaction(System.String, System.UInt64, System.UInt64, System.Collections.Generic.IEnumerable<System.String>, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.Wallet.SendTransaction(System.String, System.UInt64, System.UInt64, System.Collections.Generic.IEnumerable(Of System.String), System.Threading.CancellationToken)
+  nameWithType: Wallet.SendTransaction(String, UInt64, UInt64, IEnumerable<String>, CancellationToken)
+  nameWithType.vb: Wallet.SendTransaction(String, UInt64, UInt64, IEnumerable(Of String), CancellationToken)
 - uid: chia.dotnet.Wallet.SendTransaction*
   name: SendTransaction
   href: api/chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransaction_
@@ -7195,15 +8242,15 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.Wallet.SendTransaction
   nameWithType: Wallet.SendTransaction
-- uid: chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.UInt64,System.Threading.CancellationToken)
-  name: SendTransactionMulti(IEnumerable<Coin>, IEnumerable<Coin>, UInt64, CancellationToken)
-  href: api/chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_UInt64_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.UInt64,System.Threading.CancellationToken)
-  name.vb: SendTransactionMulti(IEnumerable(Of Coin), IEnumerable(Of Coin), UInt64, CancellationToken)
-  fullName: chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable<chia.dotnet.Coin>, System.Collections.Generic.IEnumerable<chia.dotnet.Coin>, System.UInt64, System.Threading.CancellationToken)
-  fullName.vb: chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable(Of chia.dotnet.Coin), System.Collections.Generic.IEnumerable(Of chia.dotnet.Coin), System.UInt64, System.Threading.CancellationToken)
-  nameWithType: Wallet.SendTransactionMulti(IEnumerable<Coin>, IEnumerable<Coin>, UInt64, CancellationToken)
-  nameWithType.vb: Wallet.SendTransactionMulti(IEnumerable(Of Coin), IEnumerable(Of Coin), UInt64, CancellationToken)
+- uid: chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.UInt64,System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.Threading.CancellationToken)
+  name: SendTransactionMulti(IEnumerable<Coin>, UInt64, IEnumerable<Coin>, CancellationToken)
+  href: api/chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_UInt64_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.UInt64,System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.Threading.CancellationToken)
+  name.vb: SendTransactionMulti(IEnumerable(Of Coin), UInt64, IEnumerable(Of Coin), CancellationToken)
+  fullName: chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable<chia.dotnet.Coin>, System.UInt64, System.Collections.Generic.IEnumerable<chia.dotnet.Coin>, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable(Of chia.dotnet.Coin), System.UInt64, System.Collections.Generic.IEnumerable(Of chia.dotnet.Coin), System.Threading.CancellationToken)
+  nameWithType: Wallet.SendTransactionMulti(IEnumerable<Coin>, UInt64, IEnumerable<Coin>, CancellationToken)
+  nameWithType.vb: Wallet.SendTransactionMulti(IEnumerable(Of Coin), UInt64, IEnumerable(Of Coin), CancellationToken)
 - uid: chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.UInt64,System.Threading.CancellationToken)
   name: SendTransactionMulti(IEnumerable<Coin>, UInt64, CancellationToken)
   href: api/chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_UInt64_System_Threading_CancellationToken_
@@ -7265,6 +8312,103 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.Wallet.WalletProxy
   nameWithType: Wallet.WalletProxy
+- uid: chia.dotnet.WalletBalance
+  name: WalletBalance
+  href: api/chia.dotnet.WalletBalance.html
+  commentId: T:chia.dotnet.WalletBalance
+  fullName: chia.dotnet.WalletBalance
+  nameWithType: WalletBalance
+- uid: chia.dotnet.WalletBalance.ConfirmedWalletBalance
+  name: ConfirmedWalletBalance
+  href: api/chia.dotnet.WalletBalance.html#chia_dotnet_WalletBalance_ConfirmedWalletBalance
+  commentId: P:chia.dotnet.WalletBalance.ConfirmedWalletBalance
+  fullName: chia.dotnet.WalletBalance.ConfirmedWalletBalance
+  nameWithType: WalletBalance.ConfirmedWalletBalance
+- uid: chia.dotnet.WalletBalance.ConfirmedWalletBalance*
+  name: ConfirmedWalletBalance
+  href: api/chia.dotnet.WalletBalance.html#chia_dotnet_WalletBalance_ConfirmedWalletBalance_
+  commentId: Overload:chia.dotnet.WalletBalance.ConfirmedWalletBalance
+  isSpec: "True"
+  fullName: chia.dotnet.WalletBalance.ConfirmedWalletBalance
+  nameWithType: WalletBalance.ConfirmedWalletBalance
+- uid: chia.dotnet.WalletBalance.MaxSendAmount
+  name: MaxSendAmount
+  href: api/chia.dotnet.WalletBalance.html#chia_dotnet_WalletBalance_MaxSendAmount
+  commentId: P:chia.dotnet.WalletBalance.MaxSendAmount
+  fullName: chia.dotnet.WalletBalance.MaxSendAmount
+  nameWithType: WalletBalance.MaxSendAmount
+- uid: chia.dotnet.WalletBalance.MaxSendAmount*
+  name: MaxSendAmount
+  href: api/chia.dotnet.WalletBalance.html#chia_dotnet_WalletBalance_MaxSendAmount_
+  commentId: Overload:chia.dotnet.WalletBalance.MaxSendAmount
+  isSpec: "True"
+  fullName: chia.dotnet.WalletBalance.MaxSendAmount
+  nameWithType: WalletBalance.MaxSendAmount
+- uid: chia.dotnet.WalletBalance.PendingChange
+  name: PendingChange
+  href: api/chia.dotnet.WalletBalance.html#chia_dotnet_WalletBalance_PendingChange
+  commentId: P:chia.dotnet.WalletBalance.PendingChange
+  fullName: chia.dotnet.WalletBalance.PendingChange
+  nameWithType: WalletBalance.PendingChange
+- uid: chia.dotnet.WalletBalance.PendingChange*
+  name: PendingChange
+  href: api/chia.dotnet.WalletBalance.html#chia_dotnet_WalletBalance_PendingChange_
+  commentId: Overload:chia.dotnet.WalletBalance.PendingChange
+  isSpec: "True"
+  fullName: chia.dotnet.WalletBalance.PendingChange
+  nameWithType: WalletBalance.PendingChange
+- uid: chia.dotnet.WalletBalance.PendingCoinRemovalCount
+  name: PendingCoinRemovalCount
+  href: api/chia.dotnet.WalletBalance.html#chia_dotnet_WalletBalance_PendingCoinRemovalCount
+  commentId: P:chia.dotnet.WalletBalance.PendingCoinRemovalCount
+  fullName: chia.dotnet.WalletBalance.PendingCoinRemovalCount
+  nameWithType: WalletBalance.PendingCoinRemovalCount
+- uid: chia.dotnet.WalletBalance.PendingCoinRemovalCount*
+  name: PendingCoinRemovalCount
+  href: api/chia.dotnet.WalletBalance.html#chia_dotnet_WalletBalance_PendingCoinRemovalCount_
+  commentId: Overload:chia.dotnet.WalletBalance.PendingCoinRemovalCount
+  isSpec: "True"
+  fullName: chia.dotnet.WalletBalance.PendingCoinRemovalCount
+  nameWithType: WalletBalance.PendingCoinRemovalCount
+- uid: chia.dotnet.WalletBalance.SpendableBalance
+  name: SpendableBalance
+  href: api/chia.dotnet.WalletBalance.html#chia_dotnet_WalletBalance_SpendableBalance
+  commentId: P:chia.dotnet.WalletBalance.SpendableBalance
+  fullName: chia.dotnet.WalletBalance.SpendableBalance
+  nameWithType: WalletBalance.SpendableBalance
+- uid: chia.dotnet.WalletBalance.SpendableBalance*
+  name: SpendableBalance
+  href: api/chia.dotnet.WalletBalance.html#chia_dotnet_WalletBalance_SpendableBalance_
+  commentId: Overload:chia.dotnet.WalletBalance.SpendableBalance
+  isSpec: "True"
+  fullName: chia.dotnet.WalletBalance.SpendableBalance
+  nameWithType: WalletBalance.SpendableBalance
+- uid: chia.dotnet.WalletBalance.UnconfirmedWalletBalance
+  name: UnconfirmedWalletBalance
+  href: api/chia.dotnet.WalletBalance.html#chia_dotnet_WalletBalance_UnconfirmedWalletBalance
+  commentId: P:chia.dotnet.WalletBalance.UnconfirmedWalletBalance
+  fullName: chia.dotnet.WalletBalance.UnconfirmedWalletBalance
+  nameWithType: WalletBalance.UnconfirmedWalletBalance
+- uid: chia.dotnet.WalletBalance.UnconfirmedWalletBalance*
+  name: UnconfirmedWalletBalance
+  href: api/chia.dotnet.WalletBalance.html#chia_dotnet_WalletBalance_UnconfirmedWalletBalance_
+  commentId: Overload:chia.dotnet.WalletBalance.UnconfirmedWalletBalance
+  isSpec: "True"
+  fullName: chia.dotnet.WalletBalance.UnconfirmedWalletBalance
+  nameWithType: WalletBalance.UnconfirmedWalletBalance
+- uid: chia.dotnet.WalletBalance.UnspentCoinCount
+  name: UnspentCoinCount
+  href: api/chia.dotnet.WalletBalance.html#chia_dotnet_WalletBalance_UnspentCoinCount
+  commentId: P:chia.dotnet.WalletBalance.UnspentCoinCount
+  fullName: chia.dotnet.WalletBalance.UnspentCoinCount
+  nameWithType: WalletBalance.UnspentCoinCount
+- uid: chia.dotnet.WalletBalance.UnspentCoinCount*
+  name: UnspentCoinCount
+  href: api/chia.dotnet.WalletBalance.html#chia_dotnet_WalletBalance_UnspentCoinCount_
+  commentId: Overload:chia.dotnet.WalletBalance.UnspentCoinCount
+  isSpec: "True"
+  fullName: chia.dotnet.WalletBalance.UnspentCoinCount
+  nameWithType: WalletBalance.UnspentCoinCount
 - uid: chia.dotnet.WalletInfo
   name: WalletInfo
   href: api/chia.dotnet.WalletInfo.html
@@ -7342,15 +8486,15 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.WalletProxy
   nameWithType: WalletProxy.WalletProxy
-- uid: chia.dotnet.WalletProxy.AddKey(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Threading.CancellationToken)
-  name: AddKey(IEnumerable<String>, Boolean, CancellationToken)
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_AddKey_System_Collections_Generic_IEnumerable_System_String__System_Boolean_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.WalletProxy.AddKey(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Threading.CancellationToken)
-  name.vb: AddKey(IEnumerable(Of String), Boolean, CancellationToken)
-  fullName: chia.dotnet.WalletProxy.AddKey(System.Collections.Generic.IEnumerable<System.String>, System.Boolean, System.Threading.CancellationToken)
-  fullName.vb: chia.dotnet.WalletProxy.AddKey(System.Collections.Generic.IEnumerable(Of System.String), System.Boolean, System.Threading.CancellationToken)
-  nameWithType: WalletProxy.AddKey(IEnumerable<String>, Boolean, CancellationToken)
-  nameWithType.vb: WalletProxy.AddKey(IEnumerable(Of String), Boolean, CancellationToken)
+- uid: chia.dotnet.WalletProxy.AddKey(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)
+  name: AddKey(IEnumerable<String>, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_AddKey_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.AddKey(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)
+  name.vb: AddKey(IEnumerable(Of String), CancellationToken)
+  fullName: chia.dotnet.WalletProxy.AddKey(System.Collections.Generic.IEnumerable<System.String>, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.WalletProxy.AddKey(System.Collections.Generic.IEnumerable(Of System.String), System.Threading.CancellationToken)
+  nameWithType: WalletProxy.AddKey(IEnumerable<String>, CancellationToken)
+  nameWithType.vb: WalletProxy.AddKey(IEnumerable(Of String), CancellationToken)
 - uid: chia.dotnet.WalletProxy.AddKey*
   name: AddKey
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_AddKey_
@@ -7358,32 +8502,6 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.AddKey
   nameWithType: WalletProxy.AddKey
-- uid: chia.dotnet.WalletProxy.AddKeyAndRestoreBackup(System.UInt32,System.String,System.Threading.CancellationToken)
-  name: AddKeyAndRestoreBackup(UInt32, String, CancellationToken)
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_AddKeyAndRestoreBackup_System_UInt32_System_String_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.WalletProxy.AddKeyAndRestoreBackup(System.UInt32,System.String,System.Threading.CancellationToken)
-  fullName: chia.dotnet.WalletProxy.AddKeyAndRestoreBackup(System.UInt32, System.String, System.Threading.CancellationToken)
-  nameWithType: WalletProxy.AddKeyAndRestoreBackup(UInt32, String, CancellationToken)
-- uid: chia.dotnet.WalletProxy.AddKeyAndRestoreBackup*
-  name: AddKeyAndRestoreBackup
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_AddKeyAndRestoreBackup_
-  commentId: Overload:chia.dotnet.WalletProxy.AddKeyAndRestoreBackup
-  isSpec: "True"
-  fullName: chia.dotnet.WalletProxy.AddKeyAndRestoreBackup
-  nameWithType: WalletProxy.AddKeyAndRestoreBackup
-- uid: chia.dotnet.WalletProxy.CancelTrade(System.String,System.Boolean,System.Threading.CancellationToken)
-  name: CancelTrade(String, Boolean, CancellationToken)
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CancelTrade_System_String_System_Boolean_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.WalletProxy.CancelTrade(System.String,System.Boolean,System.Threading.CancellationToken)
-  fullName: chia.dotnet.WalletProxy.CancelTrade(System.String, System.Boolean, System.Threading.CancellationToken)
-  nameWithType: WalletProxy.CancelTrade(String, Boolean, CancellationToken)
-- uid: chia.dotnet.WalletProxy.CancelTrade*
-  name: CancelTrade
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CancelTrade_
-  commentId: Overload:chia.dotnet.WalletProxy.CancelTrade
-  isSpec: "True"
-  fullName: chia.dotnet.WalletProxy.CancelTrade
-  nameWithType: WalletProxy.CancelTrade
 - uid: chia.dotnet.WalletProxy.CheckDeleteKey(System.UInt32,System.Threading.CancellationToken)
   name: CheckDeleteKey(UInt32, CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CheckDeleteKey_System_UInt32_System_Threading_CancellationToken_
@@ -7397,45 +8515,25 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.CheckDeleteKey
   nameWithType: WalletProxy.CheckDeleteKey
-- uid: chia.dotnet.WalletProxy.CreateBackup(System.String,System.Threading.CancellationToken)
-  name: CreateBackup(String, CancellationToken)
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateBackup_System_String_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.WalletProxy.CreateBackup(System.String,System.Threading.CancellationToken)
-  fullName: chia.dotnet.WalletProxy.CreateBackup(System.String, System.Threading.CancellationToken)
-  nameWithType: WalletProxy.CreateBackup(String, CancellationToken)
-- uid: chia.dotnet.WalletProxy.CreateBackup*
-  name: CreateBackup
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateBackup_
-  commentId: Overload:chia.dotnet.WalletProxy.CreateBackup
+- uid: chia.dotnet.WalletProxy.CreateCATWallet(System.String,System.UInt64,System.UInt64,System.Threading.CancellationToken)
+  name: CreateCATWallet(String, UInt64, UInt64, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateCATWallet_System_String_System_UInt64_System_UInt64_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.CreateCATWallet(System.String,System.UInt64,System.UInt64,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.CreateCATWallet(System.String, System.UInt64, System.UInt64, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.CreateCATWallet(String, UInt64, UInt64, CancellationToken)
+- uid: chia.dotnet.WalletProxy.CreateCATWallet(System.UInt64,System.UInt64,System.Threading.CancellationToken)
+  name: CreateCATWallet(UInt64, UInt64, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateCATWallet_System_UInt64_System_UInt64_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.CreateCATWallet(System.UInt64,System.UInt64,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.CreateCATWallet(System.UInt64, System.UInt64, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.CreateCATWallet(UInt64, UInt64, CancellationToken)
+- uid: chia.dotnet.WalletProxy.CreateCATWallet*
+  name: CreateCATWallet
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateCATWallet_
+  commentId: Overload:chia.dotnet.WalletProxy.CreateCATWallet
   isSpec: "True"
-  fullName: chia.dotnet.WalletProxy.CreateBackup
-  nameWithType: WalletProxy.CreateBackup
-- uid: chia.dotnet.WalletProxy.CreateColourCoinWallet(System.UInt64,System.UInt64,System.String,System.Threading.CancellationToken)
-  name: CreateColourCoinWallet(UInt64, UInt64, String, CancellationToken)
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateColourCoinWallet_System_UInt64_System_UInt64_System_String_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.WalletProxy.CreateColourCoinWallet(System.UInt64,System.UInt64,System.String,System.Threading.CancellationToken)
-  fullName: chia.dotnet.WalletProxy.CreateColourCoinWallet(System.UInt64, System.UInt64, System.String, System.Threading.CancellationToken)
-  nameWithType: WalletProxy.CreateColourCoinWallet(UInt64, UInt64, String, CancellationToken)
-- uid: chia.dotnet.WalletProxy.CreateColourCoinWallet*
-  name: CreateColourCoinWallet
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateColourCoinWallet_
-  commentId: Overload:chia.dotnet.WalletProxy.CreateColourCoinWallet
-  isSpec: "True"
-  fullName: chia.dotnet.WalletProxy.CreateColourCoinWallet
-  nameWithType: WalletProxy.CreateColourCoinWallet
-- uid: chia.dotnet.WalletProxy.CreateColouredCoinForColour(System.String,System.Threading.CancellationToken)
-  name: CreateColouredCoinForColour(String, CancellationToken)
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateColouredCoinForColour_System_String_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.WalletProxy.CreateColouredCoinForColour(System.String,System.Threading.CancellationToken)
-  fullName: chia.dotnet.WalletProxy.CreateColouredCoinForColour(System.String, System.Threading.CancellationToken)
-  nameWithType: WalletProxy.CreateColouredCoinForColour(String, CancellationToken)
-- uid: chia.dotnet.WalletProxy.CreateColouredCoinForColour*
-  name: CreateColouredCoinForColour
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateColouredCoinForColour_
-  commentId: Overload:chia.dotnet.WalletProxy.CreateColouredCoinForColour
-  isSpec: "True"
-  fullName: chia.dotnet.WalletProxy.CreateColouredCoinForColour
-  nameWithType: WalletProxy.CreateColouredCoinForColour
+  fullName: chia.dotnet.WalletProxy.CreateCATWallet
+  nameWithType: WalletProxy.CreateCATWallet
 - uid: chia.dotnet.WalletProxy.CreateDIDWallet(System.Collections.Generic.IEnumerable{System.String},System.UInt64,System.UInt64,System.Threading.CancellationToken)
   name: CreateDIDWallet(IEnumerable<String>, UInt64, UInt64, CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateDIDWallet_System_Collections_Generic_IEnumerable_System_String__System_UInt64_System_UInt64_System_Threading_CancellationToken_
@@ -7452,22 +8550,6 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.CreateDIDWallet
   nameWithType: WalletProxy.CreateDIDWallet
-- uid: chia.dotnet.WalletProxy.CreateOfferForIds(System.Collections.Generic.IDictionary{System.Int32,System.Int32},System.String,System.Threading.CancellationToken)
-  name: CreateOfferForIds(IDictionary<Int32, Int32>, String, CancellationToken)
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateOfferForIds_System_Collections_Generic_IDictionary_System_Int32_System_Int32__System_String_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.WalletProxy.CreateOfferForIds(System.Collections.Generic.IDictionary{System.Int32,System.Int32},System.String,System.Threading.CancellationToken)
-  name.vb: CreateOfferForIds(IDictionary(Of Int32, Int32), String, CancellationToken)
-  fullName: chia.dotnet.WalletProxy.CreateOfferForIds(System.Collections.Generic.IDictionary<System.Int32, System.Int32>, System.String, System.Threading.CancellationToken)
-  fullName.vb: chia.dotnet.WalletProxy.CreateOfferForIds(System.Collections.Generic.IDictionary(Of System.Int32, System.Int32), System.String, System.Threading.CancellationToken)
-  nameWithType: WalletProxy.CreateOfferForIds(IDictionary<Int32, Int32>, String, CancellationToken)
-  nameWithType.vb: WalletProxy.CreateOfferForIds(IDictionary(Of Int32, Int32), String, CancellationToken)
-- uid: chia.dotnet.WalletProxy.CreateOfferForIds*
-  name: CreateOfferForIds
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateOfferForIds_
-  commentId: Overload:chia.dotnet.WalletProxy.CreateOfferForIds
-  isSpec: "True"
-  fullName: chia.dotnet.WalletProxy.CreateOfferForIds
-  nameWithType: WalletProxy.CreateOfferForIds
 - uid: chia.dotnet.WalletProxy.CreatePoolWallet(chia.dotnet.PoolState,System.Nullable{System.UInt64},System.String,System.Threading.CancellationToken)
   name: CreatePoolWallet(PoolState, Nullable<UInt64>, String, CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreatePoolWallet_chia_dotnet_PoolState_System_Nullable_System_UInt64__System_String_System_Threading_CancellationToken_
@@ -7510,15 +8592,15 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.CreateRateLimitedUserWallet
   nameWithType: WalletProxy.CreateRateLimitedUserWallet
-- uid: chia.dotnet.WalletProxy.CreateSignedTransaction(System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.UInt64,System.Threading.CancellationToken)
-  name: CreateSignedTransaction(IEnumerable<Coin>, IEnumerable<Coin>, UInt64, CancellationToken)
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateSignedTransaction_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_UInt64_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.WalletProxy.CreateSignedTransaction(System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.UInt64,System.Threading.CancellationToken)
-  name.vb: CreateSignedTransaction(IEnumerable(Of Coin), IEnumerable(Of Coin), UInt64, CancellationToken)
-  fullName: chia.dotnet.WalletProxy.CreateSignedTransaction(System.Collections.Generic.IEnumerable<chia.dotnet.Coin>, System.Collections.Generic.IEnumerable<chia.dotnet.Coin>, System.UInt64, System.Threading.CancellationToken)
-  fullName.vb: chia.dotnet.WalletProxy.CreateSignedTransaction(System.Collections.Generic.IEnumerable(Of chia.dotnet.Coin), System.Collections.Generic.IEnumerable(Of chia.dotnet.Coin), System.UInt64, System.Threading.CancellationToken)
-  nameWithType: WalletProxy.CreateSignedTransaction(IEnumerable<Coin>, IEnumerable<Coin>, UInt64, CancellationToken)
-  nameWithType.vb: WalletProxy.CreateSignedTransaction(IEnumerable(Of Coin), IEnumerable(Of Coin), UInt64, CancellationToken)
+- uid: chia.dotnet.WalletProxy.CreateSignedTransaction(System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.UInt64,System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.Collections.Generic.IEnumerable{chia.dotnet.CoinAnnouncement},System.Collections.Generic.IEnumerable{chia.dotnet.PuzzleAnnouncement},System.Threading.CancellationToken)
+  name: CreateSignedTransaction(IEnumerable<Coin>, UInt64, IEnumerable<Coin>, IEnumerable<CoinAnnouncement>, IEnumerable<PuzzleAnnouncement>, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateSignedTransaction_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_UInt64_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_Collections_Generic_IEnumerable_chia_dotnet_CoinAnnouncement__System_Collections_Generic_IEnumerable_chia_dotnet_PuzzleAnnouncement__System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.CreateSignedTransaction(System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.UInt64,System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.Collections.Generic.IEnumerable{chia.dotnet.CoinAnnouncement},System.Collections.Generic.IEnumerable{chia.dotnet.PuzzleAnnouncement},System.Threading.CancellationToken)
+  name.vb: CreateSignedTransaction(IEnumerable(Of Coin), UInt64, IEnumerable(Of Coin), IEnumerable(Of CoinAnnouncement), IEnumerable(Of PuzzleAnnouncement), CancellationToken)
+  fullName: chia.dotnet.WalletProxy.CreateSignedTransaction(System.Collections.Generic.IEnumerable<chia.dotnet.Coin>, System.UInt64, System.Collections.Generic.IEnumerable<chia.dotnet.Coin>, System.Collections.Generic.IEnumerable<chia.dotnet.CoinAnnouncement>, System.Collections.Generic.IEnumerable<chia.dotnet.PuzzleAnnouncement>, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.WalletProxy.CreateSignedTransaction(System.Collections.Generic.IEnumerable(Of chia.dotnet.Coin), System.UInt64, System.Collections.Generic.IEnumerable(Of chia.dotnet.Coin), System.Collections.Generic.IEnumerable(Of chia.dotnet.CoinAnnouncement), System.Collections.Generic.IEnumerable(Of chia.dotnet.PuzzleAnnouncement), System.Threading.CancellationToken)
+  nameWithType: WalletProxy.CreateSignedTransaction(IEnumerable<Coin>, UInt64, IEnumerable<Coin>, IEnumerable<CoinAnnouncement>, IEnumerable<PuzzleAnnouncement>, CancellationToken)
+  nameWithType.vb: WalletProxy.CreateSignedTransaction(IEnumerable(Of Coin), UInt64, IEnumerable(Of Coin), IEnumerable(Of CoinAnnouncement), IEnumerable(Of PuzzleAnnouncement), CancellationToken)
 - uid: chia.dotnet.WalletProxy.CreateSignedTransaction(System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.UInt64,System.Threading.CancellationToken)
   name: CreateSignedTransaction(IEnumerable<Coin>, UInt64, CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateSignedTransaction_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_UInt64_System_Threading_CancellationToken_
@@ -7535,12 +8617,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.CreateSignedTransaction
   nameWithType: WalletProxy.CreateSignedTransaction
-- uid: chia.dotnet.WalletProxy.DefaultBackupHost
-  name: DefaultBackupHost
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_DefaultBackupHost
-  commentId: F:chia.dotnet.WalletProxy.DefaultBackupHost
-  fullName: chia.dotnet.WalletProxy.DefaultBackupHost
-  nameWithType: WalletProxy.DefaultBackupHost
+- uid: chia.dotnet.WalletProxy.CreateWalletForCAT(System.String,System.Threading.CancellationToken)
+  name: CreateWalletForCAT(String, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateWalletForCAT_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.CreateWalletForCAT(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.CreateWalletForCAT(System.String, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.CreateWalletForCAT(String, CancellationToken)
+- uid: chia.dotnet.WalletProxy.CreateWalletForCAT*
+  name: CreateWalletForCAT
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateWalletForCAT_
+  commentId: Overload:chia.dotnet.WalletProxy.CreateWalletForCAT
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.CreateWalletForCAT
+  nameWithType: WalletProxy.CreateWalletForCAT
 - uid: chia.dotnet.WalletProxy.DeleteAllKeys(System.Threading.CancellationToken)
   name: DeleteAllKeys(CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_DeleteAllKeys_System_Threading_CancellationToken_
@@ -7593,32 +8682,6 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.GenerateMnemonic
   nameWithType: WalletProxy.GenerateMnemonic
-- uid: chia.dotnet.WalletProxy.GetAllTrades(System.Threading.CancellationToken)
-  name: GetAllTrades(CancellationToken)
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetAllTrades_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.WalletProxy.GetAllTrades(System.Threading.CancellationToken)
-  fullName: chia.dotnet.WalletProxy.GetAllTrades(System.Threading.CancellationToken)
-  nameWithType: WalletProxy.GetAllTrades(CancellationToken)
-- uid: chia.dotnet.WalletProxy.GetAllTrades*
-  name: GetAllTrades
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetAllTrades_
-  commentId: Overload:chia.dotnet.WalletProxy.GetAllTrades
-  isSpec: "True"
-  fullName: chia.dotnet.WalletProxy.GetAllTrades
-  nameWithType: WalletProxy.GetAllTrades
-- uid: chia.dotnet.WalletProxy.GetDiscrepenciesForOffer(System.String,System.Threading.CancellationToken)
-  name: GetDiscrepenciesForOffer(String, CancellationToken)
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetDiscrepenciesForOffer_System_String_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.WalletProxy.GetDiscrepenciesForOffer(System.String,System.Threading.CancellationToken)
-  fullName: chia.dotnet.WalletProxy.GetDiscrepenciesForOffer(System.String, System.Threading.CancellationToken)
-  nameWithType: WalletProxy.GetDiscrepenciesForOffer(String, CancellationToken)
-- uid: chia.dotnet.WalletProxy.GetDiscrepenciesForOffer*
-  name: GetDiscrepenciesForOffer
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetDiscrepenciesForOffer_
-  commentId: Overload:chia.dotnet.WalletProxy.GetDiscrepenciesForOffer
-  isSpec: "True"
-  fullName: chia.dotnet.WalletProxy.GetDiscrepenciesForOffer
-  nameWithType: WalletProxy.GetDiscrepenciesForOffer
 - uid: chia.dotnet.WalletProxy.GetFarmedAmount(System.Threading.CancellationToken)
   name: GetFarmedAmount(CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetFarmedAmount_System_Threading_CancellationToken_
@@ -7645,6 +8708,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.GetHeightInfo
   nameWithType: WalletProxy.GetHeightInfo
+- uid: chia.dotnet.WalletProxy.GetLoggedInFingerprint(System.Threading.CancellationToken)
+  name: GetLoggedInFingerprint(CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetLoggedInFingerprint_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.GetLoggedInFingerprint(System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.GetLoggedInFingerprint(System.Threading.CancellationToken)
+  nameWithType: WalletProxy.GetLoggedInFingerprint(CancellationToken)
+- uid: chia.dotnet.WalletProxy.GetLoggedInFingerprint*
+  name: GetLoggedInFingerprint
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetLoggedInFingerprint_
+  commentId: Overload:chia.dotnet.WalletProxy.GetLoggedInFingerprint
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.GetLoggedInFingerprint
+  nameWithType: WalletProxy.GetLoggedInFingerprint
 - uid: chia.dotnet.WalletProxy.GetNetworkInfo(System.Threading.CancellationToken)
   name: GetNetworkInfo(CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetNetworkInfo_System_Threading_CancellationToken_
@@ -7710,19 +8786,6 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.GetSyncStatus
   nameWithType: WalletProxy.GetSyncStatus
-- uid: chia.dotnet.WalletProxy.GetTrade(System.String,System.Threading.CancellationToken)
-  name: GetTrade(String, CancellationToken)
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetTrade_System_String_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.WalletProxy.GetTrade(System.String,System.Threading.CancellationToken)
-  fullName: chia.dotnet.WalletProxy.GetTrade(System.String, System.Threading.CancellationToken)
-  nameWithType: WalletProxy.GetTrade(String, CancellationToken)
-- uid: chia.dotnet.WalletProxy.GetTrade*
-  name: GetTrade
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetTrade_
-  commentId: Overload:chia.dotnet.WalletProxy.GetTrade
-  isSpec: "True"
-  fullName: chia.dotnet.WalletProxy.GetTrade
-  nameWithType: WalletProxy.GetTrade
 - uid: chia.dotnet.WalletProxy.GetTransaction(System.String,System.Threading.CancellationToken)
   name: GetTransaction(String, CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetTransaction_System_String_System_Threading_CancellationToken_
@@ -7749,18 +8812,18 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.GetWallets
   nameWithType: WalletProxy.GetWallets
-- uid: chia.dotnet.WalletProxy.LogIn(System.Boolean,System.Threading.CancellationToken)
-  name: LogIn(Boolean, CancellationToken)
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_LogIn_System_Boolean_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.WalletProxy.LogIn(System.Boolean,System.Threading.CancellationToken)
-  fullName: chia.dotnet.WalletProxy.LogIn(System.Boolean, System.Threading.CancellationToken)
-  nameWithType: WalletProxy.LogIn(Boolean, CancellationToken)
-- uid: chia.dotnet.WalletProxy.LogIn(System.UInt32,System.Boolean,System.Threading.CancellationToken)
-  name: LogIn(UInt32, Boolean, CancellationToken)
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_LogIn_System_UInt32_System_Boolean_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.WalletProxy.LogIn(System.UInt32,System.Boolean,System.Threading.CancellationToken)
-  fullName: chia.dotnet.WalletProxy.LogIn(System.UInt32, System.Boolean, System.Threading.CancellationToken)
-  nameWithType: WalletProxy.LogIn(UInt32, Boolean, CancellationToken)
+- uid: chia.dotnet.WalletProxy.LogIn(System.Threading.CancellationToken)
+  name: LogIn(CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_LogIn_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.LogIn(System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.LogIn(System.Threading.CancellationToken)
+  nameWithType: WalletProxy.LogIn(CancellationToken)
+- uid: chia.dotnet.WalletProxy.LogIn(System.UInt32,System.Threading.CancellationToken)
+  name: LogIn(UInt32, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_LogIn_System_UInt32_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.LogIn(System.UInt32,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.LogIn(System.UInt32, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.LogIn(UInt32, CancellationToken)
 - uid: chia.dotnet.WalletProxy.LogIn*
   name: LogIn
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_LogIn_
@@ -7768,19 +8831,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.LogIn
   nameWithType: WalletProxy.LogIn
-- uid: chia.dotnet.WalletProxy.LogInAndRestoreBackup(System.UInt32,System.String,System.Threading.CancellationToken)
-  name: LogInAndRestoreBackup(UInt32, String, CancellationToken)
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_LogInAndRestoreBackup_System_UInt32_System_String_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.WalletProxy.LogInAndRestoreBackup(System.UInt32,System.String,System.Threading.CancellationToken)
-  fullName: chia.dotnet.WalletProxy.LogInAndRestoreBackup(System.UInt32, System.String, System.Threading.CancellationToken)
-  nameWithType: WalletProxy.LogInAndRestoreBackup(UInt32, String, CancellationToken)
-- uid: chia.dotnet.WalletProxy.LogInAndRestoreBackup*
-  name: LogInAndRestoreBackup
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_LogInAndRestoreBackup_
-  commentId: Overload:chia.dotnet.WalletProxy.LogInAndRestoreBackup
+- uid: chia.dotnet.WalletProxy.PushTx(chia.dotnet.SpendBundle,System.Threading.CancellationToken)
+  name: PushTx(SpendBundle, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_PushTx_chia_dotnet_SpendBundle_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.PushTx(chia.dotnet.SpendBundle,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.PushTx(chia.dotnet.SpendBundle, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.PushTx(SpendBundle, CancellationToken)
+- uid: chia.dotnet.WalletProxy.PushTx*
+  name: PushTx
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_PushTx_
+  commentId: Overload:chia.dotnet.WalletProxy.PushTx
   isSpec: "True"
-  fullName: chia.dotnet.WalletProxy.LogInAndRestoreBackup
-  nameWithType: WalletProxy.LogInAndRestoreBackup
+  fullName: chia.dotnet.WalletProxy.PushTx
+  nameWithType: WalletProxy.PushTx
 - uid: chia.dotnet.WalletProxy.RecoverDIDWallet(System.String,System.Threading.CancellationToken)
   name: RecoverDIDWallet(String, CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_RecoverDIDWallet_System_String_System_Threading_CancellationToken_
@@ -7794,19 +8857,6 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.RecoverDIDWallet
   nameWithType: WalletProxy.RecoverDIDWallet
-- uid: chia.dotnet.WalletProxy.RespondToOffer(System.String,System.Threading.CancellationToken)
-  name: RespondToOffer(String, CancellationToken)
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_RespondToOffer_System_String_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.WalletProxy.RespondToOffer(System.String,System.Threading.CancellationToken)
-  fullName: chia.dotnet.WalletProxy.RespondToOffer(System.String, System.Threading.CancellationToken)
-  nameWithType: WalletProxy.RespondToOffer(String, CancellationToken)
-- uid: chia.dotnet.WalletProxy.RespondToOffer*
-  name: RespondToOffer
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_RespondToOffer_
-  commentId: Overload:chia.dotnet.WalletProxy.RespondToOffer
-  isSpec: "True"
-  fullName: chia.dotnet.WalletProxy.RespondToOffer
-  nameWithType: WalletProxy.RespondToOffer
 - uid: chia.dotnet.WalletType
   name: WalletType
   href: api/chia.dotnet.WalletType.html
@@ -7825,12 +8875,12 @@ references:
   commentId: F:chia.dotnet.WalletType.AUTHORIZED_PAYEE
   fullName: chia.dotnet.WalletType.AUTHORIZED_PAYEE
   nameWithType: WalletType.AUTHORIZED_PAYEE
-- uid: chia.dotnet.WalletType.COLOURED_COIN
-  name: COLOURED_COIN
-  href: api/chia.dotnet.WalletType.html#chia_dotnet_WalletType_COLOURED_COIN
-  commentId: F:chia.dotnet.WalletType.COLOURED_COIN
-  fullName: chia.dotnet.WalletType.COLOURED_COIN
-  nameWithType: WalletType.COLOURED_COIN
+- uid: chia.dotnet.WalletType.CAT
+  name: CAT
+  href: api/chia.dotnet.WalletType.html#chia_dotnet_WalletType_CAT
+  commentId: F:chia.dotnet.WalletType.CAT
+  fullName: chia.dotnet.WalletType.CAT
+  nameWithType: WalletType.CAT
 - uid: chia.dotnet.WalletType.CUSTODY
   name: CUSTODY
   href: api/chia.dotnet.WalletType.html#chia_dotnet_WalletType_CUSTODY

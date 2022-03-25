@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Namespace chia.dotnet
    ">
-    <meta name="generator" content="docfx 2.58.9.0">
+    <meta name="generator" content="docfx 2.59.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -77,13 +77,22 @@
   <div class="markdown level0 remarks"></div>
     <h3 id="classes">Classes
   </h3>
+      <h4><a class="xref" href="chia.dotnet.Announcement.html">Announcement</a></h4>
+      <section></section>
       <h4><a class="xref" href="chia.dotnet.BlockchainState.html">BlockchainState</a></h4>
       <section><p>The node's view of the blockchain.</p>
 </section>
+      <h4><a class="xref" href="chia.dotnet.BlockCountMetrics.html">BlockCountMetrics</a></h4>
+      <section></section>
       <h4><a class="xref" href="chia.dotnet.BlockRecord.html">BlockRecord</a></h4>
       <section><p>This class is not included or hashed into the blockchain, but it is kept in memory as a more
 efficient way to maintain data about the blockchain. This allows us to validate future blocks,
 difficulty adjustments, etc, without saving the whole header block in memory.</p>
+</section>
+      <h4><a class="xref" href="chia.dotnet.CATInfo.html">CATInfo</a></h4>
+      <section></section>
+      <h4><a class="xref" href="chia.dotnet.CATWallet.html">CATWallet</a></h4>
+      <section><p>Wraps a CAT wallet</p>
 </section>
       <h4><a class="xref" href="chia.dotnet.ChallengeChainSubSlot.html">ChallengeChainSubSlot</a></h4>
       <section></section>
@@ -95,6 +104,8 @@ element(or multiple).</p>
       <h4><a class="xref" href="chia.dotnet.Coin.html">Coin</a></h4>
       <section><p>This structure is used in the body for the reward and fees genesis coins.</p>
 </section>
+      <h4><a class="xref" href="chia.dotnet.CoinAnnouncement.html">CoinAnnouncement</a></h4>
+      <section></section>
       <h4><a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a></h4>
       <section><p>These are values that correspond to a CoinName that are used
 in keeping track of the unspent database.</p>
@@ -103,9 +114,6 @@ in keeping track of the unspent database.</p>
       <section><p>This is a rather disparate data structure that validates coin transfers. It's generally populated
 with data from different sources, since burned coins are identified by name, so it is built up
 more often that it is streamed.</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.ColouredCoinWallet.html">ColouredCoinWallet</a></h4>
-      <section><p>Wraps a Coloured Coin wallet</p>
 </section>
       <h4><a class="xref" href="chia.dotnet.Condition.html">Condition</a></h4>
       <section><p>This type doesn't exist in the chia code. This property is serialzied into the Json
@@ -123,6 +131,9 @@ Used to find the uri and ssl certs needed to connect</p>
 </section>
       <h4><a class="xref" href="chia.dotnet.ConnectionInfo.html">ConnectionInfo</a></h4>
       <section><p>Chia's representation of a connection from node to node</p>
+</section>
+      <h4><a class="xref" href="chia.dotnet.CrawlerProxy.html">CrawlerProxy</a></h4>
+      <section><p>Proxy that communicates with the harvester</p>
 </section>
       <h4><a class="xref" href="chia.dotnet.DaemonProxy.html">DaemonProxy</a></h4>
       <section><p><a class="xref" href="chia.dotnet.WebSocketRpcClient.html">WebSocketRpcClient</a> for the daemon interface.
@@ -179,6 +190,8 @@ Is the prev from the signage point, and can be replaced with a more recent block
 </section>
       <h4><a class="xref" href="chia.dotnet.InfusedChallengeChainSubSlot.html">InfusedChallengeChainSubSlot</a></h4>
       <section></section>
+      <h4><a class="xref" href="chia.dotnet.KeyringStatus.html">KeyringStatus</a></h4>
+      <section></section>
       <h4><a class="xref" href="chia.dotnet.MempoolItem.html">MempoolItem</a></h4>
       <section></section>
       <h4><a class="xref" href="chia.dotnet.Message.html">Message</a></h4>
@@ -187,6 +200,15 @@ Is the prev from the signage point, and can be replaced with a more recent block
       <h4><a class="xref" href="chia.dotnet.NPC.html">NPC</a></h4>
       <section></section>
       <h4><a class="xref" href="chia.dotnet.NPCResult.html">NPCResult</a></h4>
+      <section></section>
+      <h4><a class="xref" href="chia.dotnet.OfferRecord.html">OfferRecord</a></h4>
+      <section><p>The in memory representation of an offer and its record of trade</p>
+</section>
+      <h4><a class="xref" href="chia.dotnet.OfferSummary.html">OfferSummary</a></h4>
+      <section></section>
+      <h4><a class="xref" href="chia.dotnet.PassphraseRequirements.html">PassphraseRequirements</a></h4>
+      <section></section>
+      <h4><a class="xref" href="chia.dotnet.PeerCounts.html">PeerCounts</a></h4>
       <section></section>
       <h4><a class="xref" href="chia.dotnet.PlotInfo.html">PlotInfo</a></h4>
       <section><p>Info about a plot file</p>
@@ -227,13 +249,19 @@ Not to be confused with <a class="xref" href="chia.dotnet.PoolState.html">PoolSt
       <section><p>Internal Pool Wallet state, not destined for the blockchain. This can be completely derived with
 the Singleton's CoinSpends list, or with the information from the WalletPoolStore.</p>
 </section>
+      <h4><a class="xref" href="chia.dotnet.PrivateKey.html">PrivateKey</a></h4>
+      <section></section>
+      <h4><a class="xref" href="chia.dotnet.PrivateKeyDetail.html">PrivateKeyDetail</a></h4>
+      <section></section>
       <h4><a class="xref" href="chia.dotnet.ProofOfSpace.html">ProofOfSpace</a></h4>
+      <section></section>
+      <h4><a class="xref" href="chia.dotnet.PuzzleAnnouncement.html">PuzzleAnnouncement</a></h4>
       <section></section>
       <h4><a class="xref" href="chia.dotnet.QueuedPlotInfo.html">QueuedPlotInfo</a></h4>
       <section><p>An entry on the plotter queue</p>
 </section>
       <h4><a class="xref" href="chia.dotnet.RateLimitedWallet.html">RateLimitedWallet</a></h4>
-      <section><p>Wraps a Coloured Coin wallet</p>
+      <section><p>Wraps a CAT wallet</p>
 </section>
       <h4><a class="xref" href="chia.dotnet.ResponseException.html">ResponseException</a></h4>
       <section><p>Exception thrown when the RPC endpoint returns a response <a class="xref" href="chia.dotnet.Message.html">Message</a> but Data.success is false
@@ -266,6 +294,9 @@ between transactions are more flexible than in bitcoin).</p>
       <section></section>
       <h4><a class="xref" href="chia.dotnet.SyncState.html">SyncState</a></h4>
       <section></section>
+      <h4><a class="xref" href="chia.dotnet.TradeManager.html">TradeManager</a></h4>
+      <section><p>API wrapper for those wallet RPC methods dealing with trades and offers</p>
+</section>
       <h4><a class="xref" href="chia.dotnet.TradeRecord.html">TradeRecord</a></h4>
       <section><p>Used for storing transaction data and status in wallets.</p>
 </section>
@@ -285,6 +316,8 @@ between transactions are more flexible than in bitcoin).</p>
       <h4><a class="xref" href="chia.dotnet.Wallet.html">Wallet</a></h4>
       <section><p>Base class representing a specific wallet (i.e. anything with a WalletID)</p>
 </section>
+      <h4><a class="xref" href="chia.dotnet.WalletBalance.html">WalletBalance</a></h4>
+      <section></section>
       <h4><a class="xref" href="chia.dotnet.WalletInfo.html">WalletInfo</a></h4>
       <section><p>This object represents the wallet data as it is stored in DB.
 ID: Main wallet (Standard) is stored at index 1, every wallet created after done has auto incremented id.
@@ -314,7 +347,7 @@ Only the daemon endpoint supports websockets, but it can proxy communication to 
 </section>
     <h3 id="enums">Enums
   </h3>
-      <h4><a class="xref" href="chia.dotnet.KValues.html">KValues</a></h4>
+      <h4><a class="xref" href="chia.dotnet.KSize.html">KSize</a></h4>
       <section><p>Valid plot sizes
 <a href="https://github.com/Chia-Network/chia-blockchain/wiki/k-sizes">https://github.com/Chia-Network/chia-blockchain/wiki/k-sizes</a></p>
 </section>

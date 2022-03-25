@@ -8,7 +8,7 @@
     <title>chia-dotnet </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="chia-dotnet ">
-    <meta name="generator" content="docfx 2.58.9.0">
+    <meta name="generator" content="docfx 2.59.0.0">
     
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="styles/docfx.vendor.css">
@@ -76,6 +76,14 @@ await daemon.RegisterService();
 var fullNode = new FullNodeProxy(rpcClient, &quot;unit_tests&quot;);
 var state = await fullNode.GetBlockchainState(e);
 </code></pre>
+<h2 id="13-breaking-changes">1.3 breaking changes</h2>
+<ul>
+<li>Changed <code>KValues</code> to <code>KSize</code> to match python naming</li>
+<li>Changed signature of wallet LogIn to match 1.3 changes</li>
+<li>Removed restore back LogIn overload to match 1.3 changes</li>
+<li>Introduced PrivateKeyDetails type instead of named tuple for GetPrivateKey</li>
+<li>Replace &quot;Colour&quot; with &quot;CAT&quot; in multiple places</li>
+</ul>
 </article>
           </div>
           
