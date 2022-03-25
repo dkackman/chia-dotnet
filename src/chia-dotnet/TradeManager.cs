@@ -232,7 +232,7 @@ namespace chia.dotnet
         /// <param name="validateOnly">Only validate the offer contents. Do not create.</param>   
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task<OfferRecord> CreateOffer(IDictionary<uint, long> walletIdsAndMojoAmounts, ulong fee, bool validateOnly = false, CancellationToken cancellationToken = default)
+        public async Task<OfferRecord> CreateOffer(IDictionary<uint, long> walletIdsAndMojoAmounts, ulong fee = 0, bool validateOnly = false, CancellationToken cancellationToken = default)
         {
             if (walletIdsAndMojoAmounts is null)
             {
