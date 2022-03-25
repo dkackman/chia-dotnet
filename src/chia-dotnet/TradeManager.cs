@@ -49,7 +49,14 @@ namespace chia.dotnet
         public async Task<IEnumerable<OfferRecord>> GetOffers(bool excludeMyOffers = false, bool excludeTakenOffers = false, bool includeCompleted = false, string? sortKey = null, bool reverse = false, bool fileContents = false, CancellationToken cancellationToken = default)
         {
             var (Total, _, _) = await GetOffersCount(cancellationToken).ConfigureAwait(false);
-            return await GetOffers(0, Total, excludeMyOffers, excludeTakenOffers, includeCompleted, sortKey, reverse, fileContents, cancellationToken).ConfigureAwait(false);
+            return await GetOffers(0, Total,
+                excludeMyOffers: excludeMyOffers,
+                excludeTakenOffers: excludeTakenOffers,
+                includeCompleted: includeCompleted,
+                sortKey: sortKey,
+                reverse: reverse,
+                fileContents: fileContents,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
