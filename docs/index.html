@@ -65,7 +65,7 @@
 <p>Cross-platform .Net5 <a href="https://github.com/dkackman/chia-dotnet">rpc client library</a> for <a href="https://chia.net">chia</a>.</p>
 <p><em>Browse the <a href="https://dkackman.github.io/chia-dotnet/api/chia.dotnet.html">api documentation</a> and
 <a href="https://github.com/dkackman/chia-dotnet/tree/main/src/chia-dotnet.tests">integration test code</a> for more info and examples.</em></p>
-<h2 id="quick-start-notes">Quick Start Notes</h2>
+<h2 id="quick-start-example">Quick Start Example</h2>
 <pre><code class="lang-csharp">var endpoint = Config.Open().GetEndpoint(&quot;daemon&quot;);
 using var rpcClient = new WebSocketRpcClient(endpoint);
 await rpcClient.Connect();
@@ -76,11 +76,13 @@ await daemon.RegisterService();
 var fullNode = new FullNodeProxy(rpcClient, &quot;unit_tests&quot;);
 var state = await fullNode.GetBlockchainState(e);
 </code></pre>
+<h3 id="main-types-and-relationships">Main Types and Relationships</h3>
+<p><img src="images/uml.svg" alt="Class diagram" title="Class diagram"></p>
 <h2 id="13-breaking-changes">1.3 breaking changes</h2>
 <ul>
 <li>Changed <code>KValues</code> to <code>KSize</code> to match python naming</li>
 <li>Changed signature of wallet LogIn to match 1.3 changes</li>
-<li>Removed restore back LogIn overload to match 1.3 changes</li>
+<li>Removed restore &amp; backup LogIn overload to match 1.3 changes</li>
 <li>Introduced PrivateKeyDetails type instead of named tuple for GetPrivateKey</li>
 <li>Replace &quot;Colour&quot; with &quot;CAT&quot; in multiple places</li>
 </ul>

@@ -5,7 +5,7 @@ Cross-platform .Net5 [rpc client library](https://github.com/dkackman/chia-dotne
 _Browse the [api documentation](https://dkackman.github.io/chia-dotnet/api/chia.dotnet.html) and 
 [integration test code](https://github.com/dkackman/chia-dotnet/tree/main/src/chia-dotnet.tests) for more info and examples._
 
-## Quick Start Notes
+## Quick Start Example
 
 ```csharp
 var endpoint = Config.Open().GetEndpoint("daemon");
@@ -19,10 +19,14 @@ var fullNode = new FullNodeProxy(rpcClient, "unit_tests");
 var state = await fullNode.GetBlockchainState(e);
 ```
 
+### Main Types and Relationships
+
+![Class diagram](images/uml.svg "Class diagram")
+
 ## 1.3 breaking changes
 
 - Changed `KValues` to `KSize` to match python naming
 - Changed signature of wallet LogIn to match 1.3 changes
-- Removed restore back LogIn overload to match 1.3 changes
+- Removed restore & backup LogIn overload to match 1.3 changes
 - Introduced PrivateKeyDetails type instead of named tuple for GetPrivateKey
 - Replace "Colour" with "CAT" in multiple places

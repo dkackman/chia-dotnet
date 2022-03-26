@@ -1240,12 +1240,23 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "images/uml.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/uml.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "nGTFzbkxk1bWMeJeiiZzTCs6rHLsey2Xjcw7Z3j051A="
+          "hash": "mnHAy3xzb0OO3+EQj1HOsWVOX0bYXnOtFYoZv7HDQnc="
         }
       },
       "is_incremental": false,
@@ -1285,6 +1296,13 @@
           "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 99,
+          "skipped_file_count": 0
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
