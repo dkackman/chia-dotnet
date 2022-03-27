@@ -119,7 +119,7 @@ namespace chia.dotnet
         public async Task<(uint? WalletId, string Name)> AssetIdToName(string assetId, CancellationToken cancellationToken = default)
         {
             // quick return for XCH, copied from print_offer_summary in wallet_funcs.py line 311
-            if (assetId is "xch" or "txch")
+            if (assetId.ToLowerInvariant() is "xch" or "txch")
             {
                 return (1, assetId);
             }
