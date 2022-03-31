@@ -41,7 +41,7 @@ var daemon = new DaemonProxy(rpcClient, "unit_tests");
 await daemon.RegisterService();
 
 var fullNode = new FullNodeProxy(rpcClient, "unit_tests");
-var state = await fullNode.GetBlockchainState(e);
+var state = await fullNode.GetBlockchainState();
 Console.Log($"This node is synced: {state.Sync.Synced}")
 ```
 
