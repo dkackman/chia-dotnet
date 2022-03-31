@@ -74,7 +74,7 @@ var daemon = new DaemonProxy(rpcClient, &quot;unit_tests&quot;);
 await daemon.RegisterService();
 
 var fullNode = new FullNodeProxy(rpcClient, &quot;unit_tests&quot;);
-var state = await fullNode.GetBlockchainState(e);
+var state = await fullNode.GetBlockchainState();
 </code></pre>
 <h3 id="main-types-and-relationships">Main Types and Relationships</h3>
 <p><img src="images/uml.svg" alt="Class diagram" title="Class diagram"></p>
