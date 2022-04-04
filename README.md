@@ -15,7 +15,7 @@ https://dkackman.github.io/chia-dotnet/
 ### Features
 
 - Coverage of all of chia's rpc endpoints
-  - Daemon, Full Node, Farmer, Harvester Wallet, Plotter
+  - Daemon, Full Node, Farmer, Harvester, Wallet, Plotter, Crawler
 - Coverage of all of the methods at each endpoint
   - as of 1.3.1 (if you find something missing please create an issue)
 - Static types for chia input and outputs
