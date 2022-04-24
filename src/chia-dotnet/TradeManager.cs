@@ -10,7 +10,7 @@ namespace chia.dotnet
     /// <summary>
     /// API wrapper for those wallet RPC methods dealing with trades and offers
     /// </summary>
-    public class TradeManager
+    public sealed class TradeManager
     {
         public WalletProxy WalletProxy { get; init; }
 
