@@ -292,6 +292,38 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Retrieves a coin record by hint
+        /// </summary>
+        /// <param name="hint">The hint</param>
+        /// <param name="includeSpentCoins">whether to include spent coins too, instead of just unspent</param>
+        /// <param name="startHeight">confirmation start height for search</param>
+        /// <param name="endHeight">confirmation end height for search</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of <see cref="CoinRecord"/>s</returns>
+        public async Task<IEnumerable<CoinRecord>> GetCoinRecordByHint(string hint, bool includeSpentCoins, uint? startHeight = null, uint? endHeight = null, CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrEmpty(hint))
+            {
+                throw new ArgumentNullException(nameof(hint));
+            }
+
+            dynamic data = new ExpandoObject();
+            data.include_spent_coins = includeSpentCoins;
+
+            if (startHeight.HasValue)
+            {
+                data.start_height = startHeight.Value;
+            }
+
+            if (endHeight.HasValue)
+            {
+                data.end_height = endHeight.Value;
+            }
+
+            return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_hint", data, "coin_records", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Retrieves the additions and removals (state transitions) for a certain block. 
         /// Returns coin records for each addition and removal.
         /// </summary>

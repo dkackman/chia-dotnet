@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.CATWallet.html",
-          "hash": "2teil0iKgEiRfI2kNkQZ8JH6A8HhHb1NL4XsiILVQyA="
+          "hash": "NR/5Ov5vSfpu+rkyfRqfvtwMBaDS+KGB15mV723CzmE="
         }
       },
       "is_incremental": false,
@@ -213,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.DIDWallet.html",
-          "hash": "q/RwX3pLwHGeCaQqxNT8k3XoNgT1yc//jpzz7UTkqK8="
+          "hash": "Q3Y6dku+xfRFVVkUvjtxCoUu+dO8V8xIKthqOBlUHkI="
         }
       },
       "is_incremental": false,
@@ -357,7 +357,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.FullNodeProxy.html",
-          "hash": "vUckinLstLQ0tvX9KVpg5xUykZYQTWpxA6RYfslWkJk="
+          "hash": "ilQP3IY3iUI3CRaWIjoyVU4feB/i/XvwHreXPJFIBWA="
         }
       },
       "is_incremental": false,
@@ -717,7 +717,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.PoolWallet.html",
-          "hash": "xZl6dWB49S8mAJ9LCWh9SIPLO8cJQBoISfu+RAFCDug="
+          "hash": "PHTR0Ngc9pvmRPLYu7Qw5r1x8ln+PwE5bAXeXlYj3Lw="
         }
       },
       "is_incremental": false,
@@ -813,7 +813,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.RateLimitedWallet.html",
-          "hash": "qAjS98pC9s8fougU3l5ewQHll+xdYV7B1cBMY2P4IWY="
+          "hash": "blMPaueohJ+68rq6my8MTl4DaADILHGEo+V0RiVlREM="
         }
       },
       "is_incremental": false,
@@ -965,6 +965,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.Token.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.Token.html",
+          "hash": "m4KKogwOcCl/+Od2SVae/KApgvGvmhcvebftWJ56ALE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/chia.dotnet.TradeManager.yml",
       "output": {
         ".html": {
@@ -1077,7 +1089,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.Wallet.html",
-          "hash": "Ww8aLBB3bXD3wKU8BN8Y7OgrjcNBz/Ef9I911QMW8LI="
+          "hash": "odCx8dLctRMLutNrnaWYXd0LbbAPWQi4DMXw/f+ITls="
         }
       },
       "is_incremental": false,
@@ -1113,7 +1125,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.WalletProxy.html",
-          "hash": "p/XU9OIrBQ9rVX8NduSJJAJThNpRuKCF1sRbR+NxLw8="
+          "hash": "rPPOrYovBe+/WRXNVjZu4pLlB4T0X1aVz3/ICPXNfgs="
         }
       },
       "is_incremental": false,
@@ -1185,7 +1197,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.html",
-          "hash": "oapcORuFeeY0xoIElqelECVN4I8bdNc56yy251vfhAg="
+          "hash": "aYnADLHCu9jNGYngTCQL4aPw5OmEfv928G+IYgIYqrI="
         }
       },
       "is_incremental": false,
@@ -1209,7 +1221,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "xPCBzbRGDhaYrEV0jB8RBdDrliTopkeo0UWuyCa47nU="
+          "hash": "Jtb3z1KsGfkjiG2vJ9SwMeopcgyb6j24EAJ/GrIg6w8="
         }
       },
       "is_incremental": false,
@@ -1224,7 +1236,7 @@
           "hash": "+VFlBb7uWXLf23jy2gABPTw28uqc95oxMnKgQxqXLss="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1259,7 +1271,7 @@
           "hash": "2d3B8YNRF/mSN02rMFrvOTXfo/He9hYHqXHwC87CA1I="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1278,25 +1290,23 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Disable incremental build by force rebuild option.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "ForceRebuild"
+        "skipped_file_count": 0
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 3,
-          "skipped_file_count": 0
+          "skipped_file_count": 3
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 99,
-          "skipped_file_count": 0
+          "total_file_count": 100,
+          "skipped_file_count": 91
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
@@ -1316,8 +1326,8 @@
     },
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0
