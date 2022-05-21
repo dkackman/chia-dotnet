@@ -23,6 +23,7 @@ namespace chia.dotnet
         [JsonProperty("points_found_24h")]
         public ICollection<PoolPoint> PointsFound24h { get; init; } = new List<PoolPoint>();
         public ulong PointsFoundSinceStart { get; init; }
+        public int PlotCount { get; init; }
         public PoolWalletConfig PoolConfig { get; init; } = new();
         public ICollection<ErrorResponse> PoolErrors24h { get; init; } = new List<ErrorResponse>();
         [JsonIgnore]

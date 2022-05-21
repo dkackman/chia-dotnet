@@ -29,8 +29,21 @@ namespace chia.dotnet
         /// <returns>the farm and pool reward targets</returns>
         public async Task<(string FarmerTarget, string PoolTarget)> GetRewardTargets(CancellationToken cancellationToken = default)
         {
+            return await GetRewardTargets(cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get the farm and pool reward targets 
+        /// </summary>
+        /// <param name="searchForPrivateKey">Flag indicating whether to search for private keys</param>
+        /// <param name="maxPhToSearch">The max number of puzzle hashes to search</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>the farm and pool reward targets</returns>
+        public async Task<(string FarmerTarget, string PoolTarget)> GetRewardTargets(bool searchForPrivateKey = false, int maxPhToSearch = 500, CancellationToken cancellationToken = default)
+        {
             dynamic data = new ExpandoObject();
-            data.search_for_private_key = false;
+            data.search_for_private_key = searchForPrivateKey;
+            data.max_ph_to_search = maxPhToSearch;
 
             var response = await SendMessage("get_reward_targets", data, cancellationToken).ConfigureAwait(false);
 
