@@ -35,14 +35,13 @@ namespace chia.dotnet
         /// <summary>
         /// Get the farm and pool reward targets 
         /// </summary>
-        /// <param name="searchForPrivateKey">Flag indicating whether to search for private keys</param>
         /// <param name="maxPhToSearch">The max number of puzzle hashes to search</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>the farm and pool reward targets</returns>
-        public async Task<(string FarmerTarget, string PoolTarget)> GetRewardTargets(bool searchForPrivateKey = false, int maxPhToSearch = 500, CancellationToken cancellationToken = default)
+        public async Task<(string FarmerTarget, string PoolTarget)> GetRewardTargets(int maxPhToSearch = 500, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
-            data.search_for_private_key = searchForPrivateKey;
+            data.search_for_private_key = false;
             data.max_ph_to_search = maxPhToSearch;
 
             var response = await SendMessage("get_reward_targets", data, cancellationToken).ConfigureAwait(false);
@@ -54,11 +53,23 @@ namespace chia.dotnet
         /// Get the farm and pool reward targets, including private keys in the search
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>the farm and pool reward targets</returns>
-        public async Task<(string FarmerTarget, string PoolTarget, bool HaveFarmerSk, bool HavePoolSk)> GetRewardTargetsincludingPrivateKey(CancellationToken cancellationToken = default)
+        /// <returns>The farm and pool reward targets</returns>
+        public async Task<(string FarmerTarget, string PoolTarget, bool HaveFarmerSk, bool HavePoolSk)> GetRewardTargetsIncludingPrivateKey(CancellationToken cancellationToken = default)
+        {
+            return await GetRewardTargetsIncludingPrivateKey(cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get the farm and pool reward targets, including private keys in the search
+        /// </summary>
+        /// <param name="maxPhToSearch">The max number of puzzle hashes to search</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The farm and pool reward targets plus indicator if privakte keys are present</returns>
+        public async Task<(string FarmerTarget, string PoolTarget, bool HaveFarmerSk, bool HavePoolSk)> GetRewardTargetsIncludingPrivateKey(int maxPhToSearch = 500, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.search_for_private_key = true;
+            data.max_ph_to_search = maxPhToSearch;
 
             var response = await SendMessage("get_reward_targets", data, cancellationToken).ConfigureAwait(false);
 
