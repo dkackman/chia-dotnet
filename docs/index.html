@@ -77,15 +77,8 @@ var fullNode = new FullNodeProxy(rpcClient, &quot;unit_tests&quot;);
 var state = await fullNode.GetBlockchainState();
 </code></pre>
 <h3 id="main-types-and-relationships">Main Types and Relationships</h3>
+<p>The Wallet service API is segmented into classes for specific wallet types and a trade maanger for trades and offers.</p>
 <p><img src="images/uml.svg" alt="Class diagram" title="Class diagram"></p>
-<h2 id="13-breaking-changes">1.3 breaking changes</h2>
-<ul>
-<li>Changed <code>KValues</code> to <code>KSize</code> to match python naming</li>
-<li>Changed signature of wallet LogIn to match 1.3 changes</li>
-<li>Removed restore &amp; backup LogIn overload to match 1.3 changes</li>
-<li>Introduced PrivateKeyDetails type instead of named tuple for GetPrivateKey</li>
-<li>Replace &quot;Colour&quot; with &quot;CAT&quot; in multiple places</li>
-</ul>
 </article>
           </div>
           
