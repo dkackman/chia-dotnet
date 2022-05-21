@@ -94,13 +94,16 @@
       <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_RpcClient">ServiceProxy.RpcClient</a>
     </div>
     <div>
-      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_Ping_System_Threading_CancellationToken_">ServiceProxy.Ping(CancellationToken)</a>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_HealthZ_System_Threading_CancellationToken_">ServiceProxy.HealthZ(CancellationToken)</a>
     </div>
     <div>
       <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_StopNode_System_Threading_CancellationToken_">ServiceProxy.StopNode(CancellationToken)</a>
     </div>
     <div>
       <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_GetConnections_System_Threading_CancellationToken_">ServiceProxy.GetConnections(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_GetRoutes_System_Threading_CancellationToken_">ServiceProxy.GetRoutes(CancellationToken)</a>
     </div>
     <div>
       <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_OpenConnection_System_String_System_Int32_System_Threading_CancellationToken_">ServiceProxy.OpenConnection(String, Int32, CancellationToken)</a>
@@ -787,19 +790,75 @@ Returns coin records for each addition and removal.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetCoinRecordByHint_System_String_System_Boolean_System_Nullable_System_UInt32__System_Nullable_System_UInt32__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetCoinRecordByHint(System.String%2CSystem.Boolean%2CSystem.Nullable%7BSystem.UInt32%7D%2CSystem.Nullable%7BSystem.UInt32%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetCoinRecordByName_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetCoinRecordByName(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L281">View Source</a>
+  </span>
+  <a id="chia_dotnet_FullNodeProxy_GetCoinRecordByName_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordByName*"></a>
+  <h4 id="chia_dotnet_FullNodeProxy_GetCoinRecordByName_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordByName(System.String,System.Threading.CancellationToken)">GetCoinRecordByName(String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a coin record by its name/id.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;CoinRecord&gt; GetCoinRecordByName(string name, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The coin name</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token to allow the call to be cancelled</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a>&gt;</td>
+        <td><p>A <a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetCoinRecordsByHint_System_String_System_Boolean_System_Nullable_System_UInt32__System_Nullable_System_UInt32__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetCoinRecordsByHint(System.String%2CSystem.Boolean%2CSystem.Nullable%7BSystem.UInt32%7D%2CSystem.Nullable%7BSystem.UInt32%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L303">View Source</a>
   </span>
-  <a id="chia_dotnet_FullNodeProxy_GetCoinRecordByHint_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordByHint*"></a>
-  <h4 id="chia_dotnet_FullNodeProxy_GetCoinRecordByHint_System_String_System_Boolean_System_Nullable_System_UInt32__System_Nullable_System_UInt32__System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordByHint(System.String,System.Boolean,System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Threading.CancellationToken)">GetCoinRecordByHint(String, Boolean, Nullable&lt;UInt32&gt;, Nullable&lt;UInt32&gt;, CancellationToken)</h4>
+  <a id="chia_dotnet_FullNodeProxy_GetCoinRecordsByHint_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordsByHint*"></a>
+  <h4 id="chia_dotnet_FullNodeProxy_GetCoinRecordsByHint_System_String_System_Boolean_System_Nullable_System_UInt32__System_Nullable_System_UInt32__System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordsByHint(System.String,System.Boolean,System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Threading.CancellationToken)">GetCoinRecordsByHint(String, Boolean, Nullable&lt;UInt32&gt;, Nullable&lt;UInt32&gt;, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves a coin record by hint</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;CoinRecord&gt;&gt; GetCoinRecordByHint(string hint, bool includeSpentCoins, uint? startHeight = null, uint? endHeight = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;CoinRecord&gt;&gt; GetCoinRecordsByHint(string hint, bool includeSpentCoins, uint? startHeight = null, uint? endHeight = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -855,62 +914,6 @@ Returns coin records for each addition and removal.</p>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a>&gt;&gt;</td>
         <td><p>A list of <a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a>s</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy_GetCoinRecordByName_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy.GetCoinRecordByName(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L281">View Source</a>
-  </span>
-  <a id="chia_dotnet_FullNodeProxy_GetCoinRecordByName_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordByName*"></a>
-  <h4 id="chia_dotnet_FullNodeProxy_GetCoinRecordByName_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordByName(System.String,System.Threading.CancellationToken)">GetCoinRecordByName(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieves a coin record by its name/id.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;CoinRecord&gt; GetCoinRecordByName(string name, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">name</span></td>
-        <td><p>The coin name</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A token to allow the call to be cancelled</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a>&gt;</td>
-        <td><p>A <a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a></p>
 </td>
       </tr>
     </tbody>

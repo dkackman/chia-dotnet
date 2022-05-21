@@ -94,13 +94,16 @@
       <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_RpcClient">ServiceProxy.RpcClient</a>
     </div>
     <div>
-      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_Ping_System_Threading_CancellationToken_">ServiceProxy.Ping(CancellationToken)</a>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_HealthZ_System_Threading_CancellationToken_">ServiceProxy.HealthZ(CancellationToken)</a>
     </div>
     <div>
       <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_StopNode_System_Threading_CancellationToken_">ServiceProxy.StopNode(CancellationToken)</a>
     </div>
     <div>
       <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_GetConnections_System_Threading_CancellationToken_">ServiceProxy.GetConnections(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_GetRoutes_System_Threading_CancellationToken_">ServiceProxy.GetRoutes(CancellationToken)</a>
     </div>
     <div>
       <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_OpenConnection_System_String_System_Int32_System_Threading_CancellationToken_">ServiceProxy.OpenConnection(String, Int32, CancellationToken)</a>
@@ -182,10 +185,234 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FarmerProxy_GetHarvesterPlotsDuplicates_chia_dotnet_PlotPathRequestData_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FarmerProxy.GetHarvesterPlotsDuplicates(chia.dotnet.PlotPathRequestData%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L221">View Source</a>
+  </span>
+  <a id="chia_dotnet_FarmerProxy_GetHarvesterPlotsDuplicates_" data-uid="chia.dotnet.FarmerProxy.GetHarvesterPlotsDuplicates*"></a>
+  <h4 id="chia_dotnet_FarmerProxy_GetHarvesterPlotsDuplicates_chia_dotnet_PlotPathRequestData_System_Threading_CancellationToken_" data-uid="chia.dotnet.FarmerProxy.GetHarvesterPlotsDuplicates(chia.dotnet.PlotPathRequestData,System.Threading.CancellationToken)">GetHarvesterPlotsDuplicates(PlotPathRequestData, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Get a paginated list of duplicate plots</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;PaginatedPlotRequest&gt; GetHarvesterPlotsDuplicates(PlotPathRequestData requestData, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="chia.dotnet.PlotPathRequestData.html">PlotPathRequestData</a></td>
+        <td><span class="parametername">requestData</span></td>
+        <td><p>Info about the request</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token to allow the call to be cancelled</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.PaginatedPlotRequest.html">PaginatedPlotRequest</a>&gt;</td>
+        <td><p>A page of duplicate plots</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FarmerProxy_GetHarvesterPlotsInvalid_chia_dotnet_PlotPathRequestData_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FarmerProxy.GetHarvesterPlotsInvalid(chia.dotnet.PlotPathRequestData%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L199">View Source</a>
+  </span>
+  <a id="chia_dotnet_FarmerProxy_GetHarvesterPlotsInvalid_" data-uid="chia.dotnet.FarmerProxy.GetHarvesterPlotsInvalid*"></a>
+  <h4 id="chia_dotnet_FarmerProxy_GetHarvesterPlotsInvalid_chia_dotnet_PlotPathRequestData_System_Threading_CancellationToken_" data-uid="chia.dotnet.FarmerProxy.GetHarvesterPlotsInvalid(chia.dotnet.PlotPathRequestData,System.Threading.CancellationToken)">GetHarvesterPlotsInvalid(PlotPathRequestData, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Get a paginated list of invalid plots</p>
+<param name="requestData">Info about the request
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;PaginatedPlotRequest&gt; GetHarvesterPlotsInvalid(PlotPathRequestData requestData, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="chia.dotnet.PlotPathRequestData.html">PlotPathRequestData</a></td>
+        <td><span class="parametername">requestData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token to allow the call to be cancelled</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.PaginatedPlotRequest.html">PaginatedPlotRequest</a>&gt;</td>
+        <td><p>A page of invalid plots</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FarmerProxy_GetHarvesterPlotsKeysMissing_chia_dotnet_PlotPathRequestData_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FarmerProxy.GetHarvesterPlotsKeysMissing(chia.dotnet.PlotPathRequestData%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L210">View Source</a>
+  </span>
+  <a id="chia_dotnet_FarmerProxy_GetHarvesterPlotsKeysMissing_" data-uid="chia.dotnet.FarmerProxy.GetHarvesterPlotsKeysMissing*"></a>
+  <h4 id="chia_dotnet_FarmerProxy_GetHarvesterPlotsKeysMissing_chia_dotnet_PlotPathRequestData_System_Threading_CancellationToken_" data-uid="chia.dotnet.FarmerProxy.GetHarvesterPlotsKeysMissing(chia.dotnet.PlotPathRequestData,System.Threading.CancellationToken)">GetHarvesterPlotsKeysMissing(PlotPathRequestData, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Get a paginated list of plots with missing keys</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;PaginatedPlotRequest&gt; GetHarvesterPlotsKeysMissing(PlotPathRequestData requestData, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="chia.dotnet.PlotPathRequestData.html">PlotPathRequestData</a></td>
+        <td><span class="parametername">requestData</span></td>
+        <td><p>Info about the request</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token to allow the call to be cancelled</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.PaginatedPlotRequest.html">PaginatedPlotRequest</a>&gt;</td>
+        <td><p>A page of plots with missing keys</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FarmerProxy_GetHarvesterPlotsValid_chia_dotnet_PlotInfoRequestData_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FarmerProxy.GetHarvesterPlotsValid(chia.dotnet.PlotInfoRequestData%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L188">View Source</a>
+  </span>
+  <a id="chia_dotnet_FarmerProxy_GetHarvesterPlotsValid_" data-uid="chia.dotnet.FarmerProxy.GetHarvesterPlotsValid*"></a>
+  <h4 id="chia_dotnet_FarmerProxy_GetHarvesterPlotsValid_chia_dotnet_PlotInfoRequestData_System_Threading_CancellationToken_" data-uid="chia.dotnet.FarmerProxy.GetHarvesterPlotsValid(chia.dotnet.PlotInfoRequestData,System.Threading.CancellationToken)">GetHarvesterPlotsValid(PlotInfoRequestData, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Get a paginated list of valid plots</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;PaginatedPlotRequest&gt; GetHarvesterPlotsValid(PlotInfoRequestData requestData, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="chia.dotnet.PlotInfoRequestData.html">PlotInfoRequestData</a></td>
+        <td><span class="parametername">requestData</span></td>
+        <td><p>Info about the request</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token to allow the call to be cancelled</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.PaginatedPlotRequest.html">PaginatedPlotRequest</a>&gt;</td>
+        <td><p>A page of valid plots</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FarmerProxy_GetHarvesters_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FarmerProxy.GetHarvesters(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L143">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L167">View Source</a>
   </span>
   <a id="chia_dotnet_FarmerProxy_GetHarvesters_" data-uid="chia.dotnet.FarmerProxy.GetHarvesters*"></a>
   <h4 id="chia_dotnet_FarmerProxy_GetHarvesters_System_Threading_CancellationToken_" data-uid="chia.dotnet.FarmerProxy.GetHarvesters(System.Threading.CancellationToken)">GetHarvesters(CancellationToken)</h4>
@@ -232,10 +459,60 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FarmerProxy_GetHarvestersSummary_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FarmerProxy.GetHarvestersSummary(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L177">View Source</a>
+  </span>
+  <a id="chia_dotnet_FarmerProxy_GetHarvestersSummary_" data-uid="chia.dotnet.FarmerProxy.GetHarvestersSummary*"></a>
+  <h4 id="chia_dotnet_FarmerProxy_GetHarvestersSummary_System_Threading_CancellationToken_" data-uid="chia.dotnet.FarmerProxy.GetHarvestersSummary(System.Threading.CancellationToken)">GetHarvestersSummary(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Get a summary of harvesters</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;HarvesterSummary&gt;&gt; GetHarvestersSummary(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token to allow the call to be cancelled</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.HarvesterSummary.html">HarvesterSummary</a>&gt;&gt;</td>
+        <td><p>A list of harvesters</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FarmerProxy_GetPoolLoginLink_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FarmerProxy.GetPoolLoginLink(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L154">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L232">View Source</a>
   </span>
   <a id="chia_dotnet_FarmerProxy_GetPoolLoginLink_" data-uid="chia.dotnet.FarmerProxy.GetPoolLoginLink*"></a>
   <h4 id="chia_dotnet_FarmerProxy_GetPoolLoginLink_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FarmerProxy.GetPoolLoginLink(System.String,System.Threading.CancellationToken)">GetPoolLoginLink(String, CancellationToken)</h4>
@@ -291,7 +568,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FarmerProxy_GetPoolState_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FarmerProxy.GetPoolState(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L174">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L252">View Source</a>
   </span>
   <a id="chia_dotnet_FarmerProxy_GetPoolState_" data-uid="chia.dotnet.FarmerProxy.GetPoolState*"></a>
   <h4 id="chia_dotnet_FarmerProxy_GetPoolState_System_Threading_CancellationToken_" data-uid="chia.dotnet.FarmerProxy.GetPoolState(System.Threading.CancellationToken)">GetPoolState(CancellationToken)</h4>
@@ -332,6 +609,62 @@
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.PoolStateInfo.html">PoolStateInfo</a>&gt;&gt;</td>
         <td><p>A list of pool states</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FarmerProxy_GetRewardTargets_System_Int32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FarmerProxy.GetRewardTargets(System.Int32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L41">View Source</a>
+  </span>
+  <a id="chia_dotnet_FarmerProxy_GetRewardTargets_" data-uid="chia.dotnet.FarmerProxy.GetRewardTargets*"></a>
+  <h4 id="chia_dotnet_FarmerProxy_GetRewardTargets_System_Int32_System_Threading_CancellationToken_" data-uid="chia.dotnet.FarmerProxy.GetRewardTargets(System.Int32,System.Threading.CancellationToken)">GetRewardTargets(Int32, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Get the farm and pool reward targets</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;(string FarmerTarget, string PoolTarget)&gt; GetRewardTargets(int maxPhToSearch = 500, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">maxPhToSearch</span></td>
+        <td><p>The max number of puzzle hashes to search</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token to allow the call to be cancelled</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.valuetuple-2">(T1, T2)</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>&gt;&gt;</td>
+        <td><p>the farm and pool reward targets</p>
 </td>
       </tr>
     </tbody>
@@ -388,19 +721,75 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FarmerProxy_GetRewardTargetsincludingPrivateKey_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FarmerProxy.GetRewardTargetsincludingPrivateKey(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FarmerProxy_GetRewardTargetsIncludingPrivateKey_System_Int32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FarmerProxy.GetRewardTargetsIncludingPrivateKey(System.Int32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L45">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L68">View Source</a>
   </span>
-  <a id="chia_dotnet_FarmerProxy_GetRewardTargetsincludingPrivateKey_" data-uid="chia.dotnet.FarmerProxy.GetRewardTargetsincludingPrivateKey*"></a>
-  <h4 id="chia_dotnet_FarmerProxy_GetRewardTargetsincludingPrivateKey_System_Threading_CancellationToken_" data-uid="chia.dotnet.FarmerProxy.GetRewardTargetsincludingPrivateKey(System.Threading.CancellationToken)">GetRewardTargetsincludingPrivateKey(CancellationToken)</h4>
+  <a id="chia_dotnet_FarmerProxy_GetRewardTargetsIncludingPrivateKey_" data-uid="chia.dotnet.FarmerProxy.GetRewardTargetsIncludingPrivateKey*"></a>
+  <h4 id="chia_dotnet_FarmerProxy_GetRewardTargetsIncludingPrivateKey_System_Int32_System_Threading_CancellationToken_" data-uid="chia.dotnet.FarmerProxy.GetRewardTargetsIncludingPrivateKey(System.Int32,System.Threading.CancellationToken)">GetRewardTargetsIncludingPrivateKey(Int32, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Get the farm and pool reward targets, including private keys in the search</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;(string FarmerTarget, string PoolTarget, bool HaveFarmerSk, bool HavePoolSk)&gt; GetRewardTargetsincludingPrivateKey(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;(string FarmerTarget, string PoolTarget, bool HaveFarmerSk, bool HavePoolSk)&gt; GetRewardTargetsIncludingPrivateKey(int maxPhToSearch = 500, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">maxPhToSearch</span></td>
+        <td><p>The max number of puzzle hashes to search</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token to allow the call to be cancelled</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.valuetuple-4">(T1, T2, T3, T4)</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;&gt;</td>
+        <td><p>The farm and pool reward targets plus indicator if privakte keys are present</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FarmerProxy_GetRewardTargetsIncludingPrivateKey_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FarmerProxy.GetRewardTargetsIncludingPrivateKey(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L57">View Source</a>
+  </span>
+  <a id="chia_dotnet_FarmerProxy_GetRewardTargetsIncludingPrivateKey_" data-uid="chia.dotnet.FarmerProxy.GetRewardTargetsIncludingPrivateKey*"></a>
+  <h4 id="chia_dotnet_FarmerProxy_GetRewardTargetsIncludingPrivateKey_System_Threading_CancellationToken_" data-uid="chia.dotnet.FarmerProxy.GetRewardTargetsIncludingPrivateKey(System.Threading.CancellationToken)">GetRewardTargetsIncludingPrivateKey(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Get the farm and pool reward targets, including private keys in the search</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;(string FarmerTarget, string PoolTarget, bool HaveFarmerSk, bool HavePoolSk)&gt; GetRewardTargetsIncludingPrivateKey(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -431,7 +820,7 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.valuetuple-4">(T1, T2, T3, T4)</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;&gt;</td>
-        <td><p>the farm and pool reward targets</p>
+        <td><p>The farm and pool reward targets</p>
 </td>
       </tr>
     </tbody>
@@ -441,7 +830,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FarmerProxy_GetSignagePoint_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FarmerProxy.GetSignagePoint(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L123">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L147">View Source</a>
   </span>
   <a id="chia_dotnet_FarmerProxy_GetSignagePoint_" data-uid="chia.dotnet.FarmerProxy.GetSignagePoint*"></a>
   <h4 id="chia_dotnet_FarmerProxy_GetSignagePoint_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FarmerProxy.GetSignagePoint(System.String,System.Threading.CancellationToken)">GetSignagePoint(String, CancellationToken)</h4>
@@ -497,7 +886,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FarmerProxy_GetSignagePoints_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FarmerProxy.GetSignagePoints(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L86">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L110">View Source</a>
   </span>
   <a id="chia_dotnet_FarmerProxy_GetSignagePoints_" data-uid="chia.dotnet.FarmerProxy.GetSignagePoints*"></a>
   <h4 id="chia_dotnet_FarmerProxy_GetSignagePoints_System_Threading_CancellationToken_" data-uid="chia.dotnet.FarmerProxy.GetSignagePoints(System.Threading.CancellationToken)">GetSignagePoints(CancellationToken)</h4>
@@ -547,7 +936,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FarmerProxy_SetPayoutInstructions_System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FarmerProxy.SetPayoutInstructions(System.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L186">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L264">View Source</a>
   </span>
   <a id="chia_dotnet_FarmerProxy_SetPayoutInstructions_" data-uid="chia.dotnet.FarmerProxy.SetPayoutInstructions*"></a>
   <h4 id="chia_dotnet_FarmerProxy_SetPayoutInstructions_System_String_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FarmerProxy.SetPayoutInstructions(System.String,System.String,System.Threading.CancellationToken)">SetPayoutInstructions(String, String, CancellationToken)</h4>
@@ -609,7 +998,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FarmerProxy_SetRewardTargets_System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.FarmerProxy.SetRewardTargets(System.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L62">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FarmerProxy.cs/#L86">View Source</a>
   </span>
   <a id="chia_dotnet_FarmerProxy_SetRewardTargets_" data-uid="chia.dotnet.FarmerProxy.SetRewardTargets*"></a>
   <h4 id="chia_dotnet_FarmerProxy_SetRewardTargets_System_String_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FarmerProxy.SetRewardTargets(System.String,System.String,System.Threading.CancellationToken)">SetRewardTargets(String, String, CancellationToken)</h4>

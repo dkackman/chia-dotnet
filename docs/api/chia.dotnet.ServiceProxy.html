@@ -137,7 +137,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ServiceProxy(IRpcClient rpcClient, string destinationService, string originService)</code></pre>
+    <pre><code class="lang-csharp hljs">protected ServiceProxy(IRpcClient rpcClient, string destinationService, string originService)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -272,7 +272,7 @@ as well as the identifier used for <a class="xref" href="chia.dotnet.DaemonProxy
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_CloseConnection_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.CloseConnection(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L112">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L123">View Source</a>
   </span>
   <a id="chia_dotnet_ServiceProxy_CloseConnection_" data-uid="chia.dotnet.ServiceProxy.CloseConnection*"></a>
   <h4 id="chia_dotnet_ServiceProxy_CloseConnection_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.CloseConnection(System.String,System.Threading.CancellationToken)">CloseConnection(String, CancellationToken)</h4>
@@ -328,7 +328,7 @@ as well as the identifier used for <a class="xref" href="chia.dotnet.DaemonProxy
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_GetConnections_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.GetConnections(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L80">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L81">View Source</a>
   </span>
   <a id="chia_dotnet_ServiceProxy_GetConnections_" data-uid="chia.dotnet.ServiceProxy.GetConnections*"></a>
   <h4 id="chia_dotnet_ServiceProxy_GetConnections_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.GetConnections(System.Threading.CancellationToken)">GetConnections(CancellationToken)</h4>
@@ -375,10 +375,113 @@ as well as the identifier used for <a class="xref" href="chia.dotnet.DaemonProxy
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_GetRoutes_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.GetRoutes(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L91">View Source</a>
+  </span>
+  <a id="chia_dotnet_ServiceProxy_GetRoutes_" data-uid="chia.dotnet.ServiceProxy.GetRoutes*"></a>
+  <h4 id="chia_dotnet_ServiceProxy_GetRoutes_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.GetRoutes(System.Threading.CancellationToken)">GetRoutes(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Get all endpoints of a service</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;string&gt;&gt; GetRoutes(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token to allow the call to be cancelled</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>&gt;&gt;</td>
+        <td><p>A list of service routes</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_HealthZ_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.HealthZ(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L61">View Source</a>
+  </span>
+  <a id="chia_dotnet_ServiceProxy_HealthZ_" data-uid="chia.dotnet.ServiceProxy.HealthZ*"></a>
+  <h4 id="chia_dotnet_ServiceProxy_HealthZ_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.HealthZ(System.Threading.CancellationToken)">HealthZ(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Sends heartbeat message to the service</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task HealthZ(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token to allow the call to be cancelled</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td><p>Awaitable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="chia_dotnet_ServiceProxy_HealthZ_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Either completes without error or throws an exception.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_OpenConnection_System_String_System_Int32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.OpenConnection(System.String%2CSystem.Int32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L92">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L103">View Source</a>
   </span>
   <a id="chia_dotnet_ServiceProxy_OpenConnection_" data-uid="chia.dotnet.ServiceProxy.OpenConnection*"></a>
   <h4 id="chia_dotnet_ServiceProxy_OpenConnection_System_String_System_Int32_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.OpenConnection(System.String,System.Int32,System.Threading.CancellationToken)">OpenConnection(String, Int32, CancellationToken)</h4>
@@ -437,60 +540,10 @@ as well as the identifier used for <a class="xref" href="chia.dotnet.DaemonProxy
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_Ping_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.Ping(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L60">View Source</a>
-  </span>
-  <a id="chia_dotnet_ServiceProxy_Ping_" data-uid="chia.dotnet.ServiceProxy.Ping*"></a>
-  <h4 id="chia_dotnet_ServiceProxy_Ping_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.Ping(System.Threading.CancellationToken)">Ping(CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Sends ping message to the service</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task Ping(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A token to allow the call to be cancelled</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>Awaitable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_StopNode_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.StopNode(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L70">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L71">View Source</a>
   </span>
   <a id="chia_dotnet_ServiceProxy_StopNode_" data-uid="chia.dotnet.ServiceProxy.StopNode*"></a>
   <h4 id="chia_dotnet_ServiceProxy_StopNode_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.StopNode(System.Threading.CancellationToken)">StopNode(CancellationToken)</h4>
