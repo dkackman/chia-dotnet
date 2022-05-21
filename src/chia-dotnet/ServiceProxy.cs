@@ -84,6 +84,16 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Get all endpoints of a service
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of service routes</returns>
+        public async Task<IEnumerable<string>> GetRoutes(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<IEnumerable<string>>("get_routes", "routes", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Add a connection
         /// </summary>
         /// <param name="host">The host name of the connection</param>
