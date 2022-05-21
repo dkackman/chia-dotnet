@@ -18,7 +18,7 @@ namespace chia.dotnet
         /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
         /// <param name="destinationService"><see cref="Message.Destination"/></param>
         /// <param name="originService"><see cref="Message.Origin"/></param>        
-        public ServiceProxy(IRpcClient rpcClient, string destinationService, string originService)
+        protected ServiceProxy(IRpcClient rpcClient, string destinationService, string originService)
         {
             RpcClient = rpcClient ?? throw new ArgumentNullException(nameof(rpcClient));
 
@@ -53,13 +53,14 @@ namespace chia.dotnet
         public IRpcClient RpcClient { get; init; }
 
         /// <summary>
-        /// Sends ping message to the service
+        /// Sends heartbeat message to the service
         /// </summary>
+        /// <remarks>Either completes without error or throws an exception.</remarks>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task Ping(CancellationToken cancellationToken = default)
+        public async Task HealthZ(CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("ping", cancellationToken).ConfigureAwait(false);
+            _ = await SendMessage("healthz", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

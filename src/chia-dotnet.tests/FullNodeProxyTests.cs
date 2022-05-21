@@ -127,7 +127,7 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            await _theFullNode.Ping(cts.Token);
+            await _theFullNode.HealthZ(cts.Token);
         }
 
         [TestMethod]

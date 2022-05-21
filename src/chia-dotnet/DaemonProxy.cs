@@ -24,6 +24,16 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Sends ping message to the service
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Awaitable <see cref="Task"/></returns>
+        public async Task Ping(CancellationToken cancellationToken = default)
+        {
+            _ = await SendMessage("ping", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Create a new derived <see cref="ServiceProxy"/> instance sharing this daemon's <see cref="ServiceProxy.RpcClient"/>
         /// </summary>
         /// <typeparam name="T">The type of <see cref="ServiceProxy"/> to create</typeparam>
