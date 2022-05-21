@@ -79,6 +79,50 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
+        public async Task GetHarvestersSummary()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            var summaries = await _theFarmer.GetHarvestersSummary(cts.Token);
+
+            Assert.IsNotNull(summaries);
+        }
+
+        [TestMethod]
+        public async Task GetHarvesterPlotsValid()
+        {
+            using var cts = new CancellationTokenSource(15000);
+            var summaries = await _theFarmer.GetHarvestersSummary(cts.Token);
+            var nodeId = summaries.First().Connection.NodeId;
+            var requestDatata = new PlotInfoRequestData()
+            {
+                NodeId = nodeId,
+                PageSize = 10,
+            };
+
+            var plotInfo = await _theFarmer.GetHarvesterPlotsValid(requestDatata, cts.Token);
+
+            Assert.IsNotNull(plotInfo);
+        }
+
+        [TestMethod]
+        public async Task GetHarvesterPlotsKeysMissing()
+        {
+            using var cts = new CancellationTokenSource(15000);
+            var summaries = await _theFarmer.GetHarvestersSummary(cts.Token);
+            var nodeId = summaries.First().Connection.NodeId;
+            var requestDatata = new PlotPathRequestData()
+            {
+                NodeId = nodeId,
+                PageSize = 10,
+            };
+
+            var plotInfo = await _theFarmer.GetHarvesterPlotsKeysMissing(requestDatata, cts.Token);
+
+            Assert.IsNotNull(plotInfo);
+        }
+
+        [TestMethod]
         public async Task GetSignagePoint()
         {
             using var cts = new CancellationTokenSource(1005000);

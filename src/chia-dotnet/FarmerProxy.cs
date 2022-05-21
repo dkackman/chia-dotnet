@@ -180,6 +180,50 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Get a paginated list of valid plots
+        /// </summary>
+        /// <param name="requestData">Info about the request</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A page of valid plots</returns>
+        public async Task<PaginatedPlotRequest> GetHarvesterPlotsValid(PlotInfoRequestData requestData, CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<PaginatedPlotRequest>("get_harvester_plots_valid", requestData, null, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get a paginated list of invalid plots
+        /// <param name="requestData">Info about the request</param>
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A page of invalid plots</returns>
+        public async Task<PaginatedPlotRequest> GetHarvesterPlotsInvalid(PlotPathRequestData requestData, CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<PaginatedPlotRequest>("get_harvester_plots_invalid", requestData, null, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get a paginated list of plots with missing keys
+        /// </summary>
+        /// <param name="requestData">Info about the request</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A page of plots with missing keys</returns>
+        public async Task<PaginatedPlotRequest> GetHarvesterPlotsKeysMissing(PlotPathRequestData requestData, CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<PaginatedPlotRequest>("get_harvester_plots_keys_missing", requestData, null, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get a paginated list of duplicate plots
+        /// </summary>
+        /// <param name="requestData">Info about the request</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A page of duplicate plots</returns>
+        public async Task<PaginatedPlotRequest> GetHarvesterPlotsDuplicates(PlotPathRequestData requestData, CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<PaginatedPlotRequest>("get_harvester_plots_duplicates", requestData, null, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Get's the pool login link, if any
         /// </summary>
         /// <param name="launcherID">The id of the pool launcher</param>
