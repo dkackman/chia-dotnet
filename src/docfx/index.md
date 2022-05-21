@@ -21,12 +21,6 @@ var state = await fullNode.GetBlockchainState();
 
 ### Main Types and Relationships
 
+The Wallet service API is segmented into classes for specific wallet types and a trade maanger for trades and offers.
+
 ![Class diagram](images/uml.svg "Class diagram")
-
-## 1.3 breaking changes
-
-- Changed `KValues` to `KSize` to match python naming
-- Changed signature of wallet LogIn to match 1.3 changes
-- Removed restore & backup LogIn overload to match 1.3 changes
-- Introduced PrivateKeyDetails type instead of named tuple for GetPrivateKey
-- Replace "Colour" with "CAT" in multiple places
