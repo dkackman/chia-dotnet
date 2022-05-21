@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Proxy that communicates with the full node 
+    /// Proxy that communicates with the full node
     /// </summary>
     public sealed class FullNodeProxy : ServiceProxy
     {
@@ -115,7 +115,7 @@ namespace chia.dotnet
 
         /// <summary>
         /// Retrieves block records in a range
-        /// </summary>        
+        /// </summary>
         /// <param name="start">Start height</param>
         /// <param name="end">End Height - non-inclusive</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
@@ -222,7 +222,7 @@ namespace chia.dotnet
             }
 
             dynamic data = new ExpandoObject();
-            data.puzzle_hash = puzzlehashes.ToList();
+            data.puzzle_hashes = puzzlehashes.ToList();
             data.include_spent_coins = includeSpentCoins;
 
             if (startHeight.HasValue)
@@ -300,7 +300,7 @@ namespace chia.dotnet
         /// <param name="endHeight">confirmation end height for search</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
-        public async Task<IEnumerable<CoinRecord>> GetCoinRecordByHint(string hint, bool includeSpentCoins, uint? startHeight = null, uint? endHeight = null, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByHint(string hint, bool includeSpentCoins, uint? startHeight = null, uint? endHeight = null, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(hint))
             {
@@ -324,7 +324,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Retrieves the additions and removals (state transitions) for a certain block. 
+        /// Retrieves the additions and removals (state transitions) for a certain block.
         /// Returns coin records for each addition and removal.
         /// </summary>
         /// <param name="headerhash">The header hash</param>
@@ -430,7 +430,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Pushes a transaction / spend bundle to the mempool and blockchain. 
+        /// Pushes a transaction / spend bundle to the mempool and blockchain.
         /// Returns whether the spend bundle was successfully included into the mempool
         /// </summary>
         /// <param name="spendBundle"></param>
@@ -454,7 +454,7 @@ namespace chia.dotnet
         /// <summary>
         /// Gets a recent signage point
         /// </summary>
-        /// <param name="spHash">signage point hash</param> 
+        /// <param name="spHash">signage point hash</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="SignagePoint"/></returns>
         public async Task<(SignagePoint SignagePoint, double TimeReceived, bool Reverted, DateTime DateTimeReceived)> GetRecentSignagePoint(string spHash, CancellationToken cancellationToken = default)
@@ -480,7 +480,7 @@ namespace chia.dotnet
         /// <summary>
         /// Gets a recent end of slot
         /// </summary>
-        /// <param name="challengeHash">challenge hash</param> 
+        /// <param name="challengeHash">challenge hash</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="EndOfSubSlotBundle"/></returns>
         public async Task<(EndOfSubSlotBundle eos, double timeReceived, bool reverted, DateTime DateTimeReceived)> GetRecentEOS(string challengeHash, CancellationToken cancellationToken = default)
@@ -504,10 +504,10 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Gets a coin solution 
+        /// Gets a coin solution
         /// </summary>
         /// <param name="coinId">Id/name  of the coin</param>
-        /// <param name="height">Block height at which the coin was spent 'spent_block_index'</param> 
+        /// <param name="height">Block height at which the coin was spent 'spent_block_index'</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A <see cref="CoinSpend"/></returns>
         /// <remarks>coinId is the coin name</remarks>
