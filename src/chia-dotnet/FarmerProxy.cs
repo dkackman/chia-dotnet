@@ -170,6 +170,16 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Get a summary of harvesters
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of harvesters</returns>
+        public async Task<IEnumerable<HarvesterSummary>> GetHarvestersSummary(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<IEnumerable<HarvesterSummary>>("get_harvesters_summary", "harvesters", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Get's the pool login link, if any
         /// </summary>
         /// <param name="launcherID">The id of the pool launcher</param>
