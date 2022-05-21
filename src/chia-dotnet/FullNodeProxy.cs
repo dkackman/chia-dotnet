@@ -222,7 +222,7 @@ namespace chia.dotnet
             }
 
             dynamic data = new ExpandoObject();
-            data.puzzle_hash = puzzlehashes.ToList();
+            data.puzzle_hashes = puzzlehashes.ToList();
             data.include_spent_coins = includeSpentCoins;
 
             if (startHeight.HasValue)
