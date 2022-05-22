@@ -308,6 +308,7 @@ namespace chia.dotnet
             }
 
             dynamic data = new ExpandoObject();
+            data.hint = hint;
             data.include_spent_coins = includeSpentCoins;
 
             if (startHeight.HasValue)
