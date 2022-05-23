@@ -147,15 +147,16 @@ namespace chia.dotnet
         // These methods are the important ones that package up the request for the rpc client and then
         // parse and convert the response for the requester
         //
-        internal async Task<dynamic> SendMessage(string command, dynamic? data, CancellationToken cancellationToken = default)
+        internal async Task<dynamic> SendMessage(string command, dynamic? data, CancellationToken cancellationToken = default, uint? maxRetries = null)
         {
             var message = Message.Create(command, data, DestinationService, OriginService);
             var attempts = 0;
             var lastError = "";
+            maxRetries ??= MaxRetries;
 
             try
             {
-                while (attempts < MaxRetries)
+                while (attempts < maxRetries)
                 {
                     try
                     {
@@ -177,9 +178,18 @@ namespace chia.dotnet
                     }
                 }
             }
+            catch (TaskCanceledException)
+            {
+                throw;
+            }
             catch (Exception e) // wrap eveything else in a response exception - this will include websocket or http specific failures
             {
                 throw new ResponseException(message, "Something went wrong sending the rpc message. Inspect the InnerException for details.", e);
+            }
+
+            if (attempts == 1)
+            {
+                throw new ResponseException(message, lastError);
             }
 
             throw new ResponseException(message, $"Failed after {attempts} attempts, last error: {lastError}");
