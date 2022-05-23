@@ -455,7 +455,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.spend_bundle = spendBundle;
 
-            var response = await SendMessage("push_tx", data, cancellationToken).ConfigureAwait(false);
+            var response = await SendMessage("push_tx", data, cancellationToken, maxRetries: 1).ConfigureAwait(false);
 
             return response.status?.ToString() == "SUCCESS";
         }
