@@ -53,9 +53,9 @@ namespace chia.dotnet
         public IRpcClient RpcClient { get; init; }
 
         /// <summary>
-        /// Max retry before fail the request
+        /// Max retry before fail the request (mainly for get API)
         /// </summary>
-        public uint MaxRetries { get; init; } = 3;
+        public uint MaxRetries { get; init; } = 0;
 
         /// <summary>
         /// Wait milliseconds for next retry, with attempts weight up
@@ -156,7 +156,7 @@ namespace chia.dotnet
 
             try
             {
-                while (attempts < maxRetries)
+                while (attempts <= maxRetries)
                 {
                     try
                     {
@@ -166,6 +166,11 @@ namespace chia.dotnet
                     catch (ResponseException re)
                     {
                         lastError = re.Message;
+                    }
+
+                    if (maxRetries == 0)
+                    {
+                        break;
                     }
 
                     attempts++;
