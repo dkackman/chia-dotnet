@@ -216,7 +216,9 @@ namespace chia.dotnet
             return new OfferSummary()
             {
                 Offered = Converters.ToObject<IDictionary<string, ulong>>(response.summary.offered),
-                Requested = Converters.ToObject<IDictionary<string, ulong>>(response.summary.requested)
+                Requested = Converters.ToObject<IDictionary<string, ulong>>(response.summary.requested),
+                Fees = response.summary.fees,
+                Infos = Converters.ToObject<IDictionary<string, object>>(response.summary.requested),
             };
         }
 
