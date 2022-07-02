@@ -65,9 +65,27 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The list of wallets</returns>
-        public async Task<IEnumerable<WalletInfo>> GetWallets(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<WalletInfo>> GetWallets(bool includeData = true, CancellationToken cancellationToken = default)
         {
-            return await SendMessage<IEnumerable<WalletInfo>>("get_wallets", "wallets", cancellationToken).ConfigureAwait(false);
+            dynamic data = new ExpandoObject();
+            data.include_data = includeData;
+
+            return await SendMessage<IEnumerable<WalletInfo>>("get_wallets", data, "wallets", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get the list of wallets
+        /// </summary>
+        /// <param name="type">Return only wallets of this type</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The list of wallets</returns>
+        public async Task<IEnumerable<WalletInfo>> GetWallets(WalletType type, bool includeData = true, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.type = type;
+            data.include_data = includeData;
+
+            return await SendMessage<IEnumerable<WalletInfo>>("get_wallets", data, "wallets", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -78,20 +96,6 @@ namespace chia.dotnet
         public async Task<IEnumerable<Token>> GetStrayCats(CancellationToken cancellationToken = default)
         {
             return await SendMessage<IEnumerable<Token>>("get_stray_cats", "stray_cats", cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Get the list of wallets
-        /// </summary>
-        /// <param name="type">Return only wallets of this type</param>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The list of wallets</returns>
-        public async Task<IEnumerable<WalletInfo>> GetWallets(WalletType type, CancellationToken cancellationToken = default)
-        {
-            dynamic data = new ExpandoObject();
-            data.type = type;
-
-            return await SendMessage<IEnumerable<WalletInfo>>("get_wallets", data, "wallets", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

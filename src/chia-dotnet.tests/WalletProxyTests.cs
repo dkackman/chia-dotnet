@@ -39,7 +39,7 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            var wallets = await _theWallet.GetWallets(cts.Token);
+            var wallets = await _theWallet.GetWallets(false, cts.Token);
 
             Assert.IsNotNull(wallets);
         }
