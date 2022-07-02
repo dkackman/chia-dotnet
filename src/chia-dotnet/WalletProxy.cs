@@ -422,6 +422,79 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Get an NFT wallet by DID ID
+        /// </summary>
+        /// <param name="didId">The DID ID</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The wallet id</returns>
+        public async Task<uint> GetNFTByDID(string didId, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.did_id = didId;
+
+            var response = await SendMessage("nft_get_by_did", data, cancellationToken).ConfigureAwait(false);
+
+            return (uint)response.wallet_id;
+        }
+
+        /// <summary>
+        /// Gets all the wallets with DIDs
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The list of wallets</returns>
+        public async Task<IEnumerable<(uint WalletId, string DIDId, uint DIDWalletID)>> GetWalletsWithDIDs(CancellationToken cancellationToken = default)
+        {
+            var response = await SendMessage("nft_get_wallets_with_dids", cancellationToken).ConfigureAwait(false);
+
+            var list = new List<(uint, string, uint)>();
+            foreach (var d in response.nft_wallets)
+            {
+                list.Add((d.wallet_id, d.did_id, d.did_wallet_id));
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// Get info about an NFT
+        /// </summary>
+        /// <param name="didId">The coin id</param>
+        /// <param name="latest">Get latest NFT</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The wallet id</returns>
+        public async Task<NFTInfo> GetNFTInfo(string coinId, bool latest = true, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.coin_id = coinId;
+            data.latest = latest;
+
+            return await SendMessage("nft_get_info", "nft_info", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Creates a new NFT wallet
+        /// </summary>
+        /// <param name="didId">An optional DID ID</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Information about the wallet</returns>
+        public async Task<(uint Id, WalletType Type)> CreateNFTWallet(string? didId = null, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_type = "nft_wallet";
+            if (!string.IsNullOrEmpty(didId))
+            {
+                data.did_id = didId;
+            }
+
+            var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
+
+            return (
+                (uint)response.id,
+                (WalletType)response.type
+                );
+        }
+
+        /// <summary>
         /// Creates a new DID wallet
         /// </summary>
         /// <param name="backupDIDs">Backup DIDs</param>
