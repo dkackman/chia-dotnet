@@ -429,7 +429,7 @@ namespace chia.dotnet
         /// <param name="amount">The amount to put in the wallet (in units of mojos)</param>           
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(WalletType Type, string myDID, uint walletId)> CreateDIDWallet(IEnumerable<string> backupDIDs, ulong numOfBackupIdsNeeded, ulong amount, CancellationToken cancellationToken = default)
+        public async Task<(WalletType Type, string myDID, uint walletId)> CreateDIDWallet(IEnumerable<string> backupDIDs, ulong numOfBackupIdsNeeded, string name, IDictionary<string, string>? metaData = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             if (backupDIDs is null)
             {
@@ -441,7 +441,12 @@ namespace chia.dotnet
             data.did_type = "new";
             data.backup_dids = backupDIDs.ToList();
             data.num_of_backup_ids_needed = numOfBackupIdsNeeded;
-            data.amount = amount;
+            data.wallet_name = name;
+            data.fee = fee;
+            if (metaData is not null)
+            {
+                data.meta_data = metaData;
+            }
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
 
@@ -459,17 +464,17 @@ namespace chia.dotnet
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
         public async Task<(WalletType Type, string myDID, uint walletId, string coinName, Coin coin, string newPuzHash, string pubkey, IEnumerable<byte> backupDIDs, ulong numVerificationsRequired)>
-            RecoverDIDWallet(string filename, CancellationToken cancellationToken = default)
+            RecoverDIDWallet(string backupData, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(filename))
+            if (string.IsNullOrEmpty(backupData))
             {
-                throw new ArgumentNullException(nameof(filename));
+                throw new ArgumentNullException(nameof(backupData));
             }
 
             dynamic data = new ExpandoObject();
             data.wallet_type = "did_wallet";
             data.did_type = "recovery";
-            data.filename = filename;
+            data.backup_data = backupData;
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
 

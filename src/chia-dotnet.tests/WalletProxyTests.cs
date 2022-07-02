@@ -149,7 +149,7 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
 
             var backupIDs = new List<string>();
-            var walletInfo = await _theWallet.CreateDIDWallet(backupIDs, 1, 1, cts.Token);
+            var walletInfo = await _theWallet.CreateDIDWallet(backupIDs, 1, "the_name", null, 0, cts.Token);
 
             Assert.IsNotNull(walletInfo);
         }
