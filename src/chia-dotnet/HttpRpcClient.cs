@@ -30,8 +30,10 @@ namespace chia.dotnet
             handler.SslOptions.ClientCertificates = CertLoader.GetCerts(Endpoint.CertPath, Endpoint.KeyPath);
             handler.SslOptions.RemoteCertificateValidationCallback += ValidateServerCertificate;
 
-            _httpClient = new(handler, true);
-            _httpClient.BaseAddress = Endpoint.Uri;
+            _httpClient = new(handler, true)
+            {
+                BaseAddress = Endpoint.Uri
+            };
         }
 
         /// <summary>

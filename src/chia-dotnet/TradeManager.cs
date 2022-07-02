@@ -228,9 +228,10 @@ namespace chia.dotnet
         /// <param name="walletIdsAndMojoAmounts">The set of wallet ids and amounts (in mojo) representing the offer</param>
         /// <param name="fee">Transaction fee for offer creation</param>   
         /// <param name="validateOnly">Only validate the offer contents. Do not create.</param>   
+        /// <param name="driver">Additional data about the puzzle</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task<OfferRecord> CreateOffer(IDictionary<uint, long> walletIdsAndMojoAmounts, ulong fee = 0, bool validateOnly = false, CancellationToken cancellationToken = default)
+        public async Task<OfferRecord> CreateOffer(IDictionary<uint, long> walletIdsAndMojoAmounts, ulong fee = 0, bool validateOnly = false, IDictionary<string, string>? driver = null, CancellationToken cancellationToken = default)
         {
             if (walletIdsAndMojoAmounts is null)
             {
@@ -241,6 +242,11 @@ namespace chia.dotnet
             data.offer = walletIdsAndMojoAmounts;
             data.fee = fee;
             data.validate_only = validateOnly;
+            data.validate_only = validateOnly;
+            if (driver is not null)
+            {
+                data.driver_dict = driver;
+            }
 
             return await WalletProxy.SendMessage<OfferRecord>("create_offer_for_ids", data, null, cancellationToken).ConfigureAwait(false);
         }
@@ -251,9 +257,10 @@ namespace chia.dotnet
         /// <param name="offer">Summary of the offer to create</param>
         /// <param name="fee">Transaction fee for offer creation</param>   
         /// <param name="validateOnly">Only validate the offer contents. Do not create.</param>   
+        /// <param name="driver">Additional data about the puzzle</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task<OfferRecord> CreateOffer(OfferSummary offer, ulong fee = 0, bool validateOnly = false, CancellationToken cancellationToken = default)
+        public async Task<OfferRecord> CreateOffer(OfferSummary offer, ulong fee = 0, bool validateOnly = false, IDictionary<string, string>? driver = null, CancellationToken cancellationToken = default)
         {
             var walletIdsAndMojoAmounts = new Dictionary<uint, long>();
             foreach (var requested in offer.Requested)
@@ -276,7 +283,7 @@ namespace chia.dotnet
                 walletIdsAndMojoAmounts.Add(WalletId.Value, (long)offered.Value * -1); // offered value flipped to negative for RPC call
             }
 
-            return await CreateOffer(walletIdsAndMojoAmounts, fee, validateOnly, cancellationToken).ConfigureAwait(false);
+            return await CreateOffer(walletIdsAndMojoAmounts, fee, validateOnly, driver, cancellationToken).ConfigureAwait(false);
         }
     }
 }
