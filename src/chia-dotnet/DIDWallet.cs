@@ -103,6 +103,23 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Gets information about the DID wallets current coin
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The coin info</returns>
+        public async Task<(string MyDid, string Parent, string InnerPuzzle, ulong Amount)> GetCurrentCoinInfo(CancellationToken cancellationToken = default)
+        {
+            var response = await WalletProxy.SendMessage("did_get_current_coin_info", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
+
+            return (
+                response.my_did,
+                response.did_parent,
+                response.did_innerpuz,
+                response.did_amount
+                );
+        }
+
+        /// <summary>
         /// Get the wallet pubkey
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
@@ -111,26 +128,80 @@ namespace chia.dotnet
         {
             var response = await WalletProxy.SendMessage("did_get_pubkey", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
 
-            return response.pubkey.ToString();
+            return response.pubkey;
+        }
+
+        /// <summary>
+        /// Get the wallet name
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The name</returns>
+        public async Task<string> GetName(CancellationToken cancellationToken = default)
+        {
+            var response = await WalletProxy.SendMessage("did_get_wallet_name", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
+
+            return response.name;
+        }
+
+        /// <summary>
+        /// Sets the name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>An awaitable <see cref="Task"/></returns>
+        public async Task SetName(string name, CancellationToken cancellationToken = default)
+        {
+            dynamic data = CreateWalletDataObject();
+            data.name = name;
+
+            _ = await WalletProxy.SendMessage("did_set_wallet_name", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Updates the metadata
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The metadata</returns>
+        public async Task<IDictionary<string, string>> GetMetadata(CancellationToken cancellationToken = default)
+        {
+            var response = await WalletProxy.SendMessage("did_get_metadata", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
+
+            return Converters.ToObject<IDictionary<string, string>>(response.metadata);
+        }
+
+        /// <summary>
+        /// Updates the metadata
+        /// </summary>
+        /// <param name="metadata">The name</param>
+        /// <param name="fee">Transaction fee</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>An awaitable <see cref="Task"/></returns>
+        public async Task<SpendBundle> UpdateMetadata(string metadata, ulong fee = 0, CancellationToken cancellationToken = default)
+        {
+            dynamic data = CreateWalletDataObject();
+            data.metadata = metadata;
+            data.fee = fee;
+
+            return await WalletProxy.SendMessage<SpendBundle>("did_update_metadata", "spend_bundle", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Recovery spend
         /// </summary>
-        /// <param name="attestFilenames">List of attest files. Must be >= num_of_backup_ids_needed</param>
+        /// <param name="attestData">List of attest messages. Must be >= num_of_backup_ids_needed</param>
         /// <param name="pubkey">The public key</param>
         /// <param name="puzzlehash">The puzzlehash of the spend</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task RecoverySpend(IEnumerable<string> attestFilenames, string? pubkey, string? puzzlehash, CancellationToken cancellationToken = default)
+        public async Task RecoverySpend(IEnumerable<string> attestData, string? pubkey, string? puzzlehash, CancellationToken cancellationToken = default)
         {
-            if (attestFilenames is null)
+            if (attestData is null)
             {
-                throw new ArgumentNullException(nameof(attestFilenames));
+                throw new ArgumentNullException(nameof(attestData));
             }
 
             dynamic data = CreateWalletDataObject();
-            data.attest_filenames = attestFilenames.ToList();
+            data.attest_data = attestData.ToList();
             if (!string.IsNullOrEmpty(pubkey))
             {
                 data.pubkey = pubkey;
@@ -159,19 +230,13 @@ namespace chia.dotnet
         /// <summary>
         /// Create an attest file
         /// </summary>
-        /// <param name="filename">file name of the attest</param>
         /// <param name="coinName">The coin name</param>
         /// <param name="pubkey">The public key</param>
         /// <param name="puzHash">The puzzlehash</param>        
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A spendbundle and information about the attest</returns>
-        public async Task<(string MessageSpendBundle, (string Parent, string InnerPuzzleHash, ulong Amount) Info)> CreateAttest(string filename, string coinName, string pubkey, string puzHash, CancellationToken cancellationToken = default)
+        public async Task<(string MessageSpendBundle, (string Parent, string InnerPuzzleHash, ulong Amount) Info, string AttestData)> CreateAttest(string coinName, string pubkey, string puzHash, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(filename))
-            {
-                throw new ArgumentNullException(nameof(filename));
-            }
-
             if (string.IsNullOrEmpty(coinName))
             {
                 throw new ArgumentNullException(nameof(coinName));
@@ -188,7 +253,6 @@ namespace chia.dotnet
             }
 
             dynamic data = CreateWalletDataObject();
-            data.filename = filename;
             data.coin_name = coinName;
             data.pubkey = pubkey;
             data.puzhash = puzHash;
@@ -200,12 +264,13 @@ namespace chia.dotnet
                     response.info[0],
                     response.info[1],
                     response.info[2]
-                    )
+                    ),
+                    response.attest_data
                 );
         }
 
         /// <summary>
-        /// Create an attest file
+        /// Create an attestment
         /// </summary>       
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A spendbundle and information about the attest</returns>
@@ -223,22 +288,35 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Create a backup file of the wallet
+        /// Create a backup of the wallet
         /// </summary>
-        /// <param name="filename">The filename to create</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task CreateBackupFile(string filename, CancellationToken cancellationToken = default)
+        /// <returns>The backup data</returns>
+        public async Task<string> CreateBackupFile(CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(filename))
-            {
-                throw new ArgumentNullException(nameof(filename));
-            }
-
             dynamic data = CreateWalletDataObject();
-            data.filename = filename;
 
-            _ = await WalletProxy.SendMessage("did_create_backup_file", data, cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("did_create_backup_file", data, cancellationToken).ConfigureAwait(false);
+
+            return response.backup_data;
+        }
+
+        /// <summary>
+        /// Transfer the DID wallet to another owner
+        /// </summary>
+        /// <param name="innerAddress">the address</param>
+        /// <param name="wtihRecoveryInfo">Indiciator whether to include recovery infor</param>
+        /// <param name="fee">Trasnaction fee</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The backup data</returns>
+        public async Task<TransactionRecord> Transfer(string innerAddress, bool withRecoveryInfo = true, ulong fee = 0, CancellationToken cancellationToken = default)
+        {
+            dynamic data = CreateWalletDataObject();
+            data.inner_address = innerAddress;
+            data.with_recovery_info = withRecoveryInfo;
+            data.fee = fee;
+
+            return await WalletProxy.SendMessage<TransactionRecord>("did_create_backup_file", "transaction", data, cancellationToken).ConfigureAwait(false);
         }
     }
 }
