@@ -65,9 +65,27 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The list of wallets</returns>
-        public async Task<IEnumerable<WalletInfo>> GetWallets(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<WalletInfo>> GetWallets(bool includeData = true, CancellationToken cancellationToken = default)
         {
-            return await SendMessage<IEnumerable<WalletInfo>>("get_wallets", "wallets", cancellationToken).ConfigureAwait(false);
+            dynamic data = new ExpandoObject();
+            data.include_data = includeData;
+
+            return await SendMessage<IEnumerable<WalletInfo>>("get_wallets", data, "wallets", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get the list of wallets
+        /// </summary>
+        /// <param name="type">Return only wallets of this type</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The list of wallets</returns>
+        public async Task<IEnumerable<WalletInfo>> GetWallets(WalletType type, bool includeData = true, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.type = type;
+            data.include_data = includeData;
+
+            return await SendMessage<IEnumerable<WalletInfo>>("get_wallets", data, "wallets", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -78,20 +96,6 @@ namespace chia.dotnet
         public async Task<IEnumerable<Token>> GetStrayCats(CancellationToken cancellationToken = default)
         {
             return await SendMessage<IEnumerable<Token>>("get_stray_cats", "stray_cats", cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Get the list of wallets
-        /// </summary>
-        /// <param name="type">Return only wallets of this type</param>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The list of wallets</returns>
-        public async Task<IEnumerable<WalletInfo>> GetWallets(WalletType type, CancellationToken cancellationToken = default)
-        {
-            dynamic data = new ExpandoObject();
-            data.type = type;
-
-            return await SendMessage<IEnumerable<WalletInfo>>("get_wallets", data, "wallets", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -418,6 +422,79 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Get an NFT wallet by DID ID
+        /// </summary>
+        /// <param name="didId">The DID ID</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The wallet id</returns>
+        public async Task<uint> GetNFTByDID(string didId, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.did_id = didId;
+
+            var response = await SendMessage("nft_get_by_did", data, cancellationToken).ConfigureAwait(false);
+
+            return (uint)response.wallet_id;
+        }
+
+        /// <summary>
+        /// Gets all the wallets with DIDs
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The list of wallets</returns>
+        public async Task<IEnumerable<(uint WalletId, string DIDId, uint DIDWalletID)>> GetWalletsWithDIDs(CancellationToken cancellationToken = default)
+        {
+            var response = await SendMessage("nft_get_wallets_with_dids", cancellationToken).ConfigureAwait(false);
+
+            var list = new List<(uint, string, uint)>();
+            foreach (var d in response.nft_wallets)
+            {
+                list.Add((d.wallet_id, d.did_id, d.did_wallet_id));
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// Get info about an NFT
+        /// </summary>
+        /// <param name="didId">The coin id</param>
+        /// <param name="latest">Get latest NFT</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The wallet id</returns>
+        public async Task<NFTInfo> GetNFTInfo(string coinId, bool latest = true, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.coin_id = coinId;
+            data.latest = latest;
+
+            return await SendMessage("nft_get_info", "nft_info", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Creates a new NFT wallet
+        /// </summary>
+        /// <param name="didId">An optional DID ID</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Information about the wallet</returns>
+        public async Task<(uint Id, WalletType Type)> CreateNFTWallet(string? didId = null, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_type = "nft_wallet";
+            if (!string.IsNullOrEmpty(didId))
+            {
+                data.did_id = didId;
+            }
+
+            var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
+
+            return (
+                (uint)response.id,
+                (WalletType)response.type
+                );
+        }
+
+        /// <summary>
         /// Creates a new DID wallet
         /// </summary>
         /// <param name="backupDIDs">Backup DIDs</param>
@@ -425,7 +502,7 @@ namespace chia.dotnet
         /// <param name="amount">The amount to put in the wallet (in units of mojos)</param>           
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(WalletType Type, string myDID, uint walletId)> CreateDIDWallet(IEnumerable<string> backupDIDs, ulong numOfBackupIdsNeeded, ulong amount, CancellationToken cancellationToken = default)
+        public async Task<(WalletType Type, string myDID, uint walletId)> CreateDIDWallet(IEnumerable<string> backupDIDs, ulong numOfBackupIdsNeeded, string name, IDictionary<string, string>? metaData = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             if (backupDIDs is null)
             {
@@ -437,7 +514,12 @@ namespace chia.dotnet
             data.did_type = "new";
             data.backup_dids = backupDIDs.ToList();
             data.num_of_backup_ids_needed = numOfBackupIdsNeeded;
-            data.amount = amount;
+            data.wallet_name = name;
+            data.fee = fee;
+            if (metaData is not null)
+            {
+                data.meta_data = metaData;
+            }
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
 
@@ -455,17 +537,17 @@ namespace chia.dotnet
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
         public async Task<(WalletType Type, string myDID, uint walletId, string coinName, Coin coin, string newPuzHash, string pubkey, IEnumerable<byte> backupDIDs, ulong numVerificationsRequired)>
-            RecoverDIDWallet(string filename, CancellationToken cancellationToken = default)
+            RecoverDIDWallet(string backupData, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(filename))
+            if (string.IsNullOrEmpty(backupData))
             {
-                throw new ArgumentNullException(nameof(filename));
+                throw new ArgumentNullException(nameof(backupData));
             }
 
             dynamic data = new ExpandoObject();
             data.wallet_type = "did_wallet";
             data.did_type = "recovery";
-            data.filename = filename;
+            data.backup_data = backupData;
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
 

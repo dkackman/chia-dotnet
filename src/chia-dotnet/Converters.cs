@@ -47,6 +47,13 @@ namespace chia.dotnet
             return e is null ? Enumerable.Empty<T>() : e.Select(item => (T)item);
         }
 
+        public static IEnumerable<T> ToEnumerable<T>(dynamic enumerable, Func<dynamic, T> converter)
+        {
+            Debug.Assert(enumerable is not null);
+            var e = (IEnumerable<dynamic>)enumerable;
+            return e is null ? Enumerable.Empty<T>() : e.Select(item => (T)converter(item));
+        }
+
         public static DateTime? ToDateTime(this ulong? epoch)
         {
             if (epoch.HasValue)

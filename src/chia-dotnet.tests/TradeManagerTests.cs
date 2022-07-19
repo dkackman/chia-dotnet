@@ -100,7 +100,7 @@ namespace chia.dotnet.tests
                 { takerCoinWalletId, -1 }
             };
 
-            var offer = await _theTradeManager.CreateOffer(idsAndAmounts, 1, true, cts.Token);
+            var offer = await _theTradeManager.CreateOffer(idsAndAmounts, 1, true, null, cts.Token);
         }
 
         [TestMethod()]
@@ -118,7 +118,7 @@ namespace chia.dotnet.tests
                 { takerCoinWalletId, -1 }
             };
 
-            var offer = await _theTradeManager.CreateOffer(idsAndAmounts, 1, true, cts.Token);
+            var offer = await _theTradeManager.CreateOffer(idsAndAmounts, 1, true, null, cts.Token);
 
             Assert.IsNotNull(offer);
         }
@@ -137,7 +137,7 @@ namespace chia.dotnet.tests
             };
 
             using var cts = new CancellationTokenSource(15000);
-            var offer = await _theTradeManager.CreateOffer(idsAndAmounts, 1, false, cts.Token);
+            var offer = await _theTradeManager.CreateOffer(idsAndAmounts, 1, false, null, cts.Token);
 
             Assert.IsNotNull(offer);
         }
