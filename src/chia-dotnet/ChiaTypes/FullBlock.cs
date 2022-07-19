@@ -51,6 +51,7 @@ namespace chia.dotnet
         /// List of block heights of previous generators referenced in this block
         /// </summary>
         public ICollection<uint> TransactionsGeneratorRefList { get; init; } = new List<uint>();
+        public string HeaderHash { get; init; } = string.Empty;
         /// <summary>
         /// Is this block from a transaction
         /// </summary>
