@@ -5,7 +5,7 @@
     <RootNamespace>chia.dotnet</RootNamespace>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.4.0-beta-01</Version>
+    <Version>1.4.0</Version>
     <Authors>dkackman</Authors>
     <Company>dkackman</Company>
     <Description>A .net 5 client library for chia™ RPC interfaces that runs on linux and windows.</Description>
@@ -19,8 +19,8 @@
     <PackageReleaseNotes>Chia 1.4.0 support</PackageReleaseNotes>
     <PackageIcon>chia-leaf-logo-384x384.png</PackageIcon>
     <PackageIconUrl />
-    <AssemblyVersion>1.4.0.0</AssemblyVersion>
-    <FileVersion>1.4.0.0</FileVersion>
+    <AssemblyVersion>1.4.0.1</AssemblyVersion>
+    <FileVersion>1.4.0.1</FileVersion>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
