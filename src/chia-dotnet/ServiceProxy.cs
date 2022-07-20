@@ -17,7 +17,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
         /// <param name="destinationService"><see cref="Message.Destination"/></param>
-        /// <param name="originService"><see cref="Message.Origin"/></param>        
+        /// <param name="originService"><see cref="Message.Origin"/></param>
         protected ServiceProxy(IRpcClient rpcClient, string destinationService, string originService)
         {
             RpcClient = rpcClient ?? throw new ArgumentNullException(nameof(rpcClient));
@@ -51,6 +51,16 @@ namespace chia.dotnet
         /// The <see cref="IRpcClient"/> used for underlying RPC
         /// </summary>
         public IRpcClient RpcClient { get; init; }
+
+        /// <summary>
+        /// Max retry before fail the request (mainly for get API)
+        /// </summary>
+        public uint MaxRetries { get; init; } = 0;
+
+        /// <summary>
+        /// Wait milliseconds for next retry, with attempts weight up
+        /// </summary>
+        public uint RetryWait { get; init; } = 100;
 
         /// <summary>
         /// Sends heartbeat message to the service
@@ -137,17 +147,41 @@ namespace chia.dotnet
         // These methods are the important ones that package up the request for the rpc client and then
         // parse and convert the response for the requester
         //
-        internal async Task<dynamic> SendMessage(string command, dynamic? data, CancellationToken cancellationToken = default)
+        internal async Task<dynamic> SendMessage(string command, dynamic? data, CancellationToken cancellationToken = default, uint? maxRetries = null)
         {
             var message = Message.Create(command, data, DestinationService, OriginService);
+            var attempts = 0;
+            var lastError = "";
+            maxRetries ??= MaxRetries;
 
             try
             {
-                return await RpcClient.SendMessage(message, cancellationToken).ConfigureAwait(false);
-            }
-            catch (ResponseException)
-            {
-                throw;
+                while (attempts <= maxRetries)
+                {
+                    try
+                    {
+                        var response = await RpcClient.SendMessage(message, cancellationToken).ConfigureAwait(false);
+                        return response;
+                    }
+                    catch (ResponseException re)
+                    {
+                        lastError = re.Message;
+                    }
+
+                    if (maxRetries == 0)
+                    {
+                        break;
+                    }
+
+                    attempts++;
+                    var waitTime = (int)RetryWait * attempts;
+
+                    await Task.Delay(waitTime, cancellationToken).ConfigureAwait(false);
+                    if (cancellationToken.IsCancellationRequested)
+                    {
+                        throw new TaskCanceledException();
+                    }
+                }
             }
             catch (TaskCanceledException)
             {
@@ -157,6 +191,13 @@ namespace chia.dotnet
             {
                 throw new ResponseException(message, "Something went wrong sending the rpc message. Inspect the InnerException for details.", e);
             }
+
+            if (attempts == 1)
+            {
+                throw new ResponseException(message, lastError);
+            }
+
+            throw new ResponseException(message, $"Failed after {attempts} attempts, last error: {lastError}");
         }
 
         internal async Task<dynamic> SendMessage(string command, CancellationToken cancellationToken = default)
