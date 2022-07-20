@@ -4,6 +4,18 @@
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
+                <mxCell id="48" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" parent="1" source="47" target="37" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="520" y="650" as="sourcePoint"/>
+                        <mxPoint x="410" y="580" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="50" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="49" target="37">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="220" y="650" as="sourcePoint"/>
+                        <mxPoint x="360" y="570" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
                 <mxCell id="46" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="45" target="2" edge="1">
                     <mxGeometry width="160" relative="1" as="geometry">
                         <mxPoint x="110" y="320" as="sourcePoint"/>
@@ -119,16 +131,16 @@
                     <mxGeometry x="280" y="480" width="160" height="90" as="geometry"/>
                 </mxCell>
                 <mxCell id="38" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;CATWallet&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="140" y="640" width="140" height="60" as="geometry"/>
+                    <mxGeometry x="140" y="650" width="140" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="39" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="38" target="37" edge="1">
+                <mxCell id="39" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" parent="1" source="38" target="37" edge="1">
                     <mxGeometry width="160" relative="1" as="geometry">
                         <mxPoint x="220" y="310" as="sourcePoint"/>
                         <mxPoint x="220" y="215" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="40" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;PoolWallet&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="290" y="640" width="140" height="60" as="geometry"/>
+                    <mxGeometry x="290" y="650" width="140" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="41" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="37" target="27" edge="1">
                     <mxGeometry width="160" relative="1" as="geometry">
@@ -136,16 +148,16 @@
                         <mxPoint x="480" y="350" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="42" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="40" edge="1">
+                <mxCell id="42" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="40" edge="1" target="37">
                     <mxGeometry width="160" relative="1" as="geometry">
                         <mxPoint x="280" y="630" as="sourcePoint"/>
                         <mxPoint x="360" y="570" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="43" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;DIDWallet&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="440" y="640" width="140" height="60" as="geometry"/>
+                    <mxGeometry x="440" y="650" width="140" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="44" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" parent="1" source="43" target="37" edge="1">
+                <mxCell id="44" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" parent="1" source="43" target="37" edge="1">
                     <mxGeometry width="160" relative="1" as="geometry">
                         <mxPoint x="410" y="640" as="sourcePoint"/>
                         <mxPoint x="370" y="580" as="targetPoint"/>
@@ -155,13 +167,10 @@
                     <mxGeometry x="30" y="380" width="140" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="47" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;RateLimitedWallet&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="590" y="640" width="140" height="60" as="geometry"/>
+                    <mxGeometry x="390" y="720" width="140" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="48" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" parent="1" source="47" target="37" edge="1">
-                    <mxGeometry width="160" relative="1" as="geometry">
-                        <mxPoint x="520" y="650" as="sourcePoint"/>
-                        <mxPoint x="410" y="580" as="targetPoint"/>
-                    </mxGeometry>
+                <mxCell id="49" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;NFTWallet&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="720" width="140" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
