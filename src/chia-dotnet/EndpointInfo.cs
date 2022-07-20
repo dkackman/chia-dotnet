@@ -8,7 +8,7 @@ namespace chia.dotnet
     public record EndpointInfo
     {
         /// <summary>
-        /// The <see creaf="Uri"/> of the RPC endpoint
+        /// The <see cref="Uri"/> of the RPC endpoint
         /// </summary>
         public Uri Uri { get; init; } = new("http://localhost");
 
