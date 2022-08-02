@@ -83,7 +83,7 @@ namespace chia.dotnet.tests
 
             var state = await _theFullNode.GetBlockchainState(cts.Token);
             Assert.IsNotNull(state.Peak, "peak not retreived yet");
-            var blocks = await _theFullNode.GetBlocks(state.Peak.Height - 5, state.Peak.Height - 1, false, cts.Token);
+            var blocks = await _theFullNode.GetBlocks(state.Peak.Height - 5, state.Peak.Height - 1, cancellationToken: cts.Token);
 
             Assert.IsNotNull(blocks);
         }
