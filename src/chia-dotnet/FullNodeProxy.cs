@@ -5,6 +5,7 @@ using System.Linq;
 using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace chia.dotnet
 {
@@ -457,7 +458,13 @@ namespace chia.dotnet
 
             var response = await SendMessage("push_tx", data, cancellationToken).ConfigureAwait(false);
 
-            return response.status?.ToString() == "SUCCESS";
+            if (response.status?.ToString() == "SUCCESS")
+            {
+                return true;
+            }
+
+            var message = Message.Create("push_tx", data, DestinationService, OriginService);
+            throw new ResponseException(message, JsonConvert.SerializeObject(response));
         }
 
         /// <summary>
