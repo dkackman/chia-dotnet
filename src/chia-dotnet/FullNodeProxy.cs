@@ -462,11 +462,9 @@ namespace chia.dotnet
             {
                 return true;
             }
-            else
-            {
-                var message = Message.Create("push_tx", data, DestinationService, OriginService);
-                throw new ResponseException(message, JsonConvert.SerializeObject(response));
-            }
+
+            var message = Message.Create("push_tx", data, DestinationService, OriginService);
+            throw new ResponseException(message, JsonConvert.SerializeObject(response));
         }
 
         /// <summary>
