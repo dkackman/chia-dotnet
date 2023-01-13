@@ -18,12 +18,12 @@ namespace chia.dotnet.tests
                 Uri = new Uri($"https://{NodeHostAddress}:{port}"),
                 //CertPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.crt",
                 //KeyPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.key",
-                //CertPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_daemon.crt",
-                //KeyPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_daemon.key",
-                CertPath = $@"C:\Users\dkack\.rchia\certs\{NodeHostAddress}\private_{endpointName}.crt",
-                KeyPath = $@"C:\Users\dkack\.rchia\certs\{NodeHostAddress}\private_{endpointName}.key",
-                //CertPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_full_node.crt",
-                //KeyPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_full_node.key",
+                //CertPath = @"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\.rchia\certs\chiapas\private_daemon.crt",
+                //KeyPath = @"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\.rchia\certs\chiapas\private_daemon.key",
+                CertPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\.rchia\certs\{NodeHostAddress}\private_{endpointName}.crt",
+                KeyPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\.rchia\certs\{NodeHostAddress}\private_{endpointName}.key",
+                //CertPath = @"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\.rchia\certs\chiapas\private_full_node.crt",
+                //KeyPath = @"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\.rchia\certs\chiapas\private_full_node.key",
             };
 
             return new HttpRpcClient(endpoint);
@@ -43,8 +43,8 @@ namespace chia.dotnet.tests
             var endpoint = new EndpointInfo()
             {
                 Uri = new Uri($"wss://{NodeHostAddress}:55400"),
-                CertPath = $@"C:\Users\dkack\.rchia\certs\{NodeHostAddress}\private_daemon.crt",
-                KeyPath = $@"C:\Users\dkack\.rchia\certs\{NodeHostAddress}\private_daemon.key",
+                CertPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\.rchia\certs\{NodeHostAddress}\private_daemon.crt",
+                KeyPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\.rchia\certs\{NodeHostAddress}\private_daemon.key",
                 //CertPath = @"\\wsl$\Ubuntu-20.04\home\don\.chia\mainnet\config\ssl\daemon\private_daemon.crt",
                 //KeyPath = @"\\wsl$\Ubuntu-20.04\home\don\.chia\mainnet\config\ssl\daemon\private_daemon.key",
                 //CertPath = @"\\wsl.localhost\Ubuntu\home\don\.chia\mainnet\config\ssl\daemon\private_daemon.crt",
