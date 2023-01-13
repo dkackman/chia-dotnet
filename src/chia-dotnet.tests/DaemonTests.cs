@@ -50,6 +50,15 @@ namespace chia.dotnet.tests
         }
 
         [TestMethod]
+        public async Task IsRunning()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            var running = await _theDaemon.IsRunning(ServiceNames.FullNode, cts.Token);
+            Assert.IsTrue(running);
+        }
+
+        [TestMethod]
         public async Task GetKeyringStatus()
         {
             using var cts = new CancellationTokenSource(15000);
