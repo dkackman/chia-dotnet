@@ -16,7 +16,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
         /// <param name="originService"><see cref="Message.Origin"/></param>
-        public CrawlerProxy(IRpcClient rpcClient, string originService)
+        public DataLayerProxy(IRpcClient rpcClient, string originService)
             : base(rpcClient, ServiceNames.DataLayer, originService)
         {
         }
@@ -43,7 +43,6 @@ namespace chia.dotnet
             await SendMessage("get_peer_counts", "data", cancellationToken).ConfigureAwait(false);
         }
 
-
         /// <summary>
         /// Applies a batch of updates.
         /// </summary>
@@ -51,7 +50,7 @@ namespace chia.dotnet
         /// <param name="changeList">Name value pairs of changes</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Transaction id</returns>
-        public async Task<string> BatchUpdate(string id, IDictionary<KeyValuePair<string, string>> changeList, CancellationToken cancellationToken = default)
+        public async Task<string> BatchUpdate(string id, IDictionary<string, string> changeList, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -65,6 +64,25 @@ namespace chia.dotnet
             var response = await SendMessage("batch_update", data, cancellationToken).ConfigureAwait(false);
 
             return response.tx_id;
+        }
+
+        /// <summary>
+        /// Creates a data store.
+        /// </summary>
+        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The tree id and list of transactions</returns>
+        public async Task<(string id, IEnumerable<TransactionRecord> txs)> CreateDataStore(ulong fee, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.fee = fee;
+
+            var response = await SendMessage("create_data_store", data, cancellationToken).ConfigureAwait(false);
+
+            return (
+                response.id,
+                response.txs
+            );
         }
     }
 }
