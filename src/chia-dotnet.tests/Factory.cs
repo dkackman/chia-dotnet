@@ -8,11 +8,15 @@ namespace chia.dotnet.tests
     /// </summary>
     internal static class Factory
     {
-        // this is the ip address of the chia node
-        private const string NodeHostAddress = "former";
+        // this is the ip address or name of the chia node under test
+        private const string NodeHostAddress = "chiapas";
 
         public static HttpRpcClient CreateDirectRpcClientFromHardcodedLocation(int port, string endpointName)
         {
+            //
+            // these are paths to cert for various test nodes
+            // modify 
+            //
             var endpoint = new EndpointInfo()
             {
                 Uri = new Uri($"https://{NodeHostAddress}:{port}"),
