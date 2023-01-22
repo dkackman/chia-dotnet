@@ -718,5 +718,39 @@ namespace chia.dotnet
         {
             return await CreateSignedTransaction(additions, fee: fee, cancellationToken).ConfigureAwait(false);
         }
+
+
+        /// <summary>
+        /// Retrieves the coins for given coin IDs
+        /// </summary>
+        /// <param name="names">The coin names</param>
+        /// <param name="includeSpentCoins">Flag indicating whether to include spent coins or not</param>
+        /// <param name="startHeight">confirmation start height for search</param>
+        /// <param name="endHeight">confirmation end height for search</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of <see cref="CoinRecord"/>s</returns>
+        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByNames(IEnumerable<string> names, bool includeSpentCoins, int? startHeight = null, int? endHeight = null, CancellationToken cancellationToken = default)
+        {
+            if (names is null)
+            {
+                throw new ArgumentNullException(nameof(names));
+            }
+
+            dynamic data = new ExpandoObject();
+            data.names = names.ToList();
+            data.include_spent_coins = includeSpentCoins;
+
+            if (startHeight.HasValue)
+            {
+                data.start_height = startHeight.Value;
+            }
+
+            if (endHeight.HasValue)
+            {
+                data.end_height = endHeight.Value;
+            }
+
+            return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_names", data, "coin_records", cancellationToken).ConfigureAwait(false);
+        }
     }
 }
