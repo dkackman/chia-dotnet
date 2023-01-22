@@ -143,6 +143,51 @@ namespace chia.dotnet
             return await WalletProxy.SendMessage<IEnumerable<TransactionRecord>>("get_transactions", data, "transactions", cancellationToken).ConfigureAwait(false);
         }
 
+
+        /// <summary>
+        /// Get the list of spendable coins
+        /// </summary>
+        /// <param name="minCoinAmount">The minimum coin amount</param>
+        /// <param name="maxCoinAmount">The maximum coin amount></param>
+        /// <param name="excludedCoinAmounts">Amounts to exlcude</param>
+        /// <param name="excludedCoins">Coins to exclude</param>
+        /// <param name="excludedCoinIds">Coin ids to exclude</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Information about spendable coins</returns>
+        public async Task<(IEnumerable<CoinRecord> confirmedRecords,
+            IEnumerable<CoinRecord> unconfirmedRecords,
+            IEnumerable<CoinRecord> unconfirmedAdditions)> GetSpendableCoins(ulong? minCoinAmount, ulong? maxCoinAmount, IEnumerable<ulong> excludedCoinAmounts = null, IEnumerable<Coin> excludedCoins = null, IEnumerable<string> excludedCoinIds = null, CancellationToken cancellationToken = default)
+        {
+            dynamic data = CreateWalletDataObject();
+            if (minCoinAmount is not null)
+            {
+                data.minCoinAmount = minCoinAmount.Value;
+            }
+            if (maxCoinAmount is not null)
+            {
+                data.maxCoinAmount = maxCoinAmount.Value;
+            }
+            if (excludedCoinAmounts is not null)
+            {
+                data.excludedCoinAmounts = excludedCoinAmounts.ToList();
+            }
+            if (excludedCoins is not null)
+            {
+                data.excludedCoins = excludedCoins.ToList();
+            }
+            if (excludedCoinIds is not null)
+            {
+                data.excludedCoinIds = excludedCoinIds.ToList();
+            }
+            var response = await WalletProxy.SendMessage("get_spendable_coins", data, cancellationToken).ConfigureAwait(false);
+
+            return (
+                Converters.ToObject<CoinRecord>(response.confirmed_records),
+                Converters.ToObject<CoinRecord>(response.unconfirmed_removals),
+                Converters.ToObject<Coin>(response.unconfirmed_additions)
+                );
+        }
+
         /// <summary>
         /// Get the last address or create a new one
         /// </summary>
