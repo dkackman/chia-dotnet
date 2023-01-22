@@ -216,6 +216,25 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Pushes a list of transactions to the mempool and blockchain. 
+        /// </summary>
+        /// <param name="spendBundle"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>An awaitable task</returns>
+        public async Task PushTransactions(IEnumerable<TransactionRecord> transactions, CancellationToken cancellationToken = default)
+        {
+            if (transactions is null)
+            {
+                throw new ArgumentNullException(nameof(transactions));
+            }
+
+            dynamic data = new ExpandoObject();
+            data.transactions = transactions.ToList();
+
+            await SendMessage("push_transactions", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Adds a new key to the wallet
         /// </summary>        
         /// <param name="mnemonic">The key mnemonic</param>
