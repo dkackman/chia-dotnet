@@ -90,6 +90,20 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Get spends in a block
+        /// </summary>
+        /// <param name="headerHash">The block header hash</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of <see cref="CoinSpend"/>s</returns>
+        public async Task<IEnumerable<CoinSpend>> GetBlockSpends(string headerHash, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.header_hash = headerHash;
+ 
+            return await SendMessage<IEnumerable<CoinSpend>>("get_block_spends", data, "block_spends", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Get a block record by a header hash
         /// </summary>
         /// <param name="headerhash">The header hash</param>
