@@ -7,23 +7,27 @@ namespace chia.dotnet
     /// </summary>
     public record NFTInfo
     {
+        public string ChainInfo { get; init; } = string.Empty;
+        public string DataHash { get; init; } = string.Empty;
+        public IEnumerable<string> DataUris { get; init; } = new List<string>();
+        public ulong EditionTotal { get; init; }
+        public ulong EditionNumber { get; init; }
         public string LauncherId { get; init; } = string.Empty;
-        public string NFTCoinID { get; init; } = string.Empty;
+        public string LauncherPuzhash { get; init; } = string.Empty;
+        public string LicenseHash { get; init; } = string.Empty;
+        public IEnumerable<string> LicenseUris { get; init; } = new List<string>();
+        public string MetadataHash { get; init; } = string.Empty;
+        public IEnumerable<string> MetadataUris { get; init; } = new List<string>();
+        public uint MintHeight { get; init; }
+        public string? MinterDid { get; init; }
+        public string NftCoinId { get; init; } = string.Empty;
+        public object? OffChainMetadata { get; init; }
         public string? OwnerDID { get; init; }
+        public string? P2Address { get; init; }
+        public bool PendingTransaction { get; init; }
         public ushort? RoyaltyPercentage { get; init; }
         public string? RoyaltyPuzzleHash { get; init; } = string.Empty;
-        public IEnumerable<string> DataUris { get; init; } = new List<string>();
-        public string DataHash { get; init; } = string.Empty;
-        public IEnumerable<string> MetadataUris { get; init; } = new List<string>();
-        public string MetaataHash { get; init; } = string.Empty;
-        public IEnumerable<string> LicenseUris { get; init; } = new List<string>();
-        public ulong SeriesTotal { get; init; }
-        public ulong SeriesNumber { get; init; }
-        public string UpdaterPuzhash { get; init; } = string.Empty;
-        public string ChainInfo { get; init; } = string.Empty;
-        public uint MintHeight { get; init; }
         public bool SupportsDID { get; init; }
-        public bool PendingTransaction { get; init; }
-        public string LauncherPuzhash { get; init; } = string.Empty;
+        public string UpdaterPuzhash { get; init; } = string.Empty;
     }
 }
