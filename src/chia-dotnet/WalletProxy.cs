@@ -487,7 +487,7 @@ namespace chia.dotnet
             data.coin_id = coinId;
             data.latest = latest;
 
-            return await SendMessage("nft_get_info", "nft_info", data, cancellationToken).ConfigureAwait(false);
+            return await SendMessage<NFTInfo>("nft_get_info", data, "nft_info", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
