@@ -366,62 +366,6 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Creates a new Admin Rate Limited wallet
-        /// </summary>
-        /// <param name="pubkey">admin pubkey</param>
-        /// <param name="interval">The limit interval</param>
-        /// <param name="limit">The limit amount</param>
-        /// <param name="amount">The amount to put in the wallet (in units of mojos)</param>     
-        /// <param name="fee">Fee to create the wallet (in units of mojos)</param>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>Information about the wallet</returns>
-        public async Task<(uint Id, WalletType Type, Coin origin, string pubkey)> CreateRateLimitedAdminWallet(string pubkey, ulong interval, ulong limit, ulong amount, ulong fee, CancellationToken cancellationToken = default)
-        {
-            if (string.IsNullOrEmpty(pubkey))
-            {
-                throw new ArgumentNullException(nameof(pubkey));
-            }
-
-            dynamic data = new ExpandoObject();
-            data.wallet_type = "rl_wallet";
-            data.rl_type = "admin";
-            data.pubkey = pubkey;
-            data.amount = amount;
-            data.fee = fee;
-            data.interval = interval;
-            data.limit = limit;
-
-            var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
-
-            return (
-                response.id,
-                response.type,
-                Converters.ToObject<Coin>(response.origin),
-                response.pubkey
-                );
-        }
-
-        /// <summary>
-        /// Creates a new User Rate Limited wallet
-        /// </summary>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>Information about the wallet</returns>
-        public async Task<(uint Id, WalletType Type, string pubkey)> CreateRateLimitedUserWallet(CancellationToken cancellationToken = default)
-        {
-            dynamic data = new ExpandoObject();
-            data.wallet_type = "rl_wallet";
-            data.rl_type = "user";
-
-            var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
-
-            return (
-                (uint)response.id,
-                (WalletType)response.type,
-                response.pubkey
-                );
-        }
-
-        /// <summary>
         /// Get an NFT wallet by DID ID
         /// </summary>
         /// <param name="didId">The DID ID</param>
