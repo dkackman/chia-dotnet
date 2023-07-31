@@ -3,7 +3,7 @@
 A [.net](https://dotnet.microsoft.com/download/dotnet/6.0) client library for [chia](https://github.com/Chia-Network/chia-blockchain)™ RPC interfaces that runs on linux and windows.
 
 [![build](https://github.com/dkackman/chia-dotnet/actions/workflows/dotnet.yml/badge.svg)](https://github.com/dkackman/chia-dotnet/actions)
-[![CodeQL](https://github.com/dkackman/chia-dotnet/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/dkackman/chia-dotnet/actions/workflows/codeql-analysis.yml)
+[![CodeQL](https://github.com/dkackman/chia-dotnet/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/dkackman/chia-dotnet/actions/workflows/github-code-scanning/codeql)
 [![NuGet](https://img.shields.io/nuget/dt/chia-dotnet)](https://www.nuget.org/packages/chia-dotnet/)
 
 ## Getting Started
