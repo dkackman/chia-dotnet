@@ -8,7 +8,7 @@ namespace chia.dotnet.bech32
     /// Utility to perform operations on an array of bytes and represent them as a Hex string
     /// </summary>
     /// <remarks>adapted from https://github.com/Playwo/ChiaRPC.Net/blob/master/ChiaRPC.Net/Utils/Bech32M.cs</remarks>
-    public struct HexBytes
+    public readonly struct HexBytes
     {
         /// <summary>
         /// <see cref="Bytes"/> hex string representation
