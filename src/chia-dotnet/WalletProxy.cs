@@ -126,12 +126,12 @@ namespace chia.dotnet
         /// <param name="fingerprint">The fingerprint</param>          
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The private key for the fingerprint</returns>
-        public async Task<PrivateKeyDetail> GetPrivateKey(uint fingerprint, CancellationToken cancellationToken = default)
+        public async Task<PrivateKey> GetPrivateKey(uint fingerprint, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
 
-            return await SendMessage<PrivateKeyDetail>("get_private_key", data, "private_key", cancellationToken).ConfigureAwait(false);
+            return await SendMessage<PrivateKey>("get_private_key", data, "private_key", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

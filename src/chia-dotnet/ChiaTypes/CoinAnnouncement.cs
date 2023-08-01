@@ -1,8 +1,8 @@
 ﻿namespace chia.dotnet
 {
-    public record Announcement
+    public record CoinAnnouncement
     {
-        public string OriginInfo { get; init; } = string.Empty;
+        public string CoinId { get; init; } = string.Empty;
         public string Message { get; init; } = string.Empty;
         public string MorphBytes { get; init; } = string.Empty;
     }

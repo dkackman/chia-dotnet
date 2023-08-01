@@ -4,8 +4,8 @@ namespace chia.dotnet
 {
     public record AmountWithPuzzlehash
     {
-        public ulong Amount { get; init; }
-        public string PuzzleHash { get; init; } = string.Empty;
-        public IEnumerable<string> Memos { get; init; } = new List<string>();
+        public IEnumerable<TransactionType> Values { get; init; } = new List<TransactionType>();
+
+        public FilterMode Mode { get; init; } = FilterMode.Exlude;
     }
 }
