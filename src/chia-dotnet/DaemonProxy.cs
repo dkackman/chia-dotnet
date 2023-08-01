@@ -3,6 +3,7 @@ using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Reflection.Emit;
 
 namespace chia.dotnet
 {
@@ -331,6 +332,68 @@ namespace chia.dotnet
             data.root_path = rootPath;
 
             _ = await SendMessage("check_keys", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Locates and returns KeyData matching the provided fingerprint
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>
+        /// <param name="includeSecrets">Include secrets</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task<KeyData> GetKey(uint fingerprint, bool includeSecrets = false, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+            data.include_secrets = includeSecrets;
+
+            return await SendMessage<KeyData>("get_key", data, "key", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        ///  Returns the KeyData of all keys which can be retrieved
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>
+        /// <param name="includeSecrets">Include secrets</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task<KeyData> GetKeys(uint fingerprint, bool includeSecrets = false, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+            data.include_secrets = includeSecrets;
+
+            return await SendMessage<IEnumerable<KeyData>>("get_keys", data, "keys", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Assigns the given label to the first key with the given fingerprint.
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>
+        /// <param name="label">The label</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task SetLabel(uint fingerprint, string label, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+            data.label = label;
+
+            _ = await SendMessage("set_label", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Removes the label assigned to the key with the given fingerprint.
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task DeleteLabel(uint fingerprint, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+
+            _ = await SendMessage("delete_label", data, cancellationToken).ConfigureAwait(false);
         }
 
         private static object CreateDataObject(string service)
