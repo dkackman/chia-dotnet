@@ -333,6 +333,22 @@ namespace chia.dotnet
             _ = await SendMessage("check_keys", data, cancellationToken).ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// Locates and returns KeyData matching the provided fingerprint
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>
+        /// <param name="includeSecrets">Include secrets</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task<KeyData> GetKey(uint fingerprint, bool includeSecrets = false, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+            data.include_secrets = includeSecrets;
+
+            return await SendMessage<KeyData>("get_key", data, "key", cancellationToken).ConfigureAwait(false);
+        }
+
         private static object CreateDataObject(string service)
         {
             if (string.IsNullOrEmpty(service))
