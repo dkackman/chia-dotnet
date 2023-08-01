@@ -358,6 +358,18 @@ namespace chia.dotnet
                 );
         }
 
+        public async Task<IEnumerable<BlockSpend>> GetBlockSpends(string headerhash, CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrEmpty(headerhash))
+            {
+                throw new ArgumentNullException(nameof(headerhash));
+            }
+            dynamic data = new ExpandoObject();
+            data.header_hash = headerhash;
+
+            return await SendMessage<IEnumerable<BlockSpend>>("get_block_spends", data, "block_spends", cancellationToken).ConfigureAwait(false);
+        }
+
         /// <summary>
         /// Returns all items in the mempool.
         /// </summary>
