@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -90,8 +88,8 @@ namespace chia.dotnet
             data.meta_uris = info.MetaUris;
             data.license_uris = info.LicenseUris;
             data.hash = info.Hash;
-            data.series_number = info.SeriesNumber;
-            data.series_total = info.SeriesTotal;
+            data.edition_number = info.EditionNumber;
+            data.edition_total = info.EditionTotal;
             data.meta_hash = info.MetaHash;
             data.license_hash = info.LicenseHash;
             data.did_id = info.DIDID;

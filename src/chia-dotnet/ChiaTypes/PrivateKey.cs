@@ -2,8 +2,11 @@
 {
     public record PrivateKey
     {
-        public string PK { get; init; } = string.Empty;
-
-        public string Entropy { get; init; } = string.Empty;
+        public uint Fingerprint { get; init; }
+        public string Sk { get; init; } = string.Empty;
+        public string Pk { get; init; } = string.Empty;
+        public string FarmerPk { get; init; } = string.Empty;
+        public string PoolPk { get; init; } = string.Empty;
+        public string Seed { get; init; } = string.Empty;
     }
 }

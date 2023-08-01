@@ -9,5 +9,9 @@
         public ulong MaxSendAmount { get; init; }
         public int UnspentCoinCount { get; init; }
         public int PendingCoinRemovalCount { get; init; }
+        public WalletType WalletType { get; init; }
+        public string? AssetId { get; init; }
+        public uint WalletId { get; init; }
+        public int? Fingerprint { get; init; }
     }
 }

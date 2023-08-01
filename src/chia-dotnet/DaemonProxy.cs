@@ -243,14 +243,14 @@ namespace chia.dotnet
         /// <param name="fingerprint">The fingerprint</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="PrivateKey"/></returns>
-        public async Task<PrivateKey> GetKeyForFingerprint(uint fingerprint, CancellationToken cancellationToken = default)
+        public async Task<PrivateKeyData> GetKeyForFingerprint(uint fingerprint, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
 
             var response = await SendMessage("get_key_for_fingerprint", data, cancellationToken).ConfigureAwait(false);
 
-            return new PrivateKey()
+            return new PrivateKeyData()
             {
                 PK = response.pk,
                 Entropy = response.entropy
@@ -303,9 +303,9 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The first <see cref="PrivateKey"/></returns>
-        public async Task<PrivateKey> GetFirstPrivateKey(CancellationToken cancellationToken = default)
+        public async Task<PrivateKeyData> GetFirstPrivateKey(CancellationToken cancellationToken = default)
         {
-            return await SendMessage<PrivateKey>("get_first_private_key", null, "private_key", cancellationToken).ConfigureAwait(false);
+            return await SendMessage<PrivateKeyData>("get_first_private_key", null, "private_key", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -313,9 +313,9 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>All of the <see cref="PrivateKey"/>s</returns>
-        public async Task<IEnumerable<PrivateKey>> GetAllPrivateKeys(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<PrivateKeyData>> GetAllPrivateKeys(CancellationToken cancellationToken = default)
         {
-            return await SendMessage<IEnumerable<PrivateKey>>("get_all_private_keys", null, "private_keys", cancellationToken).ConfigureAwait(false);
+            return await SendMessage<IEnumerable<PrivateKeyData>>("get_all_private_keys", null, "private_keys", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

@@ -31,7 +31,7 @@
         public string OwnerPubkey { get; init; } = string.Empty;
 
         // the blockchain doesn't like it when the trailing slash is encoded into the nft (won't be able to decode and find wallet info)
-        public string? PoolUrl { get => poolUrl is not null ? poolUrl.TrimEnd('/') : null; init => poolUrl = value; }
+        public string? PoolUrl { get => poolUrl?.TrimEnd('/'); init => poolUrl = value; }
 
         public uint RelativeLockHeight { get; init; }
     }
