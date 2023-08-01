@@ -369,7 +369,7 @@ namespace chia.dotnet
 
             return await SendMessage<IEnumerable<BlockSpend>>("get_block_spends", data, "block_spends", cancellationToken).ConfigureAwait(false);
         }
-        
+
         /// <summary>
         /// Returns all items in the mempool.
         /// </summary>
