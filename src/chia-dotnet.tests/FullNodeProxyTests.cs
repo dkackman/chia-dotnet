@@ -225,6 +225,21 @@ namespace chia.dotnet.tests
 
             Assert.IsNotNull(additionsAndRemovals);
         }
+        
+        
+        [TestMethod()]
+        public async Task GetBlockSpends()
+        {
+            // Arrange
+            var header = "0xaa8425c198253b96a15c40e32ef4c1fd36e751f0ff9a90199e8751df381eac71"; //hash from today
+            
+            // Act
+            using var cts = new CancellationTokenSource(15000);
+            var spends = await _theFullNode.GetBlockSpends(header, cts.Token);
+            
+            // Assert
+            Assert.IsNotNull(spends);
+        }
 
         [TestMethod()]
         public async Task GetAllMempoolItems()
