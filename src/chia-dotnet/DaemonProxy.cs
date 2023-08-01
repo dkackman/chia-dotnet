@@ -3,6 +3,7 @@ using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Reflection.Emit;
 
 namespace chia.dotnet
 {
@@ -363,6 +364,22 @@ namespace chia.dotnet
             data.include_secrets = includeSecrets;
 
             return await SendMessage<IEnumerable<KeyData>>("get_keys", data, "keys", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Assigns the given label to the first key with the given fingerprint.
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>
+        /// <param name="label">The label</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task SetLabel(uint fingerprint, string label, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+            data.label = label;
+
+            _ = await SendMessage("set_label", data, cancellationToken).ConfigureAwait(false);
         }
 
         private static object CreateDataObject(string service)
