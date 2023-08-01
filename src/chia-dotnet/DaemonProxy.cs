@@ -382,6 +382,20 @@ namespace chia.dotnet
             _ = await SendMessage("set_label", data, cancellationToken).ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// Removes the label assigned to the key with the given fingerprint.
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task DeleteLabel(uint fingerprint, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+
+            _ = await SendMessage("delete_label", data, cancellationToken).ConfigureAwait(false);
+        }
+
         private static object CreateDataObject(string service)
         {
             if (string.IsNullOrEmpty(service))
