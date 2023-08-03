@@ -156,7 +156,7 @@ namespace chia.dotnet
         /// <returns>Information about spendable coins</returns>
         public async Task<(IEnumerable<CoinRecord> confirmedRecords,
             IEnumerable<CoinRecord> unconfirmedRecords,
-            IEnumerable<CoinRecord> unconfirmedAdditions)> GetSpendableCoins(ulong? minCoinAmount, ulong? maxCoinAmount, IEnumerable<ulong> excludedCoinAmounts = null, IEnumerable<Coin> excludedCoins = null, IEnumerable<string> excludedCoinIds = null, CancellationToken cancellationToken = default)
+            IEnumerable<CoinRecord> unconfirmedAdditions)> GetSpendableCoins(ulong? minCoinAmount, ulong? maxCoinAmount, IEnumerable<ulong>? excludedCoinAmounts = null, IEnumerable<Coin>? excludedCoins = null, IEnumerable<string>? excludedCoinIds = null, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             if (minCoinAmount is not null)
