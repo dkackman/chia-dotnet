@@ -167,8 +167,27 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.coin_id = coinId;
+            data.fee = fee;
 
             await SendMessage("delete_mirror", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets the list of ancestors for a given id/hash pair.
+        /// </summary>
+        /// <param name="id">Id</param>
+        /// <param name="id">Hash</param>
+        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<InternalNode>> GetAncestors(string id, string hash, ulong fee, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.id = id;
+            data.hash = hash;
+            data.fee = fee;
+
+            return await SendMessage<IEnumerable<InternalNode>>("get_ancestors", data, "ancestors", cancellationToken).ConfigureAwait(false);
         }
     }
 }
