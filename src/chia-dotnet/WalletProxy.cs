@@ -126,12 +126,12 @@ namespace chia.dotnet
         /// <param name="fingerprint">The fingerprint</param>          
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The private key for the fingerprint</returns>
-        public async Task<PrivateKeyDetail> GetPrivateKey(uint fingerprint, CancellationToken cancellationToken = default)
+        public async Task<PrivateKey> GetPrivateKey(uint fingerprint, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
 
-            return await SendMessage<PrivateKeyDetail>("get_private_key", data, "private_key", cancellationToken).ConfigureAwait(false);
+            return await SendMessage<PrivateKey>("get_private_key", data, "private_key", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -381,62 +381,6 @@ namespace chia.dotnet
                 (WalletType)response.type,
                 response.asset_id,
                 (uint)response.wallet_id
-                );
-        }
-
-        /// <summary>
-        /// Creates a new Admin Rate Limited wallet
-        /// </summary>
-        /// <param name="pubkey">admin pubkey</param>
-        /// <param name="interval">The limit interval</param>
-        /// <param name="limit">The limit amount</param>
-        /// <param name="amount">The amount to put in the wallet (in units of mojos)</param>     
-        /// <param name="fee">Fee to create the wallet (in units of mojos)</param>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>Information about the wallet</returns>
-        public async Task<(uint Id, WalletType Type, Coin origin, string pubkey)> CreateRateLimitedAdminWallet(string pubkey, ulong interval, ulong limit, ulong amount, ulong fee, CancellationToken cancellationToken = default)
-        {
-            if (string.IsNullOrEmpty(pubkey))
-            {
-                throw new ArgumentNullException(nameof(pubkey));
-            }
-
-            dynamic data = new ExpandoObject();
-            data.wallet_type = "rl_wallet";
-            data.rl_type = "admin";
-            data.pubkey = pubkey;
-            data.amount = amount;
-            data.fee = fee;
-            data.interval = interval;
-            data.limit = limit;
-
-            var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
-
-            return (
-                response.id,
-                response.type,
-                Converters.ToObject<Coin>(response.origin),
-                response.pubkey
-                );
-        }
-
-        /// <summary>
-        /// Creates a new User Rate Limited wallet
-        /// </summary>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>Information about the wallet</returns>
-        public async Task<(uint Id, WalletType Type, string pubkey)> CreateRateLimitedUserWallet(CancellationToken cancellationToken = default)
-        {
-            dynamic data = new ExpandoObject();
-            data.wallet_type = "rl_wallet";
-            data.rl_type = "user";
-
-            var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
-
-            return (
-                (uint)response.id,
-                (WalletType)response.type,
-                response.pubkey
                 );
         }
 

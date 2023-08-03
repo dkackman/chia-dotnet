@@ -8,8 +8,8 @@ namespace chia.dotnet.tests
     /// </summary>
     internal static class Factory
     {
-        // this is the ip address or name of the chia node under test
-        private const string NodeHostAddress = "chiapas";
+        // this is the ip address of the chia node
+        private const string NodeHostAddress = "127.0.0.1";
 
         public static HttpRpcClient CreateDirectRpcClientFromHardcodedLocation(int port, string endpointName)
         {
@@ -22,12 +22,13 @@ namespace chia.dotnet.tests
                 Uri = new Uri($"https://{NodeHostAddress}:{port}"),
                 //CertPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.crt",
                 //KeyPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.key",
-                //CertPath = @"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\.rchia\certs\chiapas\private_daemon.crt",
-                //KeyPath = @"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\.rchia\certs\chiapas\private_daemon.key",
-                CertPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\.rchia\certs\{NodeHostAddress}\private_{endpointName}.crt",
-                KeyPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\.rchia\certs\{NodeHostAddress}\private_{endpointName}.key",
-                //CertPath = @"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\.rchia\certs\chiapas\private_full_node.crt",
-                //KeyPath = @"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\.rchia\certs\chiapas\private_full_node.key",
+
+                //CertPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_daemon.crt",
+                //KeyPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_daemon.key",
+                // CertPath = $@"/home/kev/.chia/mainnet/config/ssl/daemon/private_{endpointName}.crt",
+                // KeyPath = $@"/home/kev/.chia/mainnet/config/ssl/daemon/private_{endpointName}.key",
+                //CertPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_full_node.crt",
+                //KeyPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_full_node.key",
             };
 
             return new HttpRpcClient(endpoint);
@@ -47,8 +48,9 @@ namespace chia.dotnet.tests
             var endpoint = new EndpointInfo()
             {
                 Uri = new Uri($"wss://{NodeHostAddress}:55400"),
-                CertPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\.rchia\certs\{NodeHostAddress}\private_daemon.crt",
-                KeyPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\.rchia\certs\{NodeHostAddress}\private_daemon.key",
+                // CertPath = $@"/home/kev/.chia/mainnet/config/ssl/daemon/private_daemon.crt",
+                // KeyPath = $@"/home/kev/.chia/mainnet/config/ssl/daemon/private_daemon.key",
+
                 //CertPath = @"\\wsl$\Ubuntu-20.04\home\don\.chia\mainnet\config\ssl\daemon\private_daemon.crt",
                 //KeyPath = @"\\wsl$\Ubuntu-20.04\home\don\.chia\mainnet\config\ssl\daemon\private_daemon.key",
                 //CertPath = @"\\wsl.localhost\Ubuntu\home\don\.chia\mainnet\config\ssl\daemon\private_daemon.crt",

@@ -447,6 +447,25 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Retrieves every coin that was spent in a block
+        /// </summary>
+        /// <param name="headerhash">The block's header_hash</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public async Task<IEnumerable<CoinSpend>> GetBlockSpends(string headerhash, CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrEmpty(headerhash))
+            {
+                throw new ArgumentNullException(nameof(headerhash));
+            }
+            dynamic data = new ExpandoObject();
+            data.header_hash = headerhash;
+
+            return await SendMessage<IEnumerable<CoinSpend>>("get_block_spends", data, "block_spends", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Returns all items in the mempool.
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>

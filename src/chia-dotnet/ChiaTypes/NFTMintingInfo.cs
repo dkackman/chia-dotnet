@@ -17,7 +17,7 @@ namespace chia.dotnet
         public string? MetaHash { get; init; }
         public IEnumerable<string> LicenseUris { get; init; } = new List<string>();
         public string? LicenseHash { get; init; }
-        public ulong SeriesTotal { get; init; } = 1;
-        public ulong SeriesNumber { get; init; } = 1;
+        public ulong EditionTotal { get; init; } = 1;
+        public ulong EditionNumber { get; init; } = 1;
     }
 }

@@ -3,6 +3,7 @@ using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Reflection.Emit;
 
 namespace chia.dotnet
 {
@@ -243,14 +244,14 @@ namespace chia.dotnet
         /// <param name="fingerprint">The fingerprint</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="PrivateKey"/></returns>
-        public async Task<PrivateKey> GetKeyForFingerprint(uint fingerprint, CancellationToken cancellationToken = default)
+        public async Task<PrivateKeyData> GetKeyForFingerprint(uint fingerprint, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
 
             var response = await SendMessage("get_key_for_fingerprint", data, cancellationToken).ConfigureAwait(false);
 
-            return new PrivateKey()
+            return new PrivateKeyData()
             {
                 PK = response.pk,
                 Entropy = response.entropy
@@ -303,9 +304,9 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The first <see cref="PrivateKey"/></returns>
-        public async Task<PrivateKey> GetFirstPrivateKey(CancellationToken cancellationToken = default)
+        public async Task<PrivateKeyData> GetFirstPrivateKey(CancellationToken cancellationToken = default)
         {
-            return await SendMessage<PrivateKey>("get_first_private_key", null, "private_key", cancellationToken).ConfigureAwait(false);
+            return await SendMessage<PrivateKeyData>("get_first_private_key", null, "private_key", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -313,9 +314,9 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>All of the <see cref="PrivateKey"/>s</returns>
-        public async Task<IEnumerable<PrivateKey>> GetAllPrivateKeys(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<PrivateKeyData>> GetAllPrivateKeys(CancellationToken cancellationToken = default)
         {
-            return await SendMessage<IEnumerable<PrivateKey>>("get_all_private_keys", null, "private_keys", cancellationToken).ConfigureAwait(false);
+            return await SendMessage<IEnumerable<PrivateKeyData>>("get_all_private_keys", null, "private_keys", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -334,6 +335,67 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Locates and returns KeyData matching the provided fingerprint
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>
+        /// <param name="includeSecrets">Include secrets</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task<KeyData> GetKey(uint fingerprint, bool includeSecrets = false, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+            data.include_secrets = includeSecrets;
+
+            return await SendMessage<KeyData>("get_key", data, "key", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        ///  Returns the KeyData of all keys which can be retrieved
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>
+        /// <param name="includeSecrets">Include secrets</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task<KeyData> GetKeys(uint fingerprint, bool includeSecrets = false, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+            data.include_secrets = includeSecrets;
+
+            return await SendMessage<IEnumerable<KeyData>>("get_keys", data, "keys", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Assigns the given label to the first key with the given fingerprint.
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>
+        /// <param name="label">The label</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task SetLabel(uint fingerprint, string label, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+            data.label = label;
+
+            _ = await SendMessage("set_label", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Removes the label assigned to the key with the given fingerprint.
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task DeleteLabel(uint fingerprint, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+
+            _ = await SendMessage("delete_label", data, cancellationToken).ConfigureAwait(false);
+        }
+        
         /// Determines if the named service is running.
         /// </summary>
         /// <param name="service">The service name</param>

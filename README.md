@@ -3,7 +3,7 @@
 A [.net](https://dotnet.microsoft.com/download/dotnet/6.0) client library for [chia](https://github.com/Chia-Network/chia-blockchain)™ RPC interfaces that runs on linux and windows.
 
 [![build](https://github.com/dkackman/chia-dotnet/actions/workflows/dotnet.yml/badge.svg)](https://github.com/dkackman/chia-dotnet/actions)
-[![CodeQL](https://github.com/dkackman/chia-dotnet/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/dkackman/chia-dotnet/actions/workflows/codeql-analysis.yml)
+[![CodeQL](https://github.com/dkackman/chia-dotnet/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/dkackman/chia-dotnet/actions/workflows/github-code-scanning/codeql)
 [![NuGet](https://img.shields.io/nuget/dt/chia-dotnet)](https://www.nuget.org/packages/chia-dotnet/)
 
 ## Getting Started
@@ -17,7 +17,7 @@ https://dkackman.github.io/chia-dotnet/
 - Coverage of all of chia's rpc endpoints
   - Daemon, Full Node, Farmer, Harvester, Wallet, Plotter, Crawler
 - Coverage of all of the methods at each endpoint
-  - as of 1.3.5 (if you find something missing please create an issue)
+  - as of 1.4.0 (if you find something missing please create an issue)
 - Static types for chia input and outputs
 - Supports connecting via the `daemon` on `wss` or directly to each service with `https`
   - both `https` and `wss` use tha same interfaces so switching is seamless
