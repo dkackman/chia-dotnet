@@ -270,5 +270,15 @@ namespace chia.dotnet
 
             return await SendMessage<IEnumerable<Mirror>>("get_mirrors", data, "mirrors", cancellationToken).ConfigureAwait(false);
         }
+
+        /// <summary>
+        /// Gets the list of owned store ids.
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of <see cref="Mirror"></see></returns>
+        public async Task<IEnumerable<string>> GetOwnedStores(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<IEnumerable<string>>("get_owned_stores", null, "store_ids", cancellationToken).ConfigureAwait(false);
+        }
     }
 }
