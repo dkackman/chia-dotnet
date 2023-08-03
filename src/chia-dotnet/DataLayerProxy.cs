@@ -207,6 +207,7 @@ namespace chia.dotnet
 
             return await SendMessage<IEnumerable<string>>("get_keys", data, "keys", cancellationToken).ConfigureAwait(false);
         }
+
         /// <summary>
         /// Get the keys and values for a given id/root_hash pair.
         /// </summary>
@@ -222,6 +223,24 @@ namespace chia.dotnet
             data.root_hash = rootHash;
 
             return await SendMessage<IEnumerable<TerminalNode>>("get_keys_values", data, "keys_values", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get kv diff between two root hashes.
+        /// </summary>
+        /// <param name="id">Id</param>
+        /// <param name="hash1">First Hash</param>
+        /// <param name="hash2">Second Hash</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<KVDiff>> GetKVDiff(string id, string hash1, string hash2, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.id = id;
+            data.hash1 = hash1;
+            data.hash2 = hash2;
+
+            return await SendMessage<IEnumerable<KVDiff>>("get_kv_diff", data, "diff", cancellationToken).ConfigureAwait(false);
         }
     }
 }
