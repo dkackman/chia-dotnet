@@ -109,6 +109,15 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Checks the status of plugins.
+        /// </summary>
+        /// <returns><see cref="PluginStatus"/></returns>
+        public async Task<PluginStatus> CheckPlugins(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<PluginStatus>("check_plugins", null, "plugin_status", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Creates a data store.
         /// </summary>
         /// <param name="fee">Fee amount (in units of mojos)</param>
