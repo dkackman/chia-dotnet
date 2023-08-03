@@ -135,5 +135,25 @@ namespace chia.dotnet
                 response.txs
             );
         }
+
+        /// <summary>
+        /// Deletes a data store.
+        /// </summary>
+        /// <param name="key">Row key</param>
+        /// <param name="id">Row id</param>
+        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Transaction id</returns>
+        public async Task<string> DeleteKey(string key, string id, ulong fee, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.key = key;
+            data.id = id;
+            data.fee = fee;
+
+            var response = await SendMessage("delete_key", data, cancellationToken).ConfigureAwait(false);
+
+            return response.tx_id;
+        }
     }
 }
