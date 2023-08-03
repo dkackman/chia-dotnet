@@ -155,5 +155,20 @@ namespace chia.dotnet
 
             return response.tx_id;
         }
+
+        /// <summary>
+        /// Deletes a mirror.
+        /// </summary>
+        /// <param name="coinId">Mirror coin id</param>
+        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns></returns>
+        public async Task DeleteMirror(string coinId, ulong fee, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.coin_id = coinId;
+
+            await SendMessage("delete_mirror", data, cancellationToken).ConfigureAwait(false);
+        }
     }
 }
