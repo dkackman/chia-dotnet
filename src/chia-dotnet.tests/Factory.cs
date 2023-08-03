@@ -50,7 +50,6 @@ namespace chia.dotnet.tests
                 Uri = new Uri($"wss://{NodeHostAddress}:55400"),
                 // CertPath = $@"/home/kev/.chia/mainnet/config/ssl/daemon/private_daemon.crt",
                 // KeyPath = $@"/home/kev/.chia/mainnet/config/ssl/daemon/private_daemon.key",
-
                 //CertPath = @"\\wsl$\Ubuntu-20.04\home\don\.chia\mainnet\config\ssl\daemon\private_daemon.crt",
                 //KeyPath = @"\\wsl$\Ubuntu-20.04\home\don\.chia\mainnet\config\ssl\daemon\private_daemon.key",
                 //CertPath = @"\\wsl.localhost\Ubuntu\home\don\.chia\mainnet\config\ssl\daemon\private_daemon.crt",
