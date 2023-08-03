@@ -256,5 +256,19 @@ namespace chia.dotnet
 
             return await SendMessage<string>("get_local_root", data, "hash", cancellationToken).ConfigureAwait(false);
         }
+
+        /// <summary>
+        /// Gets the mirrors for a given store id.
+        /// </summary>
+        /// <param name="id">Store Id</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of <see cref="Mirror"></see></returns>
+        public async Task<IEnumerable<Mirror>> GetMirrors(string id, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.id = id;
+
+            return await SendMessage<IEnumerable<Mirror>>("get_mirrors", data, "mirrors", cancellationToken).ConfigureAwait(false);
+        }
     }
 }
