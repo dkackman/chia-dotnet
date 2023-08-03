@@ -477,9 +477,10 @@ namespace chia.dotnet
         /// Gets a mempool item by tx id.
         /// </summary>
         /// <param name="txId">Transaction id</param>
+        /// <param name="includePending">Including pending transactions</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="MempoolItem"/></returns>
-        public async Task<MempoolItem> GetMemmpooItemByTxId(string txId, CancellationToken cancellationToken = default)
+        public async Task<MempoolItem> GetMemmpooItemByTxId(string txId, bool includePending = false, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(txId))
             {
@@ -488,6 +489,7 @@ namespace chia.dotnet
 
             dynamic data = new ExpandoObject();
             data.tx_id = txId;
+            data.include_pending = includePending;
 
             return await SendMessage<MempoolItem>("get_mempool_item_by_tx_id", data, "mempool_item", cancellationToken).ConfigureAwait(false);
         }
