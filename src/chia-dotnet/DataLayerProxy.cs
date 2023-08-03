@@ -207,5 +207,21 @@ namespace chia.dotnet
 
             return await SendMessage<IEnumerable<string>>("get_keys", data, "keys", cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// Get the keys and values for a given id/root_hash pair.
+        /// </summary>
+        /// <param name="id">Id</param>
+        /// <param name="rootHash">Root Hash</param>
+        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<TerminalNode>> GetKeysValues(string id, string rootHash, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.id = id;
+            data.root_hash = rootHash;
+
+            return await SendMessage<IEnumerable<TerminalNode>>("get_keys_values", data, "keys_values", cancellationToken).ConfigureAwait(false);
+        }
     }
 }
