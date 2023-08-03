@@ -189,5 +189,23 @@ namespace chia.dotnet
 
             return await SendMessage<IEnumerable<InternalNode>>("get_ancestors", data, "ancestors", cancellationToken).ConfigureAwait(false);
         }
+
+        /// <summary>
+        /// Gets the list of ancestors for a given id/hash pair.
+        /// </summary>
+        /// <param name="id">Id</param>
+        /// <param name="rootHash">Root Hash</param>
+        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<string>> GetKeys(string id, string rootHash, ulong fee, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.id = id;
+            data.root_hash = rootHash;
+            data.fee = fee;
+
+            return await SendMessage<IEnumerable<string>>("get_keys", data, "keys", cancellationToken).ConfigureAwait(false);
+        }
     }
 }
