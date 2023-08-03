@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Proxy that communicates with the harvester
+    /// Proxy that communicates with the crawler
     /// </summary>
     public sealed class CrawlerProxy : ServiceProxy
     {

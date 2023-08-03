@@ -90,6 +90,94 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Get spends in a block
+        /// </summary>
+        /// <param name="headerHash">The block header hash</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of <see cref="CoinSpend"/>s</returns>
+        public async Task<IEnumerable<CoinSpend>> GetBlockSpends(string headerHash, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.header_hash = headerHash;
+
+            return await SendMessage<IEnumerable<CoinSpend>>("get_block_spends", data, "block_spends", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Estimate a spend fee
+        /// </summary>
+        /// <param name="spendBundle">The spend bundle to esimtate</param>
+        /// <param name="targetTimes">Array of target times</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Fee estimate details</returns>
+        public async Task<(IEnumerable<int> estimates,
+            IEnumerable<int> targetTimes,
+            ulong currentFeeRate,
+            ulong mempoolSize,
+            ulong mempoolMaxSize,
+            bool synced,
+            ulong peakHeight,
+            ulong lastPeakTimestamp,
+            ulong utcTimestamp
+            )> GetFeeEstimate(SpendBundle spendBundle, IEnumerable<int> targetTimes, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.spend_bundle = spendBundle;
+            data.target_times = targetTimes.ToList();
+
+            var response = await SendMessage("get_fee_estimate", data, cancellationToken).ConfigureAwait(false);
+
+            return (
+                response.estimates,
+                response.target_times,
+                response.current_fee_rate,
+                response.mempool_size,
+                response.mempool_max_size,
+                response.full_node_synced,
+                response.peak_height,
+                response.last_peak_timestamp,
+                response.node_time_utc
+                );
+        }
+
+        /// <summary>
+        /// Estimate a spend fee
+        /// </summary>
+        /// <param name="spendBundle">The spend bundle to esimtate</param>
+        /// <param name="targetTimes">Array of target times</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Fee estimate details</returns>
+        public async Task<(IEnumerable<int> estimates,
+            IEnumerable<int> targetTimes,
+            ulong currentFeeRate,
+            ulong mempoolSize,
+            ulong mempoolMaxSize,
+            bool synced,
+            ulong peakHeight,
+            ulong lastPeakTimestamp,
+            ulong utcTimestamp
+            )> GetFeeEstimate(ulong cost, IEnumerable<int> targetTimes, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.cost = cost;
+            data.target_times = targetTimes.ToList();
+
+            var response = await SendMessage("get_fee_estimate", data, cancellationToken).ConfigureAwait(false);
+
+            return (
+                response.estimates,
+                response.target_times,
+                response.current_fee_rate,
+                response.mempool_size,
+                response.mempool_max_size,
+                response.full_node_synced,
+                response.peak_height,
+                response.last_peak_timestamp,
+                response.node_time_utc
+                );
+        }
+
+        /// <summary>
         /// Get a block record by a header hash
         /// </summary>
         /// <param name="headerhash">The header hash</param>

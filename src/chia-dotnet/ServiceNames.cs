@@ -13,5 +13,6 @@
         public const string Plotter = "chia_plotter";
         public const string Daemon = "daemon";
         public const string Crawler = "chia_crawler";
+        public const string DataLayer = "chia_data_layer";
     }
 }
