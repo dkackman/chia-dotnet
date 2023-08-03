@@ -70,9 +70,10 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="id">Id</param>
         /// <param name="changeList">Name value pairs of changes</param>
+        /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Transaction id</returns>
-        public async Task<string> BatchUpdate(string id, IDictionary<string, string> changeList, CancellationToken cancellationToken = default)
+        public async Task<string> BatchUpdate(string id, IDictionary<string, string> changeList, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -82,10 +83,29 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.id = id;
             data.changelist = changeList;
+            data.fee = fee;
 
             var response = await SendMessage("batch_update", data, cancellationToken).ConfigureAwait(false);
 
             return response.tx_id;
+        }
+
+        /// <summary>
+        /// Cancels an offer using a transaction
+        /// </summary>
+        /// <param name="tradeId">The trade id of the offer</param>
+        /// <param name="fee">Transaction fee</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <param name="secure">This will create a transaction that includes coins that were offered</param>
+        /// <returns>An awaitable Task</returns>
+        public async Task CancelOffer(string tradeId, bool secure = false, ulong fee = 0, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.trade_id = tradeId;
+            data.fee = fee;
+            data.secure = secure;
+
+            await SendMessage("cancel_offer", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
