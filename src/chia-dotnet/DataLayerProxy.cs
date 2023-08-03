@@ -232,15 +232,29 @@ namespace chia.dotnet
         /// <param name="hash1">First Hash</param>
         /// <param name="hash2">Second Hash</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns></returns>
-        public async Task<IEnumerable<KVDiff>> GetKVDiff(string id, string hash1, string hash2, CancellationToken cancellationToken = default)
+        /// <returns><see cref="KVDiff"/></returns>
+        public async Task<KVDiff> GetKVDiff(string id, string hash1, string hash2, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.id = id;
             data.hash1 = hash1;
             data.hash2 = hash2;
 
-            return await SendMessage<IEnumerable<KVDiff>>("get_kv_diff", data, "diff", cancellationToken).ConfigureAwait(false);
+            return await SendMessage<KVDiff>("get_kv_diff", data, "diff", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets hash of latest tree root saved in our local datastore.
+        /// </summary>
+        /// <param name="id">Id</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A hash</returns>
+        public async Task<KVDiff> GetLocalRoot(string id, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.id = id;
+
+            return await SendMessage<string>("get_local_root", data, "hash", cancellationToken).ConfigureAwait(false);
         }
     }
 }
