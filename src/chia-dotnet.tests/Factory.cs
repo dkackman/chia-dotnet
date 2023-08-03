@@ -13,11 +13,16 @@ namespace chia.dotnet.tests
 
         public static HttpRpcClient CreateDirectRpcClientFromHardcodedLocation(int port, string endpointName)
         {
+            //
+            // these are paths to cert for various test nodes
+            // modify 
+            //
             var endpoint = new EndpointInfo()
             {
                 Uri = new Uri($"https://{NodeHostAddress}:{port}"),
                 //CertPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.crt",
                 //KeyPath = @"\\wsl$/Ubuntu-20.04/home/don/.chia/mainnet/config/ssl/full_node/private_full_node.key",
+
                 //CertPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_daemon.crt",
                 //KeyPath = @"C:\Users\dkack\.rchia\certs\chiapas\private_daemon.key",
                 // CertPath = $@"/home/kev/.chia/mainnet/config/ssl/daemon/private_{endpointName}.crt",

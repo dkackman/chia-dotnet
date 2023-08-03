@@ -90,6 +90,80 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Estimate a spend fee
+        /// </summary>
+        /// <param name="spendBundle">The spend bundle to esimtate</param>
+        /// <param name="targetTimes">Array of target times</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Fee estimate details</returns>
+        public async Task<(IEnumerable<int> estimates,
+            IEnumerable<int> targetTimes,
+            ulong currentFeeRate,
+            ulong mempoolSize,
+            ulong mempoolMaxSize,
+            bool synced,
+            ulong peakHeight,
+            ulong lastPeakTimestamp,
+            ulong utcTimestamp
+            )> GetFeeEstimate(SpendBundle spendBundle, IEnumerable<int> targetTimes, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.spend_bundle = spendBundle;
+            data.target_times = targetTimes.ToList();
+
+            var response = await SendMessage("get_fee_estimate", data, cancellationToken).ConfigureAwait(false);
+
+            return (
+                response.estimates,
+                response.target_times,
+                response.current_fee_rate,
+                response.mempool_size,
+                response.mempool_max_size,
+                response.full_node_synced,
+                response.peak_height,
+                response.last_peak_timestamp,
+                response.node_time_utc
+                );
+        }
+
+        /// <summary>
+        /// Estimate a spend fee
+        /// </summary>
+        /// <param name="spendBundle">The spend bundle to esimtate</param>
+        /// <param name="targetTimes">Array of target times</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Fee estimate details</returns>
+        public async Task<(IEnumerable<int> estimates,
+            IEnumerable<int> targetTimes,
+            ulong currentFeeRate,
+            ulong mempoolSize,
+            ulong mempoolMaxSize,
+            bool synced,
+            ulong peakHeight,
+            ulong lastPeakTimestamp,
+            ulong utcTimestamp
+            )> GetFeeEstimate(ulong cost, IEnumerable<int> targetTimes, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.cost = cost;
+            data.target_times = targetTimes.ToList();
+
+            var response = await SendMessage("get_fee_estimate", data, cancellationToken).ConfigureAwait(false);
+
+            return (
+                response.estimates,
+                response.target_times,
+                response.current_fee_rate,
+                response.mempool_size,
+                response.mempool_max_size,
+                response.full_node_synced,
+                response.peak_height,
+                response.last_peak_timestamp,
+                response.node_time_utc
+                );
+        }
+
+        /// <summary>
         /// Get a block record by a header hash
         /// </summary>
         /// <param name="headerhash">The header hash</param>
@@ -403,9 +477,10 @@ namespace chia.dotnet
         /// Gets a mempool item by tx id.
         /// </summary>
         /// <param name="txId">Transaction id</param>
+        /// <param name="includePending">Including pending transactions</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="MempoolItem"/></returns>
-        public async Task<MempoolItem> GetMemmpooItemByTxId(string txId, CancellationToken cancellationToken = default)
+        public async Task<MempoolItem> GetMemmpooItemByTxId(string txId, bool includePending = false, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(txId))
             {
@@ -414,6 +489,7 @@ namespace chia.dotnet
 
             dynamic data = new ExpandoObject();
             data.tx_id = txId;
+            data.include_pending = includePending;
 
             return await SendMessage<MempoolItem>("get_mempool_item_by_tx_id", data, "mempool_item", cancellationToken).ConfigureAwait(false);
         }

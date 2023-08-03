@@ -396,6 +396,16 @@ namespace chia.dotnet
             _ = await SendMessage("delete_label", data, cancellationToken).ConfigureAwait(false);
         }
 
+        /// Determines if the named service is running.
+        /// </summary>
+        /// <param name="service">The service name</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Boolean indicator as to wheteher the service is running</returns>
+        public async Task<bool> IsRunning(string service, CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<bool>("is_running", CreateDataObject(service), "is_running", cancellationToken).ConfigureAwait(false);
+        }
+
         private static object CreateDataObject(string service)
         {
             if (string.IsNullOrEmpty(service))

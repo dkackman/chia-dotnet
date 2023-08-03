@@ -270,7 +270,7 @@ namespace chia.dotnet.tests
             Assert.IsNotNull(ids);
             Assert.IsTrue(ids.Any());
 
-            var item = await _theFullNode.GetMemmpooItemByTxId(ids.First(), cts.Token);
+            var item = await _theFullNode.GetMemmpooItemByTxId(ids.First(), false, cts.Token);
 
             Assert.IsNotNull(item);
         }
@@ -332,7 +332,7 @@ namespace chia.dotnet.tests
 
             var coinRecord = await _theFullNode.GetCoinRecordByName(npc.CoinName, cts.Token);
             Assert.IsNotNull(coinRecord);
-            Assert.AreNotEqual(coinRecord.SpentBlockIndex, 0);
+            Assert.AreNotEqual<uint>(coinRecord.SpentBlockIndex, 0);
 
             var ps = await _theFullNode.GetPuzzleAndSolution(npc.CoinName, coinRecord.SpentBlockIndex, cts.Token);
 
