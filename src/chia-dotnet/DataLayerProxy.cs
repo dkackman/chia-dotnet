@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace chia.dotnet
 {
@@ -19,6 +20,27 @@ namespace chia.dotnet
         public DataLayerProxy(IRpcClient rpcClient, string originService)
             : base(rpcClient, ServiceNames.DataLayer, originService)
         {
+        }
+
+        /// <summary>
+        /// Adds a mirror
+        /// </summary>
+        /// <param name="id">Mirror id</param>
+        /// <param name="amount">The Amount</param>
+        /// <param name="urls">List of mirror urls</param>
+        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>An awaitable Task</returns>
+        public async Task AddMirror(string id, ulong amount, IEnumerable<string> urls, ulong fee = 0, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.id = id;
+            data.amount = amount;
+            data.urls = urls.ToList();
+
+            data.fee = fee;
+
+            await SendMessage("add_mirror", "data", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -40,7 +62,7 @@ namespace chia.dotnet
             data.foldername = foldername;
             data.overwrite = overwrite;
 
-            await SendMessage("get_peer_counts", "data", cancellationToken).ConfigureAwait(false);
+            await SendMessage("add_missing_files", "data", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
