@@ -3,6 +3,12 @@ using Newtonsoft.Json;
 
 namespace chia.dotnet
 {
+    public record SingletonInfo
+    {
+        public string Launcher { get; init; } = string.Empty;
+        public string LauncRootherId { get; init; } = string.Empty;
+    }
+
     public record SingletonRecord
     {
         public string CoinId { get; init; } = string.Empty;

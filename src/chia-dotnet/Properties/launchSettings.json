@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "CodeGen": {
+    "chia-dotnet": {
       "commandName": "Project",
       "commandLineArgs": "C:\\Users\\don\\src\\github\\dkackman\\chia-api\\src\\wallet.yaml dl_singletons_by_root SingletonRecord"
     }
