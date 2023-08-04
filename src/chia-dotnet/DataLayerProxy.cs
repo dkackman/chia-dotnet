@@ -61,7 +61,6 @@ namespace chia.dotnet
             data.ids = ids;
             data.foldername = foldername;
             data.overwrite = overwrite;
-
             await SendMessage("add_missing_files", "data", cancellationToken).ConfigureAwait(false);
         }
 
@@ -86,7 +85,6 @@ namespace chia.dotnet
             data.fee = fee;
 
             var response = await SendMessage("batch_update", data, cancellationToken).ConfigureAwait(false);
-
             return response.tx_id;
         }
 
