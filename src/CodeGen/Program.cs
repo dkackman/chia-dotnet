@@ -57,10 +57,7 @@ namespace CodeGen
             }
 
             var returnsArray = GetResponseArrayType(responseSchema) != null;
-            if (returnsArray)
-            {
-                returnType = "IEnumerable<" + returnType + ">";
-            }
+            var fullReturnType = returnsArray ? "IEnumerable<" + returnType + ">" : returnType;
 
             // Generate method parameters, parameter comments, and data initialization
             var methodParameters = "CancellationToken cancellationToken = default";
@@ -89,12 +86,12 @@ namespace CodeGen
             }
 
             // Generate method signature
-            var methodSignature = returnType is not null ? "public async Task<" + returnType + "> " + methodName + "(" + methodParameters + ")" : "public async Task " + methodName + "(" + methodParameters + ")";
+            var methodSignature = fullReturnType is not null ? "public async Task<" + fullReturnType + "> " + methodName + "(" + methodParameters + ")" : "public async Task " + methodName + "(" + methodParameters + ")";
 
             // Determine the result key from the response schema
             var resultKey = GetResultKeyFromSchema(responseSchema);
 
-            var methodBody = GetMethodBody(dataInitialization, returnType, operation, resultKey);
+            var methodBody = GetMethodBody(dataInitialization, fullReturnType, operation, resultKey);
 
             var returnsComment = returnsArray ? "/// <returns>A list of <see cref=\"" + returnType + "\"/></returns>" : "/// <returns><see cref=\"" + returnType + "\"/></returns>";
             // Generate summary comment
@@ -108,20 +105,20 @@ namespace CodeGen
             return comment + "\n" + methodSignature + "\n" + methodBody;
         }
 
-        private static string GetMethodBody(string dataInitialization, string? returnType, OpenApiOperation operation, string? resultKey)
+        private static string GetMethodBody(string dataInitialization, string? fullReturnType, OpenApiOperation operation, string? resultKey)
         {
-            if (returnType is not null)
+            if (fullReturnType is not null)
             {
                 return "{\n" +
                        dataInitialization +
-                       "    return await SendMessage<" + returnType + ">(\"" + operation.OperationId + "\", " + (string.IsNullOrEmpty(dataInitialization) ? "null" : "data") + ", \"" + resultKey + "\", cancellationToken).ConfigureAwait(false);\n" +
+                       "    return await SendMessage<" + fullReturnType + ">(\"" + operation.OperationId + "\", " + (string.IsNullOrEmpty(dataInitialization) ? "null" : "data") + ", \"" + resultKey + "\", cancellationToken).ConfigureAwait(false);\n" +
                        "}";
             }
             else if (resultKey is not null)
             {
                 return "{\n" +
                    dataInitialization +
-                   "    var resonse = await SendMessage(\"" + operation.OperationId + "\", " + (string.IsNullOrEmpty(dataInitialization) ? "null" : "data") + ", \"" + resultKey + "\", cancellationToken).ConfigureAwait(false);\n" +
+                   "    var response = await SendMessage(\"" + operation.OperationId + "\", " + (string.IsNullOrEmpty(dataInitialization) ? "null" : "data") + ", \"" + resultKey + "\", cancellationToken).ConfigureAwait(false);\n" +
                    "    return response;\n" +
                    "}";
             }
@@ -215,9 +212,10 @@ namespace CodeGen
                     }
                     else if (combinedSchema.Type == "object" && combinedSchema.Properties.Count() == 1)
                     {
-                        if (combinedSchema.Properties.First().Value.Type == "array")
+                        var property = combinedSchema.Properties.First();
+                        if (property.Value.Type == "array")
                         {
-                            return combinedSchema.Properties.First().Value.Items.Type;
+                            return property.Value.Items.Type ?? "object";
                         }
                     }
                 }
