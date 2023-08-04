@@ -5,23 +5,27 @@
     <RootNamespace>chia.dotnet</RootNamespace>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.4.0</Version>
+    <Version>2.0.0-alpha01</Version>
     <Authors>dkackman</Authors>
     <Company>dkackman</Company>
-    <Description>A .net 5 client library for chia™ RPC interfaces that runs on linux and windows.</Description>
-    <Copyright>2021 dkackman</Copyright>
+    <Description>A .net client library for chia™ RPC interfaces that runs on linux and windows.</Description>
+    <Copyright>2021-2023 dkackman</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/dkackman/chia-dotnet</PackageProjectUrl>
     <NeutralLanguage>en</NeutralLanguage>
     <RepositoryUrl>https://github.com/dkackman/chia-dotnet</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>chia</PackageTags>
-    <PackageReleaseNotes>Chia 1.4.0 support</PackageReleaseNotes>
+    <PackageTags>chia, 1.8.2</PackageTags>
+    <PackageReleaseNotes>Chia 1.8.2 support</PackageReleaseNotes>
     <PackageIcon>chia-leaf-logo-384x384.png</PackageIcon>
     <PackageIconUrl />
-    <AssemblyVersion>1.4.0.1</AssemblyVersion>
-    <FileVersion>1.4.0.1</FileVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
     <Nullable>enable</Nullable>
+    <Title>chia.dotnet</Title>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -42,6 +46,10 @@
     <None Include="..\..\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 
