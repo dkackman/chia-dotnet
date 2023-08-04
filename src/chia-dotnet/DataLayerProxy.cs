@@ -469,7 +469,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.offer = offer;
             data.fee = fee;
-            var response = await SendMessage<(bool Valid, ulong Fee)>("verify_offer", data, "valid", cancellationToken).ConfigureAwait(false);
+            var response = await SendMessage("verify_offer", data, cancellationToken).ConfigureAwait(false);
             return (response.valid, response.fee);
         }
     }
