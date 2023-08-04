@@ -280,5 +280,38 @@ namespace chia.dotnet
         {
             return await SendMessage<IEnumerable<string>>("get_owned_stores", null, "store_ids", cancellationToken).ConfigureAwait(false);
         }
+
+        /// <summary>
+        /// Gets hash of latest tree root.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A <see cref="Root"/></returns>
+        public async Task<Root> GetRoot(string id, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.id = id;
+            var response = await SendMessage("get_root", data, cancellationToken).ConfigureAwait(false);
+
+            return new Root()
+            {
+                Hash = response.hash,
+                Confirmed = response.confirmed,
+                Timestamp = response.timestamp,
+            };
+        }
+
+        /// <summary>
+        /// Get history of state hashes for a store.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of <see cref="RootHistory"/></returns>
+        public async Task<IEnumerable<RootHistory>> GetRootHistory(string id, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.id = id;
+            return await SendMessage<IEnumerable<RootHistory>>("get_root_history", data, "root_history", cancellationToken).ConfigureAwait(false);
+        }
     }
 }
