@@ -20,4 +20,14 @@ namespace chia.dotnet
         [JsonIgnore]
         public DateTime DateTimestamp => Timestamp.ToDateTime();
     }
+
+    public record RootHash
+    {
+        public string Id { get; init; } = string.Empty;
+        public string Hash { get; init; } = string.Empty;
+        public bool Confirmed { get; init; }
+        public ulong Timestamp { get; init; }
+        [JsonIgnore]
+        public DateTime DateTimestamp => Timestamp.ToDateTime();
+    }
 }

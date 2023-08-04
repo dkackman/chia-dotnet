@@ -313,5 +313,166 @@ namespace chia.dotnet
             data.id = id;
             return await SendMessage<IEnumerable<RootHistory>>("get_root_history", data, "root_history", cancellationToken).ConfigureAwait(false);
         }
+
+        /// <summary>
+        /// Gets state hashes for a list of roots
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of <see cref="RootHash"/></returns>
+        public async Task<IEnumerable<RootHash>> GetRoots(IEnumerable<string> ids, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.ids = ids.ToList();
+            return await SendMessage<IEnumerable<RootHash>>("get_roots", data, "root_hashes", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets the sync status of a store.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of <see cref="DataLayerSyncStatus"/></returns>
+        public async Task<DataLayerSyncStatus> GetSyncStatus(string id, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.id = id;
+            return await SendMessage<DataLayerSyncStatus>("get_sync_status", data, "sync_status", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get the value for a given id/key pair.
+        /// </summary>
+        /// <param name="rootHash"></param>
+        /// <param name="key"></param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref="string"/></returns>
+        public async Task<string> GetValue(string rootHash, string key, string id, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.id = id;
+            data.key = key;
+            data.root_hash = rootHash;
+            return await SendMessage<string>("get_value", data, "value", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Adds a list of clvm objects as bytes to add to table.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="value"></param>
+        /// <param name="fee"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref="string"/></returns>
+        public async Task<string> Insert(string id, string value, ulong fee = 0, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.value = value;
+            data.id = id;
+            data.fee = fee;
+            return await SendMessage<string>("insert", data, "tx_id", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Makes an offer.
+        /// </summary>
+        /// <param name="maker"></param>
+        /// <param name="taker"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <param name="fee"></param>
+        /// <returns><see cref="DataLayerOffer"/></returns>
+        public async Task<DataLayerOffer> MakeOffer(IEnumerable<OfferStore> maker, IEnumerable<OfferStore> taker, ulong fee = 0, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.maker = maker.ToList();
+            data.taker = taker.ToList();
+            data.fee = fee;
+            return await SendMessage<DataLayerOffer>("make_offer", data, "offer", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Removes subscriptions for the given id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="urls"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref=""/></returns>
+        public async Task RemoveSubscriptions(string id, IEnumerable<string> urls, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.urls = urls.ToList();
+            data.id = id;
+            await SendMessage("remove_subscriptions", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Subscribe to singleton.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="urls"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref=""/></returns>
+        public async Task Subscribe(string id, IEnumerable<string> urls, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.urls = urls.ToList();
+            data.id = id;
+            await SendMessage("subscribe", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// List current subscriptions.
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of <see cref="IEnumerable<string>"/></returns>
+        public async Task<IEnumerable<string>> Subscriptions(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<IEnumerable<string>>("subscriptions", null, "store_ids", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Takes an offer.
+        /// </summary>
+        /// <param name="offer"></param>
+        /// <param name="fee"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref="string"/></returns>
+        public async Task<string> TakeOffer(object offer, ulong fee = 0, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.offer = offer;
+            data.fee = fee;
+            return await SendMessage<string>("take_offer", data, "trade_id", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Unsubscribe from singleton.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref=""/></returns>
+        public async Task Unsubscribe(string id, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.id = id;
+            await SendMessage("unsubscribe", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Verifies an offer.
+        /// </summary>
+        /// <param name="offer"></param>
+        /// <param name="fee"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref="(bool Valid, ulong Fee)"/></returns>
+        public async Task<(bool Valid, ulong Fee)> VerifyOffer(DataLayerOffer offer, ulong fee = 0, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.offer = offer;
+            data.fee = fee;
+            var response = await SendMessage<(bool Valid, ulong Fee)>("verify_offer", data, "valid", cancellationToken).ConfigureAwait(false);
+            return (response.valid, response.fee);
+        }
     }
 }

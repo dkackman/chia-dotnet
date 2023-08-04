@@ -10,7 +10,7 @@ namespace CodeGen
         {
             if (args.Length == 0)
             {
-                Console.WriteLine("Usage: CodeGen <path_to_yaml> <endpoint_name>");
+                Console.WriteLine("Usage: CodeGen <path_to_yaml> <endpoint_name> [return_type_name]");
                 return;
             }
 
@@ -49,8 +49,15 @@ namespace CodeGen
             var summary = operation.Summary;
 
             // Determine the return type
-            var responseSchema = operation.Responses["200"].Content["application/json"].Schema;
-            if (IsPlural(operation.OperationId) && returnType is not null)
+            OpenApiSchema? responseSchema = null;
+            if (operation.Responses.TryGetValue("200", out var response) &&
+                response.Content.TryGetValue("application/json", out var content))
+            {
+                responseSchema = content.Schema;
+            }
+
+            var returnsArray = GetResponseArrayType(responseSchema) != null;
+            if (returnsArray)
             {
                 returnType = "IEnumerable<" + returnType + ">";
             }
@@ -64,10 +71,17 @@ namespace CodeGen
                 var requestBodySchema = operation.RequestBody.Content["application/json"].Schema;
                 foreach (var property in requestBodySchema.Properties)
                 {
-                    var parameterType = ConvertOpenApiTypeToCSharpType(property.Value.Type);
+                    var parameterType = property.Value.Type == "array" ? "IEnumerable<object>" : ConvertOpenApiTypeToCSharpType(property.Value.Type, property.Value.Format);
+
+                    var defaultValue = property.Value.Default != null ? " = 0" : string.Empty;
                     var parameterNameCamelCase = ToCamelCase(property.Key); // camelCased C# argument
+
+                    // Use paramName, paramType, and defaultValue as needed
+                    var parameterDefinition = $"{parameterType} {parameterNameCamelCase}{defaultValue}";
+                    // Add parameterDefinition to the list of parameters
+
                     var parameterDescription = property.Value.Description; // Description from schema
-                    methodParameters = parameterType + " " + parameterNameCamelCase + ", " + methodParameters;
+                    methodParameters = parameterDefinition + ", " + methodParameters;
                     parameterComments = "/// <param name=\"" + parameterNameCamelCase + "\">" + parameterDescription + "</param>\n" + parameterComments;
                     dataInitialization += "    data." + property.Key + " = " + parameterNameCamelCase + ";\n"; // snake_cased data object field
                 }
@@ -82,13 +96,14 @@ namespace CodeGen
 
             var methodBody = GetMethodBody(dataInitialization, returnType, operation, resultKey);
 
+            var returnsComment = returnsArray ? "/// <returns>A list of <see cref=\"" + returnType + "\"/></returns>" : "/// <returns><see cref=\"" + returnType + "\"/></returns>";
             // Generate summary comment
             var comment =
                 "/// <summary>\n" +
                 "/// " + summary + "\n" +
                 "/// </summary>\n" +
-                parameterComments +
-                "\n/// <returns>A list of <see cref=\"" + returnType + "\"/></returns>";
+                parameterComments + "\n" +
+                returnsComment;
 
             return comment + "\n" + methodSignature + "\n" + methodBody;
         }
@@ -102,41 +117,28 @@ namespace CodeGen
                        "    return await SendMessage<" + returnType + ">(\"" + operation.OperationId + "\", " + (string.IsNullOrEmpty(dataInitialization) ? "null" : "data") + ", \"" + resultKey + "\", cancellationToken).ConfigureAwait(false);\n" +
                        "}";
             }
-
-            return "{\n" +
+            else if (resultKey is not null)
+            {
+                return "{\n" +
                    dataInitialization +
                    "    var resonse = await SendMessage(\"" + operation.OperationId + "\", " + (string.IsNullOrEmpty(dataInitialization) ? "null" : "data") + ", \"" + resultKey + "\", cancellationToken).ConfigureAwait(false);\n" +
                    "    return response;\n" +
                    "}";
-        }
-        private static string GetResponseTypeFromSchema(OpenApiSchema schema)
-        {
-            // If the schema uses "allOf", iterate over the combined schemas
-            if (schema.AllOf.Count > 0)
-            {
-                foreach (var combinedSchema in schema.AllOf)
-                {
-                    // You can tailor this logic based on how the desired property is structured in your actual OpenAPI document
-                    if (combinedSchema.Properties != null && combinedSchema.Properties.Count > 0)
-                    {
-                        var property = combinedSchema.Properties.Values.First();
-                        return ConvertOpenApiTypeToCSharpType(property.Type);
-                    }
-                }
-            }
-            else if (schema.Properties != null && schema.Properties.Count > 0)
-            {
-                // If "allOf" is not used, retrieve the type of the first property
-                var property = schema.Properties.Values.First();
-                return ConvertOpenApiTypeToCSharpType(property.Type);
             }
 
-            throw new InvalidOperationException("Could not determine response type from schema");
+            return "{\n" +
+               dataInitialization +
+               "    await SendMessage(\"" + operation.OperationId + "\", " + (string.IsNullOrEmpty(dataInitialization) ? "null" : "data") + ", cancellationToken).ConfigureAwait(false);\n" +
+               "}";
         }
 
 
-        private static string? GetResultKeyFromSchema(OpenApiSchema schema)
+        private static string? GetResultKeyFromSchema(OpenApiSchema? schema)
         {
+            if (schema is null)
+            {
+                return null;
+            }
             // If the schema uses "allOf", iterate over the combined schemas
             if (schema.AllOf.Count > 0)
             {
@@ -166,26 +168,66 @@ namespace CodeGen
         private static string ToCamelCase(string snakeCase)
         {
             var pascalCase = ToPascalCase(snakeCase);
-            return char.ToLower(pascalCase[0]) + pascalCase.Substring(1);
+            return char.ToLower(pascalCase[0]) + pascalCase[1..];
         }
 
         // Other helper methods remain the same
 
-        private static string ConvertOpenApiTypeToCSharpType(string openApiType)
+        private static string ConvertOpenApiTypeToCSharpType(string type, string format)
         {
-            // Simple mapping between OpenAPI data types and C# data types
-            return openApiType switch
+            return type switch
             {
+                "integer" => format switch
+                {
+                    "int32" => "int",
+                    "int64" => "long",
+                    "byte" => "byte",
+                    "uint16" => "ushort",
+                    "uint32" => "uint",
+                    "uint64" => "ulong",
+                    "bigint" => "BigInteger",
+                    _ => "int", // Default to int if format is not recognized
+                },
                 "string" => "string",
-                "integer" => "int",
+                "number" => "double",
+                "boolean" => "bool",
                 // Add other type mappings as needed
-                _ => "object"
+                _ => "object",// Default to object if type is not recognized
             };
         }
-        private static bool IsPlural(string word)
+
+
+        private static string? GetResponseArrayType(OpenApiSchema? schema)
         {
-            // Simple check for pluralization; may need to be adapted based on your naming conventions
-            return word.EndsWith("s");
+            if (schema is null)
+            {
+                return null;
+            }
+
+            // If the schema uses "allOf", iterate over the combined schemas
+            if (schema.AllOf.Count > 0)
+            {
+                foreach (var combinedSchema in schema.AllOf)
+                {
+                    if (combinedSchema.Type == "array")
+                    {
+                        return combinedSchema.Items.Type;
+                    }
+                    else if (combinedSchema.Type == "object" && combinedSchema.Properties.Count() == 1)
+                    {
+                        if (combinedSchema.Properties.First().Value.Type == "array")
+                        {
+                            return combinedSchema.Properties.First().Value.Items.Type;
+                        }
+                    }
+                }
+            }
+            else if (schema.Type == "array")
+            {
+                return schema.Items.Type;
+            }
+
+            return null;
         }
     }
 }
