@@ -47,6 +47,34 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Remove an existing mirror for a specific singleton.
+        /// </summary>
+        /// <param name="fee"></param>
+        /// <param name="coinId"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of <see cref="TransactionRecord"/></returns>
+        public async Task<IEnumerable<TransactionRecord>> DeleteMirror(string coinId, ulong fee = 0, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.coin_id = coinId;
+            data.fee = fee;
+            return await WalletProxy.SendMessage<IEnumerable<TransactionRecord>>("dl_delete_mirror", data, "transactions", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get all of the mirrors for a specific singleton.
+        /// </summary>
+        /// <param name="launcherId"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of <see cref="Mirror"/></returns>
+        public async Task<IEnumerable<Mirror>> GetMirrors(string launcherId, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.launcher_id = launcherId;
+            return await WalletProxy.SendMessage<IEnumerable<Mirror>>("dl_get_mirrors", data, "mirrors", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Get the singleton record for the latest singleton of a launcher ID.
         /// </summary>
         /// <param name="launcherId"></param>
@@ -90,13 +118,32 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Add a new on chain message for a specific singleton.
+        /// </summary>
+        /// <param name="launcherId"></param>
+        /// <param name="amount"></param>
+        /// <param name="urls"></param>
+        /// <param name="fee"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of <see cref="TransactionRecord"/></returns>
+        public async Task<IEnumerable<TransactionRecord>> NewMirror(string launcherId, ulong amount, IEnumerable<string> urls, ulong fee = 0, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.launcher_id = launcherId;
+            data.amount = amount;
+            data.urls = urls.ToList();
+            data.fee = fee;
+            return await WalletProxy.SendMessage<IEnumerable<TransactionRecord>>("dl_new_mirror", data, "transactions", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Get all owned singleton records.
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="SingletonRecord"/></returns>
-        public async Task<IEnumerable<SingletonRecord>> DlOwnedSingletons(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<SingletonRecord>> OwnedSingletons(CancellationToken cancellationToken = default)
         {
-            return await SendMessage<IEnumerable<SingletonRecord>>("dl_owned_singletons", null, "history", cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<IEnumerable<SingletonRecord>>("dl_owned_singletons", null, "history", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
