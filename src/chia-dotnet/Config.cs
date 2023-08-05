@@ -106,7 +106,7 @@ namespace chia.dotnet
 
             if (!File.Exists(fullPath))
             {
-                throw new FileNotFoundException($"confgi file {fullPath} not found");
+                throw new FileNotFoundException($"config file {fullPath} not found");
             }
 
             using var input = new StreamReader(fullPath);
