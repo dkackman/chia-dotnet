@@ -772,5 +772,33 @@ namespace chia.dotnet
             var response = await SendMessage("nft_transfer_bulk", data, cancellationToken).ConfigureAwait(false);
             return (response.tx_num, Converters.ToObject<SpendBundle>(response.spend_bundle));
         }
+
+        /// <summary>
+        /// Retrieves information about a DID.
+        /// </summary>
+        /// <param name="coinId"></param>
+        /// <param name="latest"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref=""/></returns>
+        public async Task<DidInfo> DidGetInfo(string coinId, bool latest = true, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.coin_id = coinId;
+            data.latest = latest;
+            return await SendMessage<DidInfo>("did_get_info", data, null, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Recover a missing or unspendable DID wallet by a coin id of the DID.
+        /// </summary>
+        /// <param name="coinId"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref="string"/></returns>
+        public async Task<string> DidFindLostDid(string coinId, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.coin_id = coinId;
+            return await SendMessage<string>("did_find_lost_did", data, "latest_coin_id", cancellationToken).ConfigureAwait(false);
+        }
     }
 }
