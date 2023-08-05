@@ -34,30 +34,59 @@ namespace chia.dotnet
         /// Adds an Uri to an NFT
         /// </summary>
         /// <param name="uri">The uri</param>
-        /// <param name="key">The uri key</param>
+        /// <param name="key"> The type of uri:
+        /// * u Uri for the NFT data
+        /// * mu Uri for NFT metadata
+        /// * lu Uri for the NFT license</param>
         /// <param name="nftCoinId">The nft coin id</param>
+        /// <param name="reusePuzhash"></param>
         /// <param name="fee">Transaction fee</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An <see cref="SpendBundle"/></returns>
-        public async Task<SpendBundle> AddUri(string uri, string key, string nftCoinId, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<SpendBundle> AddUri(string uri, string key, string nftCoinId, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.uri = uri;
             data.key = key;
             data.nft_coin_id = nftCoinId;
+            data.reuse_puzhash = reusePuzhash;
             data.fee = fee;
 
             return await WalletProxy.SendMessage<SpendBundle>("nft_add_uri", "spend_bundle", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
+        /// Transfers an NFT to another address.
+        /// </summary>
+        /// <param name="fungibleAssets"></param>
+        /// <param name="royaltyAssets"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref=""/></returns>
+        public async Task<IDictionary<string, IEnumerable<AssetInfo>>> CalculateRoyalties(IEnumerable<FungibleAsset> fungibleAssets, IEnumerable<RoyaltyAsset> royaltyAssets, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.royalty_assets = royaltyAssets.ToList();
+            data.fungible_assets = fungibleAssets.ToList();
+            var response = await WalletProxy.SendMessage("nft_calculate_royalties", data, cancellationToken).ConfigureAwait(false);
+            return Converters.ToDictionary<string, IEnumerable<AssetInfo>>(response);
+        }
+
+        /// <summary>
         /// Gets NFTs from a wallet
         /// </summary>
+        /// <param name="startIndex"></param>
+        /// <param name="num"></param>
+        /// <param name="ignoreSizeLimit"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The DID id</returns>
-        public async Task<IEnumerable<NFTInfo>> GetNFTs(CancellationToken cancellationToken = default)
+        /// <returns>A list of <see cref="NFTInfo"/></returns>
+        public async Task<IEnumerable<NFTInfo>> GetNFTs(int startIndex = 0, int num = 0, bool ignoreSizeLimit = false, CancellationToken cancellationToken = default)
         {
-            var response = await WalletProxy.SendMessage("nft_get_nfts", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
+            dynamic data = CreateWalletDataObject();
+            data.start_index = startIndex;
+            data.num = num;
+            data.ignore_size_limit = ignoreSizeLimit;
+
+            var response = await WalletProxy.SendMessage("nft_get_nfts", data, cancellationToken).ConfigureAwait(false);
 
             return Converters.ToObject<IEnumerable<NFTInfo>>(response, "nft_list");
         }
@@ -66,8 +95,8 @@ namespace chia.dotnet
         /// Gets the DID
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The list of NFTs</returns>
-        public async Task<string> GetDID(CancellationToken cancellationToken = default)
+        /// <returns>The Did</returns>
+        public async Task<string> GetDid(CancellationToken cancellationToken = default)
         {
             var response = await WalletProxy.SendMessage("nft_get_wallet_did", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
 
@@ -78,6 +107,7 @@ namespace chia.dotnet
         /// Mints an NFT
         /// </summary>
         /// <param name="info">Info about the NFT to be minted</param>
+        /// <param name="reusePuzhash"></param>
         /// <param name="fee">Transaction fee</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A <see cref="SpendBundle"/></returns>
@@ -119,10 +149,11 @@ namespace chia.dotnet
         }
 
         /// <param name="royaltyAddress"></param>
-        /// <param name="walletId"></param>
-        /// <param name="metadataList">A list of dicts containing the metadata for each NFT to be minted</param>
+        /// <param name="info">A list of dicts containing the metadata for each NFT to be minted</param>
+        /// <param name="reusePuzhash"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref=""/></returns>
+        /// <param name="fee">Transaction fee</param>
+        /// <returns><see cref="SpendBundle"/> and a list of <see cref="string"/></returns>
         public async Task<(SpendBundle SpendBundle, IEnumerable<string> NftIdList)> NftMintBulk(NFTBulkMintingInfo info, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
@@ -181,12 +212,14 @@ namespace chia.dotnet
         /// Sets the DID for an NFT
         /// </summary>
         /// <param name="didId">The DID ID</param>
+        /// <param name="reusePuzhash"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A <see cref="SpendBundle"/></returns>
-        public async Task<SpendBundle> SetDID(string didId, CancellationToken cancellationToken = default)
+        public async Task<SpendBundle> SetDID(string didId, bool reusePuzhash = false, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.did_id = didId;
+            data.reuse_puzhash = reusePuzhash;
 
             return await WalletProxy.SendMessage<SpendBundle>("nft_set_nft_did", "spend_bundle", data, cancellationToken).ConfigureAwait(false);
         }
@@ -212,14 +245,16 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="targetAddress">The target address</param>
         /// <param name="coinId">The coin ID</param>
+        /// <param name="reusePuzhash"></param>
         /// <param name="fee">Transaction fee</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A <see cref="SpendBundle"/></returns>
-        public async Task<SpendBundle> Transfer(string targetAddress, string coinId, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<SpendBundle> Transfer(string targetAddress, string coinId, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.target_address = targetAddress;
             data.nft_coin_id = coinId;
+            data.reuse_puzhash = reusePuzhash;
             data.fee = fee;
 
             return await WalletProxy.SendMessage<SpendBundle>("nft_transfer_nft", "spend_bundle", data, cancellationToken).ConfigureAwait(false);

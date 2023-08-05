@@ -423,13 +423,17 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="didId">The coin id</param>
         /// <param name="latest">Get latest NFT</param>
+        /// <param name="ignoreSizeLimit"></param>
+        /// <param name="reusePuzhash"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The wallet id</returns>
-        public async Task<NFTInfo> GetNFTInfo(string coinId, bool latest = true, CancellationToken cancellationToken = default)
+        public async Task<NFTInfo> GetNFTInfo(string coinId, bool latest = true, bool ignoreSizeLimit = false, bool reusePuzhash = false, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.coin_id = coinId;
             data.latest = latest;
+            data.ignore_size_limit = ignoreSizeLimit;
+            data.reuse_puzhash = reusePuzhash;
 
             return await SendMessage<NFTInfo>("nft_get_info", data, "nft_info", cancellationToken).ConfigureAwait(false);
         }

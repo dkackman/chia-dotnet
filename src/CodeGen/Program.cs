@@ -153,7 +153,7 @@ namespace CodeGen
                 return schema.Properties.Keys.FirstOrDefault();
             }
 
-            throw new InvalidOperationException("Could not determine result key from schema");
+            return null;
         }
 
 
