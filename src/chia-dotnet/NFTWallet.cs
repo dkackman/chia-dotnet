@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Dynamic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -79,24 +81,100 @@ namespace chia.dotnet
         /// <param name="fee">Transaction fee</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A <see cref="SpendBundle"/></returns>
-        public async Task<SpendBundle> MintNFT(NFTMintingInfo info, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(SpendBundle SpendBundle, string NftId)> MintNFT(NFTMintingInfo info, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
-            data.royalty_address = info.RoyaltyAddress;
-            data.target_address = info.TargetAddress;
-            data.uris = info.Uris;
-            data.meta_uris = info.MetaUris;
-            data.license_uris = info.LicenseUris;
+            if (info.RoyaltyAddress is not null)
+            {
+                data.royalty_address = info.RoyaltyAddress;
+            }
+            if (info.TargetAddress is not null)
+            {
+                data.target_address = info.TargetAddress;
+            }
+            if (info.MetaHash is not null)
+            {
+                data.meta_hash = info.MetaHash;
+            }
+            if (info.LicenseHash is not null)
+            {
+                data.license_hash = info.LicenseHash;
+            }
+            if (info.DidId is not null)
+            {
+                data.did_id = info.DidId;
+            }
+            data.uris = info.Uris.ToList();
+            data.meta_uris = info.MetaUris.ToList();
+            data.license_uris = info.LicenseUris.ToList();
             data.hash = info.Hash;
             data.edition_number = info.EditionNumber;
             data.edition_total = info.EditionTotal;
-            data.meta_hash = info.MetaHash;
-            data.license_hash = info.LicenseHash;
-            data.did_id = info.DIDID;
             data.royalty_percentage = info.RoyaltyPercentage;
             data.fee = fee;
+            data.reuse_puzhash = reusePuzhash;
 
-            return await WalletProxy.SendMessage<SpendBundle>("nft_mint_nft", "spend_bundle", data, cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("nft_mint_nft", data, cancellationToken).ConfigureAwait(false);
+            return (Converters.ToObject<SpendBundle>(response.spend_bundle), response.nft_id);
+        }
+
+        /// <param name="royaltyAddress"></param>
+        /// <param name="walletId"></param>
+        /// <param name="metadataList">A list of dicts containing the metadata for each NFT to be minted</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref=""/></returns>
+        public async Task<(SpendBundle SpendBundle, IEnumerable<string> NftIdList)> NftMintBulk(NFTBulkMintingInfo info, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
+        {
+            dynamic data = CreateWalletDataObject();
+
+            data.metadata_list = info.MetadataList.ToList();
+            data.mint_number_start = info.MintNumberStart;
+
+            if (info.RoyaltyAddress is not null)
+            {
+                data.royalty_address = info.RoyaltyAddress;
+            }
+            if (info.RoyaltyPercentage is not null)
+            {
+                data.royalty_percentage = info.RoyaltyPercentage;
+            }
+            if (info.TargetList is not null)
+            {
+                data.target_list = info.TargetList.ToList();
+            }
+            if (info.MintTotal is not null)
+            {
+                data.mint_total = info.MintTotal;
+            }
+            if (info.XchCoins is not null)
+            {
+                data.xch_coin = info.XchCoins.ToList();
+            }
+            if (info.XchChangeTarget is not null)
+            {
+                data.xch_change_target = info.XchChangeTarget;
+            }
+            if (info.NewInnerpuzhash is not null)
+            {
+                data.new_innerpuzhash = info.NewInnerpuzhash;
+            }
+            if (info.NewP2Puzhash is not null)
+            {
+                data.new_p2_puzhash = info.NewP2Puzhash;
+            }
+            if (info.DidCoin is not null)
+            {
+                data.did_coin = info.DidCoin;
+            }
+            if (info.DidLineageParentHex is not null)
+            {
+                data.did_lineage_parent_hex = info.DidLineageParentHex;
+            }
+            data.mint_from_did = info.MintFromDid;
+            data.fee = fee;
+            data.reuse_puzhash = reusePuzhash;
+            var response = await WalletProxy.SendMessage("nft_mint_bulk", data, cancellationToken).ConfigureAwait(false);
+            return (Converters.ToObject<SpendBundle>(response.spend_bundle), Converters.ToEnumerable<string>(response.nft_id_list));
         }
 
         /// <summary>

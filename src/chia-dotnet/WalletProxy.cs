@@ -696,5 +696,21 @@ namespace chia.dotnet
 
             return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_names", data, "coin_records", cancellationToken).ConfigureAwait(false);
         }
+
+        /// <summary>
+        /// Initialize the new data layer wallets.
+        /// </summary>
+        /// <param name="root"></param>
+        /// <param name="fee"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref=""/></returns>
+        public async Task<(IEnumerable<TransactionRecord> Transactions, string LauncherId)> CreateNewDl(string root, ulong fee = 0, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.root = root;
+            data.fee = fee;
+            var response = await SendMessage("create_new_dl", data, cancellationToken).ConfigureAwait(false);
+            return (Converters.ToEnumerable<TransactionRecord>(response.transactions), response.launcher_id);
+        }
     }
 }
