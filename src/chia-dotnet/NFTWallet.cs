@@ -56,19 +56,13 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Transfers an NFT to another address.
+        /// Retrieves the number of NFTs in a wallet.
         /// </summary>
-        /// <param name="fungibleAssets"></param>
-        /// <param name="royaltyAssets"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref=""/></returns>
-        public async Task<IDictionary<string, IEnumerable<AssetInfo>>> CalculateRoyalties(IEnumerable<FungibleAsset> fungibleAssets, IEnumerable<RoyaltyAsset> royaltyAssets, CancellationToken cancellationToken = default)
+        /// <returns>The number of NFTs in the wallet</returns>
+        public async Task<int> NftCountNfts(CancellationToken cancellationToken = default)
         {
-            dynamic data = new ExpandoObject();
-            data.royalty_assets = royaltyAssets.ToList();
-            data.fungible_assets = fungibleAssets.ToList();
-            var response = await WalletProxy.SendMessage("nft_calculate_royalties", data, cancellationToken).ConfigureAwait(false);
-            return Converters.ToDictionary<string, IEnumerable<AssetInfo>>(response);
+            return await WalletProxy.SendMessage<int>("nft_count_nfts", CreateWalletDataObject(), "count", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

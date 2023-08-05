@@ -716,5 +716,61 @@ namespace chia.dotnet
             var response = await SendMessage("create_new_dl", data, cancellationToken).ConfigureAwait(false);
             return (Converters.ToEnumerable<TransactionRecord>(response.transactions), response.launcher_id);
         }
+
+        /// <summary>
+        /// Transfers an NFT to another address.
+        /// </summary>
+        /// <param name="fungibleAssets"></param>
+        /// <param name="royaltyAssets"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref=""/></returns>
+        public async Task<IDictionary<string, IEnumerable<AssetInfo>>> CalculateRoyalties(IEnumerable<FungibleAsset> fungibleAssets, IEnumerable<RoyaltyAsset> royaltyAssets, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.royalty_assets = royaltyAssets.ToList();
+            data.fungible_assets = fungibleAssets.ToList();
+            var response = await SendMessage("nft_calculate_royalties", data, cancellationToken).ConfigureAwait(false);
+            return Converters.ToDictionary<string, IEnumerable<AssetInfo>>(response);
+        }
+
+        /// <summary>
+        /// Bulk set DID for NFTs across different wallets.
+        /// </summary>
+        /// <param name="didId"></param>
+        /// <param name="nftCoinList"></param>
+        /// <param name="reusePuzhash"></param>
+        /// <param name="fee"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref=""/></returns>
+        public async Task<(int TxNum, SpendBundle SpendBundle)> NftSetDidBulk(string didId, IEnumerable<NftCoinInfo> nftCoinList, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.nft_coin_list = nftCoinList.ToList();
+            data.did_id = didId;
+            data.fee = fee;
+            data.reuse_puzhash = reusePuzhash;
+            var response = await SendMessage("nft_set_did_bulk", data, cancellationToken).ConfigureAwait(false);
+            return (response.tx_num, Converters.ToObject<SpendBundle>(response.spend_bundle));
+        }
+
+        /// <summary>
+        /// Bulk transfer NFTs to an address.
+        /// </summary>
+        /// <param name="targetAddress"></param>
+        /// <param name="nftCoinList"></param>
+        /// <param name="reusePuzhash"></param>
+        /// <param name="fee"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref=""/></returns>
+        public async Task<(int TxNum, SpendBundle SpendBundle)> NftTransferBulk(string targetAddress, IEnumerable<NftCoinInfo> nftCoinList, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.nft_coin_list = nftCoinList.ToList();
+            data.target_address = targetAddress;
+            data.fee = fee;
+            data.reuse_puzhash = reusePuzhash;
+            var response = await SendMessage("nft_transfer_bulk", data, cancellationToken).ConfigureAwait(false);
+            return (response.tx_num, Converters.ToObject<SpendBundle>(response.spend_bundle));
+        }
     }
 }
