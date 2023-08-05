@@ -136,17 +136,39 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Cancels multiple offers.
+        /// </summary>
+        /// <param name="assetId"></param>
+        /// <param name="cancelAll"></param>
+        /// <param name="batchSize"></param>
+        /// <param name="secure"></param>
+        /// <param name="batchFee"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref=""/></returns>
+        public async Task CancelOffers(bool secure, string assetId = "xch", bool cancelAll = false, int batchSize = 5, ulong batchFee = 0, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.batch_fee = batchFee;
+            data.secure = secure;
+            data.batch_size = batchSize;
+            data.cancel_all = cancelAll;
+            data.asset_id = assetId;
+            await WalletProxy.SendMessage("cancel_offers", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Checks the validity of an offer
         /// </summary>
         /// <param name="offer">The bech32 encoded offer hex</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Indicator of the offer's validity</returns>
-        public async Task<bool> CheckOfferValidity(string offer, CancellationToken cancellationToken = default)
+        public async Task<(bool Valid, string Id)> CheckOfferValidity(string offer, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.offer = offer;
 
-            return await WalletProxy.SendMessage<bool>("check_offer_validity", data, "valid", cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage<bool>("check_offer_validity", data, cancellationToken).ConfigureAwait(false);
+            return (response.valid, response.id);
         }
 
         /// <summary>
@@ -191,10 +213,17 @@ namespace chia.dotnet
         /// <param name="fee">Transaction fee</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The associated trade record</returns>
-        public async Task<TradeRecord> TakeOffer(string offer, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<TradeRecord> TakeOffer(string offer, IDictionary<string, object>? solver = null, ulong minCoinAmount = 0, ulong maxCoinAmount = 0, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.offer = offer;
+            if (solver is not null)
+            {
+                data.solver = solver;
+            }
+            data.min_coin_amount = minCoinAmount;
+            data.max_coin_amount = maxCoinAmount;
+            data.reuse_puzhash = reusePuzhash;
             data.fee = fee;
 
             return await WalletProxy.SendMessage<TradeRecord>("take_offer", data, "trade_record", cancellationToken).ConfigureAwait(false);
@@ -204,12 +233,14 @@ namespace chia.dotnet
         /// Retrieves the summary of an offer
         /// </summary>
         /// <param name="offer">The bech32 encoded offer hex</param>
+        /// <param name="advanced"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The summary of the offer</returns>
-        public async Task<OfferSummary> GetOfferSummary(string offer, CancellationToken cancellationToken = default)
+        public async Task<OfferSummary> GetOfferSummary(string offer, bool advanced = false, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.offer = offer;
+            data.advanced = advanced;
 
             var response = await WalletProxy.SendMessage("get_offer_summary", data, cancellationToken).ConfigureAwait(false);
 
@@ -228,11 +259,14 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="walletIdsAndMojoAmounts">The set of wallet ids and amounts (in mojo) representing the offer</param>
         /// <param name="fee">Transaction fee for offer creation</param>   
+        /// <param name="minCoinAmount"></param>   
+        /// <param name="maxCoinAmount"></param>   
         /// <param name="validateOnly">Only validate the offer contents. Do not create.</param>   
+        /// <param name="solver"></param>
         /// <param name="driver">Additional data about the puzzle</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task<OfferRecord> CreateOffer(IDictionary<uint, long> walletIdsAndMojoAmounts, ulong fee = 0, bool validateOnly = false, IDictionary<string, string>? driver = null, CancellationToken cancellationToken = default)
+        public async Task<OfferRecord> CreateOffer(IDictionary<uint, long> walletIdsAndMojoAmounts, ulong minCoinAmount = 0, ulong maxCoinAmount = 0, bool validateOnly = false, IDictionary<string, string>? driver = null, IDictionary<string, string>? solver = null, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             if (walletIdsAndMojoAmounts is null)
             {
@@ -243,12 +277,17 @@ namespace chia.dotnet
             data.offer = walletIdsAndMojoAmounts;
             data.fee = fee;
             data.validate_only = validateOnly;
-            data.validate_only = validateOnly;
+            data.min_coin_amount = minCoinAmount;
+            data.max_coin_amount = maxCoinAmount;
+            data.reuse_puzhash = reusePuzhash;
+            if (solver is not null)
+            {
+                data.solver = solver;
+            }
             if (driver is not null)
             {
                 data.driver_dict = driver;
             }
-
             return await WalletProxy.SendMessage<OfferRecord>("create_offer_for_ids", data, null, cancellationToken).ConfigureAwait(false);
         }
 
@@ -261,7 +300,7 @@ namespace chia.dotnet
         /// <param name="driver">Additional data about the puzzle</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task<OfferRecord> CreateOffer(OfferSummary offer, ulong fee = 0, bool validateOnly = false, IDictionary<string, string>? driver = null, CancellationToken cancellationToken = default)
+        public async Task<OfferRecord> CreateOffer(OfferSummary offer, ulong minCoinAmount = 0, ulong maxCoinAmount = 0, bool validateOnly = false, IDictionary<string, string>? driver = null, IDictionary<string, string>? solver = null, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             var walletIdsAndMojoAmounts = new Dictionary<uint, long>();
             foreach (var requested in offer.Requested)
@@ -284,7 +323,15 @@ namespace chia.dotnet
                 walletIdsAndMojoAmounts.Add(WalletId.Value, (long)offered.Value * -1); // offered value flipped to negative for RPC call
             }
 
-            return await CreateOffer(walletIdsAndMojoAmounts, fee, validateOnly, driver, cancellationToken).ConfigureAwait(false);
+            return await CreateOffer(walletIdsAndMojoAmounts,
+                minCoinAmount: minCoinAmount,
+                maxCoinAmount: maxCoinAmount,
+                validateOnly: validateOnly,
+                driver: driver,
+                solver: solver,
+                reusePuzhash: reusePuzhash,
+                fee: fee,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }
