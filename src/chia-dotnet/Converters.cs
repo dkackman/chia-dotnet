@@ -40,20 +40,6 @@ namespace chia.dotnet
             });
         }
 
-        public static IDictionary<TKey, TValue> ToDictionary<TKey, TValue>(dynamic dictionary)
-        {
-            // TODO - this mneeds a unit test
-            // good data example here https://docs.chia.net/nft-rpc?_highlight=nft_calculate_royalties#nft_calculate_royalties
-            Debug.Assert(dictionary is not null);
-            // we're just gonna re-round trip this for now
-            var settings = new JsonSerializerSettings
-            {
-                ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() }
-            };
-            var jsonString = JsonConvert.SerializeObject(dictionary, settings);
-            return JsonConvert.DeserializeObject<IDictionary<TKey, TValue>>(jsonString, settings);
-        }
-
         public static IEnumerable<T> ToEnumerable<T>(dynamic enumerable)
         {
             Debug.Assert(enumerable is not null);

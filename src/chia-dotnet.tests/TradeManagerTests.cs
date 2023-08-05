@@ -51,8 +51,8 @@ namespace chia.dotnet.tests
             var name = await wallet.GetName(cts.Token);
             var assetId = await wallet.GetAssetId(cts.Token);
 
-            var id = await _theTradeManager.AssetIdToName(assetId, cancellationToken: cts.Token);
-            Assert.AreEqual(name, id.Name);
+            var (WalletId, Name) = await _theTradeManager.AssetIdToName(assetId, cancellationToken: cts.Token);
+            Assert.AreEqual(name, Name);
         }
 
         [TestMethod()]
@@ -100,7 +100,7 @@ namespace chia.dotnet.tests
                 { takerCoinWalletId, -1 }
             };
 
-            var offer = await _theTradeManager.CreateOffer(idsAndAmounts, 1, true, null, cts.Token);
+            var offer = await _theTradeManager.CreateOffer(idsAndAmounts, cancellationToken: cts.Token);
         }
 
         [TestMethod()]
@@ -118,7 +118,7 @@ namespace chia.dotnet.tests
                 { takerCoinWalletId, -1 }
             };
 
-            var offer = await _theTradeManager.CreateOffer(idsAndAmounts, 1, true, null, cts.Token);
+            var offer = await _theTradeManager.CreateOffer(idsAndAmounts, validateOnly: true, cancellationToken: cts.Token);
 
             Assert.IsNotNull(offer);
         }
@@ -137,7 +137,7 @@ namespace chia.dotnet.tests
             };
 
             using var cts = new CancellationTokenSource(15000);
-            var offer = await _theTradeManager.CreateOffer(idsAndAmounts, 1, false, null, cts.Token);
+            var offer = await _theTradeManager.CreateOffer(idsAndAmounts, fee: 1, cancellationToken: cts.Token);
 
             Assert.IsNotNull(offer);
         }
@@ -168,9 +168,9 @@ namespace chia.dotnet.tests
             // a valid offer requires the actual coins used to create the offer to be un-spent on the blockchain
             var validOffer = "offer1qqp83w76wzru6cmqvpsxygqqwc7hynr6hum6e0mnf72sn7uvvkpt68eyumkhelprk0adeg42nlelk2mpafrgx923m0l47yqsaxujnj67dj4d4xhf0dv5fx4uyw6zxasykmyde0v4a9t096w2f4sdn08qc54gum80kkw9wxuh4mwl5a7et253f0ul0k8r8hryflzkawulhqhy0urlr0pck26tq5vvpahyrslmgj67hhq76shmkc37rjja6u9408mdvnyhe7ha7a3m7wdxqkrjvnpg9r2fh73e404q4j6v8claxnm9r27l002hecyn7uyvklvdq3vjvvtr3zscmvtvqcnfks6c9xsygedj8gadj8gadjrgdvz9uykj456sythkzc2d6wus6nh88e0j4gwex9jvfr443wxw2xdezuuxnmu0fpg9ddhhfhaeqd2av70t3fxl5j63kmf44tzlm6e0z07lv7u0dshw6n72juc0jnm67hdruvpj63y3p0u7rh9tqcdmccgm6whn266lelufcunt78xk0d3mz3jrs0eted585lpl22lnrqdrg5avd39jveacfpxq9mwkj09t9320amvqjc0xqscmypke8lctpq6h8l3hxxllsn6cr8yyegrfxcxh54u6p060vtn5372m88as5kx906knga262kvmkcys50mck34wd98lekxy6wuqffklutucz0arrftavw6r39ch0u70lvl9xuxlalyevzudculm067uvqmt26dgx235l0lsha3ua7l056ydazeex0qj7kp0wwazd6h9wwmjsnnlxgt78muc8a48s2zjpz0cl7p822ttnltvf0065uf0ezfh0rrvte5xcua4f4ufn39pydzc8gakxmlv4mlskr4fnj479v9jxpvllrahapj70rwjgrt0jjkkkeh6t0l78rj6l9pvlll8lzl443z37xh797uvzuwql8uu6nkn0veykz7t8zerv6afamutn8dmwt406aflp3knmhv9szmpz654l305p2zaqgxg3ds9p4zpj9w6yt3j47t4n4rse6a3s5h4n4zkhh27lvphzdl3cxl3et7wr5hfpn89pg6qq8gnrdm4e083054n9fnd3tl6e3d8r74le9gjtdjfvh7mvd2p25dj8gml4adzxvddlv668y40sdmxg5nk2yhd0fq0xt957mxchhvm4mwa94uc2k6nzenj4wraekvt6mu0m4naapkqtx8m7ha6yfewavhjlv3hn5audclkuqqqyh2km7gxmzur4";
             using var cts = new CancellationTokenSource(2000);
-            var isValid = await _theTradeManager.CheckOfferValidity(validOffer, cts.Token);
+            var (Valid, Id) = await _theTradeManager.CheckOfferValidity(validOffer, cts.Token);
 
-            Assert.IsTrue(isValid);
+            Assert.IsTrue(Valid);
         }
 
         [TestMethod()]
@@ -191,7 +191,7 @@ namespace chia.dotnet.tests
             // a valid offer requires the actual coins used to create the offer to be un-spent on the blockchain
             var validOffer = "offer1qqp83w76wzru6cmqvpsxygqqwc7hynr6hum6e0mnf72sn7uvvkpt68eyumkhelprk0adeg42nlelk2mpafrgx923m0l47yqsaxujnj67dj4d4xhf0dv5fx4uyw6zxasykmyde0v4a9t096w2f4sdn08qc54gum80kkw9wxuh4mwl5a7et253f0ul0k8r8hryflzkawulhqhy0urlr0pck26tq5vvpahyrslmgj67hhq76shmkc37rjja6u9408mdvnyhe7ha7a3m7wdxqkrjvnpg9r2fh73e404q4j6v8claxnm9r27l002hecyn7uyvklvdq3vjvvtr3zscmvtvqcnfks6c9xsygedj8gadj8gadjrgdvz9uykj456sythkzc2d6wus6nh88e0j4gwex9jvfr443wxw2xdezuuxnmu0fpg9ddhhfhaeqd2av70t3fxl5j63kmf44tzlm6e0z07lv7u0dshw6n72juc0jnm67hdruvpj63y3p0u7rh9tqcdmccgm6whn266lelufcunt78xk0d3mz3jrs0eted585lpl22lnrqdrg5avd39jveacfpxq9mwkj09t9320amvqjc0xqscmypke8lctpq6h8l3hxxllsn6cr8yyegrfxcxh54u6p060vtn5372m88as5kx906knga262kvmkcys50mck34wd98lekxy6wuqffklutucz0arrftavw6r39ch0u70lvl9xuxlalyevzudculm067uvqmt26dgx235l0lsha3ua7l056ydazeex0qj7kp0wwazd6h9wwmjsnnlxgt78muc8a48s2zjpz0cl7p822ttnltvf0065uf0ezfh0rrvte5xcua4f4ufn39pydzc8gakxmlv4mlskr4fnj479v9jxpvllrahapj70rwjgrt0jjkkkeh6t0l78rj6l9pvlll8lzl443z37xh797uvzuwql8uu6nkn0veykz7t8zerv6afamutn8dmwt406aflp3knmhv9szmpz654l305p2zaqgxg3ds9p4zpj9w6yt3j47t4n4rse6a3s5h4n4zkhh27lvphzdl3cxl3et7wr5hfpn89pg6qq8gnrdm4e083054n9fnd3tl6e3d8r74le9gjtdjfvh7mvd2p25dj8gml4adzxvddlv668y40sdmxg5nk2yhd0fq0xt957mxchhvm4mwa94uc2k6nzenj4wraekvt6mu0m4naapkqtx8m7ha6yfewavhjlv3hn5audclkuqqqyh2km7gxmzur4";
             using var cts = new CancellationTokenSource(10000);
-            var offerSummary = await _theTradeManager.GetOfferSummary(validOffer, cts.Token);
+            var offerSummary = await _theTradeManager.GetOfferSummary(validOffer, false, cts.Token);
 
             Assert.IsNotNull(offerSummary);
             Assert.IsTrue(offerSummary.Offered.Any());
@@ -227,9 +227,9 @@ namespace chia.dotnet.tests
             Assert.IsFalse(offer.TradeRecord.Status == TradeStatus.CANCELLED);
 
             using var cts2 = new CancellationTokenSource(2000);
-            var isValidBefore = await _theTradeManager.CheckOfferValidity(offer.Offer, cts2.Token);
+            var (Valid, Id) = await _theTradeManager.CheckOfferValidity(offer.Offer, cts2.Token);
 
-            Assert.IsTrue(isValidBefore);
+            Assert.IsTrue(Valid);
 
             // WARNING this creates is a secure cancellation transaction on the blockchain
             using var cts3 = new CancellationTokenSource(10000);

@@ -97,12 +97,26 @@ namespace chia.dotnet
         /// Returns a set of coins that can be used for generating a new transaction.
         /// </summary>
         /// <param name="amount">An amount</param>
+        /// <param name="excludedCoins"></param>
+        /// <param name="excludedCoinAmounts"></param>
+        /// <param name="minCoinAmount"></param>
+        /// <param name="maxCoinAmount"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The list of <see cref="Token"/>s</returns>
-        public async Task<IEnumerable<Coin>> SelectCoins(ulong amount, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<Coin>> SelectCoins(ulong amount, IEnumerable<Coin>? excludedCoins = null, IEnumerable<ulong>? excludedCoinAmounts = null, ulong minCoinAmount = 0, ulong maxCoinAmount = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.amount = amount;
+            if (excludedCoins is not null)
+            {
+                data.amount = excludedCoins.ToList();
+            }
+            if (excludedCoinAmounts is not null)
+            {
+                data.amount = excludedCoinAmounts.ToList();
+            }
+            data.amount = minCoinAmount;
+            data.amount = maxCoinAmount;
 
             return await WalletProxy.SendMessage<IEnumerable<Coin>>("select_coins", data, "coins", cancellationToken).ConfigureAwait(false);
         }

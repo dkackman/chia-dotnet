@@ -730,7 +730,7 @@ namespace chia.dotnet
             data.royalty_assets = royaltyAssets.ToList();
             data.fungible_assets = fungibleAssets.ToList();
             var response = await SendMessage("nft_calculate_royalties", data, cancellationToken).ConfigureAwait(false);
-            return Converters.ToDictionary<string, IEnumerable<AssetInfo>>(response);
+            return Converters.ToObject<IDictionary<string, IEnumerable<AssetInfo>>>(response);
         }
 
         /// <summary>
