@@ -2,15 +2,9 @@
 
 namespace chia.dotnet
 {
-    /// <summary>
-    /// Info for minting an NFT
-    /// </summary>
-    public record NFTMintingInfo
+    public record NftMintEntry
     {
-        public string RoyaltyAddress { get; init; } = string.Empty;
-        public string TargetAddress { get; init; } = string.Empty;
-        public string? DIDID { get; init; }
-        public ushort RoyaltyPercentage { get; init; } = 0;
+        public ushort RoyaltyPercentage { get; init; }
         public IEnumerable<string> Uris { get; init; } = new List<string>();
         public string Hash { get; init; } = string.Empty;
         public IEnumerable<string> MetaUris { get; init; } = new List<string>();
@@ -19,5 +13,15 @@ namespace chia.dotnet
         public string? LicenseHash { get; init; }
         public ulong EditionTotal { get; init; } = 1;
         public ulong EditionNumber { get; init; } = 1;
+    }
+
+    /// <summary>
+    /// Info for minting an NFT
+    /// </summary>
+    public record NFTMintingInfo : NftMintEntry
+    {
+        public string? RoyaltyAddress { get; init; } = string.Empty;
+        public string? TargetAddress { get; init; }
+        public string? DidId { get; init; }
     }
 }

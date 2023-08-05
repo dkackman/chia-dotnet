@@ -42,7 +42,7 @@ namespace chia.dotnet
         /// <summary>
         /// Hash of the metadata
         /// </summary>
-        public string MetaataHash { get; init; } = string.Empty;
+        public string MetadataHash { get; init; } = string.Empty;
         /// <summary>
         /// A list of license URIs
         /// </summary>

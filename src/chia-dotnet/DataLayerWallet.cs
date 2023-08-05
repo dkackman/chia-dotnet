@@ -31,26 +31,10 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Initialize the new data layer wallets.
-        /// </summary>
-        /// <param name="root"></param>
-        /// <param name="fee"></param>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref=""/></returns>
-        public async Task<(IEnumerable<TransactionRecord> Transactions, string LauncherId)> CreateNewDl(string root, ulong fee = 0, CancellationToken cancellationToken = default)
-        {
-            dynamic data = new ExpandoObject();
-            data.root = root;
-            data.fee = fee;
-            var response = await WalletProxy.SendMessage("create_new_dl", data, cancellationToken).ConfigureAwait(false);
-            return (Converters.ToEnumerable<TransactionRecord>(response.transactions), response.launcher_id);
-        }
-
-        /// <summary>
         /// Remove an existing mirror for a specific singleton.
         /// </summary>
-        /// <param name="fee"></param>
         /// <param name="coinId"></param>
+        /// <param name="fee"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="TransactionRecord"/></returns>
         public async Task<IEnumerable<TransactionRecord>> DeleteMirror(string coinId, ulong fee = 0, CancellationToken cancellationToken = default)

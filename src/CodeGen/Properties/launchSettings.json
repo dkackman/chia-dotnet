@@ -2,7 +2,7 @@
   "profiles": {
     "CodeGen": {
       "commandName": "Project",
-      "commandLineArgs": "C:\\Users\\don\\src\\github\\dkackman\\chia-api\\src\\wallet.yaml dl_singletons_by_root SingletonRecord"
+      "commandLineArgs": "C:\\Users\\don\\src\\github\\dkackman\\chia-api\\src\\wallet.yaml nft_calculate_royalties"
     }
   }
 }
