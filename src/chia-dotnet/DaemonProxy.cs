@@ -395,6 +395,7 @@ namespace chia.dotnet
             _ = await SendMessage("delete_label", data, cancellationToken).ConfigureAwait(false);
         }
 
+        /// <summary>
         /// Determines if the named service is running.
         /// </summary>
         /// <param name="service">The service name</param>

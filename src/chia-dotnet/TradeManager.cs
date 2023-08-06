@@ -144,7 +144,7 @@ namespace chia.dotnet
         /// <param name="secure"></param>
         /// <param name="batchFee"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref=""/></returns>
+        /// <returns>An awaitable Task</returns>
         public async Task CancelOffers(bool secure, string assetId = "xch", bool cancelAll = false, int batchSize = 5, ulong batchFee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();

@@ -34,7 +34,7 @@ namespace chia.dotnet
         /// Remove an existing mirror for a specific singleton.
         /// </summary>
         /// <param name="coinId"></param>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="TransactionRecord"/></returns>
         public async Task<IEnumerable<TransactionRecord>> DeleteMirror(string coinId, ulong fee = 0, CancellationToken cancellationToken = default)
@@ -107,7 +107,7 @@ namespace chia.dotnet
         /// <param name="launcherId"></param>
         /// <param name="amount"></param>
         /// <param name="urls"></param>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="TransactionRecord"/></returns>
         public async Task<IEnumerable<TransactionRecord>> NewMirror(string launcherId, ulong amount, IEnumerable<string> urls, ulong fee = 0, CancellationToken cancellationToken = default)
@@ -150,7 +150,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="launcherId"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref=""/></returns>
+        /// <returns>An awaitable Task</returns>
         public async Task StopTracking(string launcherId, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -163,7 +163,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="launcherId"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref=""/></returns>
+        /// <returns>An awaitable Task</returns>
         public async Task TrackNew(string launcherId, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -189,7 +189,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="newRoot"></param>
         /// <param name="launcherId"></param>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns><see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> UpdateRoot(string newRoot, string launcherId, ulong fee = 0, CancellationToken cancellationToken = default)

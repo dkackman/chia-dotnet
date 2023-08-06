@@ -49,11 +49,11 @@ namespace chia.dotnet
         /// <summary>
         /// Mint a verified credential using the assigned DID.
         /// </summary>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="targetAddress"></param>
         /// <param name="didId"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref="(VCRecord VCRecord, IEnumerable<TradeRecord> Transactions)"/></returns>
+        /// <returns>a VCRecord and list of TradeRecord</returns>
         public async Task<(VCRecord VCRecord, IEnumerable<TradeRecord> Transactions)> Mint(string targetAddress, string didId, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -69,7 +69,7 @@ namespace chia.dotnet
         /// Spend a verified credential.
         /// </summary>
         /// <param name="reusePuzhash"></param>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="newPuzhash"></param>
         /// <param name="providerInnerPuzhash"></param>
         /// <param name="newProofHash"></param>
@@ -99,7 +99,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="proofs"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref=""/></returns>
+        /// <returns>An awaitable Task</returns>
         public async Task AddProofs(VCProofs proofs, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -112,7 +112,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="root"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref="IDictionary<string,"/></returns>
+        /// <returns><see cref="IDictionary{string, string}"/></returns>
         public async Task<IDictionary<string, string>> GetProofsForRoot(string root, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -124,7 +124,7 @@ namespace chia.dotnet
         /// Revoke an on chain VC provided the correct DID is available.
         /// </summary>
         /// <param name="reusePuzhash"></param>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="vcParentId"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="TransactionRecord"/></returns>

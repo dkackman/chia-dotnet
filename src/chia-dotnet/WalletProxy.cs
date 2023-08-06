@@ -321,10 +321,10 @@ namespace chia.dotnet
         /// Create a new CAT wallet
         /// </summary>
         /// <param name="amount">The amount to put in the wallet (in units of mojos)</param>
-        /// <param name="fee">Fee to create the wallet (in units of mojos)</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(WalletType Type, string AssetId, uint WalletId)> CreateCATWallet(ulong amount, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<(WalletType Type, string AssetId, uint WalletId)> CreateCATWallet(ulong amount, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             return await CreateCATWallet(string.Empty, amount, fee, cancellationToken).ConfigureAwait(false);
         }
@@ -333,11 +333,11 @@ namespace chia.dotnet
         /// Create a new CAT wallet
         /// </summary>
         /// <param name="amount">The amount to put in the wallet (in units of mojos)</param>
-        /// <param name="fee">Fee to create the wallet (in units of mojos)</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="name">The wallet name</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(WalletType Type, string AssetId, uint WalletId)> CreateCATWallet(string name, ulong amount, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<(WalletType Type, string AssetId, uint WalletId)> CreateCATWallet(string name, ulong amount, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_type = "cat_wallet";
@@ -632,7 +632,7 @@ namespace chia.dotnet
         /// <param name="coinAnnouncements"></param>
         /// <param name="coins"></param>
         /// <param name="additions"></param>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The signed <see cref="TransactionRecord"/></returns>
         public async Task<(TransactionRecord SignedTx, IEnumerable<TransactionRecord> SignedTxs)> CreateSignedTransaction(
@@ -692,7 +692,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The signed <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> CreateSignedTransaction(IEnumerable<Coin> additions, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> CreateSignedTransaction(IEnumerable<Coin> additions, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             return await CreateSignedTransaction(additions, fee: fee, cancellationToken).ConfigureAwait(false);
         }
@@ -735,9 +735,9 @@ namespace chia.dotnet
         /// Initialize the new data layer wallets.
         /// </summary>
         /// <param name="root"></param>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref=""/></returns>
+        /// <returns>An awaitable Task</returns>
         public async Task<(IEnumerable<TransactionRecord> Transactions, string LauncherId)> CreateNewDl(string root, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -753,7 +753,7 @@ namespace chia.dotnet
         /// <param name="fungibleAssets"></param>
         /// <param name="royaltyAssets"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref=""/></returns>
+        /// <returns>An awaitable Task</returns>
         public async Task<IDictionary<string, IEnumerable<AssetInfo>>> CalculateRoyalties(IEnumerable<FungibleAsset> fungibleAssets, IEnumerable<RoyaltyAsset> royaltyAssets, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -769,9 +769,9 @@ namespace chia.dotnet
         /// <param name="didId"></param>
         /// <param name="nftCoinList"></param>
         /// <param name="reusePuzhash"></param>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref=""/></returns>
+        /// <returns>An awaitable Task</returns>
         public async Task<(int TxNum, SpendBundle SpendBundle)> NftSetDidBulk(string didId, IEnumerable<NftCoinInfo> nftCoinList, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -789,9 +789,9 @@ namespace chia.dotnet
         /// <param name="targetAddress"></param>
         /// <param name="nftCoinList"></param>
         /// <param name="reusePuzhash"></param>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref=""/></returns>
+        /// <returns>An awaitable Task</returns>
         public async Task<(int TxNum, SpendBundle SpendBundle)> NftTransferBulk(string targetAddress, IEnumerable<NftCoinInfo> nftCoinList, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -809,7 +809,7 @@ namespace chia.dotnet
         /// <param name="coinId"></param>
         /// <param name="latest"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref=""/></returns>
+        /// <returns>An awaitable Task</returns>
         public async Task<DidInfo> DidGetInfo(string coinId, bool latest = true, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -858,7 +858,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="transactionId"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref=""/></returns>
+        /// <returns>An awaitable Task</returns>
         public async Task<IDictionary<string, IDictionary<string, IEnumerable<string>>>> GetTransactionMemo(string transactionId, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -886,7 +886,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="ids"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref=""/></returns>
+        /// <returns>An awaitable Task</returns>
         public async Task DeleteNotifications(IEnumerable<string> ids, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -897,7 +897,7 @@ namespace chia.dotnet
         /// <summary>
         /// Sends a notification.
         /// </summary>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="amount"></param>
         /// <param name="message">In hex</param>
         /// <param name="target"></param>
@@ -920,7 +920,7 @@ namespace chia.dotnet
         /// <param name="message"></param>
         /// <param name="address"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref="(string PubKey, string Signature, string SigningMode)"/></returns>
+        /// <returns>PubKey, Signature, and SigningMode</returns>
         public async Task<(string PubKey, string Signature, string SigningMode)> SignMessageByAddress(string message, string address, bool isHex = false, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -938,7 +938,7 @@ namespace chia.dotnet
         /// <param name="message"></param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref="(string PubKey, string Signature, string SigningMode)"/></returns>
+        /// <returns>PubKey, Signature, and SigningMode</returns>
         public async Task<(string PubKey, string Signature, string SigningMode)> SignMessageById(string message, string id, bool isHex = false, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -964,7 +964,7 @@ namespace chia.dotnet
         /// <param name="limit"></param>
         /// <param name="offset"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref="(IEnumerable<CoinRecord> CoinRecords, int? TotalCount)"/></returns>
+        /// <returns><see cref="IEnumerable{CoinRecord}"/></returns>
         public async Task<(IEnumerable<CoinRecord> CoinRecords, int? TotalCount)> GetCoinRecords(
             UInt32Range? spentRange,
             UInt32Range? confirmedRange,
@@ -1030,7 +1030,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="height"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref="(ulong Timestamp, DateTime DateTimestamp)"/></returns>
+        /// <returns>A timestamp</returns>
         public async Task<(ulong Timestamp, DateTime DateTimestamp)> GetTimestampForHeight(uint height, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -1045,7 +1045,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="enable"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref=""/></returns>
+        /// <returns>An awaitable Task</returns>
         public async Task SetWalletResyncOnStartup(bool enable = true, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -1097,7 +1097,7 @@ namespace chia.dotnet
         /// Spend clawback coins that were sent (to claw them back) or received (to claim them).
         /// </summary>
         /// <param name="batchSize"></param>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="coinIds"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="string"/></returns>

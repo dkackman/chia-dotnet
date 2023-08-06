@@ -121,7 +121,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The tree id and list of transactions</returns>
-        public async Task<(string id, IEnumerable<TransactionRecord> txs)> CreateDataStore(ulong fee, CancellationToken cancellationToken = default)
+        public async Task<(string id, IEnumerable<TransactionRecord> txs)> CreateDataStore(ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.fee = fee;
@@ -142,7 +142,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Transaction id</returns>
-        public async Task<string> DeleteKey(string key, string id, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<string> DeleteKey(string key, string id, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.key = key;
@@ -161,7 +161,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns></returns>
-        public async Task DeleteMirror(string coinId, ulong fee, CancellationToken cancellationToken = default)
+        public async Task DeleteMirror(string coinId, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.coin_id = coinId;
@@ -174,11 +174,11 @@ namespace chia.dotnet
         /// Gets the list of ancestors for a given id/hash pair.
         /// </summary>
         /// <param name="id">Id</param>
-        /// <param name="id">Hash</param>
+        /// <param name="hash">Hash</param>
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns></returns>
-        public async Task<IEnumerable<InternalNode>> GetAncestors(string id, string hash, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<InternalNode>> GetAncestors(string id, string hash, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.id = id;
@@ -196,7 +196,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns></returns>
-        public async Task<IEnumerable<string>> GetKeys(string id, string rootHash, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<string>> GetKeys(string id, string rootHash, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.id = id;
@@ -360,7 +360,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="id"></param>
         /// <param name="value"></param>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns><see cref="string"/></returns>
         public async Task<string> Insert(string id, string value, ulong fee = 0, CancellationToken cancellationToken = default)
@@ -378,7 +378,7 @@ namespace chia.dotnet
         /// <param name="maker"></param>
         /// <param name="taker"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <returns><see cref="DataLayerOffer"/></returns>
         public async Task<DataLayerOffer> MakeOffer(IEnumerable<OfferStore> maker, IEnumerable<OfferStore> taker, ulong fee = 0, CancellationToken cancellationToken = default)
         {
@@ -395,7 +395,7 @@ namespace chia.dotnet
         /// <param name="id"></param>
         /// <param name="urls"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref=""/></returns>
+        /// <returns>An awaitable Task</returns>
         public async Task RemoveSubscriptions(string id, IEnumerable<string> urls, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -410,7 +410,7 @@ namespace chia.dotnet
         /// <param name="id"></param>
         /// <param name="urls"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref=""/></returns>
+        /// <returns>An awaitable Task</returns>
         public async Task Subscribe(string id, IEnumerable<string> urls, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -423,7 +423,7 @@ namespace chia.dotnet
         /// List current subscriptions.
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>A list of <see cref="IEnumerable<string>"/></returns>
+        /// <returns>A list of <see cref="IEnumerable{string}"/></returns>
         public async Task<IEnumerable<string>> Subscriptions(CancellationToken cancellationToken = default)
         {
             return await SendMessage<IEnumerable<string>>("subscriptions", null, "store_ids", cancellationToken).ConfigureAwait(false);
@@ -433,7 +433,7 @@ namespace chia.dotnet
         /// Takes an offer.
         /// </summary>
         /// <param name="offer"></param>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns><see cref="string"/></returns>
         public async Task<string> TakeOffer(object offer, ulong fee = 0, CancellationToken cancellationToken = default)
@@ -449,7 +449,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="id"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref=""/></returns>
+        /// <returns>An awaitable Task</returns>
         public async Task Unsubscribe(string id, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -461,9 +461,9 @@ namespace chia.dotnet
         /// Verifies an offer.
         /// </summary>
         /// <param name="offer"></param>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref="(bool Valid, ulong Fee)"/></returns>
+        /// <returns>boolean valid flag and fee amount</returns>
         public async Task<(bool Valid, ulong Fee)> VerifyOffer(DataLayerOffer offer, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();

@@ -75,7 +75,7 @@ namespace chia.dotnet
         /// <param name="fee">Transaction fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Wallet state and transaction</returns>
-        public async Task<(PoolWalletInfo State, TransactionRecord Transaction)> AbsorbRewards(ulong fee, CancellationToken cancellationToken = default)
+        public async Task<(PoolWalletInfo State, TransactionRecord Transaction)> AbsorbRewards(ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.fee = fee;
