@@ -48,7 +48,7 @@ namespace chia.dotnet.tests
         public async Task GetTransactions()
         {
             using var cts = new CancellationTokenSource(15000);
-            var count = await _theWallet.GetTransactionCount(cts.Token);
+            var count = await _theWallet.GetTransactionCount(cancellationToken: cts.Token);
             if (count == 0)
             {
                 Assert.Inconclusive("no transactions");
@@ -66,7 +66,7 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(150000);
 
-            var count = await _theWallet.GetTransactionCount(cts.Token);
+            var count = await _theWallet.GetTransactionCount(cancellationToken: cts.Token);
             Assert.IsTrue(count > 4);
 
             var transactions1 = await _theWallet.GetTransactions(start: 0, end: 2, cancellationToken: cts.Token);
@@ -117,7 +117,7 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            var count = await _theWallet.GetTransactionCount(cts.Token);
+            var count = await _theWallet.GetTransactionCount(cancellationToken: cts.Token);
 
             Assert.IsNotNull(count);
         }

@@ -621,16 +621,30 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Create but do not send a transaction
+        /// Creates and signs a transaction.
         /// </summary>
-        /// <param name="additions">Additions to the block chain</param>
-        /// <param name="fee">Fee amount (in units of mojos)</param>
-        /// <param name="coins">Coins to include</param>
-        /// <param name="coinAnnouncements">Coins to announce</param>
-        /// <param name="puzzleAnnouncements">Puzzles to announce</param>
+        /// <param name="excludeCoinAmounts"></param>
+        /// <param name="excludeCoins"></param>
+        /// <param name="maxCoinAmount"></param>
+        /// <param name="minCoinAmount"></param>
+        /// <param name="puzzleAnnouncements"></param>
+        /// <param name="coinAnnouncements"></param>
+        /// <param name="coins"></param>
+        /// <param name="additions"></param>
+        /// <param name="fee"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The signed <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> CreateSignedTransaction(IEnumerable<Coin> additions, ulong fee, IEnumerable<Coin>? coins = null, IEnumerable<CoinAnnouncement>? coinAnnouncements = null, IEnumerable<PuzzleAnnouncement>? puzzleAnnouncements = null, CancellationToken cancellationToken = default)
+        public async Task<(TransactionRecord SignedTx, IEnumerable<TransactionRecord> SignedTxs)> CreateSignedTransaction(
+            IEnumerable<AmountWithPuzzlehash> additions,
+            IEnumerable<ulong>? excludeCoinAmounts = null,
+            IEnumerable<Coin>? excludeCoins = null,
+            IEnumerable<PuzzleAnnouncement>? puzzleAnnouncements = null,
+            IEnumerable<CoinAnnouncement>? coinAnnouncements = null,
+            IEnumerable<Coin>? coins = null,
+            ulong minCoinAmount = 0,
+            ulong maxCoinAmount = 0,
+            ulong fee = 0,
+            CancellationToken cancellationToken = default)
         {
             if (additions is null)
             {
@@ -640,19 +654,34 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.additions = additions.ToList();
             data.fee = fee;
-            if (coins is not null) // coins are optional
+            data.min_coin_amount = minCoinAmount;
+            data.max_coin_amount = maxCoinAmount;
+            if (excludeCoins is not null)
+            {
+                data.exclude_coins = excludeCoins.ToList();
+            }
+            if (excludeCoinAmounts is not null)
+            {
+                data.exclude_coin_amounts = excludeCoinAmounts.ToList();
+            }
+            if (coins is not null)
             {
                 data.coins = coins.ToList();
             }
-            if (coinAnnouncements is not null) // coins are optional
+            if (coinAnnouncements is not null)
             {
                 data.coin_announcements = coinAnnouncements.ToList();
             }
-            if (puzzleAnnouncements is not null) // coins are optional
+            if (puzzleAnnouncements is not null)
             {
                 data.puzzle_announcements = puzzleAnnouncements.ToList();
             }
-            return await SendMessage<TransactionRecord>("create_signed_transaction", data, "signed_tx", cancellationToken).ConfigureAwait(false);
+            var response = await SendMessage("create_signed_transaction", data, cancellationToken).ConfigureAwait(false);
+
+            return (
+                Converters.ToObject<TransactionRecord>(response.signed_tx),
+                Converters.ToEnumerable<TransactionRecord>(response.signed_txs)
+                );
         }
 
         /// <summary>
@@ -799,6 +828,44 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.coin_id = coinId;
             return await SendMessage<string>("did_find_lost_did", data, "latest_coin_id", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets the current derivation index.
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref="uint"/></returns>
+        public async Task<uint> GetCurrentDerivationIndex(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<uint>("get_current_derivation_index", null, "index", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Extends the current derivation index.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref="uint"/></returns>
+        public async Task<uint> ExtendDerivationIndex(uint index, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.index = index;
+            return await SendMessage<uint>("extend_derivation_index", data, "index", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Retrieves the memo from a transaction.
+        /// </summary>
+        /// <param name="transactionId"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref=""/></returns>
+        public async Task<IDictionary<string, IDictionary<string, IEnumerable<string>>>> GetTransactionMemo(string transactionId, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.transaction_id = transactionId;
+            var response = await SendMessage<IDictionary<string, IDictionary<string, IEnumerable<string>>>>("get_transaction_memo", data, cancellationToken).ConfigureAwait(false);
+
+            return response;
         }
     }
 }
