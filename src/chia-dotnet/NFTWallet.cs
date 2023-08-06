@@ -42,7 +42,7 @@ namespace chia.dotnet
         /// <param name="fee">Transaction fee</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An <see cref="SpendBundle"/></returns>
-        public async Task<SpendBundle> AddUri(string uri, string key, string nftCoinId, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<SpendBundle> AddUri(string uri, string key, string nftCoinId, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.uri = uri;
@@ -104,7 +104,7 @@ namespace chia.dotnet
         /// <param name="fee">Transaction fee</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A <see cref="SpendBundle"/></returns>
-        public async Task<(SpendBundle SpendBundle, string NftId)> MintNFT(NFTMintingInfo info, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(SpendBundle SpendBundle, string NftId)> MintNFT(NFTMintingInfo info, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             if (info.RoyaltyAddress is not null)
@@ -147,7 +147,7 @@ namespace chia.dotnet
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <param name="fee">Transaction fee</param>
         /// <returns><see cref="SpendBundle"/> and a list of <see cref="string"/></returns>
-        public async Task<(SpendBundle SpendBundle, IEnumerable<string> NftIdList)> NftMintBulk(NFTBulkMintingInfo info, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(SpendBundle SpendBundle, IEnumerable<string> NftIdList)> NftMintBulk(NFTBulkMintingInfo info, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
 
@@ -208,7 +208,7 @@ namespace chia.dotnet
         /// <param name="reusePuzhash"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A <see cref="SpendBundle"/></returns>
-        public async Task<SpendBundle> SetDID(string didId, bool reusePuzhash = false, CancellationToken cancellationToken = default)
+        public async Task<SpendBundle> SetDID(string didId, bool? reusePuzhash = null, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.did_id = didId;
@@ -242,7 +242,7 @@ namespace chia.dotnet
         /// <param name="fee">Transaction fee</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A <see cref="SpendBundle"/></returns>
-        public async Task<SpendBundle> Transfer(string targetAddress, string coinId, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<SpendBundle> Transfer(string targetAddress, string coinId, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.target_address = targetAddress;

@@ -38,7 +38,7 @@ namespace chia.dotnet
         /// <param name="reusePuzhash"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task UpdateRecoveryIds(IEnumerable<string> newList, ulong? numVerificationsRequired = null, bool reusePuzhash = false, CancellationToken cancellationToken = default)
+        public async Task UpdateRecoveryIds(IEnumerable<string> newList, ulong? numVerificationsRequired = null, bool? reusePuzhash = null, CancellationToken cancellationToken = default)
         {
             if (newList is null)
             {
@@ -197,7 +197,7 @@ namespace chia.dotnet
         /// <param name="fee">Transaction fee</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task<SpendBundle> UpdateMetadata(string metadata, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<SpendBundle> UpdateMetadata(string metadata, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.metadata = metadata;
@@ -332,7 +332,7 @@ namespace chia.dotnet
         /// <param name="fee">Trasnaction fee</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The backup data</returns>
-        public async Task<TransactionRecord> Transfer(string innerAddress, bool withRecoveryInfo = true, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> Transfer(string innerAddress, bool withRecoveryInfo = true, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.inner_address = innerAddress;

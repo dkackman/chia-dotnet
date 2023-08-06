@@ -80,7 +80,7 @@ namespace chia.dotnet
             string? newPuzhash = null,
             string? providerInnerPuzhash = null,
             string? newProofHash = null,
-            bool reusePuzhash = false,
+            bool? reusePuzhash = null,
             ulong fee = 0,
             CancellationToken cancellationToken = default)
         {
@@ -128,7 +128,7 @@ namespace chia.dotnet
         /// <param name="vcParentId"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="TransactionRecord"/></returns>
-        public async Task<IEnumerable<TransactionRecord>> Revoke(string vcParentId, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<TransactionRecord>> Revoke(string vcParentId, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.vc_parent_id = vcParentId;
