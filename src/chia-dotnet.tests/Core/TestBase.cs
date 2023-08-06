@@ -6,9 +6,10 @@ namespace chia.dotnet.tests.Core;
 /// <summary>
 /// base class that will grab the Dependencies that have been registered by fixture.
 /// </summary>
+/// 
 public class TestBase : IClassFixture<ChiaDotNetFixture>
 {
-    private ChiaDotNetFixture Fixture { get; }
+    internal ChiaDotNetFixture Fixture { get; }
     
     private DaemonProxy Daemon => Fixture.TestHost.Services.GetRequiredService<DaemonProxy>();
     
@@ -16,7 +17,9 @@ public class TestBase : IClassFixture<ChiaDotNetFixture>
     
     private HttpRpcClient HttpWebClient => Fixture.TestHost.Services.GetService<HttpRpcClient>();
     
-    private FullNodeProxy FullNode => Fixture.TestHost.Services.GetService<FullNodeProxy>();
+    internal FullNodeProxy FullNode => Fixture.TestHost.Services.GetService<FullNodeProxy>();
+    
+    internal FarmerProxy Farmer => Fixture.TestHost.Services.GetService<FarmerProxy>();
     
     public TestBase(ChiaDotNetFixture fixture)
     {

@@ -1,2 +1,12 @@
 {
+  "daemon" : {
+    "Uri" : "wss://127.0.0.1:55400",
+    "CertPath" : "/home/kev/.chia/mainnet/config/ssl/daemon/private_daemon.crt",
+    "KeyPath" : "/home/kev/.chia/mainnet/config/ssl/daemon/private_daemon.key"
+  },
+  "fullnode" : {
+    "Uri" : "wss://127.0.0.1:55400",
+    "CertPath" : "/home/kev/.chia/mainnet/config/ssl/daemon/private_daemon.crt",
+    "KeyPath" : "/home/kev/.chia/mainnet/config/ssl/daemon/private_daemon.key"
+  }
 }
