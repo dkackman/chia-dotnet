@@ -89,6 +89,7 @@ namespace chia.dotnet
         {
             return JsonConvert.SerializeObject(o, new JsonSerializerSettings
             {
+                NullValueHandling = NullValueHandling.Ignore,
                 ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() }
             });
         }

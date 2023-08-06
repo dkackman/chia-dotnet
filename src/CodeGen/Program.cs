@@ -89,7 +89,7 @@ namespace CodeGen
             var methodSignature = fullReturnType is not null ? "public async Task<" + fullReturnType + "> " + methodName + "(" + methodParameters + ")" : "public async Task " + methodName + "(" + methodParameters + ")";
 
             // Determine the result key from the response schema
-            var resultKey = GetResultKeyFromSchema(responseSchema);
+            var resultKey = fullReturnType is not null ? GetResultKeyFromSchema(responseSchema) : null;
 
             var methodBody = GetMethodBody(dataInitialization, fullReturnType, operation, resultKey);
 
