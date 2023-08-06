@@ -50,29 +50,55 @@ public class ChiaDotNetFixture : IDisposable
                 {
                     //bind settings from secrets/environment/appsettings
                     var daemonConfig = new Endpoint();
-                    var fullNode = new Endpoint();
+                    var fullNodeConfig = new Endpoint();
+                    var farmerConfig = new Endpoint();
                     hostContext.Configuration.GetSection("daemon").Bind(daemonConfig);
-                    hostContext.Configuration.GetSection("fullnode").Bind(fullNode);
+                    hostContext.Configuration.GetSection("fullnode").Bind(fullNodeConfig);
+                    hostContext.Configuration.GetSection("farmer").Bind(farmerConfig);
 
                     // Get all endpoints
                     var daemonEndpointInfo = GetEndpointInfo(daemonConfig);
-                    var fullNodeEndpointInfo = GetEndpointInfo(fullNode);
+                    var fullNodeEndpointInfo = GetEndpointInfo(fullNodeConfig);
+                    var farmerEndpointInfo = GetEndpointInfo(farmerConfig);
 
-                    var wssClient = new WebSocketRpcClient(daemonEndpointInfo);
-                    var cts = new CancellationTokenSource(120000);
+                    if (hostContext.Configuration["mode"] == "0")
+                    {
+                        //appsettings mode is websockets
+                        var wssClient = new WebSocketRpcClient(daemonEndpointInfo);
+                        var cts = new CancellationTokenSource(120000);
+                        var httpClient = new HttpRpcClient(daemonEndpointInfo);
 
-                    //
-                    wssClient.Connect(cts.Token).GetAwaiter().GetResult();
-                    var daemon = new DaemonProxy(wssClient, OriginService);
-                    daemon.RegisterService(cts.Token);
-                    var nodeRpcClient = new FullNodeProxy(wssClient, OriginService);
-                    var farmerRpcProxy = new FarmerProxy(wssClient, OriginService);
+                        //
+                        wssClient.Connect(cts.Token).GetAwaiter().GetResult();
+                        var daemon = new DaemonProxy(wssClient, OriginService);
+                        daemon.RegisterService(cts.Token);
+                        var nodeRpcClient = new FullNodeProxy(wssClient, OriginService);
+                        var farmerRpcProxy = new FarmerProxy(wssClient, OriginService);
 
-                    //register test dependencies 
-                    services.AddSingleton<DaemonProxy>(daemon);
-                    services.AddSingleton<FullNodeProxy>(nodeRpcClient);
-                    services.AddSingleton<WebSocketRpcClient>(wssClient);
-                    services.AddSingleton<FarmerProxy>(farmerRpcProxy);
+                        //register test dependencies 
+                        services.AddSingleton<DaemonProxy>(daemon);
+                        services.AddSingleton<FullNodeProxy>(nodeRpcClient);
+                        services.AddSingleton<WebSocketRpcClient>(wssClient);
+                        services.AddSingleton<FarmerProxy>(farmerRpcProxy);
+                    }
+                    else
+                    {
+                        //appsettings mode is httpsClient
+                        var cts = new CancellationTokenSource(120000);
+                        var nodeHttpClient = new HttpRpcClient(fullNodeEndpointInfo);
+                        var farmerHttpClient = new HttpRpcClient(farmerEndpointInfo);
+
+                        //
+                        var nodeRpcClient = new FullNodeProxy(nodeHttpClient, OriginService);
+                        var farmerRpcProxy = new FarmerProxy(farmerHttpClient, OriginService);
+                        
+
+                        //register test dependencies 
+                        services.AddSingleton<FullNodeProxy>(nodeRpcClient);
+                        services.AddSingleton<FarmerProxy>(farmerRpcProxy);
+                    }
+
+
                 }
                 catch (Exception e)
                 {
