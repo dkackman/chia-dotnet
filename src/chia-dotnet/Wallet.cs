@@ -78,7 +78,7 @@ namespace chia.dotnet
         /// <remarks>Throws an exception if the wallet does not exist</remarks>
         public async Task<WalletInfo> GetWalletInfo(CancellationToken cancellationToken = default)
         {
-            var wallets = await WalletProxy.GetWallets(true, cancellationToken).ConfigureAwait(false);
+            var (wallets, Fingerprint) = await WalletProxy.GetWallets(true, cancellationToken).ConfigureAwait(false);
             var info = wallets.FirstOrDefault(i => i.Id == WalletId);
             return info is null ? throw new InvalidOperationException($"No wallet with an id of {WalletId} was found") : info;
         }

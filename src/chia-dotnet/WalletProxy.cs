@@ -65,12 +65,13 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The list of wallets</returns>
-        public async Task<IEnumerable<WalletInfo>> GetWallets(bool includeData = true, CancellationToken cancellationToken = default)
+        public async Task<(IEnumerable<WalletInfo> Wallets, int FingerPrint)> GetWallets(bool includeData = true, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.include_data = includeData;
 
-            return await SendMessage<IEnumerable<WalletInfo>>("get_wallets", data, "wallets", cancellationToken).ConfigureAwait(false);
+            var response = await SendMessage<IEnumerable<WalletInfo>>("get_wallets", data, cancellationToken).ConfigureAwait(false);
+            return (Converters.ToEnumerable<WalletInfo>(response.wallets), response.fingerprint);
         }
 
         /// <summary>
@@ -865,6 +866,248 @@ namespace chia.dotnet
             var response = await SendMessage<IDictionary<string, IDictionary<string, IEnumerable<string>>>>("get_transaction_memo", data, cancellationToken).ConfigureAwait(false);
 
             return response;
+        }
+
+        /// <summary>
+        /// Retrieves the balance of a specific list of wallets.
+        /// </summary>
+        /// <param name="walletIds"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of <see cref="WalletBalance"/></returns>
+        public async Task<IEnumerable<WalletBalance>> GetWalletBalances(IEnumerable<uint> walletIds, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_ids = walletIds.ToList();
+            return await SendMessage<IEnumerable<WalletBalance>>("get_wallet_balances", data, "wallet_balances", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Deletes notifications.
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref=""/></returns>
+        public async Task DeleteNotifications(IEnumerable<string> ids, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.ids = ids.ToList();
+            await SendMessage("delete_notifications", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Sends a notification.
+        /// </summary>
+        /// <param name="fee"></param>
+        /// <param name="amount"></param>
+        /// <param name="message">In hex</param>
+        /// <param name="target"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref="TransactionRecord"/></returns>
+        public async Task<TransactionRecord> SendNotification(ulong amount, string message, string target, ulong fee = 0, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.target = target;
+            data.message = message;
+            data.amount = amount;
+            data.fee = fee;
+            return await SendMessage<TransactionRecord>("send_notification", data, "tx", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Given a derived P2 address, sign the message by its private key.
+        /// </summary>
+        /// <param name="isHex"></param>
+        /// <param name="message"></param>
+        /// <param name="address"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref="(string PubKey, string Signature, string SigningMode)"/></returns>
+        public async Task<(string PubKey, string Signature, string SigningMode)> SignMessageByAddress(string message, string address, bool isHex = false, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.address = address;
+            data.message = message;
+            data.is_hex = isHex;
+            var response = await SendMessage("sign_message_by_address", data, cancellationToken).ConfigureAwait(false);
+            return (response.pubkey, response.signature, response.sigining_mode);
+        }
+
+        /// <summary>
+        /// Given a NFT/DID ID, sign the message by the P2 private key.
+        /// </summary>
+        /// <param name="isHex"></param>
+        /// <param name="message"></param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref="(string PubKey, string Signature, string SigningMode)"/></returns>
+        public async Task<(string PubKey, string Signature, string SigningMode)> SignMessageById(string message, string id, bool isHex = false, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.id = id;
+            data.message = message;
+            data.is_hex = isHex;
+            var response = await SendMessage("sign_message_by_id", data, "pubkey", cancellationToken).ConfigureAwait(false);
+            return (response.pubkey, response.signature, response.sigining_mode);
+        }
+
+        /// <param name="reverse"></param>
+        /// <param name="order"></param>
+        /// <param name="spentRange"></param>
+        /// <param name="confirmedRange"></param>
+        /// <param name="amountRange"></param>
+        /// <param name="amountFilter"></param>
+        /// <param name="parentCoinIdFilter"></param>
+        /// <param name="puzzleHashFilter"></param>
+        /// <param name="coinIdFilter"></param>
+        /// <param name="coinType"></param>
+        /// <param name="walletType"></param>
+        /// <param name="walletId"></param>
+        /// <param name="limit"></param>
+        /// <param name="offset"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref="(IEnumerable<CoinRecord> CoinRecords, int? TotalCount)"/></returns>
+        public async Task<(IEnumerable<CoinRecord> CoinRecords, int? TotalCount)> GetCoinRecords(
+            UInt32Range? spentRange,
+            UInt32Range? confirmedRange,
+            UInt64Range? amountRange,
+            AmountFilter? amountFilter,
+            HashFilter? parentCoinIdFilter,
+            HashFilter? puzzleHashFilter,
+            HashFilter? coinIdFilter,
+            CoinType? coinType,
+            WalletType? walletType,
+            uint? walletId,
+            uint? limit,
+            CoinRecordOrder order = CoinRecordOrder.ConfirmedHeight,
+            uint offset = 0,
+            bool includeTotalCount = false,
+            bool reverse = false,
+            CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.limit = limit;
+            data.wallet_id = walletId;
+            data.wallet_type = walletType;
+            data.coin_type = coinType;
+            data.coin_id_filter = coinIdFilter;
+            data.puzzle_hash_filter = puzzleHashFilter;
+            data.parent_coin_id_filter = parentCoinIdFilter;
+            data.amount_filter = amountFilter;
+            data.amount_range = amountRange;
+            data.confirmed_range = confirmedRange;
+            data.spent_range = spentRange;
+
+            data.offset = offset;
+            data.order = order;
+            data.reverse = reverse;
+            data.include_total_count = includeTotalCount;
+            var response = await SendMessage("get_coin_records", data, cancellationToken).ConfigureAwait(false);
+            return (Converters.ToEnumerable<CoinRecord>(response.coin_records), response.total_count);
+        }
+
+        /// <summary>
+        /// Given a public key, message and signature, verify if it is valid.
+        /// </summary>
+        /// <param name="signingMode"></param>
+        /// <param name="address"></param>
+        /// <param name="signature"></param>
+        /// <param name="message"></param>
+        /// <param name="pubkey"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref="bool"/></returns>
+        public async Task<bool> VerifySignature(string signature, string message, string pubkey, string? address = null, string? signingMode = null, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.pubkey = pubkey;
+            data.message = message;
+            data.signature = signature;
+            data.address = address;
+            data.signing_mode = signingMode;
+            return await SendMessage<bool>("verify_signature", data, "isValid", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Retrieve the timestamp for a given block height.
+        /// </summary>
+        /// <param name="height"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref="(ulong Timestamp, DateTime DateTimestamp)"/></returns>
+        public async Task<(ulong Timestamp, DateTime DateTimestamp)> GetTimestampForHeight(uint height, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.height = height;
+            ulong timestamp = await SendMessage<ulong>("get_timestamp_for_height", data, "timestamp", cancellationToken).ConfigureAwait(false);
+
+            return (timestamp, timestamp.ToDateTime());
+        }
+
+        /// <summary>
+        /// Resync the current logged in wallet. The transaction and offer records will be kept.
+        /// </summary>
+        /// <param name="enable"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref=""/></returns>
+        public async Task SetWalletResyncOnStartup(bool enable = true, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.enable = enable;
+            await SendMessage("set_wallet_resync_on_startup", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Set auto claim merkle coins config
+        /// </summary>
+        /// <param name="enable"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref="AutoClaimSettings"/></returns>
+        public async Task<AutoClaimSettings> SetAutoClaim(CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            return await SendMessage<AutoClaimSettings>("set_auto_claim", data, "", cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Set auto claim merkle coins config
+        /// </summary>
+        /// <param name="batchSize"></param>
+        /// <param name="minAmount"></param>
+        /// <param name="txFee"></param>
+        /// <param name="enabled"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref="AutoClaimSettings"/></returns>
+        public async Task<AutoClaimSettings> SetAutoClaim(ushort batchSize = 50, ulong minAmount = 0, ulong txFee = 0, bool enabled = false, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.enabled = enabled;
+            data.tx_fee = txFee;
+            data.min_amount = minAmount;
+            data.batch_size = batchSize;
+            return await SendMessage<AutoClaimSettings>("set_auto_claim", data, null, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get auto claim merkle coins config
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref="AutoClaimSettings"/></returns>
+        public async Task<AutoClaimSettings> GetAutoClaim(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<AutoClaimSettings>("get_auto_claim", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Spend clawback coins that were sent (to claw them back) or received (to claim them).
+        /// </summary>
+        /// <param name="batchSize"></param>
+        /// <param name="fee"></param>
+        /// <param name="coinIds"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of <see cref="string"/></returns>
+        public async Task<IEnumerable<string>> SpendClawbackCoins(IEnumerable<string> coinIds, ushort batchSize = 50, ulong fee = 0, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.coin_ids = coinIds.ToList();
+            data.fee = fee;
+            data.batch_size = batchSize;
+            return await SendMessage<IEnumerable<string>>("spend_clawback_coins", data, "transaction_ids", cancellationToken).ConfigureAwait(false);
         }
     }
 }
