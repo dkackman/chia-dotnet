@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
 
 namespace chia.dotnet
 {
@@ -10,12 +11,12 @@ namespace chia.dotnet
         public string NodeId { get; init; } = string.Empty;
         public ulong Difficulty { get; init; }
         public bool GenesisChallengeInitiated { get; init; }
-        public int MempoolSize { get; init; }
-        public int MempoolCost { get; init; }
+        public Int64 MempoolSize { get; init; }
+        public Int64 MempoolCost { get; init; }
         public ulong MempoolFees { get; init; }
         public MempoolMinFees MempoolMinFees { get; init; } = new();
-        public int MempoolMaxTotalCost { get; init; }
-        public int BlockMaxCost { get; init; }
+        public Int64 MempoolMaxTotalCost { get; init; }
+        public Int64 BlockMaxCost { get; init; }
         public BlockRecord? Peak { get; init; }
         public BigInteger Space { get; init; }
         public ulong SubSlotIters { get; init; }

@@ -38,6 +38,8 @@
     <None Update="transaction.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+      <None Update="testingappsettings.json">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
   </ItemGroup>
-
 </Project>
