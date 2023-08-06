@@ -122,42 +122,49 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Get the list of transactions
-        /// </summary>
-        /// <param name="toAddress">Restrict results only to this address</param>
-        /// <param name="sortKey">Field to sort results by</param>
-        /// <param name="reverse">Reverse the sort order of the results</param>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>A list of <see cref="TransactionRecord"/>s</returns>
-        public async Task<IEnumerable<TransactionRecord>> GetTransactions(string? toAddress = null, string? sortKey = null, bool reverse = false, CancellationToken cancellationToken = default)
-        {
-            var count = await GetTransactionCount(cancellationToken).ConfigureAwait(false);
-            return await GetTransactions(0, count, toAddress, sortKey, reverse, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Get the list of transactions
+        /// Retrieves a list of transactions from a wallet.
         /// </summary>
         /// <param name="start">the start index of transactions (zero based)</param>
         /// <param name="end">The end index of transactions (max of <see cref="GetTransactionCount(CancellationToken)"/></param>
         /// <param name="toAddress">Restrict results only to this address</param>
         /// <param name="sortKey">Field to sort results by</param>
         /// <param name="reverse">Reverse the sort order of the results</param>
+        /// <param name="confirmed"></param>
+        /// <param name="typeFilter"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>A list of <see cref="TransactionRecord"/>s</returns>
-        public async Task<IEnumerable<TransactionRecord>> GetTransactions(uint start, uint end, string? toAddress = null, string? sortKey = null, bool reverse = false, CancellationToken cancellationToken = default)
+        /// <returns>A list of <see cref="TransactionRecord"/></returns>
+        public async Task<IEnumerable<TransactionRecord>> GetTransactions(
+            string? toAddress = null,
+            TransactionTypeFilter? typeFilter = null,
+            bool reverse = false,
+            string? sortKey = null,
+            uint start = 0,
+            uint end = 50,
+            bool? confirmed = null,
+            CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.start = start;
             data.end = end;
-            data.to_address = toAddress;
-            data.sort_key = sortKey;
             data.reverse = reverse;
-
+            if (toAddress is not null)
+            {
+                data.to_address = toAddress;
+            }
+            if (sortKey is not null)
+            {
+                data.sort_key = sortKey;
+            }
+            if (typeFilter is not null)
+            {
+                data.type_filter = typeFilter;
+            }
+            if (confirmed is not null)
+            {
+                data.confirmed = confirmed;
+            }
             return await WalletProxy.SendMessage<IEnumerable<TransactionRecord>>("get_transactions", data, "transactions", cancellationToken).ConfigureAwait(false);
         }
-
-
         /// <summary>
         /// Get the list of spendable coins
         /// </summary>
@@ -223,9 +230,14 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The number of transactions</returns>
-        public async Task<uint> GetTransactionCount(CancellationToken cancellationToken = default)
+        public async Task<uint> GetTransactionCount(TransactionTypeFilter? typeFilter = null, CancellationToken cancellationToken = default)
         {
-            var response = await WalletProxy.SendMessage("get_transaction_count", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
+            dynamic data = CreateWalletDataObject();
+            if (typeFilter is not null)
+            {
+                data.type_filter = typeFilter;
+            }
+            var response = await WalletProxy.SendMessage("get_transaction_count", data, cancellationToken).ConfigureAwait(false);
 
             return response.count;
         }
@@ -247,9 +259,23 @@ namespace chia.dotnet
         /// <param name="amount">The amount to send (in units of mojos)</param>
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="memos">Memos to go along with the transaction</param>
+        /// <param name="excludeCoinAmounts">/param>
+        /// <param name="excludeCoinsIds">/param>
+        /// <param name="minCoinAmount">/param>
+        /// <param name="minCoinAmount">/param>
+        /// <param name="resusePuzHash">/param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> SendTransaction(string address, ulong amount, ulong fee, IEnumerable<string>? memos = null, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> SendTransaction(string address,
+            ulong amount,
+            IEnumerable<string>? memos = null,
+            IEnumerable<ulong>? excludeCoinAmounts = null,
+            IEnumerable<string>? excludeCoinsIds = null,
+            ulong minCoinAmount = 0,
+            ulong maxCoinAmount = 0,
+            bool resusePuzHash = false,
+            ulong fee = 0,
+            CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(address))
             {
@@ -259,7 +285,18 @@ namespace chia.dotnet
             dynamic data = CreateWalletDataObject();
             data.address = address;
             data.amount = amount;
+            data.min_coin_amount = minCoinAmount;
+            data.max_coin_amount = maxCoinAmount;
             data.fee = fee;
+            data.reuse_puzhash = resusePuzHash;
+            if (excludeCoinAmounts is not null)
+            {
+                data.exclude_coin_amounts = excludeCoinAmounts.ToList();
+            }
+            if (excludeCoinsIds is not null)
+            {
+                data.exclude_coin_ids = excludeCoinsIds.ToList();
+            }
             if (memos is not null)
             {
                 data.memos = memos.ToList();
