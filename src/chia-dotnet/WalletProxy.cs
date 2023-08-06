@@ -829,7 +829,6 @@ namespace chia.dotnet
             data.coin_id = coinId;
             return await SendMessage<string>("did_find_lost_did", data, "latest_coin_id", cancellationToken).ConfigureAwait(false);
         }
-
         /// <summary>
         /// Gets the current derivation index.
         /// </summary>
