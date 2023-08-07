@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 using Newtonsoft.Json;
 
@@ -14,6 +14,6 @@ namespace chia.dotnet
     public record Condition
     {
         public string ConditionOpcode { get; init; } = string.Empty;
-        public ICollection<ConditionWithArgs> Args { get; init; } = new List<ConditionWithArgs>();
+        public IEnumerable<ConditionWithArgs> Args { get; init; } = new List<ConditionWithArgs>();
     }
 }

@@ -10,7 +10,7 @@ namespace chia.dotnet
     /// </summary>
     public record TransactionRecord
     {
-        public ICollection<Coin> Additions { get; init; } = new List<Coin>();
+        public IEnumerable<Coin> Additions { get; init; } = new List<Coin>();
         public ulong Amount { get; init; }
         public bool Confirmed { get; init; }
         public uint ConfirmedAtHeight { get; init; }
@@ -22,13 +22,13 @@ namespace chia.dotnet
         [JsonIgnore]
         public string TransactionId => Name;
         public string Name { get; init; } = string.Empty;
-        public ICollection<Coin> Removals { get; init; } = new List<Coin>();
+        public IEnumerable<Coin> Removals { get; init; } = new List<Coin>();
         public uint Sent { get; init; }
         /// <summary>
         /// Represents the list of peers that we sent the transaction to, whether each one
         /// included it in the mempool, and what the error message (if any) was
         /// </summary>
-        public ICollection<SendPeer> SentTo { get; init; } = new List<SendPeer>();
+        public IEnumerable<SendPeer> SentTo { get; init; } = new List<SendPeer>();
         /// <summary>
         /// If one of the nodes we sent it to responded with success, we set it to success
         /// </summary>

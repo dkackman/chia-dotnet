@@ -28,10 +28,10 @@ namespace chia.dotnet
         /// </summary>
         public string Offer { get; init; } = string.Empty;
         public string? TakenOffer { get; init; }
-        public ICollection<Coin> CoinsOfInterest { get; init; } = new List<Coin>();
+        public IEnumerable<Coin> CoinsOfInterest { get; init; } = new List<Coin>();
         public string TradeId { get; init; } = string.Empty;
         public TradeStatus Status { get; init; }
-        public ICollection<SendPeer> SentTo { get; init; } = new List<SendPeer>();
+        public IEnumerable<SendPeer> SentTo { get; init; } = new List<SendPeer>();
         [JsonIgnore]
         public DateTime? AcceptedAtDateTime => AcceptedAtTime.ToDateTime();
         [JsonIgnore]
