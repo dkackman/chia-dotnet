@@ -21,6 +21,8 @@ public class TestBase : IClassFixture<ChiaDotNetFixture>
     
     internal FarmerProxy Farmer => Fixture.TestHost.Services.GetService<FarmerProxy>();
     
+    internal WalletProxy Wallet => Fixture.TestHost.Services.GetService<WalletProxy>();
+    
     public TestBase(ChiaDotNetFixture fixture)
     {
         Fixture = fixture;

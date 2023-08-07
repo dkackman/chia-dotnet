@@ -14,5 +14,10 @@
     "Uri" : "https://127.0.0.1:8559",
     "CertPath" : "/home/kev/.chia/mainnet/config/ssl/farmer/private_farmer.crt",
     "KeyPath" : "/home/kev/.chia/mainnet/config/ssl/farmer/private_farmer.key"
+  },
+  "wallet" : {
+    "Uri" : "https://127.0.0.1:9256",
+    "CertPath" : "/home/kev/.chia/mainnet/config/ssl/wallet/private_wallet.crt",
+    "KeyPath" : "/home/kev/.chia/mainnet/config/ssl/wallet/private_wallet.key"
   }
 }

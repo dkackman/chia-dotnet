@@ -52,14 +52,17 @@ public class ChiaDotNetFixture : IDisposable
                     var daemonConfig = new Endpoint();
                     var fullNodeConfig = new Endpoint();
                     var farmerConfig = new Endpoint();
+                    var walletConfig = new Endpoint();
                     hostContext.Configuration.GetSection("daemon").Bind(daemonConfig);
                     hostContext.Configuration.GetSection("fullnode").Bind(fullNodeConfig);
                     hostContext.Configuration.GetSection("farmer").Bind(farmerConfig);
+                    hostContext.Configuration.GetSection("wallet").Bind(walletConfig);
 
                     // Get all endpoints
                     var daemonEndpointInfo = GetEndpointInfo(daemonConfig);
                     var fullNodeEndpointInfo = GetEndpointInfo(fullNodeConfig);
                     var farmerEndpointInfo = GetEndpointInfo(farmerConfig);
+                    var walletEndpointInfo = GetEndpointInfo(walletConfig);
 
                     if (hostContext.Configuration["mode"] == "0")
                     {
@@ -74,12 +77,14 @@ public class ChiaDotNetFixture : IDisposable
                         daemon.RegisterService(cts.Token);
                         var nodeRpcClient = new FullNodeProxy(wssClient, OriginService);
                         var farmerRpcProxy = new FarmerProxy(wssClient, OriginService);
+                        var walletRpcProxy = new WalletProxy(wssClient, OriginService);
 
                         //register test dependencies 
                         services.AddSingleton<DaemonProxy>(daemon);
                         services.AddSingleton<FullNodeProxy>(nodeRpcClient);
                         services.AddSingleton<WebSocketRpcClient>(wssClient);
                         services.AddSingleton<FarmerProxy>(farmerRpcProxy);
+                        services.AddSingleton<WalletProxy>(walletRpcProxy);
                     }
                     else
                     {
@@ -87,15 +92,18 @@ public class ChiaDotNetFixture : IDisposable
                         var cts = new CancellationTokenSource(120000);
                         var nodeHttpClient = new HttpRpcClient(fullNodeEndpointInfo);
                         var farmerHttpClient = new HttpRpcClient(farmerEndpointInfo);
+                        var walletHttpClient = new HttpRpcClient(walletEndpointInfo);
 
                         //
                         var nodeRpcClient = new FullNodeProxy(nodeHttpClient, OriginService);
                         var farmerRpcProxy = new FarmerProxy(farmerHttpClient, OriginService);
+                        var walletRpcProxy = new WalletProxy(walletHttpClient, OriginService);
                         
 
                         //register test dependencies 
                         services.AddSingleton<FullNodeProxy>(nodeRpcClient);
                         services.AddSingleton<FarmerProxy>(farmerRpcProxy);
+                        services.AddSingleton<WalletProxy>(walletRpcProxy);
                     }
 
 
