@@ -213,7 +213,7 @@ namespace chia.dotnet
         /// <param name="fee">Transaction fee</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The associated trade record</returns>
-        public async Task<TradeRecord> TakeOffer(string offer, IDictionary<string, object>? solver = null, ulong minCoinAmount = 0, ulong maxCoinAmount = 0, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<TradeRecord> TakeOffer(string offer, IDictionary<string, object>? solver = null, ulong minCoinAmount = 0, ulong maxCoinAmount = 0, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.offer = offer;
@@ -266,7 +266,7 @@ namespace chia.dotnet
         /// <param name="driver">Additional data about the puzzle</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task<OfferRecord> CreateOffer(IDictionary<uint, long> walletIdsAndMojoAmounts, ulong minCoinAmount = 0, ulong maxCoinAmount = 0, bool validateOnly = false, IDictionary<string, string>? driver = null, IDictionary<string, string>? solver = null, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<OfferRecord> CreateOffer(IDictionary<uint, long> walletIdsAndMojoAmounts, ulong minCoinAmount = 0, ulong maxCoinAmount = 0, bool validateOnly = false, IDictionary<string, string>? driver = null, IDictionary<string, string>? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             if (walletIdsAndMojoAmounts is null)
             {
@@ -300,7 +300,7 @@ namespace chia.dotnet
         /// <param name="driver">Additional data about the puzzle</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task<OfferRecord> CreateOffer(OfferSummary offer, ulong minCoinAmount = 0, ulong maxCoinAmount = 0, bool validateOnly = false, IDictionary<string, string>? driver = null, IDictionary<string, string>? solver = null, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<OfferRecord> CreateOffer(OfferSummary offer, ulong minCoinAmount = 0, ulong maxCoinAmount = 0, bool validateOnly = false, IDictionary<string, string>? driver = null, IDictionary<string, string>? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             var walletIdsAndMojoAmounts = new Dictionary<uint, long>();
             foreach (var requested in offer.Requested)
