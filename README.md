@@ -10,14 +10,15 @@ A [.net](https://dotnet.microsoft.com/download/dotnet/6.0) client library for [c
 
 ### Documentation
 
-https://dkackman.github.io/chia-dotnet/
+<https://dkackman.github.io/chia-dotnet/>
 
 ### Features
 
 - Coverage of all of chia's rpc endpoints
-  - Daemon, Full Node, Farmer, Harvester, Wallet, Plotter, Crawler
+  - Daemon, Full Node, Farmer, Harvester, Wallet, Plotter, Crawler, DataLayer
 - Coverage of all of the methods at each endpoint
-  - as of 1.4.0 (if you find something missing please create an issue)
+  - as of 1.4.0 (release NuGet package)
+  - as of 1.8.2 (pre-release NuGet package)
 - Static types for chia input and outputs
 - Supports connecting via the `daemon` on `wss` or directly to each service with `https`
   - both `https` and `wss` use tha same interfaces so switching is seamless
@@ -28,7 +29,7 @@ _Test carefully and in one of the testnets!_
 
 #### Example app
 
-Try the [example code](https://github.com/dkackman/chia-dotnet/tree/main/Examples/crops) or take a look at [`rchia` remote chia management CLI](https://github.com/dkackman/rchia). 
+Try the [example code](https://github.com/dkackman/chia-dotnet/tree/main/Examples/crops) or take a look at [`rchia` remote chia management CLI](https://github.com/dkackman/rchia).
 
 #### Connect to the Node and find out about the blockchain
 

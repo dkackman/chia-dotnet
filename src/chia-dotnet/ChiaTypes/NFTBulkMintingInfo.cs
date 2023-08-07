@@ -29,7 +29,7 @@ namespace chia.dotnet
         public IEnumerable<Coin>? XchCoins { get; init; }
         /// <summary>
         /// For use with bulk minting, so we can specify the puzzle hash that the change
-        // from the funding transaction goes to.
+        /// from the funding transaction goes to.
         /// </summary>
         public string? XchChangeTarget { get; init; }
         public string? NewInnerpuzhash { get; init; }

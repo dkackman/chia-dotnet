@@ -1,18 +1,56 @@
 {
   "homepages": [],
-  "source_base_path": "C:/Users/dkack/src/github/dkackman/chia-dotnet/src/docfx",
+  "source_base_path": "C:/Users/don/src/github/dkackman/chia-dotnet/src/docfx",
   "xrefmap": "xrefmap.yml",
   "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.AmountFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.AmountFilter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.AmountWithPuzzlehash.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.AmountWithPuzzlehash.html"
+        }
+      },
+      "version": ""
+    },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/chia.dotnet.Announcement.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.Announcement.html",
-          "hash": "vs6RIKNwnmHWTUwWrmo5PioKhf4C0QxjRdHNVZGqSKE="
+          "relative_path": "api/chia.dotnet.Announcement.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.AssetInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.AssetInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.AutoClaimSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.AutoClaimSettings.html"
+        }
+      },
       "version": ""
     },
     {
@@ -20,11 +58,9 @@
       "source_relative_path": "api/chia.dotnet.BlockCountMetrics.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.BlockCountMetrics.html",
-          "hash": "twzqjkuCCWJtEtd3KzcE45cMSSNEpsOaSNfYa12P144="
+          "relative_path": "api/chia.dotnet.BlockCountMetrics.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -32,11 +68,9 @@
       "source_relative_path": "api/chia.dotnet.BlockRecord.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.BlockRecord.html",
-          "hash": "Q18kMfBfuXwwwHykkmomG7TGemQASCe1N8Mjj+7rWTc="
+          "relative_path": "api/chia.dotnet.BlockRecord.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -44,11 +78,9 @@
       "source_relative_path": "api/chia.dotnet.BlockchainState.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.BlockchainState.html",
-          "hash": "ozlqYPb/gvIaAJzY89xSuMKdQl04zg19nASz/cM3Pk8="
+          "relative_path": "api/chia.dotnet.BlockchainState.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -56,11 +88,9 @@
       "source_relative_path": "api/chia.dotnet.CATInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.CATInfo.html",
-          "hash": "0r2wjr+IfKrTrUQ8+Nt37VCWnNbZDRk5OdMscVwyMkE="
+          "relative_path": "api/chia.dotnet.CATInfo.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -68,11 +98,9 @@
       "source_relative_path": "api/chia.dotnet.CATWallet.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.CATWallet.html",
-          "hash": "WTSgO0yFou0i8QAg26wXy7ZoQONMIBE3cMJSX+Jiswg="
+          "relative_path": "api/chia.dotnet.CATWallet.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -80,11 +108,9 @@
       "source_relative_path": "api/chia.dotnet.ChallengeChainSubSlot.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.ChallengeChainSubSlot.html",
-          "hash": "SCLF5k31n6NUZ3Hu2yVCzv+erGfJPHbMJ6L4Mz4QJjU="
+          "relative_path": "api/chia.dotnet.ChallengeChainSubSlot.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -92,11 +118,9 @@
       "source_relative_path": "api/chia.dotnet.ClassgroupElement.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.ClassgroupElement.html",
-          "hash": "a0bozqCChTdyiepQXkpjrKcelU1xjAvCuBjfsgxUKXY="
+          "relative_path": "api/chia.dotnet.ClassgroupElement.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -104,11 +128,9 @@
       "source_relative_path": "api/chia.dotnet.Coin.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.Coin.html",
-          "hash": "/FFLNt39kXGH2lvy5PoV0GtahqZK2eEtMezIlKf+Vxs="
+          "relative_path": "api/chia.dotnet.Coin.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -116,11 +138,9 @@
       "source_relative_path": "api/chia.dotnet.CoinAnnouncement.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.CoinAnnouncement.html",
-          "hash": "BjVnBLgBDZiUo5Y3fHt8A/GZuHCS7662VSR4yCyu8qs="
+          "relative_path": "api/chia.dotnet.CoinAnnouncement.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -128,11 +148,19 @@
       "source_relative_path": "api/chia.dotnet.CoinRecord.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.CoinRecord.html",
-          "hash": "6YzxwnG1jkCNu8p6tdsw2WIEmItKdfQco8izPPcz+fU="
+          "relative_path": "api/chia.dotnet.CoinRecord.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.CoinRecordOrder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.CoinRecordOrder.html"
+        }
+      },
       "version": ""
     },
     {
@@ -140,11 +168,19 @@
       "source_relative_path": "api/chia.dotnet.CoinSpend.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.CoinSpend.html",
-          "hash": "Uyw0BDFsEkiyZB9rhyV3/mGACEdLjhKztGynqvPFl8c="
+          "relative_path": "api/chia.dotnet.CoinSpend.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.CoinType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.CoinType.html"
+        }
+      },
       "version": ""
     },
     {
@@ -152,11 +188,9 @@
       "source_relative_path": "api/chia.dotnet.Condition.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.Condition.html",
-          "hash": "3AinRX+vnJNfgQOT1dI4PsGmqHHCjsydQw3RlKNuTk8="
+          "relative_path": "api/chia.dotnet.Condition.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -164,11 +198,9 @@
       "source_relative_path": "api/chia.dotnet.ConditionWithArgs.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.ConditionWithArgs.html",
-          "hash": "vmUKMk4HzU4QApwCtflKXu5xOaH/iTq+soWvShx5Aa4="
+          "relative_path": "api/chia.dotnet.ConditionWithArgs.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -176,11 +208,9 @@
       "source_relative_path": "api/chia.dotnet.Config.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.Config.html",
-          "hash": "xzgTjHi6ODmOSkgQ0ARjrrD0WWDYcI++ds2rtzTBwtY="
+          "relative_path": "api/chia.dotnet.Config.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -188,11 +218,9 @@
       "source_relative_path": "api/chia.dotnet.ConnectionInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.ConnectionInfo.html",
-          "hash": "7DRVxAMaeuYBjr0PaH5DMI049X5WSEu86hm+LCv1V+w="
+          "relative_path": "api/chia.dotnet.ConnectionInfo.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -200,11 +228,9 @@
       "source_relative_path": "api/chia.dotnet.CrawlerProxy.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.CrawlerProxy.html",
-          "hash": "2osaZvnx1c0KH+DNI+r+CBtJ9YFFLJ87sfDVPP9KVq8="
+          "relative_path": "api/chia.dotnet.CrawlerProxy.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -212,11 +238,9 @@
       "source_relative_path": "api/chia.dotnet.DIDWallet.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.DIDWallet.html",
-          "hash": "M9HN9V61OFRGkRykC7acZgOA751kL42VIuNnUryq9R4="
+          "relative_path": "api/chia.dotnet.DIDWallet.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -224,11 +248,59 @@
       "source_relative_path": "api/chia.dotnet.DaemonProxy.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.DaemonProxy.html",
-          "hash": "DERi9q5zsGOxoG2WyL/KBVL472DnCWK4Odw5/B7zzrs="
+          "relative_path": "api/chia.dotnet.DaemonProxy.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.DataLayerOffer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.DataLayerOffer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.DataLayerProxy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.DataLayerProxy.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.DataLayerSyncStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.DataLayerSyncStatus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.DataLayerWallet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.DataLayerWallet.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.DidInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.DidInfo.html"
+        }
+      },
       "version": ""
     },
     {
@@ -236,11 +308,9 @@
       "source_relative_path": "api/chia.dotnet.EndOfSubSlotBundle.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.EndOfSubSlotBundle.html",
-          "hash": "gw3gkrzHC9wJpNDQ+zReq4jXZ3zFEpAk2TOz2R21zdI="
+          "relative_path": "api/chia.dotnet.EndOfSubSlotBundle.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -248,11 +318,9 @@
       "source_relative_path": "api/chia.dotnet.EndpointInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.EndpointInfo.html",
-          "hash": "67rzXeao0ldpj7inqFM52E+bTwE2eQ+VEvc5ipXNelo="
+          "relative_path": "api/chia.dotnet.EndpointInfo.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -260,11 +328,9 @@
       "source_relative_path": "api/chia.dotnet.ErrorResponse.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.ErrorResponse.html",
-          "hash": "RgV94bZhCDxMXXFZR6AdUVDFAY2ZtSps+eETdrYsC0g="
+          "relative_path": "api/chia.dotnet.ErrorResponse.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -272,11 +338,9 @@
       "source_relative_path": "api/chia.dotnet.Extensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.Extensions.html",
-          "hash": "37V0G2vY43LPWGzsF+D7tOxU/ZMnKNE93fvlREYsMhc="
+          "relative_path": "api/chia.dotnet.Extensions.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -284,11 +348,19 @@
       "source_relative_path": "api/chia.dotnet.FarmerProxy.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.FarmerProxy.html",
-          "hash": "bDBXlcsK2cccyxolZwKOuuQt+s83XEHxXlyQBrNcmOo="
+          "relative_path": "api/chia.dotnet.FarmerProxy.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.FarmerRewards.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.FarmerRewards.html"
+        }
+      },
       "version": ""
     },
     {
@@ -296,11 +368,9 @@
       "source_relative_path": "api/chia.dotnet.FarmerSignagePoint.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.FarmerSignagePoint.html",
-          "hash": "NMgcsYTJ8OFDG5wuHP3tyF8XS8TyS27NM8o8pj4r74Y="
+          "relative_path": "api/chia.dotnet.FarmerSignagePoint.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -308,11 +378,19 @@
       "source_relative_path": "api/chia.dotnet.FilterItem.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.FilterItem.html",
-          "hash": "33ZjiRhLNPJ4s5QWFIF/vIm1EVmDWnj7YDaIPeaGQ+A="
+          "relative_path": "api/chia.dotnet.FilterItem.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.FilterMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.FilterMode.html"
+        }
+      },
       "version": ""
     },
     {
@@ -320,11 +398,9 @@
       "source_relative_path": "api/chia.dotnet.Foliage.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.Foliage.html",
-          "hash": "uC+I61C1RA8uPIvuJwbrvIszCczRcyXZWyFv98jwqA0="
+          "relative_path": "api/chia.dotnet.Foliage.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -332,11 +408,9 @@
       "source_relative_path": "api/chia.dotnet.FoliageBlockData.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.FoliageBlockData.html",
-          "hash": "x5DMky7l6EvaSKyDb95k7/L092PsNR8IF0GoV3X1SVY="
+          "relative_path": "api/chia.dotnet.FoliageBlockData.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -344,11 +418,9 @@
       "source_relative_path": "api/chia.dotnet.FoliageTransactionBlock.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.FoliageTransactionBlock.html",
-          "hash": "dz7TH8iRFVhEQvoGCuaXrhDIJmxImGaJoIdc24fl1hk="
+          "relative_path": "api/chia.dotnet.FoliageTransactionBlock.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -356,11 +428,9 @@
       "source_relative_path": "api/chia.dotnet.FullBlock.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.FullBlock.html",
-          "hash": "6iOyQkinUcNO+7kHnjbt6VoY4XsT0dvu0zUPeJLtfsU="
+          "relative_path": "api/chia.dotnet.FullBlock.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -368,11 +438,19 @@
       "source_relative_path": "api/chia.dotnet.FullNodeProxy.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.FullNodeProxy.html",
-          "hash": "O+dg2nU23g2u7LltWOLXOzGTSgClNsZ5Mp6hsukPOgk="
+          "relative_path": "api/chia.dotnet.FullNodeProxy.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.FungibleAsset.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.FungibleAsset.html"
+        }
+      },
       "version": ""
     },
     {
@@ -380,11 +458,9 @@
       "source_relative_path": "api/chia.dotnet.HarvesterConnection.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.HarvesterConnection.html",
-          "hash": "JIsWEW/+vs8AiCchbW3DPXp8QpzNzWGfdJsFeu0DR8M="
+          "relative_path": "api/chia.dotnet.HarvesterConnection.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -392,11 +468,9 @@
       "source_relative_path": "api/chia.dotnet.HarvesterInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.HarvesterInfo.html",
-          "hash": "UoPN6Scx20BPk1+g2z0GiEeDB7bBzrReO+dPKe7u/p4="
+          "relative_path": "api/chia.dotnet.HarvesterInfo.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -404,11 +478,9 @@
       "source_relative_path": "api/chia.dotnet.HarvesterProxy.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.HarvesterProxy.html",
-          "hash": "j1IH876eTnuNwykZIXGtcW63Bes8ijNyIrA/P+Yf3B8="
+          "relative_path": "api/chia.dotnet.HarvesterProxy.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -416,11 +488,9 @@
       "source_relative_path": "api/chia.dotnet.HarvesterSummary.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.HarvesterSummary.html",
-          "hash": "2TbyEpO40RBurNqG9RjuDehOvOHL+VQ/3S9tXnES2jg="
+          "relative_path": "api/chia.dotnet.HarvesterSummary.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -428,11 +498,19 @@
       "source_relative_path": "api/chia.dotnet.HarvesterSync.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.HarvesterSync.html",
-          "hash": "ztn5n71w9rqd0MVK7NdkGJtBanJh+3GI8LS3FIvaJis="
+          "relative_path": "api/chia.dotnet.HarvesterSync.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.HashFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.HashFilter.html"
+        }
+      },
       "version": ""
     },
     {
@@ -440,11 +518,9 @@
       "source_relative_path": "api/chia.dotnet.HttpRpcClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.HttpRpcClient.html",
-          "hash": "bUokNqMlHjumn7h0yX9zrN8fDz4ggyIBpL6BaeCG5WE="
+          "relative_path": "api/chia.dotnet.HttpRpcClient.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -452,11 +528,9 @@
       "source_relative_path": "api/chia.dotnet.IRpcClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.IRpcClient.html",
-          "hash": "VA7lQsAMsbRipyRm6LVEi5SaKJtCWq1EBsa1Xbq2eag="
+          "relative_path": "api/chia.dotnet.IRpcClient.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -464,11 +538,19 @@
       "source_relative_path": "api/chia.dotnet.InfusedChallengeChainSubSlot.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.InfusedChallengeChainSubSlot.html",
-          "hash": "C7uf5IrGfVrJ4K9QOFfEz8snFHN5O8EcBC3jE96hP84="
+          "relative_path": "api/chia.dotnet.InfusedChallengeChainSubSlot.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.InternalNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.InternalNode.html"
+        }
+      },
       "version": ""
     },
     {
@@ -476,11 +558,39 @@
       "source_relative_path": "api/chia.dotnet.KSize.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.KSize.html",
-          "hash": "VFa+d3GlzdHcjwea43DHoMlbq3pH9TOgCk4Zm++qmRw="
+          "relative_path": "api/chia.dotnet.KSize.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.KVDiff.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.KVDiff.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.KeyData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.KeyData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.KeyDataSecrets.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.KeyDataSecrets.html"
+        }
+      },
       "version": ""
     },
     {
@@ -488,11 +598,29 @@
       "source_relative_path": "api/chia.dotnet.KeyringStatus.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.KeyringStatus.html",
-          "hash": "1lhhHWniRVKo3d4QyBgAiaDMzZbKh5jeJiFApfr+Bro="
+          "relative_path": "api/chia.dotnet.KeyringStatus.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.Layer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.Layer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.LineageProof.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.LineageProof.html"
+        }
+      },
       "version": ""
     },
     {
@@ -500,11 +628,9 @@
       "source_relative_path": "api/chia.dotnet.MempoolInclusionStatus.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.MempoolInclusionStatus.html",
-          "hash": "VqLCrLPY4DAS+UdoAe4WcX/b9d5bmaSGY8/9LpzU1vU="
+          "relative_path": "api/chia.dotnet.MempoolInclusionStatus.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -512,11 +638,19 @@
       "source_relative_path": "api/chia.dotnet.MempoolItem.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.MempoolItem.html",
-          "hash": "kdEpWjtQ0IVcECsjyx+WhiUu8+obMZPgbr+cOGEr1z4="
+          "relative_path": "api/chia.dotnet.MempoolItem.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.MempoolMinFees.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.MempoolMinFees.html"
+        }
+      },
       "version": ""
     },
     {
@@ -524,11 +658,29 @@
       "source_relative_path": "api/chia.dotnet.Message.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.Message.html",
-          "hash": "iScFJ79aHVU2a5tNHjgLZA7TM9c6IqIn6MnP9K9LaqM="
+          "relative_path": "api/chia.dotnet.Message.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.Mirror.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.Mirror.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.NFTBulkMintingInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.NFTBulkMintingInfo.html"
+        }
+      },
       "version": ""
     },
     {
@@ -536,11 +688,9 @@
       "source_relative_path": "api/chia.dotnet.NFTInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.NFTInfo.html",
-          "hash": "XIkKL+diYL3wIck7oH6Dhgl00oEuaBD2uD4+RlMTeA0="
+          "relative_path": "api/chia.dotnet.NFTInfo.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -548,11 +698,9 @@
       "source_relative_path": "api/chia.dotnet.NFTMintingInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.NFTMintingInfo.html",
-          "hash": "RbKKrV6972ffevK6NnD0mcbC38YAHaCRWT3cNsZKtC0="
+          "relative_path": "api/chia.dotnet.NFTMintingInfo.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -560,11 +708,9 @@
       "source_relative_path": "api/chia.dotnet.NFTWallet.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.NFTWallet.html",
-          "hash": "DGHomKvrX0QBXM3M/CgwEFhHcF91pkX1sq8VrsvA6pA="
+          "relative_path": "api/chia.dotnet.NFTWallet.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -572,11 +718,9 @@
       "source_relative_path": "api/chia.dotnet.NPC.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.NPC.html",
-          "hash": "iWb6aiXG8f7lD0hZ7ZQTybE7imnIAnurKVZbrjfoIXM="
+          "relative_path": "api/chia.dotnet.NPC.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -584,11 +728,29 @@
       "source_relative_path": "api/chia.dotnet.NPCResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.NPCResult.html",
-          "hash": "qkOjIhcuImlbwWDML5GNOp5vdrrprzzvM0sexEiDXjE="
+          "relative_path": "api/chia.dotnet.NPCResult.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.NftCoinInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.NftCoinInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.NftMintEntry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.NftMintEntry.html"
+        }
+      },
       "version": ""
     },
     {
@@ -596,11 +758,9 @@
       "source_relative_path": "api/chia.dotnet.NodeType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.NodeType.html",
-          "hash": "/yHNUal2Yzs0c5Zl/Ah4RZrnw9dtHcLDoyxZ6+VROW0="
+          "relative_path": "api/chia.dotnet.NodeType.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -608,11 +768,19 @@
       "source_relative_path": "api/chia.dotnet.OfferRecord.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.OfferRecord.html",
-          "hash": "R1rwqAL3k3j+CWXJAzN4DWSohPRUaMRrpRimdSZSxtc="
+          "relative_path": "api/chia.dotnet.OfferRecord.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.OfferStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.OfferStore.html"
+        }
+      },
       "version": ""
     },
     {
@@ -620,11 +788,9 @@
       "source_relative_path": "api/chia.dotnet.OfferSummary.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.OfferSummary.html",
-          "hash": "zdEswf0xmrDOID5pb3cu0AY5IR3eMvm7E3dDI3yeKfo="
+          "relative_path": "api/chia.dotnet.OfferSummary.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -632,11 +798,9 @@
       "source_relative_path": "api/chia.dotnet.PaginatedPlotRequest.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PaginatedPlotRequest.html",
-          "hash": "E6UZHgC6PAwEvQtRqfGV//Ugu+PsCbARIr9CZVn9Wfg="
+          "relative_path": "api/chia.dotnet.PaginatedPlotRequest.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -644,11 +808,9 @@
       "source_relative_path": "api/chia.dotnet.PassphraseRequirements.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PassphraseRequirements.html",
-          "hash": "8i6HxiHo/4Y8c5OjX782JFkusENA8skNi1kJBd7uX9Y="
+          "relative_path": "api/chia.dotnet.PassphraseRequirements.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -656,11 +818,9 @@
       "source_relative_path": "api/chia.dotnet.PeerCounts.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PeerCounts.html",
-          "hash": "JcLXS48ZIcMDjFErVcZb9LT36r/F6fmnCQfXABGNOR8="
+          "relative_path": "api/chia.dotnet.PeerCounts.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -668,11 +828,9 @@
       "source_relative_path": "api/chia.dotnet.PlotInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PlotInfo.html",
-          "hash": "ytTvDhBQ6wDT1YpLQbMp5BnM8Q3SqKYJRYA21FG8z4w="
+          "relative_path": "api/chia.dotnet.PlotInfo.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -680,11 +838,9 @@
       "source_relative_path": "api/chia.dotnet.PlotInfoRequestData.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PlotInfoRequestData.html",
-          "hash": "2CNJCMsyb2xu/ixPmMHtMA29zpybDD2e6GbeX3TbfZw="
+          "relative_path": "api/chia.dotnet.PlotInfoRequestData.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -692,11 +848,9 @@
       "source_relative_path": "api/chia.dotnet.PlotPathRequestData.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PlotPathRequestData.html",
-          "hash": "ADEdBqAXtql3mz0RPymSfF4qDZcvH5C0uH+K8WNQdUU="
+          "relative_path": "api/chia.dotnet.PlotPathRequestData.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -704,11 +858,9 @@
       "source_relative_path": "api/chia.dotnet.PlotState.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PlotState.html",
-          "hash": "eqJD/IFQ1D/BfoUqrkqzZGre3FeY+Ef6IKac/u+7NYc="
+          "relative_path": "api/chia.dotnet.PlotState.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -716,11 +868,9 @@
       "source_relative_path": "api/chia.dotnet.PlotterConfig.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PlotterConfig.html",
-          "hash": "AdGfKwB9VssF+9XK2HeBT1ukRXOdNsROSuz5QWOzYgc="
+          "relative_path": "api/chia.dotnet.PlotterConfig.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -728,11 +878,9 @@
       "source_relative_path": "api/chia.dotnet.PlotterInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PlotterInfo.html",
-          "hash": "zB4Y8xsRhlD8kbg7Z+KI8kN5k5tSU81QsAsFQx+IZoQ="
+          "relative_path": "api/chia.dotnet.PlotterInfo.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -740,11 +888,19 @@
       "source_relative_path": "api/chia.dotnet.PlotterProxy.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PlotterProxy.html",
-          "hash": "ktgNBB+ax4xbsaGOeqC+2O+f7RFba4SomqXdGrggp1M="
+          "relative_path": "api/chia.dotnet.PlotterProxy.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.PluginStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.PluginStatus.html"
+        }
+      },
       "version": ""
     },
     {
@@ -752,11 +908,9 @@
       "source_relative_path": "api/chia.dotnet.PoolInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PoolInfo.html",
-          "hash": "Tf5mQMAlnUTirQoHFiLYVGR8gfW3BF+n1G1lDwOWrO0="
+          "relative_path": "api/chia.dotnet.PoolInfo.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -764,11 +918,9 @@
       "source_relative_path": "api/chia.dotnet.PoolPoint.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PoolPoint.html",
-          "hash": "ZfYzJidGQD9v3heDZZjRjg/2jFZV5yfdqQM4lo7Icoc="
+          "relative_path": "api/chia.dotnet.PoolPoint.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -776,11 +928,9 @@
       "source_relative_path": "api/chia.dotnet.PoolSingletonState.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PoolSingletonState.html",
-          "hash": "k/M/+srkMMNIkYFxHbct5WucxO4OusY2ojBiYG2KW5M="
+          "relative_path": "api/chia.dotnet.PoolSingletonState.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -788,11 +938,9 @@
       "source_relative_path": "api/chia.dotnet.PoolState.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PoolState.html",
-          "hash": "lZC/Q3rkmfr+MaeE5yMvbi9Ghl2zUo3TCUKnNyvFGMs="
+          "relative_path": "api/chia.dotnet.PoolState.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -800,11 +948,9 @@
       "source_relative_path": "api/chia.dotnet.PoolStateInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PoolStateInfo.html",
-          "hash": "n4Qth9/4Hhd1u9Fh+Q6fiUWxv/Dsl9E37ikThLbFrFE="
+          "relative_path": "api/chia.dotnet.PoolStateInfo.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -812,11 +958,9 @@
       "source_relative_path": "api/chia.dotnet.PoolTarget.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PoolTarget.html",
-          "hash": "c1jv9NT79qMUP8zl7psaskEL3tXLfyKnNuCQkklUXz0="
+          "relative_path": "api/chia.dotnet.PoolTarget.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -824,11 +968,9 @@
       "source_relative_path": "api/chia.dotnet.PoolWallet.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PoolWallet.html",
-          "hash": "IOmmu8aAkEDjU2sgwtmNgOCm4tYATipp93i0DqhXCMY="
+          "relative_path": "api/chia.dotnet.PoolWallet.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -836,11 +978,9 @@
       "source_relative_path": "api/chia.dotnet.PoolWalletConfig.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PoolWalletConfig.html",
-          "hash": "5s8jTWr5keJTsEGPVO7lRLDA5MLdMholwr64PrMVSQI="
+          "relative_path": "api/chia.dotnet.PoolWalletConfig.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -848,11 +988,9 @@
       "source_relative_path": "api/chia.dotnet.PoolWalletInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PoolWalletInfo.html",
-          "hash": "6UUeLq1F8wmXA1J0mj2XHbipXDu9iydNo7yBsaaasIQ="
+          "relative_path": "api/chia.dotnet.PoolWalletInfo.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -860,23 +998,29 @@
       "source_relative_path": "api/chia.dotnet.PrivateKey.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PrivateKey.html",
-          "hash": "Mu9hNyOHuB+8N3dlERYDGBaZmcG/3ZoEgujY+g2PAvQ="
+          "relative_path": "api/chia.dotnet.PrivateKey.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/chia.dotnet.PrivateKeyDetail.yml",
+      "source_relative_path": "api/chia.dotnet.PrivateKeyData.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PrivateKeyDetail.html",
-          "hash": "lTf12zvbvCq9m9iRHLRbkbpdN89eZFmRUIJAEYSPsP0="
+          "relative_path": "api/chia.dotnet.PrivateKeyData.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.Proof.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.Proof.html"
+        }
+      },
       "version": ""
     },
     {
@@ -884,11 +1028,9 @@
       "source_relative_path": "api/chia.dotnet.ProofOfSpace.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.ProofOfSpace.html",
-          "hash": "yvVf8HtLV3BeykU2JXsUs93D0HmqEx2PpT+PBT7x/gg="
+          "relative_path": "api/chia.dotnet.ProofOfSpace.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -896,11 +1038,9 @@
       "source_relative_path": "api/chia.dotnet.PuzzleAnnouncement.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.PuzzleAnnouncement.html",
-          "hash": "PLuVrFww/nVedK0yyoDWxjRLFUPVzUZCTAcRSe+fBnI="
+          "relative_path": "api/chia.dotnet.PuzzleAnnouncement.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -908,23 +1048,9 @@
       "source_relative_path": "api/chia.dotnet.QueuedPlotInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.QueuedPlotInfo.html",
-          "hash": "mQ1vftcU6q3xQo/K1kpR83ZPw85Lo5jpQlWZSnbJY+M="
+          "relative_path": "api/chia.dotnet.QueuedPlotInfo.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/chia.dotnet.RateLimitedWallet.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/chia.dotnet.RateLimitedWallet.html",
-          "hash": "we+pAa9H/SPFeEo7mo3ihJPy/ei6TBVE1iOiwP6Ha4Q="
-        }
-      },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -932,11 +1058,9 @@
       "source_relative_path": "api/chia.dotnet.ResponseException.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.ResponseException.html",
-          "hash": "D4grpqqG7+JSy63TSJofq126dqwfkfjgoqlkmfrajN8="
+          "relative_path": "api/chia.dotnet.ResponseException.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -944,11 +1068,9 @@
       "source_relative_path": "api/chia.dotnet.RewardChainBlock.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.RewardChainBlock.html",
-          "hash": "ZoAYsYlX/qYBDiuJORbYC2KqaUKILj2mrYkHPCFcTTM="
+          "relative_path": "api/chia.dotnet.RewardChainBlock.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -956,11 +1078,9 @@
       "source_relative_path": "api/chia.dotnet.RewardChainBlockUnfinished.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.RewardChainBlockUnfinished.html",
-          "hash": "2298eyCwVDKcdGlZ+w5rSuvHrAXNU2qFVoV/h9qjpnA="
+          "relative_path": "api/chia.dotnet.RewardChainBlockUnfinished.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -968,11 +1088,49 @@
       "source_relative_path": "api/chia.dotnet.RewardChainSubSlot.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.RewardChainSubSlot.html",
-          "hash": "GLufOHVPAKsG0mWc6YHr4sfbebtRQrtxmykbF0Nob4w="
+          "relative_path": "api/chia.dotnet.RewardChainSubSlot.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.Root.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.Root.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.RootHash.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.RootHash.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.RootHistory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.RootHistory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.RoyaltyAsset.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.RoyaltyAsset.html"
+        }
+      },
       "version": ""
     },
     {
@@ -980,11 +1138,9 @@
       "source_relative_path": "api/chia.dotnet.SendPeer.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.SendPeer.html",
-          "hash": "qmfJfr9IU7I73+HD8YkkljtcXBLZgDBT2PLjFSoIjjs="
+          "relative_path": "api/chia.dotnet.SendPeer.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -992,11 +1148,9 @@
       "source_relative_path": "api/chia.dotnet.ServiceNames.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.ServiceNames.html",
-          "hash": "v8gZXa4xap7hneOAXkpULExB/IZvjRvhE6OCgq+g1Eg="
+          "relative_path": "api/chia.dotnet.ServiceNames.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1004,11 +1158,19 @@
       "source_relative_path": "api/chia.dotnet.ServiceProxy.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.ServiceProxy.html",
-          "hash": "0ZccUcKynMsvQu8IT4XSQDrIXxBNOiBcm0XRTeWG1ao="
+          "relative_path": "api/chia.dotnet.ServiceProxy.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.Side.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.Side.html"
+        }
+      },
       "version": ""
     },
     {
@@ -1016,11 +1178,29 @@
       "source_relative_path": "api/chia.dotnet.SignagePoint.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.SignagePoint.html",
-          "hash": "mQWhKaWsZskF/5eo7HWLrVa3xVr/5b69RaM/yGYXxbQ="
+          "relative_path": "api/chia.dotnet.SignagePoint.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.SingletonInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.SingletonInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.SingletonRecord.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.SingletonRecord.html"
+        }
+      },
       "version": ""
     },
     {
@@ -1028,11 +1208,19 @@
       "source_relative_path": "api/chia.dotnet.SpendBundle.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.SpendBundle.html",
-          "hash": "Uil61xzZW9cgDS3Tn5yg9i4qvBguBGq9KXM0sjf8aqk="
+          "relative_path": "api/chia.dotnet.SpendBundle.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.StoreProofs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.StoreProofs.html"
+        }
+      },
       "version": ""
     },
     {
@@ -1040,11 +1228,9 @@
       "source_relative_path": "api/chia.dotnet.SubEpochSummary.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.SubEpochSummary.html",
-          "hash": "fLX26DTirTH6oa2ip0PBe+9Cxq2mYZHF++AtMBeK8IQ="
+          "relative_path": "api/chia.dotnet.SubEpochSummary.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1052,11 +1238,9 @@
       "source_relative_path": "api/chia.dotnet.SubSlotProofs.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.SubSlotProofs.html",
-          "hash": "B2I0Gcxn2mfCzXeybpbT4pJIZaooo6mLCTYkiN4itHM="
+          "relative_path": "api/chia.dotnet.SubSlotProofs.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1064,11 +1248,19 @@
       "source_relative_path": "api/chia.dotnet.SyncState.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.SyncState.html",
-          "hash": "j3Bitdr0iWsdPlUkNAEyDFhXaUfj45ikuwnqV1DmKZ8="
+          "relative_path": "api/chia.dotnet.SyncState.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.TerminalNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.TerminalNode.html"
+        }
+      },
       "version": ""
     },
     {
@@ -1076,11 +1268,9 @@
       "source_relative_path": "api/chia.dotnet.Token.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.Token.html",
-          "hash": "AsluERoS60CMwDV0ge4UuQ/wMHnUJU6fnbcRTLIZRKc="
+          "relative_path": "api/chia.dotnet.Token.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1088,11 +1278,9 @@
       "source_relative_path": "api/chia.dotnet.TradeManager.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.TradeManager.html",
-          "hash": "luKYcaPHE6M+uEXWEUTNg+U1qvIMRlncHbgoQQ0lP9Y="
+          "relative_path": "api/chia.dotnet.TradeManager.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1100,11 +1288,9 @@
       "source_relative_path": "api/chia.dotnet.TradeRecord.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.TradeRecord.html",
-          "hash": "kZCFJxXX/WHwn4JFy9AHE4rFHC+tS2sJa0G85Td7teE="
+          "relative_path": "api/chia.dotnet.TradeRecord.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1112,11 +1298,9 @@
       "source_relative_path": "api/chia.dotnet.TradeStatus.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.TradeStatus.html",
-          "hash": "rfqqjev1iBhf2izWm4sqWNGiT3lWX3wjD2KVuG+SJpI="
+          "relative_path": "api/chia.dotnet.TradeStatus.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1124,11 +1308,9 @@
       "source_relative_path": "api/chia.dotnet.TransactionRecord.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.TransactionRecord.html",
-          "hash": "qvHynerVQfpWb6ZjOwwzQTVPmhNMPV56RK7akQ6/AOw="
+          "relative_path": "api/chia.dotnet.TransactionRecord.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1136,11 +1318,19 @@
       "source_relative_path": "api/chia.dotnet.TransactionType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.TransactionType.html",
-          "hash": "iirx3SIVmGlfpphF2K91NZjMQxpYAi8s5pd/dyS/rcw="
+          "relative_path": "api/chia.dotnet.TransactionType.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.TransactionTypeFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.TransactionTypeFilter.html"
+        }
+      },
       "version": ""
     },
     {
@@ -1148,11 +1338,29 @@
       "source_relative_path": "api/chia.dotnet.TransactionsInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.TransactionsInfo.html",
-          "hash": "QBZmZaarwmZt1bLQuqxw7Z9taOCC+gxt4le/NIeO2rU="
+          "relative_path": "api/chia.dotnet.TransactionsInfo.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.UInt32Range.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.UInt32Range.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.UInt64Range.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.UInt64Range.html"
+        }
+      },
       "version": ""
     },
     {
@@ -1160,11 +1368,39 @@
       "source_relative_path": "api/chia.dotnet.UnfinishedHeaderBlock.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.UnfinishedHeaderBlock.html",
-          "hash": "yTHsqynH+kGbQkK1uPY52AiKv9gXC7RcOFtoGN9tfI0="
+          "relative_path": "api/chia.dotnet.UnfinishedHeaderBlock.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.VCLineageProof.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.VCLineageProof.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.VCProofs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.VCProofs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.VCRecord.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.VCRecord.html"
+        }
+      },
       "version": ""
     },
     {
@@ -1172,11 +1408,9 @@
       "source_relative_path": "api/chia.dotnet.VDFInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.VDFInfo.html",
-          "hash": "MKds4UslcCFY7HbTE6pclDhstbr3PhRGA5uc5uyh2U4="
+          "relative_path": "api/chia.dotnet.VDFInfo.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1184,11 +1418,29 @@
       "source_relative_path": "api/chia.dotnet.VDFProof.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.VDFProof.html",
-          "hash": "EK/36j0GuknS+GFnPNPtI9oxyqcEO7+5Pv5LCnz+Et0="
+          "relative_path": "api/chia.dotnet.VDFProof.html"
         }
       },
-      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.VerifiedCredential.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.VerifiedCredential.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.VerifiedCredentialManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.VerifiedCredentialManager.html"
+        }
+      },
       "version": ""
     },
     {
@@ -1196,11 +1448,9 @@
       "source_relative_path": "api/chia.dotnet.Wallet.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.Wallet.html",
-          "hash": "kxTI+H/u1RFVce+jMRu14dGnwLEHStLulrrd+/F8KeQ="
+          "relative_path": "api/chia.dotnet.Wallet.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1208,11 +1458,9 @@
       "source_relative_path": "api/chia.dotnet.WalletBalance.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.WalletBalance.html",
-          "hash": "6EEkINjL/W5ofwXvpGQoQ8EF7b/E8zLW40rwEVppVoI="
+          "relative_path": "api/chia.dotnet.WalletBalance.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1220,11 +1468,9 @@
       "source_relative_path": "api/chia.dotnet.WalletInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.WalletInfo.html",
-          "hash": "PKgpA9JEHJRVo6++WFjrQeLarm83biI4a1uVbvcQLyM="
+          "relative_path": "api/chia.dotnet.WalletInfo.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1232,11 +1478,9 @@
       "source_relative_path": "api/chia.dotnet.WalletProxy.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.WalletProxy.html",
-          "hash": "JKT43sgHVm3SQ+4iARpLWOjQ/Uhfz4ZYrlyT5YLlqWc="
+          "relative_path": "api/chia.dotnet.WalletProxy.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1244,11 +1488,9 @@
       "source_relative_path": "api/chia.dotnet.WalletType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.WalletType.html",
-          "hash": "2mRzE+T5NdsfJaPhDH16JVGg3LebxpTTS6pfM+ZW60k="
+          "relative_path": "api/chia.dotnet.WalletType.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1256,11 +1498,9 @@
       "source_relative_path": "api/chia.dotnet.WebSocketRpcClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.WebSocketRpcClient.html",
-          "hash": "vBWrCazqYYkyTWz7H1Dla9ZjAV/AhhLLCp2+/ZPUZEY="
+          "relative_path": "api/chia.dotnet.WebSocketRpcClient.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1268,11 +1508,9 @@
       "source_relative_path": "api/chia.dotnet.bech32.Bech32M.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.bech32.Bech32M.html",
-          "hash": "FLxS83cbU+cQ+b4AbbZgoNpd1eam1hsYWZFAlb7w/vo="
+          "relative_path": "api/chia.dotnet.bech32.Bech32M.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1280,11 +1518,9 @@
       "source_relative_path": "api/chia.dotnet.bech32.HexBytes.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.bech32.HexBytes.html",
-          "hash": "tTw0miVbec67dhPthkCSUkEwEHfmIuis8Nh9f9ocEys="
+          "relative_path": "api/chia.dotnet.bech32.HexBytes.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1292,11 +1528,9 @@
       "source_relative_path": "api/chia.dotnet.bech32.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.bech32.html",
-          "hash": "LXb6JW7D7jBoZT2FTMR/UGyXSYzaliX3dceWH6y0UrY="
+          "relative_path": "api/chia.dotnet.bech32.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1304,11 +1538,9 @@
       "source_relative_path": "api/chia.dotnet.yml",
       "output": {
         ".html": {
-          "relative_path": "api/chia.dotnet.html",
-          "hash": "D6PEcwPv6ZFWQOBkOAVRfngboyvbpEkH+rzlwyKlCHE="
+          "relative_path": "api/chia.dotnet.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1316,11 +1548,9 @@
       "source_relative_path": "api/index.md",
       "output": {
         ".html": {
-          "relative_path": "api/index.html",
-          "hash": "GaadiQZAxlJdDU/ItLJ2CQ4UwUbpkv4G4fW3uNY3a/0="
+          "relative_path": "api/index.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1328,11 +1558,9 @@
       "source_relative_path": "api/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "api/toc.html",
-          "hash": "IcMstoTIypKolNn/BWtMy+ivXjVjBvs2fc7kJXNF8xE="
+          "relative_path": "api/toc.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1340,11 +1568,9 @@
       "source_relative_path": "articles/intro.md",
       "output": {
         ".html": {
-          "relative_path": "articles/intro.html",
-          "hash": "wBTstXdzIHKvM4pbaPL5zjmD/BavRMWNndPGiN+DPWs="
+          "relative_path": "articles/intro.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -1352,11 +1578,9 @@
       "source_relative_path": "articles/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "articles/toc.html",
-          "hash": "BlPxk5mtl2kgfcZUgkEguqiSAR/EUyUTT4EdebwkQvs="
+          "relative_path": "articles/toc.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1367,7 +1591,6 @@
           "relative_path": "images/uml.svg"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1375,11 +1598,9 @@
       "source_relative_path": "index.md",
       "output": {
         ".html": {
-          "relative_path": "index.html",
-          "hash": "Eedass9j4BeoFBVOaRGgDACwEZ+r1MEXKJTR6By77TY="
+          "relative_path": "index.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1387,60 +1608,10 @@
       "source_relative_path": "toc.yml",
       "output": {
         ".html": {
-          "relative_path": "toc.html",
-          "hash": "ec92sL7Oui2izslTSkG44fA+QuX8U+LW+sOOpO3oQrc="
+          "relative_path": "toc.html"
         }
       },
-      "is_incremental": false,
       "version": ""
-    }
-  ],
-  "incremental_info": [
-    {
-      "status": {
-        "can_incremental": true,
-        "incrementalPhase": "build",
-        "total_file_count": 0,
-        "skipped_file_count": 0
-      },
-      "processors": {
-        "ConceptualDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 3,
-          "skipped_file_count": 3
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 109,
-          "skipped_file_count": 109
-        },
-        "ResourceDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build",
-          "total_file_count": 0,
-          "skipped_file_count": 0
-        },
-        "TocDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build",
-          "total_file_count": 0,
-          "skipped_file_count": 0
-        }
-      }
-    },
-    {
-      "status": {
-        "can_incremental": true,
-        "details": "Can support incremental post processing.",
-        "incrementalPhase": "postProcessing",
-        "total_file_count": 0,
-        "skipped_file_count": 0
-      },
-      "processors": {}
     }
   ],
   "version_info": {},

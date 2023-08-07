@@ -102,7 +102,7 @@ namespace chia.dotnet
         /// <param name="minCoinAmount"></param>
         /// <param name="maxCoinAmount"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The list of <see cref="Token"/>s</returns>
+        /// <returns>The list of <see cref="IEnumerable{Token}"/>s</returns>
         public async Task<IEnumerable<Coin>> SelectCoins(ulong amount, IEnumerable<Coin>? excludedCoins = null, IEnumerable<ulong>? excludedCoinAmounts = null, ulong minCoinAmount = 0, ulong maxCoinAmount = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
@@ -125,7 +125,7 @@ namespace chia.dotnet
         /// Retrieves a list of transactions from a wallet.
         /// </summary>
         /// <param name="start">the start index of transactions (zero based)</param>
-        /// <param name="end">The end index of transactions (max of <see cref="GetTransactionCount(CancellationToken)"/></param>
+        /// <param name="end">The end index of transactions</param>
         /// <param name="toAddress">Restrict results only to this address</param>
         /// <param name="sortKey">Field to sort results by</param>
         /// <param name="reverse">Reverse the sort order of the results</param>
@@ -259,11 +259,11 @@ namespace chia.dotnet
         /// <param name="amount">The amount to send (in units of mojos)</param>
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="memos">Memos to go along with the transaction</param>
-        /// <param name="excludeCoinAmounts">/param>
-        /// <param name="excludeCoinsIds">/param>
-        /// <param name="minCoinAmount">/param>
-        /// <param name="minCoinAmount">/param>
-        /// <param name="resusePuzHash">/param>
+        /// <param name="excludeCoinAmounts"></param>
+        /// <param name="excludeCoinsIds"></param>
+        /// <param name="minCoinAmount"></param>
+        /// <param name="maxCoinAmount"></param>
+        /// <param name="resusePuzHash"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> SendTransaction(string address,
@@ -313,7 +313,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, ulong fee, IEnumerable<Coin>? coins = null, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, ulong fee = 0, IEnumerable<Coin>? coins = null, CancellationToken cancellationToken = default)
         {
             if (additions is null)
             {
@@ -338,7 +338,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount (in units of mojo)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, ulong fee, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             return await SendTransactionMulti(additions, fee, cancellationToken).ConfigureAwait(false);
         }
