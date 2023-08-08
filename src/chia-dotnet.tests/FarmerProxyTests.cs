@@ -17,22 +17,25 @@ namespace chia.dotnet.tests
             // Arrange
             using var cts = new CancellationTokenSource(15000);
 
+            // Act
             var targets = await Farmer.GetRewardTargets(cts.Token);
+
+            // Assert
             Assert.False(string.IsNullOrEmpty(targets.FarmerTarget));
             Assert.False(string.IsNullOrEmpty(targets.PoolTarget));
         }
 
-        //    [Fact]
-        //    [TestCategory("CAUTION")]
-        //    [Ignore("CAUTION")]
-        //    public async Task SetRewardTargets()
-        //    {
-        //        using var cts = new CancellationTokenSource(15000);
+        [Fact]
+        public async Task SetRewardTargets()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
 
-        //        // this will change the state of the farmer - make sure you want to do this
-        //        // fill in addresses for target and pool as appropriate
-        //        await _theFarmer.SetRewardTargets("txch1pacgsfkngcrw50pnuvgvak0qpt8mx9pmey2uxl6p65c9727lhc0sgnklt4", "txch1pacgsfkngcrw50pnuvgvak0qpt8mx9pmey2uxl6p65c9727lhc0sgnklt4");
-        //    }
+            // this will change the state of the farmer - make sure you want to do this
+            // fill in addresses for target and pool as appropriate
+            // act
+            await Farmer.SetRewardTargets("txch1pacgsfkngcrw50pnuvgvak0qpt8mx9pmey2uxl6p65c9727lhc0sgnklt4", "txch1pacgsfkngcrw50pnuvgvak0qpt8mx9pmey2uxl6p65c9727lhc0sgnklt4");
+        }
 
         //    [Fact]
         //    public async Task GetSignagePoints()
