@@ -1,57 +1,81 @@
 ﻿using System;
+using chia.dotnet.tests.Core;
+using Xunit;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace chia.dotnet.tests
 {
-    [TestClass]
-    public class ConversionTests
+    public class ConversionTests : TestBase
     {
-        [TestMethod]
+        public ConversionTests(ChiaDotNetFixture fixture) : base(fixture)
+        {
+        }
+        
+        [Fact]
         public void OnTrillion()
         {
-            Assert.AreEqual(Extensions.OneTrillion, Convert.ToDecimal(Math.Pow(10, 12)));
+            // Arrange 
+            
+            // Act
+            
+            // Assert
+            Assert.Equal(Extensions.OneTrillion, Convert.ToDecimal(Math.Pow(10, 12)));
         }
 
-        [TestMethod]
+        [Fact]
         public void MojoToChiaToMojo()
         {
+            // Arrange
             ulong mojo = 100;
+            
+            // Act
             var chia = mojo.ToChia();
             var newMojo = chia.ToMojo();
 
-            Assert.AreEqual(mojo, newMojo);
+            // Assert
+            Assert.Equal(mojo, newMojo);
         }
 
-        [TestMethod]
+        [Fact]
         public void MojoToChiaToMojoFractional()
         {
+            // Arrange
             ulong mojo = 1001;
+            
+            // Act
             var chia = mojo.ToChia();
             var newMojo = chia.ToMojo();
 
-            Assert.AreEqual(mojo, newMojo);
+            // Assert
+            Assert.Equal(mojo, newMojo);
         }
 
-        [TestMethod]
+        [Fact]
         public void ChiaToMojoToChia()
         {
+            // Arrange
             decimal chia = 100;
+            
+            // Act
             var mojo = chia.ToMojo();
             var newChia = mojo.ToChia();
 
-            Assert.AreEqual(chia, newChia);
+            // Assert
+            Assert.Equal(chia, newChia);
         }
-
-
-        [TestMethod]
+        
+        [Fact]
         public void ChiaToMojoToChiaFractional()
         {
+            // Arrange
             var chia = 100.1M;
+            
+            // Act
             var mojo = chia.ToMojo();
             var newChia = mojo.ToChia();
 
-            Assert.AreEqual(chia, newChia);
+            // Assert
+            Assert.Equal(chia, newChia);
         }
     }
 }

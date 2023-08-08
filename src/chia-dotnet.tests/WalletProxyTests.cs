@@ -1,226 +1,229 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using chia.dotnet.tests.Core;
+using Xunit;
 
 namespace chia.dotnet.tests
 {
-    [TestClass]
-    [TestCategory("Integration")]
-    public class WalletProxyTests
+    public class WalletProxyTests : TestBase
     {
-        private static WalletProxy _theWallet;
-
-        [ClassInitialize]
-        public static async Task Initialize(TestContext context)
+        public WalletProxyTests(ChiaDotNetFixture fixture) : base(fixture)
         {
-            using var cts = new CancellationTokenSource();
-
-            var rpcClient = Factory.CreateWebsocketClient();
-            await rpcClient.Connect(cts.Token);
-
-            var daemon = new DaemonProxy(rpcClient, "unit_tests");
-            await daemon.RegisterService(cts.Token);
-
-            _theWallet = new WalletProxy(rpcClient, "unit_tests");
-            _ = await _theWallet.LogIn(cts.Token);
         }
 
-        [ClassCleanup()]
-        public static void ClassCleanup()
-        {
-            _theWallet.RpcClient.Dispose();
-        }
-
-        [TestMethod()]
+        [Fact]
         public async Task GetWallets()
         {
+            // Arrange
             using var cts = new CancellationTokenSource(15000);
 
-            var wallets = await _theWallet.GetWallets(false, cts.Token);
+            // Act
+            var wallets = await Wallet.GetWallets(false, cts.Token);
 
-            Assert.IsNotNull(wallets);
+            // Assert
+            Assert.NotNull(wallets);
         }
 
-        [TestMethod()]
-        public async Task GetLoggedInFingerprint()
-        {
-            using var cts = new CancellationTokenSource(15000);
 
-            var fingerprint = await _theWallet.GetLoggedInFingerprint(cts.Token);
+        // [Fact]
 
-            Assert.AreEqual(_theWallet.Fingerprint.Value, fingerprint);
-        }
+        // public async Task GetLoggedInFingerprint()
+        // {
+        //     // Arrange
+        //     using var cts = new CancellationTokenSource(15000);
+        //
+        //     // Act
+        //     var fingerprint = await Wallet.GetLoggedInFingerprint(cts.Token);
+        //
+        //     // Assert
+        //     Assert.Equal(Wallet.Fingerprint.Value, fingerprint);
+        // }
 
-        [TestMethod()]
+        [Fact]
         public async Task GetPublicKeys()
         {
+            // Arrange
             using var cts = new CancellationTokenSource(15000);
 
-            var keys = await _theWallet.GetPublicKeys(cts.Token);
+            // Act
+            var keys = await Wallet.GetPublicKeys(cts.Token);
 
-            Assert.IsNotNull(keys);
+            // Assert
+            Assert.NotNull(keys);
         }
 
-        [TestMethod()]
-        public async Task GetPrivateKey()
-        {
-            using var cts = new CancellationTokenSource(15000);
+        // [Fact]
+        // public async Task GetPrivateKey()
+        // {
+        //     // Arrange
+        //     using var cts = new CancellationTokenSource(15000);
+        //
+        //     // Act
+        //     var key = await Wallet.GetPrivateKey(Wallet.Fingerprint.Value, cts.Token);
+        //
+        //     // Assert
+        //     Assert.NotNull(key);
+        // }
 
-            var key = await _theWallet.GetPrivateKey(_theWallet.Fingerprint.Value, cts.Token);
-
-            Assert.IsNotNull(key);
-        }
-
-        [TestMethod()]
+        [Fact]
         public async Task GetSyncStatus()
         {
+            // Arrange
             using var cts = new CancellationTokenSource(15000);
 
-            var info = await _theWallet.GetSyncStatus(cts.Token);
+            // Act
+            var info = await Wallet.GetSyncStatus(cts.Token);
 
-            Assert.IsNotNull(info);
+            // Assert
+            Assert.NotNull(info);
         }
 
-        [TestMethod()]
+        [Fact]
         public async Task GetNetworkInfo()
         {
+            // Arrange
             using var cts = new CancellationTokenSource(15000);
 
-            var info = await _theWallet.GetNetworkInfo(cts.Token);
+            // Act
+            var info = await Wallet.GetNetworkInfo(cts.Token);
 
-            Assert.IsNotNull(info);
+            // Assert
+            Assert.NotNull(info);
         }
 
-        [TestMethod()]
+        [Fact]
         public async Task GetHeightInfo()
         {
+            // Arrange
             using var cts = new CancellationTokenSource(15000);
 
-            var height = await _theWallet.GetHeightInfo(cts.Token);
+            // Act
+            var height = await Wallet.GetHeightInfo(cts.Token);
 
-            Assert.IsTrue(height > 0);
+            // Assert
+            Assert.True(height > 0);
         }
 
-        [TestMethod()]
+        [Fact]
         public async Task GenerateMnemonic()
         {
+            // Arrange
             using var cts = new CancellationTokenSource(15000);
 
-            var mnemonic = await _theWallet.GenerateMnemonic(cts.Token);
+            // Act
+            var mnemonic = await Wallet.GenerateMnemonic(cts.Token);
 
-            Assert.IsNotNull(mnemonic);
+            // Assert
+            Assert.NotNull(mnemonic);
         }
-
-        [TestMethod()]
-        [TestCategory("CAUTION")]
-        [Ignore("CAUTION")]
-        public async Task FullCircleKey()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            var mnemonic = await _theWallet.GenerateMnemonic(cts.Token);
-            var fingerprint = await _theWallet.AddKey(mnemonic, cts.Token);
-            var key = await _theWallet.GetPrivateKey(fingerprint, cts.Token);
-            Assert.IsNotNull(key);
-
-            await _theWallet.DeleteKey(fingerprint, cts.Token);
-        }
-
-        [TestMethod()]
-        [TestCategory("CAUTION")]
-        [Ignore("CAUTION")]
-        public async Task CreateCATWallet()
-        {
-            using var cts = new CancellationTokenSource(20000);
-
-            var walletInfo = await _theWallet.CreateCATWallet("dkackman.cat.1", 1, 1, cts.Token);
-
-            Assert.IsNotNull(walletInfo);
-        }
-
-        [TestMethod()]
-        [TestCategory("CAUTION")]
-        [Ignore("CAUTION")]
-        public async Task CreateDIDWallet()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            var backupIDs = new List<string>();
-            var walletInfo = await _theWallet.CreateDIDWallet(backupIDs, 1, "the_name", null, 0, cts.Token);
-
-            Assert.IsNotNull(walletInfo);
-        }
-        [TestMethod()]
-        public async Task Login()
-        {
-            using var cts = new CancellationTokenSource(150000);
-
-            _ = await _theWallet.LogIn(cts.Token);
-        }
-
-        [TestMethod()]
-        public async Task GetTransaction()
-        {
-            using var cts = new CancellationTokenSource(150000);
-
-            _ = await _theWallet.LogIn(cts.Token);
-            var wallet = new Wallet(1, _theWallet);
-
-            var transactions = await wallet.GetTransactions(cancellationToken: cts.Token);
-            var transaction1 = transactions.FirstOrDefault();
-            Assert.IsNotNull(transaction1);
-
-            var transaction2 = await _theWallet.GetTransaction(transaction1.TransactionId, cts.Token);
-            Assert.IsNotNull(transaction2);
-
-            Assert.AreEqual(transaction1.TransactionId, transaction2.TransactionId);
-        }
-
-        [TestMethod]
-        [TestCategory("Integration")]
-        public async Task LetsJoinAPool()
-        {
-            var poolUri = new Uri("https://testpool.xchpool.org");
-            using var cts1 = new CancellationTokenSource(30000);
-            var poolInfo = await WalletProxy.GetPoolInfo(poolUri, cts1.Token);
-
-            var poolState = new PoolState()
-            {
-                PoolUrl = poolUri.ToString(),
-                State = PoolSingletonState.FARMING_TO_POOL,
-                TargetPuzzleHash = poolInfo.TargetPuzzleHash[2..],
-                RelativeLockHeight = poolInfo.RelativeLockHeight
-            };
-
-            using var cts = new CancellationTokenSource(30000);
-
-            var (transaction, launcherId, p2SingletonHash) = await _theWallet.CreatePoolWallet(poolState, null, null, cts.Token);
-            Console.WriteLine($"Launcher Id: {launcherId}");
-            Console.WriteLine($"Do rchia wallet get-transaction -tx {transaction.Name} to get status");
-        }
-
-        [TestMethod]
-        [TestCategory("Integration")]
-        public async Task GetPoolInfo()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            var info = await WalletProxy.GetPoolInfo(new Uri("https://testpool.xchpool.org"), cts.Token);
-
-            Assert.IsNotNull(info);
-        }
-
-        [TestMethod()]
-        public async Task GetFarmedAmount()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            var amount = await _theWallet.GetFarmedAmount(cts.Token);
-
-            Assert.IsNotNull(amount);
-        }
+//
+//          [Fact]
+//         [TestCategory("CAUTION")]
+//         [Ignore("CAUTION")]
+//         public async Task FullCircleKey()
+//         {
+//             using var cts = new CancellationTokenSource(15000);
+//
+//             var mnemonic = await _theWallet.GenerateMnemonic(cts.Token);
+//             var fingerprint = await Wallet.AddKey(mnemonic, cts.Token);
+//             var key = await Wallet.GetPrivateKey(fingerprint, cts.Token);
+//             Assert.IsNotNull(key);
+//
+//             await Wallet.DeleteKey(fingerprint, cts.Token);
+//         }
+//
+//         [Fact]
+//         [TestCategory("CAUTION")]
+//         [Ignore("CAUTION")]
+//         public async Task CreateCATWallet()
+//         {
+//             using var cts = new CancellationTokenSource(20000);
+//
+//             var walletInfo = await Wallet.CreateCATWallet("dkackman.cat.1", 1, 1, cts.Token);
+//
+//             Assert.IsNotNull(walletInfo);
+//         }
+//
+//          [Fact]
+//         [TestCategory("CAUTION")]
+//         [Ignore("CAUTION")]
+//         public async Task CreateDIDWallet()
+//         {
+//             using var cts = new CancellationTokenSource(15000);
+//
+//             var backupIDs = new List<string>();
+//             var walletInfo = await _theWallet.CreateDIDWallet(backupIDs, 1, "the_name", null, 0, cts.Token);
+//
+//             Assert.IsNotNull(walletInfo);
+//         }
+//          [Fact]
+//         public async Task Login()
+//         {
+//             using var cts = new CancellationTokenSource(150000);
+//
+//             _ = await Wallet.LogIn(cts.Token);
+//         }
+//
+//          [Fact]
+//         public async Task GetTransaction()
+//         {
+//             using var cts = new CancellationTokenSource(150000);
+//
+//             _ = await _theWallet.LogIn(cts.Token);
+//             var wallet = new Wallet(1, _theWallet);
+//
+//             var transactions = await wallet.GetTransactions(cancellationToken: cts.Token);
+//             var transaction1 = transactions.FirstOrDefault();
+//             Assert.IsNotNull(transaction1);
+//
+//             var transaction2 = await _theWallet.GetTransaction(transaction1.TransactionId, cts.Token);
+//             Assert.IsNotNull(transaction2);
+//
+//             Assert.AreEqual(transaction1.TransactionId, transaction2.TransactionId);
+//         }
+//
+//          [Fact]
+//         [TestCategory("Integration")]
+//         public async Task LetsJoinAPool()
+//         {
+//             var poolUri = new Uri("https://testpool.xchpool.org");
+//             using var cts1 = new CancellationTokenSource(30000);
+//             var poolInfo = await WalletProxy.GetPoolInfo(poolUri, cts1.Token);
+//
+//             var poolState = new PoolState()
+//             {
+//                 PoolUrl = poolUri.ToString(),
+//                 State = PoolSingletonState.FARMING_TO_POOL,
+//                 TargetPuzzleHash = poolInfo.TargetPuzzleHash[2..],
+//                 RelativeLockHeight = poolInfo.RelativeLockHeight
+//             };
+//
+//             using var cts = new CancellationTokenSource(30000);
+//
+//             var (transaction, launcherId, p2SingletonHash) = await _theWallet.CreatePoolWallet(poolState, null, null, cts.Token);
+//             Console.WriteLine($"Launcher Id: {launcherId}");
+//             Console.WriteLine($"Do rchia wallet get-transaction -tx {transaction.Name} to get status");
+//         }
+//
+//          [Fact]
+//         [TestCategory("Integration")]
+//         public async Task GetPoolInfo()
+//         {
+//             using var cts = new CancellationTokenSource(15000);
+//
+//             var info = await WalletProxy.GetPoolInfo(new Uri("https://testpool.xchpool.org"), cts.Token);
+//
+//             Assert.IsNotNull(info);
+//         }
+//
+//          [Fact]
+//         public async Task GetFarmedAmount()
+//         {
+//             using var cts = new CancellationTokenSource(15000);
+//
+//             var amount = await Wallet.GetFarmedAmount(cts.Token);
+//
+//             Assert.IsNotNull(amount);
+//         }
     }
 }

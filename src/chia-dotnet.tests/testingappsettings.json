@@ -1,0 +1,28 @@
+{
+  "Mode": "0", //0-WSSClient, 1=HttpsClient
+  "daemon" : {
+    "Uri" : "wss://127.0.0.1:55400",
+    "CertPath" : "/home/kev/.chia/mainnet/config/ssl/daemon/private_daemon.crt",
+    "KeyPath" : "/home/kev/.chia/mainnet/config/ssl/daemon/private_daemon.key"
+  },
+  "fullnode" : {
+    "Uri" : "https://127.0.0.1:8555",
+    "CertPath" : "/home/kev/.chia/mainnet/config/ssl/full_node/private_full_node.crt",
+    "KeyPath" : "/home/kev/.chia/mainnet/config/ssl/full_node/private_full_node.key"
+  },
+  "farmer" : {
+    "Uri" : "https://127.0.0.1:8559",
+    "CertPath" : "/home/kev/.chia/mainnet/config/ssl/farmer/private_farmer.crt",
+    "KeyPath" : "/home/kev/.chia/mainnet/config/ssl/farmer/private_farmer.key"
+  },
+  "wallet" : {
+    "Uri" : "https://127.0.0.1:9256",
+    "CertPath" : "/home/kev/.chia/mainnet/config/ssl/wallet/private_wallet.crt",
+    "KeyPath" : "/home/kev/.chia/mainnet/config/ssl/wallet/private_wallet.key"
+  },
+  "harvester" : {
+    "Uri" : "https://127.0.0.1:8560",
+    "CertPath" : "/home/kev/.chia/mainnet/config/ssl/harvester/private_harvester.crt",
+    "KeyPath" : "/home/kev/.chia/mainnet/config/ssl/harvester/private_harvester.key"
+  }
+}
