@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace chia.dotnet
 {
@@ -6,6 +6,6 @@ namespace chia.dotnet
     {
         public string CoinName { get; init; } = string.Empty;
         public string PuzzleHash { get; init; } = string.Empty;
-        public ICollection<Condition> Conditions { get; init; } = new List<Condition>();
+        public IEnumerable<Condition> Conditions { get; init; } = new List<Condition>();
     }
 }

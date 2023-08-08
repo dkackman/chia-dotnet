@@ -296,7 +296,7 @@ namespace chia.dotnet
         /// </summary>       
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A spendbundle and information about the attest</returns>
-        public async Task<(string MyDID, string CoinName, string NewPuzzleHash, string PublicKey, ICollection<byte> BackUpIds)> GetInformationNeededForRecovery(CancellationToken cancellationToken = default)
+        public async Task<(string MyDID, string CoinName, string NewPuzzleHash, string PublicKey, IEnumerable<byte> BackUpIds)> GetInformationNeededForRecovery(CancellationToken cancellationToken = default)
         {
             var response = await WalletProxy.SendMessage("did_get_information_needed_for_recovery", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
 

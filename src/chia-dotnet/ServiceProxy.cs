@@ -165,7 +165,7 @@ namespace chia.dotnet
         }
 
         //
-        // If the return is a collection, specify the collection type in the caller e.g. ICollection<SomeConcreteType>, IList, IEnumerable
+        // If the return is a collection, specify the collection type in the caller e.g. IEnumerable<SomeConcreteType>, IList, IEnumerable
         //
         internal async Task<T> SendMessage<T>(string command, string? childItem = null, CancellationToken cancellationToken = default)
         {
@@ -173,7 +173,7 @@ namespace chia.dotnet
         }
 
         //
-        // If the return is a collection, specify the collection type in the caller e.g. ICollection<SomeConcreteType>, IList, IEnumerable
+        // If the return is a collection, specify the collection type in the caller e.g. IEnumerable<SomeConcreteType>, IList, IEnumerable
         //
         internal async Task<T> SendMessage<T>(string command, dynamic? data, string? childItem = null, CancellationToken cancellationToken = default)
         {

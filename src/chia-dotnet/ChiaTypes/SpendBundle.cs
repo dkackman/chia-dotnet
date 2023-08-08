@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace chia.dotnet
 {
@@ -11,6 +11,6 @@ namespace chia.dotnet
     public record SpendBundle
     {
         public string AggregatedSignature { get; init; } = string.Empty;
-        public ICollection<CoinSpend> CoinSpends { get; init; } = new List<CoinSpend>();
+        public IEnumerable<CoinSpend> CoinSpends { get; init; } = new List<CoinSpend>();
     }
 }

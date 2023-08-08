@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace chia.dotnet
 {
@@ -9,6 +9,6 @@ namespace chia.dotnet
     public record ConditionWithArgs
     {
         public string Opcode { get; init; } = string.Empty;
-        public ICollection<string> Vars { get; init; } = new List<string>();
+        public IEnumerable<string> Vars { get; init; } = new List<string>();
     }
 }
