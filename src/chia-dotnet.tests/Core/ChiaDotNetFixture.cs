@@ -53,17 +53,20 @@ public class ChiaDotNetFixture : IDisposable
                     var fullNodeConfig = new Endpoint();
                     var farmerConfig = new Endpoint();
                     var walletConfig = new Endpoint();
+                    var harvesterConfig = new Endpoint();
                     hostContext.Configuration.GetSection("daemon").Bind(daemonConfig);
                     hostContext.Configuration.GetSection("fullnode").Bind(fullNodeConfig);
                     hostContext.Configuration.GetSection("farmer").Bind(farmerConfig);
+                    hostContext.Configuration.GetSection("harvester").Bind(harvesterConfig);
                     hostContext.Configuration.GetSection("wallet").Bind(walletConfig);
-
+                    
                     // Get all endpoints
                     var daemonEndpointInfo = GetEndpointInfo(daemonConfig);
                     var fullNodeEndpointInfo = GetEndpointInfo(fullNodeConfig);
                     var farmerEndpointInfo = GetEndpointInfo(farmerConfig);
                     var walletEndpointInfo = GetEndpointInfo(walletConfig);
-
+                    var harvesterEndpointInfo = GetEndpointInfo(harvesterConfig);
+                    
                     if (hostContext.Configuration["mode"] == "0")
                     {
                         //appsettings mode is websockets
@@ -71,13 +74,16 @@ public class ChiaDotNetFixture : IDisposable
                         var cts = new CancellationTokenSource(120000);
                         var httpClient = new HttpRpcClient(daemonEndpointInfo);
 
-                        //
+                        //connect wss client
                         wssClient.Connect(cts.Token).GetAwaiter().GetResult();
                         var daemon = new DaemonProxy(wssClient, OriginService);
                         daemon.RegisterService(cts.Token);
+                        
+                        //proxies
                         var nodeRpcClient = new FullNodeProxy(wssClient, OriginService);
                         var farmerRpcProxy = new FarmerProxy(wssClient, OriginService);
                         var walletRpcProxy = new WalletProxy(wssClient, OriginService);
+                        var harvesterRpcProxy = new HarvesterProxy(wssClient, OriginService);
 
                         //register test dependencies 
                         services.AddSingleton<DaemonProxy>(daemon);
@@ -85,6 +91,7 @@ public class ChiaDotNetFixture : IDisposable
                         services.AddSingleton<WebSocketRpcClient>(wssClient);
                         services.AddSingleton<FarmerProxy>(farmerRpcProxy);
                         services.AddSingleton<WalletProxy>(walletRpcProxy);
+                        services.AddSingleton<HarvesterProxy>(harvesterRpcProxy);
                     }
                     else
                     {
@@ -93,17 +100,19 @@ public class ChiaDotNetFixture : IDisposable
                         var nodeHttpClient = new HttpRpcClient(fullNodeEndpointInfo);
                         var farmerHttpClient = new HttpRpcClient(farmerEndpointInfo);
                         var walletHttpClient = new HttpRpcClient(walletEndpointInfo);
+                        var harvesterHttpClient = new HttpRpcClient(harvesterEndpointInfo);
 
-                        //
+                        //Proxies
                         var nodeRpcClient = new FullNodeProxy(nodeHttpClient, OriginService);
                         var farmerRpcProxy = new FarmerProxy(farmerHttpClient, OriginService);
                         var walletRpcProxy = new WalletProxy(walletHttpClient, OriginService);
+                        var harvesterRpcProxy = new HarvesterProxy(harvesterHttpClient, OriginService);
                         
-
                         //register test dependencies 
                         services.AddSingleton<FullNodeProxy>(nodeRpcClient);
                         services.AddSingleton<FarmerProxy>(farmerRpcProxy);
                         services.AddSingleton<WalletProxy>(walletRpcProxy);
+                        services.AddSingleton<HarvesterProxy>(harvesterRpcProxy);
                     }
 
 

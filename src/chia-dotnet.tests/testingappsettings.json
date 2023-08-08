@@ -19,5 +19,10 @@
     "Uri" : "https://127.0.0.1:9256",
     "CertPath" : "/home/kev/.chia/mainnet/config/ssl/wallet/private_wallet.crt",
     "KeyPath" : "/home/kev/.chia/mainnet/config/ssl/wallet/private_wallet.key"
+  },
+  "harvester" : {
+    "Uri" : "https://127.0.0.1:8560",
+    "CertPath" : "/home/kev/.chia/mainnet/config/ssl/harvester/private_harvester.crt",
+    "KeyPath" : "/home/kev/.chia/mainnet/config/ssl/harvester/private_harvester.key"
   }
 }
