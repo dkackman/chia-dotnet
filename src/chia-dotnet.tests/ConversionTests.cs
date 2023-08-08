@@ -1,57 +1,81 @@
-﻿// using System;
-//
-// using Microsoft.VisualStudio.TestTools.UnitTesting;
-//
-// namespace chia.dotnet.tests
-// {
-//     [TestClass]
-//     public class ConversionTests
-//     {
-//         [TestMethod]
-//         public void OnTrillion()
-//         {
-//             Assert.AreEqual(Extensions.OneTrillion, Convert.ToDecimal(Math.Pow(10, 12)));
-//         }
-//
-//         [TestMethod]
-//         public void MojoToChiaToMojo()
-//         {
-//             ulong mojo = 100;
-//             var chia = mojo.ToChia();
-//             var newMojo = chia.ToMojo();
-//
-//             Assert.AreEqual(mojo, newMojo);
-//         }
-//
-//         [TestMethod]
-//         public void MojoToChiaToMojoFractional()
-//         {
-//             ulong mojo = 1001;
-//             var chia = mojo.ToChia();
-//             var newMojo = chia.ToMojo();
-//
-//             Assert.AreEqual(mojo, newMojo);
-//         }
-//
-//         [TestMethod]
-//         public void ChiaToMojoToChia()
-//         {
-//             decimal chia = 100;
-//             var mojo = chia.ToMojo();
-//             var newChia = mojo.ToChia();
-//
-//             Assert.AreEqual(chia, newChia);
-//         }
-//
-//
-//         [TestMethod]
-//         public void ChiaToMojoToChiaFractional()
-//         {
-//             var chia = 100.1M;
-//             var mojo = chia.ToMojo();
-//             var newChia = mojo.ToChia();
-//
-//             Assert.AreEqual(chia, newChia);
-//         }
-//     }
-// }
+﻿using System;
+using chia.dotnet.tests.Core;
+using Xunit;
+
+
+namespace chia.dotnet.tests
+{
+    public class ConversionTests : TestBase
+    {
+        public ConversionTests(ChiaDotNetFixture fixture) : base(fixture)
+        {
+        }
+        
+        [Fact]
+        public void OnTrillion()
+        {
+            // Arrange 
+            
+            // Act
+            
+            // Assert
+            Assert.Equal(Extensions.OneTrillion, Convert.ToDecimal(Math.Pow(10, 12)));
+        }
+
+        [Fact]
+        public void MojoToChiaToMojo()
+        {
+            // Arrange
+            ulong mojo = 100;
+            
+            // Act
+            var chia = mojo.ToChia();
+            var newMojo = chia.ToMojo();
+
+            // Assert
+            Assert.Equal(mojo, newMojo);
+        }
+
+        [Fact]
+        public void MojoToChiaToMojoFractional()
+        {
+            // Arrange
+            ulong mojo = 1001;
+            
+            // Act
+            var chia = mojo.ToChia();
+            var newMojo = chia.ToMojo();
+
+            // Assert
+            Assert.Equal(mojo, newMojo);
+        }
+
+        [Fact]
+        public void ChiaToMojoToChia()
+        {
+            // Arrange
+            decimal chia = 100;
+            
+            // Act
+            var mojo = chia.ToMojo();
+            var newChia = mojo.ToChia();
+
+            // Assert
+            Assert.Equal(chia, newChia);
+        }
+        
+        [Fact]
+        public void ChiaToMojoToChiaFractional()
+        {
+            // Arrange
+            var chia = 100.1M;
+            
+            // Act
+            var mojo = chia.ToMojo();
+            var newChia = mojo.ToChia();
+
+            // Assert
+            Assert.Equal(chia, newChia);
+        }
+    }
+}
