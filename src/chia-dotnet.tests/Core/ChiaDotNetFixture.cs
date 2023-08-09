@@ -36,15 +36,13 @@ public class ChiaDotNetFixture : IDisposable
     {
         return new HostBuilder().ConfigureWebHost(webhost =>
         {
-            webhost.ConfigureAppConfiguration((hostContext, configurationBuilder) =>
+            _ = webhost.ConfigureAppConfiguration((hostContext, configurationBuilder) =>
             {
-                configurationBuilder.SetBasePath(Directory.GetCurrentDirectory());
-                configurationBuilder.AddJsonFile("testingappsettings.json", false);
-                configurationBuilder.AddEnvironmentVariables("PREFIX_");
-                configurationBuilder.AddUserSecrets<ChiaDotNetFixture>(true);
-            });
-
-            webhost.ConfigureServices((hostContext, services) =>
+                _ = configurationBuilder.SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("testingappsettings.json", false)
+                    .AddEnvironmentVariables("PREFIX_")
+                    .AddUserSecrets<ChiaDotNetFixture>(true);
+            }).ConfigureServices((hostContext, services) =>
             {
                 try
                 {
@@ -59,14 +57,14 @@ public class ChiaDotNetFixture : IDisposable
                     hostContext.Configuration.GetSection("farmer").Bind(farmerConfig);
                     hostContext.Configuration.GetSection("harvester").Bind(harvesterConfig);
                     hostContext.Configuration.GetSection("wallet").Bind(walletConfig);
-                    
+
                     // Get all endpoints
                     var daemonEndpointInfo = GetEndpointInfo(daemonConfig);
                     var fullNodeEndpointInfo = GetEndpointInfo(fullNodeConfig);
                     var farmerEndpointInfo = GetEndpointInfo(farmerConfig);
                     var walletEndpointInfo = GetEndpointInfo(walletConfig);
                     var harvesterEndpointInfo = GetEndpointInfo(harvesterConfig);
-                    
+
                     if (hostContext.Configuration["mode"] == "0")
                     {
                         //appsettings mode is websockets
@@ -75,10 +73,10 @@ public class ChiaDotNetFixture : IDisposable
                         var httpClient = new HttpRpcClient(daemonEndpointInfo);
 
                         //connect wss client
-                        wssClient.Connect(cts.Token).GetAwaiter().GetResult();
+                        wssClient.Connect(cts.Token).ConfigureAwait(false).GetAwaiter().GetResult();
                         var daemon = new DaemonProxy(wssClient, OriginService);
-                        daemon.RegisterService(cts.Token);
-                        
+                        daemon.RegisterService(cts.Token).ConfigureAwait(false).GetAwaiter().GetResult(); ;
+
                         //proxies
                         var nodeRpcClient = new FullNodeProxy(wssClient, OriginService);
                         var farmerRpcProxy = new FarmerProxy(wssClient, OriginService);
@@ -86,12 +84,12 @@ public class ChiaDotNetFixture : IDisposable
                         var harvesterRpcProxy = new HarvesterProxy(wssClient, OriginService);
 
                         //register test dependencies 
-                        services.AddSingleton<DaemonProxy>(daemon);
-                        services.AddSingleton<FullNodeProxy>(nodeRpcClient);
-                        services.AddSingleton<WebSocketRpcClient>(wssClient);
-                        services.AddSingleton<FarmerProxy>(farmerRpcProxy);
-                        services.AddSingleton<WalletProxy>(walletRpcProxy);
-                        services.AddSingleton<HarvesterProxy>(harvesterRpcProxy);
+                        _ = services.AddSingleton(daemon)
+                            .AddSingleton(nodeRpcClient)
+                            .AddSingleton(wssClient)
+                            .AddSingleton(farmerRpcProxy)
+                            .AddSingleton(walletRpcProxy)
+                            .AddSingleton(harvesterRpcProxy);
                     }
                     else
                     {
@@ -107,12 +105,12 @@ public class ChiaDotNetFixture : IDisposable
                         var farmerRpcProxy = new FarmerProxy(farmerHttpClient, OriginService);
                         var walletRpcProxy = new WalletProxy(walletHttpClient, OriginService);
                         var harvesterRpcProxy = new HarvesterProxy(harvesterHttpClient, OriginService);
-                        
+
                         //register test dependencies 
-                        services.AddSingleton<FullNodeProxy>(nodeRpcClient);
-                        services.AddSingleton<FarmerProxy>(farmerRpcProxy);
-                        services.AddSingleton<WalletProxy>(walletRpcProxy);
-                        services.AddSingleton<HarvesterProxy>(harvesterRpcProxy);
+                        _ = services.AddSingleton(nodeRpcClient)
+                            .AddSingleton(farmerRpcProxy)
+                            .AddSingleton(walletRpcProxy)
+                            .AddSingleton(harvesterRpcProxy);
                     }
 
 
@@ -124,12 +122,11 @@ public class ChiaDotNetFixture : IDisposable
                 }
             });
 
-            webhost.UseTestServer();
-            webhost.Configure(app =>
+            _ = webhost.UseTestServer().Configure(app =>
             {
                 app.Run(async ctx =>
                 {
-                    await ctx.Response.WriteAsync("TestHost HttpServer Started");
+                    await ctx.Response.WriteAsync("TestHost HttpServer Started").ConfigureAwait(false);
                 });
             });
         });
@@ -137,9 +134,11 @@ public class ChiaDotNetFixture : IDisposable
 
     }
 
-    private EndpointInfo GetEndpointInfo(Endpoint ep) =>
-        new EndpointInfo() { KeyPath = ep.KeyPath, CertPath = ep.CertPath, Uri = new Uri(ep.Uri) };
-    
+    private static EndpointInfo GetEndpointInfo(Endpoint ep)
+    {
+        return new EndpointInfo() { KeyPath = ep.KeyPath, CertPath = ep.CertPath, Uri = new Uri(ep.Uri) };
+    }
+
     public void Dispose()
     {
         TestHost?.Dispose();

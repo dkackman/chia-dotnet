@@ -65,12 +65,12 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The list of wallets</returns>
-        public async Task<(IEnumerable<WalletInfo> Wallets, int FingerPrint)> GetWallets(bool includeData = true, CancellationToken cancellationToken = default)
+        public async Task<(IEnumerable<WalletInfo> Wallets, uint FingerPrint)> GetWallets(bool includeData = true, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.include_data = includeData;
 
-            var response = await SendMessage<IEnumerable<WalletInfo>>("get_wallets", data, cancellationToken).ConfigureAwait(false);
+            var response = await SendMessage("get_wallets", data, cancellationToken).ConfigureAwait(false);
             return (Converters.ToEnumerable<WalletInfo>(response.wallets), response.fingerprint);
         }
 
