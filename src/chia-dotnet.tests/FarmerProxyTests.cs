@@ -31,9 +31,9 @@ namespace chia.dotnet.tests
             // Arrange
             using var cts = new CancellationTokenSource(15000);
 
+            // Act
             // this will change the state of the farmer - make sure you want to do this
             // fill in addresses for target and pool as appropriate
-            // act
             await Farmer.SetRewardTargets("txch1pacgsfkngcrw50pnuvgvak0qpt8mx9pmey2uxl6p65c9727lhc0sgnklt4", "txch1pacgsfkngcrw50pnuvgvak0qpt8mx9pmey2uxl6p65c9727lhc0sgnklt4");
         }
 
