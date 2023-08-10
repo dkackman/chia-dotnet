@@ -2,7 +2,7 @@
   "profiles": {
     "CodeGen": {
       "commandName": "Project",
-      "commandLineArgs": "C:\\Users\\don\\src\\github\\dkackman\\chia-api\\src\\wallet.yaml set_auto_claim AutoClaimSettings"
+      "commandLineArgs": "test C:\\Users\\don\\src\\github\\dkackman\\chia-dotnet\\src\\chia-dotnet\\bin\\Debug\\net6.0\\chia-dotnet.dll chia.dotnet.CrawlerProxy"
     }
   }
 }
