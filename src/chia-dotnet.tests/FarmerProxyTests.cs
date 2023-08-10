@@ -164,7 +164,7 @@ namespace chia.dotnet.tests
 
             // Act
             var harvesters = await Farmer.GetHarvesters(cts.Token);
-            
+
             // Assert
             Assert.NotNull(harvesters);
         }
