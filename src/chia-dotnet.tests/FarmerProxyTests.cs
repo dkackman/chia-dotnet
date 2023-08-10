@@ -1,4 +1,6 @@
-﻿using System.Threading;
+﻿using System.Diagnostics;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using chia.dotnet.tests.Core;
 using Xunit;
@@ -37,159 +39,168 @@ namespace chia.dotnet.tests
             await Farmer.SetRewardTargets("txch1pacgsfkngcrw50pnuvgvak0qpt8mx9pmey2uxl6p65c9727lhc0sgnklt4", "txch1pacgsfkngcrw50pnuvgvak0qpt8mx9pmey2uxl6p65c9727lhc0sgnklt4");
         }
 
-        //    [Fact]
-        //    public async Task GetSignagePoints()
-        //    {
-        //        using var cts = new CancellationTokenSource(15000);
+        [Fact]
+        public async Task GetSignagePoints()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
 
-        //        var signagePoints = await _theFarmer.GetSignagePoints(cts.Token);
+            // Act
+            var signagePoints = await Farmer.GetSignagePoints(cts.Token);
 
-        //        foreach (var sp in signagePoints)
-        //        {
-        //            if (sp.Proofs.Any())
-        //            {
-        //                System.Diagnostics.Debug.WriteLine("here");
-        //            }
-        //        }
+            // Assert
+            Assert.NotNull(signagePoints);
+        }
 
-        //        Assert.IsNotNull(signagePoints);
-        //    }
+        [Fact]
+        public async Task GetHarvestersSummary()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
 
-        //    [Fact]
-        //    public async Task GetHarvestersSummary()
-        //    {
-        //        using var cts = new CancellationTokenSource(15000);
+            // Act
+            var summaries = await Farmer.GetHarvestersSummary(cts.Token);
 
-        //        var summaries = await _theFarmer.GetHarvestersSummary(cts.Token);
+            // Assert
+            Assert.NotNull(summaries);
+        }
 
-        //        Assert.IsNotNull(summaries);
-        //    }
+        [Fact]
+        public async Task GetHarvesterPlotsValid()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            var summaries = await Farmer.GetHarvestersSummary(cts.Token);
+            var nodeId = summaries.First().Connection.NodeId;
+            var requestDatata = new PlotInfoRequestData()
+            {
+                NodeId = nodeId,
+                PageSize = 10,
+            };
 
-        //    [Fact]
-        //    public async Task GetHarvesterPlotsValid()
-        //    {
-        //        using var cts = new CancellationTokenSource(15000);
-        //        var summaries = await _theFarmer.GetHarvestersSummary(cts.Token);
-        //        var nodeId = summaries.First().Connection.NodeId;
-        //        var requestDatata = new PlotInfoRequestData()
-        //        {
-        //            NodeId = nodeId,
-        //            PageSize = 10,
-        //        };
+            // Act
+            var plotInfo = await Farmer.GetHarvesterPlotsValid(requestDatata, cts.Token);
 
-        //        var plotInfo = await _theFarmer.GetHarvesterPlotsValid(requestDatata, cts.Token);
+            // Assert
+            Assert.NotNull(plotInfo);
+        }
 
-        //        Assert.IsNotNull(plotInfo);
-        //    }
+        [Fact]
+        public async Task GetHarvesterPlotsKeysMissing()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            var summaries = await Farmer.GetHarvestersSummary(cts.Token);
+            var nodeId = summaries.First().Connection.NodeId;
+            var requestDatata = new PlotPathRequestData()
+            {
+                NodeId = nodeId,
+                PageSize = 10,
+            };
 
-        //    [Fact]
-        //    public async Task GetHarvesterPlotsKeysMissing()
-        //    {
-        //        using var cts = new CancellationTokenSource(15000);
-        //        var summaries = await _theFarmer.GetHarvestersSummary(cts.Token);
-        //        var nodeId = summaries.First().Connection.NodeId;
-        //        var requestDatata = new PlotPathRequestData()
-        //        {
-        //            NodeId = nodeId,
-        //            PageSize = 10,
-        //        };
+            // Act
+            var plotInfo = await Farmer.GetHarvesterPlotsKeysMissing(requestDatata, cts.Token);
 
-        //        var plotInfo = await _theFarmer.GetHarvesterPlotsKeysMissing(requestDatata, cts.Token);
+            // Assert
+            Assert.NotNull(plotInfo);
+        }
 
-        //        Assert.IsNotNull(plotInfo);
-        //    }
+        [Fact]
+        public async Task GetSignagePoint()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(1005000);
 
-        //    [Fact]
-        //    public async Task GetSignagePoint()
-        //    {
-        //        using var cts = new CancellationTokenSource(1005000);
+            // Act
+            var signagePoints = await Farmer.GetSignagePoints(cts.Token);
 
-        //        var signagePoints = await _theFarmer.GetSignagePoints(cts.Token);
+            foreach (var spInfo in signagePoints)
+            {
+                _ = await Farmer.GetSignagePoint(spInfo.SignagePoint.ChallengeChainSp, cts.Token);
+            }
+        }
 
-        //        try
-        //        {
-        //            foreach (var spInfo in signagePoints)
-        //            {
-        //                var sp = await _theFarmer.GetSignagePoint(spInfo.SignagePoint.ChallengeChainSp, cts.Token);
-        //                if (sp.Proofs.Any())
-        //                {
-        //                    break;
-        //                }
-        //                Assert.IsNotNull(sp);
-        //            }
-        //        }
-        //        catch (InvalidOperationException)
-        //        {
-        //            Assert.Inconclusive("Node has no signage points");
-        //        }
-        //    }
+        [Fact]
+        public async Task GetPoolState()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(150000);
 
-        //    [Fact]
-        //    public async Task GetPoolState()
-        //    {
-        //        using var cts = new CancellationTokenSource(150000);
+            // Act
+            var state = await Farmer.GetPoolState(cts.Token);
 
-        //        var state = await _theFarmer.GetPoolState(cts.Token);
+            // Assert
+            Assert.NotNull(state);
+        }
 
-        //        Assert.IsNotNull(state);
-        //    }
+        [Fact]
+        public async Task GetPoolLoginLink()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
 
-        //    [Fact]
-        //    public async Task GetPoolLoginLink()
-        //    {
-        //        using var cts = new CancellationTokenSource(15000);
+            var state = await Farmer.GetPoolState(cts.Token);
+            var pool = state.FirstOrDefault();
+            if (pool is not null)
+            {
+                // Act
+                var link = await Farmer.GetPoolLoginLink(pool.PoolConfig.LauncherId, cts.Token);
 
-        //        var state = await _theFarmer.GetPoolState(cts.Token);
-        //        var pool = state.FirstOrDefault();
-        //        if (pool is not null)
-        //        {
-        //            Assert.IsNotNull(pool.PoolConfig);
+                // Assert
+                Assert.NotNull(pool.PoolConfig);
+                Assert.NotNull(link);
+            }
+            else
+            {
+                Debug.WriteLine("This node isn't part of a pool");
+            }
+        }
 
-        //            var link = await _theFarmer.GetPoolLoginLink(pool.PoolConfig.LauncherId, cts.Token);
+        [Fact]
+        public async Task GetHarvesters()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
 
-        //            Assert.IsNotNull(link);
-        //        }
-        //        else
-        //        {
-        //            Assert.Inconclusive("This node isn't part of a pool");
-        //        }
-        //    }
+            // Act
+            var harvesters = await Farmer.GetHarvesters(cts.Token);
+            
+            // Assert
+            Assert.NotNull(harvesters);
+        }
 
-        //    [Fact]
-        //    public async Task GetHarvesters()
-        //    {
-        //        using var cts = new CancellationTokenSource(15000);
+        [Fact]
+        public async Task Ping()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
 
-        //        var harvesters = await _theFarmer.GetHarvesters(cts.Token);
+            // Act
+            await Farmer.HealthZ(cts.Token);
+        }
 
-        //        Assert.IsNotNull(harvesters);
-        //    }
+        [Fact]
+        public async Task GetConnections()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
 
-        //    [Fact]
-        //    public async Task Ping()
-        //    {
-        //        using var cts = new CancellationTokenSource(15000);
+            // Act
+            var connections = await Farmer.GetConnections(cts.Token);
 
-        //        await _theFarmer.HealthZ(cts.Token);
-        //    }
+            // Assert
+            Assert.NotNull(connections);
+        }
 
-        //    [Fact]
-        //    public async Task GetConnections()
-        //    {
-        //        using var cts = new CancellationTokenSource(15000);
+        [Fact]
+        public async Task OpenConnection()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
 
-        //        var connections = await _theFarmer.GetConnections(cts.Token);
-
-        //        Assert.IsNotNull(connections);
-        //    }
-
-        //    [Fact]
-        //    public async Task OpenConnection()
-        //    {
-        //        using var cts = new CancellationTokenSource(15000);
-
-        //        await _theFarmer.OpenConnection("testnet-node.chia.net", 58444, cts.Token);
-        //    }
-        //}
+            // Act
+            await Farmer.OpenConnection("testnet10-node.chia.net", 58444, cts.Token);
+        }
     }
 }
+
