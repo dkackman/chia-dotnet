@@ -12,7 +12,7 @@ namespace chia.dotnet.tests
         }
 
         [Fact]
-        public void OnTrillion()
+        public void OneTrillion()
         {
             // Arrange 
 
