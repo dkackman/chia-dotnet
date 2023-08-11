@@ -2,6 +2,7 @@
 
 [assembly: SuppressMessage("Reliability", "CA2007:Consider calling ConfigureAwait on the awaited task", Justification = "Noop in unit tests", Scope = "module")]
 [assembly: SuppressMessage("Style", "IDE0160:Convert to block scoped namespace", Justification = "non issue", Scope = "module")]
+
 // // This file is used by Code Analysis to maintain SuppressMessage
 // // attributes that are applied to this project.
 // // Project-level suppressions either have no target or are given
