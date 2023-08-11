@@ -2,7 +2,7 @@
   "profiles": {
     "CodeGen": {
       "commandName": "Project",
-      "commandLineArgs": "test C:\\Users\\don\\src\\github\\dkackman\\chia-dotnet\\src\\chia-dotnet\\bin\\Debug\\net6.0\\chia-dotnet.dll chia.dotnet.FarmerProxy Farmer"
+      "commandLineArgs": "test C:\\Users\\don\\src\\github\\dkackman\\chia-dotnet\\src\\chia-dotnet\\bin\\Debug\\net6.0\\chia-dotnet.dll chia.dotnet.CrawlerProxy Crawler"
     }
   }
 }

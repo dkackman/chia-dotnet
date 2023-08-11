@@ -2,7 +2,7 @@
 
 namespace CodeGen
 {
-    internal static class TestStub
+    internal static class StubTestClass
     {
         public static void GenerateTestStub(string assemblyFilePath, string classUnderTestName, string testBaseMemberName)
         {

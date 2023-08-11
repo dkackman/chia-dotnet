@@ -11,7 +11,7 @@
                 var endpointName = args[2];
                 var returnType = args.Length > 3 ? args[3] : null;
 
-                ImplStub.GenerateImplementationStub(swaggerFilePath, endpointName, returnType);
+                StubImplementation.GenerateImplementationStub(swaggerFilePath, endpointName, returnType);
             }
             else if (command == "test")
             {
@@ -19,7 +19,7 @@
                 var classUnderTestName = args[2];
                 var testBaseMemberName = args[3];
 
-                TestStub.GenerateTestStub(assemblyFilePath, classUnderTestName, testBaseMemberName);
+                StubTestClass.GenerateTestStub(assemblyFilePath, classUnderTestName, testBaseMemberName);
             }
             else
             {

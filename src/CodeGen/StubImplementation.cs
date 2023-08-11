@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace CodeGen
 {
-    internal static class ImplStub
+    internal static class StubImplementation
     {
         public static void GenerateImplementationStub(string swaggerFilePath, string endpointName, string? returnType)
         {

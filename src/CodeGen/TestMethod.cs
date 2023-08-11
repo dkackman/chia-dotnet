@@ -1,6 +1,5 @@
 ﻿using System.Text;
 using System.Reflection;
-using System.Linq;
 
 namespace CodeGen
 {
@@ -73,7 +72,7 @@ namespace CodeGen
         private IEnumerable<ParameterInfo> GetParams()
         {
             return _method.GetParameters()
-                .Where(p => p.ParameterType.Name != "CancellationToken");
+                .Where(p => p.ParameterType.Name != "CancellationToken" && !p.IsOptional);
         }
 
         private string GetParamInitialization()
@@ -95,12 +94,19 @@ namespace CodeGen
 
             return builder.ToString();
         }
+
         public static string GetDefaultValue(Type type)
         {
             if (type == null)
             {
                 return "null";
             }
+
+            if (type == typeof(DateTime))
+            {
+                return "DateTime.Now";
+            }
+
 
             return type.IsValueType ? Activator.CreateInstance(type)?.ToString() ?? "null" : "null";
         }
