@@ -17,8 +17,9 @@
             {
                 var assemblyFilePath = args[1];
                 var classUnderTestName = args[2];
+                var testBaseMemberName = args[3];
 
-                TestStub.GenerateTestStub(assemblyFilePath, classUnderTestName);
+                TestStub.GenerateTestStub(assemblyFilePath, classUnderTestName, testBaseMemberName);
             }
             else
             {
