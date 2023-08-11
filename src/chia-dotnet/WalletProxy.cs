@@ -65,7 +65,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The list of wallets</returns>
-        public async Task<(IEnumerable<WalletInfo> Wallets, uint FingerPrint)> GetWallets(bool includeData = true, CancellationToken cancellationToken = default)
+        public async Task<(IEnumerable<WalletInfo> Wallets, uint Fingerprint)> GetWallets(bool includeData = true, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.include_data = includeData;
@@ -280,7 +280,7 @@ namespace chia.dotnet
         /// <returns>
         /// Indicators of how the wallet is used
         /// </returns>
-        public async Task<(uint FingerPrint, bool UsedForFarmerRewards, bool UsedForPoolRewards, bool WalletBalance)> CheckDeleteKey(uint fingerprint, CancellationToken cancellationToken = default)
+        public async Task<(uint Fingerprint, bool UsedForFarmerRewards, bool UsedForPoolRewards, bool WalletBalance)> CheckDeleteKey(uint fingerprint, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;

@@ -110,29 +110,29 @@ namespace chia.dotnet.tests
             Assert.True(returnValue);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetKeyForFingerprint()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            UInt32 fingerprint = 0;
+            var (Wallets, Fingerprint) = await Wallet.GetWallets(false, cts.Token);
 
             // Act
-            var returnValue = await Daemon.GetKeyForFingerprint(fingerprint: fingerprint, cancellationToken: cts.Token);
+            var returnValue = await Daemon.GetKeyForFingerprint(fingerprint: Fingerprint, cancellationToken: cts.Token);
 
             // Assert
             Assert.NotNull(returnValue);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact(Skip = "Destructive")]
         public async Task DeleteKeyByFingerprint()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            UInt32 fingerprint = 0;
+            var (Wallets, Fingerprint) = await Wallet.GetWallets(false, cts.Token);
 
             // Act
-            await Daemon.DeleteKeyByFingerprint(fingerprint: fingerprint, cancellationToken: cts.Token);
+            await Daemon.DeleteKeyByFingerprint(fingerprint: Fingerprint, cancellationToken: cts.Token);
 
             // Assert
 
@@ -156,8 +156,8 @@ namespace chia.dotnet.tests
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            String mnemonic = null;
-            String passphrase = null;
+            var mnemonic = string.Empty;
+            var passphrase = string.Empty;
 
             // Act
             await Daemon.AddPrivateKey(mnemonic: mnemonic, passphrase: passphrase, cancellationToken: cts.Token);
@@ -171,7 +171,7 @@ namespace chia.dotnet.tests
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            String rootPath = null;
+            var rootPath = "~/.chia/mainnet/config";
 
             // Act
             await Daemon.CheckKeys(rootPath: rootPath, cancellationToken: cts.Token);
@@ -185,10 +185,10 @@ namespace chia.dotnet.tests
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            var (Wallets, FingerPrint) = await Wallet.GetWallets(false, cts.Token);
+            var (Wallets, Fingerprint) = await Wallet.GetWallets(false, cts.Token);
 
             // Act
-            var returnValue = await Daemon.GetKey(fingerprint: FingerPrint, cancellationToken: cts.Token);
+            var returnValue = await Daemon.GetKey(fingerprint: Fingerprint, cancellationToken: cts.Token);
 
             // Assert
             Assert.NotNull(returnValue);
@@ -199,43 +199,31 @@ namespace chia.dotnet.tests
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            var (Wallets, FingerPrint) = await Wallet.GetWallets(false, cts.Token);
+            var (Wallets, Fingerprint) = await Wallet.GetWallets(false, cts.Token);
 
             // Act
-            var returnValue = await Daemon.GetKeys(fingerprint: FingerPrint, cancellationToken: cts.Token);
+            var returnValue = await Daemon.GetKeys(fingerprint: Fingerprint, cancellationToken: cts.Token);
 
             // Assert
             Assert.NotNull(returnValue);
         }
 
-        [Fact(Skip = "Requires review")]
-        public async Task SetLabel()
+        [Fact]
+        public async Task SetDeleteLabel()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            UInt32 fingerprint = 0;
-            String label = null;
+            var (Wallets, Fingerprint) = await Wallet.GetWallets(false, cts.Token);
+            var label = "spoon";
 
             // Act
-            await Daemon.SetLabel(fingerprint: fingerprint, label: label, cancellationToken: cts.Token);
+            await Daemon.SetLabel(fingerprint: Fingerprint, label: label, cancellationToken: cts.Token);
+            await Daemon.DeleteLabel(fingerprint: Fingerprint, cancellationToken: cts.Token);
 
             // Assert
 
         }
 
-        [Fact(Skip = "Requires review")]
-        public async Task DeleteLabel()
-        {
-            // Arrange
-            using var cts = new CancellationTokenSource(15000);
-            UInt32 fingerprint = 0;
-
-            // Act
-            await Daemon.DeleteLabel(fingerprint: fingerprint, cancellationToken: cts.Token);
-
-            // Assert
-
-        }
 
         [Fact(Skip = "CAUTION")]
         public async Task MigrateKeyring()

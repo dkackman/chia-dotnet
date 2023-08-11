@@ -107,6 +107,11 @@ namespace CodeGen
                 return "DateTime.Now";
             }
 
+            if (type == typeof(string))
+            {
+                return "string.Empty";
+            }
+
 
             return type.IsValueType ? Activator.CreateInstance(type)?.ToString() ?? "null" : "null";
         }
