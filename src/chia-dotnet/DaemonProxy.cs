@@ -356,7 +356,7 @@ namespace chia.dotnet
         /// <param name="includeSecrets">Include secrets</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<KeyData> GetKeys(uint fingerprint, bool includeSecrets = false, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<KeyData>> GetKeys(uint fingerprint, bool includeSecrets = false, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
