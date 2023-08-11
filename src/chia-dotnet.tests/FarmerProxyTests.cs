@@ -168,38 +168,5 @@ namespace chia.dotnet.tests
             // Assert
             Assert.NotNull(harvesters);
         }
-
-        [Fact]
-        public async Task Ping()
-        {
-            // Arrange
-            using var cts = new CancellationTokenSource(15000);
-
-            // Act
-            await Farmer.HealthZ(cts.Token);
-        }
-
-        [Fact]
-        public async Task GetConnections()
-        {
-            // Arrange
-            using var cts = new CancellationTokenSource(15000);
-
-            // Act
-            var connections = await Farmer.GetConnections(cts.Token);
-
-            // Assert
-            Assert.NotNull(connections);
-        }
-
-        [Fact]
-        public async Task OpenConnection()
-        {
-            // Arrange
-            using var cts = new CancellationTokenSource(15000);
-
-            // Act
-            await Farmer.OpenConnection("testnet10-node.chia.net", 58444, cts.Token);
-        }
     }
 }
