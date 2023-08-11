@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using chia.dotnet.tests.Core;
 using System.Linq;
@@ -52,7 +51,7 @@ public class ServiceProxyTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Error coming back from rpc: get_routes() takes 1 positional argument but 2 were given")]
+    [Fact(Skip = "Fails over websocket. bug entered on chia github")]
     public async Task GetRoutes()
     {
         // Arrange
@@ -71,7 +70,7 @@ public class ServiceProxyTests : TestBase
         // Arrange
         using var cts = new CancellationTokenSource(15000);
         var host = "testnet10-node.chia.net";
-        Int32 port = 58444;
+        var port = 58444;
 
         // Act
         await Farmer.OpenConnection(host: host, port: port, cancellationToken: cts.Token);

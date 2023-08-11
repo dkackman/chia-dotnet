@@ -12,7 +12,7 @@ public class CrawlerProxyTests : TestBase
     {
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetPeerCounts()
     {
         // Arrange
@@ -25,17 +25,15 @@ public class CrawlerProxyTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetIPs()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        DateTime after = DateTime.Now;
-        Int32 offset = 0;
-        Int32 limit = 0;
+        var after = DateTime.Now - TimeSpan.FromDays(2);
 
         // Act
-        var (ips, total) = await Crawler.GetIPs(after: after, offset: offset, limit: limit, cancellationToken: cts.Token);
+        var (ips, total) = await Crawler.GetIPs(after: after, cancellationToken: cts.Token);
 
         // Assert
         Assert.NotNull(ips);
