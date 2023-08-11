@@ -1,3 +1,4 @@
+﻿using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -34,10 +35,12 @@ namespace chia.dotnet.tests
             var state = await FullNode.GetBlockchainState(cts.Token);
 
             // Act
+            Assert.NotNull(state.Peak);
+
             var block = await FullNode.GetBlock(state.Peak.HeaderHash, cts.Token);
 
             // Assert
-            Assert.NotNull((block));
+            Assert.NotNull(block);
         }
 
         [Fact]
@@ -48,6 +51,8 @@ namespace chia.dotnet.tests
             var state = await FullNode.GetBlockchainState(cts.Token);
 
             // Act
+            Assert.NotNull(state.Peak);
+
             var record = await FullNode.GetBlockRecord(state.Peak.HeaderHash, cts.Token);
 
             // Assert
@@ -63,6 +68,8 @@ namespace chia.dotnet.tests
             var state = await FullNode.GetBlockchainState(cts.Token);
 
             // Act
+            Assert.NotNull(state.Peak);
+
             var blocks = await FullNode.GetBlocks(state.Peak.Height - 5, state.Peak.Height - 1, cancellationToken: cts.Token);
 
             // Assert
@@ -77,10 +84,11 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
 
             // Act
-            var info = await FullNode.GetNetworkInfo(cts.Token);
+            var (NetworkName, NetworkPrefix) = await FullNode.GetNetworkInfo(cts.Token);
 
             //Assert
-            Assert.NotNull(info);
+            Assert.NotNull(NetworkName);
+            Assert.NotNull(NetworkPrefix);
         }
 
         [Fact]
@@ -104,12 +112,13 @@ namespace chia.dotnet.tests
 
             // Act
             var state = await FullNode.GetBlockchainState(cts.Token);
+            Assert.NotNull(state.Peak);
             var newerBlock = await FullNode.GetBlockRecordByHeight(state.Peak.Height, cts.Token);
             var olderBlock = await FullNode.GetBlockRecordByHeight(state.Peak.Height - 5, cts.Token);
             var space = await FullNode.GetNetworkSpace(newerBlock.HeaderHash, olderBlock.HeaderHash, cts.Token);
 
             // Assert
-            Assert.NotNull(space);
+            Assert.NotEqual(System.Numerics.BigInteger.Zero, space);
         }
 
         [Fact]
@@ -150,9 +159,11 @@ namespace chia.dotnet.tests
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
+            var state = await FullNode.GetBlockchainState(cts.Token);
 
             // Act
-            var state = await FullNode.GetBlockchainState(cts.Token);
+            Assert.NotNull(state.Peak);
+
             var blockRecord = await FullNode.GetBlockRecordByHeight(state.Peak.Height - 1, cts.Token);
 
             // Assert
@@ -167,6 +178,8 @@ namespace chia.dotnet.tests
 
             // Act
             var state = await FullNode.GetBlockchainState(cts.Token);
+            Assert.NotNull(state.Peak);
+
             var blockRecords = await FullNode.GetBlockRecords(state.Peak.Height - 5, state.Peak.Height - 1, cts.Token);
 
             // Assert
@@ -194,6 +207,8 @@ namespace chia.dotnet.tests
 
             // Act
             var state = await FullNode.GetBlockchainState(cts.Token);
+            Assert.NotNull(state.Peak);
+
             var records =
                 await FullNode.GetCoinRecordsByPuzzleHash(state.Peak.FarmerPuzzleHash, true, null, null, cts.Token);
 
@@ -228,13 +243,16 @@ namespace chia.dotnet.tests
             // Arrange
             using var cts = new CancellationTokenSource(15000);
             var state = await FullNode.GetBlockchainState(cts.Token);
+            Assert.NotNull(state.Peak);
+
             var blockRecord = await FullNode.GetBlockRecordByHeight(state.Peak.Height - 10, cts.Token);
 
             // Act
-            var additionsAndRemovals = await FullNode.GetAdditionsAndRemovals(blockRecord.HeaderHash, cts.Token);
+            var (additions, removals) = await FullNode.GetAdditionsAndRemovals(blockRecord.HeaderHash, cts.Token);
 
             // Assert
-            Assert.NotNull(additionsAndRemovals);
+            Assert.NotNull(additions);
+            Assert.NotNull(removals);
         }
 
         [Fact]
@@ -333,10 +351,10 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
 
             // Act
-            var timeSpan = await FullNode.GetAverageBlockTime(cts.Token);
+            var result = await FullNode.GetAverageBlockTime(cts.Token);
 
             // Assert
-            Assert.NotNull(timeSpan);
+            Assert.NotEqual(TimeSpan.Zero, result);
         }
 
         [Fact(Skip = "not sure how to easily get coin name and solution height")]
@@ -346,7 +364,7 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
             var items = await FullNode.GetAllMempoolItems(cts.Token);
             var item = items.FirstOrDefault();
-            var npc = item.Value.NPCResult.NpcList.FirstOrDefault();
+            var npc = item.Value.NPCResult.NpcList.First();
             var coinRecord = await FullNode.GetCoinRecordByName(npc.CoinName, cts.Token);
 
             // Act
@@ -354,9 +372,8 @@ namespace chia.dotnet.tests
 
             // Assert
             Assert.NotNull(coinRecord);
-            Assert.NotSame(coinRecord.SpentBlockIndex, 0);
+            Assert.NotEqual((uint)0, coinRecord.SpentBlockIndex);
             Assert.True(items.Any());
-            Assert.NotNull(item);
             Assert.NotNull(item.Value);
             Assert.NotNull(npc);
             Assert.NotNull(ps);

@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System;
 using chia.dotnet.tests.Core;
 using Xunit;
 
@@ -195,8 +194,8 @@ namespace chia.dotnet.tests
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            String launcherID = null;
-            String payoutInstructions = null;
+            var launcherID = string.Empty;
+            var payoutInstructions = string.Empty;
 
             // Act
             await Farmer.SetPayoutInstructions(launcherID: launcherID, payoutInstructions: payoutInstructions, cancellationToken: cts.Token);
