@@ -105,7 +105,6 @@ public class ChiaDotNetFixture : IDisposable
                         var walletHttpClient = new HttpRpcClient(walletEndpointInfo);
                         var harvesterHttpClient = new HttpRpcClient(harvesterEndpointInfo);
                         var crawlerHttpClient = new HttpRpcClient(crawlerEndpointInfo);
-                        var daemonHttpClient = new HttpRpcClient(daemonEndpointInfo);
 
                         //Proxies
                         var nodeRpcClient = new FullNodeProxy(nodeHttpClient, OriginService);
