@@ -64,7 +64,7 @@ namespace chia.dotnet.tests
             // Act
 
             // Assert
-            Assert.ThrowsAsync<ResponseException>(
+            _ = await Assert.ThrowsAsync<ResponseException>(
                 async () => await Daemon.ValidateKeyringPassphrase("spoon", cts.Token));
         }
 
@@ -77,7 +77,7 @@ namespace chia.dotnet.tests
             // Act
 
             // Assert
-            Assert.ThrowsAsync<ResponseException>(async () => await Daemon.UnlockKeyring("spoon", cts.Token));
+            _ = await Assert.ThrowsAsync<ResponseException>(async () => await Daemon.UnlockKeyring("spoon", cts.Token));
         }
 
         [Fact]
@@ -180,30 +180,29 @@ namespace chia.dotnet.tests
 
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetKey()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            UInt32 fingerprint = 0;
+            var (Wallets, FingerPrint) = await Wallet.GetWallets(false, cts.Token);
 
             // Act
-            var returnValue = await Daemon.GetKey(fingerprint: fingerprint, cancellationToken: cts.Token);
+            var returnValue = await Daemon.GetKey(fingerprint: FingerPrint, cancellationToken: cts.Token);
 
             // Assert
             Assert.NotNull(returnValue);
         }
 
-
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetKeys()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            UInt32 fingerprint = 0;
+            var (Wallets, FingerPrint) = await Wallet.GetWallets(false, cts.Token);
 
             // Act
-            var returnValue = await Daemon.GetKeys(fingerprint: fingerprint, cancellationToken: cts.Token);
+            var returnValue = await Daemon.GetKeys(fingerprint: FingerPrint, cancellationToken: cts.Token);
 
             // Assert
             Assert.NotNull(returnValue);
