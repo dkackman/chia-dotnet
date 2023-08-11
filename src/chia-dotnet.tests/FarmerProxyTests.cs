@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System;
 using chia.dotnet.tests.Core;
 using Xunit;
 
@@ -72,14 +73,14 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
             var summaries = await Farmer.GetHarvestersSummary(cts.Token);
             var nodeId = summaries.First().Connection.NodeId;
-            var requestDatata = new PlotInfoRequestData()
+            var requestData = new PlotInfoRequestData()
             {
                 NodeId = nodeId,
                 PageSize = 10,
             };
 
             // Act
-            var plotInfo = await Farmer.GetHarvesterPlotsValid(requestDatata, cts.Token);
+            var plotInfo = await Farmer.GetHarvesterPlotsValid(requestData, cts.Token);
 
             // Assert
             Assert.NotNull(plotInfo);
@@ -92,14 +93,14 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
             var summaries = await Farmer.GetHarvestersSummary(cts.Token);
             var nodeId = summaries.First().Connection.NodeId;
-            var requestDatata = new PlotPathRequestData()
+            var requestData = new PlotPathRequestData()
             {
                 NodeId = nodeId,
                 PageSize = 10,
             };
 
             // Act
-            var plotInfo = await Farmer.GetHarvesterPlotsKeysMissing(requestDatata, cts.Token);
+            var plotInfo = await Farmer.GetHarvesterPlotsKeysMissing(requestData, cts.Token);
 
             // Assert
             Assert.NotNull(plotInfo);
@@ -170,36 +171,58 @@ namespace chia.dotnet.tests
         }
 
         [Fact]
-        public async Task Ping()
+        public async Task GetHarvesterPlotsInvalid()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
+            var summaries = await Farmer.GetHarvestersSummary(cts.Token);
+            var nodeId = summaries.First().Connection.NodeId;
+            var requestData = new PlotPathRequestData()
+            {
+                NodeId = nodeId,
+                PageSize = 10,
+            };
 
             // Act
-            await Farmer.HealthZ(cts.Token);
-        }
-
-        [Fact]
-        public async Task GetConnections()
-        {
-            // Arrange
-            using var cts = new CancellationTokenSource(15000);
-
-            // Act
-            var connections = await Farmer.GetConnections(cts.Token);
+            var returnValue = await Farmer.GetHarvesterPlotsInvalid(requestData: requestData, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(connections);
+            Assert.NotNull(returnValue);
         }
 
-        [Fact]
-        public async Task OpenConnection()
+        [Fact(Skip = "Requires review")]
+        public async Task SetPayoutInstructions()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
+            String launcherID = null;
+            String payoutInstructions = null;
 
             // Act
-            await Farmer.OpenConnection("testnet10-node.chia.net", 58444, cts.Token);
+            await Farmer.SetPayoutInstructions(launcherID: launcherID, payoutInstructions: payoutInstructions, cancellationToken: cts.Token);
+
+            // Assert
+
+        }
+
+        [Fact]
+        public async Task GetHarvesterPlotsDuplicates()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            var summaries = await Farmer.GetHarvestersSummary(cts.Token);
+            var nodeId = summaries.First().Connection.NodeId;
+            var requestData = new PlotPathRequestData()
+            {
+                NodeId = nodeId,
+                PageSize = 10,
+            };
+
+            // Act
+            var returnValue = await Farmer.GetHarvesterPlotsDuplicates(requestData: requestData, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
         }
     }
 }

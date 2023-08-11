@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using chia.dotnet.tests.Core;
+using System.Linq;
 using Xunit;
 
 namespace chia.dotnet.tests;
@@ -55,7 +56,7 @@ public class ServiceProxyTests : TestBase
     public async Task GetRoutes()
     {
         // Arrange
-        using var cts = new CancellationTokenSource(1500000);
+        using var cts = new CancellationTokenSource(15000);
 
         // Act
         var returnValue = await FullNode.GetRoutes(cts.Token);
@@ -69,7 +70,7 @@ public class ServiceProxyTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String host = "testnet10-node.chia.net";
+        var host = "testnet10-node.chia.net";
         Int32 port = 58444;
 
         // Act
@@ -79,12 +80,14 @@ public class ServiceProxyTests : TestBase
 
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task CloseConnection()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String nodeId = "";
+        var connections = await Farmer.GetConnections(cts.Token);
+        var connection = connections.First();
+        var nodeId = connection.NodeId;
 
         // Act
         await Farmer.CloseConnection(nodeId: nodeId, cancellationToken: cts.Token);
