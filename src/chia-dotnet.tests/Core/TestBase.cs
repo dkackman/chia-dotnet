@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Xunit;
+using System;
 
 namespace chia.dotnet.tests.Core;
 
@@ -13,17 +14,19 @@ public class TestBase : IClassFixture<ChiaDotNetFixture>
 
     internal DaemonProxy Daemon => Fixture.TestHost.Services.GetRequiredService<DaemonProxy>();
 
-    internal WebSocketRpcClient WebSocketClient => Fixture.TestHost.Services.GetService<WebSocketRpcClient>();
+    internal WebSocketRpcClient WebSocketClient => Fixture.TestHost.Services.GetService<WebSocketRpcClient>() ?? throw new Exception("Testbase improperly configured");
 
-    internal HttpRpcClient HttpWebClient => Fixture.TestHost.Services.GetService<HttpRpcClient>();
+    internal HttpRpcClient HttpWebClient => Fixture.TestHost.Services.GetService<HttpRpcClient>() ?? throw new Exception("Testbase improperly configured");
 
-    internal FullNodeProxy FullNode => Fixture.TestHost.Services.GetService<FullNodeProxy>();
+    internal FullNodeProxy FullNode => Fixture.TestHost.Services.GetService<FullNodeProxy>() ?? throw new Exception("Testbase improperly configured");
 
-    internal FarmerProxy Farmer => Fixture.TestHost.Services.GetService<FarmerProxy>();
+    internal FarmerProxy Farmer => Fixture.TestHost.Services.GetService<FarmerProxy>() ?? throw new Exception("Testbase improperly configured");
 
-    internal WalletProxy Wallet => Fixture.TestHost.Services.GetService<WalletProxy>();
+    internal CrawlerProxy Crawler => Fixture.TestHost.Services.GetService<CrawlerProxy>() ?? throw new Exception("Testbase improperly configured");
 
-    internal HarvesterProxy Harvester => Fixture.TestHost.Services.GetService<HarvesterProxy>();
+    internal WalletProxy Wallet => Fixture.TestHost.Services.GetService<WalletProxy>() ?? throw new Exception("Testbase improperly configured");
+
+    internal HarvesterProxy Harvester => Fixture.TestHost.Services.GetService<HarvesterProxy>() ?? throw new Exception("Testbase improperly configured");
 
     public TestBase(ChiaDotNetFixture fixture)
     {

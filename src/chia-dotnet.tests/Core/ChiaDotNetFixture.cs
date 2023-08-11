@@ -22,7 +22,7 @@ public class ChiaDotNetFixture : IDisposable
         try
         {
             _cts = new CancellationTokenSource(55000);
-            TestHost = CreateHostBuilder().Build();
+            TestHost = CreateHostBuilder()!.Build();
             TestHost.Start();
         }
         catch (Exception e)
@@ -52,11 +52,13 @@ public class ChiaDotNetFixture : IDisposable
                     var farmerConfig = new Endpoint();
                     var walletConfig = new Endpoint();
                     var harvesterConfig = new Endpoint();
+                    var crawlerConfig = new Endpoint();
                     hostContext.Configuration.GetSection("daemon").Bind(daemonConfig);
                     hostContext.Configuration.GetSection("fullnode").Bind(fullNodeConfig);
                     hostContext.Configuration.GetSection("farmer").Bind(farmerConfig);
                     hostContext.Configuration.GetSection("harvester").Bind(harvesterConfig);
                     hostContext.Configuration.GetSection("wallet").Bind(walletConfig);
+                    hostContext.Configuration.GetSection("crawler").Bind(crawlerConfig);
 
                     // Get all endpoints
                     var daemonEndpointInfo = GetEndpointInfo(daemonConfig);
@@ -64,6 +66,7 @@ public class ChiaDotNetFixture : IDisposable
                     var farmerEndpointInfo = GetEndpointInfo(farmerConfig);
                     var walletEndpointInfo = GetEndpointInfo(walletConfig);
                     var harvesterEndpointInfo = GetEndpointInfo(harvesterConfig);
+                    var crawlerEndpointInfo = GetEndpointInfo(crawlerConfig);
 
                     if (hostContext.Configuration["mode"] == "0")
                     {
@@ -82,6 +85,7 @@ public class ChiaDotNetFixture : IDisposable
                         var farmerRpcProxy = new FarmerProxy(wssClient, OriginService);
                         var walletRpcProxy = new WalletProxy(wssClient, OriginService);
                         var harvesterRpcProxy = new HarvesterProxy(wssClient, OriginService);
+                        var crawlerRpcProxy = new CrawlerProxy(wssClient, OriginService);
 
                         //register test dependencies 
                         _ = services.AddSingleton(daemon)
@@ -89,7 +93,8 @@ public class ChiaDotNetFixture : IDisposable
                             .AddSingleton(wssClient)
                             .AddSingleton(farmerRpcProxy)
                             .AddSingleton(walletRpcProxy)
-                            .AddSingleton(harvesterRpcProxy);
+                            .AddSingleton(harvesterRpcProxy)
+                            .AddSingleton(crawlerRpcProxy);
                     }
                     else
                     {
@@ -99,21 +104,22 @@ public class ChiaDotNetFixture : IDisposable
                         var farmerHttpClient = new HttpRpcClient(farmerEndpointInfo);
                         var walletHttpClient = new HttpRpcClient(walletEndpointInfo);
                         var harvesterHttpClient = new HttpRpcClient(harvesterEndpointInfo);
+                        var crawlerHttpClient = new HttpRpcClient(crawlerEndpointInfo);
 
                         //Proxies
                         var nodeRpcClient = new FullNodeProxy(nodeHttpClient, OriginService);
                         var farmerRpcProxy = new FarmerProxy(farmerHttpClient, OriginService);
                         var walletRpcProxy = new WalletProxy(walletHttpClient, OriginService);
                         var harvesterRpcProxy = new HarvesterProxy(harvesterHttpClient, OriginService);
+                        var crawlerRpcProxy = new HarvesterProxy(crawlerHttpClient, OriginService);
 
                         //register test dependencies 
                         _ = services.AddSingleton(nodeRpcClient)
                             .AddSingleton(farmerRpcProxy)
                             .AddSingleton(walletRpcProxy)
-                            .AddSingleton(harvesterRpcProxy);
+                            .AddSingleton(harvesterRpcProxy)
+                            .AddSingleton(crawlerRpcProxy);
                     }
-
-
                 }
                 catch (Exception e)
                 {

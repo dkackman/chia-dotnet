@@ -2,7 +2,7 @@
 
 public class Endpoint
 {
-    public string Uri { get; set; }
-    public string CertPath { get; set; }
-    public string KeyPath { get; set; }
+    public string Uri { get; set; } = string.Empty;
+    public string CertPath { get; set; } = string.Empty;
+    public string KeyPath { get; set; } = string.Empty;
 }

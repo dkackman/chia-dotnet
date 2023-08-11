@@ -24,5 +24,10 @@
     "Uri": "https://127.0.0.1:8560",
     "CertPath": "E:/chia/mainnet/config/ssl/harvester/private_harvester.crt",
     "KeyPath": "E:/chia/mainnet/config/ssl/harvester/private_harvester.key"
+  },
+  "crawler": {
+    "Uri": "https://127.0.0.1:8561",
+    "CertPath": "E:/chia/mainnet/config/ssl/crawler/private_crawler.crt",
+    "KeyPath": "E:/chia/mainnet/config/ssl/crawler/private_crawler.key"
   }
 }
