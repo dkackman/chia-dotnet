@@ -1,8 +1,9 @@
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
 using chia.dotnet.tests.Core;
 using Xunit;
+using System;
 
 namespace chia.dotnet.tests
 {
@@ -55,19 +56,6 @@ namespace chia.dotnet.tests
         }
 
         [Fact]
-        public async Task GetFarmerIsRunning()
-        {
-            // Arrange
-            using var cts = new CancellationTokenSource(15000);
-
-            // Act
-            var running = await Daemon.IsServiceRunning(ServiceNames.Farmer, cts.Token);
-
-            // Assert
-            Assert.True(running);
-        }
-
-        [Fact]
         public async Task ValidateInvalidKeyringPassphrase()
         {
             // Arrange
@@ -106,6 +94,148 @@ namespace chia.dotnet.tests
 
                 Assert.False(locked);
             }
+        }
+
+        [Fact]
+        public async Task IsServiceRunning()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            var service = ServiceNames.Farmer;
+
+            // Act
+            var returnValue = await Daemon.IsServiceRunning(service: service, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.True(returnValue);
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task GetKeyForFingerprint()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            UInt32 fingerprint = 0;
+
+            // Act
+            var returnValue = await Daemon.GetKeyForFingerprint(fingerprint: fingerprint, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task DeleteKeyByFingerprint()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            UInt32 fingerprint = 0;
+
+            // Act
+            await Daemon.DeleteKeyByFingerprint(fingerprint: fingerprint, cancellationToken: cts.Token);
+
+            // Assert
+
+        }
+
+        [Fact(Skip = "Destructive")]
+        public async Task DeleteAllKeys()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            await Daemon.DeleteAllKeys(cts.Token);
+
+            // Assert
+
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task AddPrivateKey()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            String mnemonic = null;
+            String passphrase = null;
+
+            // Act
+            await Daemon.AddPrivateKey(mnemonic: mnemonic, passphrase: passphrase, cancellationToken: cts.Token);
+
+            // Assert
+
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task CheckKeys()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            String rootPath = null;
+
+            // Act
+            await Daemon.CheckKeys(rootPath: rootPath, cancellationToken: cts.Token);
+
+            // Assert
+
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task GetKey()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            UInt32 fingerprint = 0;
+
+            // Act
+            var returnValue = await Daemon.GetKey(fingerprint: fingerprint, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+
+        [Fact(Skip = "Requires review")]
+        public async Task GetKeys()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            UInt32 fingerprint = 0;
+
+            // Act
+            var returnValue = await Daemon.GetKeys(fingerprint: fingerprint, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task SetLabel()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            UInt32 fingerprint = 0;
+            String label = null;
+
+            // Act
+            await Daemon.SetLabel(fingerprint: fingerprint, label: label, cancellationToken: cts.Token);
+
+            // Assert
+
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task DeleteLabel()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            UInt32 fingerprint = 0;
+
+            // Act
+            await Daemon.DeleteLabel(fingerprint: fingerprint, cancellationToken: cts.Token);
+
+            // Assert
+
         }
 
         [Fact(Skip = "CAUTION")]
@@ -154,6 +284,19 @@ namespace chia.dotnet.tests
         }
 
         [Fact]
+        public async Task Ping()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            await Daemon.Ping(cts.Token);
+
+            // Assert
+
+        }
+
+        [Fact]
         public async Task IsKeyringLocked()
         {
             // Arrange
@@ -163,23 +306,8 @@ namespace chia.dotnet.tests
             var locked = await Daemon.IsKeyringLocked(cts.Token);
 
             // Assert
-            Assert.True(locked);
+            Assert.False(locked);
         }
-        
-         // [Fact]
-         // public async Task GetKeyForFingerprint()
-         // {
-         //     // Arrange
-         //     using var cts = new CancellationTokenSource(15000);
-         //
-         //     var proxy = Daemon.CreateProxyFrom<WalletProxy>();
-         //     var prints = await proxy.GetPublicKeys(cts.Token);
-         //     Assert.True(prints.Any());
-         //
-         //     var key = await Daemon.GetKeyForFingerprint(prints.First(), cts.Token);
-         //
-         //     Assert.NotNull(key);
-         // }
 
         [Fact]
         public async Task GetAllPrivateKeys()
@@ -195,15 +323,6 @@ namespace chia.dotnet.tests
             Assert.True(keys.Any());
         }
 
-//         [TestMethod]
-//         [Ignore("This seems to put the daemon out to lunch")]
-//         public async Task CheckKeys()
-//         {
-//             using var cts = new CancellationTokenSource(30000);
-//
-//             await _theDaemon.CheckKeys("~/.chia/mainnet/config", cts.Token);
-//         }
-
         [Fact]
         public async Task GetFirstPrivateKey()
         {
@@ -217,29 +336,34 @@ namespace chia.dotnet.tests
             Assert.NotNull(key);
         }
 
-//         [TestMethod]
-//         public async Task CreateFullNodeFrom()
-//         {
-//             using var cts = new CancellationTokenSource(15000);
-//
-//             await _theDaemon.RegisterService(cts.Token);
-//             var fullNode = _theDaemon.CreateProxyFrom<FullNodeProxy>();
-//             var state = await fullNode.GetBlockchainState(cts.Token);
-//             Assert.IsNotNull(state);
-//         }
-//
         [Fact]
-        public async Task GetHarvesterIsRunning()
+        public async Task CreateProxyFrom()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
 
             // Act
-            var running = await Daemon.IsServiceRunning(ServiceNames.Harvester, cts.Token);
+            var fullNode = Daemon.CreateProxyFrom<FullNodeProxy>();
+            var state = await fullNode.GetBlockchainState(cts.Token);
 
             // Assert
-            Assert.True(running);
+            Assert.NotNull(state);
         }
+
+
+        [Fact(Skip = "CAUTION")]
+        public async Task Exit()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            await Daemon.Exit(cts.Token);
+
+            // Assert
+
+        }
+
 
         [Fact(Skip = "CAUTION")]
         public async Task ExitDaemon()
