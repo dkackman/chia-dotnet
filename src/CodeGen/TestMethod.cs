@@ -107,10 +107,12 @@ namespace CodeGen
                 return "DateTime.Now";
             }
 
+#pragma warning disable IDE0046 // Convert to conditional expression
             if (type == typeof(string))
             {
                 return "string.Empty";
             }
+#pragma warning restore IDE0046 // Convert to conditional expression
 
 
             return type.IsValueType ? Activator.CreateInstance(type)?.ToString() ?? "null" : "null";

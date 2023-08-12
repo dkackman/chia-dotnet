@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using System.Linq;
 using chia.dotnet.tests.Core;
 using Xunit;
-using System;
 
 namespace chia.dotnet.tests
 {
