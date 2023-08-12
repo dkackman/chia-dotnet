@@ -5,6 +5,11 @@
     "CertPath": "E:/chia/mainnet/config/ssl/daemon/private_daemon.crt",
     "KeyPath": "E:/chia/mainnet/config/ssl/daemon/private_daemon.key"
   },
+  "plotter": {
+    "Uri": "wss://127.0.0.1:55400",
+    "CertPath": "E:/chia/mainnet/config/ssl/daemon/private_daemon.crt",
+    "KeyPath": "E:/chia/mainnet/config/ssl/daemon/private_daemon.key"
+  },
   "fullnode": {
     "Uri": "https://127.0.0.1:8555",
     "CertPath": "E:/chia/mainnet/config/ssl/full_node/private_full_node.crt",
