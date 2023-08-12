@@ -53,12 +53,15 @@ public class ChiaDotNetFixture : IDisposable
                     var walletConfig = new Endpoint();
                     var harvesterConfig = new Endpoint();
                     var crawlerConfig = new Endpoint();
+                    var plotterConfig = new Endpoint();
+
                     hostContext.Configuration.GetSection("daemon").Bind(daemonConfig);
                     hostContext.Configuration.GetSection("fullnode").Bind(fullNodeConfig);
                     hostContext.Configuration.GetSection("farmer").Bind(farmerConfig);
                     hostContext.Configuration.GetSection("harvester").Bind(harvesterConfig);
                     hostContext.Configuration.GetSection("wallet").Bind(walletConfig);
                     hostContext.Configuration.GetSection("crawler").Bind(crawlerConfig);
+                    hostContext.Configuration.GetSection("plotter").Bind(plotterConfig);
 
                     // Get all endpoints
                     var daemonEndpointInfo = GetEndpointInfo(daemonConfig);
@@ -67,6 +70,7 @@ public class ChiaDotNetFixture : IDisposable
                     var walletEndpointInfo = GetEndpointInfo(walletConfig);
                     var harvesterEndpointInfo = GetEndpointInfo(harvesterConfig);
                     var crawlerEndpointInfo = GetEndpointInfo(crawlerConfig);
+                    var plotterEndpointInfo = GetEndpointInfo(plotterConfig);
 
                     if (hostContext.Configuration["mode"] == "0")
                     {
@@ -86,6 +90,7 @@ public class ChiaDotNetFixture : IDisposable
                         var walletRpcProxy = new WalletProxy(wssClient, OriginService);
                         var harvesterRpcProxy = new HarvesterProxy(wssClient, OriginService);
                         var crawlerRpcProxy = new CrawlerProxy(wssClient, OriginService);
+                        var plotterRpcProxy = new PlotterProxy(wssClient, OriginService);
 
                         //register test dependencies 
                         _ = services.AddSingleton(daemon)
@@ -94,10 +99,13 @@ public class ChiaDotNetFixture : IDisposable
                             .AddSingleton(farmerRpcProxy)
                             .AddSingleton(walletRpcProxy)
                             .AddSingleton(harvesterRpcProxy)
-                            .AddSingleton(crawlerRpcProxy);
+                            .AddSingleton(crawlerRpcProxy)
+                            .AddSingleton(plotterRpcProxy);
                     }
                     else
                     {
+                        // Daemon and Plotter proxies require wss so no http version
+
                         //appsettings mode is httpsClient
                         var cts = new CancellationTokenSource(120000);
                         var nodeHttpClient = new HttpRpcClient(fullNodeEndpointInfo);
