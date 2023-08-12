@@ -66,9 +66,7 @@ namespace chia.dotnet
         /// <returns>A boolean value indicating whether the service is running</returns>
         public async Task<bool> IsServiceRunning(string service, CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("is_running", CreateDataObject(service), cancellationToken).ConfigureAwait(false);
-
-            return response.is_running;
+            return await SendMessage<bool>("is_running", CreateDataObject(service), "is_running", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -78,16 +76,7 @@ namespace chia.dotnet
         /// <returns>The chia version as a string</returns>
         public async Task<string> GetVersion(CancellationToken cancellationToken = default)
         {
-            try
-            {
-                var response = await SendMessage("get_version", cancellationToken).ConfigureAwait(false);
-
-                return response.version;
-            }
-            catch (ResponseException)
-            {
-                return "unknown";
-            }
+            return await SendMessage<string>("get_version", "version", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
