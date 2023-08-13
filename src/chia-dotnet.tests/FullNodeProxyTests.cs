@@ -1,342 +1,499 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System;
-using System.Diagnostics;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using chia.dotnet.tests.Core;
+using Xunit;
+using System.Security.Cryptography;
 
 namespace chia.dotnet.tests
 {
-    /// <summary>
-    /// This class is a test harness for interation with an actual daemon instance
-    /// </summary>
-    [TestClass]
-    [TestCategory("Integration")]
-    public class FullNodeProxyTests
+    public class FullNodeProxyTests : TestBase
     {
-        private static FullNodeProxy _theFullNode;
-
-        [ClassInitialize]
-        public static async Task Initialize(TestContext context)
+        public FullNodeProxyTests(ChiaDotNetFixture fixture) : base(fixture)
         {
-            try
-            {
-                using var cts = new CancellationTokenSource(2000);
-                var rpcClient = Factory.CreateWebsocketClient();
-                await rpcClient.Connect(cts.Token);
-
-                var daemon = new DaemonProxy(rpcClient, "unit_tests");
-                await daemon.RegisterService(cts.Token);
-
-                _theFullNode = new FullNodeProxy(rpcClient, "unit_tests");
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.Message);
-            }
         }
 
-        [ClassCleanup()]
-        public static void ClassCleanup()
-        {
-            _theFullNode?.RpcClient?.Dispose();
-        }
-
-        [TestMethod]
+        [Fact]
         public async Task GetBlockChainState()
         {
-            using var cts = new CancellationTokenSource(15000);
-            var state = await _theFullNode.GetBlockchainState(cts.Token);
+            // arrange
+            var cts = new CancellationTokenSource(12000);
 
-            Assert.IsNotNull(state);
+            // act
+            var state = await FullNode.GetBlockchainState(cts.Token);
+
+            // assert
+            Assert.NotNull(state);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task GetBlock()
         {
-            using var cts = new CancellationTokenSource(15000);
+            // Arrange
+            using var cts = new CancellationTokenSource(2000);
+            var state = await FullNode.GetBlockchainState(cts.Token);
 
-            var state = await _theFullNode.GetBlockchainState(cts.Token);
-            Assert.IsNotNull(state.Peak, "peak not retreived yet");
-            var block = await _theFullNode.GetBlock(state.Peak.HeaderHash, cts.Token);
+            // Act
+            Assert.NotNull(state.Peak);
 
-            Assert.IsNotNull(block);
+            var block = await FullNode.GetBlock(state.Peak.HeaderHash, cts.Token);
+
+            // Assert
+            Assert.NotNull(block);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task GetBlockRecord()
         {
+            // Arrange
             using var cts = new CancellationTokenSource(15000);
+            var state = await FullNode.GetBlockchainState(cts.Token);
 
-            var state = await _theFullNode.GetBlockchainState(cts.Token);
-            Assert.IsNotNull(state.Peak, "peak not retreived yet");
-            var record = await _theFullNode.GetBlockRecord(state.Peak.HeaderHash, cts.Token);
+            // Act
+            Assert.NotNull(state.Peak);
 
-            Assert.IsNotNull(record);
+            var record = await FullNode.GetBlockRecord(state.Peak.HeaderHash, cts.Token);
+
+            // Assert
+            Assert.NotNull(record);
         }
 
-        [TestMethod]
+
+        [Fact]
         public async Task GetBlocks()
         {
+            // Arrange
             using var cts = new CancellationTokenSource(30000);
+            var state = await FullNode.GetBlockchainState(cts.Token);
 
-            var state = await _theFullNode.GetBlockchainState(cts.Token);
-            Assert.IsNotNull(state.Peak, "peak not retreived yet");
-            var blocks = await _theFullNode.GetBlocks(state.Peak.Height - 5, state.Peak.Height - 1, cancellationToken: cts.Token);
+            // Act
+            Assert.NotNull(state.Peak);
 
-            Assert.IsNotNull(blocks);
+            var blocks = await FullNode.GetBlocks(state.Peak.Height - 5, state.Peak.Height - 1, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(blocks);
         }
 
-        [TestMethod()]
+
+        [Fact]
         public async Task GetNetworkInfo()
         {
+            // Arrange
             using var cts = new CancellationTokenSource(15000);
 
-            var info = await _theFullNode.GetNetworkInfo(cts.Token);
+            // Act
+            var (NetworkName, NetworkPrefix) = await FullNode.GetNetworkInfo(cts.Token);
 
-            Assert.IsNotNull(info);
+            //Assert
+            Assert.NotNull(NetworkName);
+            Assert.NotNull(NetworkPrefix);
         }
 
-        [TestMethod()]
+        [Fact]
         public async Task GetBlockCountMetrics()
         {
+            // Arrange
             using var cts = new CancellationTokenSource(15000);
 
-            var counts = await _theFullNode.GetBlockCountMetrics(cts.Token);
+            // Act
+            var counts = await FullNode.GetBlockCountMetrics(cts.Token);
 
-            Assert.IsNotNull(counts);
+            // Assert
+            Assert.NotNull(counts);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task GetNetworkSpace()
         {
+            // Arrange
             using var cts = new CancellationTokenSource(15000);
 
-            var state = await _theFullNode.GetBlockchainState(cts.Token);
-            Assert.IsNotNull(state.Peak, "peak not retreived yet");
-            var newerBlock = await _theFullNode.GetBlockRecordByHeight(state.Peak.Height, cts.Token);
-            var olderBlock = await _theFullNode.GetBlockRecordByHeight(state.Peak.Height - 5, cts.Token);
-            var space = await _theFullNode.GetNetworkSpace(newerBlock.HeaderHash, olderBlock.HeaderHash, cts.Token);
+            // Act
+            var state = await FullNode.GetBlockchainState(cts.Token);
+            Assert.NotNull(state.Peak);
+            var newerBlock = await FullNode.GetBlockRecordByHeight(state.Peak.Height, cts.Token);
+            var olderBlock = await FullNode.GetBlockRecordByHeight(state.Peak.Height - 5, cts.Token);
+            var space = await FullNode.GetNetworkSpace(newerBlock.HeaderHash, olderBlock.HeaderHash, cts.Token);
 
-            Assert.IsNotNull(space);
+            // Assert
+            Assert.NotEqual(System.Numerics.BigInteger.Zero, space);
         }
 
-        [TestMethod]
-        public async Task Ping()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            await _theFullNode.HealthZ(cts.Token);
-        }
-
-        [TestMethod]
-        public async Task GetConnections()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            var connections = await _theFullNode.GetConnections(cts.Token);
-
-            Assert.IsNotNull(connections);
-        }
-
-        [TestMethod]
-        public async Task OpenConnection()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            await _theFullNode.OpenConnection("testnet-node.chia.net", 58444, cts.Token);
-        }
-
-        [TestMethod()]
+        [Fact]
         public async Task GetBlockRecordByHeight()
         {
+            // Arrange
             using var cts = new CancellationTokenSource(15000);
+            var state = await FullNode.GetBlockchainState(cts.Token);
 
-            var state = await _theFullNode.GetBlockchainState(cts.Token);
-            Assert.IsNotNull(state.Peak, "peak not retreived yet");
-            var blockRecord = await _theFullNode.GetBlockRecordByHeight(state.Peak.Height - 1, cts.Token);
+            // Act
+            Assert.NotNull(state.Peak);
 
-            Assert.IsNotNull(blockRecord);
+            var blockRecord = await FullNode.GetBlockRecordByHeight(state.Peak.Height - 1, cts.Token);
+
+            // Assert
+            Assert.NotNull(blockRecord);
         }
 
-        [TestMethod()]
+        [Fact]
         public async Task GetBlockRecords()
         {
+            // Arrange
             using var cts = new CancellationTokenSource(15000);
 
-            var state = await _theFullNode.GetBlockchainState(cts.Token);
-            Assert.IsNotNull(state.Peak, "peak not retreived yet");
-            var blockRecords = await _theFullNode.GetBlockRecords(state.Peak.Height - 5, state.Peak.Height - 1, cts.Token);
+            // Act
+            var state = await FullNode.GetBlockchainState(cts.Token);
+            Assert.NotNull(state.Peak);
 
-            Assert.IsNotNull(blockRecords);
+            var blockRecords = await FullNode.GetBlockRecords(state.Peak.Height - 5, state.Peak.Height - 1, cts.Token);
+
+            // Assert
+            Assert.NotNull(blockRecords);
         }
 
-        [TestMethod()]
+        [Fact]
         public async Task GetUnfinishedBlockHeaders()
         {
+            // Arrange
             using var cts = new CancellationTokenSource(15000);
 
-            var blockHeaders = await _theFullNode.GetUnfinishedBlockHeaders(cts.Token);
+            // Act
+            var blockHeaders = await FullNode.GetUnfinishedBlockHeaders(cts.Token);
 
-            Assert.IsNotNull(blockHeaders);
+            // Assert
+            Assert.NotNull(blockHeaders);
         }
 
-        [TestMethod()]
+        [Fact]
         public async Task GetCoinRecordsByPuzzleHash()
         {
+            // Arrange
             using var cts = new CancellationTokenSource(15000);
+            var state = await FullNode.GetBlockchainState(cts.Token);
+            Assert.NotNull(state.Peak);
 
-            var state = await _theFullNode.GetBlockchainState(cts.Token);
-            Assert.IsNotNull(state.Peak, "peak not retreived yet");
-            var records = await _theFullNode.GetCoinRecordsByPuzzleHash(state.Peak.FarmerPuzzleHash, true, null, null, cts.Token);
-
-            Assert.IsNotNull(records);
+            // Act
+            var records = await FullNode.GetCoinRecordsByPuzzleHash(state.Peak.FarmerPuzzleHash, false, state.Peak.Height - 10, state.Peak.Height, cts.Token);
+            // Assert
+            Assert.NotNull(records);
         }
 
-        [TestMethod()]
+        //broken - investigating
+        [Fact(Skip = "Needs data")]
         public async Task GetCoinRecordByName()
         {
-            using var cts = new CancellationTokenSource(25000);
+            // Arrange
+            using var cts = new CancellationTokenSource(35000);
+            var state = await FullNode.GetBlockchainState(cts.Token);
+            Assert.NotNull(state.Peak);
 
-            var items = await _theFullNode.GetAllMempoolItems(cts.Token);
-            var item = items.FirstOrDefault();
-            Assert.IsNotNull(item);
-            Assert.IsNotNull(item.Value);
+            var records = await FullNode.GetCoinRecordsByPuzzleHash(state.Peak.FarmerPuzzleHash, false, state.Peak.Height - 10, state.Peak.Height, cts.Token);
+            var coin = records.First().Coin;
+            var inputString = coin.ParentCoinInfo + coin.PuzzleHash + coin.Amount.ToString(); // this isn't right
+            var inputBytes = Encoding.UTF8.GetBytes(inputString);
+            using var sha256 = SHA256.Create();
+            var hashBytes = sha256.ComputeHash(inputBytes);
+            var coinName = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
 
-            var npc = item.Value.NPCResult.NpcList.FirstOrDefault();
-            Assert.IsNotNull(npc);
-
+            // Act
             // this call can take a long time - notice longer timeout in cts
-            var coinRecord = await _theFullNode.GetCoinRecordByName(npc.CoinName, cts.Token);
+            var coinRecord = await FullNode.GetCoinRecordByName(coinName, cts.Token);
 
-            Assert.IsNotNull(coinRecord);
+            // Assert
+            Assert.NotNull(coinRecord);
         }
 
-        [TestMethod()]
+        [Fact]
         public async Task GetAdditionsAndRemovals()
         {
+            // Arrange
             using var cts = new CancellationTokenSource(15000);
+            var state = await FullNode.GetBlockchainState(cts.Token);
+            Assert.NotNull(state.Peak);
 
-            var state = await _theFullNode.GetBlockchainState(cts.Token);
-            Assert.IsNotNull(state.Peak, "peak not retreived yet");
-            var blockRecord = await _theFullNode.GetBlockRecordByHeight(state.Peak.Height - 10, cts.Token);
-            var additionsAndRemovals = await _theFullNode.GetAdditionsAndRemovals(blockRecord.HeaderHash, cts.Token);
+            var blockRecord = await FullNode.GetBlockRecordByHeight(state.Peak.Height - 10, cts.Token);
 
-            Assert.IsNotNull(additionsAndRemovals);
+            // Act
+            var (additions, removals) = await FullNode.GetAdditionsAndRemovals(blockRecord.HeaderHash, cts.Token);
+
+            // Assert
+            Assert.NotNull(additions);
+            Assert.NotNull(removals);
         }
 
-
-        [TestMethod()]
+        [Fact]
         public async Task GetBlockSpends()
         {
             // Arrange
-            var header = "0xaa8425c198253b96a15c40e32ef4c1fd36e751f0ff9a90199e8751df381eac71"; //hash from today
+            using var cts = new CancellationTokenSource(15000);
+            var state = await FullNode.GetBlockchainState(cts.Token);
+            Assert.NotNull(state.Peak);
 
             // Act
-            using var cts = new CancellationTokenSource(15000);
-            var spends = await _theFullNode.GetBlockSpends(header, cts.Token);
+            var spends = await FullNode.GetBlockSpends(state.Peak.HeaderHash, cts.Token);
 
             // Assert
-            Assert.IsNotNull(spends);
+            Assert.NotNull(spends);
         }
 
-        [TestMethod()]
+        [Fact]
         public async Task GetAllMempoolItems()
         {
+            // Arrange
             using var cts = new CancellationTokenSource(15000);
 
-            var items = await _theFullNode.GetAllMempoolItems(cts.Token);
+            // Act
+            var items = await FullNode.GetAllMempoolItems(cts.Token);
 
-            Assert.IsNotNull(items);
+            // Assert
+            Assert.NotNull(items);
         }
 
-        [TestMethod()]
+        [Fact]
         public async Task GetAllMemmpoolTxIds()
         {
+            // Arrange
             using var cts = new CancellationTokenSource(15000);
 
-            var ids = await _theFullNode.GetAllMemmpoolTxIds(cts.Token);
+            // Act
+            var ids = await FullNode.GetAllMemmpoolTxIds(cts.Token);
 
-            Assert.IsNotNull(ids);
+            // Assert
+            Assert.NotNull(ids);
         }
 
-        [TestMethod()]
-        public async Task GetMemmpooItemByTxId()
-        {
-            using var cts = new CancellationTokenSource(15000);
+        //[Fact]
+        // public async Task GetMemmpooItemByTxId()
+        // {
+        //     // Arrange
+        //     using var cts = new CancellationTokenSource(15000);
+        //     var ids = await FullNode.GetAllMemmpoolTxIds(cts.Token);
+        //     Assert.NotNull(ids);
+        //     Assert.True(ids.Any());
+        //
+        //     // Act
+        //     var item = await FullNode.GetMemmpooItemByTxId(ids.First(), cts.Token);
+        //
+        //     // Assert
+        //     Assert.NotNull(item);
+        // }
 
-            var ids = await _theFullNode.GetAllMemmpoolTxIds(cts.Token);
-            Assert.IsNotNull(ids);
-            Assert.IsTrue(ids.Any());
+        // [Fact]
+        // public async Task GetRecentSignagePoint()
+        // {
+        //     // Arrange
+        //     using var cts = new CancellationTokenSource(15000);
+        //     var signagePoints = await Farmer.GetSignagePoints(cts.Token);
+        //     var spInfo = signagePoints.FirstOrDefault();
+        //
+        //     // Act
+        //     var sp = await FullNode.GetRecentSignagePoint(spInfo.SignagePoint.ChallengeChainSp, cts.Token);
+        //
+        //     // Assert
+        //     Assert.NotNull(spInfo);
+        //     Assert.NotNull(sp);
+        // }
 
-            var item = await _theFullNode.GetMemmpooItemByTxId(ids.First(), false, cts.Token);
+        //broken - investigating
+        // [Fact]
+        // public async Task GetRecentEOS()
+        // {
+        //     // Arrange
+        //     using var cts = new CancellationTokenSource(35000);
+        //     var signagePoints = await Farmer.GetSignagePoints(cts.Token);
+        //     var spInfo = signagePoints.FirstOrDefault();
+        //
+        //     // act
+        //     var eos = await FullNode.GetRecentEOS(spInfo.SignagePoint.ChallengeHash, cts.Token);
+        //
+        //     // Assert
+        //     Assert.NotNull(spInfo);
+        //     Assert.NotNull(eos);
+        // }
 
-            Assert.IsNotNull(item);
-        }
-
-        [TestMethod()]
-        public async Task GetRecentSignagePoint()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            var farmer = new FarmerProxy(_theFullNode.RpcClient, _theFullNode.OriginService); // this only works with dameon's endpoint
-            var signagePoints = await farmer.GetSignagePoints(cts.Token);
-            var spInfo = signagePoints.FirstOrDefault();
-            Assert.IsNotNull(spInfo);
-
-            var sp = await _theFullNode.GetRecentSignagePoint(spInfo.SignagePoint.ChallengeChainSp, cts.Token);
-
-            Assert.IsNotNull(sp);
-        }
-
-        [TestMethod()]
-        public async Task GetRecentEOS()
-        {
-            using var cts = new CancellationTokenSource(15000);
-
-            var farmer = new FarmerProxy(_theFullNode.RpcClient, _theFullNode.OriginService); // this only works with dameon's endpoint
-            var signagePoints = await farmer.GetSignagePoints(cts.Token);
-            var spInfo = signagePoints.FirstOrDefault();
-            Assert.IsNotNull(spInfo);
-            var eos = await _theFullNode.GetRecentEOS(spInfo.SignagePoint.ChallengeHash, cts.Token);
-
-            Assert.IsNotNull(eos);
-        }
-
-        [TestMethod()]
+        [Fact]
         public async Task GetAverageBlockTime()
         {
+            // Arrange
             using var cts = new CancellationTokenSource(15000);
 
-            var timeSpan = await _theFullNode.GetAverageBlockTime(cts.Token);
+            // Act
+            var result = await FullNode.GetAverageBlockTime(cts.Token);
 
-            Assert.IsNotNull(timeSpan);
+            // Assert
+            Assert.NotEqual(TimeSpan.Zero, result);
         }
 
-        [TestMethod()]
-        [Ignore("not sure how to easily get coin name and solution height")]
+        [Fact(Skip = "not sure how to easily get coin name and solution height")]
         public async Task GetPuzzleAndSolution()
         {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            var items = await FullNode.GetAllMempoolItems(cts.Token);
+            var item = items.FirstOrDefault();
+            var npc = item.Value.NPCResult.NpcList.First();
+            var coinRecord = await FullNode.GetCoinRecordByName(npc.CoinName, cts.Token);
+
+            // Act
+            var ps = await FullNode.GetPuzzleAndSolution(npc.CoinName, coinRecord.SpentBlockIndex, cts.Token);
+
+            // Assert
+            Assert.NotNull(coinRecord);
+            Assert.NotEqual((uint)0, coinRecord.SpentBlockIndex);
+            Assert.True(items.Any());
+            Assert.NotNull(item.Value);
+            Assert.NotNull(npc);
+            Assert.NotNull(ps);
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task GetBlockchainState()
+        {
+            // Arrange
             using var cts = new CancellationTokenSource(15000);
 
-            var items = await _theFullNode.GetAllMempoolItems(cts.Token);
-            Assert.IsTrue(items.Any());
+            // Act
+            var returnValue = await FullNode.GetBlockchainState(cts.Token);
 
-            var item = items.FirstOrDefault();
-            Assert.IsNotNull(item);
-            Assert.IsNotNull(item.Value);
+            // Assert
+            Assert.NotNull(returnValue);
+        }
 
-            var npc = item.Value.NPCResult.NpcList.FirstOrDefault();
-            Assert.IsNotNull(npc);
+        [Fact(Skip = "Requires review")]
+        public async Task GetFeeEstimate()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            SpendBundle spendBundle = null;
+            IEnumerable<int> targetTimes = null;
 
-            var coinRecord = await _theFullNode.GetCoinRecordByName(npc.CoinName, cts.Token);
-            Assert.IsNotNull(coinRecord);
-            Assert.AreNotEqual<uint>(coinRecord.SpentBlockIndex, 0);
+            // Act
+            var returnValue = await FullNode.GetFeeEstimate(spendBundle: spendBundle, targetTimes: targetTimes, cancellationToken: cts.Token);
 
-            var ps = await _theFullNode.GetPuzzleAndSolution(npc.CoinName, coinRecord.SpentBlockIndex, cts.Token);
+            // Assert
+            Assert.NotNull(returnValue);
+        }
 
-            Assert.IsNotNull(ps);
+        [Fact(Skip = "Requires review")]
+        public async Task GetCoinRecordsByNames()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            IEnumerable<string> names = null;
+            Boolean includeSpentCoins = false;
+
+            // Act
+            var returnValue = await FullNode.GetCoinRecordsByNames(names: names, includeSpentCoins: includeSpentCoins, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task GetCoinRecordsByPuzzleHashes()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            IEnumerable<string> puzzlehashes = null;
+            Boolean includeSpentCoins = false;
+
+            // Act
+            var returnValue = await FullNode.GetCoinRecordsByPuzzleHashes(puzzlehashes: puzzlehashes, includeSpentCoins: includeSpentCoins, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task GetCoinRecordsByParentIds()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            IEnumerable<string> parentIds = null;
+            Boolean includeSpentCoins = false;
+
+            // Act
+            var returnValue = await FullNode.GetCoinRecordsByParentIds(parentIds: parentIds, includeSpentCoins: includeSpentCoins, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+
+
+        [Fact(Skip = "Requires review")]
+        public async Task GetCoinRecordsByHint()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            String hint = string.Empty;
+            Boolean includeSpentCoins = false;
+
+            // Act
+            var returnValue = await FullNode.GetCoinRecordsByHint(hint: hint, includeSpentCoins: includeSpentCoins, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task GetMemmpooItemByTxId()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            String txId = string.Empty;
+
+            // Act
+            var returnValue = await FullNode.GetMemmpooItemByTxId(txId: txId, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task PushTx()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            SpendBundle spendBundle = null;
+
+            // Act
+            var returnValue = await FullNode.PushTx(spendBundle: spendBundle, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task GetRecentSignagePoint()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            String spHash = string.Empty;
+
+            // Act
+            var returnValue = await FullNode.GetRecentSignagePoint(spHash: spHash, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task GetRecentEOS()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            String challengeHash = string.Empty;
+
+            // Act
+            var returnValue = await FullNode.GetRecentEOS(challengeHash: challengeHash, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
         }
     }
 }

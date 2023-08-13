@@ -231,7 +231,7 @@ namespace chia.dotnet
         /// <param name="endHeight">confirmation end height for search</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
-        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHash(string puzzlehash, bool includeSpentCoins, int? startHeight, int? endHeight, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHash(string puzzlehash, bool includeSpentCoins, uint? startHeight, uint? endHeight, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(puzzlehash))
             {
@@ -363,11 +363,6 @@ namespace chia.dotnet
         /// <returns>A <see cref="CoinRecord"/></returns>
         public async Task<CoinRecord> GetCoinRecordByName(string name, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(name))
-            {
-                throw new ArgumentNullException(nameof(name));
-            }
-
             dynamic data = new ExpandoObject();
             data.name = name;
 

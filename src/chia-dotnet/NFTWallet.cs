@@ -65,7 +65,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Gets NFTs from a wallet
+        /// Gets NFTs from a wallet 
         /// </summary>
         /// <param name="startIndex"></param>
         /// <param name="num"></param>
@@ -79,9 +79,7 @@ namespace chia.dotnet
             data.num = num;
             data.ignore_size_limit = ignoreSizeLimit;
 
-            var response = await WalletProxy.SendMessage("nft_get_nfts", data, cancellationToken).ConfigureAwait(false);
-
-            return Converters.ToObject<IEnumerable<NFTInfo>>(response, "nft_list");
+            return await WalletProxy.SendMessage<IEnumerable<NFTInfo>>("nft_get_nfts", data, "nft_list", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -91,9 +89,7 @@ namespace chia.dotnet
         /// <returns>The Did</returns>
         public async Task<string> GetDid(CancellationToken cancellationToken = default)
         {
-            var response = await WalletProxy.SendMessage("nft_get_wallet_did", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
-
-            return response.did_id;
+            return await WalletProxy.SendMessage("nft_get_wallet_did", CreateWalletDataObject(), "did_id", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -107,26 +103,12 @@ namespace chia.dotnet
         public async Task<(SpendBundle SpendBundle, string NftId)> MintNFT(NFTMintingInfo info, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
-            if (info.RoyaltyAddress is not null)
-            {
-                data.royalty_address = info.RoyaltyAddress;
-            }
-            if (info.TargetAddress is not null)
-            {
-                data.target_address = info.TargetAddress;
-            }
-            if (info.MetaHash is not null)
-            {
-                data.meta_hash = info.MetaHash;
-            }
-            if (info.LicenseHash is not null)
-            {
-                data.license_hash = info.LicenseHash;
-            }
-            if (info.DidId is not null)
-            {
-                data.did_id = info.DidId;
-            }
+
+            data.royalty_address = info.RoyaltyAddress;
+            data.target_address = info.TargetAddress;
+            data.meta_hash = info.MetaHash;
+            data.license_hash = info.LicenseHash;
+            data.did_id = info.DidId;
             data.uris = info.Uris.ToList();
             data.meta_uris = info.MetaUris.ToList();
             data.license_uris = info.LicenseUris.ToList();
@@ -153,46 +135,21 @@ namespace chia.dotnet
 
             data.metadata_list = info.MetadataList.ToList();
             data.mint_number_start = info.MintNumberStart;
-
-            if (info.RoyaltyAddress is not null)
-            {
-                data.royalty_address = info.RoyaltyAddress;
-            }
-            if (info.RoyaltyPercentage is not null)
-            {
-                data.royalty_percentage = info.RoyaltyPercentage;
-            }
+            data.royalty_address = info.RoyaltyAddress;
+            data.royalty_percentage = info.RoyaltyPercentage;
+            data.mint_total = info.MintTotal;
+            data.xch_change_target = info.XchChangeTarget;
+            data.new_innerpuzhash = info.NewInnerpuzhash;
+            data.new_p2_puzhash = info.NewP2Puzhash;
+            data.did_coin = info.DidCoin;
+            data.did_lineage_parent_hex = info.DidLineageParentHex;
             if (info.TargetList is not null)
             {
                 data.target_list = info.TargetList.ToList();
             }
-            if (info.MintTotal is not null)
-            {
-                data.mint_total = info.MintTotal;
-            }
             if (info.XchCoins is not null)
             {
-                data.xch_coin = info.XchCoins.ToList();
-            }
-            if (info.XchChangeTarget is not null)
-            {
-                data.xch_change_target = info.XchChangeTarget;
-            }
-            if (info.NewInnerpuzhash is not null)
-            {
-                data.new_innerpuzhash = info.NewInnerpuzhash;
-            }
-            if (info.NewP2Puzhash is not null)
-            {
-                data.new_p2_puzhash = info.NewP2Puzhash;
-            }
-            if (info.DidCoin is not null)
-            {
-                data.did_coin = info.DidCoin;
-            }
-            if (info.DidLineageParentHex is not null)
-            {
-                data.did_lineage_parent_hex = info.DidLineageParentHex;
+                data.xch_coins = info.XchCoins.ToList();
             }
             data.mint_from_did = info.MintFromDid;
             data.fee = fee;

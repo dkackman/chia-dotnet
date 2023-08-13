@@ -2,84 +2,66 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using chia.dotnet.tests.Core;
+using Xunit;
 
 namespace chia.dotnet.tests
 {
-    [TestClass]
-    [TestCategory("Integration")]
-    public class PlotterProxyTests
+    public class PlotterProxyTests : TestBase
     {
-        private static PlotterProxy _thePlotter;
+        public PlotterProxyTests(ChiaDotNetFixture fixture) : base(fixture)
+        {
+        }
 
-        [ClassInitialize]
-        public static async Task Initialize(TestContext context)
+        [Fact]
+        public async Task FailOnInvalidConfig()
         {
             using var cts = new CancellationTokenSource(15000);
 
-            var rpcClient = Factory.CreateWebsocketClient();
-            await rpcClient.Connect(cts.Token);
-
-            var daemon = new DaemonProxy(rpcClient, "unit_tests");
-            await daemon.RegisterService(cts.Token);
-
-            _thePlotter = new PlotterProxy(rpcClient, "unit_tests");
-        }
-
-        [ClassCleanup()]
-        public static void ClassCleanup()
-        {
-            _thePlotter.RpcClient?.Dispose();
-        }
-
-        [TestMethod()]
-        [ExpectedException(typeof(InvalidOperationException))]
-        public async Task FailOnInvalidConfig()
-        {
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
-
             var config = new PlotterConfig();
-            _ = await _thePlotter.StartPlotting(config, cts.Token);
+
+            _ = await Assert.ThrowsAsync<InvalidOperationException>(
+                async () => await Plotter.StartPlotting(config, cts.Token));
         }
 
-        [TestMethod()]
-        [TestCategory("CAUTION")]
-        public async Task StartPlotting()
+        [Fact]
+        public async Task StartStopPlotting()
         {
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+            using var cts = new CancellationTokenSource(15000);
 
             var config = new PlotterConfig()
             {
                 Size = KSize.K25,
                 OverrideK = true,
-                TempDir = "/home/don/plots",
-                DestinationDir = "/home/don/plots"
+                TempDir = System.IO.Path.GetTempPath(),
+                DestinationDir = System.IO.Path.GetTempPath()
             };
 
-            var ids = await _thePlotter.StartPlotting(config);
-            Assert.IsNotNull(ids);
-            Assert.AreEqual(1, ids.Count());
+            var ids = await Plotter.StartPlotting(config);
+            Assert.NotNull(ids);
+            _ = Assert.Single(ids);
+
+            await Plotter.StopPlotting(id: ids.First(), cancellationToken: cts.Token);
         }
 
-        [TestMethod()]
+        [Fact]
         public async Task RegisterPlotter()
         {
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+            using var cts = new CancellationTokenSource(15000);
 
-            var q = await _thePlotter.RegisterPlotter(cts.Token);
+            var q = await Plotter.RegisterPlotter(cts.Token);
 
-            Assert.IsNotNull(q);
+            Assert.NotNull(q);
         }
 
-        [TestMethod()]
+        [Fact]
         public async Task GetPlotters()
         {
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+            using var cts = new CancellationTokenSource(15000);
 
-            var plotters = await _thePlotter.GetPlotters(cts.Token);
+            var plotters = await Plotter.GetPlotters(cts.Token);
 
-            Assert.IsNotNull(plotters);
+            Assert.NotNull(plotters);
         }
     }
 }

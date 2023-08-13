@@ -333,5 +333,15 @@ namespace chia.dotnet
                 fee: fee,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }
+
+        /// <summary>
+        /// Get a list of all unacknowledged CATs.
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The list of <see cref="Token"/>s</returns>
+        public async Task<IEnumerable<Token>> GetStrayCats(CancellationToken cancellationToken = default)
+        {
+            return await WalletProxy.SendMessage<IEnumerable<Token>>("get_stray_cats", "stray_cats", cancellationToken).ConfigureAwait(false);
+        }
     }
 }

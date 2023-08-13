@@ -1,4 +1,6 @@
-﻿namespace chia.dotnet
+﻿using System;
+
+namespace chia.dotnet
 {
     public record WalletBalance
     {
@@ -12,6 +14,6 @@
         public WalletType WalletType { get; init; }
         public string? AssetId { get; init; }
         public uint WalletId { get; init; }
-        public int? Fingerprint { get; init; }
+        public uint? Fingerprint { get; init; }
     }
 }

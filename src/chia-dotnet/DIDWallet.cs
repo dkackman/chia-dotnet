@@ -133,9 +133,7 @@ namespace chia.dotnet
         /// <returns>The pubkey</returns>
         public async Task<string> GetPubKey(CancellationToken cancellationToken = default)
         {
-            var response = await WalletProxy.SendMessage("did_get_pubkey", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
-
-            return response.pubkey;
+            return await WalletProxy.SendMessage("did_get_pubkey", CreateWalletDataObject(), "pubkey", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -318,9 +316,7 @@ namespace chia.dotnet
         {
             dynamic data = CreateWalletDataObject();
 
-            var response = await WalletProxy.SendMessage("did_create_backup_file", data, cancellationToken).ConfigureAwait(false);
-
-            return response.backup_data;
+            return await WalletProxy.SendMessage("did_create_backup_file", data, "backup_data", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

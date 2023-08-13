@@ -1,11 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Xunit;
 
 namespace chia.dotnet.tests
 {
-    [TestClass]
     public class PlotterConfigTests
     {
-        [TestMethod()]
+        [Fact]
         public void ServiceNameIsIncluded()
         {
             var config = new PlotterConfig()
@@ -17,10 +16,10 @@ namespace chia.dotnet.tests
 
             dynamic serializable = config.PrepareForSerialization();
 
-            Assert.AreEqual(serializable.service, ServiceNames.Plotter);
+            Assert.Equal(serializable.service, ServiceNames.Plotter);
         }
 
-        [TestMethod()]
+        [Fact]
         public void SizeSerializesAsInteger()
         {
             var config = new PlotterConfig()
@@ -32,10 +31,10 @@ namespace chia.dotnet.tests
 
             dynamic serializable = config.PrepareForSerialization();
 
-            Assert.AreEqual(serializable.k, 32);
+            Assert.Equal(serializable.k, 32);
         }
 
-        [TestMethod()]
+        [Fact]
         public void Number_SerializesAs_n()
         {
             var config = new PlotterConfig()
@@ -47,10 +46,10 @@ namespace chia.dotnet.tests
 
             dynamic serializable = config.PrepareForSerialization();
 
-            Assert.AreEqual(serializable.n, 10);
+            Assert.Equal(serializable.n, 10);
         }
 
-        [TestMethod()]
+        [Fact]
         public void T2DefaultsToTIfNotPresent()
         {
             var config = new PlotterConfig()
@@ -61,7 +60,7 @@ namespace chia.dotnet.tests
 
             dynamic serializable = config.PrepareForSerialization();
 
-            Assert.AreEqual(serializable.t2, @"C:\tmp");
+            Assert.Equal(serializable.t2, @"C:\tmp");
         }
     }
 }

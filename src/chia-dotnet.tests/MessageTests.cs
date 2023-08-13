@@ -1,21 +1,20 @@
 ﻿using System.Text.Json;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace chia.dotnet.tests
 {
-    [TestClass]
     public class MessageTests
     {
-        [TestMethod]
+        [Fact]
         public void CanSerializeToJson()
         {
             var m = new Message();
 
             var json = JsonSerializer.Serialize(m);
 
-            Assert.IsFalse(string.IsNullOrEmpty(json));
-            Assert.IsTrue(json.StartsWith("{"));
-            Assert.IsTrue(json.EndsWith("}"));
+            Assert.False(string.IsNullOrEmpty(json));
+            Assert.StartsWith("{", json);
+            Assert.EndsWith("}", json);
         }
     }
 }

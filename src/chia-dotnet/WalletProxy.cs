@@ -65,13 +65,14 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The list of wallets</returns>
-        public async Task<(IEnumerable<WalletInfo> Wallets, int FingerPrint)> GetWallets(bool includeData = true, CancellationToken cancellationToken = default)
+        public async Task<(IEnumerable<WalletInfo> Wallets, uint Fingerprint)> GetWallets(bool includeData = true, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.include_data = includeData;
 
-            var response = await SendMessage<IEnumerable<WalletInfo>>("get_wallets", data, cancellationToken).ConfigureAwait(false);
-            return (Converters.ToEnumerable<WalletInfo>(response.wallets), response.fingerprint);
+            var response = await SendMessage("get_wallets", data, cancellationToken).ConfigureAwait(false);
+
+            return (Converters.ToObject<IEnumerable<WalletInfo>>(response.wallets), response.fingerprint);
         }
 
         /// <summary>
@@ -87,16 +88,6 @@ namespace chia.dotnet
             data.include_data = includeData;
 
             return await SendMessage<IEnumerable<WalletInfo>>("get_wallets", data, "wallets", cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Get a list of all unacknowledged CATs.
-        /// </summary>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The list of <see cref="Token"/>s</returns>
-        public async Task<IEnumerable<Token>> GetStrayCats(CancellationToken cancellationToken = default)
-        {
-            return await SendMessage<IEnumerable<Token>>("get_stray_cats", "stray_cats", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -280,7 +271,7 @@ namespace chia.dotnet
         /// <returns>
         /// Indicators of how the wallet is used
         /// </returns>
-        public async Task<(uint FingerPrint, bool UsedForFarmerRewards, bool UsedForPoolRewards, bool WalletBalance)> CheckDeleteKey(uint fingerprint, CancellationToken cancellationToken = default)
+        public async Task<(uint Fingerprint, bool UsedForFarmerRewards, bool UsedForPoolRewards, bool WalletBalance)> CheckDeleteKey(uint fingerprint, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
@@ -681,7 +672,7 @@ namespace chia.dotnet
 
             return (
                 Converters.ToObject<TransactionRecord>(response.signed_tx),
-                Converters.ToEnumerable<TransactionRecord>(response.signed_txs)
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.signed_txs)
                 );
         }
 
@@ -744,7 +735,7 @@ namespace chia.dotnet
             data.root = root;
             data.fee = fee;
             var response = await SendMessage("create_new_dl", data, cancellationToken).ConfigureAwait(false);
-            return (Converters.ToEnumerable<TransactionRecord>(response.transactions), response.launcher_id);
+            return (Converters.ToObject<IEnumerable<TradeRecord>>(response.transactions), response.launcher_id);
         }
 
         /// <summary>
@@ -1001,7 +992,7 @@ namespace chia.dotnet
             data.reverse = reverse;
             data.include_total_count = includeTotalCount;
             var response = await SendMessage("get_coin_records", data, cancellationToken).ConfigureAwait(false);
-            return (Converters.ToEnumerable<CoinRecord>(response.coin_records), response.total_count);
+            return (Converters.ToObject<IEnumerable<CoinRecord>>(response.coin_records), response.total_count);
         }
 
         /// <summary>

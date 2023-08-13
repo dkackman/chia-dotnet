@@ -1,18 +1,17 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Threading.Tasks;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace chia.dotnet.tests
 {
-    [TestClass]
     public class ConnectionSigningTests
     {
-        [TestMethod]
-        [ExpectedException(typeof(FileNotFoundException))]
+        [Fact]
         public async Task InvalidCertPathThrowsFileNotFound()
         {
+            // Arrange
             var endpoint = new EndpointInfo()
             {
                 Uri = new Uri("wss://localhost:58444"),
@@ -20,7 +19,10 @@ namespace chia.dotnet.tests
                 KeyPath = ""
             };
             using var rpc = new WebSocketRpcClient(endpoint);
-            await rpc.Connect();
+
+            // Assert
+            _ = await Assert.ThrowsAsync<FileNotFoundException>(
+                async () => await rpc.Connect());
         }
     }
 }
