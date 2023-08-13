@@ -13,7 +13,7 @@ namespace chia.dotnet.tests
         public StandardWalletTests(ChiaDotNetFixture fixture) : base(fixture)
         {
         }
-    
+
         [Fact]
         public async Task GetWalletBalance()
         {

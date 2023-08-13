@@ -29,7 +29,10 @@ public class TestBase : IClassFixture<ChiaDotNetFixture>
     internal HarvesterProxy Harvester => Fixture.TestHost.Services.GetService<HarvesterProxy>() ?? throw new Exception("Testbase improperly configured");
 
     internal PlotterProxy Plotter => Fixture.TestHost.Services.GetService<PlotterProxy>() ?? throw new Exception("Testbase improperly configured");
+
     internal Wallet StandardWallet => Fixture.TestHost.Services.GetService<Wallet>() ?? throw new Exception("Testbase improperly configured");
+
+    internal TradeManager TradeManager => Fixture.TestHost.Services.GetService<TradeManager>() ?? throw new Exception("Testbase improperly configured");
 
     public TestBase(ChiaDotNetFixture fixture)
     {
