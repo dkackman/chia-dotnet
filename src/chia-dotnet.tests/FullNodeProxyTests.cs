@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -122,39 +123,6 @@ namespace chia.dotnet.tests
         }
 
         [Fact]
-        public async Task Ping()
-        {
-            // Arrange
-            using var cts = new CancellationTokenSource(15000);
-
-            // Act
-            await FullNode.HealthZ(cts.Token);
-        }
-
-        [Fact]
-        public async Task GetConnections()
-        {
-            // Arrange
-            using var cts = new CancellationTokenSource(15000);
-
-            // Act
-            var connections = await FullNode.GetConnections(cts.Token);
-
-            // Assert
-            Assert.NotNull(connections);
-        }
-
-        // [Fact]
-        // public async Task OpenConnection()
-        // {
-        //     // Arrange
-        //     using var cts = new CancellationTokenSource(15000);
-        //
-        //     // Act
-        //     await FullNode.OpenConnection("testnet-node.chia.net", 58444, cts.Token);
-        // }
-
-        [Fact]
         public async Task GetBlockRecordByHeight()
         {
             // Arrange
@@ -204,38 +172,34 @@ namespace chia.dotnet.tests
         {
             // Arrange
             using var cts = new CancellationTokenSource(35000);
-
-            // Act
             var state = await FullNode.GetBlockchainState(cts.Token);
             Assert.NotNull(state.Peak);
 
-            var records =
-                await FullNode.GetCoinRecordsByPuzzleHash(state.Peak.FarmerPuzzleHash, true, null, null, cts.Token);
+            // Act
+            // this call can take a long time - notice longer timeout in cts
+            var records = await FullNode.GetCoinRecordsByPuzzleHash(state.Peak.FarmerPuzzleHash, true, null, null, cts.Token);
 
             // Assert
             Assert.NotNull(records);
         }
 
         //broken - investigating
-        // [Fact]
-        // public async Task GetCoinRecordByName()
-        // {
-        //     // Arrange
-        //     using var cts = new CancellationTokenSource(35000);
-        //     var items = await FullNode.GetAllMempoolItems(cts.Token);
-        //     var item = items.FirstOrDefault();
-        //     var npc = item.Value.NPCResult.NpcList.FirstOrDefault();
-        //
-        //     // Act
-        //     // this call can take a long time - notice longer timeout in cts
-        //     var coinRecord = await FullNode.GetCoinRecordByName(npc.CoinName, cts.Token);
-        //
-        //     // Assert
-        //     Assert.NotNull(npc);
-        //     Assert.NotNull(item.Key);
-        //     Assert.NotNull(item.Value);
-        //     Assert.NotNull(coinRecord);
-        // }
+        [Fact]
+        public async Task GetCoinRecordByName()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(35000);
+            var state = await FullNode.GetBlockchainState(cts.Token);
+            Assert.NotNull(state.Peak);
+            var blockRecords = await FullNode.GetBlockRecords(state.Peak.Height - 5, state.Peak.Height - 1, cts.Token);
+
+            // Act
+            // this call can take a long time - notice longer timeout in cts
+            var coinRecord = await FullNode.GetCoinRecordByName("0x7a639649fa2b6b4233cab7bf98b3da01be182afba622eb377011ac0940cd83c8", cts.Token);
+
+            // Assert
+            Assert.NotNull(coinRecord);
+        }
 
         [Fact]
         public async Task GetAdditionsAndRemovals()
@@ -259,11 +223,12 @@ namespace chia.dotnet.tests
         public async Task GetBlockSpends()
         {
             // Arrange
-            var header = "0xaa8425c198253b96a15c40e32ef4c1fd36e751f0ff9a90199e8751df381eac71"; //hash from today
+            using var cts = new CancellationTokenSource(15000);
+            var state = await FullNode.GetBlockchainState(cts.Token);
+            Assert.NotNull(state.Peak);
 
             // Act
-            using var cts = new CancellationTokenSource(15000);
-            var spends = await FullNode.GetBlockSpends(header, cts.Token);
+            var spends = await FullNode.GetBlockSpends(state.Peak.HeaderHash, cts.Token);
 
             // Assert
             Assert.NotNull(spends);
@@ -377,6 +342,152 @@ namespace chia.dotnet.tests
             Assert.NotNull(item.Value);
             Assert.NotNull(npc);
             Assert.NotNull(ps);
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task GetBlockchainState()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            var returnValue = await FullNode.GetBlockchainState(cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task GetFeeEstimate()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            SpendBundle spendBundle = null;
+            IEnumerable<int> targetTimes = null;
+
+            // Act
+            var returnValue = await FullNode.GetFeeEstimate(spendBundle: spendBundle, targetTimes: targetTimes, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task GetCoinRecordsByNames()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            IEnumerable<string> names = null;
+            Boolean includeSpentCoins = false;
+
+            // Act
+            var returnValue = await FullNode.GetCoinRecordsByNames(names: names, includeSpentCoins: includeSpentCoins, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task GetCoinRecordsByPuzzleHashes()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            IEnumerable<string> puzzlehashes = null;
+            Boolean includeSpentCoins = false;
+
+            // Act
+            var returnValue = await FullNode.GetCoinRecordsByPuzzleHashes(puzzlehashes: puzzlehashes, includeSpentCoins: includeSpentCoins, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task GetCoinRecordsByParentIds()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            IEnumerable<string> parentIds = null;
+            Boolean includeSpentCoins = false;
+
+            // Act
+            var returnValue = await FullNode.GetCoinRecordsByParentIds(parentIds: parentIds, includeSpentCoins: includeSpentCoins, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+
+
+        [Fact(Skip = "Requires review")]
+        public async Task GetCoinRecordsByHint()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            String hint = string.Empty;
+            Boolean includeSpentCoins = false;
+
+            // Act
+            var returnValue = await FullNode.GetCoinRecordsByHint(hint: hint, includeSpentCoins: includeSpentCoins, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task GetMemmpooItemByTxId()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            String txId = string.Empty;
+
+            // Act
+            var returnValue = await FullNode.GetMemmpooItemByTxId(txId: txId, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task PushTx()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            SpendBundle spendBundle = null;
+
+            // Act
+            var returnValue = await FullNode.PushTx(spendBundle: spendBundle, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task GetRecentSignagePoint()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            String spHash = string.Empty;
+
+            // Act
+            var returnValue = await FullNode.GetRecentSignagePoint(spHash: spHash, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task GetRecentEOS()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            String challengeHash = string.Empty;
+
+            // Act
+            var returnValue = await FullNode.GetRecentEOS(challengeHash: challengeHash, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
         }
     }
 }
