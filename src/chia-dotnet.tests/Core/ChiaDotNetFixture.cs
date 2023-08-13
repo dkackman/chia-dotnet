@@ -42,42 +42,25 @@ public class ChiaDotNetFixture : IDisposable
                     .AddJsonFile("testingappsettings.json", false)
                     .AddEnvironmentVariables("PREFIX_")
                     .AddUserSecrets<ChiaDotNetFixture>(true);
-            }).ConfigureServices((hostContext, services) =>
+            }).ConfigureServices(async (hostContext, services) =>
             {
                 try
                 {
-                    //bind settings from secrets/environment/appsettings
-                    var daemonConfig = new Endpoint();
-                    var fullNodeConfig = new Endpoint();
-                    var farmerConfig = new Endpoint();
-                    var walletConfig = new Endpoint();
-                    var harvesterConfig = new Endpoint();
-                    var crawlerConfig = new Endpoint();
-                    var plotterConfig = new Endpoint();
-
-                    hostContext.Configuration.GetSection("daemon").Bind(daemonConfig);
-                    hostContext.Configuration.GetSection("fullnode").Bind(fullNodeConfig);
-                    hostContext.Configuration.GetSection("farmer").Bind(farmerConfig);
-                    hostContext.Configuration.GetSection("harvester").Bind(harvesterConfig);
-                    hostContext.Configuration.GetSection("wallet").Bind(walletConfig);
-                    hostContext.Configuration.GetSection("crawler").Bind(crawlerConfig);
-                    hostContext.Configuration.GetSection("plotter").Bind(plotterConfig);
-
-                    // Get all endpoints
-                    var daemonEndpointInfo = GetEndpointInfo(daemonConfig);
-                    var fullNodeEndpointInfo = GetEndpointInfo(fullNodeConfig);
-                    var farmerEndpointInfo = GetEndpointInfo(farmerConfig);
-                    var walletEndpointInfo = GetEndpointInfo(walletConfig);
-                    var harvesterEndpointInfo = GetEndpointInfo(harvesterConfig);
-                    var crawlerEndpointInfo = GetEndpointInfo(crawlerConfig);
-                    var plotterEndpointInfo = GetEndpointInfo(plotterConfig);
-
+                    //appsettings mode is websockets
                     if (hostContext.Configuration["mode"] == "0")
                     {
-                        //appsettings mode is websockets
+                        //bind settings from secrets/environment/appsettings
+                        var daemonConfig = new Endpoint();
+                        var plotterConfig = new Endpoint();
+
+                        hostContext.Configuration.GetSection("daemon").Bind(daemonConfig);
+                        hostContext.Configuration.GetSection("plotter").Bind(plotterConfig);
+
+                        // Get all endpoints
+                        var daemonEndpointInfo = GetEndpointInfo(daemonConfig);
+                        var plotterEndpointInfo = GetEndpointInfo(plotterConfig);
                         var wssClient = new WebSocketRpcClient(daemonEndpointInfo);
                         var cts = new CancellationTokenSource(120000);
-                        var httpClient = new HttpRpcClient(daemonEndpointInfo);
 
                         //connect wss client
                         wssClient.Connect(cts.Token).ConfigureAwait(false).GetAwaiter().GetResult();
@@ -92,6 +75,9 @@ public class ChiaDotNetFixture : IDisposable
                         var crawlerRpcProxy = new CrawlerProxy(wssClient, OriginService);
                         var plotterRpcProxy = new PlotterProxy(wssClient, OriginService);
 
+                        var (Wallets, Fingerprint) = walletRpcProxy.GetWallets(false, cts.Token).ConfigureAwait(false).GetAwaiter().GetResult();
+                        var walletFactory = new WalletFactory(walletRpcProxy, Wallets, Fingerprint);
+
                         //register test dependencies 
                         _ = services.AddSingleton(daemon)
                             .AddSingleton(nodeRpcClient)
@@ -101,6 +87,7 @@ public class ChiaDotNetFixture : IDisposable
                             .AddSingleton(harvesterRpcProxy)
                             .AddSingleton(crawlerRpcProxy)
                             .AddSingleton(plotterRpcProxy)
+                            .AddSingleton(walletFactory)
                             .AddSingleton(new Wallet(1, walletRpcProxy))
                             .AddSingleton(new VerifiedCredentialManager(walletRpcProxy))
                             .AddSingleton(new TradeManager(walletRpcProxy));
@@ -108,6 +95,24 @@ public class ChiaDotNetFixture : IDisposable
                     else
                     {
                         // Daemon and Plotter proxies require wss so no http version
+                        var fullNodeConfig = new Endpoint();
+                        var farmerConfig = new Endpoint();
+                        var walletConfig = new Endpoint();
+                        var harvesterConfig = new Endpoint();
+                        var crawlerConfig = new Endpoint();
+
+                        hostContext.Configuration.GetSection("fullnode").Bind(fullNodeConfig);
+                        hostContext.Configuration.GetSection("farmer").Bind(farmerConfig);
+                        hostContext.Configuration.GetSection("harvester").Bind(harvesterConfig);
+                        hostContext.Configuration.GetSection("wallet").Bind(walletConfig);
+                        hostContext.Configuration.GetSection("crawler").Bind(crawlerConfig);
+
+                        // Get all endpoints
+                        var fullNodeEndpointInfo = GetEndpointInfo(fullNodeConfig);
+                        var farmerEndpointInfo = GetEndpointInfo(farmerConfig);
+                        var walletEndpointInfo = GetEndpointInfo(walletConfig);
+                        var harvesterEndpointInfo = GetEndpointInfo(harvesterConfig);
+                        var crawlerEndpointInfo = GetEndpointInfo(crawlerConfig);
 
                         //appsettings mode is httpsClient
                         var cts = new CancellationTokenSource(120000);
@@ -124,12 +129,16 @@ public class ChiaDotNetFixture : IDisposable
                         var harvesterRpcProxy = new HarvesterProxy(harvesterHttpClient, OriginService);
                         var crawlerRpcProxy = new HarvesterProxy(crawlerHttpClient, OriginService);
 
+                        var (Wallets, Fingerprint) = walletRpcProxy.GetWallets(false, cts.Token).ConfigureAwait(false).GetAwaiter().GetResult();
+                        var walletFactory = new WalletFactory(walletRpcProxy, Wallets, Fingerprint);
+
                         //register test dependencies 
                         _ = services.AddSingleton(nodeRpcClient)
                             .AddSingleton(farmerRpcProxy)
                             .AddSingleton(walletRpcProxy)
                             .AddSingleton(harvesterRpcProxy)
                             .AddSingleton(crawlerRpcProxy)
+                            .AddSingleton(walletFactory)
                             .AddSingleton(new Wallet(1, walletRpcProxy))
                             .AddSingleton(new VerifiedCredentialManager(walletRpcProxy))
                             .AddSingleton(new TradeManager(walletRpcProxy));
