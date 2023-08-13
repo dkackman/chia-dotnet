@@ -363,11 +363,6 @@ namespace chia.dotnet
         /// <returns>A <see cref="CoinRecord"/></returns>
         public async Task<CoinRecord> GetCoinRecordByName(string name, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(name))
-            {
-                throw new ArgumentNullException(nameof(name));
-            }
-
             dynamic data = new ExpandoObject();
             data.name = name;
 
