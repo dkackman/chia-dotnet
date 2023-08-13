@@ -34,6 +34,8 @@ public class TestBase : IClassFixture<ChiaDotNetFixture>
 
     internal TradeManager TradeManager => Fixture.TestHost.Services.GetService<TradeManager>() ?? throw new Exception("Testbase improperly configured");
 
+    internal VerifiedCredentialManager VCManager => Fixture.TestHost.Services.GetService<VerifiedCredentialManager>() ?? throw new Exception("Testbase improperly configured");
+
     public TestBase(ChiaDotNetFixture fixture)
     {
         Fixture = fixture;
