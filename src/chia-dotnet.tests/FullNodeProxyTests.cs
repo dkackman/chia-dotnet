@@ -178,7 +178,6 @@ namespace chia.dotnet.tests
 
             // Act
             var records = await FullNode.GetCoinRecordsByPuzzleHash(state.Peak.FarmerPuzzleHash, false, state.Peak.Height - 10, state.Peak.Height, cts.Token);
-
             // Assert
             Assert.NotNull(records);
         }
