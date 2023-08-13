@@ -36,8 +36,22 @@ public class TestBase : IClassFixture<ChiaDotNetFixture>
 
     internal VerifiedCredentialManager VCManager => Fixture.TestHost.Services.GetService<VerifiedCredentialManager>() ?? throw new Exception("Testbase improperly configured");
 
+    internal CATWallet CATWallet => Fixture.TestHost.Services.GetService<WalletFactory>()!.GetWallet<CATWallet>(WalletType.CAT);
+
+    internal DIDWallet DIDWallet => Fixture.TestHost.Services.GetService<WalletFactory>()!.GetWallet<DIDWallet>(WalletType.DISTRIBUTED_ID);
+
+    internal PoolWallet PoolWallet => Fixture.TestHost.Services.GetService<WalletFactory>()!.GetWallet<PoolWallet>(WalletType.POOLING_WALLET);
+
+    internal DataLayerWallet DataLayerWallet => Fixture.TestHost.Services.GetService<WalletFactory>()!.GetWallet<DataLayerWallet>(WalletType.DATA_LAYER);
+
+    internal NFTWallet NFTWallet => Fixture.TestHost.Services.GetService<WalletFactory>()!.GetWallet<NFTWallet>(WalletType.NFT);
+    
     public TestBase(ChiaDotNetFixture fixture)
     {
         Fixture = fixture;
+        if (Fixture.TestHost.Services.GetService<WalletFactory>() is null)
+        {
+            throw new Exception("Testbase improperly configured");
+        }
     }
 }

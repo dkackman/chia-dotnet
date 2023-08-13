@@ -86,7 +86,14 @@ namespace chia.dotnet
         /// <param name="fee">The fee to create the wallet (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> Spend(string innerAddress, ulong amount, IEnumerable<string>? memos = null, ulong minCoinAmount = 0, ulong maxCoinAmount = 0, IEnumerable<ulong>? excludeCoinAmounts = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> Spend(string innerAddress,
+            ulong amount,
+            IEnumerable<string>? memos = null,
+            ulong minCoinAmount = 0,
+            ulong maxCoinAmount = 0,
+            IEnumerable<ulong>? excludeCoinAmounts = null,
+            bool? reusePuzhash = null,
+            ulong fee = 0, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(innerAddress))
             {
