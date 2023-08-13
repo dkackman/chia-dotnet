@@ -2,7 +2,6 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Transactions;
 using chia.dotnet.tests.Core;
 using Xunit;
 

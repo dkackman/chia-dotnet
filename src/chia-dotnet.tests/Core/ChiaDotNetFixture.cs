@@ -100,7 +100,8 @@ public class ChiaDotNetFixture : IDisposable
                             .AddSingleton(walletRpcProxy)
                             .AddSingleton(harvesterRpcProxy)
                             .AddSingleton(crawlerRpcProxy)
-                            .AddSingleton(plotterRpcProxy);
+                            .AddSingleton(plotterRpcProxy)
+                            .AddSingleton(new Wallet(1, walletRpcProxy));
                     }
                     else
                     {
@@ -126,7 +127,8 @@ public class ChiaDotNetFixture : IDisposable
                             .AddSingleton(farmerRpcProxy)
                             .AddSingleton(walletRpcProxy)
                             .AddSingleton(harvesterRpcProxy)
-                            .AddSingleton(crawlerRpcProxy);
+                            .AddSingleton(crawlerRpcProxy)
+                            .AddSingleton(new Wallet(1, walletRpcProxy));
                     }
                 }
                 catch (Exception e)

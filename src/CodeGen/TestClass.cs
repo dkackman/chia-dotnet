@@ -22,6 +22,7 @@ namespace CodeGen
             _ = builder.Append($"""
                 using System;
                 using System.Threading.Tasks;
+                using System.Collections.Generic;            
                 using chia.dotnet.tests.Core;
                 using Xunit;
 
