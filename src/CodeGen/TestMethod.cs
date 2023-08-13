@@ -132,14 +132,9 @@ namespace CodeGen
                         .Append(param.Name)
                         .Append(", ");
                 }
-
-                _ = builder.Append("cancellationToken: cts.Token");
-
             }
-            else
-            {
-                _ = builder.Append("cts.Token");
-            }
+
+            _ = builder.Append("cancellationToken: cts.Token");
             return builder.ToString();
         }
 
