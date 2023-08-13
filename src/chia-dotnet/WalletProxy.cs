@@ -90,16 +90,6 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Get a list of all unacknowledged CATs.
-        /// </summary>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The list of <see cref="Token"/>s</returns>
-        public async Task<IEnumerable<Token>> GetStrayCats(CancellationToken cancellationToken = default)
-        {
-            return await SendMessage<IEnumerable<Token>>("get_stray_cats", "stray_cats", cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
         /// Get all root public keys accessible by the wallet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>

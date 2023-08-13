@@ -134,19 +134,6 @@ namespace chia.dotnet.tests
         }
 
         [Fact(Skip = "Requires review")]
-        public async Task GetStrayCats()
-        {
-            // Arrange
-            using var cts = new CancellationTokenSource(15000);
-
-            // Act
-            var returnValue = await Wallet.GetStrayCats(cts.Token);
-
-            // Assert
-            Assert.NotNull(returnValue);
-        }
-
-        [Fact(Skip = "Requires review")]
         public async Task GetTransaction()
         {
             // Arrange
