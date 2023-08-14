@@ -40,6 +40,18 @@ namespace chia.dotnet.tests
         }
 
         [Fact]
+        public async Task GetSignagePoint()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            var signagePoints = await Farmer.GetSignagePoints(cts.Token);
+            var spInfo = signagePoints.FirstOrDefault();
+            _ = await Farmer.GetSignagePoint(spInfo.SignagePoint.ChallengeChainSp, cts.Token);
+        }
+
+        [Fact]
         public async Task GetSignagePoints()
         {
             // Arrange
@@ -103,21 +115,6 @@ namespace chia.dotnet.tests
 
             // Assert
             Assert.NotNull(plotInfo);
-        }
-
-        [Fact]
-        public async Task GetSignagePoint()
-        {
-            // Arrange
-            using var cts = new CancellationTokenSource(1005000);
-
-            // Act
-            var signagePoints = await Farmer.GetSignagePoints(cts.Token);
-
-            foreach (var spInfo in signagePoints)
-            {
-                _ = await Farmer.GetSignagePoint(spInfo.SignagePoint.ChallengeChainSp, cts.Token);
-            }
         }
 
         [Fact]
