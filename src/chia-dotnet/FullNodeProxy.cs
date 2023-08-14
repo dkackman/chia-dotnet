@@ -409,7 +409,7 @@ namespace chia.dotnet
         /// <param name="headerhash">The header hash</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of additions and a list of removals</returns>
-        public async Task<(ICollection<CoinRecord> Additions, ICollection<CoinRecord> Removals)> GetAdditionsAndRemovals(string headerhash, CancellationToken cancellationToken = default)
+        public async Task<(IEnumerable<CoinRecord> Additions, IEnumerable<CoinRecord> Removals)> GetAdditionsAndRemovals(string headerhash, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(headerhash))
             {
@@ -422,8 +422,8 @@ namespace chia.dotnet
             var response = await SendMessage("get_additions_and_removals", data, cancellationToken).ConfigureAwait(false);
 
             return (
-                Converters.ToObject<ICollection<CoinRecord>>(response.additions),
-                Converters.ToObject<ICollection<CoinRecord>>(response.removals)
+                Converters.ToEnumerable<CoinRecord>(response.additions),
+                Converters.ToEnumerable<CoinRecord>(response.removals)
                 );
         }
 
