@@ -159,7 +159,7 @@ namespace chia.dotnet.tests
             var returnValue = await Wallet.PushTx(spendBundle: spendBundle, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue);
+            Assert.True(returnValue);
         }
 
         [Fact(Skip = "Requires review")]
@@ -274,7 +274,7 @@ namespace chia.dotnet.tests
             Assert.NotNull(returnValue);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetWalletsWithDIDs()
         {
             // Arrange
@@ -368,7 +368,7 @@ namespace chia.dotnet.tests
             var (FarmedAmount, FarmerRewardAmount, FeeAmount, LastHeightFarmed, PoolRewardAmount) = await Wallet.GetFarmedAmount(cts.Token);
 
             // Assert
-            Assert.NotNull(FarmedAmount >= 0);
+            Assert.True(FarmedAmount >= 0);
         }
 
         [Fact(Skip = "Requires review")]
@@ -649,12 +649,14 @@ namespace chia.dotnet.tests
             Assert.NotNull(returnValue);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetTimestampForHeight()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            UInt32 height = 0;
+            var state = await FullNode.GetBlockchainState(cts.Token);
+            Assert.NotNull(state.Peak);
+            var height = state.Peak.Height;
 
             // Act
             var returnValue = await Wallet.GetTimestampForHeight(height: height, cancellationToken: cts.Token);
@@ -663,7 +665,7 @@ namespace chia.dotnet.tests
             Assert.NotNull(returnValue);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task SetWalletResyncOnStartup()
         {
             // Arrange
@@ -676,20 +678,20 @@ namespace chia.dotnet.tests
 
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task SetAutoClaim()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
 
             // Act
-            var returnValue = await Wallet.SetAutoClaim(cts.Token);
+            var returnValue = await Wallet.SetAutoClaim(true, cts.Token);
 
             // Assert
             Assert.NotNull(returnValue);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetAutoClaim()
         {
             // Arrange

@@ -1036,9 +1036,11 @@ namespace chia.dotnet
         /// <param name="enable"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns><see cref="AutoClaimSettings"/></returns>
-        public async Task<AutoClaimSettings> SetAutoClaim(CancellationToken cancellationToken = default)
+        public async Task<AutoClaimSettings> SetAutoClaim(bool enabled, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
+            data.enabled = enabled;
+
             return await SendMessage<AutoClaimSettings>("set_auto_claim", data, "", cancellationToken).ConfigureAwait(false);
         }
 
@@ -1051,7 +1053,7 @@ namespace chia.dotnet
         /// <param name="enabled"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns><see cref="AutoClaimSettings"/></returns>
-        public async Task<AutoClaimSettings> SetAutoClaim(ushort batchSize = 50, ulong minAmount = 0, ulong txFee = 0, bool enabled = false, CancellationToken cancellationToken = default)
+        public async Task<AutoClaimSettings> SetAutoClaim(bool enabled = true, ushort batchSize = 50, ulong minAmount = 0, ulong txFee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.enabled = enabled;
