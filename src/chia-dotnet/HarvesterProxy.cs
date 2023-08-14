@@ -64,9 +64,7 @@ namespace chia.dotnet
         /// <returns>List of directories</returns>
         public async Task<IEnumerable<string>> GetPlotDirectories(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_plot_directories", cancellationToken).ConfigureAwait(false);
-
-            return Converters.ToEnumerable<string>(response.directories);
+            return await SendMessage<IEnumerable<string>>("get_plot_directories", null, "directories", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

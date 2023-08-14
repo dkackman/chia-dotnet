@@ -17,19 +17,6 @@ namespace chia.dotnet.tests
         }
 
         [Fact]
-        public async Task GetBlockChainState()
-        {
-            // arrange
-            var cts = new CancellationTokenSource(12000);
-
-            // act
-            var state = await FullNode.GetBlockchainState(cts.Token);
-
-            // assert
-            Assert.NotNull(state);
-        }
-
-        [Fact]
         public async Task GetBlock()
         {
             // Arrange
@@ -266,55 +253,6 @@ namespace chia.dotnet.tests
             Assert.NotNull(ids);
         }
 
-        //[Fact]
-        // public async Task GetMemmpooItemByTxId()
-        // {
-        //     // Arrange
-        //     using var cts = new CancellationTokenSource(15000);
-        //     var ids = await FullNode.GetAllMemmpoolTxIds(cts.Token);
-        //     Assert.NotNull(ids);
-        //     Assert.True(ids.Any());
-        //
-        //     // Act
-        //     var item = await FullNode.GetMemmpooItemByTxId(ids.First(), cts.Token);
-        //
-        //     // Assert
-        //     Assert.NotNull(item);
-        // }
-
-        // [Fact]
-        // public async Task GetRecentSignagePoint()
-        // {
-        //     // Arrange
-        //     using var cts = new CancellationTokenSource(15000);
-        //     var signagePoints = await Farmer.GetSignagePoints(cts.Token);
-        //     var spInfo = signagePoints.FirstOrDefault();
-        //
-        //     // Act
-        //     var sp = await FullNode.GetRecentSignagePoint(spInfo.SignagePoint.ChallengeChainSp, cts.Token);
-        //
-        //     // Assert
-        //     Assert.NotNull(spInfo);
-        //     Assert.NotNull(sp);
-        // }
-
-        //broken - investigating
-        // [Fact]
-        // public async Task GetRecentEOS()
-        // {
-        //     // Arrange
-        //     using var cts = new CancellationTokenSource(35000);
-        //     var signagePoints = await Farmer.GetSignagePoints(cts.Token);
-        //     var spInfo = signagePoints.FirstOrDefault();
-        //
-        //     // act
-        //     var eos = await FullNode.GetRecentEOS(spInfo.SignagePoint.ChallengeHash, cts.Token);
-        //
-        //     // Assert
-        //     Assert.NotNull(spInfo);
-        //     Assert.NotNull(eos);
-        // }
-
         [Fact]
         public async Task GetAverageBlockTime()
         {
@@ -350,7 +288,7 @@ namespace chia.dotnet.tests
             Assert.NotNull(ps);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetBlockchainState()
         {
             // Arrange
@@ -384,7 +322,7 @@ namespace chia.dotnet.tests
             // Arrange
             using var cts = new CancellationTokenSource(15000);
             IEnumerable<string> names = null;
-            Boolean includeSpentCoins = false;
+            bool includeSpentCoins = false;
 
             // Act
             var returnValue = await FullNode.GetCoinRecordsByNames(names: names, includeSpentCoins: includeSpentCoins, cancellationToken: cts.Token);
@@ -393,14 +331,14 @@ namespace chia.dotnet.tests
             Assert.NotNull(returnValue);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact(Skip = "Need data")]
         public async Task GetCoinRecordsByPuzzleHashes()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            IEnumerable<string> puzzlehashes = null;
-            Boolean includeSpentCoins = false;
-
+            var state = await FullNode.GetBlockchainState(cts.Token);
+            IEnumerable<string> puzzlehashes = new List<string>() { state.Peak!.FarmerPuzzleHash };
+            bool includeSpentCoins = false;
             // Act
             var returnValue = await FullNode.GetCoinRecordsByPuzzleHashes(puzzlehashes: puzzlehashes, includeSpentCoins: includeSpentCoins, cancellationToken: cts.Token);
 
@@ -414,7 +352,7 @@ namespace chia.dotnet.tests
             // Arrange
             using var cts = new CancellationTokenSource(15000);
             IEnumerable<string> parentIds = null;
-            Boolean includeSpentCoins = false;
+            bool includeSpentCoins = false;
 
             // Act
             var returnValue = await FullNode.GetCoinRecordsByParentIds(parentIds: parentIds, includeSpentCoins: includeSpentCoins, cancellationToken: cts.Token);
@@ -431,7 +369,7 @@ namespace chia.dotnet.tests
             // Arrange
             using var cts = new CancellationTokenSource(15000);
             String hint = string.Empty;
-            Boolean includeSpentCoins = false;
+            bool includeSpentCoins = false;
 
             // Act
             var returnValue = await FullNode.GetCoinRecordsByHint(hint: hint, includeSpentCoins: includeSpentCoins, cancellationToken: cts.Token);

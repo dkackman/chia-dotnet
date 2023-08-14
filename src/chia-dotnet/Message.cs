@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Dynamic;
+using System.Linq;
 
 using Newtonsoft.Json;
 
@@ -66,11 +68,39 @@ namespace chia.dotnet
                 : new Message
                 {
                     Command = command,
-                    Data = data ?? new ExpandoObject(),
+                    Data = FormatDataObject(data),
                     Origin = origin,
                     Destination = destination,
                     RequestId = GetNewReuqestId()
                 };
+        }
+
+        private static object FormatDataObject(object? data)
+        {
+            if (data is null)
+            {
+                return new ExpandoObject();
+            }
+
+            // this will prune any expando object fields that are null
+            // do this here to avoid null checks as data objects are constructed
+            var dict = data as IDictionary<string, object>;
+            if (dict is not null)
+            {
+                var newProperties = dict.Where(kvp => kvp.Value != null)
+                    .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+
+                var newDict = new ExpandoObject() as IDictionary<string, object>;
+                foreach (var property in newProperties)
+                {
+                    newDict.Add(property);
+                }
+
+                return newDict;
+            }
+
+            // input is not an exapndo - just return the static type
+            return data;
         }
 
         private static readonly Random random = new();

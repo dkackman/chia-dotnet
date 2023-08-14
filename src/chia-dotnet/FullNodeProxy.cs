@@ -76,15 +76,8 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.start = start;
             data.end = end;
-            if (excludeHeaderhash != null)
-            {
-                data.exclude_header_hash = excludeHeaderhash;
-            }
-
-            if (excludeReorged != null)
-            {
-                data.exclude_reorged = excludeReorged;
-            }
+            data.exclude_header_hash = excludeHeaderhash;
+            data.exclude_reorged = excludeReorged;
 
             return await SendMessage<IEnumerable<FullBlock>>("get_blocks", data, "blocks", cancellationToken).ConfigureAwait(false);
         }
@@ -241,16 +234,8 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.puzzle_hash = puzzlehash;
             data.include_spent_coins = includeSpentCoins;
-
-            if (startHeight.HasValue)
-            {
-                data.start_height = startHeight.Value;
-            }
-
-            if (endHeight.HasValue)
-            {
-                data.end_height = endHeight.Value;
-            }
+            data.start_height = startHeight;
+            data.end_height = endHeight;
 
             return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_puzzle_hash", data, "coin_records", cancellationToken).ConfigureAwait(false);
         }
@@ -274,16 +259,9 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.names = names.ToList();
             data.include_spent_coins = includeSpentCoins;
+            data.start_height = startHeight;
+            data.end_height = endHeight;
 
-            if (startHeight.HasValue)
-            {
-                data.start_height = startHeight.Value;
-            }
-
-            if (endHeight.HasValue)
-            {
-                data.end_height = endHeight.Value;
-            }
 
             return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_names", data, "coin_records", cancellationToken).ConfigureAwait(false);
         }
@@ -307,16 +285,9 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.puzzle_hashes = puzzlehashes.ToList();
             data.include_spent_coins = includeSpentCoins;
+            data.start_height = startHeight;
+            data.end_height = endHeight;
 
-            if (startHeight.HasValue)
-            {
-                data.start_height = startHeight.Value;
-            }
-
-            if (endHeight.HasValue)
-            {
-                data.end_height = endHeight.Value;
-            }
 
             return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_puzzle_hashes", data, "coin_records", cancellationToken).ConfigureAwait(false);
         }
@@ -341,16 +312,9 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.parent_ids = parentIds.ToList();
             data.include_spent_coins = includeSpentCoins;
+            data.start_height = startHeight;
+            data.end_height = endHeight;
 
-            if (startHeight.HasValue)
-            {
-                data.start_height = startHeight.Value;
-            }
-
-            if (endHeight.HasValue)
-            {
-                data.end_height = endHeight.Value;
-            }
 
             return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_parent_ids", data, "coin_records", cancellationToken).ConfigureAwait(false);
         }
@@ -388,16 +352,8 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.hint = hint;
             data.include_spent_coins = includeSpentCoins;
-
-            if (startHeight.HasValue)
-            {
-                data.start_height = startHeight.Value;
-            }
-
-            if (endHeight.HasValue)
-            {
-                data.end_height = endHeight.Value;
-            }
+            data.start_height = startHeight;
+            data.end_height = endHeight;
 
             return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_hint", data, "coin_records", cancellationToken).ConfigureAwait(false);
         }

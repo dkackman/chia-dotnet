@@ -84,8 +84,7 @@ namespace chia.dotnet
             data.changelist = changeList;
             data.fee = fee;
 
-            var response = await SendMessage("batch_update", data, cancellationToken).ConfigureAwait(false);
-            return response.tx_id;
+            return await SendMessage<string>("batch_update", data, "tx_id", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -149,9 +148,7 @@ namespace chia.dotnet
             data.id = id;
             data.fee = fee;
 
-            var response = await SendMessage("delete_key", data, cancellationToken).ConfigureAwait(false);
-
-            return response.tx_id;
+            return await SendMessage<string>("delete_key", data, "tx_id", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -289,14 +286,7 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.id = id;
-            var response = await SendMessage("get_root", data, cancellationToken).ConfigureAwait(false);
-
-            return new Root()
-            {
-                Hash = response.hash,
-                Confirmed = response.confirmed,
-                Timestamp = response.timestamp,
-            };
+            return await SendMessage<Root>("get_root", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

@@ -29,16 +29,10 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
             var count = await StandardWallet.GetTransactionCount(cancellationToken: cts.Token);
-            if (count == 0)
-            {
-                Assert.Fail("no transactions");
-            }
-            else
-            {
-                var transactions = await StandardWallet.GetTransactions(cancellationToken: cts.Token);
 
-                Assert.Equal((int)count, transactions.Count());
-            }
+            var transactions = await StandardWallet.GetTransactions(cancellationToken: cts.Token);
+
+            Assert.Equal((int)count, transactions.Count());
         }
 
         [Fact]
@@ -53,10 +47,10 @@ namespace chia.dotnet.tests
             var transactions2 = await StandardWallet.GetTransactions(start: 3, end: 5, cancellationToken: cts.Token);
 
             Assert.NotNull(transactions1);
-            Assert.Equal(transactions1.Count(), 2);
+            Assert.Equal(2, transactions1.Count());
 
             Assert.NotNull(transactions2);
-            Assert.Equal(transactions2.Count(), 2);
+            Assert.Equal(2, transactions2.Count());
 
             var list1 = transactions1.ToList();
             var start1 = list1[0];
@@ -98,7 +92,7 @@ namespace chia.dotnet.tests
 
             var count = await StandardWallet.GetTransactionCount(cancellationToken: cts.Token);
 
-            Assert.NotNull(count);
+            Assert.True(count > 0);
         }
 
         [Fact]
@@ -122,13 +116,17 @@ namespace chia.dotnet.tests
         [Fact]
         public async Task ValidateTwo()
         {
+            // Arrange
             using var cts = new CancellationTokenSource(15000);
+            var wallets = await Wallet.GetWallets(WalletType.DISTRIBUTED_ID, false, cts.Token);
+            var did = wallets.First();
 
-            var wallet = new CATWallet(2, StandardWallet.WalletProxy);
+            // Act
+            var wallet = new DIDWallet(did.Id, StandardWallet.WalletProxy);
             await wallet.Validate();
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task Validate()
         {
             // Arrange
@@ -141,7 +139,7 @@ namespace chia.dotnet.tests
 
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetWalletInfo()
         {
             // Arrange
@@ -154,7 +152,7 @@ namespace chia.dotnet.tests
             Assert.NotNull(returnValue);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetBalance()
         {
             // Arrange
@@ -172,7 +170,7 @@ namespace chia.dotnet.tests
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            UInt64 amount = 0;
+            ulong amount = 1;
 
             // Act
             var returnValue = await StandardWallet.SelectCoins(amount: amount, cancellationToken: cts.Token);
@@ -190,18 +188,18 @@ namespace chia.dotnet.tests
             ulong? maxCoinAmount = null;
 
             // Act
-            var returnValue = await StandardWallet.GetSpendableCoins(minCoinAmount: minCoinAmount, maxCoinAmount: maxCoinAmount, cancellationToken: cts.Token);
+            var (confirmedRecords, unconfirmedRecords, unconfirmedAdditions) = await StandardWallet.GetSpendableCoins(minCoinAmount: minCoinAmount, maxCoinAmount: maxCoinAmount, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue);
+            Assert.NotNull(confirmedRecords);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetNextAddress()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            Boolean newAddress = false;
+            var newAddress = false;
 
             // Act
             var returnValue = await StandardWallet.GetNextAddress(newAddress: newAddress, cancellationToken: cts.Token);

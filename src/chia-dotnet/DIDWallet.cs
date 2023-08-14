@@ -47,10 +47,7 @@ namespace chia.dotnet
 
             dynamic data = CreateWalletDataObject();
             data.new_list = newList.ToList();
-            if (numVerificationsRequired is not null)
-            {
-                data.num_verifications_required = numVerificationsRequired;
-            }
+            data.num_verifications_required = numVerificationsRequired;
             data.reuse_puzhash = reusePuzhash;
 
             await WalletProxy.SendMessage("did_update_recovery_ids", data, cancellationToken).ConfigureAwait(false);
@@ -222,15 +219,8 @@ namespace chia.dotnet
 
             dynamic data = CreateWalletDataObject();
             data.attest_data = attestData.ToList();
-            if (!string.IsNullOrEmpty(pubkey))
-            {
-                data.pubkey = pubkey;
-            }
-
-            if (!string.IsNullOrEmpty(puzzlehash))
-            {
-                data.puzhash = puzzlehash;
-            }
+            data.pubkey = pubkey;
+            data.puzhash = puzzlehash;
 
             _ = await WalletProxy.SendMessage("did_recovery_spend", data, cancellationToken).ConfigureAwait(false);
         }
