@@ -193,7 +193,6 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
             var launcherID = string.Empty;
             var payoutInstructions = string.Empty;
-
             // Act
             await Farmer.SetPayoutInstructions(launcherID: launcherID, payoutInstructions: payoutInstructions, cancellationToken: cts.Token);
 
