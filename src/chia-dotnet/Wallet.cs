@@ -147,22 +147,10 @@ namespace chia.dotnet
             data.start = start;
             data.end = end;
             data.reverse = reverse;
-            if (toAddress is not null)
-            {
-                data.to_address = toAddress;
-            }
-            if (sortKey is not null)
-            {
-                data.sort_key = sortKey;
-            }
-            if (typeFilter is not null)
-            {
-                data.type_filter = typeFilter;
-            }
-            if (confirmed is not null)
-            {
-                data.confirmed = confirmed;
-            }
+            data.to_address = toAddress;
+            data.sort_key = sortKey;
+            data.type_filter = typeFilter;
+            data.confirmed = confirmed;
             return await WalletProxy.SendMessage<IEnumerable<TransactionRecord>>("get_transactions", data, "transactions", cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
@@ -180,14 +168,8 @@ namespace chia.dotnet
             IEnumerable<CoinRecord> unconfirmedAdditions)> GetSpendableCoins(ulong? minCoinAmount, ulong? maxCoinAmount, IEnumerable<ulong>? excludedCoinAmounts = null, IEnumerable<Coin>? excludedCoins = null, IEnumerable<string>? excludedCoinIds = null, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
-            if (minCoinAmount is not null)
-            {
-                data.minCoinAmount = minCoinAmount.Value;
-            }
-            if (maxCoinAmount is not null)
-            {
-                data.maxCoinAmount = maxCoinAmount.Value;
-            }
+            data.minCoinAmount = minCoinAmount;
+            data.maxCoinAmount = maxCoinAmount;
             if (excludedCoinAmounts is not null)
             {
                 data.excludedCoinAmounts = excludedCoinAmounts.ToList();
@@ -220,9 +202,7 @@ namespace chia.dotnet
             dynamic data = CreateWalletDataObject();
             data.new_address = newAddress;
 
-            var response = await WalletProxy.SendMessage("get_next_address", data, cancellationToken).ConfigureAwait(false);
-
-            return response.address;
+            return await WalletProxy.SendMessage<string>("get_next_address", data, "address", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -233,13 +213,9 @@ namespace chia.dotnet
         public async Task<uint> GetTransactionCount(TransactionTypeFilter? typeFilter = null, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
-            if (typeFilter is not null)
-            {
-                data.type_filter = typeFilter;
-            }
-            var response = await WalletProxy.SendMessage("get_transaction_count", data, cancellationToken).ConfigureAwait(false);
+            data.type_filter = typeFilter;
 
-            return response.count;
+            return await WalletProxy.SendMessage<uint>("get_transaction_count", data, "count", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

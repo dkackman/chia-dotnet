@@ -161,9 +161,7 @@ namespace chia.dotnet
         /// <returns>Current block height</returns>
         public async Task<uint> GetHeightInfo(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_height_info", cancellationToken).ConfigureAwait(false);
-
-            return response.height;
+            return await SendMessage<uint>("get_height_info", "height", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -242,9 +240,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.mnemonic = mnemonic.ToList();
 
-            var response = await SendMessage("add_key", data, cancellationToken).ConfigureAwait(false);
-
-            return (uint)response.fingerprint;
+            return await SendMessage<uint>("add_key", data, "fingerprint", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -387,9 +383,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.did_id = didId;
 
-            var response = await SendMessage("nft_get_by_did", data, cancellationToken).ConfigureAwait(false);
-
-            return (uint)response.wallet_id;
+            return await SendMessage<uint>("nft_get_by_did", data, "wallet_id", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -708,16 +702,8 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.names = names.ToList();
             data.include_spent_coins = includeSpentCoins;
-
-            if (startHeight.HasValue)
-            {
-                data.start_height = startHeight.Value;
-            }
-
-            if (endHeight.HasValue)
-            {
-                data.end_height = endHeight.Value;
-            }
+            data.start_height = startHeight;
+            data.end_height = endHeight;
 
             return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_names", data, "coin_records", cancellationToken).ConfigureAwait(false);
         }
@@ -865,11 +851,11 @@ namespace chia.dotnet
         /// <param name="walletIds"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="WalletBalance"/></returns>
-        public async Task<IEnumerable<WalletBalance>> GetWalletBalances(IEnumerable<uint> walletIds, CancellationToken cancellationToken = default)
+        public async Task<IDictionary<string, WalletBalance>> GetWalletBalances(IEnumerable<uint> walletIds, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_ids = walletIds.ToList();
-            return await SendMessage<IEnumerable<WalletBalance>>("get_wallet_balances", data, "wallet_balances", cancellationToken).ConfigureAwait(false);
+            return await SendMessage<IDictionary<string, WalletBalance>>("get_wallet_balances", data, "wallet_balances", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -1055,6 +1041,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             return await SendMessage<AutoClaimSettings>("set_auto_claim", data, "", cancellationToken).ConfigureAwait(false);
         }
+
         /// <summary>
         /// Set auto claim merkle coins config
         /// </summary>

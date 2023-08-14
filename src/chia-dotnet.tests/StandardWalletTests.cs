@@ -98,7 +98,7 @@ namespace chia.dotnet.tests
 
             var count = await StandardWallet.GetTransactionCount(cancellationToken: cts.Token);
 
-            Assert.NotNull(count);
+            Assert.True(count > 0);
         }
 
         [Fact]

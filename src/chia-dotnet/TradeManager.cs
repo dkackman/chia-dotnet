@@ -217,10 +217,7 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.offer = offer;
-            if (solver is not null)
-            {
-                data.solver = solver;
-            }
+            data.solver = solver;
             data.min_coin_amount = minCoinAmount;
             data.max_coin_amount = maxCoinAmount;
             data.reuse_puzhash = reusePuzhash;
@@ -280,14 +277,8 @@ namespace chia.dotnet
             data.min_coin_amount = minCoinAmount;
             data.max_coin_amount = maxCoinAmount;
             data.reuse_puzhash = reusePuzhash;
-            if (solver is not null)
-            {
-                data.solver = solver;
-            }
-            if (driver is not null)
-            {
-                data.driver_dict = driver;
-            }
+            data.solver = solver;
+            data.driver_dict = driver;
             return await WalletProxy.SendMessage<OfferRecord>("create_offer_for_ids", data, null, cancellationToken).ConfigureAwait(false);
         }
 

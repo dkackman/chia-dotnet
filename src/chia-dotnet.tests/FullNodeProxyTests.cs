@@ -266,55 +266,6 @@ namespace chia.dotnet.tests
             Assert.NotNull(ids);
         }
 
-        //[Fact]
-        // public async Task GetMemmpooItemByTxId()
-        // {
-        //     // Arrange
-        //     using var cts = new CancellationTokenSource(15000);
-        //     var ids = await FullNode.GetAllMemmpoolTxIds(cts.Token);
-        //     Assert.NotNull(ids);
-        //     Assert.True(ids.Any());
-        //
-        //     // Act
-        //     var item = await FullNode.GetMemmpooItemByTxId(ids.First(), cts.Token);
-        //
-        //     // Assert
-        //     Assert.NotNull(item);
-        // }
-
-        // [Fact]
-        // public async Task GetRecentSignagePoint()
-        // {
-        //     // Arrange
-        //     using var cts = new CancellationTokenSource(15000);
-        //     var signagePoints = await Farmer.GetSignagePoints(cts.Token);
-        //     var spInfo = signagePoints.FirstOrDefault();
-        //
-        //     // Act
-        //     var sp = await FullNode.GetRecentSignagePoint(spInfo.SignagePoint.ChallengeChainSp, cts.Token);
-        //
-        //     // Assert
-        //     Assert.NotNull(spInfo);
-        //     Assert.NotNull(sp);
-        // }
-
-        //broken - investigating
-        // [Fact]
-        // public async Task GetRecentEOS()
-        // {
-        //     // Arrange
-        //     using var cts = new CancellationTokenSource(35000);
-        //     var signagePoints = await Farmer.GetSignagePoints(cts.Token);
-        //     var spInfo = signagePoints.FirstOrDefault();
-        //
-        //     // act
-        //     var eos = await FullNode.GetRecentEOS(spInfo.SignagePoint.ChallengeHash, cts.Token);
-        //
-        //     // Assert
-        //     Assert.NotNull(spInfo);
-        //     Assert.NotNull(eos);
-        // }
-
         [Fact]
         public async Task GetAverageBlockTime()
         {
@@ -350,7 +301,7 @@ namespace chia.dotnet.tests
             Assert.NotNull(ps);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetBlockchainState()
         {
             // Arrange

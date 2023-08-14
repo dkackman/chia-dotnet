@@ -2,7 +2,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Transactions;
+using System.Linq;
 using chia.dotnet.tests.Core;
 using Xunit;
 
@@ -21,10 +21,11 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
 
             // Act
-            var wallets = await Wallet.GetWallets(false, cts.Token);
+            var (Wallets, Fingerprint) = await Wallet.GetWallets(false, cts.Token);
 
             // Assert
-            Assert.NotNull(wallets);
+            Assert.NotNull(Wallets);
+            Assert.True(Wallets.Count() > 0);
         }
 
 
@@ -75,10 +76,10 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
 
             // Act
-            var info = await Wallet.GetSyncStatus(cts.Token);
+            var (GenesisInitialized, Synced, Syncing) = await Wallet.GetSyncStatus(cts.Token);
 
             // Assert
-            Assert.NotNull(info);
+            Assert.True(GenesisInitialized);
         }
 
         [Fact]
@@ -88,10 +89,10 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
 
             // Act
-            var info = await Wallet.GetNetworkInfo(cts.Token);
+            var (NetworkName, NetworkPrefix) = await Wallet.GetNetworkInfo(cts.Token);
 
             // Assert
-            Assert.NotNull(info);
+            Assert.NotNull(NetworkName);
         }
 
         [Fact]
@@ -120,7 +121,7 @@ namespace chia.dotnet.tests
             Assert.NotNull(mnemonic);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task LogIn()
         {
             // Arrange
@@ -130,7 +131,7 @@ namespace chia.dotnet.tests
             var returnValue = await Wallet.LogIn(cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue);
+
         }
 
         [Fact(Skip = "Requires review")]
@@ -357,17 +358,17 @@ namespace chia.dotnet.tests
             Assert.NotNull(returnValue);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetFarmedAmount()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
 
             // Act
-            var returnValue = await Wallet.GetFarmedAmount(cts.Token);
+            var (FarmedAmount, FarmerRewardAmount, FeeAmount, LastHeightFarmed, PoolRewardAmount) = await Wallet.GetFarmedAmount(cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue);
+            Assert.NotNull(FarmedAmount >= 0);
         }
 
         [Fact(Skip = "Requires review")]
@@ -486,7 +487,7 @@ namespace chia.dotnet.tests
             Assert.NotNull(returnValue);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetCurrentDerivationIndex()
         {
             // Arrange
@@ -496,7 +497,7 @@ namespace chia.dotnet.tests
             var returnValue = await Wallet.GetCurrentDerivationIndex(cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue);
+            Assert.True(returnValue > 0);
         }
 
         [Fact(Skip = "Requires review")]
@@ -527,12 +528,12 @@ namespace chia.dotnet.tests
             Assert.NotNull(returnValue);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetWalletBalances()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            IEnumerable<uint> walletIds = null;
+            IEnumerable<uint> walletIds = new List<uint>() { 1 };
 
             // Act
             var returnValue = await Wallet.GetWalletBalances(walletIds: walletIds, cancellationToken: cts.Token);
@@ -619,13 +620,13 @@ namespace chia.dotnet.tests
             uint? limit = null;
 
             // Act
-            var returnValue = await Wallet.GetCoinRecords(spentRange: spentRange, 
-                confirmedRange: confirmedRange, 
+            var returnValue = await Wallet.GetCoinRecords(spentRange: spentRange,
+                confirmedRange: confirmedRange,
                 amountRange: amountRange,
-                amountFilter: amountFilter, 
-                parentCoinIdFilter: parentCoinIdFilter, 
-                puzzleHashFilter: puzzleHashFilter, 
-                coinIdFilter: coinIdFilter, coinType: coinType, 
+                amountFilter: amountFilter,
+                parentCoinIdFilter: parentCoinIdFilter,
+                puzzleHashFilter: puzzleHashFilter,
+                coinIdFilter: coinIdFilter, coinType: coinType,
                 walletType: walletType, walletId: walletId, limit: limit, cancellationToken: cts.Token);
 
             // Assert
