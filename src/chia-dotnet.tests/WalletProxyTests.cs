@@ -176,49 +176,36 @@ namespace chia.dotnet.tests
 
         }
 
-        [Fact(Skip = "Requires review")]
-        public async Task AddKey()
+        [Fact]
+        public async Task AddDeleteKey()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            IEnumerable<string> mnemonic = null;
+            var mnemonic = await Wallet.GenerateMnemonic(cts.Token);
 
             // Act
             var returnValue = await Wallet.AddKey(mnemonic: mnemonic, cancellationToken: cts.Token);
+            await Wallet.DeleteKey(fingerprint: returnValue, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue);
+            Assert.True(returnValue > 0);
         }
 
-        [Fact(Skip = "Requires review")]
-        public async Task DeleteKey()
-        {
-            // Arrange
-            using var cts = new CancellationTokenSource(15000);
-            UInt32 fingerprint = 0;
-
-            // Act
-            await Wallet.DeleteKey(fingerprint: fingerprint, cancellationToken: cts.Token);
-
-            // Assert
-
-        }
-
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task CheckDeleteKey()
         {
-            // Arrange
             using var cts = new CancellationTokenSource(15000);
-            UInt32 fingerprint = 0;
+            var fingerprint = await Wallet.GetLoggedInFingerprint(cancellationToken: cts.Token);
 
             // Act
             var returnValue = await Wallet.CheckDeleteKey(fingerprint: fingerprint, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue);
+            Assert.Equal(returnValue.Fingerprint, fingerprint);
+
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact(Skip = "Destructive")]
         public async Task DeleteAllKeys()
         {
             // Arrange
@@ -260,18 +247,19 @@ namespace chia.dotnet.tests
             Assert.NotNull(returnValue);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetNFTByDID()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            String didId = string.Empty;
+            var didWallets = await Wallet.GetWalletsWithDIDs(cts.Token);
+            var (WalletId, DIDId, DIDWalletID) = didWallets.First();
 
             // Act
-            var returnValue = await Wallet.GetNFTByDID(didId: didId, cancellationToken: cts.Token);
+            var returnValue = await Wallet.GetNFTByDID(didId: DIDId, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue);
+            Assert.Equal(returnValue, WalletId);
         }
 
         [Fact]
