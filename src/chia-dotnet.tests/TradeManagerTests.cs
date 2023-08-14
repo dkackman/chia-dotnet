@@ -81,7 +81,6 @@ namespace chia.dotnet.tests
         }
 
         [Fact]
-        //
         public async Task CreateOfferForIds()
         {
             uint makerCoinWalletId = 2; // wallet ID for offered coin (must have balance >= 1)
@@ -155,7 +154,6 @@ namespace chia.dotnet.tests
         }
 
         [Fact]
-
         public async Task CancelOffer()
         {
             // this offer will only be cancelled in wallet, not securely cancelled on blockchain
@@ -171,7 +169,6 @@ namespace chia.dotnet.tests
         }
 
         [Fact]
-
         public async Task CancelOfferSecure()
         {
             // this should be an offer with real coins that you own
@@ -193,7 +190,6 @@ namespace chia.dotnet.tests
         }
 
         [Fact]
-
         public async Task TakeOffer()
         {
             // a real offer that your wallet can complete

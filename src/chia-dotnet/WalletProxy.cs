@@ -762,7 +762,7 @@ namespace chia.dotnet
         /// <param name="reusePuzhash"></param>
         /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref=""/></returns>
+        /// <returns>Transaction number and <see cref="SpendBundle"/></returns>
         public async Task<(int TxNum, SpendBundle SpendBundle)> NftSetDidBulk(string didId, IEnumerable<NftCoinInfo> nftCoinList, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -782,7 +782,7 @@ namespace chia.dotnet
         /// <param name="reusePuzhash"></param>
         /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref=""/></returns>
+        /// <returns>Transaction number and a <see cref="SpendBundle"/></returns>
         public async Task<(int TxNum, SpendBundle SpendBundle)> NftTransferBulk(string targetAddress, IEnumerable<NftCoinInfo> nftCoinList, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
