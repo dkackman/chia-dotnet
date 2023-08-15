@@ -51,7 +51,7 @@ namespace chia.dotnet.tests
 
             var q = await Plotter.RegisterPlotter(cts.Token);
 
-            Assert.NotNull(q);
+            Assert.NotNull(q.ToList());
         }
 
         [Fact]

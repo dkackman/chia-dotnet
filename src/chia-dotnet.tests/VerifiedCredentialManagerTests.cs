@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using chia.dotnet.tests.Core;
 using Xunit;
 using System.Threading;
+using System.Linq;
 
 namespace chia.dotnet.tests;
 
@@ -36,7 +37,7 @@ public class VerifiedCredentialManagerTests : TestBase
         var returnValue = await VCManager.GetList(cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact(Skip = "Requires review")]
@@ -65,7 +66,7 @@ public class VerifiedCredentialManagerTests : TestBase
         var returnValue = await VCManager.Spend(vcId: vcId, cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact(Skip = "Requires review")]
@@ -93,7 +94,7 @@ public class VerifiedCredentialManagerTests : TestBase
         var returnValue = await VCManager.GetProofsForRoot(root: root, cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact(Skip = "Requires review")]
@@ -107,7 +108,7 @@ public class VerifiedCredentialManagerTests : TestBase
         var returnValue = await VCManager.Revoke(vcParentId: vcParentId, cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
 }

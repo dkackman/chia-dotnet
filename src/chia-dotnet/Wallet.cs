@@ -163,9 +163,9 @@ namespace chia.dotnet
         /// <param name="excludedCoinIds">Coin ids to exclude</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about spendable coins</returns>
-        public async Task<(IEnumerable<CoinRecord> confirmedRecords,
-            IEnumerable<CoinRecord> unconfirmedRecords,
-            IEnumerable<CoinRecord> unconfirmedAdditions)> GetSpendableCoins(ulong? minCoinAmount, ulong? maxCoinAmount, IEnumerable<ulong>? excludedCoinAmounts = null, IEnumerable<Coin>? excludedCoins = null, IEnumerable<string>? excludedCoinIds = null, CancellationToken cancellationToken = default)
+        public async Task<(IEnumerable<CoinRecord> ConfirmedRecords,
+            IEnumerable<CoinRecord> UnconfirmedRecords,
+            IEnumerable<CoinRecord> UnconfirmedAdditions)> GetSpendableCoins(ulong? minCoinAmount, ulong? maxCoinAmount, IEnumerable<ulong>? excludedCoinAmounts = null, IEnumerable<Coin>? excludedCoins = null, IEnumerable<string>? excludedCoinIds = null, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.minCoinAmount = minCoinAmount;

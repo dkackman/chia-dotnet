@@ -191,7 +191,7 @@ namespace chia.dotnet.tests
             var (confirmedRecords, unconfirmedRecords, unconfirmedAdditions) = await StandardWallet.GetSpendableCoins(minCoinAmount: minCoinAmount, maxCoinAmount: maxCoinAmount, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(confirmedRecords);
+            Assert.NotNull(confirmedRecords.ToList());
         }
 
         [Fact]

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using chia.dotnet.tests.Core;
 using Xunit;
 using System.Threading;
+using System.Linq;
 
 namespace chia.dotnet.tests;
 
@@ -188,7 +189,7 @@ public class DIDWalletTests : TestBase
         var (RecoverList, NumRequired) = await DIDWallet.GetRecoveryList(cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(RecoverList);
+        Assert.NotNull(RecoverList.ToList());
     }
 
     [Fact(Skip = "Requires review")]
@@ -230,7 +231,7 @@ public class DIDWalletTests : TestBase
         var returnValue = await DIDWallet.CreateBackupFile(cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact(Skip = "Requires review")]
