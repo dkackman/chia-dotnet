@@ -32,7 +32,7 @@ public class DataLayerWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String coinId = string.Empty;
+        var coinId = string.Empty;
 
         // Act
         var returnValue = await DataLayerWallet.DeleteMirror(coinId: coinId, cancellationToken: cts.Token);
@@ -46,7 +46,7 @@ public class DataLayerWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String launcherId = string.Empty;
+        var launcherId = string.Empty;
 
         // Act
         var returnValue = await DataLayerWallet.GetMirrors(launcherId: launcherId, cancellationToken: cts.Token);
@@ -60,7 +60,7 @@ public class DataLayerWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String launcherId = string.Empty;
+        var launcherId = string.Empty;
 
         // Act
         var returnValue = await DataLayerWallet.History(launcherId: launcherId, cancellationToken: cts.Token);
@@ -74,8 +74,8 @@ public class DataLayerWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String root = string.Empty;
-        String launcherId = string.Empty;
+        var root = string.Empty;
+        var launcherId = string.Empty;
 
         // Act
         var returnValue = await DataLayerWallet.LatestSingleton(root: root, launcherId: launcherId, cancellationToken: cts.Token);
@@ -89,8 +89,8 @@ public class DataLayerWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String launcherId = string.Empty;
-        UInt64 amount = 0;
+        var launcherId = string.Empty;
+        ulong amount = 0;
         IEnumerable<string> urls = null;
 
         // Act
@@ -118,8 +118,8 @@ public class DataLayerWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String root = string.Empty;
-        String launcherId = string.Empty;
+        var root = string.Empty;
+        var launcherId = string.Empty;
 
         // Act
         var returnValue = await DataLayerWallet.SingletonsByRoot(root: root, launcherId: launcherId, cancellationToken: cts.Token);
@@ -133,7 +133,7 @@ public class DataLayerWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String launcherId = string.Empty;
+        var launcherId = string.Empty;
 
         // Act
         await DataLayerWallet.StopTracking(launcherId: launcherId, cancellationToken: cts.Token);
@@ -147,7 +147,7 @@ public class DataLayerWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String launcherId = string.Empty;
+        var launcherId = string.Empty;
 
         // Act
         await DataLayerWallet.TrackNew(launcherId: launcherId, cancellationToken: cts.Token);
@@ -175,8 +175,8 @@ public class DataLayerWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String newRoot = string.Empty;
-        String launcherId = string.Empty;
+        var newRoot = string.Empty;
+        var launcherId = string.Empty;
 
         // Act
         var returnValue = await DataLayerWallet.UpdateRoot(newRoot: newRoot, launcherId: launcherId, cancellationToken: cts.Token);
