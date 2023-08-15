@@ -42,7 +42,7 @@ public class ChiaDotNetFixture : IDisposable
                     .AddJsonFile("testingappsettings.json", false)
                     .AddEnvironmentVariables("PREFIX_")
                     .AddUserSecrets<ChiaDotNetFixture>(true);
-            }).ConfigureServices(async (hostContext, services) =>
+            }).ConfigureServices((hostContext, services) =>
             {
                 try
                 {

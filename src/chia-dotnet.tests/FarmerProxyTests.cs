@@ -74,7 +74,7 @@ namespace chia.dotnet.tests
             var summaries = await Farmer.GetHarvestersSummary(cts.Token);
 
             // Assert
-            Assert.NotNull(summaries);
+            Assert.NotNull(summaries.ToList());
         }
 
         [Fact]
@@ -163,7 +163,7 @@ namespace chia.dotnet.tests
             var harvesters = await Farmer.GetHarvesters(cts.Token);
 
             // Assert
-            Assert.NotNull(harvesters);
+            Assert.NotNull(harvesters.ToList());
         }
 
         [Fact]

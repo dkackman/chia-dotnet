@@ -5,6 +5,7 @@ using chia.dotnet.tests.Core;
 using Xunit;
 using System.Collections;
 using System.Threading;
+using System.Linq;
 
 namespace chia.dotnet.tests;
 
@@ -52,7 +53,7 @@ public class DataLayerWalletTests : TestBase
         var returnValue = await DataLayerWallet.GetMirrors(launcherId: launcherId, cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact(Skip = "Requires review")]
@@ -110,7 +111,7 @@ public class DataLayerWalletTests : TestBase
         var returnValue = await DataLayerWallet.OwnedSingletons(cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact(Skip = "Requires review")]
@@ -125,7 +126,7 @@ public class DataLayerWalletTests : TestBase
         var returnValue = await DataLayerWallet.SingletonsByRoot(root: root, launcherId: launcherId, cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact(Skip = "Requires review")]
@@ -167,7 +168,7 @@ public class DataLayerWalletTests : TestBase
         var returnValue = await DataLayerWallet.UpdateMultiple(updates: updates, cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact(Skip = "Requires review")]

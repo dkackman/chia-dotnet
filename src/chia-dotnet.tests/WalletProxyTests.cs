@@ -24,7 +24,7 @@ namespace chia.dotnet.tests
             var (Wallets, Fingerprint) = await Wallet.GetWallets(false, cts.Token);
 
             // Assert
-            Assert.NotNull(Wallets);
+            Assert.NotNull(Wallets.ToList());
             Assert.True(Wallets.Count() > 0);
         }
 
@@ -52,7 +52,7 @@ namespace chia.dotnet.tests
             var keys = await Wallet.GetPublicKeys(cts.Token);
 
             // Assert
-            Assert.NotNull(keys);
+            Assert.NotNull(keys.ToList());
         }
 
         [Fact]
@@ -118,7 +118,7 @@ namespace chia.dotnet.tests
             var mnemonic = await Wallet.GenerateMnemonic(cts.Token);
 
             // Assert
-            Assert.NotNull(mnemonic);
+            Assert.NotNull(mnemonic.ToList());
         }
 
         [Fact]
@@ -272,7 +272,7 @@ namespace chia.dotnet.tests
             var returnValue = await Wallet.GetWalletsWithDIDs(cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue);
+            Assert.NotNull(returnValue.ToList());
         }
 
         [Fact(Skip = "Requires review")]
@@ -385,7 +385,7 @@ namespace chia.dotnet.tests
             var returnValue = await Wallet.GetCoinRecordsByNames(names: names, includeSpentCoins: includeSpentCoins, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue);
+            Assert.NotNull(returnValue.ToList());
         }
 
         [Fact(Skip = "Wallet creation")]
@@ -703,7 +703,7 @@ namespace chia.dotnet.tests
             var returnValue = await Wallet.SpendClawbackCoins(coinIds: coinIds, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue);
+            Assert.NotNull(returnValue.ToList());
         }
     }
 }

@@ -20,7 +20,7 @@ namespace chia.dotnet.tests
             var offers = await TradeManager.GetOffers(fileContents: true, cancellationToken: cts.Token);
 
             // requires at least one open offer
-            Assert.NotNull(offers);
+            Assert.NotNull(offers.ToList());
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(2000);
             var cats = await TradeManager.GetCATList(cts.Token);
-            Assert.NotNull(cats);
+            Assert.NotNull(cats.ToList());
         }
 
         [Fact]
@@ -210,7 +210,7 @@ namespace chia.dotnet.tests
             var returnValue = await TradeManager.GetStrayCats(cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue);
+            Assert.NotNull(returnValue.ToList());
         }
     }
 }

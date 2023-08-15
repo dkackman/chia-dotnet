@@ -141,7 +141,7 @@ public class DataLayerProxyTests : TestBase
         var returnValue = await DataLayer.GetAncestors(id: id, hash: hash, cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact(Skip = "Requires review")]
@@ -156,7 +156,7 @@ public class DataLayerProxyTests : TestBase
         var returnValue = await DataLayer.GetKeys(id: id, rootHash: rootHash, cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact(Skip = "Requires review")]
@@ -171,7 +171,7 @@ public class DataLayerProxyTests : TestBase
         var returnValue = await DataLayer.GetKeysValues(id: id, rootHash: rootHash, cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact(Skip = "Requires review")]
@@ -215,7 +215,7 @@ public class DataLayerProxyTests : TestBase
         var returnValue = await DataLayer.GetMirrors(id: id, cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact(Skip = "Requires review")]
@@ -228,7 +228,7 @@ public class DataLayerProxyTests : TestBase
         var returnValue = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact(Skip = "Requires review")]
@@ -256,7 +256,7 @@ public class DataLayerProxyTests : TestBase
         var returnValue = await DataLayer.GetRootHistory(id: id, cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact(Skip = "Requires review")]
@@ -270,7 +270,7 @@ public class DataLayerProxyTests : TestBase
         var returnValue = await DataLayer.GetRoots(ids: ids, cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact(Skip = "Requires review")]
@@ -373,7 +373,7 @@ public class DataLayerProxyTests : TestBase
         var returnValue = await DataLayer.Subscriptions(cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact(Skip = "Requires review")]

@@ -37,13 +37,13 @@ namespace chia.dotnet
         /// <param name="end"></param>
         /// <param name="start"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref="VCRecord"/></returns>
-        public async Task<VCRecord> GetList(uint start = 0, uint end = 50, CancellationToken cancellationToken = default)
+        /// <returns>A list of <see cref="VCRecord"/></returns>
+        public async Task<IEnumerable<VCRecord>> GetList(uint start = 0, uint end = 50, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.start = start;
             data.end = end;
-            return await WalletProxy.SendMessage<VCRecord>("vc_get_list", data, "vc_records", cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<IEnumerable<VCRecord>>("vc_get_list", data, "vc_records", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

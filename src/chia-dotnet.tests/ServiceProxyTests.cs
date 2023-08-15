@@ -48,7 +48,7 @@ public class ServiceProxyTests : TestBase
         var returnValue = await Farmer.GetConnections(cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact(Skip = "Fails over websocket. bug entered on chia github")]
@@ -61,7 +61,7 @@ public class ServiceProxyTests : TestBase
         var returnValue = await FullNode.GetRoutes(cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact]

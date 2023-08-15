@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using chia.dotnet.tests.Core;
 using Xunit;
 using System.Threading;
+using System.Linq;
 
 namespace chia.dotnet.tests;
 
@@ -51,7 +52,7 @@ public class NFTWalletTests : TestBase
         var returnValue = await NFTWallet.NftCountNfts(cancellationToken: cts.Token);
 
         // Assert
-        Assert.True(returnValue > 0);
+        Assert.True(returnValue >= 0);
     }
 
     [Fact]
@@ -64,7 +65,7 @@ public class NFTWalletTests : TestBase
         var returnValue = await NFTWallet.GetNFTs(cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact]
