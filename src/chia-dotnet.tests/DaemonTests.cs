@@ -205,7 +205,7 @@ namespace chia.dotnet.tests
             var returnValue = await Daemon.GetKeys(fingerprint: Fingerprint, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue);
+            Assert.NotNull(returnValue.ToList());
         }
 
         [Fact]

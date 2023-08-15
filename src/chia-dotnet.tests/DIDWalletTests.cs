@@ -238,7 +238,7 @@ public class DIDWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String innerAddress = string.Empty;
+        var innerAddress = string.Empty;
 
         // Act
         var returnValue = await DIDWallet.Transfer(innerAddress: innerAddress, cancellationToken: cts.Token);

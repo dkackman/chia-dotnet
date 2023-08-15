@@ -89,15 +89,15 @@ namespace chia.dotnet
         /// <param name="targetTimes">Array of target times</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Fee estimate details</returns>
-        public async Task<(IEnumerable<int> estimates,
-            IEnumerable<int> targetTimes,
-            ulong currentFeeRate,
-            ulong mempoolSize,
-            ulong mempoolMaxSize,
-            bool synced,
-            ulong peakHeight,
-            ulong lastPeakTimestamp,
-            ulong utcTimestamp
+        public async Task<(IEnumerable<int> Estimates,
+            IEnumerable<int> TargetTimes,
+            ulong CurrentFeeRate,
+            ulong MempoolSize,
+            ulong MempoolMaxSize,
+            bool Synced,
+            ulong PeakHeight,
+            ulong LastPeakTimestamp,
+            ulong UtcTimestamp
             )> GetFeeEstimate(SpendBundle spendBundle, IEnumerable<int> targetTimes, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -378,8 +378,8 @@ namespace chia.dotnet
             var response = await SendMessage("get_additions_and_removals", data, cancellationToken).ConfigureAwait(false);
 
             return (
-                Converters.ToEnumerable<CoinRecord>(response.additions),
-                Converters.ToEnumerable<CoinRecord>(response.removals)
+                Converters.ToObject<IEnumerable<CoinRecord>>(response.additions),
+                Converters.ToObject<IEnumerable<CoinRecord>>(response.removals)
                 );
         }
 
@@ -545,7 +545,7 @@ namespace chia.dotnet
         /// <param name="challengeHash">challenge hash</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="EndOfSubSlotBundle"/></returns>
-        public async Task<(EndOfSubSlotBundle eos, double timeReceived, bool reverted, DateTime DateTimeReceived)> GetRecentEOS(string challengeHash, CancellationToken cancellationToken = default)
+        public async Task<(EndOfSubSlotBundle Eos, double TimeReceived, bool Reverted, DateTime DateTimeReceived)> GetRecentEOS(string challengeHash, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(challengeHash))
             {
