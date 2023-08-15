@@ -12,7 +12,7 @@ public class NFTWalletTests : TestBase
     {
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task Validate()
     {
         // Arrange
@@ -30,9 +30,9 @@ public class NFTWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String uri = string.Empty;
-        String key = string.Empty;
-        String nftCoinId = string.Empty;
+        var uri = string.Empty;
+        var key = string.Empty;
+        var nftCoinId = string.Empty;
 
         // Act
         var returnValue = await NFTWallet.AddUri(uri: uri, key: key, nftCoinId: nftCoinId, cancellationToken: cts.Token);
@@ -41,7 +41,7 @@ public class NFTWalletTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task NftCountNfts()
     {
         // Arrange
@@ -51,10 +51,10 @@ public class NFTWalletTests : TestBase
         var returnValue = await NFTWallet.NftCountNfts(cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.True(returnValue > 0);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetNFTs()
     {
         // Arrange
@@ -67,7 +67,7 @@ public class NFTWalletTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetDid()
     {
         // Arrange
@@ -91,7 +91,7 @@ public class NFTWalletTests : TestBase
         var returnValue = await NFTWallet.MintNFT(info: info, cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.SpendBundle);
     }
 
     [Fact(Skip = "Requires review")]
@@ -105,7 +105,7 @@ public class NFTWalletTests : TestBase
         var returnValue = await NFTWallet.NftMintBulk(info: info, cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.SpendBundle);
     }
 
     [Fact(Skip = "Requires review")]
@@ -113,7 +113,7 @@ public class NFTWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String didId = string.Empty;
+        var didId = string.Empty;
 
         // Act
         var returnValue = await NFTWallet.SetDID(didId: didId, cancellationToken: cts.Token);
@@ -127,7 +127,7 @@ public class NFTWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String coinId = string.Empty;
+        var coinId = string.Empty;
 
         // Act
         await NFTWallet.SetStatus(coinId: coinId, cancellationToken: cts.Token);
@@ -141,8 +141,8 @@ public class NFTWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String targetAddress = string.Empty;
-        String coinId = string.Empty;
+        var targetAddress = string.Empty;
+        var coinId = string.Empty;
 
         // Act
         var returnValue = await NFTWallet.Transfer(targetAddress: targetAddress, coinId: coinId, cancellationToken: cts.Token);

@@ -66,8 +66,8 @@ namespace chia.dotnet.tests
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            String innerAddress = string.Empty;
-            UInt64 amount = 0;
+            var innerAddress = string.Empty;
+            ulong amount = 0;
 
             // Act
             var returnValue = await CATWallet.Spend(innerAddress: innerAddress, amount: amount, cancellationToken: cts.Token);

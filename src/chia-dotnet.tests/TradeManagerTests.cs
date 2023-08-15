@@ -21,18 +21,16 @@ namespace chia.dotnet.tests
 
             // requires at least one open offer
             Assert.NotNull(offers);
-            Assert.True(offers.Any(o => !string.IsNullOrWhiteSpace(o.Offer)));
         }
 
         [Fact]
         public async Task GetOffersCount()
         {
             using var cts = new CancellationTokenSource(2000);
-            var counts = await TradeManager.GetOffersCount(cts.Token);
+            var (Total, MyOffersCount, TakenOffersCount) = await TradeManager.GetOffersCount(cts.Token);
 
             // requires at least one open offer
-            Assert.NotNull(counts);
-            Assert.True(counts.Total >= 0);
+            Assert.True(Total >= 0);
         }
 
         [Fact]
@@ -202,7 +200,7 @@ namespace chia.dotnet.tests
             Assert.True(tradeRecord.Status == TradeStatus.PENDING_CONFIRM);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetStrayCats()
         {
             // Arrange

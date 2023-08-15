@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using chia.dotnet.tests.Core;
 using Xunit;
 using System.Threading;
@@ -13,7 +12,7 @@ public class PoolWalletTests : TestBase
     {
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task Validate()
     {
         // Arrange
@@ -31,8 +30,8 @@ public class PoolWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String targetPuzzlehash = string.Empty;
-        String poolUrl = string.Empty;
+        var targetPuzzlehash = string.Empty;
+        var poolUrl = string.Empty;
         UInt32 relativeLockHeight = 0;
 
         // Act
@@ -55,30 +54,30 @@ public class PoolWalletTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task AbsorbRewards()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
 
         // Act
-        var returnValue = await PoolWallet.AbsorbRewards(cancellationToken: cts.Token);
+        var (State, Transaction) = await PoolWallet.AbsorbRewards(cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(State);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task Status()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
 
         // Act
-        var returnValue = await PoolWallet.Status(cancellationToken: cts.Token);
+        var (State, UnconfirmedTransactions) = await PoolWallet.Status(cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(State);
     }
 
 }
