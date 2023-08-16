@@ -208,17 +208,17 @@ public class DIDWalletTests : TestBase
         Assert.NotNull(MessageSpendBundle);
     }
 
-    [Fact]
+    [Fact(Skip = "Fails within chia")]
     public async Task GetInformationNeededForRecovery()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
 
         // Act
-        var returnValue = await DIDWallet.GetInformationNeededForRecovery(cancellationToken: cts.Token);
+        var (MyDID, CoinName, NewPuzzleHash, PublicKey, BackUpIds) = await DIDWallet.GetInformationNeededForRecovery(cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue.CoinName);
+        Assert.NotNull(CoinName);
     }
 
     [Fact]

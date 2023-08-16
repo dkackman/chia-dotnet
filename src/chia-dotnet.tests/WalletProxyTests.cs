@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
@@ -25,12 +24,11 @@ namespace chia.dotnet.tests
 
             // Assert
             Assert.NotNull(Wallets.ToList());
-            Assert.True(Wallets.Count() > 0);
+            Assert.True(Wallets.Any());
         }
 
 
         [Fact]
-
         public async Task GetLoggedInFingerprint()
         {
             // Arrange
@@ -61,9 +59,10 @@ namespace chia.dotnet.tests
             // Arrange
             using var cts = new CancellationTokenSource(15000);
             var fingerprint = await Wallet.GetLoggedInFingerprint(cts.Token);
+            fingerprint = Assert.NotNull(fingerprint);
 
             // Act
-            var key = await Wallet.GetPrivateKey(fingerprint, cts.Token);
+            var key = await Wallet.GetPrivateKey(fingerprint.Value, cts.Token);
 
             // Assert
             Assert.NotNull(key);
@@ -196,9 +195,9 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
             var fingerprint = await Wallet.GetLoggedInFingerprint(cancellationToken: cts.Token);
-
+            fingerprint = Assert.NotNull(fingerprint);
             // Act
-            var returnValue = await Wallet.CheckDeleteKey(fingerprint: fingerprint, cancellationToken: cts.Token);
+            var returnValue = await Wallet.CheckDeleteKey(fingerprint: fingerprint.Value, cancellationToken: cts.Token);
 
             // Assert
             Assert.Equal(returnValue.Fingerprint, fingerprint);
@@ -337,7 +336,12 @@ namespace chia.dotnet.tests
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            PoolState initialTargetState = null;
+            var walletAddress = await StandardWallet.GetNextAddress(false, cts.Token);
+            var initialTargetState = new PoolState()
+            {
+                State = PoolSingletonState.SELF_POOLING,
+                TargetPuzzleHash = walletAddress,
+            };
 
             // Act
             var (transaction, launcherId, p2SingletonHash) = await Wallet.CreatePoolWallet(initialTargetState: initialTargetState, cancellationToken: cts.Token);
@@ -488,12 +492,13 @@ namespace chia.dotnet.tests
             Assert.True(returnValue > 0);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task ExtendDerivationIndex()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            UInt32 index = 0;
+            var currentIndex = await Wallet.GetCurrentDerivationIndex(cts.Token);
+            var index = currentIndex + 1;
 
             // Act
             var returnValue = await Wallet.ExtendDerivationIndex(index: index, cancellationToken: cts.Token);
@@ -521,7 +526,7 @@ namespace chia.dotnet.tests
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            IEnumerable<uint> walletIds = new List<uint>() { 1 };
+            var walletIds = new List<uint>() { 1 };
 
             // Act
             var returnValue = await Wallet.GetWalletBalances(walletIds: walletIds, cancellationToken: cts.Token);
@@ -569,10 +574,10 @@ namespace chia.dotnet.tests
             var address = string.Empty;
 
             // Act
-            var returnValue = await Wallet.SignMessageByAddress(message: message, address: address, cancellationToken: cts.Token);
+            var (PubKey, Signature, SigningMode) = await Wallet.SignMessageByAddress(message: message, address: address, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue.PubKey);
+            Assert.NotNull(PubKey);
         }
 
         [Fact(Skip = "Requires review")]
@@ -584,10 +589,10 @@ namespace chia.dotnet.tests
             var id = string.Empty;
 
             // Act
-            var returnValue = await Wallet.SignMessageById(message: message, id: id, cancellationToken: cts.Token);
+            var (PubKey, Signature, SigningMode) = await Wallet.SignMessageById(message: message, id: id, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue.PubKey);
+            Assert.NotNull(PubKey);
         }
 
         [Fact(Skip = "Requires review")]
@@ -660,7 +665,7 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
 
             // Act
-            await Wallet.SetWalletResyncOnStartup(false, cts.Token);
+            await Wallet.SetWalletResyncOnStartup(true, cts.Token);
 
             // Assert
 
