@@ -80,7 +80,7 @@ namespace chia.dotnet
         {
             var (wallets, Fingerprint) = await WalletProxy.GetWallets(true, cancellationToken).ConfigureAwait(false);
             var info = wallets.FirstOrDefault(i => i.Id == WalletId);
-            return info is null ? throw new InvalidOperationException($"No wallet with an id of {WalletId} was found") : info;
+            return info ?? throw new InvalidOperationException($"No wallet with an id of {WalletId} was found");
         }
 
         /// <summary>
@@ -289,7 +289,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, ulong fee = 0, IEnumerable<Coin>? coins = null, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, IEnumerable<Coin>? coins = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             if (additions is null)
             {
@@ -305,18 +305,6 @@ namespace chia.dotnet
             }
 
             return await WalletProxy.SendMessage<TransactionRecord>("send_transaction_multi", data, "transaction", cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Sends a transaction
-        /// </summary>
-        /// <param name="additions">Additions to the block chain</param>
-        /// <param name="fee">Fee amount (in units of mojo)</param>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, ulong fee = 0, CancellationToken cancellationToken = default)
-        {
-            return await SendTransactionMulti(additions, fee, cancellationToken).ConfigureAwait(false);
         }
     }
 }

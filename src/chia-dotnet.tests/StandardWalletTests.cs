@@ -4,7 +4,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using chia.dotnet.tests.Core;
-using System;
 
 namespace chia.dotnet.tests
 {
