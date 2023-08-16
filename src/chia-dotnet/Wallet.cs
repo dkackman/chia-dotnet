@@ -165,7 +165,7 @@ namespace chia.dotnet
         /// <returns>Information about spendable coins</returns>
         public async Task<(IEnumerable<CoinRecord> ConfirmedRecords,
             IEnumerable<CoinRecord> UnconfirmedRecords,
-            IEnumerable<CoinRecord> UnconfirmedAdditions)> GetSpendableCoins(ulong? minCoinAmount, ulong? maxCoinAmount, IEnumerable<ulong>? excludedCoinAmounts = null, IEnumerable<Coin>? excludedCoins = null, IEnumerable<string>? excludedCoinIds = null, CancellationToken cancellationToken = default)
+            IEnumerable<Coin> UnconfirmedAdditions)> GetSpendableCoins(ulong? minCoinAmount, ulong? maxCoinAmount, IEnumerable<ulong>? excludedCoinAmounts = null, IEnumerable<Coin>? excludedCoins = null, IEnumerable<string>? excludedCoinIds = null, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.minCoinAmount = minCoinAmount;
@@ -185,9 +185,9 @@ namespace chia.dotnet
             var response = await WalletProxy.SendMessage("get_spendable_coins", data, cancellationToken).ConfigureAwait(false);
 
             return (
-                Converters.ToObject<CoinRecord>(response.confirmed_records),
-                Converters.ToObject<CoinRecord>(response.unconfirmed_removals),
-                Converters.ToObject<Coin>(response.unconfirmed_additions)
+                Converters.ToObject<IEnumerable<CoinRecord>>(response.confirmed_records),
+                Converters.ToObject<IEnumerable<CoinRecord>>(response.unconfirmed_removals),
+                Converters.ToObject<IEnumerable<Coin>>(response.unconfirmed_additions)
                 );
         }
 

@@ -89,7 +89,7 @@ namespace chia.dotnet
         /// <returns>The Did</returns>
         public async Task<string> GetDid(CancellationToken cancellationToken = default)
         {
-            return await WalletProxy.SendMessage("nft_get_wallet_did", CreateWalletDataObject(), "did_id", cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<string>("nft_get_wallet_did", CreateWalletDataObject(), "did_id", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

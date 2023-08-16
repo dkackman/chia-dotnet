@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using chia.dotnet.tests.Core;
 using Xunit;
 using System.Threading;
@@ -32,7 +31,7 @@ public class PoolWalletTests : TestBase
         using var cts = new CancellationTokenSource(15000);
         var targetPuzzlehash = string.Empty;
         var poolUrl = string.Empty;
-        UInt32 relativeLockHeight = 0;
+        uint relativeLockHeight = 0;
 
         // Act
         var returnValue = await PoolWallet.JoinPool(targetPuzzlehash: targetPuzzlehash, poolUrl: poolUrl, relativeLockHeight: relativeLockHeight, cancellationToken: cts.Token);

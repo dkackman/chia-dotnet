@@ -130,7 +130,7 @@ namespace chia.dotnet
         /// <returns>The pubkey</returns>
         public async Task<string> GetPubKey(CancellationToken cancellationToken = default)
         {
-            return await WalletProxy.SendMessage("did_get_pubkey", CreateWalletDataObject(), "pubkey", cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<string>("did_get_pubkey", CreateWalletDataObject(), "pubkey", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace chia.dotnet
         /// <returns>The name</returns>
         public async Task<string> GetName(CancellationToken cancellationToken = default)
         {
-            return await WalletProxy.SendMessage("did_get_wallet_name", CreateWalletDataObject(), "name", cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<string>("did_get_wallet_name", CreateWalletDataObject(), "name", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -234,7 +234,7 @@ namespace chia.dotnet
         {
             var response = await WalletProxy.SendMessage("did_get_recovery_list", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
 
-            return (Converters.ToEnumerable<string>(response.recover_list), response.num_required);
+            return (Converters.ToObject<IEnumerable<string>>(response.recovery_list), response.num_required);
         }
 
         /// <summary>
@@ -306,7 +306,7 @@ namespace chia.dotnet
         {
             dynamic data = CreateWalletDataObject();
 
-            return await WalletProxy.SendMessage("did_create_backup_file", data, "backup_data", cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<string>("did_create_backup_file", data, "backup_data", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

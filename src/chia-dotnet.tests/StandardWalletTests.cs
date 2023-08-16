@@ -165,7 +165,7 @@ namespace chia.dotnet.tests
             Assert.NotNull(returnValue);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task SelectCoins()
         {
             // Arrange
@@ -179,7 +179,7 @@ namespace chia.dotnet.tests
             Assert.NotNull(returnValue);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetSpendableCoins()
         {
             // Arrange

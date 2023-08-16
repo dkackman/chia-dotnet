@@ -107,9 +107,9 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The logged in fingerprint</returns>
-        public async Task<uint> GetLoggedInFingerprint(CancellationToken cancellationToken = default)
+        public async Task<uint?> GetLoggedInFingerprint(CancellationToken cancellationToken = default)
         {
-            return await SendMessage<uint>("get_logged_in_fingerprint", null, "fingerprint", cancellationToken).ConfigureAwait(false);
+            return await SendMessage<uint?>("get_logged_in_fingerprint", null, "fingerprint", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
