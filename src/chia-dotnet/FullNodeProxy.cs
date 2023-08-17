@@ -419,9 +419,7 @@ namespace chia.dotnet
         /// <returns>a list of tx_ids</returns>
         public async Task<IEnumerable<string>> GetAllMemmpoolTxIds(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_all_mempool_tx_ids", cancellationToken).ConfigureAwait(false);
-
-            return Converters.ToEnumerable<string>(response.tx_ids);
+            return await SendMessage<IEnumerable<string>>("get_all_mempool_tx_ids", null, "tx_ids", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

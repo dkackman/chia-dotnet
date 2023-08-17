@@ -155,7 +155,10 @@ namespace chia.dotnet
             data.fee = fee;
             data.reuse_puzhash = reusePuzhash;
             var response = await WalletProxy.SendMessage("nft_mint_bulk", data, cancellationToken).ConfigureAwait(false);
-            return (Converters.ToObject<SpendBundle>(response.spend_bundle), Converters.ToEnumerable<string>(response.nft_id_list));
+            return (
+                Converters.ToObject<SpendBundle>(response.spend_bundle),
+                Converters.ToObject<IEnumerable<string>>(response.nft_id_list)
+                );
         }
 
         /// <summary>

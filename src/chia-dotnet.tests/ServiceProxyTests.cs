@@ -51,14 +51,14 @@ public class ServiceProxyTests : TestBase
         Assert.NotNull(returnValue.ToList());
     }
 
-    [Fact(Skip = "Fails over websocket. bug entered on chia github")]
+    [Fact]
     public async Task GetRoutes()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
 
         // Act
-        var returnValue = await FullNode.GetRoutes(cts.Token);
+        var returnValue = await Daemon.GetRoutes(cts.Token);
 
         // Assert
         Assert.NotNull(returnValue.ToList());

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Collections.Generic;
 using chia.dotnet.tests.Core;
 using Xunit;
-using System.Collections;
 using System.Threading;
 using System.Linq;
 
@@ -15,7 +13,7 @@ public class DataLayerWalletTests : TestBase
     {
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task Validate()
     {
         // Arrange
@@ -101,7 +99,7 @@ public class DataLayerWalletTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task OwnedSingletons()
     {
         // Arrange

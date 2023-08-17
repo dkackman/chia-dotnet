@@ -1,5 +1,5 @@
 {
-  "Mode": "1", //0-WSSClient, 1=HttpsClient
+  "Mode": "0", //0-WSSClient, 1=HttpsClient
   "daemon": {
     "Uri": "wss://127.0.0.1:55400",
     "CertPath": "E:/chia/mainnet/config/ssl/daemon/private_daemon.crt",

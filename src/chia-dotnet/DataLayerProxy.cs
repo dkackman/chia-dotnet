@@ -129,7 +129,7 @@ namespace chia.dotnet
 
             return (
                 response.id,
-                response.txs
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.txs)
             );
         }
 
@@ -286,7 +286,7 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.id = id;
-            return await SendMessage<Root>("get_root", data, cancellationToken).ConfigureAwait(false);
+            return await SendMessage<Root>("get_root", data, null, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

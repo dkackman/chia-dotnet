@@ -392,15 +392,16 @@ namespace chia.dotnet.tests
             Assert.NotNull(returnValue.ToList());
         }
 
-        [Fact(Skip = "Wallet creation")]
+        [Fact]
         public async Task CreateNewDl()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            var root = string.Empty;
+            var root = "8da1025e8537b681e1b8c6614f4eef141c199157519dc99c81d5e427b568cd98";
+            uint fee = 1000;
 
             // Act
-            var (Transactions, LauncherId) = await Wallet.CreateNewDl(root: root, cancellationToken: cts.Token);
+            var (Transactions, LauncherId) = await Wallet.CreateNewDl(root: root, fee: fee, cancellationToken: cts.Token);
 
             // Assert
             Assert.NotNull(LauncherId);
@@ -595,7 +596,7 @@ namespace chia.dotnet.tests
             Assert.NotNull(PubKey);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetCoinRecords()
         {
             // Arrange
@@ -609,8 +610,8 @@ namespace chia.dotnet.tests
             HashFilter coinIdFilter = null;
             CoinType? coinType = null;
             WalletType? walletType = null;
-            uint? walletId = null;
-            uint? limit = null;
+            uint? walletId = 1;
+            uint? limit = 5;
 
             // Act
             var returnValue = await Wallet.GetCoinRecords(spentRange: spentRange,
