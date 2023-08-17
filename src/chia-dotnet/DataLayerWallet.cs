@@ -119,7 +119,7 @@ namespace chia.dotnet
         /// <returns>A list of <see cref="SingletonRecord"/></returns>
         public async Task<IEnumerable<SingletonRecord>> OwnedSingletons(CancellationToken cancellationToken = default)
         {
-            return await WalletProxy.SendMessage<IEnumerable<SingletonRecord>>("dl_owned_singletons", null, "history", cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<IEnumerable<SingletonRecord>>("dl_owned_singletons", null, "singletons", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

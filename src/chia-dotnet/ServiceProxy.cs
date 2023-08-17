@@ -60,7 +60,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task HealthZ(CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("healthz", cancellationToken).ConfigureAwait(false);
+            await SendMessage("healthz", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task StopNode(CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("stop_node", cancellationToken).ConfigureAwait(false);
+            await SendMessage("stop_node", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace chia.dotnet
             data.host = host;
             data.port = port;
 
-            _ = await SendMessage("open_connection", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("open_connection", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.node_id = nodeId;
 
-            _ = await SendMessage("close_connection", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("close_connection", data, cancellationToken).ConfigureAwait(false);
         }
 
         //

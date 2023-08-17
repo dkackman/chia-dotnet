@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 using System;
+using System.Xml.Linq;
 
 namespace chia.dotnet.tests.Core;
 
@@ -47,7 +48,7 @@ public class TestBase : IClassFixture<ChiaDotNetFixture>
     internal DataLayerWallet DataLayerWallet => Fixture.TestHost.Services.GetService<WalletFactory>()!.GetWallet<DataLayerWallet>(WalletType.DATA_LAYER);
 
     internal NFTWallet NFTWallet => Fixture.TestHost.Services.GetService<WalletFactory>()!.GetWallet<NFTWallet>(WalletType.NFT);
-    
+
     public TestBase(ChiaDotNetFixture fixture)
     {
         Fixture = fixture;

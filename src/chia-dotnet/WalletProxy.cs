@@ -299,9 +299,7 @@ namespace chia.dotnet
         /// <returns>The new mnemonic as an <see cref="IEnumerable{T}"/> of 24 words</returns>
         public async Task<IEnumerable<string>> GenerateMnemonic(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("generate_mnemonic", cancellationToken).ConfigureAwait(false);
-
-            return Converters.ToEnumerable<string>(response.mnemonic);
+            return await SendMessage<IEnumerable<string>>("generate_mnemonic", null, "mnemonic", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -721,7 +719,7 @@ namespace chia.dotnet
             data.root = root;
             data.fee = fee;
             var response = await SendMessage("create_new_dl", data, cancellationToken).ConfigureAwait(false);
-            return (Converters.ToObject<IEnumerable<TradeRecord>>(response.transactions), response.launcher_id);
+            return (Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions), response.launcher_id);
         }
 
         /// <summary>
@@ -1070,7 +1068,7 @@ namespace chia.dotnet
         /// <returns><see cref="AutoClaimSettings"/></returns>
         public async Task<AutoClaimSettings> GetAutoClaim(CancellationToken cancellationToken = default)
         {
-            return await SendMessage<AutoClaimSettings>("get_auto_claim", cancellationToken).ConfigureAwait(false);
+            return await SendMessage<AutoClaimSettings>("get_auto_claim", null, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

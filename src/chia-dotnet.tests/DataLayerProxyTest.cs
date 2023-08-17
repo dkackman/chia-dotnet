@@ -74,7 +74,7 @@ public class DataLayerProxyTests : TestBase
 
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task CheckPlugins()
     {
         // Arrange
@@ -87,7 +87,7 @@ public class DataLayerProxyTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact(Skip = "Creation")]
     public async Task CreateDataStore()
     {
         // Arrange
@@ -190,12 +190,13 @@ public class DataLayerProxyTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetLocalRoot()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        var id = string.Empty;
+        var stores = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
+        var id = "0xb1db017a7131d174bfc6f826b0b8923b8812c1b2ba532aa09ce6cd558d39ed78";
 
         // Act
         var returnValue = await DataLayer.GetLocalRoot(id: id, cancellationToken: cts.Token);
@@ -204,12 +205,13 @@ public class DataLayerProxyTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetMirrors()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        var id = string.Empty;
+        var stores = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
+        var id = stores.First();
 
         // Act
         var returnValue = await DataLayer.GetMirrors(id: id, cancellationToken: cts.Token);
@@ -218,7 +220,7 @@ public class DataLayerProxyTests : TestBase
         Assert.NotNull(returnValue.ToList());
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetOwnedStores()
     {
         // Arrange
@@ -231,12 +233,13 @@ public class DataLayerProxyTests : TestBase
         Assert.NotNull(returnValue.ToList());
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetRoot()
     {
         // Arrange
-        using var cts = new CancellationTokenSource(15000);
-        var id = string.Empty;
+        using var cts = new CancellationTokenSource(15000000);
+        var stores = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
+        var id = stores.First();
 
         // Act
         var returnValue = await DataLayer.GetRoot(id: id, cancellationToken: cts.Token);
@@ -245,12 +248,13 @@ public class DataLayerProxyTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetRootHistory()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        var id = string.Empty;
+        var stores = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
+        var id = stores.First();
 
         // Act
         var returnValue = await DataLayer.GetRootHistory(id: id, cancellationToken: cts.Token);
@@ -273,12 +277,13 @@ public class DataLayerProxyTests : TestBase
         Assert.NotNull(returnValue.ToList());
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetSyncStatus()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        var id = string.Empty;
+        var stores = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
+        var id = stores.First();
 
         // Act
         var returnValue = await DataLayer.GetSyncStatus(id: id, cancellationToken: cts.Token);
@@ -363,7 +368,7 @@ public class DataLayerProxyTests : TestBase
 
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task Subscriptions()
     {
         // Arrange
