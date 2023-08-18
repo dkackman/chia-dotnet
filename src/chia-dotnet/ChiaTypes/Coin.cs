@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
 
 namespace chia.dotnet
 {
@@ -18,14 +18,21 @@ namespace chia.dotnet
         {
             get
             {
-                var inputString = ParentCoinInfo + PuzzleHash + Amount.ToString();
-                var inputBytes = Encoding.UTF8.GetBytes(inputString);
-                using var sha256 = SHA256.Create();
-                // Compute the hash value from the input bytes
-                var hashBytes = sha256.ComputeHash(inputBytes);
+                // convert values to bytes
+                var parent_id_bytes = Convert.FromHexString(ParentCoinInfo);
+                var puzzle_hash_bytes = Convert.FromHexString(PuzzleHash);
+                var amount_hex_string = Amount.ToString("X");
+                // add leading zero if needed
+                amount_hex_string = (amount_hex_string.Length % 2 == 0 ? "" : "0") + amount_hex_string;
+                var amount_bytes = Convert.FromHexString(amount_hex_string);
 
-                // Convert the hash bytes to a hexadecimal string
-                return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+                // concat all to one bytes array
+                var bytes = parent_id_bytes.Concat(puzzle_hash_bytes).Concat(amount_bytes).ToArray();
+
+                using var hash = SHA256.Create();
+                var coin_id_bytes = hash.ComputeHash(bytes);
+
+                return Convert.ToHexString(coin_id_bytes);
             }
         }
     }
