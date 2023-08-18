@@ -33,15 +33,15 @@ namespace chia.dotnet
         /// <summary>
         /// Slot (present iff this is the first SB in sub slot)
         /// </summary>
-        public ICollection<string>? FinishedChallengeSlotHashes { get; init; }
+        public IEnumerable<string>? FinishedChallengeSlotHashes { get; init; }
         /// <summary>
         /// Slot (present iff this is the first SB in sub slot)
         /// </summary>
-        public ICollection<string>? FinishedInfusedChallengeSlotHashes { get; init; }
+        public IEnumerable<string>? FinishedInfusedChallengeSlotHashes { get; init; }
         /// <summary>
         /// Slot (present iff this is the first SB in sub slot)
         /// </summary>
-        public ICollection<string>? FinishedRewardSlotHashes { get; init; }
+        public IEnumerable<string>? FinishedRewardSlotHashes { get; init; }
         public string HeaderHash { get; init; } = string.Empty;
         public uint Height { get; init; }
         /// <summary>
@@ -70,7 +70,7 @@ namespace chia.dotnet
         /// <summary>
         /// Transaction block (present iff is_transaction_block)
         /// </summary>
-        public ICollection<Coin>? RewardClaimsIncorporated { get; init; }
+        public IEnumerable<Coin>? RewardClaimsIncorporated { get; init; }
         /// <summary>
         /// The reward chain infusion output, input to next VDF
         /// </summary>

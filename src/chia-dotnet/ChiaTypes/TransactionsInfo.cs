@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace chia.dotnet
 {
@@ -27,6 +27,6 @@ namespace chia.dotnet
         /// <summary>
         /// These can be in any order
         /// </summary>
-        public ICollection<Coin> RewardClaimsIncorporated { get; init; } = new List<Coin>();
+        public IEnumerable<Coin> RewardClaimsIncorporated { get; init; } = new List<Coin>();
     }
 }

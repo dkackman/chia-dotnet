@@ -71,18 +71,10 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.launcher_id = launcherId;
-            if (minGeneration.HasValue)
-            {
-                data.min_generation = minGeneration;
-            }
-            if (maxGeneration.HasValue)
-            {
-                data.max_generation = maxGeneration;
-            }
-            if (numResults.HasValue)
-            {
-                data.num_results = numResults;
-            }
+            data.min_generation = minGeneration;
+            data.max_generation = maxGeneration;
+            data.num_results = numResults;
+
             return await WalletProxy.SendMessage<IEnumerable<SingletonRecord>>("dl_history", data, "history", cancellationToken).ConfigureAwait(false);
         }
 

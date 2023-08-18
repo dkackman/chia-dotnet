@@ -10,14 +10,14 @@ namespace chia.dotnet.tests
         public ConversionTests(ChiaDotNetFixture fixture) : base(fixture)
         {
         }
-        
+
         [Fact]
-        public void OnTrillion()
+        public void OneTrillion()
         {
             // Arrange 
-            
+
             // Act
-            
+
             // Assert
             Assert.Equal(Extensions.OneTrillion, Convert.ToDecimal(Math.Pow(10, 12)));
         }
@@ -27,7 +27,7 @@ namespace chia.dotnet.tests
         {
             // Arrange
             ulong mojo = 100;
-            
+
             // Act
             var chia = mojo.ToChia();
             var newMojo = chia.ToMojo();
@@ -41,7 +41,7 @@ namespace chia.dotnet.tests
         {
             // Arrange
             ulong mojo = 1001;
-            
+
             // Act
             var chia = mojo.ToChia();
             var newMojo = chia.ToMojo();
@@ -55,7 +55,7 @@ namespace chia.dotnet.tests
         {
             // Arrange
             decimal chia = 100;
-            
+
             // Act
             var mojo = chia.ToMojo();
             var newChia = mojo.ToChia();
@@ -63,13 +63,13 @@ namespace chia.dotnet.tests
             // Assert
             Assert.Equal(chia, newChia);
         }
-        
+
         [Fact]
         public void ChiaToMojoToChiaFractional()
         {
             // Arrange
             var chia = 100.1M;
-            
+
             // Act
             var mojo = chia.ToMojo();
             var newChia = mojo.ToChia();

@@ -1,510 +1,396 @@
-// <<<<<<< HEAD
-// ﻿
-// using System.Threading;
-// using System.Threading.Tasks;
-// using System.Linq;
-//
-// using Microsoft.VisualStudio.TestTools.UnitTesting;
-//
-// namespace chia.dotnet.tests
-// {
-//     /// <summary>
-//     /// This class is a test harness for interation with an actual daemon instance
-//     /// </summary>
-//     [TestClass]
-//     [TestCategory("Integration")]
-//     public class DaemonTests
-//     {
-//         private static DaemonProxy _theDaemon;
-//
-//         [ClassInitialize]
-//         public static async Task Initialize(TestContext context)
-//         {
-//             try
-//             {
-//                 using var cts = new CancellationTokenSource(20000);
-//                 var rpcClient = Factory.CreateWebsocketClient();
-//                 await rpcClient.Connect(cts.Token);
-//
-//                 _theDaemon = new DaemonProxy(rpcClient, "unit_tests");
-//             }
-//             catch (System.Exception e)
-//             {
-//                 System.Diagnostics.Debug.WriteLine(e.Message);
-//                 throw;
-//             }
-//         }
-//
-//         [ClassCleanup()]
-//         public static void ClassCleanup()
-//         {
-//             _theDaemon.RpcClient?.Dispose();
-//         }
-//
-//         [TestMethod]
-//         public async Task GetVersion()
-//         {
-//             using var cts = new CancellationTokenSource(15000);
-//
-//             var version = await _theDaemon.GetVersion(cts.Token);
-//             Assert.IsFalse(string.IsNullOrEmpty(version));
-//         }
-//
-//         [TestMethod]
-//         public async Task IsRunning()
-//         {
-//             using var cts = new CancellationTokenSource(15000);
-//
-//             var running = await _theDaemon.IsRunning(ServiceNames.FullNode, cts.Token);
-//             Assert.IsTrue(running);
-//         }
-//
-//         [TestMethod]
-//         public async Task GetKeyringStatus()
-//         {
-//             using var cts = new CancellationTokenSource(15000);
-//
-//             var status = await _theDaemon.GetKeyringStatus(cts.Token);
-//             Assert.IsNotNull(status);
-//         }
-//
-//         [TestMethod]
-//         public async Task GetFarmerIsRunning()
-//         {
-//             using var cts = new CancellationTokenSource(15000);
-//
-//             var running = await _theDaemon.IsServiceRunning(ServiceNames.Farmer, cts.Token);
-//             Assert.IsTrue(running);
-//         }
-//
-//         [TestMethod]
-//         [ExpectedException(typeof(ResponseException))]
-//         public async Task ValidateInvalidKeyringPassphrase()
-//         {
-//             using var cts = new CancellationTokenSource(15000);
-//
-//             await _theDaemon.ValidateKeyringPassphrase("spoon", cts.Token);
-//         }
-//
-//         [TestMethod]
-//         [ExpectedException(typeof(ResponseException))]
-//         public async Task UnlockKeyringInvalid()
-//         {
-//             using var cts = new CancellationTokenSource(15000);
-//
-//             await _theDaemon.UnlockKeyring("spoon", cts.Token);
-//         }
-//
-//         [TestMethod]
-//         public async Task UnlockKeyringValid()
-//         {
-//             using var cts = new CancellationTokenSource(15000);
-//             var status = await _theDaemon.GetKeyringStatus(cts.Token);
-//             if (status.UserPassphraseIsSet)
-//             {
-//                 await _theDaemon.UnlockKeyring("sp00n3!!", cts.Token);
-//
-//                 var locked = await _theDaemon.IsKeyringLocked(cts.Token);
-//
-//                 Assert.IsFalse(locked);
-//             }
-//         }
-//
-//         [TestMethod]
-//         [Ignore("CAUTION")]
-//         public async Task MigrateKeyring()
-//         {
-//             using var cts = new CancellationTokenSource(15000);
-//             var status = await _theDaemon.GetKeyringStatus(cts.Token);
-//             if (!status.UserPassphraseIsSet)
-//             {
-//                 await _theDaemon.MigrateKeyring("sp00n3!!", "super secure utensil", true, false, cts.Token);
-//             }
-//         }
-//
-//         [TestMethod]
-//         public async Task SetKeyringPassphrase()
-//         {
-//             using var cts = new CancellationTokenSource(15000);
-//             var status = await _theDaemon.GetKeyringStatus(cts.Token);
-//             if (status.UserPassphraseIsSet)
-//             {
-//                 await _theDaemon.SetKeyringPassphrase("sp00n3!!", "sp00n3!!!", "super duper secure utensil", true, cts.Token);
-//             }
-//         }
-//
-//         [TestMethod]
-//         public async Task RemoveKeyringPassphrase()
-//         {
-//             using var cts = new CancellationTokenSource(15000);
-//
-//             var status = await _theDaemon.GetKeyringStatus(cts.Token);
-//             if (status.UserPassphraseIsSet)
-//             {
-//                 await _theDaemon.RemoveKeyringPassphrase("sp00n3!!!", cts.Token);
-//             }
-//         }
-//
-//         [TestMethod]
-//         public async Task IsKeyringLocked()
-//         {
-//             using var cts = new CancellationTokenSource(15000);
-//
-//             var locked = await _theDaemon.IsKeyringLocked(cts.Token);
-//
-//             Assert.IsTrue(locked);
-//         }
-//
-//         [TestMethod]
-//         public async Task GetKeyForFingerprint()
-//         {
-//             using var cts = new CancellationTokenSource(15000);
-//
-//             var proxy = _theDaemon.CreateProxyFrom<WalletProxy>();
-//             var prints = await proxy.GetPublicKeys(cts.Token);
-//             Assert.IsTrue(prints.Any());
-//
-//             var key = await _theDaemon.GetKeyForFingerprint(prints.First(), cts.Token);
-//
-//             Assert.IsNotNull(key);
-//         }
-//
-//         [TestMethod]
-//         public async Task GetAllPrivateKeys()
-//         {
-//             using var cts = new CancellationTokenSource(15000);
-//
-//             var keys = await _theDaemon.GetAllPrivateKeys(cts.Token);
-//
-//             Assert.IsNotNull(keys);
-//             Assert.IsTrue(keys.Any());
-//         }
-//
-//         [TestMethod]
-//         [Ignore("This seems to put the daemon out to lunch")]
-//         public async Task CheckKeys()
-//         {
-//             using var cts = new CancellationTokenSource(30000);
-//
-//             await _theDaemon.CheckKeys("~/.chia/mainnet/config", cts.Token);
-//         }
-//
-//         [TestMethod]
-//         public async Task GetFirstPrivateKey()
-//         {
-//             using var cts = new CancellationTokenSource(30000);
-//
-//             var key = await _theDaemon.GetFirstPrivateKey(cts.Token);
-//
-//             Assert.IsNotNull(key);
-//         }
-//
-//         [TestMethod]
-//         public async Task CreateFullNodeFrom()
-//         {
-//             using var cts = new CancellationTokenSource(15000);
-//
-//             await _theDaemon.RegisterService(cts.Token);
-//             var fullNode = _theDaemon.CreateProxyFrom<FullNodeProxy>();
-//             var state = await fullNode.GetBlockchainState(cts.Token);
-//             Assert.IsNotNull(state);
-//         }
-//
-//         [TestMethod]
-//         public async Task GetHarvesterIsRunning()
-//         {
-//             using var cts = new CancellationTokenSource(15000);
-//
-//             var running = await _theDaemon.IsServiceRunning(ServiceNames.Harvester, cts.Token);
-//
-//             Assert.IsTrue(running);
-//         }
-//
-//         [TestMethod]
-//         [Ignore("CAUTION")]
-//         public async Task ExitDaemon()
-//         {
-//             using var cts = new CancellationTokenSource(15000);
-//
-//             await _theDaemon.Exit(cts.Token);
-//
-//             // if no exception the daemon was stopped successfully
-//         }
-//
-//         [TestMethod]
-//         public async Task RestartFarmer()
-//         {
-//             using var cts = new CancellationTokenSource(15000);
-//
-//             if (await _theDaemon.IsServiceRunning(ServiceNames.Farmer, cts.Token))
-//             {
-//                 await _theDaemon.StopService(ServiceNames.Farmer, cts.Token);
-//                 Assert.IsFalse(await _theDaemon.IsServiceRunning(ServiceNames.Farmer, cts.Token));
-//             }
-//
-//             await _theDaemon.StartService(ServiceNames.Farmer, cts.Token);
-//             Assert.IsTrue(await _theDaemon.IsServiceRunning(ServiceNames.Farmer, cts.Token));
-//         }
-//
-//         [TestMethod]
-//         public async Task RegisterService()
-//         {
-//             using var cts = new CancellationTokenSource(15000);
-//
-//             await _theDaemon.RegisterService("new_service", cts.Token);
-//
-//             // no exception we were successful
-//         }
-//     }
-// }
-// =======
-// ﻿//
-// // using System.Threading;
-// // using System.Threading.Tasks;
-// // using System.Linq;
-// //
-// // using Microsoft.VisualStudio.TestTools.UnitTesting;
-// //
-// // namespace chia.dotnet.tests
-// // {
-// //     /// <summary>
-// //     /// This class is a test harness for interation with an actual daemon instance
-// //     /// </summary>
-// //     [TestClass]
-// //     [TestCategory("Integration")]
-// //     public class DaemonTests
-// //     {
-// //         private static DaemonProxy _theDaemon;
-// //
-// //         [ClassInitialize]
-// //         public static async Task Initialize(TestContext context)
-// //         {
-// //             try
-// //             {
-// //                 using var cts = new CancellationTokenSource(20000);
-// //                 var rpcClient = Factory.CreateWebsocketClient();
-// //                 await rpcClient.Connect(cts.Token);
-// //
-// //                 _theDaemon = new DaemonProxy(rpcClient, "unit_tests");
-// //             }
-// //             catch (System.Exception e)
-// //             {
-// //                 System.Diagnostics.Debug.WriteLine(e.Message);
-// //                 throw;
-// //             }
-// //         }
-// //
-// //         [ClassCleanup()]
-// //         public static void ClassCleanup()
-// //         {
-// //             _theDaemon.RpcClient?.Dispose();
-// //         }
-// //
-// //         [TestMethod]
-// //         public async Task GetVersion()
-// //         {
-// //             using var cts = new CancellationTokenSource(15000);
-// //
-// //             var version = await _theDaemon.GetVersion(cts.Token);
-// //             Assert.IsFalse(string.IsNullOrEmpty(version));
-// //         }
-// //
-// //         [TestMethod]
-// //         public async Task GetKeyringStatus()
-// //         {
-// //             using var cts = new CancellationTokenSource(15000);
-// //
-// //             var status = await _theDaemon.GetKeyringStatus(cts.Token);
-// //             Assert.IsNotNull(status);
-// //         }
-// //
-// //         [TestMethod]
-// //         public async Task GetFarmerIsRunning()
-// //         {
-// //             using var cts = new CancellationTokenSource(15000);
-// //
-// //             var running = await _theDaemon.IsServiceRunning(ServiceNames.Farmer, cts.Token);
-// //             Assert.IsTrue(running);
-// //         }
-// //
-// //         [TestMethod]
-// //         [ExpectedException(typeof(ResponseException))]
-// //         public async Task ValidateInvalidKeyringPassphrase()
-// //         {
-// //             using var cts = new CancellationTokenSource(15000);
-// //
-// //             await _theDaemon.ValidateKeyringPassphrase("spoon", cts.Token);
-// //         }
-// //
-// //         [TestMethod]
-// //         [ExpectedException(typeof(ResponseException))]
-// //         public async Task UnlockKeyringInvalid()
-// //         {
-// //             using var cts = new CancellationTokenSource(15000);
-// //
-// //             await _theDaemon.UnlockKeyring("spoon", cts.Token);
-// //         }
-// //
-// //         [TestMethod]
-// //         public async Task UnlockKeyringValid()
-// //         {
-// //             using var cts = new CancellationTokenSource(15000);
-// //             var status = await _theDaemon.GetKeyringStatus(cts.Token);
-// //             if (status.UserPassphraseIsSet)
-// //             {
-// //                 await _theDaemon.UnlockKeyring("sp00n3!!", cts.Token);
-// //
-// //                 var locked = await _theDaemon.IsKeyringLocked(cts.Token);
-// //
-// //                 Assert.IsFalse(locked);
-// //             }
-// //         }
-// //
-// //         [TestMethod]
-// //         [Ignore("CAUTION")]
-// //         public async Task MigrateKeyring()
-// //         {
-// //             using var cts = new CancellationTokenSource(15000);
-// //             var status = await _theDaemon.GetKeyringStatus(cts.Token);
-// //             if (!status.UserPassphraseIsSet)
-// //             {
-// //                 await _theDaemon.MigrateKeyring("sp00n3!!", "super secure utensil", true, false, cts.Token);
-// //             }
-// //         }
-// //
-// //         [TestMethod]
-// //         public async Task SetKeyringPassphrase()
-// //         {
-// //             using var cts = new CancellationTokenSource(15000);
-// //             var status = await _theDaemon.GetKeyringStatus(cts.Token);
-// //             if (status.UserPassphraseIsSet)
-// //             {
-// //                 await _theDaemon.SetKeyringPassphrase("sp00n3!!", "sp00n3!!!", "super duper secure utensil", true, cts.Token);
-// //             }
-// //         }
-// //
-// //         [TestMethod]
-// //         public async Task RemoveKeyringPassphrase()
-// //         {
-// //             using var cts = new CancellationTokenSource(15000);
-// //
-// //             var status = await _theDaemon.GetKeyringStatus(cts.Token);
-// //             if (status.UserPassphraseIsSet)
-// //             {
-// //                 await _theDaemon.RemoveKeyringPassphrase("sp00n3!!!", cts.Token);
-// //             }
-// //         }
-// //
-// //         [TestMethod]
-// //         public async Task IsKeyringLocked()
-// //         {
-// //             using var cts = new CancellationTokenSource(15000);
-// //
-// //             var locked = await _theDaemon.IsKeyringLocked(cts.Token);
-// //
-// //             Assert.IsTrue(locked);
-// //         }
-// //
-// //         [TestMethod]
-// //         public async Task GetKeyForFingerprint()
-// //         {
-// //             using var cts = new CancellationTokenSource(15000);
-// //
-// //             var proxy = _theDaemon.CreateProxyFrom<WalletProxy>();
-// //             var prints = await proxy.GetPublicKeys(cts.Token);
-// //             Assert.IsTrue(prints.Any());
-// //
-// //             var key = await _theDaemon.GetKeyForFingerprint(prints.First(), cts.Token);
-// //
-// //             Assert.IsNotNull(key);
-// //         }
-// //
-// //         [TestMethod]
-// //         public async Task GetAllPrivateKeys()
-// //         {
-// //             using var cts = new CancellationTokenSource(15000);
-// //
-// //             var keys = await _theDaemon.GetAllPrivateKeys(cts.Token);
-// //
-// //             Assert.IsNotNull(keys);
-// //             Assert.IsTrue(keys.Any());
-// //         }
-// //
-// //         [TestMethod]
-// //         [Ignore("This seems to put the daemon out to lunch")]
-// //         public async Task CheckKeys()
-// //         {
-// //             using var cts = new CancellationTokenSource(30000);
-// //
-// //             await _theDaemon.CheckKeys("~/.chia/mainnet/config", cts.Token);
-// //         }
-// //
-// //         [TestMethod]
-// //         public async Task GetFirstPrivateKey()
-// //         {
-// //             using var cts = new CancellationTokenSource(30000);
-// //
-// //             var key = await _theDaemon.GetFirstPrivateKey(cts.Token);
-// //
-// //             Assert.IsNotNull(key);
-// //         }
-// //
-// //         [TestMethod]
-// //         public async Task CreateFullNodeFrom()
-// //         {
-// //             using var cts = new CancellationTokenSource(15000);
-// //
-// //             await _theDaemon.RegisterService(cts.Token);
-// //             var fullNode = _theDaemon.CreateProxyFrom<FullNodeProxy>();
-// //             var state = await fullNode.GetBlockchainState(cts.Token);
-// //             Assert.IsNotNull(state);
-// //         }
-// //
-// //         [TestMethod]
-// //         public async Task GetHarvesterIsRunning()
-// //         {
-// //             using var cts = new CancellationTokenSource(15000);
-// //
-// //             var running = await _theDaemon.IsServiceRunning(ServiceNames.Harvester, cts.Token);
-// //
-// //             Assert.IsTrue(running);
-// //         }
-// //
-// //         [TestMethod]
-// //         [Ignore("CAUTION")]
-// //         public async Task ExitDaemon()
-// //         {
-// //             using var cts = new CancellationTokenSource(15000);
-// //
-// //             await _theDaemon.Exit(cts.Token);
-// //
-// //             // if no exception the daemon was stopped successfully
-// //         }
-// //
-// //         [TestMethod]
-// //         public async Task RestartFarmer()
-// //         {
-// //             using var cts = new CancellationTokenSource(15000);
-// //
-// //             if (await _theDaemon.IsServiceRunning(ServiceNames.Farmer, cts.Token))
-// //             {
-// //                 await _theDaemon.StopService(ServiceNames.Farmer, cts.Token);
-// //                 Assert.IsFalse(await _theDaemon.IsServiceRunning(ServiceNames.Farmer, cts.Token));
-// //             }
-// //
-// //             await _theDaemon.StartService(ServiceNames.Farmer, cts.Token);
-// //             Assert.IsTrue(await _theDaemon.IsServiceRunning(ServiceNames.Farmer, cts.Token));
-// //         }
-// //
-// //         [TestMethod]
-// //         public async Task RegisterService()
-// //         {
-// //             using var cts = new CancellationTokenSource(15000);
-// //
-// //             await _theDaemon.RegisterService("new_service", cts.Token);
-// //
-// //             // no exception we were successful
-// //         }
-// //     }
-// // }
-// >>>>>>> 5b4bdc4 (Start of refactor of unit tests)
+﻿using System.Threading;
+using System.Threading.Tasks;
+using System.Linq;
+using chia.dotnet.tests.Core;
+using Xunit;
+using System;
+
+namespace chia.dotnet.tests
+{
+    /// <summary>
+    /// This class is a test harness for interation with an actual daemon instance
+    /// </summary>
+    public class DaemonTests : TestBase
+    {
+        public DaemonTests(ChiaDotNetFixture fixture) : base(fixture)
+        {
+        }
+
+        [Fact]
+        public async Task GetVersion()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            var version = await Daemon.GetVersion(cts.Token);
+
+            // Assert
+            Assert.False(string.IsNullOrEmpty(version));
+        }
+
+        [Fact]
+        public async Task IsRunning()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            var running = await Daemon.IsRunning(ServiceNames.FullNode, cts.Token);
+
+            // Assert
+            Assert.True(running);
+        }
+
+        [Fact]
+        public async Task GetKeyringStatus()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            var status = await Daemon.GetKeyringStatus(cts.Token);
+
+            // Assert
+            Assert.NotNull(status);
+        }
+
+        [Fact]
+        public async Task ValidateInvalidKeyringPassphrase()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+
+            // Assert
+            _ = await Assert.ThrowsAsync<ResponseException>(
+                async () => await Daemon.ValidateKeyringPassphrase("spoon", cts.Token));
+        }
+
+        [Fact]
+        public async Task UnlockKeyringInvalid()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+
+            // Assert
+            _ = await Assert.ThrowsAsync<ResponseException>(async () => await Daemon.UnlockKeyring("spoon", cts.Token));
+        }
+
+        [Fact]
+        public async Task UnlockKeyringValid()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            var status = await Daemon.GetKeyringStatus(cts.Token);
+            if (status.UserPassphraseIsSet)
+            {
+                await Daemon.UnlockKeyring("sp00n3!!", cts.Token);
+
+                var locked = await Daemon.IsKeyringLocked(cts.Token);
+
+                Assert.False(locked);
+            }
+        }
+
+        [Fact]
+        public async Task IsServiceRunning()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            var service = ServiceNames.Farmer;
+
+            // Act
+            var returnValue = await Daemon.IsServiceRunning(service: service, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.True(returnValue);
+        }
+
+        [Fact]
+        public async Task GetKeyForFingerprint()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            var (Wallets, Fingerprint) = await Wallet.GetWallets(false, cts.Token);
+
+            // Act
+            var returnValue = await Daemon.GetKeyForFingerprint(fingerprint: Fingerprint, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact(Skip = "Destructive")]
+        public async Task DeleteKeyByFingerprint()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            var (Wallets, Fingerprint) = await Wallet.GetWallets(false, cts.Token);
+
+            // Act
+            await Daemon.DeleteKeyByFingerprint(fingerprint: Fingerprint, cancellationToken: cts.Token);
+
+            // Assert
+
+        }
+
+        [Fact(Skip = "Destructive")]
+        public async Task DeleteAllKeys()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            await Daemon.DeleteAllKeys(cts.Token);
+
+            // Assert
+
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task AddPrivateKey()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            var mnemonic = string.Empty;
+            var passphrase = string.Empty;
+
+            // Act
+            await Daemon.AddPrivateKey(mnemonic: mnemonic, passphrase: passphrase, cancellationToken: cts.Token);
+
+            // Assert
+
+        }
+
+        [Fact(Skip = "Requires review")]
+        public async Task CheckKeys()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            var rootPath = "~/.chia/mainnet/config";
+
+            // Act
+            await Daemon.CheckKeys(rootPath: rootPath, cancellationToken: cts.Token);
+
+            // Assert
+
+        }
+
+        [Fact]
+        public async Task GetKey()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            var (Wallets, Fingerprint) = await Wallet.GetWallets(false, cts.Token);
+
+            // Act
+            var returnValue = await Daemon.GetKey(fingerprint: Fingerprint, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact]
+        public async Task GetKeys()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            var (Wallets, Fingerprint) = await Wallet.GetWallets(false, cts.Token);
+
+            // Act
+            var returnValue = await Daemon.GetKeys(fingerprint: Fingerprint, cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact]
+        public async Task SetDeleteLabel()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            var (Wallets, Fingerprint) = await Wallet.GetWallets(false, cts.Token);
+            var label = "spoon";
+
+            // Act
+            await Daemon.SetLabel(fingerprint: Fingerprint, label: label, cancellationToken: cts.Token);
+            await Daemon.DeleteLabel(fingerprint: Fingerprint, cancellationToken: cts.Token);
+
+            // Assert
+
+        }
+
+        [Fact(Skip = "CAUTION")]
+        public async Task MigrateKeyring()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            var status = await Daemon.GetKeyringStatus(cts.Token);
+            if (!status.UserPassphraseIsSet)
+            {
+                await Daemon.MigrateKeyring("sp00n3!!", "super secure utensil", true, false, cts.Token);
+            }
+        }
+
+        [Fact]
+        public async Task SetKeyringPassphrase()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            var status = await Daemon.GetKeyringStatus(cts.Token);
+
+            // Act
+            if (status.UserPassphraseIsSet)
+            {
+                await Daemon.SetKeyringPassphrase("sp00n3!!", "sp00n3!!!", "super duper secure utensil", true,
+                    cts.Token);
+            }
+        }
+
+        [Fact]
+        public async Task RemoveKeyringPassphrase()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            var status = await Daemon.GetKeyringStatus(cts.Token);
+
+            // Act
+            if (status.UserPassphraseIsSet)
+            {
+                await Daemon.RemoveKeyringPassphrase("sp00n3!!!", cts.Token);
+            }
+
+            // Assert
+        }
+
+        [Fact]
+        public async Task Ping()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            await Daemon.Ping(cts.Token);
+
+            // Assert
+
+        }
+
+        [Fact]
+        public async Task IsKeyringLocked()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            var locked = await Daemon.IsKeyringLocked(cts.Token);
+
+            // Assert
+            Assert.False(locked);
+        }
+
+        [Fact]
+        public async Task GetAllPrivateKeys()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            var keys = await Daemon.GetAllPrivateKeys(cts.Token);
+
+            // Assert
+            Assert.NotNull(keys);
+            Assert.True(keys.Any());
+        }
+
+        [Fact]
+        public async Task GetFirstPrivateKey()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(30000);
+
+            // Act
+            var key = await Daemon.GetFirstPrivateKey(cts.Token);
+
+            // Assert
+            Assert.NotNull(key);
+        }
+
+        [Fact]
+        public async Task CreateProxyFrom()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            var fullNode = Daemon.CreateProxyFrom<FullNodeProxy>();
+            var state = await fullNode.GetBlockchainState(cts.Token);
+
+            // Assert
+            Assert.NotNull(state);
+        }
+
+        [Fact(Skip = "CAUTION")]
+        public async Task Exit()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            await Daemon.Exit(cts.Token);
+
+            // Assert
+
+        }
+
+        [Fact(Skip = "CAUTION")]
+        public async Task ExitDaemon()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            await Daemon.Exit(cts.Token);
+
+            // if no exception the daemon was stopped successfully
+        }
+
+        [Fact]
+        public async Task RestartFarmer()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            if (await Daemon.IsServiceRunning(ServiceNames.Farmer, cts.Token))
+            {
+                await Daemon.StopService(ServiceNames.Farmer, cts.Token);
+                Assert.False(await Daemon.IsServiceRunning(ServiceNames.Farmer, cts.Token));
+            }
+
+            await Daemon.StartService(ServiceNames.Farmer, cts.Token);
+
+            // Assert
+            Assert.True(await Daemon.IsServiceRunning(ServiceNames.Farmer, cts.Token));
+        }
+
+        [Fact]
+        public async Task RegisterService()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            await Daemon.RegisterService("new_service", cts.Token);
+
+            // Assert
+            // no exception we were successful
+        }
+    }
+}

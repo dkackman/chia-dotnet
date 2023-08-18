@@ -1,57 +1,42 @@
-﻿// using System;
-// using System.Threading;
-// using System.Threading.Tasks;
-//
-// using Microsoft.VisualStudio.TestTools.UnitTesting;
-//
-// namespace chia.dotnet.tests
-// {
-//     [TestClass]
-//     [TestCategory("Integration")]
-//     public class CrawlerProxyTests
-//     {
-//         private static CrawlerProxy _theCrawler;
-//
-//         [ClassInitialize]
-//         public static async Task Initialize(TestContext context)
-//         {
-//             try
-//             {
-//                 var rpcClient = Factory.CreateDirectRpcClientFromHardcodedLocation(8561, "crawler");
-//
-//                 await Task.CompletedTask;
-//                 _theCrawler = new CrawlerProxy(rpcClient, "unit_tests");
-//             }
-//             catch (Exception e)
-//             {
-//                 Assert.Fail(e.Message);
-//             }
-//         }
-//
-//         [ClassCleanup()]
-//         public static void ClassCleanup()
-//         {
-//             _theCrawler.RpcClient?.Dispose();
-//         }
-//
-//         [TestMethod()]
-//         public async Task GetPeerCounts()
-//         {
-//             using var cts = new CancellationTokenSource(20000);
-//
-//             var counts = await _theCrawler.GetPeerCounts(cts.Token);
-//
-//             Assert.IsNotNull(counts);
-//         }
-//
-//         [TestMethod()]
-//         public async Task GetIPs()
-//         {
-//             using var cts = new CancellationTokenSource(20000);
-//
-//             var ips = await _theCrawler.GetIPs(DateTime.Now - TimeSpan.FromDays(2), cancellationToken: cts.Token);
-//
-//             Assert.IsNotNull(ips);
-//         }
-//     }
-// }
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using chia.dotnet.tests.Core;
+using Xunit;
+
+namespace chia.dotnet.tests;
+
+public class CrawlerProxyTests : TestBase
+{
+    public CrawlerProxyTests(ChiaDotNetFixture fixture) : base(fixture)
+    {
+    }
+
+    [Fact(Skip ="Hangs")]
+    public async Task GetPeerCounts()
+    {
+        // Arrange
+        using var cts = new CancellationTokenSource(15000);
+
+        // Act
+        var returnValue = await Crawler.GetPeerCounts(cts.Token);
+
+        // Assert
+        Assert.NotNull(returnValue);
+    }
+
+    [Fact(Skip = "Hangs")]
+    public async Task GetIPs()
+    {
+        // Arrange
+        using var cts = new CancellationTokenSource(15000);
+        var after = DateTime.Now - TimeSpan.FromDays(2);
+
+        // Act
+        var (ips, total) = await Crawler.GetIPs(after: after, cancellationToken: cts.Token);
+
+        // Assert
+        Assert.NotNull(ips);
+    }
+
+}

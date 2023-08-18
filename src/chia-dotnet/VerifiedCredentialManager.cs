@@ -62,7 +62,7 @@ namespace chia.dotnet
             data.fee = fee;
             var resposne = await WalletProxy.SendMessage("vc_mint", data, cancellationToken).ConfigureAwait(false);
 
-            return (Converters.ToObject<VCRecord>(resposne.vc_record), Converters.ToEnumerable<TradeRecord>(resposne.transactions));
+            return (Converters.ToObject<VCRecord>(resposne.vc_record), Converters.ToObject<IEnumerable<TradeRecord>>(resposne.transactions));
         }
 
         /// <summary>

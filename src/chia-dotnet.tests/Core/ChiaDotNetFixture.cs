@@ -22,7 +22,7 @@ public class ChiaDotNetFixture : IDisposable
         try
         {
             _cts = new CancellationTokenSource(55000);
-            TestHost = CreateHostBuilder().Build();
+            TestHost = CreateHostBuilder()!.Build();
             TestHost.Start();
         }
         catch (Exception e)
@@ -36,86 +36,113 @@ public class ChiaDotNetFixture : IDisposable
     {
         return new HostBuilder().ConfigureWebHost(webhost =>
         {
-            webhost.ConfigureAppConfiguration((hostContext, configurationBuilder) =>
+            _ = webhost.ConfigureAppConfiguration((hostContext, configurationBuilder) =>
             {
-                configurationBuilder.SetBasePath(Directory.GetCurrentDirectory());
-                configurationBuilder.AddJsonFile("testingappsettings.json", false);
-                configurationBuilder.AddEnvironmentVariables("PREFIX_");
-                configurationBuilder.AddUserSecrets<ChiaDotNetFixture>(true);
-            });
-
-            webhost.ConfigureServices((hostContext, services) =>
+                _ = configurationBuilder.SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("testingappsettings.json", false)
+                    .AddEnvironmentVariables("PREFIX_")
+                    .AddUserSecrets<ChiaDotNetFixture>(true);
+            }).ConfigureServices(async (hostContext, services) =>
             {
                 try
                 {
-                    //bind settings from secrets/environment/appsettings
-                    var daemonConfig = new Endpoint();
-                    var fullNodeConfig = new Endpoint();
-                    var farmerConfig = new Endpoint();
-                    var walletConfig = new Endpoint();
-                    var harvesterConfig = new Endpoint();
-                    hostContext.Configuration.GetSection("daemon").Bind(daemonConfig);
-                    hostContext.Configuration.GetSection("fullnode").Bind(fullNodeConfig);
-                    hostContext.Configuration.GetSection("farmer").Bind(farmerConfig);
-                    hostContext.Configuration.GetSection("harvester").Bind(harvesterConfig);
-                    hostContext.Configuration.GetSection("wallet").Bind(walletConfig);
-                    
-                    // Get all endpoints
-                    var daemonEndpointInfo = GetEndpointInfo(daemonConfig);
-                    var fullNodeEndpointInfo = GetEndpointInfo(fullNodeConfig);
-                    var farmerEndpointInfo = GetEndpointInfo(farmerConfig);
-                    var walletEndpointInfo = GetEndpointInfo(walletConfig);
-                    var harvesterEndpointInfo = GetEndpointInfo(harvesterConfig);
-                    
+                    //appsettings mode is websockets
                     if (hostContext.Configuration["mode"] == "0")
                     {
-                        //appsettings mode is websockets
+                        //bind settings from secrets/environment/appsettings
+                        var daemonConfig = new Endpoint();
+                        var plotterConfig = new Endpoint();
+
+                        hostContext.Configuration.GetSection("daemon").Bind(daemonConfig);
+                        hostContext.Configuration.GetSection("plotter").Bind(plotterConfig);
+
+                        // Get all endpoints
+                        var daemonEndpointInfo = GetEndpointInfo(daemonConfig);
+                        var plotterEndpointInfo = GetEndpointInfo(plotterConfig);
                         var wssClient = new WebSocketRpcClient(daemonEndpointInfo);
                         var cts = new CancellationTokenSource(120000);
-                        var httpClient = new HttpRpcClient(daemonEndpointInfo);
 
                         //connect wss client
-                        wssClient.Connect(cts.Token).GetAwaiter().GetResult();
+                        wssClient.Connect(cts.Token).ConfigureAwait(false).GetAwaiter().GetResult();
                         var daemon = new DaemonProxy(wssClient, OriginService);
-                        daemon.RegisterService(cts.Token);
-                        
+                        daemon.RegisterService(cts.Token).ConfigureAwait(false).GetAwaiter().GetResult(); ;
+
                         //proxies
                         var nodeRpcClient = new FullNodeProxy(wssClient, OriginService);
                         var farmerRpcProxy = new FarmerProxy(wssClient, OriginService);
                         var walletRpcProxy = new WalletProxy(wssClient, OriginService);
                         var harvesterRpcProxy = new HarvesterProxy(wssClient, OriginService);
+                        var crawlerRpcProxy = new CrawlerProxy(wssClient, OriginService);
+                        var plotterRpcProxy = new PlotterProxy(wssClient, OriginService);
+
+                        var (Wallets, Fingerprint) = walletRpcProxy.GetWallets(false, cts.Token).ConfigureAwait(false).GetAwaiter().GetResult();
+                        var walletFactory = new WalletFactory(walletRpcProxy, Wallets, Fingerprint);
 
                         //register test dependencies 
-                        services.AddSingleton<DaemonProxy>(daemon);
-                        services.AddSingleton<FullNodeProxy>(nodeRpcClient);
-                        services.AddSingleton<WebSocketRpcClient>(wssClient);
-                        services.AddSingleton<FarmerProxy>(farmerRpcProxy);
-                        services.AddSingleton<WalletProxy>(walletRpcProxy);
-                        services.AddSingleton<HarvesterProxy>(harvesterRpcProxy);
+                        _ = services.AddSingleton(daemon)
+                            .AddSingleton(nodeRpcClient)
+                            .AddSingleton(wssClient)
+                            .AddSingleton(farmerRpcProxy)
+                            .AddSingleton(walletRpcProxy)
+                            .AddSingleton(harvesterRpcProxy)
+                            .AddSingleton(crawlerRpcProxy)
+                            .AddSingleton(plotterRpcProxy)
+                            .AddSingleton(walletFactory)
+                            .AddSingleton(new Wallet(1, walletRpcProxy))
+                            .AddSingleton(new VerifiedCredentialManager(walletRpcProxy))
+                            .AddSingleton(new TradeManager(walletRpcProxy));
                     }
                     else
                     {
+                        // Daemon and Plotter proxies require wss so no http version
+                        var fullNodeConfig = new Endpoint();
+                        var farmerConfig = new Endpoint();
+                        var walletConfig = new Endpoint();
+                        var harvesterConfig = new Endpoint();
+                        var crawlerConfig = new Endpoint();
+
+                        hostContext.Configuration.GetSection("fullnode").Bind(fullNodeConfig);
+                        hostContext.Configuration.GetSection("farmer").Bind(farmerConfig);
+                        hostContext.Configuration.GetSection("harvester").Bind(harvesterConfig);
+                        hostContext.Configuration.GetSection("wallet").Bind(walletConfig);
+                        hostContext.Configuration.GetSection("crawler").Bind(crawlerConfig);
+
+                        // Get all endpoints
+                        var fullNodeEndpointInfo = GetEndpointInfo(fullNodeConfig);
+                        var farmerEndpointInfo = GetEndpointInfo(farmerConfig);
+                        var walletEndpointInfo = GetEndpointInfo(walletConfig);
+                        var harvesterEndpointInfo = GetEndpointInfo(harvesterConfig);
+                        var crawlerEndpointInfo = GetEndpointInfo(crawlerConfig);
+
                         //appsettings mode is httpsClient
                         var cts = new CancellationTokenSource(120000);
                         var nodeHttpClient = new HttpRpcClient(fullNodeEndpointInfo);
                         var farmerHttpClient = new HttpRpcClient(farmerEndpointInfo);
                         var walletHttpClient = new HttpRpcClient(walletEndpointInfo);
                         var harvesterHttpClient = new HttpRpcClient(harvesterEndpointInfo);
+                        var crawlerHttpClient = new HttpRpcClient(crawlerEndpointInfo);
 
                         //Proxies
                         var nodeRpcClient = new FullNodeProxy(nodeHttpClient, OriginService);
                         var farmerRpcProxy = new FarmerProxy(farmerHttpClient, OriginService);
                         var walletRpcProxy = new WalletProxy(walletHttpClient, OriginService);
                         var harvesterRpcProxy = new HarvesterProxy(harvesterHttpClient, OriginService);
-                        
+                        var crawlerRpcProxy = new HarvesterProxy(crawlerHttpClient, OriginService);
+
+                        var (Wallets, Fingerprint) = walletRpcProxy.GetWallets(false, cts.Token).ConfigureAwait(false).GetAwaiter().GetResult();
+                        var walletFactory = new WalletFactory(walletRpcProxy, Wallets, Fingerprint);
+
                         //register test dependencies 
-                        services.AddSingleton<FullNodeProxy>(nodeRpcClient);
-                        services.AddSingleton<FarmerProxy>(farmerRpcProxy);
-                        services.AddSingleton<WalletProxy>(walletRpcProxy);
-                        services.AddSingleton<HarvesterProxy>(harvesterRpcProxy);
+                        _ = services.AddSingleton(nodeRpcClient)
+                            .AddSingleton(farmerRpcProxy)
+                            .AddSingleton(walletRpcProxy)
+                            .AddSingleton(harvesterRpcProxy)
+                            .AddSingleton(crawlerRpcProxy)
+                            .AddSingleton(walletFactory)
+                            .AddSingleton(new Wallet(1, walletRpcProxy))
+                            .AddSingleton(new VerifiedCredentialManager(walletRpcProxy))
+                            .AddSingleton(new TradeManager(walletRpcProxy));
                     }
-
-
                 }
                 catch (Exception e)
                 {
@@ -124,12 +151,11 @@ public class ChiaDotNetFixture : IDisposable
                 }
             });
 
-            webhost.UseTestServer();
-            webhost.Configure(app =>
+            _ = webhost.UseTestServer().Configure(app =>
             {
                 app.Run(async ctx =>
                 {
-                    await ctx.Response.WriteAsync("TestHost HttpServer Started");
+                    await ctx.Response.WriteAsync("TestHost HttpServer Started").ConfigureAwait(false);
                 });
             });
         });
@@ -137,9 +163,11 @@ public class ChiaDotNetFixture : IDisposable
 
     }
 
-    private EndpointInfo GetEndpointInfo(Endpoint ep) =>
-        new EndpointInfo() { KeyPath = ep.KeyPath, CertPath = ep.CertPath, Uri = new Uri(ep.Uri) };
-    
+    private static EndpointInfo GetEndpointInfo(Endpoint ep)
+    {
+        return new EndpointInfo() { KeyPath = ep.KeyPath, CertPath = ep.CertPath, Uri = new Uri(ep.Uri) };
+    }
+
     public void Dispose()
     {
         TestHost?.Dispose();
