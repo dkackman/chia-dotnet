@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using chia.dotnet.tests.Core;
 using Xunit;
 using System.Threading;
@@ -27,7 +26,7 @@ public class VerifiedCredentialManagerTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetList()
     {
         // Arrange

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using chia.dotnet.tests.Core;
 using Xunit;
 using System.Threading;
@@ -24,14 +25,17 @@ public class PoolWalletTests : TestBase
 
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task JoinPool()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        var targetPuzzlehash = string.Empty;
-        var poolUrl = string.Empty;
-        uint relativeLockHeight = 0;
+        var poolUri = new Uri("http://testnet.spacefarmers.io:8080/");
+        var poolInfo = await WalletProxy.GetPoolInfo(poolUri, cts.Token);
+        Assert.NotNull(poolInfo.TargetPuzzleHash);
+        var targetPuzzlehash = poolInfo.TargetPuzzleHash;
+        var poolUrl = poolUri.ToString();
+        var relativeLockHeight = poolInfo.RelativeLockHeight;
 
         // Act
         var returnValue = await PoolWallet.JoinPool(targetPuzzlehash: targetPuzzlehash, poolUrl: poolUrl, relativeLockHeight: relativeLockHeight, cancellationToken: cts.Token);
@@ -40,7 +44,7 @@ public class PoolWalletTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task SelfPool()
     {
         // Arrange

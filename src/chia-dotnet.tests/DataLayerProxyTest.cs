@@ -196,7 +196,7 @@ public class DataLayerProxyTests : TestBase
         // Arrange
         using var cts = new CancellationTokenSource(15000);
         var stores = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
-        var id = "0xb1db017a7131d174bfc6f826b0b8923b8812c1b2ba532aa09ce6cd558d39ed78";
+        var id = stores.First();
 
         // Act
         var returnValue = await DataLayer.GetLocalRoot(id: id, cancellationToken: cts.Token);
