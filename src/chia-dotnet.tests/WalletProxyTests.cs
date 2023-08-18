@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using chia.dotnet.tests.Core;
 using Xunit;
+using System;
 
 namespace chia.dotnet.tests
 {
@@ -226,10 +227,10 @@ namespace chia.dotnet.tests
             ulong amount = 1;
 
             // Act
-            var returnValue = await Wallet.CreateCATWallet(name: name, amount: amount, cancellationToken: cts.Token);
+            var (Type, AssetId, WalletId) = await Wallet.CreateCATWallet(name: name, amount: amount, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue.AssetId);
+            Assert.NotNull(AssetId);
         }
 
         [Fact(Skip = "Wallet creation")]
@@ -240,10 +241,10 @@ namespace chia.dotnet.tests
             var assetId = string.Empty;
 
             // Act
-            var returnValue = await Wallet.CreateWalletForCAT(assetId: assetId, cancellationToken: cts.Token);
+            var (Type, AssetID, WalletId) = await Wallet.CreateWalletForCAT(assetId: assetId, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue.AssetID);
+            Assert.NotNull(AssetID);
         }
 
         [Fact]
@@ -295,10 +296,10 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
 
             // Act
-            var returnValue = await Wallet.CreateNFTWallet("", cts.Token);
+            var (Id, Type) = await Wallet.CreateNFTWallet("", cts.Token);
 
             // Assert
-            Assert.True(returnValue.Id > 0);
+            Assert.True(Id > 0);
         }
 
         [Fact(Skip = "Requires review")]
@@ -311,13 +312,13 @@ namespace chia.dotnet.tests
             var name = string.Empty;
 
             // Act
-            var returnValue = await Wallet.CreateDIDWallet(backupDIDs: backupDIDs, numOfBackupIdsNeeded: numOfBackupIdsNeeded, name: name, cancellationToken: cts.Token);
+            var (Type, myDID, walletId) = await Wallet.CreateDIDWallet(backupDIDs: backupDIDs, numOfBackupIdsNeeded: numOfBackupIdsNeeded, name: name, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue.myDID);
+            Assert.NotNull(myDID);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact(Skip = "Wallet Creation")]
         public async Task RecoverDIDWallet()
         {
             // Arrange
@@ -325,22 +326,27 @@ namespace chia.dotnet.tests
             var backupData = string.Empty;
 
             // Act
-            var returnValue = await Wallet.RecoverDIDWallet(backupData: backupData, cancellationToken: cts.Token);
+            var (Type, myDID, walletId, coinName, coin, newPuzHash, pubkey, backupDIDs, numVerificationsRequired) = await Wallet.RecoverDIDWallet(backupData: backupData, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue.myDID);
+            Assert.NotNull(myDID);
         }
 
-        [Fact(Skip = "Wallet creation")]
+        [Fact(Skip = "Wallet Creation")]
         public async Task CreatePoolWallet()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            var walletAddress = await StandardWallet.GetNextAddress(false, cts.Token);
+            var poolUri = new Uri("http://testnet.spacefarmers.io:8080/");
+            var poolInfo = await WalletProxy.GetPoolInfo(poolUri, cts.Token);
+            Assert.NotNull(poolInfo.TargetPuzzleHash);
+
             var initialTargetState = new PoolState()
             {
-                State = PoolSingletonState.SELF_POOLING,
-                TargetPuzzleHash = walletAddress,
+                State = PoolSingletonState.FARMING_TO_POOL,
+                TargetPuzzleHash = poolInfo.TargetPuzzleHash,
+                RelativeLockHeight = poolInfo.RelativeLockHeight,
+                PoolUrl = poolUri.ToString()
             };
 
             // Act
@@ -371,10 +377,10 @@ namespace chia.dotnet.tests
             IEnumerable<AmountWithPuzzlehash> additions = null;
 
             // Act
-            var returnValue = await Wallet.CreateSignedTransaction(additions: additions, cancellationToken: cts.Token);
+            var (SignedTx, SignedTxs) = await Wallet.CreateSignedTransaction(additions: additions, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue.SignedTx);
+            Assert.NotNull(SignedTx);
         }
 
         [Fact(Skip = "Requires review")]
@@ -601,20 +607,20 @@ namespace chia.dotnet.tests
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            UInt32Range spentRange = null;
-            UInt32Range confirmedRange = null;
-            UInt64Range amountRange = null;
-            AmountFilter amountFilter = null;
-            HashFilter parentCoinIdFilter = null;
-            HashFilter puzzleHashFilter = null;
-            HashFilter coinIdFilter = null;
+            UInt32Range? spentRange = null;
+            UInt32Range? confirmedRange = null;
+            UInt64Range? amountRange = null;
+            AmountFilter? amountFilter = null;
+            HashFilter? parentCoinIdFilter = null;
+            HashFilter? puzzleHashFilter = null;
+            HashFilter? coinIdFilter = null;
             CoinType? coinType = null;
             WalletType? walletType = null;
             uint? walletId = 1;
             uint? limit = 5;
 
             // Act
-            var returnValue = await Wallet.GetCoinRecords(spentRange: spentRange,
+            var (CoinRecords, TotalCount) = await Wallet.GetCoinRecords(spentRange: spentRange,
                 confirmedRange: confirmedRange,
                 amountRange: amountRange,
                 amountFilter: amountFilter,
@@ -624,7 +630,7 @@ namespace chia.dotnet.tests
                 walletType: walletType, walletId: walletId, limit: limit, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue.CoinRecords);
+            Assert.NotNull(CoinRecords);
         }
 
         [Fact(Skip = "Requires review")]
