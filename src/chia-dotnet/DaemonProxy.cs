@@ -30,7 +30,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task Ping(CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("ping", cancellationToken).ConfigureAwait(false);
+            await SendMessage("ping", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task Exit(CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("exit", cancellationToken).ConfigureAwait(false);
+            await SendMessage("exit", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task RegisterService(string service, CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("register_service", CreateDataObject(service), cancellationToken).ConfigureAwait(false);
+            await SendMessage("register_service", CreateDataObject(service), cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task StartService(string service, CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("start_service", CreateDataObject(service), cancellationToken).ConfigureAwait(false);
+            await SendMessage("start_service", CreateDataObject(service), cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task StopService(string service, CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("stop_service", CreateDataObject(service), cancellationToken).ConfigureAwait(false);
+            await SendMessage("stop_service", CreateDataObject(service), cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.key = key;
 
-            _ = await SendMessage("validate_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("validate_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.key = key;
 
-            _ = await SendMessage("unlock_keyring", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("unlock_keyring", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace chia.dotnet
             data.save_passphrase = savePassphrase;
             data.cleanup_legacy_keyring = cleanupLegacyKeyring;
 
-            _ = await SendMessage("migrate_keyring", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("migrate_keyring", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace chia.dotnet
             data.passphrase_hint = passphraseHint;
             data.save_passphrase = savePassphrase;
 
-            _ = await SendMessage("set_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("set_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.current_passphrase = currentPassphrase;
 
-            _ = await SendMessage("remove_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("remove_keyring_passphrase", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -257,7 +257,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
 
-            _ = await SendMessage("delete_key_by_fingerprint", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("delete_key_by_fingerprint", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -267,7 +267,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task DeleteAllKeys(CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("delete_all_keys", null, cancellationToken).ConfigureAwait(false);
+            await SendMessage("delete_all_keys", null, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -284,7 +284,7 @@ namespace chia.dotnet
             data.mnemonic = mnemonic;
             data.passphrase = passphrase;
 
-            _ = await SendMessage("add_private_key", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("add_private_key", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -319,7 +319,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.root_path = rootPath;
 
-            _ = await SendMessage("check_keys", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("check_keys", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -367,7 +367,7 @@ namespace chia.dotnet
             data.fingerprint = fingerprint;
             data.label = label;
 
-            _ = await SendMessage("set_label", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("set_label", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -381,7 +381,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
 
-            _ = await SendMessage("delete_label", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("delete_label", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

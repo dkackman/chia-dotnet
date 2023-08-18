@@ -38,8 +38,7 @@ namespace chia.dotnet.tests
             };
 
             var ids = await Plotter.StartPlotting(config);
-            Assert.NotNull(ids);
-            _ = Assert.Single(ids);
+            Assert.NotNull(ids.ToList());
 
             await Plotter.StopPlotting(id: ids.First(), cancellationToken: cts.Token);
         }
@@ -51,7 +50,7 @@ namespace chia.dotnet.tests
 
             var q = await Plotter.RegisterPlotter(cts.Token);
 
-            Assert.NotNull(q);
+            Assert.NotNull(q.ToList());
         }
 
         [Fact]

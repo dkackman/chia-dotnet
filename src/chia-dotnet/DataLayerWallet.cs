@@ -119,7 +119,7 @@ namespace chia.dotnet
         /// <returns>A list of <see cref="SingletonRecord"/></returns>
         public async Task<IEnumerable<SingletonRecord>> OwnedSingletons(CancellationToken cancellationToken = default)
         {
-            return await WalletProxy.SendMessage<IEnumerable<SingletonRecord>>("dl_owned_singletons", null, "history", cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<IEnumerable<SingletonRecord>>("dl_owned_singletons", null, "singletons", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.launcher_id = launcherId;
             data.root = root;
-            return await WalletProxy.SendMessage<IEnumerable<SingletonRecord>>("dl_singletons_by_root", data, "singleton", cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<IEnumerable<SingletonRecord>>("dl_singletons_by_root", data, "singletons", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

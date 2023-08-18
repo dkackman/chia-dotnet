@@ -1,10 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Collections.Generic;
 using chia.dotnet.tests.Core;
 using Xunit;
-using System.Collections;
 using System.Threading;
+using System.Linq;
 
 namespace chia.dotnet.tests;
 
@@ -14,7 +13,7 @@ public class DataLayerWalletTests : TestBase
     {
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task Validate()
     {
         // Arrange
@@ -32,7 +31,7 @@ public class DataLayerWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String coinId = string.Empty;
+        var coinId = string.Empty;
 
         // Act
         var returnValue = await DataLayerWallet.DeleteMirror(coinId: coinId, cancellationToken: cts.Token);
@@ -41,26 +40,28 @@ public class DataLayerWalletTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetMirrors()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String launcherId = string.Empty;
+        var stores = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
+        var launcherId = stores.First();
 
         // Act
         var returnValue = await DataLayerWallet.GetMirrors(launcherId: launcherId, cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task History()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String launcherId = string.Empty;
+        var stores = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
+        var launcherId = stores.First();
 
         // Act
         var returnValue = await DataLayerWallet.History(launcherId: launcherId, cancellationToken: cts.Token);
@@ -69,16 +70,18 @@ public class DataLayerWalletTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task LatestSingleton()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String root = string.Empty;
-        String launcherId = string.Empty;
+        var stores = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
+        var launcherId = stores.First();
+        var root = await DataLayer.GetRoot(id: launcherId, cancellationToken: cts.Token);
+        var rootHash = root.Hash;
 
         // Act
-        var returnValue = await DataLayerWallet.LatestSingleton(root: root, launcherId: launcherId, cancellationToken: cts.Token);
+        var returnValue = await DataLayerWallet.LatestSingleton(root: rootHash, launcherId: launcherId, cancellationToken: cts.Token);
 
         // Assert
         Assert.NotNull(returnValue);
@@ -89,8 +92,8 @@ public class DataLayerWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String launcherId = string.Empty;
-        UInt64 amount = 0;
+        var launcherId = string.Empty;
+        ulong amount = 0;
         IEnumerable<string> urls = null;
 
         // Act
@@ -100,7 +103,7 @@ public class DataLayerWalletTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task OwnedSingletons()
     {
         // Arrange
@@ -110,30 +113,33 @@ public class DataLayerWalletTests : TestBase
         var returnValue = await DataLayerWallet.OwnedSingletons(cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task SingletonsByRoot()
     {
         // Arrange
-        using var cts = new CancellationTokenSource(15000);
-        String root = string.Empty;
-        String launcherId = string.Empty;
+        using var cts = new CancellationTokenSource(1500000);
+        var stores = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
+        var launcherId = stores.First();
+        var root = await DataLayer.GetRoot(id: launcherId, cancellationToken: cts.Token);
+        var rootHash = root.Hash;
 
         // Act
-        var returnValue = await DataLayerWallet.SingletonsByRoot(root: root, launcherId: launcherId, cancellationToken: cts.Token);
+        var returnValue = await DataLayerWallet.SingletonsByRoot(root: rootHash, launcherId: launcherId, cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task StopTracking()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String launcherId = string.Empty;
+        var stores = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
+        var launcherId = stores.First();
 
         // Act
         await DataLayerWallet.StopTracking(launcherId: launcherId, cancellationToken: cts.Token);
@@ -142,12 +148,13 @@ public class DataLayerWalletTests : TestBase
 
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task TrackNew()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String launcherId = string.Empty;
+        var stores = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
+        var launcherId = stores.First();
 
         // Act
         await DataLayerWallet.TrackNew(launcherId: launcherId, cancellationToken: cts.Token);
@@ -167,7 +174,7 @@ public class DataLayerWalletTests : TestBase
         var returnValue = await DataLayerWallet.UpdateMultiple(updates: updates, cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact(Skip = "Requires review")]
@@ -175,8 +182,8 @@ public class DataLayerWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String newRoot = string.Empty;
-        String launcherId = string.Empty;
+        var newRoot = string.Empty;
+        var launcherId = string.Empty;
 
         // Act
         var returnValue = await DataLayerWallet.UpdateRoot(newRoot: newRoot, launcherId: launcherId, cancellationToken: cts.Token);

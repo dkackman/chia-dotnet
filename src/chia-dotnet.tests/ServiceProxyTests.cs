@@ -25,7 +25,7 @@ public class ServiceProxyTests : TestBase
 
     }
 
-    [Fact(Skip = "Will stop the full node")]
+    [Fact(Skip = "Will stop the service in question")]
     public async Task StopNode()
     {
         // Arrange
@@ -48,20 +48,20 @@ public class ServiceProxyTests : TestBase
         var returnValue = await Farmer.GetConnections(cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
-    [Fact(Skip = "Fails over websocket. bug entered on chia github")]
+    [Fact(Skip = "Fails in python")]
     public async Task GetRoutes()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
 
         // Act
-        var returnValue = await FullNode.GetRoutes(cts.Token);
+        var returnValue = await Daemon.GetRoutes(cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact]

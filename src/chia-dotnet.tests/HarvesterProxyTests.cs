@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using chia.dotnet.tests.Core;
 using Xunit;
@@ -38,7 +39,7 @@ namespace chia.dotnet.tests
 
             var directories = await Harvester.GetPlotDirectories(cts.Token);
 
-            Assert.NotNull(directories);
+            Assert.NotNull(directories.ToList());
         }
 
         [Fact]

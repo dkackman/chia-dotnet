@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using chia.dotnet.tests.Core;
 using Xunit;
 using System.Threading;
@@ -13,7 +12,7 @@ public class PoolWalletTests : TestBase
     {
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task Validate()
     {
         // Arrange
@@ -26,14 +25,17 @@ public class PoolWalletTests : TestBase
 
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task JoinPool()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String targetPuzzlehash = string.Empty;
-        String poolUrl = string.Empty;
-        UInt32 relativeLockHeight = 0;
+        var poolUri = new Uri("http://testnet.spacefarmers.io:8080/");
+        var poolInfo = await WalletProxy.GetPoolInfo(poolUri, cts.Token);
+        Assert.NotNull(poolInfo.TargetPuzzleHash);
+        var targetPuzzlehash = poolInfo.TargetPuzzleHash;
+        var poolUrl = poolUri.ToString();
+        var relativeLockHeight = poolInfo.RelativeLockHeight;
 
         // Act
         var returnValue = await PoolWallet.JoinPool(targetPuzzlehash: targetPuzzlehash, poolUrl: poolUrl, relativeLockHeight: relativeLockHeight, cancellationToken: cts.Token);
@@ -42,7 +44,7 @@ public class PoolWalletTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task SelfPool()
     {
         // Arrange
@@ -55,30 +57,30 @@ public class PoolWalletTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task AbsorbRewards()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
 
         // Act
-        var returnValue = await PoolWallet.AbsorbRewards(cancellationToken: cts.Token);
+        var (State, Transaction) = await PoolWallet.AbsorbRewards(cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(State);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task Status()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
 
         // Act
-        var returnValue = await PoolWallet.Status(cancellationToken: cts.Token);
+        var (State, UnconfirmedTransactions) = await PoolWallet.Status(cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(State);
     }
 
 }

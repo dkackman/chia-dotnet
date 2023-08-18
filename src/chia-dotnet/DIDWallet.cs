@@ -47,10 +47,7 @@ namespace chia.dotnet
 
             dynamic data = CreateWalletDataObject();
             data.new_list = newList.ToList();
-            if (numVerificationsRequired is not null)
-            {
-                data.num_verifications_required = numVerificationsRequired;
-            }
+            data.num_verifications_required = numVerificationsRequired;
             data.reuse_puzhash = reusePuzhash;
 
             await WalletProxy.SendMessage("did_update_recovery_ids", data, cancellationToken).ConfigureAwait(false);
@@ -74,7 +71,7 @@ namespace chia.dotnet
             data.new_list = newList.ToList();
             data.num_verifications_required = numVerificationsRequired;
 
-            _ = await WalletProxy.SendMessage("did_update_recovery_ids", data, cancellationToken).ConfigureAwait(false);
+            await WalletProxy.SendMessage("did_update_recovery_ids", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -93,7 +90,7 @@ namespace chia.dotnet
             dynamic data = CreateWalletDataObject();
             data.puzzlehash = puzzlehash;
 
-            _ = await WalletProxy.SendMessage("did_spend", data, cancellationToken).ConfigureAwait(false);
+            await WalletProxy.SendMessage("did_spend", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -133,7 +130,7 @@ namespace chia.dotnet
         /// <returns>The pubkey</returns>
         public async Task<string> GetPubKey(CancellationToken cancellationToken = default)
         {
-            return await WalletProxy.SendMessage("did_get_pubkey", CreateWalletDataObject(), "pubkey", cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<string>("did_get_pubkey", CreateWalletDataObject(), "pubkey", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -143,7 +140,7 @@ namespace chia.dotnet
         /// <returns>The name</returns>
         public async Task<string> GetName(CancellationToken cancellationToken = default)
         {
-            return await WalletProxy.SendMessage("did_get_wallet_name", CreateWalletDataObject(), "name", cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<string>("did_get_wallet_name", CreateWalletDataObject(), "name", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -172,7 +169,7 @@ namespace chia.dotnet
             dynamic data = CreateWalletDataObject();
             data.name = name;
 
-            _ = await WalletProxy.SendMessage("did_set_wallet_name", data, cancellationToken).ConfigureAwait(false);
+            await WalletProxy.SendMessage("did_set_wallet_name", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -222,17 +219,10 @@ namespace chia.dotnet
 
             dynamic data = CreateWalletDataObject();
             data.attest_data = attestData.ToList();
-            if (!string.IsNullOrEmpty(pubkey))
-            {
-                data.pubkey = pubkey;
-            }
+            data.pubkey = pubkey;
+            data.puzhash = puzzlehash;
 
-            if (!string.IsNullOrEmpty(puzzlehash))
-            {
-                data.puzhash = puzzlehash;
-            }
-
-            _ = await WalletProxy.SendMessage("did_recovery_spend", data, cancellationToken).ConfigureAwait(false);
+            await WalletProxy.SendMessage("did_recovery_spend", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -244,7 +234,7 @@ namespace chia.dotnet
         {
             var response = await WalletProxy.SendMessage("did_get_recovery_list", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
 
-            return (Converters.ToEnumerable<string>(response.recover_list), response.num_required);
+            return (Converters.ToObject<IEnumerable<string>>(response.recovery_list), response.num_required);
         }
 
         /// <summary>
@@ -316,7 +306,7 @@ namespace chia.dotnet
         {
             dynamic data = CreateWalletDataObject();
 
-            return await WalletProxy.SendMessage("did_create_backup_file", data, "backup_data", cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<string>("did_create_backup_file", data, "backup_data", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

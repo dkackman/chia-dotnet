@@ -11,12 +11,12 @@ namespace chia.dotnet
         public string NodeId { get; init; } = string.Empty;
         public ulong Difficulty { get; init; }
         public bool GenesisChallengeInitiated { get; init; }
-        public Int64 MempoolSize { get; init; }
-        public Int64 MempoolCost { get; init; }
+        public long MempoolSize { get; init; }
+        public long MempoolCost { get; init; }
         public ulong MempoolFees { get; init; }
         public MempoolMinFees MempoolMinFees { get; init; } = new();
-        public Int64 MempoolMaxTotalCost { get; init; }
-        public Int64 BlockMaxCost { get; init; }
+        public long MempoolMaxTotalCost { get; init; }
+        public long BlockMaxCost { get; init; }
         public BlockRecord? Peak { get; init; }
         public BigInteger Space { get; init; }
         public ulong SubSlotIters { get; init; }
