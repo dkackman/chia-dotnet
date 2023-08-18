@@ -225,7 +225,7 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task DeleteUnconfirmedTransactions(CancellationToken cancellationToken = default)
         {
-            _ = await WalletProxy.SendMessage("delete_unconfirmed_transactions", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
+            await WalletProxy.SendMessage("delete_unconfirmed_transactions", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

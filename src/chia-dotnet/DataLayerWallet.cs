@@ -134,7 +134,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.launcher_id = launcherId;
             data.root = root;
-            return await WalletProxy.SendMessage<IEnumerable<SingletonRecord>>("dl_singletons_by_root", data, "singleton", cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<IEnumerable<SingletonRecord>>("dl_singletons_by_root", data, "singletons", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

@@ -40,12 +40,13 @@ public class DataLayerWalletTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetMirrors()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        var launcherId = string.Empty;
+        var stores = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
+        var launcherId = stores.First();
 
         // Act
         var returnValue = await DataLayerWallet.GetMirrors(launcherId: launcherId, cancellationToken: cts.Token);
@@ -54,12 +55,13 @@ public class DataLayerWalletTests : TestBase
         Assert.NotNull(returnValue.ToList());
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task History()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        var launcherId = string.Empty;
+        var stores = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
+        var launcherId = stores.First();
 
         // Act
         var returnValue = await DataLayerWallet.History(launcherId: launcherId, cancellationToken: cts.Token);
@@ -68,16 +70,18 @@ public class DataLayerWalletTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task LatestSingleton()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        var root = string.Empty;
-        var launcherId = string.Empty;
+        var stores = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
+        var launcherId = stores.First();
+        var root = await DataLayer.GetRoot(id: launcherId, cancellationToken: cts.Token);
+        var rootHash = root.Hash;
 
         // Act
-        var returnValue = await DataLayerWallet.LatestSingleton(root: root, launcherId: launcherId, cancellationToken: cts.Token);
+        var returnValue = await DataLayerWallet.LatestSingleton(root: rootHash, launcherId: launcherId, cancellationToken: cts.Token);
 
         // Assert
         Assert.NotNull(returnValue);
@@ -112,27 +116,30 @@ public class DataLayerWalletTests : TestBase
         Assert.NotNull(returnValue.ToList());
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task SingletonsByRoot()
     {
         // Arrange
-        using var cts = new CancellationTokenSource(15000);
-        var root = string.Empty;
-        var launcherId = string.Empty;
+        using var cts = new CancellationTokenSource(1500000);
+        var stores = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
+        var launcherId = stores.First();
+        var root = await DataLayer.GetRoot(id: launcherId, cancellationToken: cts.Token);
+        var rootHash = root.Hash;
 
         // Act
-        var returnValue = await DataLayerWallet.SingletonsByRoot(root: root, launcherId: launcherId, cancellationToken: cts.Token);
+        var returnValue = await DataLayerWallet.SingletonsByRoot(root: rootHash, launcherId: launcherId, cancellationToken: cts.Token);
 
         // Assert
         Assert.NotNull(returnValue.ToList());
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task StopTracking()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        var launcherId = string.Empty;
+        var stores = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
+        var launcherId = stores.First();
 
         // Act
         await DataLayerWallet.StopTracking(launcherId: launcherId, cancellationToken: cts.Token);
@@ -141,12 +148,13 @@ public class DataLayerWalletTests : TestBase
 
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task TrackNew()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        var launcherId = string.Empty;
+        var stores = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
+        var launcherId = stores.First();
 
         // Act
         await DataLayerWallet.TrackNew(launcherId: launcherId, cancellationToken: cts.Token);

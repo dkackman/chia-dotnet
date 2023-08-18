@@ -78,7 +78,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.id = id;
 
-            _ = await SendMessage("stop_plotting", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("stop_plotting", data, cancellationToken).ConfigureAwait(false);
         }
     }
 }

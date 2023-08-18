@@ -70,7 +70,7 @@ namespace chia.dotnet
             dynamic data = CreateWalletDataObject();
             data.name = name;
 
-            _ = await WalletProxy.SendMessage("cat_set_name", data, cancellationToken).ConfigureAwait(false);
+            await WalletProxy.SendMessage("cat_set_name", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
