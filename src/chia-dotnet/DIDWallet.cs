@@ -71,7 +71,7 @@ namespace chia.dotnet
             data.new_list = newList.ToList();
             data.num_verifications_required = numVerificationsRequired;
 
-            _ = await WalletProxy.SendMessage("did_update_recovery_ids", data, cancellationToken).ConfigureAwait(false);
+            await WalletProxy.SendMessage("did_update_recovery_ids", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace chia.dotnet
             dynamic data = CreateWalletDataObject();
             data.puzzlehash = puzzlehash;
 
-            _ = await WalletProxy.SendMessage("did_spend", data, cancellationToken).ConfigureAwait(false);
+            await WalletProxy.SendMessage("did_spend", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace chia.dotnet
             dynamic data = CreateWalletDataObject();
             data.name = name;
 
-            _ = await WalletProxy.SendMessage("did_set_wallet_name", data, cancellationToken).ConfigureAwait(false);
+            await WalletProxy.SendMessage("did_set_wallet_name", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace chia.dotnet
             data.pubkey = pubkey;
             data.puzhash = puzzlehash;
 
-            _ = await WalletProxy.SendMessage("did_recovery_spend", data, cancellationToken).ConfigureAwait(false);
+            await WalletProxy.SendMessage("did_recovery_spend", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

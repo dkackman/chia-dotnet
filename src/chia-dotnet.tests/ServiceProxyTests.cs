@@ -25,7 +25,7 @@ public class ServiceProxyTests : TestBase
 
     }
 
-    [Fact(Skip = "Will stop the full node")]
+    [Fact(Skip = "Will stop the service in question")]
     public async Task StopNode()
     {
         // Arrange

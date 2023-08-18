@@ -54,7 +54,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.filename = filename;
 
-            _ = await SendMessage("delete_plot", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("delete_plot", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.dirname = dirname;
 
-            _ = await SendMessage("add_plot_directory", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("add_plot_directory", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.dirname = dirname;
 
-            _ = await SendMessage("remove_plot_directory", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("remove_plot_directory", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task RefreshPlots(CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("refresh_plots", cancellationToken).ConfigureAwait(false);
+            await SendMessage("refresh_plots", cancellationToken).ConfigureAwait(false);
         }
     }
 }

@@ -129,13 +129,15 @@ public class DataLayerProxyTests : TestBase
 
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetAncestors()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        var id = string.Empty;
-        var hash = string.Empty;
+        var stores = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
+        var id = stores.First();
+        var root = await DataLayer.GetRoot(id: id, cancellationToken: cts.Token);
+        var hash = root.Hash;
 
         // Act
         var returnValue = await DataLayer.GetAncestors(id: id, hash: hash, cancellationToken: cts.Token);
@@ -144,13 +146,16 @@ public class DataLayerProxyTests : TestBase
         Assert.NotNull(returnValue.ToList());
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetKeys()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        var id = string.Empty;
-        var rootHash = string.Empty;
+        var stores = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
+        var id = stores.First();
+        var root = await DataLayer.GetRoot(id: id, cancellationToken: cts.Token);
+        var rootHash = root.Hash;
+
 
         // Act
         var returnValue = await DataLayer.GetKeys(id: id, rootHash: rootHash, cancellationToken: cts.Token);
@@ -263,12 +268,12 @@ public class DataLayerProxyTests : TestBase
         Assert.NotNull(returnValue.ToList());
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetRoots()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        IEnumerable<string> ids = null;
+        var ids = await DataLayer.GetOwnedStores(cancellationToken: cts.Token);
 
         // Act
         var returnValue = await DataLayer.GetRoots(ids: ids, cancellationToken: cts.Token);

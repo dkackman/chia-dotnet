@@ -254,7 +254,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
 
-            _ = await SendMessage("delete_key", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("delete_key", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -289,7 +289,7 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task DeleteAllKeys(CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("delete_all_keys", cancellationToken).ConfigureAwait(false);
+            await SendMessage("delete_all_keys", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -690,7 +690,7 @@ namespace chia.dotnet
         /// <param name="endHeight">confirmation end height for search</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
-        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByNames(IEnumerable<string> names, bool includeSpentCoins, int? startHeight = null, int? endHeight = null, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByNames(IEnumerable<string> names, bool includeSpentCoins, uint? startHeight = null, uint? endHeight = null, CancellationToken cancellationToken = default)
         {
             if (names is null)
             {
