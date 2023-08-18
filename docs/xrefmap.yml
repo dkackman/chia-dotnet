@@ -4802,15 +4802,15 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FullNodeProxy.GetCoinRecordsByHint
   nameWithType: FullNodeProxy.GetCoinRecordsByHint
-- uid: chia.dotnet.FullNodeProxy.GetCoinRecordsByNames(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
-  name: GetCoinRecordsByNames(IEnumerable<String>, Boolean, Nullable<Int32>, Nullable<Int32>, CancellationToken)
-  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetCoinRecordsByNames_System_Collections_Generic_IEnumerable_System_String__System_Boolean_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.FullNodeProxy.GetCoinRecordsByNames(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
-  name.vb: GetCoinRecordsByNames(IEnumerable(Of String), Boolean, Nullable(Of Int32), Nullable(Of Int32), CancellationToken)
-  fullName: chia.dotnet.FullNodeProxy.GetCoinRecordsByNames(System.Collections.Generic.IEnumerable<System.String>, System.Boolean, System.Nullable<System.Int32>, System.Nullable<System.Int32>, System.Threading.CancellationToken)
-  fullName.vb: chia.dotnet.FullNodeProxy.GetCoinRecordsByNames(System.Collections.Generic.IEnumerable(Of System.String), System.Boolean, System.Nullable(Of System.Int32), System.Nullable(Of System.Int32), System.Threading.CancellationToken)
-  nameWithType: FullNodeProxy.GetCoinRecordsByNames(IEnumerable<String>, Boolean, Nullable<Int32>, Nullable<Int32>, CancellationToken)
-  nameWithType.vb: FullNodeProxy.GetCoinRecordsByNames(IEnumerable(Of String), Boolean, Nullable(Of Int32), Nullable(Of Int32), CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetCoinRecordsByNames(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Threading.CancellationToken)
+  name: GetCoinRecordsByNames(IEnumerable<String>, Boolean, Nullable<UInt32>, Nullable<UInt32>, CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetCoinRecordsByNames_System_Collections_Generic_IEnumerable_System_String__System_Boolean_System_Nullable_System_UInt32__System_Nullable_System_UInt32__System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetCoinRecordsByNames(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Threading.CancellationToken)
+  name.vb: GetCoinRecordsByNames(IEnumerable(Of String), Boolean, Nullable(Of UInt32), Nullable(Of UInt32), CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetCoinRecordsByNames(System.Collections.Generic.IEnumerable<System.String>, System.Boolean, System.Nullable<System.UInt32>, System.Nullable<System.UInt32>, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.FullNodeProxy.GetCoinRecordsByNames(System.Collections.Generic.IEnumerable(Of System.String), System.Boolean, System.Nullable(Of System.UInt32), System.Nullable(Of System.UInt32), System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetCoinRecordsByNames(IEnumerable<String>, Boolean, Nullable<UInt32>, Nullable<UInt32>, CancellationToken)
+  nameWithType.vb: FullNodeProxy.GetCoinRecordsByNames(IEnumerable(Of String), Boolean, Nullable(Of UInt32), Nullable(Of UInt32), CancellationToken)
 - uid: chia.dotnet.FullNodeProxy.GetCoinRecordsByNames*
   name: GetCoinRecordsByNames
   href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetCoinRecordsByNames_
@@ -4818,15 +4818,15 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FullNodeProxy.GetCoinRecordsByNames
   nameWithType: FullNodeProxy.GetCoinRecordsByNames
-- uid: chia.dotnet.FullNodeProxy.GetCoinRecordsByParentIds(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
-  name: GetCoinRecordsByParentIds(IEnumerable<String>, Boolean, Nullable<Int32>, Nullable<Int32>, CancellationToken)
-  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetCoinRecordsByParentIds_System_Collections_Generic_IEnumerable_System_String__System_Boolean_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.FullNodeProxy.GetCoinRecordsByParentIds(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
-  name.vb: GetCoinRecordsByParentIds(IEnumerable(Of String), Boolean, Nullable(Of Int32), Nullable(Of Int32), CancellationToken)
-  fullName: chia.dotnet.FullNodeProxy.GetCoinRecordsByParentIds(System.Collections.Generic.IEnumerable<System.String>, System.Boolean, System.Nullable<System.Int32>, System.Nullable<System.Int32>, System.Threading.CancellationToken)
-  fullName.vb: chia.dotnet.FullNodeProxy.GetCoinRecordsByParentIds(System.Collections.Generic.IEnumerable(Of System.String), System.Boolean, System.Nullable(Of System.Int32), System.Nullable(Of System.Int32), System.Threading.CancellationToken)
-  nameWithType: FullNodeProxy.GetCoinRecordsByParentIds(IEnumerable<String>, Boolean, Nullable<Int32>, Nullable<Int32>, CancellationToken)
-  nameWithType.vb: FullNodeProxy.GetCoinRecordsByParentIds(IEnumerable(Of String), Boolean, Nullable(Of Int32), Nullable(Of Int32), CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetCoinRecordsByParentIds(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Threading.CancellationToken)
+  name: GetCoinRecordsByParentIds(IEnumerable<String>, Boolean, Nullable<UInt32>, Nullable<UInt32>, CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetCoinRecordsByParentIds_System_Collections_Generic_IEnumerable_System_String__System_Boolean_System_Nullable_System_UInt32__System_Nullable_System_UInt32__System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetCoinRecordsByParentIds(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Threading.CancellationToken)
+  name.vb: GetCoinRecordsByParentIds(IEnumerable(Of String), Boolean, Nullable(Of UInt32), Nullable(Of UInt32), CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetCoinRecordsByParentIds(System.Collections.Generic.IEnumerable<System.String>, System.Boolean, System.Nullable<System.UInt32>, System.Nullable<System.UInt32>, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.FullNodeProxy.GetCoinRecordsByParentIds(System.Collections.Generic.IEnumerable(Of System.String), System.Boolean, System.Nullable(Of System.UInt32), System.Nullable(Of System.UInt32), System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetCoinRecordsByParentIds(IEnumerable<String>, Boolean, Nullable<UInt32>, Nullable<UInt32>, CancellationToken)
+  nameWithType.vb: FullNodeProxy.GetCoinRecordsByParentIds(IEnumerable(Of String), Boolean, Nullable(Of UInt32), Nullable(Of UInt32), CancellationToken)
 - uid: chia.dotnet.FullNodeProxy.GetCoinRecordsByParentIds*
   name: GetCoinRecordsByParentIds
   href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetCoinRecordsByParentIds_
@@ -4850,15 +4850,15 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FullNodeProxy.GetCoinRecordsByPuzzleHash
   nameWithType: FullNodeProxy.GetCoinRecordsByPuzzleHash
-- uid: chia.dotnet.FullNodeProxy.GetCoinRecordsByPuzzleHashes(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
-  name: GetCoinRecordsByPuzzleHashes(IEnumerable<String>, Boolean, Nullable<Int32>, Nullable<Int32>, CancellationToken)
-  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetCoinRecordsByPuzzleHashes_System_Collections_Generic_IEnumerable_System_String__System_Boolean_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.FullNodeProxy.GetCoinRecordsByPuzzleHashes(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
-  name.vb: GetCoinRecordsByPuzzleHashes(IEnumerable(Of String), Boolean, Nullable(Of Int32), Nullable(Of Int32), CancellationToken)
-  fullName: chia.dotnet.FullNodeProxy.GetCoinRecordsByPuzzleHashes(System.Collections.Generic.IEnumerable<System.String>, System.Boolean, System.Nullable<System.Int32>, System.Nullable<System.Int32>, System.Threading.CancellationToken)
-  fullName.vb: chia.dotnet.FullNodeProxy.GetCoinRecordsByPuzzleHashes(System.Collections.Generic.IEnumerable(Of System.String), System.Boolean, System.Nullable(Of System.Int32), System.Nullable(Of System.Int32), System.Threading.CancellationToken)
-  nameWithType: FullNodeProxy.GetCoinRecordsByPuzzleHashes(IEnumerable<String>, Boolean, Nullable<Int32>, Nullable<Int32>, CancellationToken)
-  nameWithType.vb: FullNodeProxy.GetCoinRecordsByPuzzleHashes(IEnumerable(Of String), Boolean, Nullable(Of Int32), Nullable(Of Int32), CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetCoinRecordsByPuzzleHashes(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Threading.CancellationToken)
+  name: GetCoinRecordsByPuzzleHashes(IEnumerable<String>, Boolean, Nullable<UInt32>, Nullable<UInt32>, CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetCoinRecordsByPuzzleHashes_System_Collections_Generic_IEnumerable_System_String__System_Boolean_System_Nullable_System_UInt32__System_Nullable_System_UInt32__System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetCoinRecordsByPuzzleHashes(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Threading.CancellationToken)
+  name.vb: GetCoinRecordsByPuzzleHashes(IEnumerable(Of String), Boolean, Nullable(Of UInt32), Nullable(Of UInt32), CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetCoinRecordsByPuzzleHashes(System.Collections.Generic.IEnumerable<System.String>, System.Boolean, System.Nullable<System.UInt32>, System.Nullable<System.UInt32>, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.FullNodeProxy.GetCoinRecordsByPuzzleHashes(System.Collections.Generic.IEnumerable(Of System.String), System.Boolean, System.Nullable(Of System.UInt32), System.Nullable(Of System.UInt32), System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetCoinRecordsByPuzzleHashes(IEnumerable<String>, Boolean, Nullable<UInt32>, Nullable<UInt32>, CancellationToken)
+  nameWithType.vb: FullNodeProxy.GetCoinRecordsByPuzzleHashes(IEnumerable(Of String), Boolean, Nullable(Of UInt32), Nullable(Of UInt32), CancellationToken)
 - uid: chia.dotnet.FullNodeProxy.GetCoinRecordsByPuzzleHashes*
   name: GetCoinRecordsByPuzzleHashes
   href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetCoinRecordsByPuzzleHashes_
@@ -10687,19 +10687,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.SingletonInfo.Launcher
   nameWithType: SingletonInfo.Launcher
-- uid: chia.dotnet.SingletonInfo.LauncRootherId
-  name: LauncRootherId
-  href: api/chia.dotnet.SingletonInfo.html#chia_dotnet_SingletonInfo_LauncRootherId
-  commentId: P:chia.dotnet.SingletonInfo.LauncRootherId
-  fullName: chia.dotnet.SingletonInfo.LauncRootherId
-  nameWithType: SingletonInfo.LauncRootherId
-- uid: chia.dotnet.SingletonInfo.LauncRootherId*
-  name: LauncRootherId
-  href: api/chia.dotnet.SingletonInfo.html#chia_dotnet_SingletonInfo_LauncRootherId_
-  commentId: Overload:chia.dotnet.SingletonInfo.LauncRootherId
+- uid: chia.dotnet.SingletonInfo.Root
+  name: Root
+  href: api/chia.dotnet.SingletonInfo.html#chia_dotnet_SingletonInfo_Root
+  commentId: P:chia.dotnet.SingletonInfo.Root
+  fullName: chia.dotnet.SingletonInfo.Root
+  nameWithType: SingletonInfo.Root
+- uid: chia.dotnet.SingletonInfo.Root*
+  name: Root
+  href: api/chia.dotnet.SingletonInfo.html#chia_dotnet_SingletonInfo_Root_
+  commentId: Overload:chia.dotnet.SingletonInfo.Root
   isSpec: "True"
-  fullName: chia.dotnet.SingletonInfo.LauncRootherId
-  nameWithType: SingletonInfo.LauncRootherId
+  fullName: chia.dotnet.SingletonInfo.Root
+  nameWithType: SingletonInfo.Root
 - uid: chia.dotnet.SingletonRecord
   name: SingletonRecord
   href: api/chia.dotnet.SingletonRecord.html
@@ -12774,24 +12774,15 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.Wallet.SendTransaction
   nameWithType: Wallet.SendTransaction
-- uid: chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.UInt64,System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.Threading.CancellationToken)
-  name: SendTransactionMulti(IEnumerable<Coin>, UInt64, IEnumerable<Coin>, CancellationToken)
-  href: api/chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_UInt64_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.UInt64,System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.Threading.CancellationToken)
-  name.vb: SendTransactionMulti(IEnumerable(Of Coin), UInt64, IEnumerable(Of Coin), CancellationToken)
-  fullName: chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable<chia.dotnet.Coin>, System.UInt64, System.Collections.Generic.IEnumerable<chia.dotnet.Coin>, System.Threading.CancellationToken)
-  fullName.vb: chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable(Of chia.dotnet.Coin), System.UInt64, System.Collections.Generic.IEnumerable(Of chia.dotnet.Coin), System.Threading.CancellationToken)
-  nameWithType: Wallet.SendTransactionMulti(IEnumerable<Coin>, UInt64, IEnumerable<Coin>, CancellationToken)
-  nameWithType.vb: Wallet.SendTransactionMulti(IEnumerable(Of Coin), UInt64, IEnumerable(Of Coin), CancellationToken)
-- uid: chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.UInt64,System.Threading.CancellationToken)
-  name: SendTransactionMulti(IEnumerable<Coin>, UInt64, CancellationToken)
-  href: api/chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_UInt64_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.UInt64,System.Threading.CancellationToken)
-  name.vb: SendTransactionMulti(IEnumerable(Of Coin), UInt64, CancellationToken)
-  fullName: chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable<chia.dotnet.Coin>, System.UInt64, System.Threading.CancellationToken)
-  fullName.vb: chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable(Of chia.dotnet.Coin), System.UInt64, System.Threading.CancellationToken)
-  nameWithType: Wallet.SendTransactionMulti(IEnumerable<Coin>, UInt64, CancellationToken)
-  nameWithType.vb: Wallet.SendTransactionMulti(IEnumerable(Of Coin), UInt64, CancellationToken)
+- uid: chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.UInt64,System.Threading.CancellationToken)
+  name: SendTransactionMulti(IEnumerable<Coin>, IEnumerable<Coin>, UInt64, CancellationToken)
+  href: api/chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_UInt64_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.UInt64,System.Threading.CancellationToken)
+  name.vb: SendTransactionMulti(IEnumerable(Of Coin), IEnumerable(Of Coin), UInt64, CancellationToken)
+  fullName: chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable<chia.dotnet.Coin>, System.Collections.Generic.IEnumerable<chia.dotnet.Coin>, System.UInt64, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.Wallet.SendTransactionMulti(System.Collections.Generic.IEnumerable(Of chia.dotnet.Coin), System.Collections.Generic.IEnumerable(Of chia.dotnet.Coin), System.UInt64, System.Threading.CancellationToken)
+  nameWithType: Wallet.SendTransactionMulti(IEnumerable<Coin>, IEnumerable<Coin>, UInt64, CancellationToken)
+  nameWithType.vb: Wallet.SendTransactionMulti(IEnumerable(Of Coin), IEnumerable(Of Coin), UInt64, CancellationToken)
 - uid: chia.dotnet.Wallet.SendTransactionMulti*
   name: SendTransactionMulti
   href: api/chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_
@@ -13366,15 +13357,15 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.GetCoinRecords
   nameWithType: WalletProxy.GetCoinRecords
-- uid: chia.dotnet.WalletProxy.GetCoinRecordsByNames(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
-  name: GetCoinRecordsByNames(IEnumerable<String>, Boolean, Nullable<Int32>, Nullable<Int32>, CancellationToken)
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetCoinRecordsByNames_System_Collections_Generic_IEnumerable_System_String__System_Boolean_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.WalletProxy.GetCoinRecordsByNames(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
-  name.vb: GetCoinRecordsByNames(IEnumerable(Of String), Boolean, Nullable(Of Int32), Nullable(Of Int32), CancellationToken)
-  fullName: chia.dotnet.WalletProxy.GetCoinRecordsByNames(System.Collections.Generic.IEnumerable<System.String>, System.Boolean, System.Nullable<System.Int32>, System.Nullable<System.Int32>, System.Threading.CancellationToken)
-  fullName.vb: chia.dotnet.WalletProxy.GetCoinRecordsByNames(System.Collections.Generic.IEnumerable(Of System.String), System.Boolean, System.Nullable(Of System.Int32), System.Nullable(Of System.Int32), System.Threading.CancellationToken)
-  nameWithType: WalletProxy.GetCoinRecordsByNames(IEnumerable<String>, Boolean, Nullable<Int32>, Nullable<Int32>, CancellationToken)
-  nameWithType.vb: WalletProxy.GetCoinRecordsByNames(IEnumerable(Of String), Boolean, Nullable(Of Int32), Nullable(Of Int32), CancellationToken)
+- uid: chia.dotnet.WalletProxy.GetCoinRecordsByNames(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Threading.CancellationToken)
+  name: GetCoinRecordsByNames(IEnumerable<String>, Boolean, Nullable<UInt32>, Nullable<UInt32>, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetCoinRecordsByNames_System_Collections_Generic_IEnumerable_System_String__System_Boolean_System_Nullable_System_UInt32__System_Nullable_System_UInt32__System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.GetCoinRecordsByNames(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Threading.CancellationToken)
+  name.vb: GetCoinRecordsByNames(IEnumerable(Of String), Boolean, Nullable(Of UInt32), Nullable(Of UInt32), CancellationToken)
+  fullName: chia.dotnet.WalletProxy.GetCoinRecordsByNames(System.Collections.Generic.IEnumerable<System.String>, System.Boolean, System.Nullable<System.UInt32>, System.Nullable<System.UInt32>, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.WalletProxy.GetCoinRecordsByNames(System.Collections.Generic.IEnumerable(Of System.String), System.Boolean, System.Nullable(Of System.UInt32), System.Nullable(Of System.UInt32), System.Threading.CancellationToken)
+  nameWithType: WalletProxy.GetCoinRecordsByNames(IEnumerable<String>, Boolean, Nullable<UInt32>, Nullable<UInt32>, CancellationToken)
+  nameWithType.vb: WalletProxy.GetCoinRecordsByNames(IEnumerable(Of String), Boolean, Nullable(Of UInt32), Nullable(Of UInt32), CancellationToken)
 - uid: chia.dotnet.WalletProxy.GetCoinRecordsByNames*
   name: GetCoinRecordsByNames
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetCoinRecordsByNames_
@@ -13721,18 +13712,18 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.SendNotification
   nameWithType: WalletProxy.SendNotification
-- uid: chia.dotnet.WalletProxy.SetAutoClaim(System.Threading.CancellationToken)
-  name: SetAutoClaim(CancellationToken)
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_SetAutoClaim_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.WalletProxy.SetAutoClaim(System.Threading.CancellationToken)
-  fullName: chia.dotnet.WalletProxy.SetAutoClaim(System.Threading.CancellationToken)
-  nameWithType: WalletProxy.SetAutoClaim(CancellationToken)
-- uid: chia.dotnet.WalletProxy.SetAutoClaim(System.UInt16,System.UInt64,System.UInt64,System.Boolean,System.Threading.CancellationToken)
-  name: SetAutoClaim(UInt16, UInt64, UInt64, Boolean, CancellationToken)
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_SetAutoClaim_System_UInt16_System_UInt64_System_UInt64_System_Boolean_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.WalletProxy.SetAutoClaim(System.UInt16,System.UInt64,System.UInt64,System.Boolean,System.Threading.CancellationToken)
-  fullName: chia.dotnet.WalletProxy.SetAutoClaim(System.UInt16, System.UInt64, System.UInt64, System.Boolean, System.Threading.CancellationToken)
-  nameWithType: WalletProxy.SetAutoClaim(UInt16, UInt64, UInt64, Boolean, CancellationToken)
+- uid: chia.dotnet.WalletProxy.SetAutoClaim(System.Boolean,System.Threading.CancellationToken)
+  name: SetAutoClaim(Boolean, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_SetAutoClaim_System_Boolean_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.SetAutoClaim(System.Boolean,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.SetAutoClaim(System.Boolean, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.SetAutoClaim(Boolean, CancellationToken)
+- uid: chia.dotnet.WalletProxy.SetAutoClaim(System.Boolean,System.UInt16,System.UInt64,System.UInt64,System.Threading.CancellationToken)
+  name: SetAutoClaim(Boolean, UInt16, UInt64, UInt64, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_SetAutoClaim_System_Boolean_System_UInt16_System_UInt64_System_UInt64_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.SetAutoClaim(System.Boolean,System.UInt16,System.UInt64,System.UInt64,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.SetAutoClaim(System.Boolean, System.UInt16, System.UInt64, System.UInt64, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.SetAutoClaim(Boolean, UInt16, UInt64, UInt64, CancellationToken)
 - uid: chia.dotnet.WalletProxy.SetAutoClaim*
   name: SetAutoClaim
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_SetAutoClaim_

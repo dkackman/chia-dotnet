@@ -5,7 +5,7 @@
     <RootNamespace>chia.dotnet</RootNamespace>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.0.0-alpha03</Version>
+    <Version>2.0.0-alpha04</Version>
     <Authors>dkackman</Authors>
     <Company>dkackman</Company>
     <Description>A .net client library for chia™ RPC interfaces that runs on linux and windows.</Description>
@@ -19,8 +19,8 @@
     <PackageReleaseNotes>Chia 1.8.2 support</PackageReleaseNotes>
     <PackageIcon>chia-leaf-logo-384x384.png</PackageIcon>
     <PackageIconUrl />
-    <AssemblyVersion>2.0.0.3</AssemblyVersion>
-    <FileVersion>2.0.0.3</FileVersion>
+    <AssemblyVersion>2.0.0.4</AssemblyVersion>
+    <FileVersion>2.0.0.4</FileVersion>
     <Nullable>enable</Nullable>
     <Title>chia.dotnet</Title>
     <PackageReadmeFile>README.md</PackageReadmeFile>
