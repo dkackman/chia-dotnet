@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 using System;
+using System.Xml.Linq;
 
 namespace chia.dotnet.tests.Core;
 
@@ -30,6 +31,8 @@ public class TestBase : IClassFixture<ChiaDotNetFixture>
 
     internal PlotterProxy Plotter => Fixture.TestHost.Services.GetService<PlotterProxy>() ?? throw new Exception("Testbase improperly configured");
 
+    internal DataLayerProxy DataLayer => Fixture.TestHost.Services.GetService<DataLayerProxy>() ?? throw new Exception("Testbase improperly configured");
+
     internal Wallet StandardWallet => Fixture.TestHost.Services.GetService<Wallet>() ?? throw new Exception("Testbase improperly configured");
 
     internal TradeManager TradeManager => Fixture.TestHost.Services.GetService<TradeManager>() ?? throw new Exception("Testbase improperly configured");
@@ -45,7 +48,7 @@ public class TestBase : IClassFixture<ChiaDotNetFixture>
     internal DataLayerWallet DataLayerWallet => Fixture.TestHost.Services.GetService<WalletFactory>()!.GetWallet<DataLayerWallet>(WalletType.DATA_LAYER);
 
     internal NFTWallet NFTWallet => Fixture.TestHost.Services.GetService<WalletFactory>()!.GetWallet<NFTWallet>(WalletType.NFT);
-    
+
     public TestBase(ChiaDotNetFixture fixture)
     {
         Fixture = fixture;

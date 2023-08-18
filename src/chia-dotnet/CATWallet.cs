@@ -70,7 +70,7 @@ namespace chia.dotnet
             dynamic data = CreateWalletDataObject();
             data.name = name;
 
-            _ = await WalletProxy.SendMessage("cat_set_name", data, cancellationToken).ConfigureAwait(false);
+            await WalletProxy.SendMessage("cat_set_name", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -93,7 +93,8 @@ namespace chia.dotnet
             ulong maxCoinAmount = 0,
             IEnumerable<ulong>? excludeCoinAmounts = null,
             bool? reusePuzhash = null,
-            ulong fee = 0, CancellationToken cancellationToken = default)
+            ulong fee = 0, 
+            CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(innerAddress))
             {

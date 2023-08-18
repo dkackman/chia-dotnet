@@ -37,6 +37,7 @@ namespace chia.dotnet
         /// <param name="relativeLockHeight">Relative lock height</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The resulting <see cref="TransactionRecord"/></returns>
+        /// <remarks>See <see cref="WalletProxy.GetPoolInfo(Uri, CancellationToken)"/></remarks>
         public async Task<TransactionRecord> JoinPool(string targetPuzzlehash, string poolUrl, uint relativeLockHeight, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(targetPuzzlehash))

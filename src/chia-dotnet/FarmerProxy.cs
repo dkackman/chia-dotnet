@@ -99,7 +99,7 @@ namespace chia.dotnet
             data.farmer_target = farmerTarget;
             data.pool_target = poolTarget;
 
-            _ = await SendMessage("set_reward_targets", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("set_reward_targets", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -277,7 +277,7 @@ namespace chia.dotnet
             data.launcher_id = launcherID;
             data.payout_instructions = payoutInstructions;
 
-            _ = await SendMessage("set_payout_instructions", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("set_payout_instructions", data, cancellationToken).ConfigureAwait(false);
         }
     }
 }

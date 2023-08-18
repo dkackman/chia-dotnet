@@ -76,15 +76,8 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.start = start;
             data.end = end;
-            if (excludeHeaderhash != null)
-            {
-                data.exclude_header_hash = excludeHeaderhash;
-            }
-
-            if (excludeReorged != null)
-            {
-                data.exclude_reorged = excludeReorged;
-            }
+            data.exclude_header_hash = excludeHeaderhash;
+            data.exclude_reorged = excludeReorged;
 
             return await SendMessage<IEnumerable<FullBlock>>("get_blocks", data, "blocks", cancellationToken).ConfigureAwait(false);
         }
@@ -96,15 +89,15 @@ namespace chia.dotnet
         /// <param name="targetTimes">Array of target times</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Fee estimate details</returns>
-        public async Task<(IEnumerable<int> estimates,
-            IEnumerable<int> targetTimes,
-            ulong currentFeeRate,
-            ulong mempoolSize,
-            ulong mempoolMaxSize,
-            bool synced,
-            ulong peakHeight,
-            ulong lastPeakTimestamp,
-            ulong utcTimestamp
+        public async Task<(IEnumerable<int> Estimates,
+            IEnumerable<int> TargetTimes,
+            ulong CurrentFeeRate,
+            ulong MempoolSize,
+            ulong MempoolMaxSize,
+            bool Synced,
+            ulong PeakHeight,
+            ulong LastPeakTimestamp,
+            ulong UtcTimestamp
             )> GetFeeEstimate(SpendBundle spendBundle, IEnumerable<int> targetTimes, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -241,16 +234,8 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.puzzle_hash = puzzlehash;
             data.include_spent_coins = includeSpentCoins;
-
-            if (startHeight.HasValue)
-            {
-                data.start_height = startHeight.Value;
-            }
-
-            if (endHeight.HasValue)
-            {
-                data.end_height = endHeight.Value;
-            }
+            data.start_height = startHeight;
+            data.end_height = endHeight;
 
             return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_puzzle_hash", data, "coin_records", cancellationToken).ConfigureAwait(false);
         }
@@ -264,7 +249,7 @@ namespace chia.dotnet
         /// <param name="endHeight">confirmation end height for search</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
-        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByNames(IEnumerable<string> names, bool includeSpentCoins, int? startHeight = null, int? endHeight = null, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByNames(IEnumerable<string> names, bool includeSpentCoins, uint? startHeight = null, uint? endHeight = null, CancellationToken cancellationToken = default)
         {
             if (names is null)
             {
@@ -274,16 +259,9 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.names = names.ToList();
             data.include_spent_coins = includeSpentCoins;
+            data.start_height = startHeight;
+            data.end_height = endHeight;
 
-            if (startHeight.HasValue)
-            {
-                data.start_height = startHeight.Value;
-            }
-
-            if (endHeight.HasValue)
-            {
-                data.end_height = endHeight.Value;
-            }
 
             return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_names", data, "coin_records", cancellationToken).ConfigureAwait(false);
         }
@@ -297,7 +275,7 @@ namespace chia.dotnet
         /// <param name="endHeight">confirmation end height for search</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
-        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHashes(IEnumerable<string> puzzlehashes, bool includeSpentCoins, int? startHeight = null, int? endHeight = null, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHashes(IEnumerable<string> puzzlehashes, bool includeSpentCoins, uint? startHeight = null, uint? endHeight = null, CancellationToken cancellationToken = default)
         {
             if (puzzlehashes is null)
             {
@@ -307,16 +285,9 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.puzzle_hashes = puzzlehashes.ToList();
             data.include_spent_coins = includeSpentCoins;
+            data.start_height = startHeight;
+            data.end_height = endHeight;
 
-            if (startHeight.HasValue)
-            {
-                data.start_height = startHeight.Value;
-            }
-
-            if (endHeight.HasValue)
-            {
-                data.end_height = endHeight.Value;
-            }
 
             return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_puzzle_hashes", data, "coin_records", cancellationToken).ConfigureAwait(false);
         }
@@ -331,7 +302,7 @@ namespace chia.dotnet
         /// <param name="endHeight">confirmation end height for search</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
-        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByParentIds(IEnumerable<string> parentIds, bool includeSpentCoins, int? startHeight = null, int? endHeight = null, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByParentIds(IEnumerable<string> parentIds, bool includeSpentCoins, uint? startHeight = null, uint? endHeight = null, CancellationToken cancellationToken = default)
         {
             if (parentIds is null)
             {
@@ -341,16 +312,9 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.parent_ids = parentIds.ToList();
             data.include_spent_coins = includeSpentCoins;
+            data.start_height = startHeight;
+            data.end_height = endHeight;
 
-            if (startHeight.HasValue)
-            {
-                data.start_height = startHeight.Value;
-            }
-
-            if (endHeight.HasValue)
-            {
-                data.end_height = endHeight.Value;
-            }
 
             return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_parent_ids", data, "coin_records", cancellationToken).ConfigureAwait(false);
         }
@@ -388,16 +352,8 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.hint = hint;
             data.include_spent_coins = includeSpentCoins;
-
-            if (startHeight.HasValue)
-            {
-                data.start_height = startHeight.Value;
-            }
-
-            if (endHeight.HasValue)
-            {
-                data.end_height = endHeight.Value;
-            }
+            data.start_height = startHeight;
+            data.end_height = endHeight;
 
             return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_hint", data, "coin_records", cancellationToken).ConfigureAwait(false);
         }
@@ -422,8 +378,8 @@ namespace chia.dotnet
             var response = await SendMessage("get_additions_and_removals", data, cancellationToken).ConfigureAwait(false);
 
             return (
-                Converters.ToEnumerable<CoinRecord>(response.additions),
-                Converters.ToEnumerable<CoinRecord>(response.removals)
+                Converters.ToObject<IEnumerable<CoinRecord>>(response.additions),
+                Converters.ToObject<IEnumerable<CoinRecord>>(response.removals)
                 );
         }
 
@@ -463,9 +419,7 @@ namespace chia.dotnet
         /// <returns>a list of tx_ids</returns>
         public async Task<IEnumerable<string>> GetAllMemmpoolTxIds(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_all_mempool_tx_ids", cancellationToken).ConfigureAwait(false);
-
-            return Converters.ToEnumerable<string>(response.tx_ids);
+            return await SendMessage<IEnumerable<string>>("get_all_mempool_tx_ids", null, "tx_ids", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -589,7 +543,7 @@ namespace chia.dotnet
         /// <param name="challengeHash">challenge hash</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="EndOfSubSlotBundle"/></returns>
-        public async Task<(EndOfSubSlotBundle eos, double timeReceived, bool reverted, DateTime DateTimeReceived)> GetRecentEOS(string challengeHash, CancellationToken cancellationToken = default)
+        public async Task<(EndOfSubSlotBundle Eos, double TimeReceived, bool Reverted, DateTime DateTimeReceived)> GetRecentEOS(string challengeHash, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(challengeHash))
             {

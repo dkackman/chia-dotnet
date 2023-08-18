@@ -47,7 +47,7 @@ namespace chia.dotnet
             var response = await SendMessage("get_ips_after_timestamp", data, cancellationToken).ConfigureAwait(false);
 
             return (
-                Converters.ToEnumerable<string>(response.ips),
+                Converters.ToObject<IEnumerable<string>>(response.ips),
                 response.total
                 );
         }

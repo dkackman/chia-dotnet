@@ -54,7 +54,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.filename = filename;
 
-            _ = await SendMessage("delete_plot", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("delete_plot", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -64,9 +64,7 @@ namespace chia.dotnet
         /// <returns>List of directories</returns>
         public async Task<IEnumerable<string>> GetPlotDirectories(CancellationToken cancellationToken = default)
         {
-            var response = await SendMessage("get_plot_directories", cancellationToken).ConfigureAwait(false);
-
-            return Converters.ToEnumerable<string>(response.directories);
+            return await SendMessage<IEnumerable<string>>("get_plot_directories", null, "directories", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -85,7 +83,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.dirname = dirname;
 
-            _ = await SendMessage("add_plot_directory", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("add_plot_directory", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -104,7 +102,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.dirname = dirname;
 
-            _ = await SendMessage("remove_plot_directory", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("remove_plot_directory", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -114,7 +112,7 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task RefreshPlots(CancellationToken cancellationToken = default)
         {
-            _ = await SendMessage("refresh_plots", cancellationToken).ConfigureAwait(false);
+            await SendMessage("refresh_plots", cancellationToken).ConfigureAwait(false);
         }
     }
 }

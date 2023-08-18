@@ -80,7 +80,7 @@ namespace chia.dotnet
         {
             var (wallets, Fingerprint) = await WalletProxy.GetWallets(true, cancellationToken).ConfigureAwait(false);
             var info = wallets.FirstOrDefault(i => i.Id == WalletId);
-            return info is null ? throw new InvalidOperationException($"No wallet with an id of {WalletId} was found") : info;
+            return info ?? throw new InvalidOperationException($"No wallet with an id of {WalletId} was found");
         }
 
         /// <summary>
@@ -147,22 +147,10 @@ namespace chia.dotnet
             data.start = start;
             data.end = end;
             data.reverse = reverse;
-            if (toAddress is not null)
-            {
-                data.to_address = toAddress;
-            }
-            if (sortKey is not null)
-            {
-                data.sort_key = sortKey;
-            }
-            if (typeFilter is not null)
-            {
-                data.type_filter = typeFilter;
-            }
-            if (confirmed is not null)
-            {
-                data.confirmed = confirmed;
-            }
+            data.to_address = toAddress;
+            data.sort_key = sortKey;
+            data.type_filter = typeFilter;
+            data.confirmed = confirmed;
             return await WalletProxy.SendMessage<IEnumerable<TransactionRecord>>("get_transactions", data, "transactions", cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
@@ -175,19 +163,13 @@ namespace chia.dotnet
         /// <param name="excludedCoinIds">Coin ids to exclude</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about spendable coins</returns>
-        public async Task<(IEnumerable<CoinRecord> confirmedRecords,
-            IEnumerable<CoinRecord> unconfirmedRecords,
-            IEnumerable<CoinRecord> unconfirmedAdditions)> GetSpendableCoins(ulong? minCoinAmount, ulong? maxCoinAmount, IEnumerable<ulong>? excludedCoinAmounts = null, IEnumerable<Coin>? excludedCoins = null, IEnumerable<string>? excludedCoinIds = null, CancellationToken cancellationToken = default)
+        public async Task<(IEnumerable<CoinRecord> ConfirmedRecords,
+            IEnumerable<CoinRecord> UnconfirmedRecords,
+            IEnumerable<Coin> UnconfirmedAdditions)> GetSpendableCoins(ulong? minCoinAmount, ulong? maxCoinAmount, IEnumerable<ulong>? excludedCoinAmounts = null, IEnumerable<Coin>? excludedCoins = null, IEnumerable<string>? excludedCoinIds = null, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
-            if (minCoinAmount is not null)
-            {
-                data.minCoinAmount = minCoinAmount.Value;
-            }
-            if (maxCoinAmount is not null)
-            {
-                data.maxCoinAmount = maxCoinAmount.Value;
-            }
+            data.minCoinAmount = minCoinAmount;
+            data.maxCoinAmount = maxCoinAmount;
             if (excludedCoinAmounts is not null)
             {
                 data.excludedCoinAmounts = excludedCoinAmounts.ToList();
@@ -203,9 +185,9 @@ namespace chia.dotnet
             var response = await WalletProxy.SendMessage("get_spendable_coins", data, cancellationToken).ConfigureAwait(false);
 
             return (
-                Converters.ToObject<CoinRecord>(response.confirmed_records),
-                Converters.ToObject<CoinRecord>(response.unconfirmed_removals),
-                Converters.ToObject<Coin>(response.unconfirmed_additions)
+                Converters.ToObject<IEnumerable<CoinRecord>>(response.confirmed_records),
+                Converters.ToObject<IEnumerable<CoinRecord>>(response.unconfirmed_removals),
+                Converters.ToObject<IEnumerable<Coin>>(response.unconfirmed_additions)
                 );
         }
 
@@ -220,9 +202,7 @@ namespace chia.dotnet
             dynamic data = CreateWalletDataObject();
             data.new_address = newAddress;
 
-            var response = await WalletProxy.SendMessage("get_next_address", data, cancellationToken).ConfigureAwait(false);
-
-            return response.address;
+            return await WalletProxy.SendMessage<string>("get_next_address", data, "address", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -233,13 +213,9 @@ namespace chia.dotnet
         public async Task<uint> GetTransactionCount(TransactionTypeFilter? typeFilter = null, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
-            if (typeFilter is not null)
-            {
-                data.type_filter = typeFilter;
-            }
-            var response = await WalletProxy.SendMessage("get_transaction_count", data, cancellationToken).ConfigureAwait(false);
+            data.type_filter = typeFilter;
 
-            return response.count;
+            return await WalletProxy.SendMessage<uint>("get_transaction_count", data, "count", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -249,7 +225,7 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task DeleteUnconfirmedTransactions(CancellationToken cancellationToken = default)
         {
-            _ = await WalletProxy.SendMessage("delete_unconfirmed_transactions", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
+            await WalletProxy.SendMessage("delete_unconfirmed_transactions", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -313,7 +289,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, ulong fee = 0, IEnumerable<Coin>? coins = null, CancellationToken cancellationToken = default)
+        public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, IEnumerable<Coin>? coins = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             if (additions is null)
             {
@@ -329,18 +305,6 @@ namespace chia.dotnet
             }
 
             return await WalletProxy.SendMessage<TransactionRecord>("send_transaction_multi", data, "transaction", cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Sends a transaction
-        /// </summary>
-        /// <param name="additions">Additions to the block chain</param>
-        /// <param name="fee">Fee amount (in units of mojo)</param>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, ulong fee = 0, CancellationToken cancellationToken = default)
-        {
-            return await SendTransactionMulti(additions, fee, cancellationToken).ConfigureAwait(false);
         }
     }
 }

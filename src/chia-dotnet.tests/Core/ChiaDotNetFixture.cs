@@ -42,7 +42,7 @@ public class ChiaDotNetFixture : IDisposable
                     .AddJsonFile("testingappsettings.json", false)
                     .AddEnvironmentVariables("PREFIX_")
                     .AddUserSecrets<ChiaDotNetFixture>(true);
-            }).ConfigureServices(async (hostContext, services) =>
+            }).ConfigureServices((hostContext, services) =>
             {
                 try
                 {
@@ -74,6 +74,7 @@ public class ChiaDotNetFixture : IDisposable
                         var harvesterRpcProxy = new HarvesterProxy(wssClient, OriginService);
                         var crawlerRpcProxy = new CrawlerProxy(wssClient, OriginService);
                         var plotterRpcProxy = new PlotterProxy(wssClient, OriginService);
+                        var dataLayerRpcProxy = new DataLayerProxy(wssClient, OriginService);
 
                         var (Wallets, Fingerprint) = walletRpcProxy.GetWallets(false, cts.Token).ConfigureAwait(false).GetAwaiter().GetResult();
                         var walletFactory = new WalletFactory(walletRpcProxy, Wallets, Fingerprint);
@@ -87,6 +88,7 @@ public class ChiaDotNetFixture : IDisposable
                             .AddSingleton(harvesterRpcProxy)
                             .AddSingleton(crawlerRpcProxy)
                             .AddSingleton(plotterRpcProxy)
+                            .AddSingleton(dataLayerRpcProxy)
                             .AddSingleton(walletFactory)
                             .AddSingleton(new Wallet(1, walletRpcProxy))
                             .AddSingleton(new VerifiedCredentialManager(walletRpcProxy))
@@ -100,12 +102,14 @@ public class ChiaDotNetFixture : IDisposable
                         var walletConfig = new Endpoint();
                         var harvesterConfig = new Endpoint();
                         var crawlerConfig = new Endpoint();
+                        var dataLayerConfig = new Endpoint();
 
                         hostContext.Configuration.GetSection("fullnode").Bind(fullNodeConfig);
                         hostContext.Configuration.GetSection("farmer").Bind(farmerConfig);
                         hostContext.Configuration.GetSection("harvester").Bind(harvesterConfig);
                         hostContext.Configuration.GetSection("wallet").Bind(walletConfig);
                         hostContext.Configuration.GetSection("crawler").Bind(crawlerConfig);
+                        hostContext.Configuration.GetSection("datalayer").Bind(dataLayerConfig);
 
                         // Get all endpoints
                         var fullNodeEndpointInfo = GetEndpointInfo(fullNodeConfig);
@@ -113,6 +117,7 @@ public class ChiaDotNetFixture : IDisposable
                         var walletEndpointInfo = GetEndpointInfo(walletConfig);
                         var harvesterEndpointInfo = GetEndpointInfo(harvesterConfig);
                         var crawlerEndpointInfo = GetEndpointInfo(crawlerConfig);
+                        var dataLayerEndpointInfo = GetEndpointInfo(dataLayerConfig);
 
                         //appsettings mode is httpsClient
                         var cts = new CancellationTokenSource(120000);
@@ -121,6 +126,7 @@ public class ChiaDotNetFixture : IDisposable
                         var walletHttpClient = new HttpRpcClient(walletEndpointInfo);
                         var harvesterHttpClient = new HttpRpcClient(harvesterEndpointInfo);
                         var crawlerHttpClient = new HttpRpcClient(crawlerEndpointInfo);
+                        var dataLayerHttpClient = new HttpRpcClient(dataLayerEndpointInfo);
 
                         //Proxies
                         var nodeRpcClient = new FullNodeProxy(nodeHttpClient, OriginService);
@@ -128,6 +134,7 @@ public class ChiaDotNetFixture : IDisposable
                         var walletRpcProxy = new WalletProxy(walletHttpClient, OriginService);
                         var harvesterRpcProxy = new HarvesterProxy(harvesterHttpClient, OriginService);
                         var crawlerRpcProxy = new HarvesterProxy(crawlerHttpClient, OriginService);
+                        var dataLayerrRpcProxy = new HarvesterProxy(dataLayerHttpClient, OriginService);
 
                         var (Wallets, Fingerprint) = walletRpcProxy.GetWallets(false, cts.Token).ConfigureAwait(false).GetAwaiter().GetResult();
                         var walletFactory = new WalletFactory(walletRpcProxy, Wallets, Fingerprint);
@@ -138,6 +145,7 @@ public class ChiaDotNetFixture : IDisposable
                             .AddSingleton(walletRpcProxy)
                             .AddSingleton(harvesterRpcProxy)
                             .AddSingleton(crawlerRpcProxy)
+                            .AddSingleton(dataLayerrRpcProxy)
                             .AddSingleton(walletFactory)
                             .AddSingleton(new Wallet(1, walletRpcProxy))
                             .AddSingleton(new VerifiedCredentialManager(walletRpcProxy))

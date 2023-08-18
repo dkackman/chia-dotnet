@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using chia.dotnet.tests.Core;
 using Xunit;
-using System.Collections;
 using System.Threading;
+using System.Linq;
 
 namespace chia.dotnet.tests;
 
@@ -14,7 +14,7 @@ public class DIDWalletTests : TestBase
     {
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task Validate()
     {
         // Arrange
@@ -46,7 +46,7 @@ public class DIDWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String puzzlehash = string.Empty;
+        var puzzlehash = string.Empty;
 
         // Act
         await DIDWallet.Spend(puzzlehash: puzzlehash, cancellationToken: cts.Token);
@@ -55,33 +55,33 @@ public class DIDWalletTests : TestBase
 
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetDid()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
 
         // Act
-        var returnValue = await DIDWallet.GetDid(cancellationToken: cts.Token);
+        var (MyDid, CoinID) = await DIDWallet.GetDid(cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(MyDid);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetCurrentCoinInfo()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
 
         // Act
-        var returnValue = await DIDWallet.GetCurrentCoinInfo(cancellationToken: cts.Token);
+        var (MyDid, Parent, InnerPuzzle, Amount) = await DIDWallet.GetCurrentCoinInfo(cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(MyDid);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetPubKey()
     {
         // Arrange
@@ -94,7 +94,7 @@ public class DIDWalletTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetName()
     {
         // Arrange
@@ -122,12 +122,12 @@ public class DIDWalletTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task SetName()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String name = string.Empty;
+        var name = "new did name";
 
         // Act
         await DIDWallet.SetName(name: name, cancellationToken: cts.Token);
@@ -136,7 +136,7 @@ public class DIDWalletTests : TestBase
 
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetMetadata()
     {
         // Arrange
@@ -154,7 +154,7 @@ public class DIDWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String metadata = string.Empty;
+        var metadata = string.Empty;
 
         // Act
         var returnValue = await DIDWallet.UpdateMetadata(metadata: metadata, cancellationToken: cts.Token);
@@ -169,8 +169,8 @@ public class DIDWalletTests : TestBase
         // Arrange
         using var cts = new CancellationTokenSource(15000);
         IEnumerable<string> attestData = null;
-        String pubkey = string.Empty;
-        String puzzlehash = string.Empty;
+        var pubkey = string.Empty;
+        var puzzlehash = string.Empty;
 
         // Act
         await DIDWallet.RecoverySpend(attestData: attestData, pubkey: pubkey, puzzlehash: puzzlehash, cancellationToken: cts.Token);
@@ -179,17 +179,17 @@ public class DIDWalletTests : TestBase
 
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task GetRecoveryList()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
 
         // Act
-        var returnValue = await DIDWallet.GetRecoveryList(cancellationToken: cts.Token);
+        var (RecoverList, NumRequired) = await DIDWallet.GetRecoveryList(cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(RecoverList.ToList());
     }
 
     [Fact(Skip = "Requires review")]
@@ -197,31 +197,31 @@ public class DIDWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String coinName = string.Empty;
-        String pubkey = string.Empty;
-        String puzHash = string.Empty;
+        var coinName = string.Empty;
+        var pubkey = string.Empty;
+        var puzHash = string.Empty;
 
         // Act
-        var returnValue = await DIDWallet.CreateAttest(coinName: coinName, pubkey: pubkey, puzHash: puzHash, cancellationToken: cts.Token);
+        var (MessageSpendBundle, Info, AttestData) = await DIDWallet.CreateAttest(coinName: coinName, pubkey: pubkey, puzHash: puzHash, cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(MessageSpendBundle);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact(Skip = "Fails within chia")]
     public async Task GetInformationNeededForRecovery()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
 
         // Act
-        var returnValue = await DIDWallet.GetInformationNeededForRecovery(cancellationToken: cts.Token);
+        var (MyDID, CoinName, NewPuzzleHash, PublicKey, BackUpIds) = await DIDWallet.GetInformationNeededForRecovery(cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(CoinName);
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task CreateBackupFile()
     {
         // Arrange
@@ -231,7 +231,7 @@ public class DIDWalletTests : TestBase
         var returnValue = await DIDWallet.CreateBackupFile(cancellationToken: cts.Token);
 
         // Assert
-        Assert.NotNull(returnValue);
+        Assert.NotNull(returnValue.ToList());
     }
 
     [Fact(Skip = "Requires review")]
@@ -239,7 +239,7 @@ public class DIDWalletTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        String innerAddress = string.Empty;
+        var innerAddress = string.Empty;
 
         // Act
         var returnValue = await DIDWallet.Transfer(innerAddress: innerAddress, cancellationToken: cts.Token);
