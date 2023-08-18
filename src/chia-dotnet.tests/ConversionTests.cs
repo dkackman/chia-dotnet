@@ -1,4 +1,5 @@
 ﻿using System;
+using chia.dotnet;
 using chia.dotnet.tests.Core;
 using Xunit;
 
@@ -76,6 +77,24 @@ namespace chia.dotnet.tests
 
             // Assert
             Assert.Equal(chia, newChia);
+        }
+
+        [Fact]
+        public void CalculateCoinName()
+        {
+            // Arrange
+            var coin = new Coin()
+            {
+                ParentCoinInfo = "0101a581331ee609668229b75a08fb6f3bb32abf15349acc11c17c2072643a8d",
+                PuzzleHash = "eff07522495060c066f66f32acc2a77e3a3e737aca8baea4d1a64ea4cdc13da9",
+                Amount = 1023,
+            };
+
+            // Act
+            var coinName = coin.Name;
+
+            // Assert
+            Assert.Equal("2DEFA04144FEF9C90598CBA104F36E2922C1B0C99220223780D6DA561B874A7A", coinName);
         }
     }
 }
