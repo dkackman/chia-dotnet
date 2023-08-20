@@ -838,9 +838,7 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.transaction_id = transactionId;
-            var response = await SendMessage<IDictionary<string, IDictionary<string, IEnumerable<string>>>>("get_transaction_memo", data, cancellationToken).ConfigureAwait(false);
-
-            return response;
+            return await SendMessage<IDictionary<string, IDictionary<string, IEnumerable<string>>>>("get_transaction_memo", data, "", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -941,17 +939,17 @@ namespace chia.dotnet
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns><see cref="IEnumerable{CoinRecord}"/></returns>
         public async Task<(IEnumerable<CoinRecord> CoinRecords, int? TotalCount)> GetCoinRecords(
-            UInt32Range? spentRange,
-            UInt32Range? confirmedRange,
-            UInt64Range? amountRange,
-            AmountFilter? amountFilter,
-            HashFilter? parentCoinIdFilter,
-            HashFilter? puzzleHashFilter,
-            HashFilter? coinIdFilter,
-            CoinType? coinType,
-            WalletType? walletType,
-            uint? walletId,
-            uint? limit,
+            UInt32Range? spentRange = null,
+            UInt32Range? confirmedRange = null,
+            UInt64Range? amountRange = null,
+            AmountFilter? amountFilter = null,
+            HashFilter? parentCoinIdFilter = null,
+            HashFilter? puzzleHashFilter = null,
+            HashFilter? coinIdFilter = null,
+            CoinType? coinType = null,
+            WalletType? walletType = null,
+            uint? walletId = null,
+            uint? limit = null,
             CoinRecordOrder order = CoinRecordOrder.ConfirmedHeight,
             uint offset = 0,
             bool includeTotalCount = false,
