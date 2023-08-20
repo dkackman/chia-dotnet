@@ -299,6 +299,10 @@
           "relative_path": "api/chia.dotnet.CATWallet.html",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> test-refactor
 =======
           "hash": "Cg5xW7vjYXRA8J32ZLLI+wxjEHY+t1MHqf6AqrZqrnk="
 =======
@@ -312,6 +316,12 @@
 =======
 >>>>>>> 3a4fea754a815b429e40dd0e330a5b6534d2cf56
 >>>>>>> 6aa01cd02a095f2438c1538a02446b9b37761fe5
+<<<<<<< HEAD
+=======
+=======
+          "hash": "0m3tHDRrH6KHY2qycJGsGDPYoKXzH5gKUkf4Y5je0/I="
+>>>>>>> main
+>>>>>>> test-refactor
         }
       },
       "is_incremental": false,
@@ -735,6 +745,10 @@
           "relative_path": "api/chia.dotnet.DIDWallet.html",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> test-refactor
 =======
           "hash": "JrulDjxheSvizTc1ml189zf2vd9QaFgOtv81wUihr9c="
 =======
@@ -748,6 +762,12 @@
 =======
 >>>>>>> 3a4fea754a815b429e40dd0e330a5b6534d2cf56
 >>>>>>> 6aa01cd02a095f2438c1538a02446b9b37761fe5
+<<<<<<< HEAD
+=======
+=======
+          "hash": "B1AP3wGYBXaPJvFZIcXH3ZQppwBnblM8glpqNSQp8Eg="
+>>>>>>> main
+>>>>>>> test-refactor
         }
       },
       "is_incremental": false,
@@ -819,6 +839,10 @@
           "relative_path": "api/chia.dotnet.DataLayerProxy.html",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> test-refactor
 =======
           "hash": "m/p4n6ID0IuhvqboeZJb2nboWf7p+4eIScLskfuUwz8="
 =======
@@ -832,6 +856,12 @@
 =======
 >>>>>>> 3a4fea754a815b429e40dd0e330a5b6534d2cf56
 >>>>>>> 6aa01cd02a095f2438c1538a02446b9b37761fe5
+<<<<<<< HEAD
+=======
+=======
+          "hash": "ERkmJ3DYE8dTdkNnKeldxxhIe1NlJ2RxtwjHcQr234I="
+>>>>>>> main
+>>>>>>> test-refactor
         }
       },
       "is_incremental": false,
@@ -877,6 +907,10 @@
           "relative_path": "api/chia.dotnet.DataLayerWallet.html",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> test-refactor
 =======
           "hash": "P/lpt4IFa5gg8y+4vSDv1+LsFqYceXCO/7ZYaehKP3s="
 =======
@@ -890,6 +924,12 @@
 =======
 >>>>>>> 3a4fea754a815b429e40dd0e330a5b6534d2cf56
 >>>>>>> 6aa01cd02a095f2438c1538a02446b9b37761fe5
+<<<<<<< HEAD
+=======
+=======
+          "hash": "lxfx+6Tlo5Je1aqgVybwSWyImt+Mi2qrycOdGl58x9s="
+>>>>>>> main
+>>>>>>> test-refactor
         }
       },
       "is_incremental": false,
@@ -1345,6 +1385,10 @@
           "relative_path": "api/chia.dotnet.FullNodeProxy.html",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> test-refactor
 =======
           "hash": "Pq+05UADsgahtBMKMMLgOic4rwvaM2GbR0HbAEPCYuw="
 =======
@@ -1358,6 +1402,12 @@
 =======
 >>>>>>> 3a4fea754a815b429e40dd0e330a5b6534d2cf56
 >>>>>>> 6aa01cd02a095f2438c1538a02446b9b37761fe5
+<<<<<<< HEAD
+=======
+=======
+          "hash": "/60pw38/1t1E4mNVSpVuvgbZuAt9d3ABc8x2LGncx+4="
+>>>>>>> main
+>>>>>>> test-refactor
         }
       },
       "is_incremental": false,
@@ -1467,6 +1517,10 @@
           "relative_path": "api/chia.dotnet.HarvesterProxy.html",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> test-refactor
 =======
           "hash": "xUzJQ1ly0DBdMpYPpPH38O9Tfp8Og3ahfZnQHivaBVY="
 =======
@@ -1480,6 +1534,12 @@
 =======
 >>>>>>> 3a4fea754a815b429e40dd0e330a5b6534d2cf56
 >>>>>>> 6aa01cd02a095f2438c1538a02446b9b37761fe5
+<<<<<<< HEAD
+=======
+=======
+          "hash": "LTR/nWSqdrL3HR85DpbTa2wja6cL35Cl/nFn+tSSmOY="
+>>>>>>> main
+>>>>>>> test-refactor
         }
       },
       "is_incremental": false,
@@ -2037,8 +2097,15 @@
           "relative_path": "api/chia.dotnet.Message.html",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> test-refactor
 =======
           "hash": "fG43BgVOgvXioEDtWYhjCa3sKpOfJMHbvL7sIxEB7WQ="
+=======
+          "hash": "rM0/qAADwqFuWjeg3AfoB9T+/7JeOk8s15tmf8MU/wA="
+>>>>>>> main
         }
       },
       "is_incremental": false,
@@ -2197,6 +2264,10 @@
           "relative_path": "api/chia.dotnet.NFTWallet.html",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> test-refactor
 =======
           "hash": "VJtYOMaps9LP/3VGfVkC571m5HnpLnYbs61N/3Jj0cE="
 =======
@@ -2210,6 +2281,12 @@
 =======
 >>>>>>> 3a4fea754a815b429e40dd0e330a5b6534d2cf56
 >>>>>>> 6aa01cd02a095f2438c1538a02446b9b37761fe5
+<<<<<<< HEAD
+=======
+=======
+          "hash": "LWrXLMAsxq9D6jX5MfSgcUbuj8wxulxxEn7Wq/PqzII="
+>>>>>>> main
+>>>>>>> test-refactor
         }
       },
       "is_incremental": false,
@@ -3017,6 +3094,10 @@
           "relative_path": "api/chia.dotnet.PoolWallet.html",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> test-refactor
 =======
           "hash": "Yyqv/4CpxqGrljc396Ei5Bo6nGjXmbDg7zsDdKWcipw="
 =======
@@ -3030,6 +3111,12 @@
 =======
 >>>>>>> 3a4fea754a815b429e40dd0e330a5b6534d2cf56
 >>>>>>> 6aa01cd02a095f2438c1538a02446b9b37761fe5
+<<<<<<< HEAD
+=======
+=======
+          "hash": "Z5li2a0diatb2MjHYdW72QYCH5tSRpUvVu7S4lN+eAU="
+>>>>>>> main
+>>>>>>> test-refactor
         }
       },
       "is_incremental": false,
@@ -3709,8 +3796,15 @@
           "relative_path": "api/chia.dotnet.SingletonInfo.html",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> test-refactor
 =======
           "hash": "YlXiKieTnGPDrlo2ip91wGb9FoBbkYdLyxPQeySc6ew="
+=======
+          "hash": "V4lFRRYwWrdyRXcprWje94lC4PumGO9Vf/GQsbD5Eb0="
+>>>>>>> main
         }
       },
       "is_incremental": false,
@@ -3741,8 +3835,15 @@
           "relative_path": "api/chia.dotnet.SingletonRecord.html",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> test-refactor
 =======
           "hash": "32DTlJYBQLXacUkiRA3LVXGDodIt7fvttTgi2C0IGWU="
+=======
+          "hash": "BsL0OpXJMkKlQXkizXHOjcP26TWLpTT1pX6FwyRKfk0="
+>>>>>>> main
         }
       },
       "is_incremental": false,
@@ -3997,6 +4098,10 @@
           "relative_path": "api/chia.dotnet.TradeManager.html",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> test-refactor
 =======
           "hash": "EIwbLXy3JdvqJIIz7OH0chovo1PZcX8sLpUZYVVygsY="
 =======
@@ -4010,6 +4115,12 @@
 =======
 >>>>>>> 3a4fea754a815b429e40dd0e330a5b6534d2cf56
 >>>>>>> 6aa01cd02a095f2438c1538a02446b9b37761fe5
+<<<<<<< HEAD
+=======
+=======
+          "hash": "8XGD9Q7mQ0rbDMZ6i/9rYTvsFwAPgY4pC0M6FvwyZVw="
+>>>>>>> main
+>>>>>>> test-refactor
         }
       },
       "is_incremental": false,
@@ -4503,6 +4614,10 @@
           "relative_path": "api/chia.dotnet.VerifiedCredentialManager.html",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> test-refactor
 =======
           "hash": "rBr/ti2GRPfsJkej7jIdD/ZNFiHi6i1SuEcmZb4JxNs="
 =======
@@ -4516,6 +4631,12 @@
 =======
 >>>>>>> 3a4fea754a815b429e40dd0e330a5b6534d2cf56
 >>>>>>> 6aa01cd02a095f2438c1538a02446b9b37761fe5
+<<<<<<< HEAD
+=======
+=======
+          "hash": "FXYjL8OhMpj/TSbLcWZLdwqy4y9uMfzscNZ0punwWw0="
+>>>>>>> main
+>>>>>>> test-refactor
         }
       },
       "is_incremental": false,
@@ -4529,6 +4650,10 @@
           "relative_path": "api/chia.dotnet.Wallet.html",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> test-refactor
 =======
           "hash": "bs512NEQfZ7Jn0KhVQ04tGRqD3/ei6wte2D+ybIBtS0="
 =======
@@ -4542,6 +4667,12 @@
 =======
 >>>>>>> 3a4fea754a815b429e40dd0e330a5b6534d2cf56
 >>>>>>> 6aa01cd02a095f2438c1538a02446b9b37761fe5
+<<<<<<< HEAD
+=======
+=======
+          "hash": "6rcjm2pu14JYNeAeFFZBXnLGKMYmrixxbwe1vkECacY="
+>>>>>>> main
+>>>>>>> test-refactor
         }
       },
       "is_incremental": false,
@@ -4619,6 +4750,10 @@
           "relative_path": "api/chia.dotnet.WalletProxy.html",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> test-refactor
 =======
           "hash": "7TuR/WTHs8YulM3YdkfxNCm8IGEXFYRZqYSNJFSjCj0="
 =======
@@ -4632,6 +4767,12 @@
 =======
 >>>>>>> 3a4fea754a815b429e40dd0e330a5b6534d2cf56
 >>>>>>> 6aa01cd02a095f2438c1538a02446b9b37761fe5
+<<<<<<< HEAD
+=======
+=======
+          "hash": "8VG9lSHFPgsfQdF7NffqbU/hBuGP1/6A7fn2dlFVT+k="
+>>>>>>> main
+>>>>>>> test-refactor
         }
       },
       "is_incremental": false,
