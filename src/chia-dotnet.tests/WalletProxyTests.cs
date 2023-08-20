@@ -134,12 +134,13 @@ namespace chia.dotnet.tests
 
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetTransaction()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            var transactionId = string.Empty;
+            var trasnactions = await StandardWallet.GetTransactions(start: 1, end: 2, cancellationToken: cts.Token);
+            var transactionId = trasnactions.First().Name;
 
             // Act
             var returnValue = await Wallet.GetTransaction(transactionId: transactionId, cancellationToken: cts.Token);
@@ -383,19 +384,21 @@ namespace chia.dotnet.tests
             Assert.NotNull(SignedTx);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetCoinRecordsByNames()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            IEnumerable<string> names = null;
-            bool includeSpentCoins = false;
+            var (CoinRecords, TotalCount) = await Wallet.GetCoinRecords(cancellationToken: cts.Token);
+            var coin = CoinRecords.First().Coin;
+            string[] names = { coin.Name };
+            var includeSpentCoins = true;
 
             // Act
             var returnValue = await Wallet.GetCoinRecordsByNames(names: names, includeSpentCoins: includeSpentCoins, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue.ToList());
+            Assert.Equal(coin.Name, returnValue.First().Coin.Name);
         }
 
         [Fact]
@@ -458,15 +461,16 @@ namespace chia.dotnet.tests
             Assert.NotNull(returnValue.SpendBundle);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task DidGetInfo()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            var coinId = string.Empty;
+            var (MyDid, CoinID) = await DIDWallet.GetDid(cts.Token);
+            Assert.NotNull(CoinID);
 
             // Act
-            var returnValue = await Wallet.DidGetInfo(coinId: coinId, cancellationToken: cts.Token);
+            var returnValue = await Wallet.DidGetInfo(coinId: CoinID, cancellationToken: cts.Token);
 
             // Assert
             Assert.NotNull(returnValue);
@@ -514,12 +518,14 @@ namespace chia.dotnet.tests
             Assert.True(returnValue > 0);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetTransactionMemo()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            var transactionId = string.Empty;
+            var trasnactions = await StandardWallet.GetTransactions(start: 1, end: 2, confirmed: true, cancellationToken: cts.Token);
+            var transactionId = trasnactions.First().Name;
+
 
             // Act
             var returnValue = await Wallet.GetTransactionMemo(transactionId: transactionId, cancellationToken: cts.Token);
