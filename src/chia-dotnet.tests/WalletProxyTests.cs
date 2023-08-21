@@ -590,22 +590,22 @@ namespace chia.dotnet.tests
             var (PubKey, Signature, SigningMode) = await Wallet.SignMessageByAddress(message: message, address: address, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(PubKey);
+            Assert.NotNull(Signature);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task SignMessageById()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            var message = string.Empty;
-            var id = string.Empty;
+            var (MyDid, CoinID) = await DIDWallet.GetDid(cts.Token);
+            var message = "spoons";
 
             // Act
-            var (PubKey, Signature, SigningMode) = await Wallet.SignMessageById(message: message, id: id, cancellationToken: cts.Token);
+            var (PubKey, Signature, SigningMode, LatestCoinId) = await Wallet.SignMessageById(message: message, id: MyDid, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(PubKey);
+            Assert.NotNull(Signature);
         }
 
         [Fact]

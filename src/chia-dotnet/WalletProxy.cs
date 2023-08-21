@@ -912,14 +912,14 @@ namespace chia.dotnet
         /// <param name="id"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>PubKey, Signature, and SigningMode</returns>
-        public async Task<(string PubKey, string Signature, string SigningMode)> SignMessageById(string message, string id, bool isHex = false, CancellationToken cancellationToken = default)
+        public async Task<(string PubKey, string Signature, string SigningMode, string LatestCoinId)> SignMessageById(string message, string id, bool isHex = false, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.id = id;
             data.message = message;
             data.is_hex = isHex;
-            var response = await SendMessage("sign_message_by_id", data, "pubkey", cancellationToken).ConfigureAwait(false);
-            return (response.pubkey, response.signature, response.sigining_mode);
+            var response = await SendMessage("sign_message_by_id", data, cancellationToken).ConfigureAwait(false);
+            return (response.pubkey, response.signature, response.signing_mode, response.latest_coin_id);
         }
 
         /// <param name="reverse"></param>
