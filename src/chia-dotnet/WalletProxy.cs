@@ -901,7 +901,7 @@ namespace chia.dotnet
             data.message = message;
             data.is_hex = isHex;
             var response = await SendMessage("sign_message_by_address", data, cancellationToken).ConfigureAwait(false);
-            return (response.pubkey, response.signature, response.sigining_mode);
+            return (response.pubkey, response.signature, response.signing_mode);
         }
 
         /// <summary>

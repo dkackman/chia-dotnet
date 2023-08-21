@@ -578,13 +578,13 @@ namespace chia.dotnet.tests
             Assert.NotNull(returnValue);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task SignMessageByAddress()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            var message = string.Empty;
-            var address = string.Empty;
+            var address = await StandardWallet.GetNextAddress(newAddress: false, cts.Token);
+            var message = "spoons";
 
             // Act
             var (PubKey, Signature, SigningMode) = await Wallet.SignMessageByAddress(message: message, address: address, cancellationToken: cts.Token);
@@ -639,17 +639,28 @@ namespace chia.dotnet.tests
             Assert.NotNull(CoinRecords);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task VerifySignature()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            var signature = string.Empty;
-            var message = string.Empty;
-            var pubkey = string.Empty;
+            var address = await StandardWallet.GetNextAddress(newAddress: false, cts.Token);
+            var message = "spoons";
+            var hexMessage = message.ToHexString();
+            var (PubKey, Signature, SigningMode) = await Wallet.SignMessageByAddress(
+                message: hexMessage,
+                isHex: true,
+                address: address,
+                cancellationToken: cts.Token);
 
             // Act
-            var returnValue = await Wallet.VerifySignature(signature: signature, message: message, pubkey: pubkey, cancellationToken: cts.Token);
+            var returnValue = await Wallet.VerifySignature(
+                address: address,
+                signature: Signature,
+                message: hexMessage,
+                pubkey: PubKey,
+                signingMode: SigningMode,
+                cancellationToken: cts.Token);
 
             // Assert
             Assert.True(returnValue);
