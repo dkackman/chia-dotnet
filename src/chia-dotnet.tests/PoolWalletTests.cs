@@ -44,7 +44,7 @@ public class PoolWalletTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact]
+    [Fact(Skip = "Requires data")]
     public async Task SelfPool()
     {
         // Arrange
@@ -57,7 +57,7 @@ public class PoolWalletTests : TestBase
         Assert.NotNull(returnValue);
     }
 
-    [Fact]
+    [Fact(Skip = "Requires data")]
     public async Task AbsorbRewards()
     {
         // Arrange

@@ -173,26 +173,6 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Migrate from key phrase to key ring
-        /// </summary>
-        /// <param name="passphrase">The new keyring passphrase</param>
-        /// <param name="passphraseHint">A passphrase hint</param>
-        /// <param name="savePassphrase">Should the passphrase be saved</param>
-        /// <param name="cleanupLegacyKeyring">Should the legacy keyring be cleaned up</param>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task MigrateKeyring(string passphrase, string passphraseHint, bool savePassphrase = false, bool cleanupLegacyKeyring = false, CancellationToken cancellationToken = default)
-        {
-            dynamic data = new ExpandoObject();
-            data.passphrase = passphrase;
-            data.passphrase_hint = passphraseHint;
-            data.save_passphrase = savePassphrase;
-            data.cleanup_legacy_keyring = cleanupLegacyKeyring;
-
-            await SendMessage("migrate_keyring", data, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
         /// Update the key ring passphrase
         /// </summary>
         /// <param name="currentPassphrase">The current keyring passphrase</param>
@@ -278,13 +258,13 @@ namespace chia.dotnet
         /// <param name="passphrase">Keyring passphrase</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Awaitable <see cref="Task"/></returns>
-        public async Task AddPrivateKey(string mnemonic, string passphrase, CancellationToken cancellationToken = default)
+        public async Task<uint> AddPrivateKey(string mnemonic, string passphrase, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.mnemonic = mnemonic;
             data.passphrase = passphrase;
 
-            await SendMessage("add_private_key", data, cancellationToken).ConfigureAwait(false);
+            return await SendMessage<uint>("add_private_key", data, "fingerprint", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
