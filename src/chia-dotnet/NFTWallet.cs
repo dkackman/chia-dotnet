@@ -51,7 +51,7 @@ namespace chia.dotnet
             data.reuse_puzhash = reusePuzhash;
             data.fee = fee;
 
-            return await WalletProxy.SendMessage<SpendBundle>("nft_add_uri", "spend_bundle", data, cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<SpendBundle>("nft_add_uri", data, "spend_bundle", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -165,16 +165,20 @@ namespace chia.dotnet
         /// Sets the DID for an NFT
         /// </summary>
         /// <param name="didId">The DID ID</param>
+        /// <param name="nftCoinId">The coin id for the nft</param>
         /// <param name="reusePuzhash"></param>
+        /// <param name="fee"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A <see cref="SpendBundle"/></returns>
-        public async Task<SpendBundle> SetDID(string didId, bool? reusePuzhash = null, CancellationToken cancellationToken = default)
+        public async Task<SpendBundle> SetDID(string didId, string nftCoinId, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.did_id = didId;
+            data.nft_coin_id = nftCoinId;
             data.reuse_puzhash = reusePuzhash;
+            data.fee = fee;
 
-            return await WalletProxy.SendMessage<SpendBundle>("nft_set_nft_did", "spend_bundle", data, cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<SpendBundle>("nft_set_nft_did", data, "spend_bundle", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -210,7 +214,7 @@ namespace chia.dotnet
             data.reuse_puzhash = reusePuzhash;
             data.fee = fee;
 
-            return await WalletProxy.SendMessage<SpendBundle>("nft_transfer_nft", "spend_bundle", data, cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<SpendBundle>("nft_transfer_nft", data, "spend_bundle", cancellationToken).ConfigureAwait(false);
         }
     }
 }

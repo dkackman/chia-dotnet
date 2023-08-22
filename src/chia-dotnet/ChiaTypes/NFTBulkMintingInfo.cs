@@ -7,7 +7,7 @@ namespace chia.dotnet
     /// </summary>
     public record NFTBulkMintingInfo
     {
-        public string? RoyaltyAddress { get; init; } = string.Empty;
+        public string? RoyaltyAddress { get; init; }
         public ushort? RoyaltyPercentage { get; init; }
         public IEnumerable<NftMintEntry> MetadataList { get; init; } = new List<NftMintEntry>();
         /// <summary>

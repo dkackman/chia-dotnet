@@ -5,6 +5,7 @@ using System.Linq;
 using chia.dotnet.tests.Core;
 using Xunit;
 using System;
+using System.Text;
 
 namespace chia.dotnet.tests
 {
@@ -276,12 +277,14 @@ namespace chia.dotnet.tests
             Assert.NotNull(returnValue.ToList());
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetNFTInfo()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            var coinId = string.Empty;
+            var nfts = await NFTWallet.GetNFTs(startIndex: 0, num: 2, cancellationToken: cts.Token);
+            var nft = nfts.First();
+            var coinId = nft.NFTCoinID;
 
             // Act
             var returnValue = await Wallet.GetNFTInfo(coinId: coinId, cancellationToken: cts.Token);
@@ -567,8 +570,8 @@ namespace chia.dotnet.tests
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            ulong amount = 0;
-            var message = string.Empty;
+            ulong amount = 1000;
+            var message = "spoons";
             var target = string.Empty;
 
             // Act
@@ -646,10 +649,9 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
             var address = await StandardWallet.GetNextAddress(newAddress: false, cts.Token);
             var message = "spoons";
-            var hexMessage = message.ToHexString();
             var (PubKey, Signature, SigningMode) = await Wallet.SignMessageByAddress(
-                message: hexMessage,
-                isHex: true,
+                message: message,
+                isHex: false,
                 address: address,
                 cancellationToken: cts.Token);
 
@@ -657,7 +659,7 @@ namespace chia.dotnet.tests
             var returnValue = await Wallet.VerifySignature(
                 address: address,
                 signature: Signature,
-                message: hexMessage,
+                message: message.ToHexString(),
                 pubkey: PubKey,
                 signingMode: SigningMode,
                 cancellationToken: cts.Token);
