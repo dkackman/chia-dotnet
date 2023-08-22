@@ -660,6 +660,7 @@ namespace chia.dotnet.tests
                 address: address,
                 signature: Signature,
                 message: message.ToHexString(),
+
                 pubkey: PubKey,
                 signingMode: SigningMode,
                 cancellationToken: cts.Token);
