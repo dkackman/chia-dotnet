@@ -20,7 +20,7 @@ namespace chia.dotnet
     /// </summary>
     public record NFTMintingInfo : NftMintEntry
     {
-        public string? RoyaltyAddress { get; init; } = string.Empty;
+        public string? RoyaltyAddress { get; init; }
         public string? TargetAddress { get; init; }
         public string? DidId { get; init; }
     }

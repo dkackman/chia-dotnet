@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -91,7 +91,7 @@ namespace chia.dotnet
         public static string ToHexString(this string s)
         {
             var bytes = Encoding.UTF8.GetBytes(s);
-            return BitConverter.ToString(bytes).Replace("-", "");
+            return Convert.ToHexString(bytes);
         }
     }
 }

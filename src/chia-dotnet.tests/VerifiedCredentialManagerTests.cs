@@ -12,12 +12,14 @@ public class VerifiedCredentialManagerTests : TestBase
     {
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task Get()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        var vcId = string.Empty;
+        var vcs = await VCManager.GetList(cancellationToken: cts.Token);
+        var vc  = vcs.First();
+        var vcId = vc.VC.LauncherId;
 
         // Act
         var returnValue = await VCManager.Get(vcId: vcId, cancellationToken: cts.Token);
@@ -39,16 +41,16 @@ public class VerifiedCredentialManagerTests : TestBase
         Assert.NotNull(returnValue.ToList());
     }
 
-    [Fact(Skip = "Requires review")]
+    [Fact]
     public async Task Mint()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        var targetAddress = string.Empty;
-        var didId = string.Empty;
+        var targetAddress = await StandardWallet.GetNextAddress(false, cts.Token);
+        var (MyDid, CoinID) = await DIDWallet.GetDid(cts.Token);
 
         // Act
-        var returnValue = await VCManager.Mint(targetAddress: targetAddress, didId: didId, cancellationToken: cts.Token);
+        var returnValue = await VCManager.Mint(targetAddress: targetAddress, didId: MyDid, cancellationToken: cts.Token);
 
         // Assert
         Assert.NotNull(returnValue.VCRecord);

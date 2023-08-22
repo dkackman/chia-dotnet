@@ -75,7 +75,7 @@ namespace chia.dotnet
                 };
         }
 
-        private static object FormatDataObject(object? data)
+        private static dynamic FormatDataObject(object? data)
         {
             if (data is null)
             {
@@ -87,11 +87,11 @@ namespace chia.dotnet
             var dict = data as IDictionary<string, object>;
             if (dict is not null)
             {
-                var newProperties = dict.Where(kvp => kvp.Value != null)
+                var nonNullProperties = dict.Where(kvp => kvp.Value != null)
                     .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
                 var newDict = new ExpandoObject() as IDictionary<string, object>;
-                foreach (var property in newProperties)
+                foreach (var property in nonNullProperties)
                 {
                     newDict.Add(property);
                 }
@@ -99,7 +99,7 @@ namespace chia.dotnet
                 return newDict;
             }
 
-            // input is not an exapndo - just return the static type
+            // input is not an expando - just return the static type
             return data;
         }
 
@@ -109,7 +109,7 @@ namespace chia.dotnet
         {
             var buffer = new byte[32];
             random.NextBytes(buffer);
-            return BitConverter.ToString(buffer).Replace("-", "");
+            return Convert.ToHexString(buffer);
         }
     }
 }

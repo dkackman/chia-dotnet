@@ -21,7 +21,7 @@ namespace chia.dotnet
         /// <summary>
         /// Given a launcher ID get the verified credential.
         /// </summary>
-        /// <param name="vcId"></param>
+        /// <param name="vcId">launcher ID</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns><see cref="VCRecord"/></returns>
         public async Task<VCRecord> Get(string vcId, CancellationToken cancellationToken = default)
