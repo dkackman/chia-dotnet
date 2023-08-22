@@ -387,7 +387,7 @@ namespace chia.dotnet.tests
             Assert.NotNull(SignedTx);
         }
 
-        [Fact]
+        [Fact(Skip = "Requires data")]
         public async Task GetCoinRecordsByNames()
         {
             // Arrange
@@ -521,14 +521,13 @@ namespace chia.dotnet.tests
             Assert.True(returnValue > 0);
         }
 
-        [Fact]
+        [Fact(Skip = "Requires data")]
         public async Task GetTransactionMemo()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
             var trasnactions = await StandardWallet.GetTransactions(start: 1, end: 2, confirmed: true, cancellationToken: cts.Token);
             var transactionId = trasnactions.First().Name;
-
 
             // Act
             var returnValue = await Wallet.GetTransactionMemo(transactionId: transactionId, cancellationToken: cts.Token);

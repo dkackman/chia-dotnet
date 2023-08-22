@@ -25,14 +25,14 @@ public class ServiceProxyTests : TestBase
 
     }
 
-    [Fact(Skip = "Will stop the service in question")]
+    [Fact]
     public async Task StopNode()
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
 
         // Act
-        await Farmer.StopNode(cts.Token);
+        await Harvester.StopNode(cts.Token);
 
         // Assert
 

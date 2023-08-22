@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using System.Linq;
 using chia.dotnet.tests.Core;
 using Xunit;
-using System;
 
 namespace chia.dotnet.tests
 {
@@ -124,15 +123,15 @@ namespace chia.dotnet.tests
             Assert.NotNull(returnValue);
         }
 
-        [Fact(Skip = "Destructive")]
+        [Fact]
         public async Task DeleteKeyByFingerprint()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            var (Wallets, Fingerprint) = await Wallet.GetWallets(false, cts.Token);
+            var fingerprint = 3449571893;
 
             // Act
-            await Daemon.DeleteKeyByFingerprint(fingerprint: Fingerprint, cancellationToken: cts.Token);
+            await Daemon.DeleteKeyByFingerprint(fingerprint: fingerprint, cancellationToken: cts.Token);
 
             // Assert
 
@@ -151,19 +150,20 @@ namespace chia.dotnet.tests
 
         }
 
-        [Fact(Skip = "Requires review")]
-        public async Task AddPrivateKey()
+        [Fact]
+        public async Task AddDeletePrivateKey()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            var mnemonic = string.Empty;
-            var passphrase = string.Empty;
+            var mnemonic = await Wallet.GenerateMnemonic(cts.Token);
+            var passphrase = "spoons!!!";
 
             // Act
-            await Daemon.AddPrivateKey(mnemonic: mnemonic, passphrase: passphrase, cancellationToken: cts.Token);
+            var fingerprint = await Daemon.AddPrivateKey(mnemonic: string.Join(' ', mnemonic), passphrase: passphrase, cancellationToken: cts.Token);
 
             // Assert
-
+            Assert.True(fingerprint > 0);
+            await Daemon.DeleteKeyByFingerprint(fingerprint: fingerprint, cancellationToken: cts.Token);
         }
 
         [Fact(Skip = "Requires review")]
@@ -222,20 +222,6 @@ namespace chia.dotnet.tests
 
             // Assert
 
-        }
-
-        [Fact(Skip = "CAUTION")]
-        public async Task MigrateKeyring()
-        {
-            // Arrange
-            using var cts = new CancellationTokenSource(15000);
-
-            // Act
-            var status = await Daemon.GetKeyringStatus(cts.Token);
-            if (!status.UserPassphraseIsSet)
-            {
-                await Daemon.MigrateKeyring("sp00n3!!", "super secure utensil", true, false, cts.Token);
-            }
         }
 
         [Fact]
