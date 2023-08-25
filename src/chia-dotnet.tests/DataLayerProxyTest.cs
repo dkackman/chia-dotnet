@@ -429,4 +429,18 @@ public class DataLayerProxyTests : TestBase
         Assert.True(Valid);
     }
 
+    [Fact(Skip = "Requires review")]
+    public async Task ClearPendingRoots()
+    {
+        // Arrange
+        using var cts = new CancellationTokenSource(15000);
+        var storeId = string.Empty;
+
+        // Act
+        var returnValue = await DataLayer.ClearPendingRoots(storeId: storeId, cancellationToken: cts.Token);
+
+        // Assert
+        Assert.NotNull(returnValue);
+    }
+
 }

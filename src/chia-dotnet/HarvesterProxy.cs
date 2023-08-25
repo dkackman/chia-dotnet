@@ -22,6 +22,53 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Gets harvester configuration.
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref="HarvesterConfig"/></returns>
+        public async Task<HarvesterConfig> GetHarvesterConfig(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<HarvesterConfig>("get_harvester_config", null, "", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Sets harvester configuration.
+        /// </summary>
+        /// <param name="useGpuHarvesting"></param>
+        /// <param name="gpuIndex"></param>
+        /// <param name="enforceGpuIndex"></param>
+        /// <param name="disableCpuAffinity"></param>
+        /// <param name="parallelDecompressorCount"></param>
+        /// <param name="decompressorThreadCount"></param>
+        /// <param name="recursivePlotScan"></param>
+        /// <param name="refreshParameterIntervalSeconds"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>An awaitable task></returns>
+        public async Task SetHarvesterConfig(
+             bool? useGpuHarvesting = null,
+             int? gpuIndex = null,
+             bool? enforceGpuIndex = null,
+             bool? disableCpuAffinity = null,
+             int? parallelDecompressorCount = null,
+             int? decompressorThreadCount = null,
+             bool? recursivePlotScan = null,
+             uint? refreshParameterIntervalSeconds = null,
+             CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.use_gpu_harvesting = useGpuHarvesting;
+            data.gpu_index = gpuIndex;
+            data.enforce_gpu_index = enforceGpuIndex;
+            data.disable_cpu_affinity = disableCpuAffinity;
+            data.parallel_decompressor_count = parallelDecompressorCount;
+            data.decompressor_thread_count = decompressorThreadCount;
+            data.recursive_plot_scan = recursivePlotScan;
+            data.plots_refresh_parameter = refreshParameterIntervalSeconds;
+
+            await SendMessage("set_harvester_config", data, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Get the list of plot files
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
