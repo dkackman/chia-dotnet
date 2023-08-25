@@ -21,6 +21,7 @@ namespace chia.dotnet
         public BigInteger Space { get; init; }
         public ulong SubSlotIters { get; init; }
         public SyncState Sync { get; init; } = new();
+        public uint AverageBlockTime { get; init; }
     }
 
     public record MempoolMinFees
