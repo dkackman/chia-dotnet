@@ -106,6 +106,19 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Clears pending roots.
+        /// </summary>
+        /// <param name="storeId"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref="Root"/></returns>
+        public async Task<Root> ClearPendingRoots(string storeId, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.store_id = storeId;
+            return await SendMessage<Root>("clear_pending_roots", data, "", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Checks the status of plugins.
         /// </summary>
         /// <returns><see cref="PluginStatus"/></returns>
@@ -282,11 +295,11 @@ namespace chia.dotnet
         /// <param name="id"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A <see cref="Root"/></returns>
-        public async Task<Root> GetRoot(string id, CancellationToken cancellationToken = default)
+        public async Task<RootHash> GetRoot(string id, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.id = id;
-            return await SendMessage<Root>("get_root", data, null, cancellationToken).ConfigureAwait(false);
+            return await SendMessage<RootHash>("get_root", data, null, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
