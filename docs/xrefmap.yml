@@ -533,6 +533,19 @@ references:
   commentId: T:chia.dotnet.BlockchainState
   fullName: chia.dotnet.BlockchainState
   nameWithType: BlockchainState
+- uid: chia.dotnet.BlockchainState.AverageBlockTime
+  name: AverageBlockTime
+  href: api/chia.dotnet.BlockchainState.html#chia_dotnet_BlockchainState_AverageBlockTime
+  commentId: P:chia.dotnet.BlockchainState.AverageBlockTime
+  fullName: chia.dotnet.BlockchainState.AverageBlockTime
+  nameWithType: BlockchainState.AverageBlockTime
+- uid: chia.dotnet.BlockchainState.AverageBlockTime*
+  name: AverageBlockTime
+  href: api/chia.dotnet.BlockchainState.html#chia_dotnet_BlockchainState_AverageBlockTime_
+  commentId: Overload:chia.dotnet.BlockchainState.AverageBlockTime
+  isSpec: "True"
+  fullName: chia.dotnet.BlockchainState.AverageBlockTime
+  nameWithType: BlockchainState.AverageBlockTime
 - uid: chia.dotnet.BlockchainState.BlockMaxCost
   name: BlockMaxCost
   href: api/chia.dotnet.BlockchainState.html#chia_dotnet_BlockchainState_BlockMaxCost
@@ -2511,6 +2524,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DataLayerProxy.CheckPlugins
   nameWithType: DataLayerProxy.CheckPlugins
+- uid: chia.dotnet.DataLayerProxy.ClearPendingRoots(System.String,System.Threading.CancellationToken)
+  name: ClearPendingRoots(String, CancellationToken)
+  href: api/chia.dotnet.DataLayerProxy.html#chia_dotnet_DataLayerProxy_ClearPendingRoots_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DataLayerProxy.ClearPendingRoots(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DataLayerProxy.ClearPendingRoots(System.String, System.Threading.CancellationToken)
+  nameWithType: DataLayerProxy.ClearPendingRoots(String, CancellationToken)
+- uid: chia.dotnet.DataLayerProxy.ClearPendingRoots*
+  name: ClearPendingRoots
+  href: api/chia.dotnet.DataLayerProxy.html#chia_dotnet_DataLayerProxy_ClearPendingRoots_
+  commentId: Overload:chia.dotnet.DataLayerProxy.ClearPendingRoots
+  isSpec: "True"
+  fullName: chia.dotnet.DataLayerProxy.ClearPendingRoots
+  nameWithType: DataLayerProxy.ClearPendingRoots
 - uid: chia.dotnet.DataLayerProxy.CreateDataStore(System.UInt64,System.Threading.CancellationToken)
   name: CreateDataStore(UInt64, CancellationToken)
   href: api/chia.dotnet.DataLayerProxy.html#chia_dotnet_DataLayerProxy_CreateDataStore_System_UInt64_System_Threading_CancellationToken_
@@ -3943,6 +3969,19 @@ references:
   commentId: T:chia.dotnet.FarmerRewards
   fullName: chia.dotnet.FarmerRewards
   nameWithType: FarmerRewards
+- uid: chia.dotnet.FarmerRewards.BlocksWon
+  name: BlocksWon
+  href: api/chia.dotnet.FarmerRewards.html#chia_dotnet_FarmerRewards_BlocksWon
+  commentId: P:chia.dotnet.FarmerRewards.BlocksWon
+  fullName: chia.dotnet.FarmerRewards.BlocksWon
+  nameWithType: FarmerRewards.BlocksWon
+- uid: chia.dotnet.FarmerRewards.BlocksWon*
+  name: BlocksWon
+  href: api/chia.dotnet.FarmerRewards.html#chia_dotnet_FarmerRewards_BlocksWon_
+  commentId: Overload:chia.dotnet.FarmerRewards.BlocksWon
+  isSpec: "True"
+  fullName: chia.dotnet.FarmerRewards.BlocksWon
+  nameWithType: FarmerRewards.BlocksWon
 - uid: chia.dotnet.FarmerRewards.FarmedAmount
   name: FarmedAmount
   href: api/chia.dotnet.FarmerRewards.html#chia_dotnet_FarmerRewards_FarmedAmount
@@ -3995,6 +4034,32 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FarmerRewards.LastHeightFarmed
   nameWithType: FarmerRewards.LastHeightFarmed
+- uid: chia.dotnet.FarmerRewards.LastTimeFarmed
+  name: LastTimeFarmed
+  href: api/chia.dotnet.FarmerRewards.html#chia_dotnet_FarmerRewards_LastTimeFarmed
+  commentId: P:chia.dotnet.FarmerRewards.LastTimeFarmed
+  fullName: chia.dotnet.FarmerRewards.LastTimeFarmed
+  nameWithType: FarmerRewards.LastTimeFarmed
+- uid: chia.dotnet.FarmerRewards.LastTimeFarmed*
+  name: LastTimeFarmed
+  href: api/chia.dotnet.FarmerRewards.html#chia_dotnet_FarmerRewards_LastTimeFarmed_
+  commentId: Overload:chia.dotnet.FarmerRewards.LastTimeFarmed
+  isSpec: "True"
+  fullName: chia.dotnet.FarmerRewards.LastTimeFarmed
+  nameWithType: FarmerRewards.LastTimeFarmed
+- uid: chia.dotnet.FarmerRewards.NextFarmerUpdateDateTime
+  name: NextFarmerUpdateDateTime
+  href: api/chia.dotnet.FarmerRewards.html#chia_dotnet_FarmerRewards_NextFarmerUpdateDateTime
+  commentId: P:chia.dotnet.FarmerRewards.NextFarmerUpdateDateTime
+  fullName: chia.dotnet.FarmerRewards.NextFarmerUpdateDateTime
+  nameWithType: FarmerRewards.NextFarmerUpdateDateTime
+- uid: chia.dotnet.FarmerRewards.NextFarmerUpdateDateTime*
+  name: NextFarmerUpdateDateTime
+  href: api/chia.dotnet.FarmerRewards.html#chia_dotnet_FarmerRewards_NextFarmerUpdateDateTime_
+  commentId: Overload:chia.dotnet.FarmerRewards.NextFarmerUpdateDateTime
+  isSpec: "True"
+  fullName: chia.dotnet.FarmerRewards.NextFarmerUpdateDateTime
+  nameWithType: FarmerRewards.NextFarmerUpdateDateTime
 - uid: chia.dotnet.FarmerRewards.PoolRewardAmount
   name: PoolRewardAmount
   href: api/chia.dotnet.FarmerRewards.html#chia_dotnet_FarmerRewards_PoolRewardAmount
@@ -5014,6 +5079,116 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FungibleAsset.Asset
   nameWithType: FungibleAsset.Asset
+- uid: chia.dotnet.HarvesterConfig
+  name: HarvesterConfig
+  href: api/chia.dotnet.HarvesterConfig.html
+  commentId: T:chia.dotnet.HarvesterConfig
+  fullName: chia.dotnet.HarvesterConfig
+  nameWithType: HarvesterConfig
+- uid: chia.dotnet.HarvesterConfig.DecompressorThreadCount
+  name: DecompressorThreadCount
+  href: api/chia.dotnet.HarvesterConfig.html#chia_dotnet_HarvesterConfig_DecompressorThreadCount
+  commentId: P:chia.dotnet.HarvesterConfig.DecompressorThreadCount
+  fullName: chia.dotnet.HarvesterConfig.DecompressorThreadCount
+  nameWithType: HarvesterConfig.DecompressorThreadCount
+- uid: chia.dotnet.HarvesterConfig.DecompressorThreadCount*
+  name: DecompressorThreadCount
+  href: api/chia.dotnet.HarvesterConfig.html#chia_dotnet_HarvesterConfig_DecompressorThreadCount_
+  commentId: Overload:chia.dotnet.HarvesterConfig.DecompressorThreadCount
+  isSpec: "True"
+  fullName: chia.dotnet.HarvesterConfig.DecompressorThreadCount
+  nameWithType: HarvesterConfig.DecompressorThreadCount
+- uid: chia.dotnet.HarvesterConfig.DisableCpuAffinity
+  name: DisableCpuAffinity
+  href: api/chia.dotnet.HarvesterConfig.html#chia_dotnet_HarvesterConfig_DisableCpuAffinity
+  commentId: P:chia.dotnet.HarvesterConfig.DisableCpuAffinity
+  fullName: chia.dotnet.HarvesterConfig.DisableCpuAffinity
+  nameWithType: HarvesterConfig.DisableCpuAffinity
+- uid: chia.dotnet.HarvesterConfig.DisableCpuAffinity*
+  name: DisableCpuAffinity
+  href: api/chia.dotnet.HarvesterConfig.html#chia_dotnet_HarvesterConfig_DisableCpuAffinity_
+  commentId: Overload:chia.dotnet.HarvesterConfig.DisableCpuAffinity
+  isSpec: "True"
+  fullName: chia.dotnet.HarvesterConfig.DisableCpuAffinity
+  nameWithType: HarvesterConfig.DisableCpuAffinity
+- uid: chia.dotnet.HarvesterConfig.EnforceGpuIndex
+  name: EnforceGpuIndex
+  href: api/chia.dotnet.HarvesterConfig.html#chia_dotnet_HarvesterConfig_EnforceGpuIndex
+  commentId: P:chia.dotnet.HarvesterConfig.EnforceGpuIndex
+  fullName: chia.dotnet.HarvesterConfig.EnforceGpuIndex
+  nameWithType: HarvesterConfig.EnforceGpuIndex
+- uid: chia.dotnet.HarvesterConfig.EnforceGpuIndex*
+  name: EnforceGpuIndex
+  href: api/chia.dotnet.HarvesterConfig.html#chia_dotnet_HarvesterConfig_EnforceGpuIndex_
+  commentId: Overload:chia.dotnet.HarvesterConfig.EnforceGpuIndex
+  isSpec: "True"
+  fullName: chia.dotnet.HarvesterConfig.EnforceGpuIndex
+  nameWithType: HarvesterConfig.EnforceGpuIndex
+- uid: chia.dotnet.HarvesterConfig.GpuIndex
+  name: GpuIndex
+  href: api/chia.dotnet.HarvesterConfig.html#chia_dotnet_HarvesterConfig_GpuIndex
+  commentId: P:chia.dotnet.HarvesterConfig.GpuIndex
+  fullName: chia.dotnet.HarvesterConfig.GpuIndex
+  nameWithType: HarvesterConfig.GpuIndex
+- uid: chia.dotnet.HarvesterConfig.GpuIndex*
+  name: GpuIndex
+  href: api/chia.dotnet.HarvesterConfig.html#chia_dotnet_HarvesterConfig_GpuIndex_
+  commentId: Overload:chia.dotnet.HarvesterConfig.GpuIndex
+  isSpec: "True"
+  fullName: chia.dotnet.HarvesterConfig.GpuIndex
+  nameWithType: HarvesterConfig.GpuIndex
+- uid: chia.dotnet.HarvesterConfig.ParallelDecompressorCount
+  name: ParallelDecompressorCount
+  href: api/chia.dotnet.HarvesterConfig.html#chia_dotnet_HarvesterConfig_ParallelDecompressorCount
+  commentId: P:chia.dotnet.HarvesterConfig.ParallelDecompressorCount
+  fullName: chia.dotnet.HarvesterConfig.ParallelDecompressorCount
+  nameWithType: HarvesterConfig.ParallelDecompressorCount
+- uid: chia.dotnet.HarvesterConfig.ParallelDecompressorCount*
+  name: ParallelDecompressorCount
+  href: api/chia.dotnet.HarvesterConfig.html#chia_dotnet_HarvesterConfig_ParallelDecompressorCount_
+  commentId: Overload:chia.dotnet.HarvesterConfig.ParallelDecompressorCount
+  isSpec: "True"
+  fullName: chia.dotnet.HarvesterConfig.ParallelDecompressorCount
+  nameWithType: HarvesterConfig.ParallelDecompressorCount
+- uid: chia.dotnet.HarvesterConfig.RecursivePlotScan
+  name: RecursivePlotScan
+  href: api/chia.dotnet.HarvesterConfig.html#chia_dotnet_HarvesterConfig_RecursivePlotScan
+  commentId: P:chia.dotnet.HarvesterConfig.RecursivePlotScan
+  fullName: chia.dotnet.HarvesterConfig.RecursivePlotScan
+  nameWithType: HarvesterConfig.RecursivePlotScan
+- uid: chia.dotnet.HarvesterConfig.RecursivePlotScan*
+  name: RecursivePlotScan
+  href: api/chia.dotnet.HarvesterConfig.html#chia_dotnet_HarvesterConfig_RecursivePlotScan_
+  commentId: Overload:chia.dotnet.HarvesterConfig.RecursivePlotScan
+  isSpec: "True"
+  fullName: chia.dotnet.HarvesterConfig.RecursivePlotScan
+  nameWithType: HarvesterConfig.RecursivePlotScan
+- uid: chia.dotnet.HarvesterConfig.RefreshParameterIntervalSeconds
+  name: RefreshParameterIntervalSeconds
+  href: api/chia.dotnet.HarvesterConfig.html#chia_dotnet_HarvesterConfig_RefreshParameterIntervalSeconds
+  commentId: P:chia.dotnet.HarvesterConfig.RefreshParameterIntervalSeconds
+  fullName: chia.dotnet.HarvesterConfig.RefreshParameterIntervalSeconds
+  nameWithType: HarvesterConfig.RefreshParameterIntervalSeconds
+- uid: chia.dotnet.HarvesterConfig.RefreshParameterIntervalSeconds*
+  name: RefreshParameterIntervalSeconds
+  href: api/chia.dotnet.HarvesterConfig.html#chia_dotnet_HarvesterConfig_RefreshParameterIntervalSeconds_
+  commentId: Overload:chia.dotnet.HarvesterConfig.RefreshParameterIntervalSeconds
+  isSpec: "True"
+  fullName: chia.dotnet.HarvesterConfig.RefreshParameterIntervalSeconds
+  nameWithType: HarvesterConfig.RefreshParameterIntervalSeconds
+- uid: chia.dotnet.HarvesterConfig.UseGpuHarvesting
+  name: UseGpuHarvesting
+  href: api/chia.dotnet.HarvesterConfig.html#chia_dotnet_HarvesterConfig_UseGpuHarvesting
+  commentId: P:chia.dotnet.HarvesterConfig.UseGpuHarvesting
+  fullName: chia.dotnet.HarvesterConfig.UseGpuHarvesting
+  nameWithType: HarvesterConfig.UseGpuHarvesting
+- uid: chia.dotnet.HarvesterConfig.UseGpuHarvesting*
+  name: UseGpuHarvesting
+  href: api/chia.dotnet.HarvesterConfig.html#chia_dotnet_HarvesterConfig_UseGpuHarvesting_
+  commentId: Overload:chia.dotnet.HarvesterConfig.UseGpuHarvesting
+  isSpec: "True"
+  fullName: chia.dotnet.HarvesterConfig.UseGpuHarvesting
+  nameWithType: HarvesterConfig.UseGpuHarvesting
 - uid: chia.dotnet.HarvesterConnection
   name: HarvesterConnection
   href: api/chia.dotnet.HarvesterConnection.html
@@ -5240,6 +5415,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.HarvesterProxy.DeletePlot
   nameWithType: HarvesterProxy.DeletePlot
+- uid: chia.dotnet.HarvesterProxy.GetHarvesterConfig(System.Threading.CancellationToken)
+  name: GetHarvesterConfig(CancellationToken)
+  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_GetHarvesterConfig_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.HarvesterProxy.GetHarvesterConfig(System.Threading.CancellationToken)
+  fullName: chia.dotnet.HarvesterProxy.GetHarvesterConfig(System.Threading.CancellationToken)
+  nameWithType: HarvesterProxy.GetHarvesterConfig(CancellationToken)
+- uid: chia.dotnet.HarvesterProxy.GetHarvesterConfig*
+  name: GetHarvesterConfig
+  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_GetHarvesterConfig_
+  commentId: Overload:chia.dotnet.HarvesterProxy.GetHarvesterConfig
+  isSpec: "True"
+  fullName: chia.dotnet.HarvesterProxy.GetHarvesterConfig
+  nameWithType: HarvesterProxy.GetHarvesterConfig
 - uid: chia.dotnet.HarvesterProxy.GetPlotDirectories(System.Threading.CancellationToken)
   name: GetPlotDirectories(CancellationToken)
   href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_GetPlotDirectories_System_Threading_CancellationToken_
@@ -5292,6 +5480,22 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.HarvesterProxy.RemovePlotDirectory
   nameWithType: HarvesterProxy.RemovePlotDirectory
+- uid: chia.dotnet.HarvesterProxy.SetHarvesterConfig(System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.UInt32},System.Threading.CancellationToken)
+  name: SetHarvesterConfig(Nullable<Boolean>, Nullable<Int32>, Nullable<Boolean>, Nullable<Boolean>, Nullable<Int32>, Nullable<Int32>, Nullable<Boolean>, Nullable<UInt32>, CancellationToken)
+  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_SetHarvesterConfig_System_Nullable_System_Boolean__System_Nullable_System_Int32__System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Boolean__System_Nullable_System_UInt32__System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.HarvesterProxy.SetHarvesterConfig(System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.UInt32},System.Threading.CancellationToken)
+  name.vb: SetHarvesterConfig(Nullable(Of Boolean), Nullable(Of Int32), Nullable(Of Boolean), Nullable(Of Boolean), Nullable(Of Int32), Nullable(Of Int32), Nullable(Of Boolean), Nullable(Of UInt32), CancellationToken)
+  fullName: chia.dotnet.HarvesterProxy.SetHarvesterConfig(System.Nullable<System.Boolean>, System.Nullable<System.Int32>, System.Nullable<System.Boolean>, System.Nullable<System.Boolean>, System.Nullable<System.Int32>, System.Nullable<System.Int32>, System.Nullable<System.Boolean>, System.Nullable<System.UInt32>, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.HarvesterProxy.SetHarvesterConfig(System.Nullable(Of System.Boolean), System.Nullable(Of System.Int32), System.Nullable(Of System.Boolean), System.Nullable(Of System.Boolean), System.Nullable(Of System.Int32), System.Nullable(Of System.Int32), System.Nullable(Of System.Boolean), System.Nullable(Of System.UInt32), System.Threading.CancellationToken)
+  nameWithType: HarvesterProxy.SetHarvesterConfig(Nullable<Boolean>, Nullable<Int32>, Nullable<Boolean>, Nullable<Boolean>, Nullable<Int32>, Nullable<Int32>, Nullable<Boolean>, Nullable<UInt32>, CancellationToken)
+  nameWithType.vb: HarvesterProxy.SetHarvesterConfig(Nullable(Of Boolean), Nullable(Of Int32), Nullable(Of Boolean), Nullable(Of Boolean), Nullable(Of Int32), Nullable(Of Int32), Nullable(Of Boolean), Nullable(Of UInt32), CancellationToken)
+- uid: chia.dotnet.HarvesterProxy.SetHarvesterConfig*
+  name: SetHarvesterConfig
+  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_SetHarvesterConfig_
+  commentId: Overload:chia.dotnet.HarvesterProxy.SetHarvesterConfig
+  isSpec: "True"
+  fullName: chia.dotnet.HarvesterProxy.SetHarvesterConfig
+  nameWithType: HarvesterProxy.SetHarvesterConfig
 - uid: chia.dotnet.HarvesterSummary
   name: HarvesterSummary
   href: api/chia.dotnet.HarvesterSummary.html
@@ -8827,19 +9031,6 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.PoolStateInfo.NextPoolInfoUpdateDateTime
   nameWithType: PoolStateInfo.NextPoolInfoUpdateDateTime
-- uid: chia.dotnet.PoolStateInfo.P2SingletonPuzzleHash
-  name: P2SingletonPuzzleHash
-  href: api/chia.dotnet.PoolStateInfo.html#chia_dotnet_PoolStateInfo_P2SingletonPuzzleHash
-  commentId: P:chia.dotnet.PoolStateInfo.P2SingletonPuzzleHash
-  fullName: chia.dotnet.PoolStateInfo.P2SingletonPuzzleHash
-  nameWithType: PoolStateInfo.P2SingletonPuzzleHash
-- uid: chia.dotnet.PoolStateInfo.P2SingletonPuzzleHash*
-  name: P2SingletonPuzzleHash
-  href: api/chia.dotnet.PoolStateInfo.html#chia_dotnet_PoolStateInfo_P2SingletonPuzzleHash_
-  commentId: Overload:chia.dotnet.PoolStateInfo.P2SingletonPuzzleHash
-  isSpec: "True"
-  fullName: chia.dotnet.PoolStateInfo.P2SingletonPuzzleHash
-  nameWithType: PoolStateInfo.P2SingletonPuzzleHash
 - uid: chia.dotnet.PoolStateInfo.PlotCount
   name: PlotCount
   href: api/chia.dotnet.PoolStateInfo.html#chia_dotnet_PoolStateInfo_PlotCount
@@ -10112,58 +10303,58 @@ references:
   commentId: T:chia.dotnet.Root
   fullName: chia.dotnet.Root
   nameWithType: Root
-- uid: chia.dotnet.Root.Confirmed
-  name: Confirmed
-  href: api/chia.dotnet.Root.html#chia_dotnet_Root_Confirmed
-  commentId: P:chia.dotnet.Root.Confirmed
-  fullName: chia.dotnet.Root.Confirmed
-  nameWithType: Root.Confirmed
-- uid: chia.dotnet.Root.Confirmed*
-  name: Confirmed
-  href: api/chia.dotnet.Root.html#chia_dotnet_Root_Confirmed_
-  commentId: Overload:chia.dotnet.Root.Confirmed
+- uid: chia.dotnet.Root.Generation
+  name: Generation
+  href: api/chia.dotnet.Root.html#chia_dotnet_Root_Generation
+  commentId: P:chia.dotnet.Root.Generation
+  fullName: chia.dotnet.Root.Generation
+  nameWithType: Root.Generation
+- uid: chia.dotnet.Root.Generation*
+  name: Generation
+  href: api/chia.dotnet.Root.html#chia_dotnet_Root_Generation_
+  commentId: Overload:chia.dotnet.Root.Generation
   isSpec: "True"
-  fullName: chia.dotnet.Root.Confirmed
-  nameWithType: Root.Confirmed
-- uid: chia.dotnet.Root.DateTimestamp
-  name: DateTimestamp
-  href: api/chia.dotnet.Root.html#chia_dotnet_Root_DateTimestamp
-  commentId: P:chia.dotnet.Root.DateTimestamp
-  fullName: chia.dotnet.Root.DateTimestamp
-  nameWithType: Root.DateTimestamp
-- uid: chia.dotnet.Root.DateTimestamp*
-  name: DateTimestamp
-  href: api/chia.dotnet.Root.html#chia_dotnet_Root_DateTimestamp_
-  commentId: Overload:chia.dotnet.Root.DateTimestamp
+  fullName: chia.dotnet.Root.Generation
+  nameWithType: Root.Generation
+- uid: chia.dotnet.Root.NodeHash
+  name: NodeHash
+  href: api/chia.dotnet.Root.html#chia_dotnet_Root_NodeHash
+  commentId: P:chia.dotnet.Root.NodeHash
+  fullName: chia.dotnet.Root.NodeHash
+  nameWithType: Root.NodeHash
+- uid: chia.dotnet.Root.NodeHash*
+  name: NodeHash
+  href: api/chia.dotnet.Root.html#chia_dotnet_Root_NodeHash_
+  commentId: Overload:chia.dotnet.Root.NodeHash
   isSpec: "True"
-  fullName: chia.dotnet.Root.DateTimestamp
-  nameWithType: Root.DateTimestamp
-- uid: chia.dotnet.Root.Hash
-  name: Hash
-  href: api/chia.dotnet.Root.html#chia_dotnet_Root_Hash
-  commentId: P:chia.dotnet.Root.Hash
-  fullName: chia.dotnet.Root.Hash
-  nameWithType: Root.Hash
-- uid: chia.dotnet.Root.Hash*
-  name: Hash
-  href: api/chia.dotnet.Root.html#chia_dotnet_Root_Hash_
-  commentId: Overload:chia.dotnet.Root.Hash
+  fullName: chia.dotnet.Root.NodeHash
+  nameWithType: Root.NodeHash
+- uid: chia.dotnet.Root.Status
+  name: Status
+  href: api/chia.dotnet.Root.html#chia_dotnet_Root_Status
+  commentId: P:chia.dotnet.Root.Status
+  fullName: chia.dotnet.Root.Status
+  nameWithType: Root.Status
+- uid: chia.dotnet.Root.Status*
+  name: Status
+  href: api/chia.dotnet.Root.html#chia_dotnet_Root_Status_
+  commentId: Overload:chia.dotnet.Root.Status
   isSpec: "True"
-  fullName: chia.dotnet.Root.Hash
-  nameWithType: Root.Hash
-- uid: chia.dotnet.Root.Timestamp
-  name: Timestamp
-  href: api/chia.dotnet.Root.html#chia_dotnet_Root_Timestamp
-  commentId: P:chia.dotnet.Root.Timestamp
-  fullName: chia.dotnet.Root.Timestamp
-  nameWithType: Root.Timestamp
-- uid: chia.dotnet.Root.Timestamp*
-  name: Timestamp
-  href: api/chia.dotnet.Root.html#chia_dotnet_Root_Timestamp_
-  commentId: Overload:chia.dotnet.Root.Timestamp
+  fullName: chia.dotnet.Root.Status
+  nameWithType: Root.Status
+- uid: chia.dotnet.Root.TreeId
+  name: TreeId
+  href: api/chia.dotnet.Root.html#chia_dotnet_Root_TreeId
+  commentId: P:chia.dotnet.Root.TreeId
+  fullName: chia.dotnet.Root.TreeId
+  nameWithType: Root.TreeId
+- uid: chia.dotnet.Root.TreeId*
+  name: TreeId
+  href: api/chia.dotnet.Root.html#chia_dotnet_Root_TreeId_
+  commentId: Overload:chia.dotnet.Root.TreeId
   isSpec: "True"
-  fullName: chia.dotnet.Root.Timestamp
-  nameWithType: Root.Timestamp
+  fullName: chia.dotnet.Root.TreeId
+  nameWithType: Root.TreeId
 - uid: chia.dotnet.RootHash
   name: RootHash
   href: api/chia.dotnet.RootHash.html
@@ -10855,6 +11046,24 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.SpendBundle.CoinSpends
   nameWithType: SpendBundle.CoinSpends
+- uid: chia.dotnet.Status
+  name: Status
+  href: api/chia.dotnet.Status.html
+  commentId: T:chia.dotnet.Status
+  fullName: chia.dotnet.Status
+  nameWithType: Status
+- uid: chia.dotnet.Status.COMMITTED
+  name: COMMITTED
+  href: api/chia.dotnet.Status.html#chia_dotnet_Status_COMMITTED
+  commentId: F:chia.dotnet.Status.COMMITTED
+  fullName: chia.dotnet.Status.COMMITTED
+  nameWithType: Status.COMMITTED
+- uid: chia.dotnet.Status.PENDING
+  name: PENDING
+  href: api/chia.dotnet.Status.html#chia_dotnet_Status_PENDING
+  commentId: F:chia.dotnet.Status.PENDING
+  fullName: chia.dotnet.Status.PENDING
+  nameWithType: Status.PENDING
 - uid: chia.dotnet.StoreProofs
   name: StoreProofs
   href: api/chia.dotnet.StoreProofs.html

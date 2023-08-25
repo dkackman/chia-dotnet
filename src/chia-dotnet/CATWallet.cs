@@ -93,7 +93,7 @@ namespace chia.dotnet
             ulong maxCoinAmount = 0,
             IEnumerable<ulong>? excludeCoinAmounts = null,
             bool? reusePuzhash = null,
-            ulong fee = 0, 
+            ulong fee = 0,
             CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(innerAddress))

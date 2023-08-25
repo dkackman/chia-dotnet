@@ -188,7 +188,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_HarvesterProxy_AddPlotDirectory_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.HarvesterProxy.AddPlotDirectory(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L76">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L123">View Source</a>
   </span>
   <a id="chia_dotnet_HarvesterProxy_AddPlotDirectory_" data-uid="chia.dotnet.HarvesterProxy.AddPlotDirectory*"></a>
   <h4 id="chia_dotnet_HarvesterProxy_AddPlotDirectory_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.HarvesterProxy.AddPlotDirectory(System.String,System.Threading.CancellationToken)">AddPlotDirectory(String, CancellationToken)</h4>
@@ -244,7 +244,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_HarvesterProxy_DeletePlot_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.HarvesterProxy.DeletePlot(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L47">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L94">View Source</a>
   </span>
   <a id="chia_dotnet_HarvesterProxy_DeletePlot_" data-uid="chia.dotnet.HarvesterProxy.DeletePlot*"></a>
   <h4 id="chia_dotnet_HarvesterProxy_DeletePlot_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.HarvesterProxy.DeletePlot(System.String,System.Threading.CancellationToken)">DeletePlot(String, CancellationToken)</h4>
@@ -300,10 +300,60 @@
 </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_HarvesterProxy_GetHarvesterConfig_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.HarvesterProxy.GetHarvesterConfig(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L29">View Source</a>
+  </span>
+  <a id="chia_dotnet_HarvesterProxy_GetHarvesterConfig_" data-uid="chia.dotnet.HarvesterProxy.GetHarvesterConfig*"></a>
+  <h4 id="chia_dotnet_HarvesterProxy_GetHarvesterConfig_System_Threading_CancellationToken_" data-uid="chia.dotnet.HarvesterProxy.GetHarvesterConfig(System.Threading.CancellationToken)">GetHarvesterConfig(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets harvester configuration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;HarvesterConfig&gt; GetHarvesterConfig(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token to allow the call to be cancelled</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.HarvesterConfig.html">HarvesterConfig</a>&gt;</td>
+        <td><p><a class="xref" href="chia.dotnet.HarvesterConfig.html">HarvesterConfig</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_HarvesterProxy_GetPlotDirectories_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.HarvesterProxy.GetPlotDirectories(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L65">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L112">View Source</a>
   </span>
   <a id="chia_dotnet_HarvesterProxy_GetPlotDirectories_" data-uid="chia.dotnet.HarvesterProxy.GetPlotDirectories*"></a>
   <h4 id="chia_dotnet_HarvesterProxy_GetPlotDirectories_System_Threading_CancellationToken_" data-uid="chia.dotnet.HarvesterProxy.GetPlotDirectories(System.Threading.CancellationToken)">GetPlotDirectories(CancellationToken)</h4>
@@ -353,7 +403,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_HarvesterProxy_GetPlots_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.HarvesterProxy.GetPlots(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L29">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L76">View Source</a>
   </span>
   <a id="chia_dotnet_HarvesterProxy_GetPlots_" data-uid="chia.dotnet.HarvesterProxy.GetPlots*"></a>
   <h4 id="chia_dotnet_HarvesterProxy_GetPlots_System_Threading_CancellationToken_" data-uid="chia.dotnet.HarvesterProxy.GetPlots(System.Threading.CancellationToken)">GetPlots(CancellationToken)</h4>
@@ -403,7 +453,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_HarvesterProxy_RefreshPlots_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.HarvesterProxy.RefreshPlots(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L113">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L160">View Source</a>
   </span>
   <a id="chia_dotnet_HarvesterProxy_RefreshPlots_" data-uid="chia.dotnet.HarvesterProxy.RefreshPlots*"></a>
   <h4 id="chia_dotnet_HarvesterProxy_RefreshPlots_System_Threading_CancellationToken_" data-uid="chia.dotnet.HarvesterProxy.RefreshPlots(System.Threading.CancellationToken)">RefreshPlots(CancellationToken)</h4>
@@ -453,7 +503,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_HarvesterProxy_RemovePlotDirectory_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.HarvesterProxy.RemovePlotDirectory(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L95">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L142">View Source</a>
   </span>
   <a id="chia_dotnet_HarvesterProxy_RemovePlotDirectory_" data-uid="chia.dotnet.HarvesterProxy.RemovePlotDirectory*"></a>
   <h4 id="chia_dotnet_HarvesterProxy_RemovePlotDirectory_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.HarvesterProxy.RemovePlotDirectory(System.String,System.Threading.CancellationToken)">RemovePlotDirectory(String, CancellationToken)</h4>
@@ -500,6 +550,96 @@
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
         <td><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_HarvesterProxy_SetHarvesterConfig_System_Nullable_System_Boolean__System_Nullable_System_Int32__System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Boolean__System_Nullable_System_UInt32__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.HarvesterProxy.SetHarvesterConfig(System.Nullable%7BSystem.Boolean%7D%2CSystem.Nullable%7BSystem.Int32%7D%2CSystem.Nullable%7BSystem.Boolean%7D%2CSystem.Nullable%7BSystem.Boolean%7D%2CSystem.Nullable%7BSystem.Int32%7D%2CSystem.Nullable%7BSystem.Int32%7D%2CSystem.Nullable%7BSystem.Boolean%7D%2CSystem.Nullable%7BSystem.UInt32%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/HarvesterProxy.cs/#L47">View Source</a>
+  </span>
+  <a id="chia_dotnet_HarvesterProxy_SetHarvesterConfig_" data-uid="chia.dotnet.HarvesterProxy.SetHarvesterConfig*"></a>
+  <h4 id="chia_dotnet_HarvesterProxy_SetHarvesterConfig_System_Nullable_System_Boolean__System_Nullable_System_Int32__System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Boolean__System_Nullable_System_UInt32__System_Threading_CancellationToken_" data-uid="chia.dotnet.HarvesterProxy.SetHarvesterConfig(System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.UInt32},System.Threading.CancellationToken)">SetHarvesterConfig(Nullable&lt;Boolean&gt;, Nullable&lt;Int32&gt;, Nullable&lt;Boolean&gt;, Nullable&lt;Boolean&gt;, Nullable&lt;Int32&gt;, Nullable&lt;Int32&gt;, Nullable&lt;Boolean&gt;, Nullable&lt;UInt32&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Sets harvester configuration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task SetHarvesterConfig(bool? useGpuHarvesting = null, int? gpuIndex = null, bool? enforceGpuIndex = null, bool? disableCpuAffinity = null, int? parallelDecompressorCount = null, int? decompressorThreadCount = null, bool? recursivePlotScan = null, uint? refreshParameterIntervalSeconds = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
+        <td><span class="parametername">useGpuHarvesting</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
+        <td><span class="parametername">gpuIndex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
+        <td><span class="parametername">enforceGpuIndex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
+        <td><span class="parametername">disableCpuAffinity</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
+        <td><span class="parametername">parallelDecompressorCount</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
+        <td><span class="parametername">decompressorThreadCount</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
+        <td><span class="parametername">recursivePlotScan</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">UInt32</a>&gt;</td>
+        <td><span class="parametername">refreshParameterIntervalSeconds</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token to allow the call to be cancelled</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td><p>An awaitable task&gt;</p>
 </td>
       </tr>
     </tbody>
