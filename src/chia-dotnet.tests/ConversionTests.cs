@@ -1,5 +1,4 @@
 ﻿using System;
-using chia.dotnet;
 using chia.dotnet.tests.Core;
 using Xunit;
 
@@ -82,6 +81,7 @@ namespace chia.dotnet.tests
         [Fact]
         public void CalculateCoinName()
         {
+            // https://developers.chia.net/t/create-coin-id-using-c/487
             // Arrange
             var coin = new Coin()
             {
