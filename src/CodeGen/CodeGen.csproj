@@ -10,7 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.OpenApi" Version="1.6.6" />
     <PackageReference Include="Microsoft.OpenApi.Readers" Version="1.6.6" />
-    <PackageReference Include="YamlDotNet" Version="13.1.1" />
+    <PackageReference Include="YamlDotNet" Version="13.2.0" />
   </ItemGroup>
 
 </Project>

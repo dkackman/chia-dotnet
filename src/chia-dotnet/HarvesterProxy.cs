@@ -44,7 +44,7 @@ namespace chia.dotnet
         /// <param name="refreshParameterIntervalSeconds"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable task></returns>
-        public async Task SetHarvesterConfig(
+        public async Task UpdateHarvesterConfig(
              bool? useGpuHarvesting = null,
              int? gpuIndex = null,
              bool? enforceGpuIndex = null,
@@ -65,7 +65,7 @@ namespace chia.dotnet
             data.recursive_plot_scan = recursivePlotScan;
             data.plots_refresh_parameter = refreshParameterIntervalSeconds;
 
-            await SendMessage("set_harvester_config", data, cancellationToken).ConfigureAwait(false);
+            await SendMessage("update_harvester_config", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
