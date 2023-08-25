@@ -16,7 +16,6 @@ namespace chia.dotnet
         public ulong CurrentPoints { get; init; }
         public double NextFarmerUpdate { get; init; }
         public double NextPoolInfoUpdate { get; init; }
-        public string P2SingletonPuzzleHash { get; init; } = string.Empty;
         [JsonProperty("points_acknowledged_24h")]
         public IEnumerable<PoolPoint> PointsAcknowledged24h { get; init; } = new List<PoolPoint>();
         public ulong PointsAcknowledgedSinceStart { get; init; }
