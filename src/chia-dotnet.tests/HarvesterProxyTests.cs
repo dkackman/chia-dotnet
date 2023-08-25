@@ -13,6 +13,24 @@ namespace chia.dotnet.tests
         }
 
         [Fact]
+        public async Task GetHarvesterConfig()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            var returnValue = await Harvester.GetHarvesterConfig(cts.Token);
+
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact]
+        public async Task SetHarvesterConfig()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            await Harvester.SetHarvesterConfig(useGpuHarvesting: false, cancellationToken: cts.Token);
+        }
+
+        [Fact]
         public async Task GetPlots()
         {
             using var cts = new CancellationTokenSource(15000);
