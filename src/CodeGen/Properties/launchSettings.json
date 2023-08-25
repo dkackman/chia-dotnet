@@ -2,7 +2,7 @@
   "profiles": {
     "CodeGen": {
       "commandName": "Project",
-      "commandLineArgs": "impl C:\\Users\\don\\src\\github\\dkackman\\chia-api\\src\\data_layer.yaml clear_pending_roots Root"
+      "commandLineArgs": "impl C:\\Users\\don\\src\\github\\dkackman\\chia-api\\src\\harvester.yaml set_harvester_config "
     }
   }
 }
