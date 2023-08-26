@@ -2198,6 +2198,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DaemonProxy.GetKeys
   nameWithType: DaemonProxy.GetKeys
+- uid: chia.dotnet.DaemonProxy.GetStatus(System.Threading.CancellationToken)
+  name: GetStatus(CancellationToken)
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_GetStatus_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DaemonProxy.GetStatus(System.Threading.CancellationToken)
+  fullName: chia.dotnet.DaemonProxy.GetStatus(System.Threading.CancellationToken)
+  nameWithType: DaemonProxy.GetStatus(CancellationToken)
+- uid: chia.dotnet.DaemonProxy.GetStatus*
+  name: GetStatus
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_GetStatus_
+  commentId: Overload:chia.dotnet.DaemonProxy.GetStatus
+  isSpec: "True"
+  fullName: chia.dotnet.DaemonProxy.GetStatus
+  nameWithType: DaemonProxy.GetStatus
 - uid: chia.dotnet.DaemonProxy.GetVersion(System.Threading.CancellationToken)
   name: GetVersion(CancellationToken)
   href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_GetVersion_System_Threading_CancellationToken_
@@ -2211,6 +2224,22 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DaemonProxy.GetVersion
   nameWithType: DaemonProxy.GetVersion
+- uid: chia.dotnet.DaemonProxy.GetWalletAddresses(System.Collections.Generic.IEnumerable{System.UInt32},System.Boolean,System.UInt32,System.UInt32,System.Threading.CancellationToken)
+  name: GetWalletAddresses(IEnumerable<UInt32>, Boolean, UInt32, UInt32, CancellationToken)
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_GetWalletAddresses_System_Collections_Generic_IEnumerable_System_UInt32__System_Boolean_System_UInt32_System_UInt32_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DaemonProxy.GetWalletAddresses(System.Collections.Generic.IEnumerable{System.UInt32},System.Boolean,System.UInt32,System.UInt32,System.Threading.CancellationToken)
+  name.vb: GetWalletAddresses(IEnumerable(Of UInt32), Boolean, UInt32, UInt32, CancellationToken)
+  fullName: chia.dotnet.DaemonProxy.GetWalletAddresses(System.Collections.Generic.IEnumerable<System.UInt32>, System.Boolean, System.UInt32, System.UInt32, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.DaemonProxy.GetWalletAddresses(System.Collections.Generic.IEnumerable(Of System.UInt32), System.Boolean, System.UInt32, System.UInt32, System.Threading.CancellationToken)
+  nameWithType: DaemonProxy.GetWalletAddresses(IEnumerable<UInt32>, Boolean, UInt32, UInt32, CancellationToken)
+  nameWithType.vb: DaemonProxy.GetWalletAddresses(IEnumerable(Of UInt32), Boolean, UInt32, UInt32, CancellationToken)
+- uid: chia.dotnet.DaemonProxy.GetWalletAddresses*
+  name: GetWalletAddresses
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_GetWalletAddresses_
+  commentId: Overload:chia.dotnet.DaemonProxy.GetWalletAddresses
+  isSpec: "True"
+  fullName: chia.dotnet.DaemonProxy.GetWalletAddresses
+  nameWithType: DaemonProxy.GetWalletAddresses
 - uid: chia.dotnet.DaemonProxy.IsKeyringLocked(System.Threading.CancellationToken)
   name: IsKeyringLocked(CancellationToken)
   href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_IsKeyringLocked_System_Threading_CancellationToken_
@@ -2295,6 +2324,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DaemonProxy.RemoveKeyringPassphrase
   nameWithType: DaemonProxy.RemoveKeyringPassphrase
+- uid: chia.dotnet.DaemonProxy.RunningServices(System.Threading.CancellationToken)
+  name: RunningServices(CancellationToken)
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_RunningServices_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DaemonProxy.RunningServices(System.Threading.CancellationToken)
+  fullName: chia.dotnet.DaemonProxy.RunningServices(System.Threading.CancellationToken)
+  nameWithType: DaemonProxy.RunningServices(CancellationToken)
+- uid: chia.dotnet.DaemonProxy.RunningServices*
+  name: RunningServices
+  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_RunningServices_
+  commentId: Overload:chia.dotnet.DaemonProxy.RunningServices
+  isSpec: "True"
+  fullName: chia.dotnet.DaemonProxy.RunningServices
+  nameWithType: DaemonProxy.RunningServices
 - uid: chia.dotnet.DaemonProxy.SetKeyringPassphrase(System.String,System.String,System.String,System.Boolean,System.Threading.CancellationToken)
   name: SetKeyringPassphrase(String, String, String, Boolean, CancellationToken)
   href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_SetKeyringPassphrase_System_String_System_String_System_String_System_Boolean_System_Threading_CancellationToken_
@@ -5480,22 +5522,22 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.HarvesterProxy.RemovePlotDirectory
   nameWithType: HarvesterProxy.RemovePlotDirectory
-- uid: chia.dotnet.HarvesterProxy.SetHarvesterConfig(System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.UInt32},System.Threading.CancellationToken)
-  name: SetHarvesterConfig(Nullable<Boolean>, Nullable<Int32>, Nullable<Boolean>, Nullable<Boolean>, Nullable<Int32>, Nullable<Int32>, Nullable<Boolean>, Nullable<UInt32>, CancellationToken)
-  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_SetHarvesterConfig_System_Nullable_System_Boolean__System_Nullable_System_Int32__System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Boolean__System_Nullable_System_UInt32__System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.HarvesterProxy.SetHarvesterConfig(System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.UInt32},System.Threading.CancellationToken)
-  name.vb: SetHarvesterConfig(Nullable(Of Boolean), Nullable(Of Int32), Nullable(Of Boolean), Nullable(Of Boolean), Nullable(Of Int32), Nullable(Of Int32), Nullable(Of Boolean), Nullable(Of UInt32), CancellationToken)
-  fullName: chia.dotnet.HarvesterProxy.SetHarvesterConfig(System.Nullable<System.Boolean>, System.Nullable<System.Int32>, System.Nullable<System.Boolean>, System.Nullable<System.Boolean>, System.Nullable<System.Int32>, System.Nullable<System.Int32>, System.Nullable<System.Boolean>, System.Nullable<System.UInt32>, System.Threading.CancellationToken)
-  fullName.vb: chia.dotnet.HarvesterProxy.SetHarvesterConfig(System.Nullable(Of System.Boolean), System.Nullable(Of System.Int32), System.Nullable(Of System.Boolean), System.Nullable(Of System.Boolean), System.Nullable(Of System.Int32), System.Nullable(Of System.Int32), System.Nullable(Of System.Boolean), System.Nullable(Of System.UInt32), System.Threading.CancellationToken)
-  nameWithType: HarvesterProxy.SetHarvesterConfig(Nullable<Boolean>, Nullable<Int32>, Nullable<Boolean>, Nullable<Boolean>, Nullable<Int32>, Nullable<Int32>, Nullable<Boolean>, Nullable<UInt32>, CancellationToken)
-  nameWithType.vb: HarvesterProxy.SetHarvesterConfig(Nullable(Of Boolean), Nullable(Of Int32), Nullable(Of Boolean), Nullable(Of Boolean), Nullable(Of Int32), Nullable(Of Int32), Nullable(Of Boolean), Nullable(Of UInt32), CancellationToken)
-- uid: chia.dotnet.HarvesterProxy.SetHarvesterConfig*
-  name: SetHarvesterConfig
-  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_SetHarvesterConfig_
-  commentId: Overload:chia.dotnet.HarvesterProxy.SetHarvesterConfig
+- uid: chia.dotnet.HarvesterProxy.UpdateHarvesterConfig(System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.UInt32},System.Threading.CancellationToken)
+  name: UpdateHarvesterConfig(Nullable<Boolean>, Nullable<Int32>, Nullable<Boolean>, Nullable<Boolean>, Nullable<Int32>, Nullable<Int32>, Nullable<Boolean>, Nullable<UInt32>, CancellationToken)
+  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_UpdateHarvesterConfig_System_Nullable_System_Boolean__System_Nullable_System_Int32__System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Boolean__System_Nullable_System_UInt32__System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.HarvesterProxy.UpdateHarvesterConfig(System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.UInt32},System.Threading.CancellationToken)
+  name.vb: UpdateHarvesterConfig(Nullable(Of Boolean), Nullable(Of Int32), Nullable(Of Boolean), Nullable(Of Boolean), Nullable(Of Int32), Nullable(Of Int32), Nullable(Of Boolean), Nullable(Of UInt32), CancellationToken)
+  fullName: chia.dotnet.HarvesterProxy.UpdateHarvesterConfig(System.Nullable<System.Boolean>, System.Nullable<System.Int32>, System.Nullable<System.Boolean>, System.Nullable<System.Boolean>, System.Nullable<System.Int32>, System.Nullable<System.Int32>, System.Nullable<System.Boolean>, System.Nullable<System.UInt32>, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.HarvesterProxy.UpdateHarvesterConfig(System.Nullable(Of System.Boolean), System.Nullable(Of System.Int32), System.Nullable(Of System.Boolean), System.Nullable(Of System.Boolean), System.Nullable(Of System.Int32), System.Nullable(Of System.Int32), System.Nullable(Of System.Boolean), System.Nullable(Of System.UInt32), System.Threading.CancellationToken)
+  nameWithType: HarvesterProxy.UpdateHarvesterConfig(Nullable<Boolean>, Nullable<Int32>, Nullable<Boolean>, Nullable<Boolean>, Nullable<Int32>, Nullable<Int32>, Nullable<Boolean>, Nullable<UInt32>, CancellationToken)
+  nameWithType.vb: HarvesterProxy.UpdateHarvesterConfig(Nullable(Of Boolean), Nullable(Of Int32), Nullable(Of Boolean), Nullable(Of Boolean), Nullable(Of Int32), Nullable(Of Int32), Nullable(Of Boolean), Nullable(Of UInt32), CancellationToken)
+- uid: chia.dotnet.HarvesterProxy.UpdateHarvesterConfig*
+  name: UpdateHarvesterConfig
+  href: api/chia.dotnet.HarvesterProxy.html#chia_dotnet_HarvesterProxy_UpdateHarvesterConfig_
+  commentId: Overload:chia.dotnet.HarvesterProxy.UpdateHarvesterConfig
   isSpec: "True"
-  fullName: chia.dotnet.HarvesterProxy.SetHarvesterConfig
-  nameWithType: HarvesterProxy.SetHarvesterConfig
+  fullName: chia.dotnet.HarvesterProxy.UpdateHarvesterConfig
+  nameWithType: HarvesterProxy.UpdateHarvesterConfig
 - uid: chia.dotnet.HarvesterSummary
   name: HarvesterSummary
   href: api/chia.dotnet.HarvesterSummary.html
@@ -8568,6 +8610,22 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.PlotterProxy.PlotterProxy
   nameWithType: PlotterProxy.PlotterProxy
+- uid: chia.dotnet.PlotterProxy.GetKeysForPlotting(System.Collections.Generic.IEnumerable{System.UInt32},System.Threading.CancellationToken)
+  name: GetKeysForPlotting(IEnumerable<UInt32>, CancellationToken)
+  href: api/chia.dotnet.PlotterProxy.html#chia_dotnet_PlotterProxy_GetKeysForPlotting_System_Collections_Generic_IEnumerable_System_UInt32__System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.PlotterProxy.GetKeysForPlotting(System.Collections.Generic.IEnumerable{System.UInt32},System.Threading.CancellationToken)
+  name.vb: GetKeysForPlotting(IEnumerable(Of UInt32), CancellationToken)
+  fullName: chia.dotnet.PlotterProxy.GetKeysForPlotting(System.Collections.Generic.IEnumerable<System.UInt32>, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.PlotterProxy.GetKeysForPlotting(System.Collections.Generic.IEnumerable(Of System.UInt32), System.Threading.CancellationToken)
+  nameWithType: PlotterProxy.GetKeysForPlotting(IEnumerable<UInt32>, CancellationToken)
+  nameWithType.vb: PlotterProxy.GetKeysForPlotting(IEnumerable(Of UInt32), CancellationToken)
+- uid: chia.dotnet.PlotterProxy.GetKeysForPlotting*
+  name: GetKeysForPlotting
+  href: api/chia.dotnet.PlotterProxy.html#chia_dotnet_PlotterProxy_GetKeysForPlotting_
+  commentId: Overload:chia.dotnet.PlotterProxy.GetKeysForPlotting
+  isSpec: "True"
+  fullName: chia.dotnet.PlotterProxy.GetKeysForPlotting
+  nameWithType: PlotterProxy.GetKeysForPlotting
 - uid: chia.dotnet.PlotterProxy.GetPlotters(System.Threading.CancellationToken)
   name: GetPlotters(CancellationToken)
   href: api/chia.dotnet.PlotterProxy.html#chia_dotnet_PlotterProxy_GetPlotters_System_Threading_CancellationToken_
@@ -8620,6 +8678,38 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.PlotterProxy.StopPlotting
   nameWithType: PlotterProxy.StopPlotting
+- uid: chia.dotnet.PlottingKeys
+  name: PlottingKeys
+  href: api/chia.dotnet.PlottingKeys.html
+  commentId: T:chia.dotnet.PlottingKeys
+  fullName: chia.dotnet.PlottingKeys
+  nameWithType: PlottingKeys
+- uid: chia.dotnet.PlottingKeys.FarmerPublicKey
+  name: FarmerPublicKey
+  href: api/chia.dotnet.PlottingKeys.html#chia_dotnet_PlottingKeys_FarmerPublicKey
+  commentId: P:chia.dotnet.PlottingKeys.FarmerPublicKey
+  fullName: chia.dotnet.PlottingKeys.FarmerPublicKey
+  nameWithType: PlottingKeys.FarmerPublicKey
+- uid: chia.dotnet.PlottingKeys.FarmerPublicKey*
+  name: FarmerPublicKey
+  href: api/chia.dotnet.PlottingKeys.html#chia_dotnet_PlottingKeys_FarmerPublicKey_
+  commentId: Overload:chia.dotnet.PlottingKeys.FarmerPublicKey
+  isSpec: "True"
+  fullName: chia.dotnet.PlottingKeys.FarmerPublicKey
+  nameWithType: PlottingKeys.FarmerPublicKey
+- uid: chia.dotnet.PlottingKeys.PoolPublicKey
+  name: PoolPublicKey
+  href: api/chia.dotnet.PlottingKeys.html#chia_dotnet_PlottingKeys_PoolPublicKey
+  commentId: P:chia.dotnet.PlottingKeys.PoolPublicKey
+  fullName: chia.dotnet.PlottingKeys.PoolPublicKey
+  nameWithType: PlottingKeys.PoolPublicKey
+- uid: chia.dotnet.PlottingKeys.PoolPublicKey*
+  name: PoolPublicKey
+  href: api/chia.dotnet.PlottingKeys.html#chia_dotnet_PlottingKeys_PoolPublicKey_
+  commentId: Overload:chia.dotnet.PlottingKeys.PoolPublicKey
+  isSpec: "True"
+  fullName: chia.dotnet.PlottingKeys.PoolPublicKey
+  nameWithType: PlottingKeys.PoolPublicKey
 - uid: chia.dotnet.PluginStatus
   name: PluginStatus
   href: api/chia.dotnet.PluginStatus.html
@@ -13031,6 +13121,38 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.Wallet.WalletProxy
   nameWithType: Wallet.WalletProxy
+- uid: chia.dotnet.WalletAddress
+  name: WalletAddress
+  href: api/chia.dotnet.WalletAddress.html
+  commentId: T:chia.dotnet.WalletAddress
+  fullName: chia.dotnet.WalletAddress
+  nameWithType: WalletAddress
+- uid: chia.dotnet.WalletAddress.Address
+  name: Address
+  href: api/chia.dotnet.WalletAddress.html#chia_dotnet_WalletAddress_Address
+  commentId: P:chia.dotnet.WalletAddress.Address
+  fullName: chia.dotnet.WalletAddress.Address
+  nameWithType: WalletAddress.Address
+- uid: chia.dotnet.WalletAddress.Address*
+  name: Address
+  href: api/chia.dotnet.WalletAddress.html#chia_dotnet_WalletAddress_Address_
+  commentId: Overload:chia.dotnet.WalletAddress.Address
+  isSpec: "True"
+  fullName: chia.dotnet.WalletAddress.Address
+  nameWithType: WalletAddress.Address
+- uid: chia.dotnet.WalletAddress.HdPath
+  name: HdPath
+  href: api/chia.dotnet.WalletAddress.html#chia_dotnet_WalletAddress_HdPath
+  commentId: P:chia.dotnet.WalletAddress.HdPath
+  fullName: chia.dotnet.WalletAddress.HdPath
+  nameWithType: WalletAddress.HdPath
+- uid: chia.dotnet.WalletAddress.HdPath*
+  name: HdPath
+  href: api/chia.dotnet.WalletAddress.html#chia_dotnet_WalletAddress_HdPath_
+  commentId: Overload:chia.dotnet.WalletAddress.HdPath
+  isSpec: "True"
+  fullName: chia.dotnet.WalletAddress.HdPath
+  nameWithType: WalletAddress.HdPath
 - uid: chia.dotnet.WalletBalance
   name: WalletBalance
   href: api/chia.dotnet.WalletBalance.html
