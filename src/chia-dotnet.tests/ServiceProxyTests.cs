@@ -51,7 +51,7 @@ public class ServiceProxyTests : TestBase
         Assert.NotNull(returnValue.ToList());
     }
 
-    [Fact(Skip = "Fails in python")]
+    [Fact]
     public async Task GetRoutes()
     {
         // Arrange
