@@ -3,6 +3,7 @@ using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace chia.dotnet
 {
@@ -70,6 +71,16 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Get whether the genesis block has been intiailized
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Boolean indicator</returns>
+        public async Task<bool> GetStatus(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<bool>("get_status", "genesis_initialized", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Get the installed version of chia at the endpoint
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
@@ -122,6 +133,16 @@ namespace chia.dotnet
         public async Task StopService(string service, CancellationToken cancellationToken = default)
         {
             await SendMessage("stop_service", CreateDataObject(service), cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get athe list of running services
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of services</returns>
+        public async Task<IEnumerable<string>> RunningServices(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<IEnumerable<string>>("running_services", null, "running_services", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -373,6 +394,28 @@ namespace chia.dotnet
         public async Task<bool> IsRunning(string service, CancellationToken cancellationToken = default)
         {
             return await SendMessage<bool>("is_running", CreateDataObject(service), "is_running", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Returns the list of addresses.
+        /// </summary>
+        /// <param name="nonObserverDerivation"></param>
+        /// <param name="count"></param>
+        /// <param name="index"></param>
+        /// <param name="fingerprints"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A dictionary of fingerprints and <see cref="WalletAddress"/></returns>
+        public async Task<IDictionary<uint, IEnumerable<WalletAddress>>> GetWalletAddresses(IEnumerable<uint>? fingerprints = null, bool nonObserverDerivation = false, uint index = 0, uint count = 1, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            if (fingerprints is not null)
+            {
+                data.fingerprints = fingerprints.ToList();
+            }
+            data.index = index;
+            data.count = count;
+            data.non_observer_derivation = nonObserverDerivation;
+            return await SendMessage<IDictionary<uint, IEnumerable<WalletAddress>>>("get_wallet_addresses", data, "wallet_addresses", cancellationToken).ConfigureAwait(false);
         }
 
         private static object CreateDataObject(string service)

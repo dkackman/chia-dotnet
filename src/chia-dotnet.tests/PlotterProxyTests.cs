@@ -62,5 +62,15 @@ namespace chia.dotnet.tests
 
             Assert.NotNull(plotters);
         }
+
+        [Fact]
+        public async Task GetKeysForPlotting()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            var keys = await Plotter.GetKeysForPlotting(cancellationToken: cts.Token);
+
+            Assert.NotNull(keys);
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -60,6 +61,22 @@ namespace chia.dotnet
         public async Task<IDictionary<string, PlotterInfo>> GetPlotters(CancellationToken cancellationToken = default)
         {
             return await SendMessage<IDictionary<string, PlotterInfo>>("get_plotters", "plotters", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Returns the list of plotting keys.
+        /// </summary>
+        /// <param name="fingerprints"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A dictionary of fingerprints and <see cref="PlottingKeys"/></returns>
+        public async Task<IDictionary<uint, PlottingKeys>> GetKeysForPlotting(IEnumerable<uint>? fingerprints = null, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            if (fingerprints is not null)
+            {
+                data.fingerprints = fingerprints.ToList();
+            }
+            return await SendMessage<IDictionary<uint, PlottingKeys>>("get_keys_for_plotting", data, "keys", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

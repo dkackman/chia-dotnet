@@ -2,7 +2,7 @@
   "profiles": {
     "CodeGen": {
       "commandName": "Project",
-      "commandLineArgs": "impl C:\\Users\\don\\src\\github\\dkackman\\chia-api\\src\\harvester.yaml set_harvester_config "
+      "commandLineArgs": "impl C:\\Users\\don\\src\\github\\dkackman\\chia-api\\src\\daemon.yaml get_wallet_addresses"
     }
   }
 }

@@ -16,6 +16,32 @@ namespace chia.dotnet.tests
         }
 
         [Fact]
+        public async Task GetStatus()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            var returnValue = await Daemon.GetStatus(cts.Token);
+
+            // Assert
+            Assert.True(returnValue);
+        }
+
+        [Fact]
+        public async Task GetWalletAddresses()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            var returnValue = await Daemon.GetWalletAddresses(cancellationToken: cts.Token);
+
+            // Assert
+            Assert.NotNull(returnValue);
+        }
+
+        [Fact]
         public async Task GetVersion()
         {
             // Arrange
@@ -377,6 +403,19 @@ namespace chia.dotnet.tests
 
             // Assert
             // no exception we were successful
+        }
+
+        [Fact]
+        public async Task RunningServices()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+
+            // Act
+            var result = await Daemon.RunningServices(cts.Token);
+
+            // Assert
+            Assert.NotNull(result.ToList());
         }
     }
 }
