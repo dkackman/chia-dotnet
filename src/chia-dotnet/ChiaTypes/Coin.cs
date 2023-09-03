@@ -12,6 +12,9 @@ namespace chia.dotnet
         public string PuzzleHash { get; init; } = string.Empty;
         public ulong Amount { get; init; }
 
+        /// <summary>
+        /// The <see cref="Amount"/> as a hex string
+        /// </summary>
         [JsonIgnore]
         public string AmountHex
         {
@@ -22,6 +25,9 @@ namespace chia.dotnet
             }
         }
 
+        /// <summary>
+        /// SHA256 hash of <see cref="ParentCoinInfo"/>, <see cref="PuzzleHash"/>, and <see cref="AmountHex"/>
+        /// </summary>
         [JsonIgnore]
         public string Name
         {
