@@ -74,7 +74,6 @@ namespace chia.dotnet
             data.min_generation = minGeneration;
             data.max_generation = maxGeneration;
             data.num_results = numResults;
-
             return await WalletProxy.SendMessage<IEnumerable<SingletonRecord>>("dl_history", data, "history", cancellationToken).ConfigureAwait(false);
         }
 

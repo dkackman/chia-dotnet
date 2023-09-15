@@ -40,6 +40,7 @@ namespace chia.dotnet.tests
             var fingerprint = await Wallet.GetLoggedInFingerprint(cts.Token);
 
             // Assert
+            Assert.True(fingerprint > 0);
         }
 
         [Fact]

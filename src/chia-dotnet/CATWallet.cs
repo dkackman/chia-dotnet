@@ -37,9 +37,7 @@ namespace chia.dotnet
         /// <returns>The CAT name</returns>
         public async Task<string> GetName(CancellationToken cancellationToken = default)
         {
-            var response = await WalletProxy.SendMessage("cat_get_name", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
-
-            return response.name.ToString();
+            return await WalletProxy.SendMessage<string>("cat_get_name", CreateWalletDataObject(), "name", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -49,9 +47,7 @@ namespace chia.dotnet
         /// <returns>The asset id</returns>
         public async Task<string> GetAssetId(CancellationToken cancellationToken = default)
         {
-            var response = await WalletProxy.SendMessage("cat_get_asset_id", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
-
-            return response.asset_id?.ToString() ?? throw new InvalidOperationException("Asset Id not found");
+            return await WalletProxy.SendMessage<string>("cat_get_asset_id", CreateWalletDataObject(), "asset_id", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

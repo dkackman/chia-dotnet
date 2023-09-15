@@ -60,22 +60,11 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Determines if the named service is running
-        /// </summary>
-        /// <param name="service">The <see cref="ServiceNames"/> of the service</param>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>A boolean value indicating whether the service is running</returns>
-        public async Task<bool> IsServiceRunning(string service, CancellationToken cancellationToken = default)
-        {
-            return await SendMessage<bool>("is_running", CreateDataObject(service), "is_running", cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
         /// Get whether the genesis block has been intiailized
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Boolean indicator</returns>
-        public async Task<bool> GetStatus(CancellationToken cancellationToken = default)
+        public async Task<bool> GetStatus(CancellationToken cancellationToken = default) 
         {
             return await SendMessage<bool>("get_status", "genesis_initialized", cancellationToken).ConfigureAwait(false);
         }

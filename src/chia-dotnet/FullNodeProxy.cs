@@ -262,7 +262,6 @@ namespace chia.dotnet
             data.start_height = startHeight;
             data.end_height = endHeight;
 
-
             return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_names", data, "coin_records", cancellationToken).ConfigureAwait(false);
         }
 
@@ -287,7 +286,6 @@ namespace chia.dotnet
             data.include_spent_coins = includeSpentCoins;
             data.start_height = startHeight;
             data.end_height = endHeight;
-
 
             return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_puzzle_hashes", data, "coin_records", cancellationToken).ConfigureAwait(false);
         }
@@ -314,7 +312,6 @@ namespace chia.dotnet
             data.include_spent_coins = includeSpentCoins;
             data.start_height = startHeight;
             data.end_height = endHeight;
-
 
             return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_parent_ids", data, "coin_records", cancellationToken).ConfigureAwait(false);
         }

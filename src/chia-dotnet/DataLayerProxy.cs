@@ -37,9 +37,7 @@ namespace chia.dotnet
             data.id = id;
             data.amount = amount;
             data.urls = urls.ToList();
-
             data.fee = fee;
-
             await SendMessage("add_mirror", "data", cancellationToken).ConfigureAwait(false);
         }
 
@@ -83,7 +81,6 @@ namespace chia.dotnet
             data.id = id;
             data.changelist = changeList;
             data.fee = fee;
-
             return await SendMessage<string>("batch_update", data, "tx_id", cancellationToken).ConfigureAwait(false);
         }
 
@@ -101,7 +98,6 @@ namespace chia.dotnet
             data.trade_id = tradeId;
             data.fee = fee;
             data.secure = secure;
-
             await SendMessage("cancel_offer", data, cancellationToken).ConfigureAwait(false);
         }
 
@@ -137,7 +133,6 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.fee = fee;
-
             var response = await SendMessage("create_data_store", data, cancellationToken).ConfigureAwait(false);
 
             return (
@@ -160,7 +155,6 @@ namespace chia.dotnet
             data.key = key;
             data.id = id;
             data.fee = fee;
-
             return await SendMessage<string>("delete_key", data, "tx_id", cancellationToken).ConfigureAwait(false);
         }
 
@@ -176,7 +170,6 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.coin_id = coinId;
             data.fee = fee;
-
             await SendMessage("delete_mirror", data, cancellationToken).ConfigureAwait(false);
         }
 
@@ -194,7 +187,6 @@ namespace chia.dotnet
             data.id = id;
             data.hash = hash;
             data.fee = fee;
-
             return await SendMessage<IEnumerable<InternalNode>>("get_ancestors", data, "ancestors", cancellationToken).ConfigureAwait(false);
         }
 
@@ -212,7 +204,6 @@ namespace chia.dotnet
             data.id = id;
             data.root_hash = rootHash;
             data.fee = fee;
-
             return await SendMessage<IEnumerable<string>>("get_keys", data, "keys", cancellationToken).ConfigureAwait(false);
         }
 
@@ -229,7 +220,6 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.id = id;
             data.root_hash = rootHash;
-
             return await SendMessage<IEnumerable<TerminalNode>>("get_keys_values", data, "keys_values", cancellationToken).ConfigureAwait(false);
         }
 
@@ -247,7 +237,6 @@ namespace chia.dotnet
             data.id = id;
             data.hash1 = hash1;
             data.hash2 = hash2;
-
             return await SendMessage<KVDiff>("get_kv_diff", data, "diff", cancellationToken).ConfigureAwait(false);
         }
 
@@ -261,7 +250,6 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.id = id;
-
             return await SendMessage<string>("get_local_root", data, "hash", cancellationToken).ConfigureAwait(false);
         }
 
@@ -275,7 +263,6 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.id = id;
-
             return await SendMessage<IEnumerable<Mirror>>("get_mirrors", data, "mirrors", cancellationToken).ConfigureAwait(false);
         }
 
