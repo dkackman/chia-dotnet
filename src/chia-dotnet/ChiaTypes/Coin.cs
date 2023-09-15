@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using chia.dotnet.bech32;
+﻿using chia.dotnet.bech32;
+using Newtonsoft.Json;
 
 namespace chia.dotnet
 {

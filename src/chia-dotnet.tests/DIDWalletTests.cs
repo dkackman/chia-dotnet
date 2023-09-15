@@ -1,10 +1,9 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using chia.dotnet.tests.Core;
 using Xunit;
-using System.Threading;
-using System.Linq;
 
 namespace chia.dotnet.tests;
 

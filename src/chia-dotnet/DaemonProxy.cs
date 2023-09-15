@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Dynamic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace chia.dotnet
 {
@@ -64,7 +64,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Boolean indicator</returns>
-        public async Task<bool> GetStatus(CancellationToken cancellationToken = default) 
+        public async Task<bool> GetStatus(CancellationToken cancellationToken = default)
         {
             return await SendMessage<bool>("get_status", "genesis_initialized", cancellationToken).ConfigureAwait(false);
         }

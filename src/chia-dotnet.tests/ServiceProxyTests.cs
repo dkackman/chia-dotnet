@@ -1,7 +1,7 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using chia.dotnet.tests.Core;
-using System.Linq;
 using Xunit;
 
 namespace chia.dotnet.tests;

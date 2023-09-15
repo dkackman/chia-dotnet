@@ -1,6 +1,6 @@
-﻿using Microsoft.OpenApi.Readers;
+﻿using System.Globalization;
 using Microsoft.OpenApi.Models;
-using System.Globalization;
+using Microsoft.OpenApi.Readers;
 
 namespace CodeGen
 {

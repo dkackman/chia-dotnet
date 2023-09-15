@@ -1,8 +1,8 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
-using System;
-using Xunit;
 using chia.dotnet.tests.Core;
+using Xunit;
 
 namespace chia.dotnet.tests
 {

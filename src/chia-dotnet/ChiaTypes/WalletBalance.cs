@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace chia.dotnet
+﻿namespace chia.dotnet
 {
     public record WalletBalance
     {

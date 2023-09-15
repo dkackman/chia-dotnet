@@ -1,6 +1,6 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
-using System.Linq;
 using chia.dotnet.tests.Core;
 using Xunit;
 

@@ -24,13 +24,13 @@ namespace chia.dotnet.tests.Core
             {
                 case WalletType.CAT:
                     return new CATWallet(wallet.Id, _wallet) as TWallet ?? throw new InvalidProgramException($"{typeof(TWallet)} is incompatible with {walletType}");
-                case WalletType.DATA_LAYER: 
+                case WalletType.DATA_LAYER:
                     return new DataLayerWallet(wallet.Id, _wallet) as TWallet ?? throw new InvalidProgramException($"{typeof(TWallet)} is incompatible with {walletType}");
-                case WalletType.NFT: 
+                case WalletType.NFT:
                     return new NFTWallet(wallet.Id, _wallet) as TWallet ?? throw new InvalidProgramException($"{typeof(TWallet)} is incompatible with {walletType}");
-                case WalletType.DISTRIBUTED_ID: 
+                case WalletType.DISTRIBUTED_ID:
                     return new DIDWallet(wallet.Id, _wallet) as TWallet ?? throw new InvalidProgramException($"{typeof(TWallet)} is incompatible with {walletType}");
-                case WalletType.POOLING_WALLET: 
+                case WalletType.POOLING_WALLET:
                     return new PoolWallet(wallet.Id, _wallet) as TWallet ?? throw new InvalidProgramException($"{typeof(TWallet)} is incompatible with {walletType}");
                 case WalletType.STANDARD_WALLET:
                     break;

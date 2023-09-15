@@ -1,5 +1,5 @@
-﻿using System.Text;
-using System.Reflection;
+﻿using System.Reflection;
+using System.Text;
 
 namespace CodeGen
 {

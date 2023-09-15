@@ -1,5 +1,4 @@
 ﻿using System;
-using chia.dotnet;
 using chia.dotnet.tests.Core;
 using Xunit;
 

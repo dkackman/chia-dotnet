@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using chia.dotnet.tests.Core;
 using Xunit;
-using System.Threading;
-using System.Linq;
 
 namespace chia.dotnet.tests;
 
@@ -18,7 +18,7 @@ public class VerifiedCredentialManagerTests : TestBase
         // Arrange
         using var cts = new CancellationTokenSource(15000);
         var vcs = await VCManager.GetList(cancellationToken: cts.Token);
-        var vc  = vcs.First();
+        var vc = vcs.First();
         var vcId = vc.VC.LauncherId;
 
         // Act

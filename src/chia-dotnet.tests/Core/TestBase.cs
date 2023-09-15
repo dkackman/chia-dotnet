@@ -1,7 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 using Xunit;
-using System;
-using System.Xml.Linq;
 
 namespace chia.dotnet.tests.Core;
 

@@ -12,7 +12,7 @@ public class CrawlerProxyTests : TestBase
     {
     }
 
-    [Fact(Skip ="Hangs")]
+    [Fact(Skip = "Hangs")]
     public async Task GetPeerCounts()
     {
         // Arrange

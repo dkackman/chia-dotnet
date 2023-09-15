@@ -1,6 +1,6 @@
-﻿using System.Text.Json;
+﻿using System.Collections.Generic;
 using System.Dynamic;
-using System.Collections.Generic;
+using System.Text.Json;
 using Xunit;
 
 namespace chia.dotnet.tests
