@@ -55,17 +55,23 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Sets the first key to active.
-        /// </summary>       
+        /// Sets a fingerprint to active. Waits for the wallet to sync.
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>          
+        /// <param name="millisecondsDelay">The number of milliseconds to wait each time before checking sync status</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The key fingerprint</returns>
-        public async Task<uint> LogIn(CancellationToken cancellationToken = default)
+        public async Task<uint> LogInAndWaitForSync(uint fingerprint, int millisecondsDelay = 10000, CancellationToken cancellationToken = default)
         {
-            var fingerprints = await GetPublicKeys(cancellationToken).ConfigureAwait(false);
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
 
-            return fingerprints.Any()
-                ? await LogIn(fingerprints.First(), cancellationToken).ConfigureAwait(false)
-                : throw new InvalidOperationException("There are no public keys present'");
+            var response = await SendMessage("log_in", data, cancellationToken).ConfigureAwait(false);
+
+            await WaitForSync(millisecondsDelay, cancellationToken).ConfigureAwait(false);
+
+            Fingerprint = (uint)response.fingerprint;
+            return Fingerprint.Value;
         }
 
         /// <summary>
