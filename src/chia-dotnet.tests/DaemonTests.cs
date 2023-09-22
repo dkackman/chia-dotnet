@@ -122,20 +122,6 @@ namespace chia.dotnet.tests
         }
 
         [Fact]
-        public async Task IsServiceRunning()
-        {
-            // Arrange
-            using var cts = new CancellationTokenSource(15000);
-            var service = ServiceNames.Farmer;
-
-            // Act
-            var returnValue = await Daemon.IsServiceRunning(service: service, cancellationToken: cts.Token);
-
-            // Assert
-            Assert.True(returnValue);
-        }
-
-        [Fact]
         public async Task GetKeyForFingerprint()
         {
             // Arrange
@@ -380,16 +366,16 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
 
             // Act
-            if (await Daemon.IsServiceRunning(ServiceNames.Farmer, cts.Token))
+            if (await Daemon.IsRunning(ServiceNames.Farmer, cts.Token))
             {
                 await Daemon.StopService(ServiceNames.Farmer, cts.Token);
-                Assert.False(await Daemon.IsServiceRunning(ServiceNames.Farmer, cts.Token));
+                Assert.False(await Daemon.IsRunning(ServiceNames.Farmer, cts.Token));
             }
 
             await Daemon.StartService(ServiceNames.Farmer, cts.Token);
 
             // Assert
-            Assert.True(await Daemon.IsServiceRunning(ServiceNames.Farmer, cts.Token));
+            Assert.True(await Daemon.IsRunning(ServiceNames.Farmer, cts.Token));
         }
 
         [Fact]

@@ -30,6 +30,31 @@ namespace chia.dotnet
         public uint? Fingerprint { get; private set; }
 
         /// <summary>
+        /// Will wait unti <see cref="GetSyncStatus(CancellationToken)"/> indicates 
+        /// that the wallet has synced or until the cancellation token is canceled
+        /// </summary>
+        /// <param name="millisecondsDelay">The number of milliseconds to wait each time before checking sync status</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>An awaitable <see cref="Task"/></returns>
+        /// <exception cref="TaskCanceledException">When cancellation token expires or is cancelled</exception>
+        public async Task WaitForSync(int millisecondsDelay = 10000, CancellationToken cancellationToken = default)
+        {
+            var status = await GetSyncStatus(cancellationToken).ConfigureAwait(false);
+
+            while (!status.Synced)
+            {
+                if (cancellationToken.IsCancellationRequested)
+                {
+                    throw new TaskCanceledException("Timeout expired while waiting for wallet to sync");
+                }
+
+                await Task.Delay(millisecondsDelay, cancellationToken).ConfigureAwait(false); ;
+
+                status = await GetSyncStatus(cancellationToken).ConfigureAwait(false);
+            }
+        }
+
+        /// <summary>
         /// Sets the first key to active.
         /// </summary>       
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
