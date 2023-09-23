@@ -123,13 +123,26 @@ namespace chia.dotnet.tests
         }
 
         [Fact]
-        public async Task LogIn()
+        public async Task WaitForSync()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
 
             // Act
-            var returnValue = await Wallet.LogIn(cts.Token);
+            await Wallet.WaitForSync(millisecondsDelay: 1000, cancellationToken: cts.Token);
+
+            // Assert
+
+        }
+
+        [Fact]
+        public async Task LogIn()
+        {
+            // Arrange
+            using var cts = new CancellationTokenSource(15000);
+            var fingerprints = await Wallet.GetPublicKeys(cts.Token);
+            // Act
+            var returnValue = await Wallet.LogIn(fingerprints.First(), cts.Token);
 
             // Assert
 

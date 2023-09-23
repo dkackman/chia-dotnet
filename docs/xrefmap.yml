@@ -1358,6 +1358,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.Coin.Amount
   nameWithType: Coin.Amount
+- uid: chia.dotnet.Coin.AmountHex
+  name: AmountHex
+  href: api/chia.dotnet.Coin.html#chia_dotnet_Coin_AmountHex
+  commentId: P:chia.dotnet.Coin.AmountHex
+  fullName: chia.dotnet.Coin.AmountHex
+  nameWithType: Coin.AmountHex
+- uid: chia.dotnet.Coin.AmountHex*
+  name: AmountHex
+  href: api/chia.dotnet.Coin.html#chia_dotnet_Coin_AmountHex_
+  commentId: Overload:chia.dotnet.Coin.AmountHex
+  isSpec: "True"
+  fullName: chia.dotnet.Coin.AmountHex
+  nameWithType: Coin.AmountHex
 - uid: chia.dotnet.Coin.Name
   name: Name
   href: api/chia.dotnet.Coin.html#chia_dotnet_Coin_Name
@@ -2266,19 +2279,6 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DaemonProxy.IsRunning
   nameWithType: DaemonProxy.IsRunning
-- uid: chia.dotnet.DaemonProxy.IsServiceRunning(System.String,System.Threading.CancellationToken)
-  name: IsServiceRunning(String, CancellationToken)
-  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_IsServiceRunning_System_String_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.DaemonProxy.IsServiceRunning(System.String,System.Threading.CancellationToken)
-  fullName: chia.dotnet.DaemonProxy.IsServiceRunning(System.String, System.Threading.CancellationToken)
-  nameWithType: DaemonProxy.IsServiceRunning(String, CancellationToken)
-- uid: chia.dotnet.DaemonProxy.IsServiceRunning*
-  name: IsServiceRunning
-  href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_IsServiceRunning_
-  commentId: Overload:chia.dotnet.DaemonProxy.IsServiceRunning
-  isSpec: "True"
-  fullName: chia.dotnet.DaemonProxy.IsServiceRunning
-  nameWithType: DaemonProxy.IsServiceRunning
 - uid: chia.dotnet.DaemonProxy.Ping(System.Threading.CancellationToken)
   name: Ping(CancellationToken)
   href: api/chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_Ping_System_Threading_CancellationToken_
@@ -13924,12 +13924,6 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.GetWalletsWithDIDs
   nameWithType: WalletProxy.GetWalletsWithDIDs
-- uid: chia.dotnet.WalletProxy.LogIn(System.Threading.CancellationToken)
-  name: LogIn(CancellationToken)
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_LogIn_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.WalletProxy.LogIn(System.Threading.CancellationToken)
-  fullName: chia.dotnet.WalletProxy.LogIn(System.Threading.CancellationToken)
-  nameWithType: WalletProxy.LogIn(CancellationToken)
 - uid: chia.dotnet.WalletProxy.LogIn(System.UInt32,System.Threading.CancellationToken)
   name: LogIn(UInt32, CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_LogIn_System_UInt32_System_Threading_CancellationToken_
@@ -13943,6 +13937,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.LogIn
   nameWithType: WalletProxy.LogIn
+- uid: chia.dotnet.WalletProxy.LogInAndWaitForSync(System.UInt32,System.Int32,System.Threading.CancellationToken)
+  name: LogInAndWaitForSync(UInt32, Int32, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_LogInAndWaitForSync_System_UInt32_System_Int32_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.LogInAndWaitForSync(System.UInt32,System.Int32,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.LogInAndWaitForSync(System.UInt32, System.Int32, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.LogInAndWaitForSync(UInt32, Int32, CancellationToken)
+- uid: chia.dotnet.WalletProxy.LogInAndWaitForSync*
+  name: LogInAndWaitForSync
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_LogInAndWaitForSync_
+  commentId: Overload:chia.dotnet.WalletProxy.LogInAndWaitForSync
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.LogInAndWaitForSync
+  nameWithType: WalletProxy.LogInAndWaitForSync
 - uid: chia.dotnet.WalletProxy.NftSetDidBulk(System.String,System.Collections.Generic.IEnumerable{chia.dotnet.NftCoinInfo},System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)
   name: NftSetDidBulk(String, IEnumerable<NftCoinInfo>, Nullable<Boolean>, UInt64, CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_NftSetDidBulk_System_String_System_Collections_Generic_IEnumerable_chia_dotnet_NftCoinInfo__System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_
@@ -14117,6 +14124,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.VerifySignature
   nameWithType: WalletProxy.VerifySignature
+- uid: chia.dotnet.WalletProxy.WaitForSync(System.Int32,System.Threading.CancellationToken)
+  name: WaitForSync(Int32, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_WaitForSync_System_Int32_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.WaitForSync(System.Int32,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.WaitForSync(System.Int32, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.WaitForSync(Int32, CancellationToken)
+- uid: chia.dotnet.WalletProxy.WaitForSync*
+  name: WaitForSync
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_WaitForSync_
+  commentId: Overload:chia.dotnet.WalletProxy.WaitForSync
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.WaitForSync
+  nameWithType: WalletProxy.WaitForSync
 - uid: chia.dotnet.WalletType
   name: WalletType
   href: api/chia.dotnet.WalletType.html
