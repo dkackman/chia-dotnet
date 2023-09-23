@@ -24,7 +24,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Will wait unti <see cref="GetSyncStatus(CancellationToken)"/> indicates 
+        /// Will wait until <see cref="GetSyncStatus(CancellationToken)"/> indicates 
         /// that the wallet has synced or until the cancellation token is canceled
         /// </summary>
         /// <param name="millisecondsDelay">The number of milliseconds to wait each time before checking sync status</param>
