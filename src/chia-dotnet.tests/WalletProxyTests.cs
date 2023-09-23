@@ -145,7 +145,7 @@ namespace chia.dotnet.tests
             var returnValue = await Wallet.LogIn(fingerprints.First(), cts.Token);
 
             // Assert
-
+            Assert.NotEqual((uint)0, returnValue);
         }
 
         [Fact]

@@ -51,12 +51,14 @@ Console.Log($"This node is synced: {state.Sync.Synced}")
 var endpoint = Config.Open().GetEndpoint("wallet");
 using var rpcClient = new HttpRpcClient(endpoint);
 
-// walletId of 1 is the main wallet
-var wallet = new Wallet(1, new WalletProxy(rpcClient, "unit_tests"));
-await wallet.Login();
+var wallet = new WalletProxy(rpcClient, "unit_tests");
+await wallet.WaitForSync();
+
+// walletId of 1 is the main XCH wallet
+var standardWallet = new Wallet(1, wallet);
 
 // this is my receive address. feel free to run this code on mainnet as often as you like :-)
-var transaction = await wallet.SendTransaction("xch1ls2w9l2tksmp8u3a8xewhn86na3fjhxq79gnsccxr0v3rpa5ejcsuugha7", 1, 1);
+var transaction = await standardWallet.SendTransaction("xch1ls2w9l2tksmp8u3a8xewhn86na3fjhxq79gnsccxr0v3rpa5ejcsuugha7", 1, 1);
 ```
 
 ### Build

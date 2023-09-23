@@ -24,12 +24,6 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// The fingerprint used to login to the wallet.
-        /// </summary>
-        /// <remarks>Will be null until <see cref="LogIn(CancellationToken)"/> is called</remarks>
-        public uint? Fingerprint { get; private set; }
-
-        /// <summary>
         /// Will wait unti <see cref="GetSyncStatus(CancellationToken)"/> indicates 
         /// that the wallet has synced or until the cancellation token is canceled
         /// </summary>
@@ -70,8 +64,7 @@ namespace chia.dotnet
 
             await WaitForSync(millisecondsDelay, cancellationToken).ConfigureAwait(false);
 
-            Fingerprint = (uint)response.fingerprint;
-            return Fingerprint.Value;
+            return (uint)response.fingerprint;
         }
 
         /// <summary>
@@ -87,8 +80,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("log_in", data, cancellationToken).ConfigureAwait(false);
 
-            Fingerprint = (uint)response.fingerprint;
-            return Fingerprint.Value;
+            return (uint)response.fingerprint;
         }
 
         /// <summary>
