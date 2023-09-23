@@ -525,7 +525,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.FullNodeProxy.html",
-          "hash": "z28MDFRMl8xgEPblhWgaGbsuH7DRus/vGH/TywGqlfk="
+          "hash": "2PZZwtjh2v3uSpA2NLib+mVq/uEkIrEEvfQOu4UFhvs="
         }
       },
       "is_incremental": false,
@@ -1821,7 +1821,7 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.WalletProxy.html",
-          "hash": "2Vrme4ycojK/+/rGyK4itdeKkP7crQKlYVjsNDMUvT8="
+          "hash": "SyKaEKDIObwDGuO9pSbiploRh9bkMQ9y1BISnKOYkhw="
         }
       },
       "is_incremental": false,

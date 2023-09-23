@@ -25,6 +25,31 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Will wait unti <see cref="GetBlockchainState(CancellationToken)"/> indicates 
+        /// that the full node has synced or until the cancellation token is canceled
+        /// </summary>
+        /// <param name="millisecondsDelay">The number of milliseconds to wait each time before checking sync status</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>An awaitable <see cref="Task"/></returns>
+        /// <exception cref="TaskCanceledException">When cancellation token expires or is cancelled</exception>
+        public async Task WaitForSync(int millisecondsDelay = 10000, CancellationToken cancellationToken = default)
+        {
+            var status = await GetBlockchainState(cancellationToken).ConfigureAwait(false);
+
+            while (!status.Sync.Synced)
+            {
+                if (cancellationToken.IsCancellationRequested)
+                {
+                    throw new TaskCanceledException("Timeout expired while waiting for full node to sync");
+                }
+
+                await Task.Delay(millisecondsDelay, cancellationToken).ConfigureAwait(false); ;
+
+                status = await GetBlockchainState(cancellationToken).ConfigureAwait(false);
+            }
+        }
+
+        /// <summary>
         /// Returns a summary of the node's view of the blockchain.
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>

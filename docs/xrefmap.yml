@@ -5089,6 +5089,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FullNodeProxy.PushTx
   nameWithType: FullNodeProxy.PushTx
+- uid: chia.dotnet.FullNodeProxy.WaitForSync(System.Int32,System.Threading.CancellationToken)
+  name: WaitForSync(Int32, CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_WaitForSync_System_Int32_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.WaitForSync(System.Int32,System.Threading.CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.WaitForSync(System.Int32, System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.WaitForSync(Int32, CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.WaitForSync*
+  name: WaitForSync
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_WaitForSync_
+  commentId: Overload:chia.dotnet.FullNodeProxy.WaitForSync
+  isSpec: "True"
+  fullName: chia.dotnet.FullNodeProxy.WaitForSync
+  nameWithType: FullNodeProxy.WaitForSync
 - uid: chia.dotnet.FungibleAsset
   name: FungibleAsset
   href: api/chia.dotnet.FungibleAsset.html
@@ -13620,19 +13633,6 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.ExtendDerivationIndex
   nameWithType: WalletProxy.ExtendDerivationIndex
-- uid: chia.dotnet.WalletProxy.Fingerprint
-  name: Fingerprint
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_Fingerprint
-  commentId: P:chia.dotnet.WalletProxy.Fingerprint
-  fullName: chia.dotnet.WalletProxy.Fingerprint
-  nameWithType: WalletProxy.Fingerprint
-- uid: chia.dotnet.WalletProxy.Fingerprint*
-  name: Fingerprint
-  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_Fingerprint_
-  commentId: Overload:chia.dotnet.WalletProxy.Fingerprint
-  isSpec: "True"
-  fullName: chia.dotnet.WalletProxy.Fingerprint
-  nameWithType: WalletProxy.Fingerprint
 - uid: chia.dotnet.WalletProxy.GenerateMnemonic(System.Threading.CancellationToken)
   name: GenerateMnemonic(CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GenerateMnemonic_System_Threading_CancellationToken_
