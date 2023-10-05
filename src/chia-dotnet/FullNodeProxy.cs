@@ -453,16 +453,23 @@ namespace chia.dotnet
         /// <returns>The <see cref="MempoolItem"/></returns>
         public async Task<MempoolItem> GetMemmpooItemByTxId(string txId, bool includePending = false, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(txId))
-            {
-                throw new ArgumentNullException(nameof(txId));
-            }
-
             dynamic data = new ExpandoObject();
             data.tx_id = txId;
             data.include_pending = includePending;
-
             return await SendMessage<MempoolItem>("get_mempool_item_by_tx_id", data, "mempool_item", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets a mempool item by coin name.
+        /// </summary>
+        /// <param name="coinName">Coin name</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The <see cref="MempoolItem"/></returns>
+        public async Task<IEnumerable<MempoolItem>> GetMemmpoolItemsByCoinName(string coinName, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.coin_name = coinName;
+            return await SendMessage<IEnumerable<MempoolItem>>("get_mempool_items_by_coin_name", data, "mempool_items", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
