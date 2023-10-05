@@ -25,7 +25,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Will wait unti <see cref="GetBlockchainState(CancellationToken)"/> indicates 
+        /// Will wait until <see cref="GetBlockchainState(CancellationToken)"/> indicates 
         /// that the full node has synced or until the cancellation token is canceled
         /// </summary>
         /// <param name="millisecondsDelay">The number of milliseconds to wait each time before checking sync status</param>
