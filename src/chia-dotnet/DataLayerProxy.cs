@@ -438,12 +438,14 @@ namespace chia.dotnet
         /// Unsubscribe from singleton.
         /// </summary>
         /// <param name="id"></param>
+        /// <param name="retain"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable Task</returns>
-        public async Task Unsubscribe(string id, CancellationToken cancellationToken = default)
+        public async Task Unsubscribe(string id, bool retain = false, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.id = id;
+            data.retain = retain;
             await SendMessage("unsubscribe", data, cancellationToken).ConfigureAwait(false);
         }
 
@@ -461,6 +463,21 @@ namespace chia.dotnet
             data.fee = fee;
             var response = await SendMessage("verify_offer", data, cancellationToken).ConfigureAwait(false);
             return (response.valid, response.fee);
+        }
+
+
+        /// <summary>
+        /// Sets a key to active.
+        /// </summary>
+        /// <param name="fingerprint">The fingerprint</param>          
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>An awaitable task</returns>
+        public async Task WalletLogIn(uint fingerprint, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.fingerprint = fingerprint;
+
+            await SendMessage("wallet_log_in", data, cancellationToken).ConfigureAwait(false);
         }
     }
 }
