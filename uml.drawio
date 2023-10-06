@@ -1,10 +1,10 @@
 <mxfile host="65bd71144e">
     <diagram id="2sSWdcVANpwXDTMMq90L" name="Page-1">
-        <mxGraphModel dx="1036" dy="784" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1085" dy="779" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="54" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="53" target="37">
+                <mxCell id="54" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" parent="1" source="53" target="37" edge="1">
                     <mxGeometry width="160" relative="1" as="geometry">
                         <mxPoint x="600" y="610" as="sourcePoint"/>
                         <mxPoint x="530" y="530" as="targetPoint"/>
@@ -125,7 +125,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="33" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;TradeManager&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="610" y="270" width="140" height="60" as="geometry"/>
+                    <mxGeometry x="610" y="270" width="160" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="34" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="33" target="27" edge="1">
                     <mxGeometry width="160" relative="1" as="geometry">
@@ -173,22 +173,25 @@
                     <mxGeometry x="30" y="380" width="140" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="49" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;NFTWallet&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="280" y="670" width="140" height="60" as="geometry"/>
+                    <mxGeometry x="220" y="670" width="140" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="51" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;DataLayerProxy&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
                     <mxGeometry x="180" y="380" width="140" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="53" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;DataLayerWallet&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="440" y="670" width="140" height="60" as="geometry"/>
+                <mxCell id="53" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;DataLayerWallet&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="670" width="140" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="55" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;VerifiedCredentialManager&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="610" y="360" width="140" height="60" as="geometry"/>
+                <mxCell id="55" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;VerifiedCredentialManager&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="610" y="360" width="160" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="56" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="55">
+                <mxCell id="56" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="55" edge="1">
                     <mxGeometry width="160" relative="1" as="geometry">
                         <mxPoint x="610" y="400" as="sourcePoint"/>
                         <mxPoint x="470" y="340" as="targetPoint"/>
                     </mxGeometry>
+                </mxCell>
+                <mxCell id="57" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;CRCATWallet&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="670" width="140" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
