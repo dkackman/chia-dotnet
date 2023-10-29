@@ -31,31 +31,34 @@ namespace chia.dotnet
 
             using X509Certificate2 cert = new(certPath);
             using StreamReader streamReader = new(keyPath);
-            using var rsa = GetPrivateKey(streamReader.ReadToEnd());
+            using var rsa = DeserializePrivateKey(streamReader.ReadToEnd());
             using var certWithKey = cert.CopyWithPrivateKey(rsa);
 
             var ephemeralX509Cert = new X509Certificate2(certWithKey.Export(X509ContentType.Pkcs12));
             return new(ephemeralX509Cert);
         }
 
-        private static RSA GetPrivateKey(string rawKey)
+        private static RSA DeserializePrivateKey(string serializedKey)
         {
-            var base64 = new StringBuilder(rawKey)
-                .Replace("-----BEGIN RSA PRIVATE KEY-----", string.Empty)
-                .Replace("-----END RSA PRIVATE KEY-----", string.Empty)
-                .Replace("-----BEGIN PRIVATE KEY-----", string.Empty)
-                .Replace("-----END PRIVATE KEY-----", string.Empty)
-                .ToString()
-                .Trim();
-
-            var keyBytes = Convert.FromBase64String(base64);
             var rsa = RSA.Create();
-            if (rawKey.StartsWith("-----BEGIN RSA PRIVATE KEY-----", StringComparison.InvariantCulture))
+            if (serializedKey.StartsWith("-----BEGIN RSA PRIVATE KEY-----", StringComparison.Ordinal))
             {
+                var base64 = new StringBuilder(serializedKey)
+                    .Replace("-----BEGIN RSA PRIVATE KEY-----", string.Empty)
+                    .Replace("-----END RSA PRIVATE KEY-----", string.Empty)
+                    .ToString();
+
+                var keyBytes = Convert.FromBase64String(base64);
                 rsa.ImportRSAPrivateKey(keyBytes, out _);
             }
             else
             {
+                var base64 = new StringBuilder(serializedKey)
+                    .Replace("-----BEGIN PRIVATE KEY-----", string.Empty)
+                    .Replace("-----END PRIVATE KEY-----", string.Empty)
+                    .ToString();
+
+                var keyBytes = Convert.FromBase64String(base64);
                 rsa.ImportPkcs8PrivateKey(keyBytes, out _);
             }
 
