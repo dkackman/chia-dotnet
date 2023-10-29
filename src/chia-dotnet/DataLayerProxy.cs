@@ -212,7 +212,6 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="id">Id</param>
         /// <param name="rootHash">Root Hash</param>
-        /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns></returns>
         public async Task<IEnumerable<TerminalNode>> GetKeysValues(string id, string rootHash, CancellationToken cancellationToken = default)
@@ -413,7 +412,7 @@ namespace chia.dotnet
         /// List current subscriptions.
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>A list of <see cref="IEnumerable{string}"/></returns>
+        /// <returns>A list of <see cref="String"/></returns>
         public async Task<IEnumerable<string>> Subscriptions(CancellationToken cancellationToken = default)
         {
             return await SendMessage<IEnumerable<string>>("subscriptions", null, "store_ids", cancellationToken).ConfigureAwait(false);

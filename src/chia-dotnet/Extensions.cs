@@ -81,6 +81,7 @@ namespace chia.dotnet
         /// Format a number of bytes in human readable format 
         /// </summary>
         /// <param name="byteCount">The number of bytes</param>
+        /// <param name="format">Return string culture format</param>
         /// <returns>A human readable string</returns>
         /// <remarks>Adapted from https://stackoverflow.com/questions/281640/how-do-i-get-a-human-readable-file-size-in-bytes-abbreviation-using-net </remarks>
         public static string ToBytesString(this BigInteger byteCount, string format = "N3")
@@ -107,6 +108,7 @@ namespace chia.dotnet
         /// Format a number of bytes in human readable format 
         /// </summary>
         /// <param name="byteCount">The number of bytes</param>
+        /// <param name="format">Return string culture format</param>         
         /// <returns>A human readable string</returns>
         /// <remarks>Adapted from https://stackoverflow.com/questions/281640/how-do-i-get-a-human-readable-file-size-in-bytes-abbreviation-using-net </remarks>
         public static string ToBytesString(this ulong byteCount, string format = "N3")
@@ -127,6 +129,7 @@ namespace chia.dotnet
         /// Format a number of bytes in human readable format 
         /// </summary>
         /// <param name="byteCount">The number of bytes</param>
+        /// <param name="format">Return string culture format</param>         
         /// <returns>A human readable string</returns>
         public static string ToBytesString(this uint byteCount, string format = "N3")
         {
@@ -137,6 +140,7 @@ namespace chia.dotnet
         /// Format a number of bytes in human readable format 
         /// </summary>
         /// <param name="byteCount">The number of bytes</param>
+        /// <param name="format">Return string culture format</param>
         /// <returns>A human readable string</returns>
         public static string ToBytesString(this int byteCount, string format = "N3")
         {
@@ -147,6 +151,7 @@ namespace chia.dotnet
         /// Format a number of bytes in human readable format 
         /// </summary>
         /// <param name="byteCount">The number of bytes</param>
+        /// <param name="format">Return string culture format</param>
         /// <returns>A human readable string</returns>
         public static string ToBytesString(this long byteCount, string format = "N3")
         {
@@ -157,6 +162,7 @@ namespace chia.dotnet
         /// Format a number of bytes in human readable format 
         /// </summary>
         /// <param name="byteCount">The number of bytes</param>
+        /// <param name="format">Return string culture format</param>
         /// <returns>A human readable string</returns>
         public static string ToBytesString(this double byteCount, string format = "N3")
         {

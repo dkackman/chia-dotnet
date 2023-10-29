@@ -94,6 +94,7 @@ namespace chia.dotnet
         /// <param name="start">Start height</param>
         /// <param name="end">End Height - non-inclusive</param>
         /// <param name="excludeHeaderhash">Flag indicating whether to include the header hash in the result or not</param>
+        /// <param name="excludeReorged"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="FullBlock"/>s</returns>
         public async Task<IEnumerable<FullBlock>> GetBlocks(uint start, uint end, bool? excludeHeaderhash = null, bool? excludeReorged = null, CancellationToken cancellationToken = default)
@@ -147,7 +148,7 @@ namespace chia.dotnet
         /// <summary>
         /// Estimate a spend fee
         /// </summary>
-        /// <param name="spendBundle">The spend bundle to esimtate</param>
+        /// <param name="cost"></param>
         /// <param name="targetTimes">Array of target times</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Fee estimate details</returns>

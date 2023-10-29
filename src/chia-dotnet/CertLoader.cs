@@ -31,20 +31,35 @@ namespace chia.dotnet
 
             using X509Certificate2 cert = new(certPath);
             using StreamReader streamReader = new(keyPath);
+            using var rsa = GetPrivateKey(streamReader.ReadToEnd());
+            using var certWithKey = cert.CopyWithPrivateKey(rsa);
 
-            var base64 = new StringBuilder(streamReader.ReadToEnd())
+            var ephemeralX509Cert = new X509Certificate2(certWithKey.Export(X509ContentType.Pkcs12));
+            return new(ephemeralX509Cert);
+        }
+
+        private static RSA GetPrivateKey(string rawKey)
+        {
+            var base64 = new StringBuilder(rawKey)
                 .Replace("-----BEGIN RSA PRIVATE KEY-----", string.Empty)
                 .Replace("-----END RSA PRIVATE KEY-----", string.Empty)
-                .Replace(Environment.NewLine, string.Empty)
-                .ToString();
+                .Replace("-----BEGIN PRIVATE KEY-----", string.Empty)
+                .Replace("-----END PRIVATE KEY-----", string.Empty)
+                .ToString()
+                .Trim();
 
-            using var rsa = RSA.Create();
-            rsa.ImportRSAPrivateKey(Convert.FromBase64String(base64), out _);
+            var keyBytes = Convert.FromBase64String(base64);
+            var rsa = RSA.Create();
+            if (rawKey.StartsWith("-----BEGIN RSA PRIVATE KEY-----", StringComparison.InvariantCulture))
+            {
+                rsa.ImportRSAPrivateKey(keyBytes, out _);
+            }
+            else
+            {
+                rsa.ImportPkcs8PrivateKey(keyBytes, out _);
+            }
 
-            using var certWithKey = cert.CopyWithPrivateKey(rsa);
-            var ephemeralCert = new X509Certificate2(certWithKey.Export(X509ContentType.Pkcs12));
-
-            return new(ephemeralCert);
+            return rsa;
         }
     }
 }

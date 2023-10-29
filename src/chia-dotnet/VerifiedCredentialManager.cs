@@ -112,7 +112,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="root"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref="IDictionary{string, string}"/></returns>
+        /// <returns>A Dictionary of strings</returns>
         public async Task<IDictionary<string, string>> GetProofsForRoot(string root, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();

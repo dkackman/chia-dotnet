@@ -60,6 +60,7 @@ namespace chia.dotnet
         /// Validates that <see cref="WalletId"/> exists and is of the correct <see cref="WalletType"/>
         /// </summary>
         /// <param name="walletType">The expected type of wallet</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>true if the wallet is of the expected type</returns>
         /// <remarks>Throws an exception if the wallet does not exist</remarks>
         protected async Task Validate(WalletType walletType, CancellationToken cancellationToken)
@@ -74,6 +75,7 @@ namespace chia.dotnet
         /// <summary>
         /// Retrieves information about this wallet
         /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns><see cref="WalletInfo"/> and the wallet pubkey fingerprint</returns>
         /// <remarks>Throws an exception if the wallet does not exist</remarks>
         public async Task<WalletInfo> GetWalletInfo(CancellationToken cancellationToken = default)
@@ -208,6 +210,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get the number of transactions
         /// </summary>
+        /// <param name="typeFilter"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The number of transactions</returns>
         public async Task<uint> GetTransactionCount(TransactionTypeFilter? typeFilter = null, CancellationToken cancellationToken = default)

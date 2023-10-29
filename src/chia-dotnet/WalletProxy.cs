@@ -86,6 +86,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get the list of wallets
         /// </summary>
+        /// <param name="includeData"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The list of wallets</returns>
         public async Task<(IEnumerable<WalletInfo> Wallets, uint Fingerprint)> GetWallets(bool includeData = true, CancellationToken cancellationToken = default)
@@ -102,6 +103,7 @@ namespace chia.dotnet
         /// Get the list of wallets
         /// </summary>
         /// <param name="type">Return only wallets of this type</param>
+        /// <param name="includeData"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The list of wallets</returns>
         public async Task<IEnumerable<WalletInfo>> GetWallets(WalletType type, bool includeData = true, CancellationToken cancellationToken = default)
@@ -231,7 +233,7 @@ namespace chia.dotnet
         /// <summary>
         /// Pushes a list of transactions to the mempool and blockchain. 
         /// </summary>
-        /// <param name="spendBundle"></param>
+        /// <param name="transactions"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable task</returns>
         public async Task PushTransactions(IEnumerable<TransactionRecord> transactions, CancellationToken cancellationToken = default)
@@ -428,7 +430,7 @@ namespace chia.dotnet
         /// <summary>
         /// Get info about an NFT
         /// </summary>
-        /// <param name="didId">The coin id</param>
+        /// <param name="coinId"></param>
         /// <param name="latest">Get latest NFT</param>
         /// <param name="ignoreSizeLimit"></param>
         /// <param name="reusePuzhash"></param>
@@ -473,7 +475,9 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="backupDIDs">Backup DIDs</param>
         /// <param name="numOfBackupIdsNeeded">The number of back ids needed to create the wallet</param>
-        /// <param name="amount">The amount to put in the wallet (in units of mojos)</param>           
+        /// <param name="name"></param>           
+        /// <param name="metaData"></param>           
+        /// <param name="fee"></param>           
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
         public async Task<(WalletType Type, string myDID, uint walletId)> CreateDIDWallet(IEnumerable<string> backupDIDs, ulong numOfBackupIdsNeeded, string name, IDictionary<string, string>? metaData = null, ulong fee = 0, CancellationToken cancellationToken = default)
@@ -505,11 +509,12 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Recover a DID wallet
+        /// 
         /// </summary>
-        /// <param name="filename">Filename to recover from</param>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>Information about the wallet</returns>
+        /// <param name="backupData"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public async Task<(WalletType Type, string myDID, uint walletId, string coinName, Coin coin, string newPuzHash, string pubkey, IEnumerable<byte> backupDIDs, ulong numVerificationsRequired)>
             RecoverDIDWallet(string backupData, CancellationToken cancellationToken = default)
         {
@@ -959,6 +964,7 @@ namespace chia.dotnet
         /// <param name="walletId"></param>
         /// <param name="limit"></param>
         /// <param name="offset"></param>
+        /// <param name="includeTotalCount"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns><see cref="IEnumerable{CoinRecord}"/></returns>
         public async Task<(IEnumerable<CoinRecord> CoinRecords, int? TotalCount)> GetCoinRecords(
@@ -1052,7 +1058,7 @@ namespace chia.dotnet
         /// <summary>
         /// Set auto claim merkle coins config
         /// </summary>
-        /// <param name="enable"></param>
+        /// <param name="enabled"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns><see cref="AutoClaimSettings"/></returns>
         public async Task<AutoClaimSettings> SetAutoClaim(bool enabled, CancellationToken cancellationToken = default)

@@ -123,7 +123,9 @@ namespace chia.dotnet
             return (Converters.ToObject<SpendBundle>(response.spend_bundle), response.nft_id);
         }
 
-        /// <param name="royaltyAddress"></param>
+        /// <summary>
+        /// Mints an set NFTs in bulk
+        /// </summary>
         /// <param name="info">A list of dicts containing the metadata for each NFT to be minted</param>
         /// <param name="reusePuzhash"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>

@@ -35,6 +35,9 @@ namespace chia.dotnet
         /// <summary>
         /// Retrieves ip addresses of peers that have connected after a given time
         /// </summary>
+        /// <param name="after"></param>
+        /// <param name="offset"></param>
+        /// <param name="limit"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>IP addresses</returns>
         public async Task<(IEnumerable<string> ips, int total)> GetIPs(DateTime after, int offset = 0, int limit = 10000, CancellationToken cancellationToken = default)

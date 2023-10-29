@@ -206,13 +206,18 @@ namespace chia.dotnet
             await WalletProxy.SendMessage("cancel_offer", data, cancellationToken).ConfigureAwait(false);
         }
 
+
         /// <summary>
         /// Takes an offer
         /// </summary>
-        /// <param name="offer">The bech32 encoded offer</param>
-        /// <param name="fee">Transaction fee</param>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The associated trade record</returns>
+        /// <param name="offer"></param>
+        /// <param name="solver"></param>
+        /// <param name="minCoinAmount"></param>
+        /// <param name="maxCoinAmount"></param>
+        /// <param name="reusePuzhash"></param>
+        /// <param name="fee"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns><see cref="TradeRecord"/></returns>
         public async Task<TradeRecord> TakeOffer(string offer, IDictionary<string, object>? solver = null, ulong minCoinAmount = 0, ulong maxCoinAmount = 0, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -261,6 +266,7 @@ namespace chia.dotnet
         /// <param name="validateOnly">Only validate the offer contents. Do not create.</param>   
         /// <param name="solver"></param>
         /// <param name="driver">Additional data about the puzzle</param>
+        /// <param name="reusePuzhash"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task<OfferRecord> CreateOffer(IDictionary<uint, long> walletIdsAndMojoAmounts, ulong minCoinAmount = 0, ulong maxCoinAmount = 0, bool validateOnly = false, IDictionary<string, string>? driver = null, IDictionary<string, string>? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
@@ -287,8 +293,12 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="offer">Summary of the offer to create</param>
         /// <param name="fee">Transaction fee for offer creation</param>   
+        /// <param name="minCoinAmount"></param>   
+        /// <param name="maxCoinAmount"></param>   
         /// <param name="validateOnly">Only validate the offer contents. Do not create.</param>   
         /// <param name="driver">Additional data about the puzzle</param>
+        /// <param name="solver"></param>
+        /// <param name="reusePuzhash"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task<OfferRecord> CreateOffer(OfferSummary offer, ulong minCoinAmount = 0, ulong maxCoinAmount = 0, bool validateOnly = false, IDictionary<string, string>? driver = null, IDictionary<string, string>? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)

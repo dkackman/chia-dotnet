@@ -31,7 +31,7 @@ namespace chia.dotnet
         /// <summary>
         /// Moving any "pending approval" CR-CATs into the spendable balance of the wallet.
         /// </summary>
-        /// <param name="amount">The amount to put in the wallet (in units of mojos)</param>
+        /// <param name="minAmountToClaim">The minimum amount to claim (in units of mojos)</param>
         /// <param name="reusePuzhash"></param>
         /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
