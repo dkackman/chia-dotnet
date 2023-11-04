@@ -121,7 +121,7 @@ namespace chia.dotnet
             ulong MempoolSize,
             ulong MempoolMaxSize,
             bool Synced,
-            ulong PeakHeight,
+            uint PeakHeight,
             ulong LastPeakTimestamp,
             ulong UtcTimestamp
             )> GetFeeEstimate(SpendBundle spendBundle, IEnumerable<int> targetTimes, CancellationToken cancellationToken = default)

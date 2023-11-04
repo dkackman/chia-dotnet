@@ -34,7 +34,8 @@ namespace chia.dotnet
             using var rsa = DeserializePrivateKey(streamReader.ReadToEnd());
             using var certWithKey = cert.CopyWithPrivateKey(rsa);
 
-            var ephemeralX509Cert = new X509Certificate2(certWithKey.Export(X509ContentType.Pkcs12));
+            var keyBytes = certWithKey.Export(X509ContentType.Pkcs12);
+            var ephemeralX509Cert = new X509Certificate2(keyBytes);
             return new(ephemeralX509Cert);
         }
 

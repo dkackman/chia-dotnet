@@ -16,7 +16,7 @@ namespace chia.dotnet
         public int LocalPort { get; init; }
         public string NodeId { get; init; } = string.Empty;
         public string PeakHash { get; init; } = string.Empty;
-        public ulong? PeakHeight { get; init; }
+        public uint? PeakHeight { get; init; }
         public ulong? PeakWeight { get; init; }
         public string PeerHost { get; init; } = string.Empty;
         public int PeerPort { get; init; }
