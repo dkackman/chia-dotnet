@@ -152,15 +152,22 @@ namespace chia.dotnet
         /// <param name="targetTimes">Array of target times</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Fee estimate details</returns>
-        public async Task<(IEnumerable<int> estimates,
+        public async Task<(
+            IEnumerable<ulong> estimates,
             IEnumerable<int> targetTimes,
-            ulong currentFeeRate,
+            float currentFeeRate,
             ulong mempoolSize,
+            ulong mempoolFees,
+            int numSpends,
             ulong mempoolMaxSize,
             bool synced,
-            ulong peakHeight,
+            uint peakHeight,
             ulong lastPeakTimestamp,
-            ulong utcTimestamp
+            ulong nodeTimeUtc,
+            ulong lastBlockCost,
+            ulong feesLastBlock,
+            float feeRateLastBlock,
+            uint lastTxBlockHeight
             )> GetFeeEstimate(ulong cost, IEnumerable<int> targetTimes, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -170,15 +177,21 @@ namespace chia.dotnet
             var response = await SendMessage("get_fee_estimate", data, cancellationToken).ConfigureAwait(false);
 
             return (
-                response.estimates,
-                response.target_times,
+                Converters.ToEnumerable<ulong>(response.estimates),
+                Converters.ToEnumerable<int>(response.target_times),
                 response.current_fee_rate,
                 response.mempool_size,
+                response.mempool_fees,
+                response.num_spends,
                 response.mempool_max_size,
                 response.full_node_synced,
                 response.peak_height,
                 response.last_peak_timestamp,
-                response.node_time_utc
+                response.node_time_utc,
+                response.last_block_cost,
+                response.fees_last_block,
+                response.fee_rate_last_block,
+                response.last_tx_block_height
                 );
         }
 

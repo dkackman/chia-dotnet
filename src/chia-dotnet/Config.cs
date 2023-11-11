@@ -46,6 +46,7 @@ namespace chia.dotnet
 
             UriBuilder builder = new();
             dynamic ssl;
+            var d = (IDictionary<string, object>)Contents;
 
             // any daemon connection uses wss:
             if (serviceName == "ui") // this is the daemon that the ui connects to
@@ -63,12 +64,27 @@ namespace chia.dotnet
                 builder.Port = Convert.ToInt32(Contents.daemon_port);
                 ssl = Contents.daemon_ssl;
             }
+            else if (serviceName is "data_layer" && !d.ContainsKey(serviceName))
+            {
+                // data_layer is not in the config by dfault but might have been added (DLaaS)
+                // so we're gonna put it together based on defaults and what the ui uses
+                builder.Scheme = "https";
+                dynamic section = Contents.ui;
+                builder.Host = section.daemon_host;
+                builder.Port = 8562; //default data_layer port
+                ssl = section.daemon_ssl;
+
+                // use the same folder strucutre but where we would expect the data_layer certs
+                string crt = ssl.private_crt;
+                string key = ssl.private_key;
+                ssl.private_crt = crt.Replace("ui", "data_layer").Replace("daemon", "data_layer");
+                ssl.private_key = key.Replace("ui", "data_layer").Replace("daemon", "data_layer");
+            }
             else // all other endpoints are https direct connections
             {
                 builder.Scheme = "https";
                 builder.Host = Contents.self_hostname;
 
-                var d = (IDictionary<string, object>)Contents;
                 if (!d.ContainsKey(serviceName))
                 {
                     throw new InvalidOperationException($"A configuration section with the name {serviceName} cannot be found");

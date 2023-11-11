@@ -301,19 +301,18 @@ namespace chia.dotnet.tests
             Assert.NotNull(returnValue);
         }
 
-        [Fact(Skip = "Requires review")]
+        [Fact]
         public async Task GetFeeEstimate()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            SpendBundle spendBundle = null;
-            IEnumerable<int> targetTimes = null;
+            IEnumerable<int> targetTimes = new List<int>() { 300 };
 
             // Act
-            var (Estimates, TargetTimes, CurrentFeeRate, MempoolSize, MempoolMaxSize, Synced, PeakHeight, LastPeakTimestamp, UtcTimestamp) = await FullNode.GetFeeEstimate(spendBundle: spendBundle, targetTimes: targetTimes, cancellationToken: cts.Token);
+            var fees = await FullNode.GetFeeEstimate(10000, targetTimes: targetTimes, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(TargetTimes.ToList());
+            Assert.NotNull(fees.estimates);
         }
 
         [Fact(Skip = "Requires review")]
