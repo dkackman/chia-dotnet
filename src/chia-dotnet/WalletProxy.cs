@@ -24,6 +24,29 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Gets basic info about a pool that is used for pool wallet creation
+        /// </summary>
+        /// <param name="poolUri">The uri of the pool (not including 'pool_info')</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref="PoolInfo"/> that can be used to create a pool wallet and join this pool</returns>
+        public static async Task<PoolInfo> GetPoolInfo(Uri poolUri, CancellationToken cancellationToken = default)
+        {
+            using var httpClient = new HttpClient(new SocketsHttpHandler(), true);
+            using var response = await httpClient
+                .GetAsync(new Uri(poolUri, "pool_info"), cancellationToken)
+                .ConfigureAwait(false);
+            using var responseContent = response
+                .EnsureSuccessStatusCode()
+                .Content;
+
+            var responseJson = await responseContent
+                .ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
+
+            return responseJson.ToObject<PoolInfo>() ?? new PoolInfo();
+        }
+
+        /// <summary>
         /// Will wait until <see cref="GetSyncStatus(CancellationToken)"/> indicates 
         /// that the wallet has synced or until the cancellation token is canceled
         /// </summary>
@@ -552,29 +575,6 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Gets basic info about a pool that is used for pool wallet creation
-        /// </summary>
-        /// <param name="poolUri">The uri of the pool (not including 'pool_info')</param>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref="PoolInfo"/> that can be used to create a pool wallet and join this pool</returns>
-        public static async Task<PoolInfo> GetPoolInfo(Uri poolUri, CancellationToken cancellationToken = default)
-        {
-            using var httpClient = new HttpClient(new SocketsHttpHandler(), true);
-            using var response = await httpClient
-                .GetAsync(new Uri(poolUri, "pool_info"), cancellationToken)
-                .ConfigureAwait(false);
-            using var responseContent = response
-                .EnsureSuccessStatusCode()
-                .Content;
-
-            var responseJson = await responseContent
-                .ReadAsStringAsync(cancellationToken)
-                .ConfigureAwait(false);
-
-            return responseJson.ToObject<PoolInfo>() ?? new PoolInfo();
-        }
-
-        /// <summary>
         /// Creates a new pool wallet
         /// </summary>
         /// <param name="initialTargetState">The desired intiial state of the wallet</param>
@@ -622,7 +622,6 @@ namespace chia.dotnet
         public async Task<(ulong FarmedAmount, ulong FarmerRewardAmount, ulong FeeAmount, uint LastHeightFarmed, ulong PoolRewardAmount)> GetFarmedAmount(CancellationToken cancellationToken = default)
         {
             var response = await SendMessage("get_farmed_amount", cancellationToken).ConfigureAwait(false);
-
             return (
                 response.farmed_amount,
                 response.farmer_reward_amount,
@@ -730,7 +729,6 @@ namespace chia.dotnet
             data.include_spent_coins = includeSpentCoins;
             data.start_height = startHeight;
             data.end_height = endHeight;
-
             return await SendMessage<IEnumerable<CoinRecord>>("get_coin_records_by_names", data, "coin_records", cancellationToken).ConfigureAwait(false);
         }
 
@@ -997,7 +995,6 @@ namespace chia.dotnet
             data.amount_range = amountRange;
             data.confirmed_range = confirmedRange;
             data.spent_range = spentRange;
-
             data.offset = offset;
             data.order = order;
             data.reverse = reverse;
@@ -1065,7 +1062,6 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.enabled = enabled;
-
             return await SendMessage<AutoClaimSettings>("set_auto_claim", data, "", cancellationToken).ConfigureAwait(false);
         }
 

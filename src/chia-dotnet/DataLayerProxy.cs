@@ -38,7 +38,7 @@ namespace chia.dotnet
             data.amount = amount;
             data.urls = urls.ToList();
             data.fee = fee;
-            await SendMessage("add_mirror", "data", cancellationToken).ConfigureAwait(false);
+            await SendMessage("add_mirror", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace chia.dotnet
             data.ids = ids;
             data.foldername = foldername;
             data.overwrite = overwrite;
-            await SendMessage("add_missing_files", "data", cancellationToken).ConfigureAwait(false);
+            await SendMessage("add_missing_files", data, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
