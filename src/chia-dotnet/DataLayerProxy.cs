@@ -178,15 +178,13 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="id">Id</param>
         /// <param name="hash">Hash</param>
-        /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns></returns>
-        public async Task<IEnumerable<InternalNode>> GetAncestors(string id, string hash, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<InternalNode>> GetAncestors(string id, string hash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.id = id;
             data.hash = hash;
-            data.fee = fee;
             return await SendMessage<IEnumerable<InternalNode>>("get_ancestors", data, "ancestors", cancellationToken).ConfigureAwait(false);
         }
 
@@ -195,15 +193,13 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="id">Id</param>
         /// <param name="rootHash">Root Hash</param>
-        /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns></returns>
-        public async Task<IEnumerable<string>> GetKeys(string id, string rootHash, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<string>> GetKeys(string id, string? rootHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.id = id;
             data.root_hash = rootHash;
-            data.fee = fee;
             return await SendMessage<IEnumerable<string>>("get_keys", data, "keys", cancellationToken).ConfigureAwait(false);
         }
 
@@ -330,12 +326,12 @@ namespace chia.dotnet
         /// <summary>
         /// Get the value for a given id/key pair.
         /// </summary>
-        /// <param name="rootHash"></param>
-        /// <param name="key"></param>
         /// <param name="id"></param>
+        /// <param name="key"></param>
+        /// <param name="rootHash"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns><see cref="string"/></returns>
-        public async Task<string> GetValue(string rootHash, string key, string id, CancellationToken cancellationToken = default)
+        public async Task<string> GetValue(string id, string key, string? rootHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.id = id;
@@ -412,7 +408,7 @@ namespace chia.dotnet
         /// List current subscriptions.
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>A list of <see cref="String"/></returns>
+        /// <returns>A list of <see cref="string"/></returns>
         public async Task<IEnumerable<string>> Subscriptions(CancellationToken cancellationToken = default)
         {
             return await SendMessage<IEnumerable<string>>("subscriptions", null, "store_ids", cancellationToken).ConfigureAwait(false);
@@ -475,7 +471,6 @@ namespace chia.dotnet
         {
             dynamic data = new ExpandoObject();
             data.fingerprint = fingerprint;
-
             await SendMessage("wallet_log_in", data, cancellationToken).ConfigureAwait(false);
         }
     }

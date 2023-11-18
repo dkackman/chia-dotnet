@@ -103,7 +103,7 @@ namespace chia.dotnet.bech32
         {
             return string.IsNullOrWhiteSpace(hex)
                             ? Empty
-                            : !hex.StartsWith("0x")
+                            : !hex.StartsWith("0x", StringComparison.OrdinalIgnoreCase)
                             ? new HexBytes(hex, HexMate.Convert.FromHexString(hex.AsSpan()))
                             : new HexBytes(hex[2..], HexMate.Convert.FromHexString(hex.AsSpan()[2..]));
         }
@@ -117,7 +117,7 @@ namespace chia.dotnet.bech32
             }
 
             var bytes = new byte[hex.Length / 2].AsSpan();
-            var s = !hex.StartsWith("0x") ? hex.AsSpan() : hex.AsSpan()[2..];
+            var s = !hex.StartsWith("0x", StringComparison.OrdinalIgnoreCase) ? hex.AsSpan() : hex.AsSpan()[2..];
             if (!HexMate.Convert.TryFromHexChars(s, bytes, out var written))
             {
                 result = Empty;
