@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace chia.dotnet
 {
     /// <summary>
     /// Information about how to connect and authenticate with the RPC endpoint
     /// </summary>
+    /// <remarks>Using the <see cref="CertPath"/>/<see cref="KeyPath"/> vs <see cref="Cert"/>/<see cref="Key"/> are independent of each other</remarks>
     public record EndpointInfo
     {
         /// <summary>
@@ -21,5 +23,26 @@ namespace chia.dotnet
         /// The full file system path to the base64 encoded RSA private key to authenticate with the endpoint (.key)
         /// </summary>
         public string KeyPath { get; init; } = string.Empty;
+
+        /// <summary>
+        /// The loaded cert as base 64 encoded blob  
+        /// </summary>
+        public string Cert { get; init; } = string.Empty;
+
+        /// <summary>
+        /// The loaded key as base 64 encoded blob  
+        /// </summary>
+
+        public string Key { get; init; } = string.Empty;
+
+
+        internal X509Certificate2Collection GetCert()
+        {
+            // if the cert blobs are empty get certs from the file paths
+            // otherwise use the blobs
+            return string.IsNullOrEmpty(Cert) && string.IsNullOrEmpty(Key)
+                ? CertLoader.GetCertFromFiles(CertPath, KeyPath)
+                : CertLoader.DeserializeCert(Cert, Key);
+        }
     }
 }

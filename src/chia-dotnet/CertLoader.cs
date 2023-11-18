@@ -17,7 +17,7 @@ namespace chia.dotnet
         /// <param name="certPath">The full path the public cert (.crt)</param>
         /// <param name="keyPath">The full path to the RSA encoded private key (.key)</param>
         /// <returns>An ephemeral certificate that can be used for WebSocket authentication</returns>
-        public static X509Certificate2Collection GetCerts(string certPath, string keyPath)
+        public static X509Certificate2Collection GetCertFromFiles(string certPath, string keyPath)
         {
             if (!File.Exists(certPath))
             {
@@ -29,9 +29,27 @@ namespace chia.dotnet
                 throw new FileNotFoundException($"key file {keyPath} not found");
             }
 
-            using X509Certificate2 cert = new(certPath);
-            using StreamReader streamReader = new(keyPath);
-            using var rsa = DeserializePrivateKey(streamReader.ReadToEnd());
+            using StreamReader certStreamReader = new(certPath);
+            using StreamReader keyStreamReader = new(keyPath);
+
+            return DeserializeCert(certStreamReader.ReadToEnd(), keyStreamReader.ReadToEnd());
+        }
+
+
+        public static X509Certificate2Collection DeserializeCert(string certBlob, string keyBlob)
+        {
+            if (string.IsNullOrEmpty(certBlob))
+            {
+                throw new ArgumentNullException(nameof(certBlob));
+            }
+
+            if (string.IsNullOrEmpty(keyBlob))
+            {
+                throw new ArgumentNullException(nameof(keyBlob));
+            }
+
+            using X509Certificate2 cert = new(Encoding.UTF8.GetBytes(certBlob));
+            using var rsa = DeserializePrivateKey(keyBlob);
             using var certWithKey = cert.CopyWithPrivateKey(rsa);
 
             var keyBytes = certWithKey.Export(X509ContentType.Pkcs12);

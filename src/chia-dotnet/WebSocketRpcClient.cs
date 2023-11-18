@@ -59,7 +59,7 @@ namespace chia.dotnet
                 throw new InvalidOperationException("RpcClient connection is already open");
             }
 
-            _webSocket.Options.ClientCertificates = CertLoader.GetCerts(Endpoint.CertPath, Endpoint.KeyPath);
+            _webSocket.Options.ClientCertificates = Endpoint.GetCert();
 
             await _webSocket.ConnectAsync(Endpoint.Uri, cancellationToken).ConfigureAwait(false);
             _ = Task.Factory.StartNew(ReceiveLoop, _receiveCancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default).ConfigureAwait(false);

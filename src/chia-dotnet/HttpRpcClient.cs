@@ -27,7 +27,7 @@ namespace chia.dotnet
             Endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
 
             var handler = new SocketsHttpHandler();
-            handler.SslOptions.ClientCertificates = CertLoader.GetCerts(Endpoint.CertPath, Endpoint.KeyPath);
+            handler.SslOptions.ClientCertificates = endpoint.GetCert();
             handler.SslOptions.RemoteCertificateValidationCallback += ValidateServerCertificate;
 
             _httpClient = new(handler, true)

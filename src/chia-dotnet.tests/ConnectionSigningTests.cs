@@ -24,5 +24,17 @@ namespace chia.dotnet.tests
             _ = await Assert.ThrowsAsync<FileNotFoundException>(
                 async () => await rpc.Connect());
         }
+
+        [Fact]
+        public void CanLoadCertFromFile()
+        {
+            var endpoint = new EndpointInfo()
+            {
+                CertPath = @"C:\Users\don\.chia\mainnet\config\ssl\data_layer\private_data_layer.crt",
+                KeyPath = @"C:\Users\don\.chia\mainnet\config\ssl\data_layer\private_data_layer.key"
+            };
+            var certs = endpoint.GetCert();
+            Assert.NotNull(certs);
+        }
     }
 }
