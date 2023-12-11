@@ -32,11 +32,10 @@ namespace chia.dotnet
         /// <summary>
         /// The loaded key as base 64 encoded blob  
         /// </summary>
-
         public string Key { get; init; } = string.Empty;
 
 
-        internal X509Certificate2Collection GetCert()
+        public X509Certificate2Collection GetCert()
         {
             // if the cert blobs are empty get certs from the file paths
             // otherwise use the blobs

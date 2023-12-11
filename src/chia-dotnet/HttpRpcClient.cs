@@ -15,6 +15,7 @@ namespace chia.dotnet
     public class HttpRpcClient : IRpcClient
     {
         private readonly HttpClient _httpClient;
+        private readonly SocketsHttpHandler? _httpHandler;
 
         private bool disposedValue;
 
@@ -26,15 +27,52 @@ namespace chia.dotnet
         {
             Endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
 
-            var handler = new SocketsHttpHandler();
-            handler.SslOptions.ClientCertificates = endpoint.GetCert();
-            handler.SslOptions.RemoteCertificateValidationCallback += ValidateServerCertificate;
+            _httpHandler = new SocketsHttpHandler();
+            _httpHandler.SslOptions.ClientCertificates = endpoint.GetCert();
+            _httpHandler.SslOptions.RemoteCertificateValidationCallback += ValidateServerCertificate;
 
-            _httpClient = new(handler, true)
+            _httpClient = new(_httpHandler)
             {
                 BaseAddress = Endpoint.Uri
             };
         }
+
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="endpoint">Details of the service endpoint</param>        
+        /// <param name="delegatingHandler">A handler created elsewhere that may have things like resiliency chains</param>
+        public HttpRpcClient(EndpointInfo endpoint, DelegatingHandler delegatingHandler)
+        {
+            Endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
+
+            _httpHandler = new SocketsHttpHandler()
+            {
+                PooledConnectionLifetime = TimeSpan.FromMinutes(15)
+            };
+            _httpHandler.SslOptions.ClientCertificates = endpoint.GetCert();
+            _httpHandler.SslOptions.RemoteCertificateValidationCallback += ValidateServerCertificate;
+
+            delegatingHandler.InnerHandler = _httpHandler;
+
+            _httpClient = new(delegatingHandler)
+            {
+                BaseAddress = Endpoint.Uri
+            };
+        }
+
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="endpoint">Details of the service endpoint</param>        
+        /// <param name="httpClient">A fully configured client, including ssl certs, in tended for use with IHttpClientFactory</param>
+        public HttpRpcClient(EndpointInfo endpoint, HttpClient httpClient)
+        {
+            Endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
+
+            _httpClient = httpClient;
+        }
+
 
         /// <summary>
         /// Details of the RPC service endpoint
@@ -125,7 +163,8 @@ namespace chia.dotnet
             {
                 if (disposing)
                 {
-                    _httpClient.Dispose();
+                    _httpClient?.Dispose();
+                    _httpHandler?.Dispose();
                 }
 
                 disposedValue = true;
