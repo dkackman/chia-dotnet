@@ -1715,6 +1715,19 @@ references:
   commentId: T:chia.dotnet.Config
   fullName: chia.dotnet.Config
   nameWithType: Config
+- uid: chia.dotnet.Config.ChiaRootPath
+  name: ChiaRootPath
+  href: api/chia.dotnet.Config.html#chia_dotnet_Config_ChiaRootPath
+  commentId: P:chia.dotnet.Config.ChiaRootPath
+  fullName: chia.dotnet.Config.ChiaRootPath
+  nameWithType: Config.ChiaRootPath
+- uid: chia.dotnet.Config.ChiaRootPath*
+  name: ChiaRootPath
+  href: api/chia.dotnet.Config.html#chia_dotnet_Config_ChiaRootPath_
+  commentId: Overload:chia.dotnet.Config.ChiaRootPath
+  isSpec: "True"
+  fullName: chia.dotnet.Config.ChiaRootPath
+  nameWithType: Config.ChiaRootPath
 - uid: chia.dotnet.Config.Contents
   name: Contents
   href: api/chia.dotnet.Config.html#chia_dotnet_Config_Contents
@@ -2678,12 +2691,12 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DataLayerProxy.DeleteMirror
   nameWithType: DataLayerProxy.DeleteMirror
-- uid: chia.dotnet.DataLayerProxy.GetAncestors(System.String,System.String,System.UInt64,System.Threading.CancellationToken)
-  name: GetAncestors(String, String, UInt64, CancellationToken)
-  href: api/chia.dotnet.DataLayerProxy.html#chia_dotnet_DataLayerProxy_GetAncestors_System_String_System_String_System_UInt64_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.DataLayerProxy.GetAncestors(System.String,System.String,System.UInt64,System.Threading.CancellationToken)
-  fullName: chia.dotnet.DataLayerProxy.GetAncestors(System.String, System.String, System.UInt64, System.Threading.CancellationToken)
-  nameWithType: DataLayerProxy.GetAncestors(String, String, UInt64, CancellationToken)
+- uid: chia.dotnet.DataLayerProxy.GetAncestors(System.String,System.String,System.Threading.CancellationToken)
+  name: GetAncestors(String, String, CancellationToken)
+  href: api/chia.dotnet.DataLayerProxy.html#chia_dotnet_DataLayerProxy_GetAncestors_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DataLayerProxy.GetAncestors(System.String,System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DataLayerProxy.GetAncestors(System.String, System.String, System.Threading.CancellationToken)
+  nameWithType: DataLayerProxy.GetAncestors(String, String, CancellationToken)
 - uid: chia.dotnet.DataLayerProxy.GetAncestors*
   name: GetAncestors
   href: api/chia.dotnet.DataLayerProxy.html#chia_dotnet_DataLayerProxy_GetAncestors_
@@ -2691,12 +2704,12 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DataLayerProxy.GetAncestors
   nameWithType: DataLayerProxy.GetAncestors
-- uid: chia.dotnet.DataLayerProxy.GetKeys(System.String,System.String,System.UInt64,System.Threading.CancellationToken)
-  name: GetKeys(String, String, UInt64, CancellationToken)
-  href: api/chia.dotnet.DataLayerProxy.html#chia_dotnet_DataLayerProxy_GetKeys_System_String_System_String_System_UInt64_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.DataLayerProxy.GetKeys(System.String,System.String,System.UInt64,System.Threading.CancellationToken)
-  fullName: chia.dotnet.DataLayerProxy.GetKeys(System.String, System.String, System.UInt64, System.Threading.CancellationToken)
-  nameWithType: DataLayerProxy.GetKeys(String, String, UInt64, CancellationToken)
+- uid: chia.dotnet.DataLayerProxy.GetKeys(System.String,System.String,System.Threading.CancellationToken)
+  name: GetKeys(String, String, CancellationToken)
+  href: api/chia.dotnet.DataLayerProxy.html#chia_dotnet_DataLayerProxy_GetKeys_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DataLayerProxy.GetKeys(System.String,System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DataLayerProxy.GetKeys(System.String, System.String, System.Threading.CancellationToken)
+  nameWithType: DataLayerProxy.GetKeys(String, String, CancellationToken)
 - uid: chia.dotnet.DataLayerProxy.GetKeys*
   name: GetKeys
   href: api/chia.dotnet.DataLayerProxy.html#chia_dotnet_DataLayerProxy_GetKeys_
@@ -3682,6 +3695,19 @@ references:
   commentId: T:chia.dotnet.EndpointInfo
   fullName: chia.dotnet.EndpointInfo
   nameWithType: EndpointInfo
+- uid: chia.dotnet.EndpointInfo.Cert
+  name: Cert
+  href: api/chia.dotnet.EndpointInfo.html#chia_dotnet_EndpointInfo_Cert
+  commentId: P:chia.dotnet.EndpointInfo.Cert
+  fullName: chia.dotnet.EndpointInfo.Cert
+  nameWithType: EndpointInfo.Cert
+- uid: chia.dotnet.EndpointInfo.Cert*
+  name: Cert
+  href: api/chia.dotnet.EndpointInfo.html#chia_dotnet_EndpointInfo_Cert_
+  commentId: Overload:chia.dotnet.EndpointInfo.Cert
+  isSpec: "True"
+  fullName: chia.dotnet.EndpointInfo.Cert
+  nameWithType: EndpointInfo.Cert
 - uid: chia.dotnet.EndpointInfo.CertPath
   name: CertPath
   href: api/chia.dotnet.EndpointInfo.html#chia_dotnet_EndpointInfo_CertPath
@@ -3695,6 +3721,32 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.EndpointInfo.CertPath
   nameWithType: EndpointInfo.CertPath
+- uid: chia.dotnet.EndpointInfo.GetCert
+  name: GetCert()
+  href: api/chia.dotnet.EndpointInfo.html#chia_dotnet_EndpointInfo_GetCert
+  commentId: M:chia.dotnet.EndpointInfo.GetCert
+  fullName: chia.dotnet.EndpointInfo.GetCert()
+  nameWithType: EndpointInfo.GetCert()
+- uid: chia.dotnet.EndpointInfo.GetCert*
+  name: GetCert
+  href: api/chia.dotnet.EndpointInfo.html#chia_dotnet_EndpointInfo_GetCert_
+  commentId: Overload:chia.dotnet.EndpointInfo.GetCert
+  isSpec: "True"
+  fullName: chia.dotnet.EndpointInfo.GetCert
+  nameWithType: EndpointInfo.GetCert
+- uid: chia.dotnet.EndpointInfo.Key
+  name: Key
+  href: api/chia.dotnet.EndpointInfo.html#chia_dotnet_EndpointInfo_Key
+  commentId: P:chia.dotnet.EndpointInfo.Key
+  fullName: chia.dotnet.EndpointInfo.Key
+  nameWithType: EndpointInfo.Key
+- uid: chia.dotnet.EndpointInfo.Key*
+  name: Key
+  href: api/chia.dotnet.EndpointInfo.html#chia_dotnet_EndpointInfo_Key_
+  commentId: Overload:chia.dotnet.EndpointInfo.Key
+  isSpec: "True"
+  fullName: chia.dotnet.EndpointInfo.Key
+  nameWithType: EndpointInfo.Key
 - uid: chia.dotnet.EndpointInfo.KeyPath
   name: KeyPath
   href: api/chia.dotnet.EndpointInfo.html#chia_dotnet_EndpointInfo_KeyPath
@@ -5862,6 +5914,18 @@ references:
   commentId: M:chia.dotnet.HttpRpcClient.#ctor(chia.dotnet.EndpointInfo)
   fullName: chia.dotnet.HttpRpcClient.HttpRpcClient(chia.dotnet.EndpointInfo)
   nameWithType: HttpRpcClient.HttpRpcClient(EndpointInfo)
+- uid: chia.dotnet.HttpRpcClient.#ctor(chia.dotnet.EndpointInfo,System.Net.Http.DelegatingHandler)
+  name: HttpRpcClient(EndpointInfo, DelegatingHandler)
+  href: api/chia.dotnet.HttpRpcClient.html#chia_dotnet_HttpRpcClient__ctor_chia_dotnet_EndpointInfo_System_Net_Http_DelegatingHandler_
+  commentId: M:chia.dotnet.HttpRpcClient.#ctor(chia.dotnet.EndpointInfo,System.Net.Http.DelegatingHandler)
+  fullName: chia.dotnet.HttpRpcClient.HttpRpcClient(chia.dotnet.EndpointInfo, System.Net.Http.DelegatingHandler)
+  nameWithType: HttpRpcClient.HttpRpcClient(EndpointInfo, DelegatingHandler)
+- uid: chia.dotnet.HttpRpcClient.#ctor(chia.dotnet.EndpointInfo,System.Net.Http.HttpClient)
+  name: HttpRpcClient(EndpointInfo, HttpClient)
+  href: api/chia.dotnet.HttpRpcClient.html#chia_dotnet_HttpRpcClient__ctor_chia_dotnet_EndpointInfo_System_Net_Http_HttpClient_
+  commentId: M:chia.dotnet.HttpRpcClient.#ctor(chia.dotnet.EndpointInfo,System.Net.Http.HttpClient)
+  fullName: chia.dotnet.HttpRpcClient.HttpRpcClient(chia.dotnet.EndpointInfo, System.Net.Http.HttpClient)
+  nameWithType: HttpRpcClient.HttpRpcClient(EndpointInfo, HttpClient)
 - uid: chia.dotnet.HttpRpcClient.#ctor*
   name: HttpRpcClient
   href: api/chia.dotnet.HttpRpcClient.html#chia_dotnet_HttpRpcClient__ctor_

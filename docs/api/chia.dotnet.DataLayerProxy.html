@@ -752,19 +752,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_GetAncestors_System_String_System_String_System_UInt64_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.GetAncestors(System.String%2CSystem.String%2CSystem.UInt64%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_GetAncestors_System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.GetAncestors(System.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L184">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L183">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_GetAncestors_" data-uid="chia.dotnet.DataLayerProxy.GetAncestors*"></a>
-  <h4 id="chia_dotnet_DataLayerProxy_GetAncestors_System_String_System_String_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.GetAncestors(System.String,System.String,System.UInt64,System.Threading.CancellationToken)">GetAncestors(String, String, UInt64, CancellationToken)</h4>
+  <h4 id="chia_dotnet_DataLayerProxy_GetAncestors_System_String_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.GetAncestors(System.String,System.String,System.Threading.CancellationToken)">GetAncestors(String, String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets the list of ancestors for a given id/hash pair.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;InternalNode&gt;&gt; GetAncestors(string id, string hash, ulong fee = 0UL, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;InternalNode&gt;&gt; GetAncestors(string id, string hash, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -786,12 +786,6 @@
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">hash</span></td>
         <td><p>Hash</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">UInt64</a></td>
-        <td><span class="parametername">fee</span></td>
-        <td><p>Fee amount (in units of mojos)</p>
 </td>
       </tr>
       <tr>
@@ -819,19 +813,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_GetKeys_System_String_System_String_System_UInt64_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.GetKeys(System.String%2CSystem.String%2CSystem.UInt64%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_GetKeys_System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.GetKeys(System.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L201">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L198">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_GetKeys_" data-uid="chia.dotnet.DataLayerProxy.GetKeys*"></a>
-  <h4 id="chia_dotnet_DataLayerProxy_GetKeys_System_String_System_String_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.GetKeys(System.String,System.String,System.UInt64,System.Threading.CancellationToken)">GetKeys(String, String, UInt64, CancellationToken)</h4>
+  <h4 id="chia_dotnet_DataLayerProxy_GetKeys_System_String_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.GetKeys(System.String,System.String,System.Threading.CancellationToken)">GetKeys(String, String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets the list of ancestors for a given id/hash pair.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;string&gt;&gt; GetKeys(string id, string rootHash, ulong fee = 0UL, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;string&gt;&gt; GetKeys(string id, string rootHash, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -853,12 +847,6 @@
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">rootHash</span></td>
         <td><p>Root Hash</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">UInt64</a></td>
-        <td><span class="parametername">fee</span></td>
-        <td><p>Fee amount (in units of mojos)</p>
 </td>
       </tr>
       <tr>
@@ -889,7 +877,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_GetKeysValues_System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.GetKeysValues(System.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L217">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L213">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_GetKeysValues_" data-uid="chia.dotnet.DataLayerProxy.GetKeysValues*"></a>
   <h4 id="chia_dotnet_DataLayerProxy_GetKeysValues_System_String_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.GetKeysValues(System.String,System.String,System.Threading.CancellationToken)">GetKeysValues(String, String, CancellationToken)</h4>
@@ -950,7 +938,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_GetKVDiff_System_String_System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.GetKVDiff(System.String%2CSystem.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L233">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L229">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_GetKVDiff_" data-uid="chia.dotnet.DataLayerProxy.GetKVDiff*"></a>
   <h4 id="chia_dotnet_DataLayerProxy_GetKVDiff_System_String_System_String_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.GetKVDiff(System.String,System.String,System.String,System.Threading.CancellationToken)">GetKVDiff(String, String, String, CancellationToken)</h4>
@@ -1018,7 +1006,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_GetLocalRoot_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.GetLocalRoot(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L248">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L244">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_GetLocalRoot_" data-uid="chia.dotnet.DataLayerProxy.GetLocalRoot*"></a>
   <h4 id="chia_dotnet_DataLayerProxy_GetLocalRoot_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.GetLocalRoot(System.String,System.Threading.CancellationToken)">GetLocalRoot(String, CancellationToken)</h4>
@@ -1074,7 +1062,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_GetMirrors_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.GetMirrors(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L261">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L257">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_GetMirrors_" data-uid="chia.dotnet.DataLayerProxy.GetMirrors*"></a>
   <h4 id="chia_dotnet_DataLayerProxy_GetMirrors_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.GetMirrors(System.String,System.Threading.CancellationToken)">GetMirrors(String, CancellationToken)</h4>
@@ -1130,7 +1118,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_GetOwnedStores_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.GetOwnedStores(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L273">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L269">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_GetOwnedStores_" data-uid="chia.dotnet.DataLayerProxy.GetOwnedStores*"></a>
   <h4 id="chia_dotnet_DataLayerProxy_GetOwnedStores_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.GetOwnedStores(System.Threading.CancellationToken)">GetOwnedStores(CancellationToken)</h4>
@@ -1180,7 +1168,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_GetRoot_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.GetRoot(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L284">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L280">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_GetRoot_" data-uid="chia.dotnet.DataLayerProxy.GetRoot*"></a>
   <h4 id="chia_dotnet_DataLayerProxy_GetRoot_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.GetRoot(System.String,System.Threading.CancellationToken)">GetRoot(String, CancellationToken)</h4>
@@ -1235,7 +1223,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_GetRootHistory_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.GetRootHistory(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L297">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L293">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_GetRootHistory_" data-uid="chia.dotnet.DataLayerProxy.GetRootHistory*"></a>
   <h4 id="chia_dotnet_DataLayerProxy_GetRootHistory_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.GetRootHistory(System.String,System.Threading.CancellationToken)">GetRootHistory(String, CancellationToken)</h4>
@@ -1290,7 +1278,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_GetRoots_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.GetRoots(System.Collections.Generic.IEnumerable%7BSystem.String%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L310">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L306">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_GetRoots_" data-uid="chia.dotnet.DataLayerProxy.GetRoots*"></a>
   <h4 id="chia_dotnet_DataLayerProxy_GetRoots_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.GetRoots(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">GetRoots(IEnumerable&lt;String&gt;, CancellationToken)</h4>
@@ -1345,7 +1333,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_GetSyncStatus_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.GetSyncStatus(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L323">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L319">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_GetSyncStatus_" data-uid="chia.dotnet.DataLayerProxy.GetSyncStatus*"></a>
   <h4 id="chia_dotnet_DataLayerProxy_GetSyncStatus_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.GetSyncStatus(System.String,System.Threading.CancellationToken)">GetSyncStatus(String, CancellationToken)</h4>
@@ -1400,7 +1388,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_GetValue_System_String_System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.GetValue(System.String%2CSystem.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L338">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L334">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_GetValue_" data-uid="chia.dotnet.DataLayerProxy.GetValue*"></a>
   <h4 id="chia_dotnet_DataLayerProxy_GetValue_System_String_System_String_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.GetValue(System.String,System.String,System.String,System.Threading.CancellationToken)">GetValue(String, String, String, CancellationToken)</h4>
@@ -1409,7 +1397,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;string&gt; GetValue(string rootHash, string key, string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;string&gt; GetValue(string id, string key, string rootHash, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1423,7 +1411,7 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">rootHash</span></td>
+        <td><span class="parametername">id</span></td>
         <td></td>
       </tr>
       <tr>
@@ -1433,7 +1421,7 @@
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">id</span></td>
+        <td><span class="parametername">rootHash</span></td>
         <td></td>
       </tr>
       <tr>
@@ -1465,7 +1453,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_Insert_System_String_System_String_System_UInt64_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.Insert(System.String%2CSystem.String%2CSystem.UInt64%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L355">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L351">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_Insert_" data-uid="chia.dotnet.DataLayerProxy.Insert*"></a>
   <h4 id="chia_dotnet_DataLayerProxy_Insert_System_String_System_String_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.Insert(System.String,System.String,System.UInt64,System.Threading.CancellationToken)">Insert(String, String, UInt64, CancellationToken)</h4>
@@ -1531,7 +1519,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_MakeOffer_System_Collections_Generic_IEnumerable_chia_dotnet_OfferStore__System_Collections_Generic_IEnumerable_chia_dotnet_OfferStore__System_UInt64_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.MakeOffer(System.Collections.Generic.IEnumerable%7Bchia.dotnet.OfferStore%7D%2CSystem.Collections.Generic.IEnumerable%7Bchia.dotnet.OfferStore%7D%2CSystem.UInt64%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L372">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L368">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_MakeOffer_" data-uid="chia.dotnet.DataLayerProxy.MakeOffer*"></a>
   <h4 id="chia_dotnet_DataLayerProxy_MakeOffer_System_Collections_Generic_IEnumerable_chia_dotnet_OfferStore__System_Collections_Generic_IEnumerable_chia_dotnet_OfferStore__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.MakeOffer(System.Collections.Generic.IEnumerable{chia.dotnet.OfferStore},System.Collections.Generic.IEnumerable{chia.dotnet.OfferStore},System.UInt64,System.Threading.CancellationToken)">MakeOffer(IEnumerable&lt;OfferStore&gt;, IEnumerable&lt;OfferStore&gt;, UInt64, CancellationToken)</h4>
@@ -1597,7 +1585,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_RemoveSubscriptions_System_String_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.RemoveSubscriptions(System.String%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L388">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L384">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_RemoveSubscriptions_" data-uid="chia.dotnet.DataLayerProxy.RemoveSubscriptions*"></a>
   <h4 id="chia_dotnet_DataLayerProxy_RemoveSubscriptions_System_String_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.RemoveSubscriptions(System.String,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">RemoveSubscriptions(String, IEnumerable&lt;String&gt;, CancellationToken)</h4>
@@ -1657,7 +1645,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_Subscribe_System_String_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.Subscribe(System.String%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L403">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L399">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_Subscribe_" data-uid="chia.dotnet.DataLayerProxy.Subscribe*"></a>
   <h4 id="chia_dotnet_DataLayerProxy_Subscribe_System_String_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.Subscribe(System.String,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">Subscribe(String, IEnumerable&lt;String&gt;, CancellationToken)</h4>
@@ -1717,7 +1705,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_Subscriptions_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.Subscriptions(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L416">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L412">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_Subscriptions_" data-uid="chia.dotnet.DataLayerProxy.Subscriptions*"></a>
   <h4 id="chia_dotnet_DataLayerProxy_Subscriptions_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.Subscriptions(System.Threading.CancellationToken)">Subscriptions(CancellationToken)</h4>
@@ -1767,7 +1755,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_TakeOffer_System_Object_System_UInt64_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.TakeOffer(System.Object%2CSystem.UInt64%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L428">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L424">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_TakeOffer_" data-uid="chia.dotnet.DataLayerProxy.TakeOffer*"></a>
   <h4 id="chia_dotnet_DataLayerProxy_TakeOffer_System_Object_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.TakeOffer(System.Object,System.UInt64,System.Threading.CancellationToken)">TakeOffer(Object, UInt64, CancellationToken)</h4>
@@ -1828,7 +1816,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_Unsubscribe_System_String_System_Boolean_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.Unsubscribe(System.String%2CSystem.Boolean%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L443">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L439">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_Unsubscribe_" data-uid="chia.dotnet.DataLayerProxy.Unsubscribe*"></a>
   <h4 id="chia_dotnet_DataLayerProxy_Unsubscribe_System_String_System_Boolean_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.Unsubscribe(System.String,System.Boolean,System.Threading.CancellationToken)">Unsubscribe(String, Boolean, CancellationToken)</h4>
@@ -1888,7 +1876,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_VerifyOffer_chia_dotnet_DataLayerOffer_System_UInt64_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.VerifyOffer(chia.dotnet.DataLayerOffer%2CSystem.UInt64%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L458">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L454">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_VerifyOffer_" data-uid="chia.dotnet.DataLayerProxy.VerifyOffer*"></a>
   <h4 id="chia_dotnet_DataLayerProxy_VerifyOffer_chia_dotnet_DataLayerOffer_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.VerifyOffer(chia.dotnet.DataLayerOffer,System.UInt64,System.Threading.CancellationToken)">VerifyOffer(DataLayerOffer, UInt64, CancellationToken)</h4>
@@ -1949,7 +1937,7 @@
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DataLayerProxy_WalletLogIn_System_UInt32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.DataLayerProxy.WalletLogIn(System.UInt32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L474">View Source</a>
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L470">View Source</a>
   </span>
   <a id="chia_dotnet_DataLayerProxy_WalletLogIn_" data-uid="chia.dotnet.DataLayerProxy.WalletLogIn*"></a>
   <h4 id="chia_dotnet_DataLayerProxy_WalletLogIn_System_UInt32_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.WalletLogIn(System.UInt32,System.Threading.CancellationToken)">WalletLogIn(UInt32, CancellationToken)</h4>
