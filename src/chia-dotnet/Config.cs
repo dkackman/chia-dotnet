@@ -16,11 +16,9 @@ namespace chia.dotnet
     /// </summary>
     public sealed class Config
     {
-        private readonly string _chiaRootPath;
-
         internal Config(string chiaRootPath, dynamic config)
         {
-            _chiaRootPath = chiaRootPath;
+            ChiaRootPath = chiaRootPath;
             Contents = config;
         }
 
@@ -28,6 +26,11 @@ namespace chia.dotnet
         /// The contents of the config yaml
         /// </summary>
         public dynamic Contents { get; init; }
+
+        /// <summary>
+        /// Full path to the chia root
+        /// </summary>
+        public string ChiaRootPath { get; }
 
         /// <summary>
         /// Creates an <see cref="EndpointInfo"/> from the named service section
@@ -98,8 +101,8 @@ namespace chia.dotnet
             return new EndpointInfo
             {
                 Uri = builder.Uri,
-                CertPath = Path.Combine(_chiaRootPath, ssl.private_crt),
-                KeyPath = Path.Combine(_chiaRootPath, ssl.private_key)
+                CertPath = Path.Combine(ChiaRootPath, ssl.private_crt),
+                KeyPath = Path.Combine(ChiaRootPath, ssl.private_key)
             };
         }
 

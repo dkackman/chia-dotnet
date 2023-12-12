@@ -70,9 +70,8 @@ namespace chia.dotnet
         {
             Endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
 
-            _httpClient = httpClient;
+            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
-
 
         /// <summary>
         /// Details of the RPC service endpoint
