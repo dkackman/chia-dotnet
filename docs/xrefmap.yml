@@ -1143,6 +1143,38 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.BlockRecord.Weight
   nameWithType: BlockRecord.Weight
+- uid: chia.dotnet.BlockSpendWithConditions
+  name: BlockSpendWithConditions
+  href: api/chia.dotnet.BlockSpendWithConditions.html
+  commentId: T:chia.dotnet.BlockSpendWithConditions
+  fullName: chia.dotnet.BlockSpendWithConditions
+  nameWithType: BlockSpendWithConditions
+- uid: chia.dotnet.BlockSpendWithConditions.CoinSpend
+  name: CoinSpend
+  href: api/chia.dotnet.BlockSpendWithConditions.html#chia_dotnet_BlockSpendWithConditions_CoinSpend
+  commentId: P:chia.dotnet.BlockSpendWithConditions.CoinSpend
+  fullName: chia.dotnet.BlockSpendWithConditions.CoinSpend
+  nameWithType: BlockSpendWithConditions.CoinSpend
+- uid: chia.dotnet.BlockSpendWithConditions.CoinSpend*
+  name: CoinSpend
+  href: api/chia.dotnet.BlockSpendWithConditions.html#chia_dotnet_BlockSpendWithConditions_CoinSpend_
+  commentId: Overload:chia.dotnet.BlockSpendWithConditions.CoinSpend
+  isSpec: "True"
+  fullName: chia.dotnet.BlockSpendWithConditions.CoinSpend
+  nameWithType: BlockSpendWithConditions.CoinSpend
+- uid: chia.dotnet.BlockSpendWithConditions.Conditions
+  name: Conditions
+  href: api/chia.dotnet.BlockSpendWithConditions.html#chia_dotnet_BlockSpendWithConditions_Conditions
+  commentId: P:chia.dotnet.BlockSpendWithConditions.Conditions
+  fullName: chia.dotnet.BlockSpendWithConditions.Conditions
+  nameWithType: BlockSpendWithConditions.Conditions
+- uid: chia.dotnet.BlockSpendWithConditions.Conditions*
+  name: Conditions
+  href: api/chia.dotnet.BlockSpendWithConditions.html#chia_dotnet_BlockSpendWithConditions_Conditions_
+  commentId: Overload:chia.dotnet.BlockSpendWithConditions.Conditions
+  isSpec: "True"
+  fullName: chia.dotnet.BlockSpendWithConditions.Conditions
+  nameWithType: BlockSpendWithConditions.Conditions
 - uid: chia.dotnet.CATInfo
   name: CATInfo
   href: api/chia.dotnet.CATInfo.html
@@ -2779,191 +2811,178 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DAOWallet.DAOWallet
   nameWithType: DAOWallet.DAOWallet
-- uid: chia.dotnet.DAOWallet.DaoAddFundsToTreasury(System.UInt64,System.UInt32,System.UInt64,System.Threading.CancellationToken)
-  name: DaoAddFundsToTreasury(UInt64, UInt32, UInt64, CancellationToken)
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoAddFundsToTreasury_System_UInt64_System_UInt32_System_UInt64_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.DAOWallet.DaoAddFundsToTreasury(System.UInt64,System.UInt32,System.UInt64,System.Threading.CancellationToken)
-  fullName: chia.dotnet.DAOWallet.DaoAddFundsToTreasury(System.UInt64, System.UInt32, System.UInt64, System.Threading.CancellationToken)
-  nameWithType: DAOWallet.DaoAddFundsToTreasury(UInt64, UInt32, UInt64, CancellationToken)
-- uid: chia.dotnet.DAOWallet.DaoAddFundsToTreasury*
-  name: DaoAddFundsToTreasury
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoAddFundsToTreasury_
-  commentId: Overload:chia.dotnet.DAOWallet.DaoAddFundsToTreasury
+- uid: chia.dotnet.DAOWallet.AddFundsToTreasury(System.UInt64,System.UInt32,System.UInt64,System.Threading.CancellationToken)
+  name: AddFundsToTreasury(UInt64, UInt32, UInt64, CancellationToken)
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_AddFundsToTreasury_System_UInt64_System_UInt32_System_UInt64_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DAOWallet.AddFundsToTreasury(System.UInt64,System.UInt32,System.UInt64,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DAOWallet.AddFundsToTreasury(System.UInt64, System.UInt32, System.UInt64, System.Threading.CancellationToken)
+  nameWithType: DAOWallet.AddFundsToTreasury(UInt64, UInt32, UInt64, CancellationToken)
+- uid: chia.dotnet.DAOWallet.AddFundsToTreasury*
+  name: AddFundsToTreasury
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_AddFundsToTreasury_
+  commentId: Overload:chia.dotnet.DAOWallet.AddFundsToTreasury
   isSpec: "True"
-  fullName: chia.dotnet.DAOWallet.DaoAddFundsToTreasury
-  nameWithType: DAOWallet.DaoAddFundsToTreasury
-- uid: chia.dotnet.DAOWallet.DaoAdjustFilterLevel(System.UInt64,System.Threading.CancellationToken)
-  name: DaoAdjustFilterLevel(UInt64, CancellationToken)
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoAdjustFilterLevel_System_UInt64_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.DAOWallet.DaoAdjustFilterLevel(System.UInt64,System.Threading.CancellationToken)
-  fullName: chia.dotnet.DAOWallet.DaoAdjustFilterLevel(System.UInt64, System.Threading.CancellationToken)
-  nameWithType: DAOWallet.DaoAdjustFilterLevel(UInt64, CancellationToken)
-- uid: chia.dotnet.DAOWallet.DaoAdjustFilterLevel*
-  name: DaoAdjustFilterLevel
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoAdjustFilterLevel_
-  commentId: Overload:chia.dotnet.DAOWallet.DaoAdjustFilterLevel
+  fullName: chia.dotnet.DAOWallet.AddFundsToTreasury
+  nameWithType: DAOWallet.AddFundsToTreasury
+- uid: chia.dotnet.DAOWallet.AdjustFilterLevel(System.UInt64,System.Threading.CancellationToken)
+  name: AdjustFilterLevel(UInt64, CancellationToken)
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_AdjustFilterLevel_System_UInt64_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DAOWallet.AdjustFilterLevel(System.UInt64,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DAOWallet.AdjustFilterLevel(System.UInt64, System.Threading.CancellationToken)
+  nameWithType: DAOWallet.AdjustFilterLevel(UInt64, CancellationToken)
+- uid: chia.dotnet.DAOWallet.AdjustFilterLevel*
+  name: AdjustFilterLevel
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_AdjustFilterLevel_
+  commentId: Overload:chia.dotnet.DAOWallet.AdjustFilterLevel
   isSpec: "True"
-  fullName: chia.dotnet.DAOWallet.DaoAdjustFilterLevel
-  nameWithType: DAOWallet.DaoAdjustFilterLevel
-- uid: chia.dotnet.DAOWallet.DaoCloseProposal(System.String,System.String,System.String,System.UInt64,System.Threading.CancellationToken)
-  name: DaoCloseProposal(String, String, String, UInt64, CancellationToken)
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoCloseProposal_System_String_System_String_System_String_System_UInt64_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.DAOWallet.DaoCloseProposal(System.String,System.String,System.String,System.UInt64,System.Threading.CancellationToken)
-  fullName: chia.dotnet.DAOWallet.DaoCloseProposal(System.String, System.String, System.String, System.UInt64, System.Threading.CancellationToken)
-  nameWithType: DAOWallet.DaoCloseProposal(String, String, String, UInt64, CancellationToken)
-- uid: chia.dotnet.DAOWallet.DaoCloseProposal*
-  name: DaoCloseProposal
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoCloseProposal_
-  commentId: Overload:chia.dotnet.DAOWallet.DaoCloseProposal
+  fullName: chia.dotnet.DAOWallet.AdjustFilterLevel
+  nameWithType: DAOWallet.AdjustFilterLevel
+- uid: chia.dotnet.DAOWallet.CloseProposal(System.String,System.String,System.String,System.UInt64,System.Threading.CancellationToken)
+  name: CloseProposal(String, String, String, UInt64, CancellationToken)
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_CloseProposal_System_String_System_String_System_String_System_UInt64_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DAOWallet.CloseProposal(System.String,System.String,System.String,System.UInt64,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DAOWallet.CloseProposal(System.String, System.String, System.String, System.UInt64, System.Threading.CancellationToken)
+  nameWithType: DAOWallet.CloseProposal(String, String, String, UInt64, CancellationToken)
+- uid: chia.dotnet.DAOWallet.CloseProposal*
+  name: CloseProposal
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_CloseProposal_
+  commentId: Overload:chia.dotnet.DAOWallet.CloseProposal
   isSpec: "True"
-  fullName: chia.dotnet.DAOWallet.DaoCloseProposal
-  nameWithType: DAOWallet.DaoCloseProposal
-- uid: chia.dotnet.DAOWallet.DaoCreateProposal(System.String,System.Threading.CancellationToken)
-  name: DaoCreateProposal(String, CancellationToken)
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoCreateProposal_System_String_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.DAOWallet.DaoCreateProposal(System.String,System.Threading.CancellationToken)
-  fullName: chia.dotnet.DAOWallet.DaoCreateProposal(System.String, System.Threading.CancellationToken)
-  nameWithType: DAOWallet.DaoCreateProposal(String, CancellationToken)
-- uid: chia.dotnet.DAOWallet.DaoCreateProposal*
-  name: DaoCreateProposal
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoCreateProposal_
-  commentId: Overload:chia.dotnet.DAOWallet.DaoCreateProposal
+  fullName: chia.dotnet.DAOWallet.CloseProposal
+  nameWithType: DAOWallet.CloseProposal
+- uid: chia.dotnet.DAOWallet.CreateProposal(System.String,System.Threading.CancellationToken)
+  name: CreateProposal(String, CancellationToken)
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_CreateProposal_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DAOWallet.CreateProposal(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DAOWallet.CreateProposal(System.String, System.Threading.CancellationToken)
+  nameWithType: DAOWallet.CreateProposal(String, CancellationToken)
+- uid: chia.dotnet.DAOWallet.CreateProposal*
+  name: CreateProposal
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_CreateProposal_
+  commentId: Overload:chia.dotnet.DAOWallet.CreateProposal
   isSpec: "True"
-  fullName: chia.dotnet.DAOWallet.DaoCreateProposal
-  nameWithType: DAOWallet.DaoCreateProposal
-- uid: chia.dotnet.DAOWallet.DaoExitLockup(System.Collections.Generic.IEnumerable{System.Object},System.UInt64,System.Threading.CancellationToken)
-  name: DaoExitLockup(IEnumerable<Object>, UInt64, CancellationToken)
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoExitLockup_System_Collections_Generic_IEnumerable_System_Object__System_UInt64_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.DAOWallet.DaoExitLockup(System.Collections.Generic.IEnumerable{System.Object},System.UInt64,System.Threading.CancellationToken)
-  name.vb: DaoExitLockup(IEnumerable(Of Object), UInt64, CancellationToken)
-  fullName: chia.dotnet.DAOWallet.DaoExitLockup(System.Collections.Generic.IEnumerable<System.Object>, System.UInt64, System.Threading.CancellationToken)
-  fullName.vb: chia.dotnet.DAOWallet.DaoExitLockup(System.Collections.Generic.IEnumerable(Of System.Object), System.UInt64, System.Threading.CancellationToken)
-  nameWithType: DAOWallet.DaoExitLockup(IEnumerable<Object>, UInt64, CancellationToken)
-  nameWithType.vb: DAOWallet.DaoExitLockup(IEnumerable(Of Object), UInt64, CancellationToken)
-- uid: chia.dotnet.DAOWallet.DaoExitLockup*
-  name: DaoExitLockup
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoExitLockup_
-  commentId: Overload:chia.dotnet.DAOWallet.DaoExitLockup
+  fullName: chia.dotnet.DAOWallet.CreateProposal
+  nameWithType: DAOWallet.CreateProposal
+- uid: chia.dotnet.DAOWallet.ExitLockup(System.Collections.Generic.IEnumerable{System.Object},System.UInt64,System.Threading.CancellationToken)
+  name: ExitLockup(IEnumerable<Object>, UInt64, CancellationToken)
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_ExitLockup_System_Collections_Generic_IEnumerable_System_Object__System_UInt64_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DAOWallet.ExitLockup(System.Collections.Generic.IEnumerable{System.Object},System.UInt64,System.Threading.CancellationToken)
+  name.vb: ExitLockup(IEnumerable(Of Object), UInt64, CancellationToken)
+  fullName: chia.dotnet.DAOWallet.ExitLockup(System.Collections.Generic.IEnumerable<System.Object>, System.UInt64, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.DAOWallet.ExitLockup(System.Collections.Generic.IEnumerable(Of System.Object), System.UInt64, System.Threading.CancellationToken)
+  nameWithType: DAOWallet.ExitLockup(IEnumerable<Object>, UInt64, CancellationToken)
+  nameWithType.vb: DAOWallet.ExitLockup(IEnumerable(Of Object), UInt64, CancellationToken)
+- uid: chia.dotnet.DAOWallet.ExitLockup*
+  name: ExitLockup
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_ExitLockup_
+  commentId: Overload:chia.dotnet.DAOWallet.ExitLockup
   isSpec: "True"
-  fullName: chia.dotnet.DAOWallet.DaoExitLockup
-  nameWithType: DAOWallet.DaoExitLockup
-- uid: chia.dotnet.DAOWallet.DaoFreeCoinsFromFinishedProposals(System.UInt64,System.Threading.CancellationToken)
-  name: DaoFreeCoinsFromFinishedProposals(UInt64, CancellationToken)
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoFreeCoinsFromFinishedProposals_System_UInt64_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.DAOWallet.DaoFreeCoinsFromFinishedProposals(System.UInt64,System.Threading.CancellationToken)
-  fullName: chia.dotnet.DAOWallet.DaoFreeCoinsFromFinishedProposals(System.UInt64, System.Threading.CancellationToken)
-  nameWithType: DAOWallet.DaoFreeCoinsFromFinishedProposals(UInt64, CancellationToken)
-- uid: chia.dotnet.DAOWallet.DaoFreeCoinsFromFinishedProposals*
-  name: DaoFreeCoinsFromFinishedProposals
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoFreeCoinsFromFinishedProposals_
-  commentId: Overload:chia.dotnet.DAOWallet.DaoFreeCoinsFromFinishedProposals
+  fullName: chia.dotnet.DAOWallet.ExitLockup
+  nameWithType: DAOWallet.ExitLockup
+- uid: chia.dotnet.DAOWallet.FreeCoinsFromFinishedProposals(System.UInt64,System.Threading.CancellationToken)
+  name: FreeCoinsFromFinishedProposals(UInt64, CancellationToken)
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_FreeCoinsFromFinishedProposals_System_UInt64_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DAOWallet.FreeCoinsFromFinishedProposals(System.UInt64,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DAOWallet.FreeCoinsFromFinishedProposals(System.UInt64, System.Threading.CancellationToken)
+  nameWithType: DAOWallet.FreeCoinsFromFinishedProposals(UInt64, CancellationToken)
+- uid: chia.dotnet.DAOWallet.FreeCoinsFromFinishedProposals*
+  name: FreeCoinsFromFinishedProposals
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_FreeCoinsFromFinishedProposals_
+  commentId: Overload:chia.dotnet.DAOWallet.FreeCoinsFromFinishedProposals
   isSpec: "True"
-  fullName: chia.dotnet.DAOWallet.DaoFreeCoinsFromFinishedProposals
-  nameWithType: DAOWallet.DaoFreeCoinsFromFinishedProposals
-- uid: chia.dotnet.DAOWallet.DaoGetProposals(System.Boolean,System.Threading.CancellationToken)
-  name: DaoGetProposals(Boolean, CancellationToken)
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoGetProposals_System_Boolean_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.DAOWallet.DaoGetProposals(System.Boolean,System.Threading.CancellationToken)
-  fullName: chia.dotnet.DAOWallet.DaoGetProposals(System.Boolean, System.Threading.CancellationToken)
-  nameWithType: DAOWallet.DaoGetProposals(Boolean, CancellationToken)
-- uid: chia.dotnet.DAOWallet.DaoGetProposals*
-  name: DaoGetProposals
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoGetProposals_
-  commentId: Overload:chia.dotnet.DAOWallet.DaoGetProposals
+  fullName: chia.dotnet.DAOWallet.FreeCoinsFromFinishedProposals
+  nameWithType: DAOWallet.FreeCoinsFromFinishedProposals
+- uid: chia.dotnet.DAOWallet.GetProposals(System.Boolean,System.Threading.CancellationToken)
+  name: GetProposals(Boolean, CancellationToken)
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_GetProposals_System_Boolean_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DAOWallet.GetProposals(System.Boolean,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DAOWallet.GetProposals(System.Boolean, System.Threading.CancellationToken)
+  nameWithType: DAOWallet.GetProposals(Boolean, CancellationToken)
+- uid: chia.dotnet.DAOWallet.GetProposals*
+  name: GetProposals
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_GetProposals_
+  commentId: Overload:chia.dotnet.DAOWallet.GetProposals
   isSpec: "True"
-  fullName: chia.dotnet.DAOWallet.DaoGetProposals
-  nameWithType: DAOWallet.DaoGetProposals
-- uid: chia.dotnet.DAOWallet.DaoGetProposalState(System.String,System.Threading.CancellationToken)
-  name: DaoGetProposalState(String, CancellationToken)
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoGetProposalState_System_String_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.DAOWallet.DaoGetProposalState(System.String,System.Threading.CancellationToken)
-  fullName: chia.dotnet.DAOWallet.DaoGetProposalState(System.String, System.Threading.CancellationToken)
-  nameWithType: DAOWallet.DaoGetProposalState(String, CancellationToken)
-- uid: chia.dotnet.DAOWallet.DaoGetProposalState*
-  name: DaoGetProposalState
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoGetProposalState_
-  commentId: Overload:chia.dotnet.DAOWallet.DaoGetProposalState
+  fullName: chia.dotnet.DAOWallet.GetProposals
+  nameWithType: DAOWallet.GetProposals
+- uid: chia.dotnet.DAOWallet.GetProposalState(System.String,System.Threading.CancellationToken)
+  name: GetProposalState(String, CancellationToken)
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_GetProposalState_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DAOWallet.GetProposalState(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DAOWallet.GetProposalState(System.String, System.Threading.CancellationToken)
+  nameWithType: DAOWallet.GetProposalState(String, CancellationToken)
+- uid: chia.dotnet.DAOWallet.GetProposalState*
+  name: GetProposalState
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_GetProposalState_
+  commentId: Overload:chia.dotnet.DAOWallet.GetProposalState
   isSpec: "True"
-  fullName: chia.dotnet.DAOWallet.DaoGetProposalState
-  nameWithType: DAOWallet.DaoGetProposalState
-- uid: chia.dotnet.DAOWallet.DaoGetRules(System.Threading.CancellationToken)
-  name: DaoGetRules(CancellationToken)
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoGetRules_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.DAOWallet.DaoGetRules(System.Threading.CancellationToken)
-  fullName: chia.dotnet.DAOWallet.DaoGetRules(System.Threading.CancellationToken)
-  nameWithType: DAOWallet.DaoGetRules(CancellationToken)
-- uid: chia.dotnet.DAOWallet.DaoGetRules*
-  name: DaoGetRules
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoGetRules_
-  commentId: Overload:chia.dotnet.DAOWallet.DaoGetRules
+  fullName: chia.dotnet.DAOWallet.GetProposalState
+  nameWithType: DAOWallet.GetProposalState
+- uid: chia.dotnet.DAOWallet.GetRules(System.Threading.CancellationToken)
+  name: GetRules(CancellationToken)
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_GetRules_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DAOWallet.GetRules(System.Threading.CancellationToken)
+  fullName: chia.dotnet.DAOWallet.GetRules(System.Threading.CancellationToken)
+  nameWithType: DAOWallet.GetRules(CancellationToken)
+- uid: chia.dotnet.DAOWallet.GetRules*
+  name: GetRules
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_GetRules_
+  commentId: Overload:chia.dotnet.DAOWallet.GetRules
   isSpec: "True"
-  fullName: chia.dotnet.DAOWallet.DaoGetRules
-  nameWithType: DAOWallet.DaoGetRules
-- uid: chia.dotnet.DAOWallet.DaoGetTreasuryBalance(System.Threading.CancellationToken)
-  name: DaoGetTreasuryBalance(CancellationToken)
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoGetTreasuryBalance_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.DAOWallet.DaoGetTreasuryBalance(System.Threading.CancellationToken)
-  fullName: chia.dotnet.DAOWallet.DaoGetTreasuryBalance(System.Threading.CancellationToken)
-  nameWithType: DAOWallet.DaoGetTreasuryBalance(CancellationToken)
-- uid: chia.dotnet.DAOWallet.DaoGetTreasuryBalance*
-  name: DaoGetTreasuryBalance
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoGetTreasuryBalance_
-  commentId: Overload:chia.dotnet.DAOWallet.DaoGetTreasuryBalance
+  fullName: chia.dotnet.DAOWallet.GetRules
+  nameWithType: DAOWallet.GetRules
+- uid: chia.dotnet.DAOWallet.GetTreasuryBalance(System.Threading.CancellationToken)
+  name: GetTreasuryBalance(CancellationToken)
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_GetTreasuryBalance_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DAOWallet.GetTreasuryBalance(System.Threading.CancellationToken)
+  fullName: chia.dotnet.DAOWallet.GetTreasuryBalance(System.Threading.CancellationToken)
+  nameWithType: DAOWallet.GetTreasuryBalance(CancellationToken)
+- uid: chia.dotnet.DAOWallet.GetTreasuryBalance*
+  name: GetTreasuryBalance
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_GetTreasuryBalance_
+  commentId: Overload:chia.dotnet.DAOWallet.GetTreasuryBalance
   isSpec: "True"
-  fullName: chia.dotnet.DAOWallet.DaoGetTreasuryBalance
-  nameWithType: DAOWallet.DaoGetTreasuryBalance
-- uid: chia.dotnet.DAOWallet.DaoGetTreasuryId(System.Threading.CancellationToken)
-  name: DaoGetTreasuryId(CancellationToken)
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoGetTreasuryId_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.DAOWallet.DaoGetTreasuryId(System.Threading.CancellationToken)
-  fullName: chia.dotnet.DAOWallet.DaoGetTreasuryId(System.Threading.CancellationToken)
-  nameWithType: DAOWallet.DaoGetTreasuryId(CancellationToken)
-- uid: chia.dotnet.DAOWallet.DaoGetTreasuryId*
-  name: DaoGetTreasuryId
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoGetTreasuryId_
-  commentId: Overload:chia.dotnet.DAOWallet.DaoGetTreasuryId
+  fullName: chia.dotnet.DAOWallet.GetTreasuryBalance
+  nameWithType: DAOWallet.GetTreasuryBalance
+- uid: chia.dotnet.DAOWallet.GetTreasuryId(System.Threading.CancellationToken)
+  name: GetTreasuryId(CancellationToken)
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_GetTreasuryId_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DAOWallet.GetTreasuryId(System.Threading.CancellationToken)
+  fullName: chia.dotnet.DAOWallet.GetTreasuryId(System.Threading.CancellationToken)
+  nameWithType: DAOWallet.GetTreasuryId(CancellationToken)
+- uid: chia.dotnet.DAOWallet.GetTreasuryId*
+  name: GetTreasuryId
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_GetTreasuryId_
+  commentId: Overload:chia.dotnet.DAOWallet.GetTreasuryId
   isSpec: "True"
-  fullName: chia.dotnet.DAOWallet.DaoGetTreasuryId
-  nameWithType: DAOWallet.DaoGetTreasuryId
-- uid: chia.dotnet.DAOWallet.DaoParseProposal(System.String,System.Threading.CancellationToken)
-  name: DaoParseProposal(String, CancellationToken)
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoParseProposal_System_String_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.DAOWallet.DaoParseProposal(System.String,System.Threading.CancellationToken)
-  fullName: chia.dotnet.DAOWallet.DaoParseProposal(System.String, System.Threading.CancellationToken)
-  nameWithType: DAOWallet.DaoParseProposal(String, CancellationToken)
-- uid: chia.dotnet.DAOWallet.DaoParseProposal*
-  name: DaoParseProposal
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoParseProposal_
-  commentId: Overload:chia.dotnet.DAOWallet.DaoParseProposal
+  fullName: chia.dotnet.DAOWallet.GetTreasuryId
+  nameWithType: DAOWallet.GetTreasuryId
+- uid: chia.dotnet.DAOWallet.ParseProposal(System.String,System.Threading.CancellationToken)
+  name: ParseProposal(String, CancellationToken)
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_ParseProposal_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DAOWallet.ParseProposal(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DAOWallet.ParseProposal(System.String, System.Threading.CancellationToken)
+  nameWithType: DAOWallet.ParseProposal(String, CancellationToken)
+- uid: chia.dotnet.DAOWallet.ParseProposal*
+  name: ParseProposal
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_ParseProposal_
+  commentId: Overload:chia.dotnet.DAOWallet.ParseProposal
   isSpec: "True"
-  fullName: chia.dotnet.DAOWallet.DaoParseProposal
-  nameWithType: DAOWallet.DaoParseProposal
-- uid: chia.dotnet.DAOWallet.DaoSendToLockup(System.UInt64,System.UInt64,System.Threading.CancellationToken)
-  name: DaoSendToLockup(UInt64, UInt64, CancellationToken)
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoSendToLockup_System_UInt64_System_UInt64_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.DAOWallet.DaoSendToLockup(System.UInt64,System.UInt64,System.Threading.CancellationToken)
-  fullName: chia.dotnet.DAOWallet.DaoSendToLockup(System.UInt64, System.UInt64, System.Threading.CancellationToken)
-  nameWithType: DAOWallet.DaoSendToLockup(UInt64, UInt64, CancellationToken)
-- uid: chia.dotnet.DAOWallet.DaoSendToLockup*
-  name: DaoSendToLockup
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoSendToLockup_
-  commentId: Overload:chia.dotnet.DAOWallet.DaoSendToLockup
+  fullName: chia.dotnet.DAOWallet.ParseProposal
+  nameWithType: DAOWallet.ParseProposal
+- uid: chia.dotnet.DAOWallet.SendToLockup(System.UInt64,System.UInt64,System.Threading.CancellationToken)
+  name: SendToLockup(UInt64, UInt64, CancellationToken)
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_SendToLockup_System_UInt64_System_UInt64_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DAOWallet.SendToLockup(System.UInt64,System.UInt64,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DAOWallet.SendToLockup(System.UInt64, System.UInt64, System.Threading.CancellationToken)
+  nameWithType: DAOWallet.SendToLockup(UInt64, UInt64, CancellationToken)
+- uid: chia.dotnet.DAOWallet.SendToLockup*
+  name: SendToLockup
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_SendToLockup_
+  commentId: Overload:chia.dotnet.DAOWallet.SendToLockup
   isSpec: "True"
-  fullName: chia.dotnet.DAOWallet.DaoSendToLockup
-  nameWithType: DAOWallet.DaoSendToLockup
-- uid: chia.dotnet.DAOWallet.DaoVoteOnProposal(System.Boolean,System.UInt64,System.String,System.UInt64,System.Threading.CancellationToken)
-  name: DaoVoteOnProposal(Boolean, UInt64, String, UInt64, CancellationToken)
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoVoteOnProposal_System_Boolean_System_UInt64_System_String_System_UInt64_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.DAOWallet.DaoVoteOnProposal(System.Boolean,System.UInt64,System.String,System.UInt64,System.Threading.CancellationToken)
-  fullName: chia.dotnet.DAOWallet.DaoVoteOnProposal(System.Boolean, System.UInt64, System.String, System.UInt64, System.Threading.CancellationToken)
-  nameWithType: DAOWallet.DaoVoteOnProposal(Boolean, UInt64, String, UInt64, CancellationToken)
-- uid: chia.dotnet.DAOWallet.DaoVoteOnProposal*
-  name: DaoVoteOnProposal
-  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_DaoVoteOnProposal_
-  commentId: Overload:chia.dotnet.DAOWallet.DaoVoteOnProposal
-  isSpec: "True"
-  fullName: chia.dotnet.DAOWallet.DaoVoteOnProposal
-  nameWithType: DAOWallet.DaoVoteOnProposal
+  fullName: chia.dotnet.DAOWallet.SendToLockup
+  nameWithType: DAOWallet.SendToLockup
 - uid: chia.dotnet.DAOWallet.Validate(System.Threading.CancellationToken)
   name: Validate(CancellationToken)
   href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_Validate_System_Threading_CancellationToken_
@@ -2977,6 +2996,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DAOWallet.Validate
   nameWithType: DAOWallet.Validate
+- uid: chia.dotnet.DAOWallet.VoteOnProposal(System.Boolean,System.UInt64,System.String,System.UInt64,System.Threading.CancellationToken)
+  name: VoteOnProposal(Boolean, UInt64, String, UInt64, CancellationToken)
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_VoteOnProposal_System_Boolean_System_UInt64_System_String_System_UInt64_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DAOWallet.VoteOnProposal(System.Boolean,System.UInt64,System.String,System.UInt64,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DAOWallet.VoteOnProposal(System.Boolean, System.UInt64, System.String, System.UInt64, System.Threading.CancellationToken)
+  nameWithType: DAOWallet.VoteOnProposal(Boolean, UInt64, String, UInt64, CancellationToken)
+- uid: chia.dotnet.DAOWallet.VoteOnProposal*
+  name: VoteOnProposal
+  href: api/chia.dotnet.DAOWallet.html#chia_dotnet_DAOWallet_VoteOnProposal_
+  commentId: Overload:chia.dotnet.DAOWallet.VoteOnProposal
+  isSpec: "True"
+  fullName: chia.dotnet.DAOWallet.VoteOnProposal
+  nameWithType: DAOWallet.VoteOnProposal
 - uid: chia.dotnet.DataLayerOffer
   name: DataLayerOffer
   href: api/chia.dotnet.DataLayerOffer.html
@@ -5481,6 +5513,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FullNodeProxy.GetBlockSpends
   nameWithType: FullNodeProxy.GetBlockSpends
+- uid: chia.dotnet.FullNodeProxy.GetBlockSpendsWithConditions(System.String,System.Threading.CancellationToken)
+  name: GetBlockSpendsWithConditions(String, CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetBlockSpendsWithConditions_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetBlockSpendsWithConditions(System.String,System.Threading.CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetBlockSpendsWithConditions(System.String, System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetBlockSpendsWithConditions(String, CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetBlockSpendsWithConditions*
+  name: GetBlockSpendsWithConditions
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetBlockSpendsWithConditions_
+  commentId: Overload:chia.dotnet.FullNodeProxy.GetBlockSpendsWithConditions
+  isSpec: "True"
+  fullName: chia.dotnet.FullNodeProxy.GetBlockSpendsWithConditions
+  nameWithType: FullNodeProxy.GetBlockSpendsWithConditions
 - uid: chia.dotnet.FullNodeProxy.GetCoinRecordByName(System.String,System.Threading.CancellationToken)
   name: GetCoinRecordByName(String, CancellationToken)
   href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetCoinRecordByName_System_String_System_Threading_CancellationToken_
@@ -14331,6 +14376,35 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.CreateDIDWallet
   nameWithType: WalletProxy.CreateDIDWallet
+- uid: chia.dotnet.WalletProxy.CreateExistingDAOWallet(System.String,System.UInt64,System.Threading.CancellationToken)
+  name: CreateExistingDAOWallet(String, UInt64, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateExistingDAOWallet_System_String_System_UInt64_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.CreateExistingDAOWallet(System.String,System.UInt64,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.CreateExistingDAOWallet(System.String, System.UInt64, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.CreateExistingDAOWallet(String, UInt64, CancellationToken)
+- uid: chia.dotnet.WalletProxy.CreateExistingDAOWallet*
+  name: CreateExistingDAOWallet
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateExistingDAOWallet_
+  commentId: Overload:chia.dotnet.WalletProxy.CreateExistingDAOWallet
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.CreateExistingDAOWallet
+  nameWithType: WalletProxy.CreateExistingDAOWallet
+- uid: chia.dotnet.WalletProxy.CreateNewDAOWallet(chia.dotnet.DAORules,System.Nullable{System.UInt64},System.UInt64,System.UInt64,System.UInt64,System.Threading.CancellationToken)
+  name: CreateNewDAOWallet(DAORules, Nullable<UInt64>, UInt64, UInt64, UInt64, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateNewDAOWallet_chia_dotnet_DAORules_System_Nullable_System_UInt64__System_UInt64_System_UInt64_System_UInt64_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.CreateNewDAOWallet(chia.dotnet.DAORules,System.Nullable{System.UInt64},System.UInt64,System.UInt64,System.UInt64,System.Threading.CancellationToken)
+  name.vb: CreateNewDAOWallet(DAORules, Nullable(Of UInt64), UInt64, UInt64, UInt64, CancellationToken)
+  fullName: chia.dotnet.WalletProxy.CreateNewDAOWallet(chia.dotnet.DAORules, System.Nullable<System.UInt64>, System.UInt64, System.UInt64, System.UInt64, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.WalletProxy.CreateNewDAOWallet(chia.dotnet.DAORules, System.Nullable(Of System.UInt64), System.UInt64, System.UInt64, System.UInt64, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.CreateNewDAOWallet(DAORules, Nullable<UInt64>, UInt64, UInt64, UInt64, CancellationToken)
+  nameWithType.vb: WalletProxy.CreateNewDAOWallet(DAORules, Nullable(Of UInt64), UInt64, UInt64, UInt64, CancellationToken)
+- uid: chia.dotnet.WalletProxy.CreateNewDAOWallet*
+  name: CreateNewDAOWallet
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateNewDAOWallet_
+  commentId: Overload:chia.dotnet.WalletProxy.CreateNewDAOWallet
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.CreateNewDAOWallet
+  nameWithType: WalletProxy.CreateNewDAOWallet
 - uid: chia.dotnet.WalletProxy.CreateNewDl(System.String,System.UInt64,System.Threading.CancellationToken)
   name: CreateNewDl(String, UInt64, CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_CreateNewDl_System_String_System_UInt64_System_Threading_CancellationToken_

@@ -566,6 +566,143 @@ checks if any wallets have a non-zero balance</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_WalletProxy_CreateExistingDAOWallet_System_String_System_UInt64_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.WalletProxy.CreateExistingDAOWallet(System.String%2CSystem.UInt64%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L1152">View Source</a>
+  </span>
+  <a id="chia_dotnet_WalletProxy_CreateExistingDAOWallet_" data-uid="chia.dotnet.WalletProxy.CreateExistingDAOWallet*"></a>
+  <h4 id="chia_dotnet_WalletProxy_CreateExistingDAOWallet_System_String_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CreateExistingDAOWallet(System.String,System.UInt64,System.Threading.CancellationToken)">CreateExistingDAOWallet(String, UInt64, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Create a new CAT wallet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;(WalletType Type, string TreasuryId, uint WalletId, uint CatWalletId, uint DaoCatWalletId)&gt; CreateExistingDAOWallet(string treasuryId, ulong filterAmount = 1UL, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">treasuryId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">UInt64</a></td>
+        <td><span class="parametername">filterAmount</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token to allow the call to be cancelled</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-5">(T1, T2, T3, T4, T5)</a>&lt;<a class="xref" href="chia.dotnet.WalletType.html">WalletType</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">UInt32</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">UInt32</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">UInt32</a>&gt;&gt;</td>
+        <td><p>Information about the wallet</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_WalletProxy_CreateNewDAOWallet_chia_dotnet_DAORules_System_Nullable_System_UInt64__System_UInt64_System_UInt64_System_UInt64_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.WalletProxy.CreateNewDAOWallet(chia.dotnet.DAORules%2CSystem.Nullable%7BSystem.UInt64%7D%2CSystem.UInt64%2CSystem.UInt64%2CSystem.UInt64%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L1124">View Source</a>
+  </span>
+  <a id="chia_dotnet_WalletProxy_CreateNewDAOWallet_" data-uid="chia.dotnet.WalletProxy.CreateNewDAOWallet*"></a>
+  <h4 id="chia_dotnet_WalletProxy_CreateNewDAOWallet_chia_dotnet_DAORules_System_Nullable_System_UInt64__System_UInt64_System_UInt64_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CreateNewDAOWallet(chia.dotnet.DAORules,System.Nullable{System.UInt64},System.UInt64,System.UInt64,System.UInt64,System.Threading.CancellationToken)">CreateNewDAOWallet(DAORules, Nullable&lt;UInt64&gt;, UInt64, UInt64, UInt64, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Create a new CAT wallet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;(WalletType Type, string TreasuryId, uint WalletId, uint CatWalletId, uint DaoCatWalletId)&gt; CreateNewDAOWallet(DAORules daoRules = null, ulong? amountOfCats = null, ulong filterAmount = 1UL, ulong feeForCat = 0UL, ulong fee = 0UL, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="chia.dotnet.DAORules.html">DAORules</a></td>
+        <td><span class="parametername">daoRules</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">UInt64</a>&gt;</td>
+        <td><span class="parametername">amountOfCats</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">UInt64</a></td>
+        <td><span class="parametername">filterAmount</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">UInt64</a></td>
+        <td><span class="parametername">feeForCat</span></td>
+        <td><p>Fee (in units of mojos)</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">UInt64</a></td>
+        <td><span class="parametername">fee</span></td>
+        <td><p>Fee (in units of mojos)</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token to allow the call to be cancelled</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-5">(T1, T2, T3, T4, T5)</a>&lt;<a class="xref" href="chia.dotnet.WalletType.html">WalletType</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">UInt32</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">UInt32</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">UInt32</a>&gt;&gt;</td>
+        <td><p>Information about the wallet</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_WalletProxy_CreateNewDl_System_String_System_UInt64_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.WalletProxy.CreateNewDl(System.String%2CSystem.UInt64%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
