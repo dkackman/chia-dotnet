@@ -673,5 +673,18 @@ namespace chia.dotnet
                 return SECONDS_PER_BLOCK;
             }
         }
+
+        /// <summary>
+        /// Retrieves the spends in the given block, including its conditions.
+        /// </summary>
+        /// <param name="headerHash"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A list of <see cref="BlockSpendWithConditions"/></returns>
+        public async Task<IEnumerable<BlockSpendWithConditions>> GetBlockSpendsWithConditions(string headerHash, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.header_hash = headerHash;
+            return await SendMessage<IEnumerable<BlockSpendWithConditions>>("get_block_spends_with_conditions", data, "block_spends_with_conditions", cancellationToken).ConfigureAwait(false);
+        }
     }
 }

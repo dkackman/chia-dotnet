@@ -1110,5 +1110,61 @@ namespace chia.dotnet
             data.batch_size = batchSize;
             return await SendMessage<IEnumerable<string>>("spend_clawback_coins", data, "transaction_ids", cancellationToken).ConfigureAwait(false);
         }
+
+        /// <summary>
+        /// Create a new CAT wallet
+        /// </summary>
+        /// <param name="daoRules"></param>
+        /// <param name="amountOfCats"></param>
+        /// <param name="filterAmount"></param>
+        /// <param name="feeForCat">Fee (in units of mojos)</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Information about the wallet</returns>
+        public async Task<(WalletType Type, string TreasuryId, uint WalletId, uint CatWalletId, uint DaoCatWalletId)>
+            CreateNewDAOWallet(DAORules? daoRules = null, ulong? amountOfCats = null, ulong filterAmount = 1, ulong feeForCat = 0, ulong fee = 0, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_type = "dao_wallet";
+            data.mode = "new";
+            data.dao_rules = daoRules;
+            data.amount_of_cats = amountOfCats;
+            data.filter_amount = filterAmount;
+            data.fee_for_cat = feeForCat;
+            data.fee = fee;
+            var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
+            return (
+                (WalletType)response.type,
+                response.treasury_id,
+                (uint)response.wallet_id,
+                (uint)response.cat_wallet_id,
+                (uint)response.dao_cat_wallet_id
+                );
+        }
+
+        /// <summary>
+        /// Create a new CAT wallet
+        /// </summary>
+        /// <param name="treasuryId"></param>
+        /// <param name="filterAmount"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Information about the wallet</returns>
+        public async Task<(WalletType Type, string TreasuryId, uint WalletId, uint CatWalletId, uint DaoCatWalletId)>
+            CreateExistingDAOWallet(string treasuryId, ulong filterAmount = 1, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.wallet_type = "dao_wallet";
+            data.mode = "existing";
+            data.treasury_id = treasuryId;
+            data.filter_amount = filterAmount;
+            var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
+            return (
+                (WalletType)response.type,
+                response.treasury_id,
+                (uint)response.wallet_id,
+                (uint)response.cat_wallet_id,
+                (uint)response.dao_cat_wallet_id
+                );
+        }
     }
 }

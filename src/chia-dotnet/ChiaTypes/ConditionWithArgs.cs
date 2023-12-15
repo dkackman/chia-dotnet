@@ -8,7 +8,7 @@ namespace chia.dotnet
     /// </summary>
     public record ConditionWithArgs
     {
-        public string Opcode { get; init; } = string.Empty;
+        public ushort Opcode { get; init; }
         public IEnumerable<string> Vars { get; init; } = new List<string>();
     }
 }
