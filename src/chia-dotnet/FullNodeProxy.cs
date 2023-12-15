@@ -12,17 +12,13 @@ namespace chia.dotnet
     /// <summary>
     /// Proxy that communicates with the full node
     /// </summary>
-    public sealed class FullNodeProxy : ServiceProxy
+    /// <remarks>
+    /// ctor
+    /// </remarks>
+    /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
+    /// <param name="originService"><see cref="Message.Origin"/></param>
+    public sealed class FullNodeProxy(IRpcClient rpcClient, string originService) : ServiceProxy(rpcClient, ServiceNames.FullNode, originService)
     {
-        /// <summary>
-        /// ctor
-        /// </summary>
-        /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
-        /// <param name="originService"><see cref="Message.Origin"/></param>
-        public FullNodeProxy(IRpcClient rpcClient, string originService)
-            : base(rpcClient, ServiceNames.FullNode, originService)
-        {
-        }
 
         /// <summary>
         /// Will wait until <see cref="GetBlockchainState(CancellationToken)"/> indicates 
@@ -492,8 +488,8 @@ namespace chia.dotnet
         /// <param name="newerBlockHeaderhash"></param>
         /// <param name="olderBlockHeaderhash"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref="BigInteger"/> of network space in bytes</returns>
-        public async Task<BigInteger> GetNetworkSpace(string newerBlockHeaderhash, string olderBlockHeaderhash, CancellationToken cancellationToken = default)
+        /// <returns><see cref="UInt128"/> of network space in bytes</returns>
+        public async Task<UInt128> GetNetworkSpace(string newerBlockHeaderhash, string olderBlockHeaderhash, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(newerBlockHeaderhash))
             {

@@ -1,12 +1,10 @@
-using System.Numerics;
-
-namespace chia.dotnet
+﻿namespace chia.dotnet
 {
     public record RewardChainBlock
     {
-        public BigInteger Weight { get; init; }
+        public System.UInt128 Weight { get; init; }
         public uint Height { get; init; }
-        public BigInteger TotalIters { get; init; }
+        public System.UInt128 TotalIters { get; init; }
         public byte SignagePointIndex { get; init; }
         public string PosSsCcChallengeHash { get; init; } = string.Empty;
         public ProofOfSpace ProofOfSpace { get; init; } = new();
