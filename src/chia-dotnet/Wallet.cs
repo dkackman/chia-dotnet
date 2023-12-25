@@ -11,28 +11,23 @@ namespace chia.dotnet
     /// Base class representing a specific wallet (i.e. anything with a WalletID)
     /// </summary>
     /// <remarks>When not dervied from this represents a <see cref="WalletType.STANDARD_WALLET"/></remarks>
-    public class Wallet
+    /// <remarks>
+    /// ctor
+    /// </remarks>
+    /// <param name="walletId">The wallet_id to wrap</param>
+    /// <param name="walletProxy">Wallet RPC proxy to use for communication</param>
+    public class Wallet(uint walletId, WalletProxy walletProxy)
     {
-        /// <summary>
-        /// ctor
-        /// </summary>
-        /// <param name="walletId">The wallet_id to wrap</param>
-        /// <param name="walletProxy">Wallet RPC proxy to use for communication</param>
-        public Wallet(uint walletId, WalletProxy walletProxy)
-        {
-            WalletId = walletId;
-            WalletProxy = walletProxy ?? throw new ArgumentNullException(nameof(walletProxy));
-        }
 
         /// <summary>
         /// The id of the wallet
         /// </summary>
-        public uint WalletId { get; init; }
+        public uint WalletId { get; init; } = walletId;
 
         /// <summary>
         /// Wallet RPC proxy for communication
         /// </summary>
-        public WalletProxy WalletProxy { get; init; }
+        public WalletProxy WalletProxy { get; init; } = walletProxy ?? throw new ArgumentNullException(nameof(walletProxy));
 
         /// <summary>
         /// Creates a dynamic object and sets its wallet_id property to <see cref="WalletId"/>
@@ -294,10 +289,7 @@ namespace chia.dotnet
         /// <returns>The <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, IEnumerable<Coin>? coins = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
-            if (additions is null)
-            {
-                throw new ArgumentNullException(nameof(additions));
-            }
+            ArgumentNullException.ThrowIfNull(additions);
 
             dynamic data = CreateWalletDataObject();
             data.additions = additions.ToList();

@@ -9,17 +9,13 @@ namespace chia.dotnet
     /// <summary>
     /// Wraps a Distributed Identity Wallet
     /// </summary>
-    public sealed class DIDWallet : Wallet
+    /// <remarks>
+    /// ctor
+    /// </remarks>
+    /// <param name="walletId">The wallet_id to wrap</param>
+    /// <param name="walletProxy">Wallet RPC proxy to use for communication</param>
+    public sealed class DIDWallet(uint walletId, WalletProxy walletProxy) : Wallet(walletId, walletProxy)
     {
-        /// <summary>
-        /// ctor
-        /// </summary>
-        /// <param name="walletId">The wallet_id to wrap</param>
-        /// <param name="walletProxy">Wallet RPC proxy to use for communication</param>
-        public DIDWallet(uint walletId, WalletProxy walletProxy)
-            : base(walletId, walletProxy)
-        {
-        }
 
         /// <summary>
         /// Validates that <see cref="Wallet.WalletId"/> is a <see cref="WalletType.DISTRIBUTED_ID"/>
@@ -40,10 +36,7 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task UpdateRecoveryIds(IEnumerable<string> newList, ulong? numVerificationsRequired = null, bool? reusePuzhash = null, CancellationToken cancellationToken = default)
         {
-            if (newList is null)
-            {
-                throw new ArgumentNullException(nameof(newList));
-            }
+            ArgumentNullException.ThrowIfNull(newList);
 
             dynamic data = CreateWalletDataObject();
             data.new_list = newList.ToList();
@@ -62,10 +55,7 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task UpdateRecoveryIds(IEnumerable<string> newList, ulong numVerificationsRequired, CancellationToken cancellationToken = default)
         {
-            if (newList is null)
-            {
-                throw new ArgumentNullException(nameof(newList));
-            }
+            ArgumentNullException.ThrowIfNull(newList);
 
             dynamic data = CreateWalletDataObject();
             data.new_list = newList.ToList();
@@ -212,10 +202,7 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task RecoverySpend(IEnumerable<string> attestData, string? pubkey, string? puzzlehash, CancellationToken cancellationToken = default)
         {
-            if (attestData is null)
-            {
-                throw new ArgumentNullException(nameof(attestData));
-            }
+            ArgumentNullException.ThrowIfNull(attestData);
 
             dynamic data = CreateWalletDataObject();
             data.attest_data = attestData.ToList();

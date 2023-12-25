@@ -10,17 +10,13 @@ namespace chia.dotnet
     /// <summary>
     /// Proxy that communicates with the farmer
     /// </summary>
-    public sealed class FarmerProxy : ServiceProxy
+    /// <remarks>
+    /// ctor
+    /// </remarks>
+    /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
+    /// <param name="originService"><see cref="Message.Origin"/></param>
+    public sealed class FarmerProxy(IRpcClient rpcClient, string originService) : ServiceProxy(rpcClient, ServiceNames.Farmer, originService)
     {
-        /// <summary>
-        /// ctor
-        /// </summary>
-        /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
-        /// <param name="originService"><see cref="Message.Origin"/></param>
-        public FarmerProxy(IRpcClient rpcClient, string originService)
-            : base(rpcClient, ServiceNames.Farmer, originService)
-        {
-        }
 
         /// <summary>
         /// Get the farm and pool reward targets 
@@ -56,7 +52,7 @@ namespace chia.dotnet
         /// <returns>The farm and pool reward targets</returns>
         public async Task<(string FarmerTarget, string PoolTarget, bool HaveFarmerSk, bool HavePoolSk)> GetRewardTargetsIncludingPrivateKey(CancellationToken cancellationToken = default)
         {
-            return await GetRewardTargetsIncludingPrivateKey(cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await GetRewardTargetsIncludingPrivateKey(500, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

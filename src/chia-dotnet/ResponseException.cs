@@ -6,7 +6,13 @@ namespace chia.dotnet
     /// Exception thrown when the RPC endpoint returns a response <see cref="Message"/> but Data.success is false
     /// oro there is a communication error on the websocket of http channgel
     /// </summary>
-    public sealed class ResponseException : Exception
+    /// <remarks>
+    /// ctor
+    /// </remarks>
+    /// <param name="request">The request sent to the service</param>
+    /// <param name="message"><see cref="Exception.Message"/></param>
+    /// <param name="innerException"><see cref="Exception.InnerException"/></param>
+    public sealed class ResponseException(Message request, string message, Exception? innerException) : Exception(message, innerException)
     {
         /// <summary>
         /// ctor
@@ -28,20 +34,8 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// ctor
-        /// </summary>
-        /// <param name="request">The request sent to the service</param>
-        /// <param name="message"><see cref="Exception.Message"/></param>
-        /// <param name="innerException"><see cref="Exception.InnerException"/></param>
-        public ResponseException(Message request, string message, Exception? innerException)
-            : base(message, innerException)
-        {
-            Request = request;
-        }
-
-        /// <summary>
         /// The request sent to the service
         /// </summary>
-        public Message Request { get; init; }
+        public Message Request { get; init; } = request;
     }
 }

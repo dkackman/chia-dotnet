@@ -9,14 +9,9 @@ namespace chia.dotnet
     /// <summary>
     /// API wrapper for those wallet RPC methods dealing with verified credentials
     /// </summary>
-    public sealed class VerifiedCredentialManager
+    public sealed class VerifiedCredentialManager(WalletProxy walletProxy)
     {
-        public WalletProxy WalletProxy { get; init; }
-
-        public VerifiedCredentialManager(WalletProxy walletProxy)
-        {
-            WalletProxy = walletProxy ?? throw new ArgumentNullException(nameof(walletProxy));
-        }
+        public WalletProxy WalletProxy { get; init; } = walletProxy ?? throw new ArgumentNullException(nameof(walletProxy));
 
         /// <summary>
         /// Given a launcher ID get the verified credential.

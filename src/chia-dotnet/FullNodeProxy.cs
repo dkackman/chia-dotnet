@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
-using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -286,10 +285,7 @@ namespace chia.dotnet
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
         public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByNames(IEnumerable<string> names, bool includeSpentCoins, uint? startHeight = null, uint? endHeight = null, CancellationToken cancellationToken = default)
         {
-            if (names is null)
-            {
-                throw new ArgumentNullException(nameof(names));
-            }
+            ArgumentNullException.ThrowIfNull(names);
 
             dynamic data = new ExpandoObject();
             data.names = names.ToList();
@@ -311,10 +307,7 @@ namespace chia.dotnet
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
         public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHashes(IEnumerable<string> puzzlehashes, bool includeSpentCoins, uint? startHeight = null, uint? endHeight = null, CancellationToken cancellationToken = default)
         {
-            if (puzzlehashes is null)
-            {
-                throw new ArgumentNullException(nameof(puzzlehashes));
-            }
+            ArgumentNullException.ThrowIfNull(puzzlehashes);
 
             dynamic data = new ExpandoObject();
             data.puzzle_hashes = puzzlehashes.ToList();
@@ -337,10 +330,7 @@ namespace chia.dotnet
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
         public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByParentIds(IEnumerable<string> parentIds, bool includeSpentCoins, uint? startHeight = null, uint? endHeight = null, CancellationToken cancellationToken = default)
         {
-            if (parentIds is null)
-            {
-                throw new ArgumentNullException(nameof(parentIds));
-            }
+            ArgumentNullException.ThrowIfNull(parentIds);
 
             dynamic data = new ExpandoObject();
             data.parent_ids = parentIds.ToList();
@@ -531,10 +521,7 @@ namespace chia.dotnet
         /// <returns>Indicator of whether the spend bundle was successfully included in the mempool</returns>
         public async Task<bool> PushTx(SpendBundle spendBundle, CancellationToken cancellationToken = default)
         {
-            if (spendBundle is null)
-            {
-                throw new ArgumentNullException(nameof(spendBundle));
-            }
+            ArgumentNullException.ThrowIfNull(spendBundle);
 
             dynamic data = new ExpandoObject();
             data.spend_bundle = spendBundle;

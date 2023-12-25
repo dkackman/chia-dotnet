@@ -8,33 +8,27 @@ namespace chia.dotnet.bech32
     /// Utility to perform operations on an array of bytes and represent them as a Hex string
     /// </summary>
     /// <remarks>adapted from https://github.com/Playwo/ChiaRPC.Net/blob/master/ChiaRPC.Net/Utils/Bech32M.cs</remarks>
-    public readonly struct HexBytes
+    /// <remarks>
+    /// ctor
+    /// </remarks>
+    /// <param name="hex"></param>
+    /// <param name="bytes"></param>
+    public readonly struct HexBytes(string hex, byte[] bytes)
     {
         /// <summary>
         /// <see cref="Bytes"/> hex string representation
         /// </summary>
-        public string Hex { get; init; }
+        public string Hex { get; init; } = hex ?? string.Empty;
 
         /// <summary>
         /// The array of bytes
         /// </summary>
-        public byte[] Bytes { get; init; }
+        public byte[] Bytes { get; init; } = bytes ?? [];
 
         /// <summary>
         /// FLag indicating that the array is empty
         /// </summary>
         public bool IsEmpty => string.IsNullOrWhiteSpace(Hex);
-
-        /// <summary>
-        /// ctor
-        /// </summary>
-        /// <param name="hex"></param>
-        /// <param name="bytes"></param>
-        public HexBytes(string hex, byte[] bytes)
-        {
-            Hex = hex ?? string.Empty;
-            Bytes = bytes ?? Array.Empty<byte>();
-        }
 
         /// <summary>
         /// SHA256 encoded copy 
@@ -50,7 +44,7 @@ namespace chia.dotnet.bech32
 
         public override bool Equals(object? obj)
         {
-            return obj is HexBytes other && Hex.ToUpperInvariant() == other.Hex.ToUpperInvariant();
+            return obj is HexBytes other && Hex.Equals(other.Hex, StringComparison.OrdinalIgnoreCase);
         }
 
         public override int GetHashCode()
@@ -91,12 +85,12 @@ namespace chia.dotnet.bech32
 
         public static bool operator ==(HexBytes a, HexBytes b)
         {
-            return a.Hex.ToUpperInvariant() == b.Hex.ToUpperInvariant();
+            return a.Hex.Equals(b.Hex, StringComparison.OrdinalIgnoreCase);
         }
 
         public static bool operator !=(HexBytes a, HexBytes b)
         {
-            return a.Hex.ToUpperInvariant() != b.Hex.ToUpperInvariant();
+            return !a.Hex.Equals(b.Hex, StringComparison.OrdinalIgnoreCase);
         }
 
         public static HexBytes FromHex(string hex)
@@ -136,6 +130,6 @@ namespace chia.dotnet.bech32
         /// <summary>
         /// 
         /// </summary>
-        public static HexBytes Empty => new(string.Empty, Array.Empty<byte>());
+        public static HexBytes Empty => new(string.Empty, []);
     }
 }
