@@ -163,7 +163,7 @@ namespace chia.dotnet
 
             var abs = Math.Abs(byteCount); // in case byteCount is negative
             var place = Convert.ToInt32(Math.Floor(Math.Log(abs, 1024)));
-            var num = Math.Sign(byteCount) * Math.Round(byteCount / Math.Pow(1024, place), 1);
+            var num = Math.Sign(byteCount) * Math.Round(abs / Math.Pow(1024, place), 1);
 
             return $"{num.ToString(format)} {suffixes[place]}";
         }
@@ -184,7 +184,7 @@ namespace chia.dotnet
 
             var abs = Math.Abs(byteCount); // in case byteCount is negative
             var place = Convert.ToInt32(Math.Floor(Math.Log(abs, 1024)));
-            var num = Math.Sign(byteCount) * Math.Round(byteCount / Math.Pow(1024, place), 1);
+            var num = Math.Sign(byteCount) * Math.Round(abs / Math.Pow(1024, place), 1);
 
             return $"{num.ToString(format)} {suffixes[place]}";
         }
