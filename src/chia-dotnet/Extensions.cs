@@ -181,7 +181,7 @@ namespace chia.dotnet
         /// <returns>A human readable string</returns>
         public static string ToBytesString(this long byteCount, string format = "N3")
         {
-            string[] suffixes = { "B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "YiB" };
+            string[] suffixes = ["B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "YiB"];
             if (byteCount == 0)
             {
                 return $"{0.0.ToString(format)} {suffixes[0]}";
