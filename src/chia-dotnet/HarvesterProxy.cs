@@ -9,17 +9,13 @@ namespace chia.dotnet
     /// <summary>
     /// Proxy that communicates with the harvester
     /// </summary>
-    public sealed class HarvesterProxy : ServiceProxy
+    /// <remarks>
+    /// ctor
+    /// </remarks>
+    /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
+    /// <param name="originService"><see cref="Message.Origin"/></param>
+    public sealed class HarvesterProxy(IRpcClient rpcClient, string originService) : ServiceProxy(rpcClient, ServiceNames.Harvester, originService)
     {
-        /// <summary>
-        /// ctor
-        /// </summary>
-        /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
-        /// <param name="originService"><see cref="Message.Origin"/></param>
-        public HarvesterProxy(IRpcClient rpcClient, string originService)
-            : base(rpcClient, ServiceNames.Harvester, originService)
-        {
-        }
 
         /// <summary>
         /// Gets harvester configuration.

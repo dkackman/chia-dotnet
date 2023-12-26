@@ -9,17 +9,13 @@ namespace chia.dotnet
     /// <summary>
     /// Proxy that communicates with the crawler
     /// </summary>
-    public sealed class CrawlerProxy : ServiceProxy
+    /// <remarks>
+    /// ctor
+    /// </remarks>
+    /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
+    /// <param name="originService"><see cref="Message.Origin"/></param>
+    public sealed class CrawlerProxy(IRpcClient rpcClient, string originService) : ServiceProxy(rpcClient, ServiceNames.Crawler, originService)
     {
-        /// <summary>
-        /// ctor
-        /// </summary>
-        /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
-        /// <param name="originService"><see cref="Message.Origin"/></param>
-        public CrawlerProxy(IRpcClient rpcClient, string originService)
-            : base(rpcClient, ServiceNames.Crawler, originService)
-        {
-        }
 
         /// <summary>
         /// Retrieves aggregate information about peers

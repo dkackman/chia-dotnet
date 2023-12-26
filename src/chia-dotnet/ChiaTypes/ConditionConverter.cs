@@ -16,13 +16,13 @@ namespace chia.dotnet
 
             var opcode = reader.ReadAsString(); // the opcode is stored without a name (as part of an unnamed tuple (aka array in json))
             _ = reader.Read(); // move ahead to the start of the collection
-            var args = serializer.Deserialize<IEnumerable<ConditionWithArgs>>(reader);
+            var args = serializer.Deserialize<IEnumerable<ConditionWithVars>>(reader);
             _ = reader.Read();
 
             return new Condition()
             {
                 ConditionOpcode = opcode ?? string.Empty,
-                Args = args ?? new List<ConditionWithArgs>()
+                Args = args ?? new List<ConditionWithVars>()
             };
         }
 

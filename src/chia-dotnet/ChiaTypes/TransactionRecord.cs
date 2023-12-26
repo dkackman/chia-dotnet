@@ -46,5 +46,6 @@ namespace chia.dotnet
         public uint WalletId { get; init; }
         [JsonIgnore]
         public DateTime CreatedAtDateTime => CreatedAtTime.ToDateTime();
+        public ConditionValidTimes ValidTimes { get; init; } = new();
     }
 }

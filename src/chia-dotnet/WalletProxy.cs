@@ -11,17 +11,13 @@ namespace chia.dotnet
     /// <summary>
     /// Proxy that communicates with the wallet endpoint
     /// </summary>
-    public sealed class WalletProxy : ServiceProxy
+    /// <remarks>
+    /// ctor
+    /// </remarks>
+    /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
+    /// <param name="originService"><see cref="Message.Origin"/></param>
+    public sealed class WalletProxy(IRpcClient rpcClient, string originService) : ServiceProxy(rpcClient, ServiceNames.Wallet, originService)
     {
-        /// <summary>
-        /// ctor
-        /// </summary>
-        /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
-        /// <param name="originService"><see cref="Message.Origin"/></param>
-        public WalletProxy(IRpcClient rpcClient, string originService)
-            : base(rpcClient, ServiceNames.Wallet, originService)
-        {
-        }
 
         /// <summary>
         /// Gets basic info about a pool that is used for pool wallet creation
@@ -240,10 +236,7 @@ namespace chia.dotnet
         /// <returns>Indicator of whether the spend bundle was successfully included in the mempool</returns>
         public async Task<bool> PushTx(SpendBundle spendBundle, CancellationToken cancellationToken = default)
         {
-            if (spendBundle is null)
-            {
-                throw new ArgumentNullException(nameof(spendBundle));
-            }
+            ArgumentNullException.ThrowIfNull(spendBundle);
 
             dynamic data = new ExpandoObject();
             data.spend_bundle = spendBundle;
@@ -261,10 +254,7 @@ namespace chia.dotnet
         /// <returns>An awaitable task</returns>
         public async Task PushTransactions(IEnumerable<TransactionRecord> transactions, CancellationToken cancellationToken = default)
         {
-            if (transactions is null)
-            {
-                throw new ArgumentNullException(nameof(transactions));
-            }
+            ArgumentNullException.ThrowIfNull(transactions);
 
             dynamic data = new ExpandoObject();
             data.transactions = transactions.ToList();
@@ -280,10 +270,7 @@ namespace chia.dotnet
         /// <returns>The new key's fingerprint</returns>
         public async Task<uint> AddKey(IEnumerable<string> mnemonic, CancellationToken cancellationToken = default)
         {
-            if (mnemonic is null)
-            {
-                throw new ArgumentNullException(nameof(mnemonic));
-            }
+            ArgumentNullException.ThrowIfNull(mnemonic);
 
             dynamic data = new ExpandoObject();
             data.mnemonic = mnemonic.ToList();
@@ -505,10 +492,7 @@ namespace chia.dotnet
         /// <returns>Information about the wallet</returns>
         public async Task<(WalletType Type, string myDID, uint walletId)> CreateDIDWallet(IEnumerable<string> backupDIDs, ulong numOfBackupIdsNeeded, string name, IDictionary<string, string>? metaData = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
-            if (backupDIDs is null)
-            {
-                throw new ArgumentNullException(nameof(backupDIDs));
-            }
+            ArgumentNullException.ThrowIfNull(backupDIDs);
 
             dynamic data = new ExpandoObject();
             data.wallet_type = "did_wallet";
@@ -585,10 +569,7 @@ namespace chia.dotnet
         public async Task<(TransactionRecord transaction, string launcherId, string p2SingletonHash)>
             CreatePoolWallet(PoolState initialTargetState, ulong? p2SingletonDelayTime = null, string? p2SingletonDelayedPH = null, CancellationToken cancellationToken = default)
         {
-            if (initialTargetState is null)
-            {
-                throw new ArgumentNullException(nameof(initialTargetState));
-            }
+            ArgumentNullException.ThrowIfNull(initialTargetState);
 
             dynamic data = new ExpandoObject();
             data.wallet_type = "pool_wallet";
@@ -657,10 +638,7 @@ namespace chia.dotnet
             ulong fee = 0,
             CancellationToken cancellationToken = default)
         {
-            if (additions is null)
-            {
-                throw new ArgumentNullException(nameof(additions));
-            }
+            ArgumentNullException.ThrowIfNull(additions);
 
             dynamic data = new ExpandoObject();
             data.additions = additions.ToList();
@@ -696,19 +674,6 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Create but do not send a transaction
-        /// </summary>
-        /// <param name="additions">Additions to the block chain</param>
-        /// <param name="fee">Fee amount (in units of mojos)</param>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The signed <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> CreateSignedTransaction(IEnumerable<Coin> additions, ulong fee = 0, CancellationToken cancellationToken = default)
-        {
-            return await CreateSignedTransaction(additions, fee: fee, cancellationToken).ConfigureAwait(false);
-        }
-
-
-        /// <summary>
         /// Retrieves the coins for given coin IDs
         /// </summary>
         /// <param name="names">The coin names</param>
@@ -719,10 +684,7 @@ namespace chia.dotnet
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
         public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByNames(IEnumerable<string> names, bool includeSpentCoins, uint? startHeight = null, uint? endHeight = null, CancellationToken cancellationToken = default)
         {
-            if (names is null)
-            {
-                throw new ArgumentNullException(nameof(names));
-            }
+            ArgumentNullException.ThrowIfNull(names);
 
             dynamic data = new ExpandoObject();
             data.names = names.ToList();

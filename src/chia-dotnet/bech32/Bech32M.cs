@@ -12,25 +12,20 @@ namespace chia.dotnet.bech32
     /// Bech32M implementation for encoding addresses
     /// </summary>
     /// <remarks>adapted from https://github.com/Playwo/ChiaRPC.Net/blob/master/ChiaRPC.Net/Utils/Bech32M.cs</remarks>
-    public class Bech32M
+    /// <remarks>
+    /// ctor
+    /// </remarks>
+    /// <param name="prefix">Address prefix</param>
+    public class Bech32M(string prefix = "xch")
     {
         /// <summary>
         /// Address prefix to use
         /// </summary>
         /// <value>xch</value>
-        public string AddressPrefix { get; init; } = "xch";
+        public string AddressPrefix { get; init; } = prefix;
         private const string Charset = "qpzry9x8gf2tvdw0s3jn54khce6mua7l";
         private const int M = 0x2BC830A3;
-        private static readonly int[] Generator = new int[] { 0x3B6A57B2, 0x26508E6D, 0x1EA119FA, 0x3D4233DD, 0x2A1462B3 };
-
-        /// <summary>
-        /// ctor
-        /// </summary>
-        /// <param name="prefix">Address prefix</param>
-        public Bech32M(string prefix = "xch")
-        {
-            AddressPrefix = prefix;
-        }
+        private static readonly int[] Generator = [0x3B6A57B2, 0x26508E6D, 0x1EA119FA, 0x3D4233DD, 0x2A1462B3];
 
         /// <summary>
         /// Converts a puzzle hash to an address using <see cref="AddressPrefix"/>
@@ -199,7 +194,7 @@ namespace chia.dotnet.bech32
         /// <returns></returns>
         private static (string?, List<int>?) Decode(string bech)
         {
-            if (bech.ToLower() != bech && bech.ToUpper() != bech)
+            if (!bech.Equals(bech, StringComparison.OrdinalIgnoreCase) && !bech.Equals(bech, StringComparison.OrdinalIgnoreCase))
             {
                 return (null, null);
             }
@@ -213,7 +208,7 @@ namespace chia.dotnet.bech32
             }
 
             bech = bech.ToLower();
-            var lastOnePosition = bech.LastIndexOf("1");
+            var lastOnePosition = bech.LastIndexOf('1');
 
             if (lastOnePosition < 1 || lastOnePosition + 7 > bech.Length || bech.Length > 90)
             {

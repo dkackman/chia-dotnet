@@ -87,7 +87,7 @@ In addition to static vs dynamic typing, C# and Python have very different conve
 - Parameter names are `camelCased`.
 - The chia RPC uses unsigned integers where dotnet might use signed. In cases where chia expects an unsigned number, it is unsigned on the dotnet side.
 - `ulong` is used for the python 64 bit unsigned int.
-- `BigInteger` is used for the python 128 bit unsigned int.
+- `System.UInt128` is used for the python 128 bit unsigned int.
 - Where the RPC return a scalar value, the dotnet code will as well. If it is optional in python it will be `Nullable<T>` in dotnet
 - Where the RPC returns a list of named scalar values, they are returned as a Tuple with named fields.
 - Lists of things are returned as [`IEnumberable<T>`](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-5.0).

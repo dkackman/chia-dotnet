@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
-using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -12,17 +11,13 @@ namespace chia.dotnet
     /// <summary>
     /// Proxy that communicates with the full node
     /// </summary>
-    public sealed class FullNodeProxy : ServiceProxy
+    /// <remarks>
+    /// ctor
+    /// </remarks>
+    /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
+    /// <param name="originService"><see cref="Message.Origin"/></param>
+    public sealed class FullNodeProxy(IRpcClient rpcClient, string originService) : ServiceProxy(rpcClient, ServiceNames.FullNode, originService)
     {
-        /// <summary>
-        /// ctor
-        /// </summary>
-        /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
-        /// <param name="originService"><see cref="Message.Origin"/></param>
-        public FullNodeProxy(IRpcClient rpcClient, string originService)
-            : base(rpcClient, ServiceNames.FullNode, originService)
-        {
-        }
 
         /// <summary>
         /// Will wait until <see cref="GetBlockchainState(CancellationToken)"/> indicates 
@@ -290,10 +285,7 @@ namespace chia.dotnet
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
         public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByNames(IEnumerable<string> names, bool includeSpentCoins, uint? startHeight = null, uint? endHeight = null, CancellationToken cancellationToken = default)
         {
-            if (names is null)
-            {
-                throw new ArgumentNullException(nameof(names));
-            }
+            ArgumentNullException.ThrowIfNull(names);
 
             dynamic data = new ExpandoObject();
             data.names = names.ToList();
@@ -315,10 +307,7 @@ namespace chia.dotnet
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
         public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByPuzzleHashes(IEnumerable<string> puzzlehashes, bool includeSpentCoins, uint? startHeight = null, uint? endHeight = null, CancellationToken cancellationToken = default)
         {
-            if (puzzlehashes is null)
-            {
-                throw new ArgumentNullException(nameof(puzzlehashes));
-            }
+            ArgumentNullException.ThrowIfNull(puzzlehashes);
 
             dynamic data = new ExpandoObject();
             data.puzzle_hashes = puzzlehashes.ToList();
@@ -341,10 +330,7 @@ namespace chia.dotnet
         /// <returns>A list of <see cref="CoinRecord"/>s</returns>
         public async Task<IEnumerable<CoinRecord>> GetCoinRecordsByParentIds(IEnumerable<string> parentIds, bool includeSpentCoins, uint? startHeight = null, uint? endHeight = null, CancellationToken cancellationToken = default)
         {
-            if (parentIds is null)
-            {
-                throw new ArgumentNullException(nameof(parentIds));
-            }
+            ArgumentNullException.ThrowIfNull(parentIds);
 
             dynamic data = new ExpandoObject();
             data.parent_ids = parentIds.ToList();
@@ -492,8 +478,8 @@ namespace chia.dotnet
         /// <param name="newerBlockHeaderhash"></param>
         /// <param name="olderBlockHeaderhash"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref="BigInteger"/> of network space in bytes</returns>
-        public async Task<BigInteger> GetNetworkSpace(string newerBlockHeaderhash, string olderBlockHeaderhash, CancellationToken cancellationToken = default)
+        /// <returns><see cref="UInt128"/> of network space in bytes</returns>
+        public async Task<UInt128> GetNetworkSpace(string newerBlockHeaderhash, string olderBlockHeaderhash, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(newerBlockHeaderhash))
             {
@@ -535,10 +521,7 @@ namespace chia.dotnet
         /// <returns>Indicator of whether the spend bundle was successfully included in the mempool</returns>
         public async Task<bool> PushTx(SpendBundle spendBundle, CancellationToken cancellationToken = default)
         {
-            if (spendBundle is null)
-            {
-                throw new ArgumentNullException(nameof(spendBundle));
-            }
+            ArgumentNullException.ThrowIfNull(spendBundle);
 
             dynamic data = new ExpandoObject();
             data.spend_bundle = spendBundle;

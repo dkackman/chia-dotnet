@@ -10,14 +10,9 @@ namespace chia.dotnet
     /// <summary>
     /// API wrapper for those wallet RPC methods dealing with trades and offers
     /// </summary>
-    public sealed class TradeManager
+    public sealed class TradeManager(WalletProxy walletProxy)
     {
-        public WalletProxy WalletProxy { get; init; }
-
-        public TradeManager(WalletProxy walletProxy)
-        {
-            WalletProxy = walletProxy ?? throw new ArgumentNullException(nameof(walletProxy));
-        }
+        public WalletProxy WalletProxy { get; init; } = walletProxy ?? throw new ArgumentNullException(nameof(walletProxy));
 
         /// <summary>
         /// Retrieves the number of offers.
@@ -271,10 +266,7 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task<OfferRecord> CreateOffer(IDictionary<uint, long> walletIdsAndMojoAmounts, ulong minCoinAmount = 0, ulong maxCoinAmount = 0, bool validateOnly = false, IDictionary<string, string>? driver = null, IDictionary<string, string>? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
-            if (walletIdsAndMojoAmounts is null)
-            {
-                throw new ArgumentNullException(nameof(walletIdsAndMojoAmounts));
-            }
+            ArgumentNullException.ThrowIfNull(walletIdsAndMojoAmounts);
 
             dynamic data = new ExpandoObject();
             data.offer = walletIdsAndMojoAmounts;

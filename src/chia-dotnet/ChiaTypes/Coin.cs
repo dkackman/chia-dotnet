@@ -10,7 +10,7 @@ namespace chia.dotnet
     {
         public string ParentCoinInfo { get; init; } = string.Empty;
         public string PuzzleHash { get; init; } = string.Empty;
-        public ulong Amount { get; init; }
+        public System.UInt128 Amount { get; init; }
 
         /// <summary>
         /// The <see cref="Amount"/> as a hex string

@@ -10,18 +10,14 @@ namespace chia.dotnet
     /// <summary>
     /// Class to manage plotting
     /// </summary>
-    public sealed class PlotterProxy : ServiceProxy
+    /// <remarks>
+    /// ctor
+    /// </remarks>
+    /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
+    /// <param name="originService"><see cref="Message.Origin"/></param>
+    /// <remarks>The daemon endpoint handles plotting commands, so the rpc client has to us a websocket client and dameon endpoint</remarks>
+    public sealed class PlotterProxy(WebSocketRpcClient rpcClient, string originService) : ServiceProxy(rpcClient, ServiceNames.Daemon, originService)
     {
-        /// <summary>
-        /// ctor
-        /// </summary>
-        /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
-        /// <param name="originService"><see cref="Message.Origin"/></param>
-        /// <remarks>The daemon endpoint handles plotting commands, so the rpc client has to us a websocket client and dameon endpoint</remarks>
-        public PlotterProxy(WebSocketRpcClient rpcClient, string originService)
-            : base(rpcClient, ServiceNames.Daemon, originService)
-        {
-        }
 
         /// <summary>
         /// Registers this instance as a plotter and retreives the plot queue
@@ -44,10 +40,7 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task<IEnumerable<string>> StartPlotting(PlotterConfig config, CancellationToken cancellationToken = default)
         {
-            if (config == null)
-            {
-                throw new ArgumentNullException(nameof(config));
-            }
+            ArgumentNullException.ThrowIfNull(config);
 
             dynamic data = config.PrepareForSerialization();
             return await SendMessage<IEnumerable<string>>("start_plotting", data, "ids", cancellationToken).ConfigureAwait(false);

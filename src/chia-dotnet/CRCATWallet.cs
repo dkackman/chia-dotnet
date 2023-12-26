@@ -7,17 +7,13 @@ namespace chia.dotnet
     /// <summary>
     /// Wraps a CRCAT  Wallet
     /// </summary>
-    public sealed class CRCATWallet : Wallet
+    /// <remarks>
+    /// ctor
+    /// </remarks>
+    /// <param name="walletId">The wallet_id to wrap</param>
+    /// <param name="walletProxy">Wallet RPC proxy to use for communication</param>
+    public sealed class CRCATWallet(uint walletId, WalletProxy walletProxy) : Wallet(walletId, walletProxy)
     {
-        /// <summary>
-        /// ctor
-        /// </summary>
-        /// <param name="walletId">The wallet_id to wrap</param>
-        /// <param name="walletProxy">Wallet RPC proxy to use for communication</param>
-        public CRCATWallet(uint walletId, WalletProxy walletProxy)
-            : base(walletId, walletProxy)
-        {
-        }
 
         /// <summary>
         /// Validates that <see cref="Wallet.WalletId"/> is a <see cref="WalletType.CRCAT"/>

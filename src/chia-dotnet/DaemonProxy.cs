@@ -12,17 +12,13 @@ namespace chia.dotnet
     /// The daemon can be used to proxy messages to and from other chia services as well
     /// as controlling the <see cref="PlotterProxy"/> and having it's own procedures
     /// </summary>
-    public sealed class DaemonProxy : ServiceProxy
+    /// <remarks>
+    /// ctor
+    /// </remarks>
+    /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
+    /// <param name="originService"><see cref="Message.Origin"/></param>
+    public sealed class DaemonProxy(WebSocketRpcClient rpcClient, string originService) : ServiceProxy(rpcClient, ServiceNames.Daemon, originService)
     {
-        /// <summary>
-        /// ctor
-        /// </summary>
-        /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
-        /// <param name="originService"><see cref="Message.Origin"/></param>
-        public DaemonProxy(WebSocketRpcClient rpcClient, string originService)
-            : base(rpcClient, ServiceNames.Daemon, originService)
-        {
-        }
 
         /// <summary>
         /// Sends ping message to the service
@@ -42,7 +38,7 @@ namespace chia.dotnet
         /// <remarks>This only works for daemons because they can forward messages to other services through their <see cref="WebSocketRpcClient"/></remarks>
         public T CreateProxyFrom<T>() where T : ServiceProxy
         {
-            var constructor = typeof(T).GetConstructor(new Type[] { typeof(IRpcClient), typeof(string) });
+            var constructor = typeof(T).GetConstructor([typeof(IRpcClient), typeof(string)]);
             return constructor is null || constructor.Invoke(new object[] { RpcClient, OriginService }) is not T proxy
                 ? throw new InvalidOperationException($"Cannot create a {typeof(T).Name}")
                 : proxy;

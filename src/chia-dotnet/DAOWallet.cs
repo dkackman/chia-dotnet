@@ -7,17 +7,13 @@ namespace chia.dotnet
     /// <summary>
     /// Wraps a DAO Wallet
     /// </summary>
-    public sealed class DAOWallet : Wallet
+    /// <remarks>
+    /// ctor
+    /// </remarks>
+    /// <param name="walletId">The wallet_id to wrap</param>
+    /// <param name="walletProxy">Wallet RPC proxy to use for communication</param>
+    public sealed class DAOWallet(uint walletId, WalletProxy walletProxy) : Wallet(walletId, walletProxy)
     {
-        /// <summary>
-        /// ctor
-        /// </summary>
-        /// <param name="walletId">The wallet_id to wrap</param>
-        /// <param name="walletProxy">Wallet RPC proxy to use for communication</param>
-        public DAOWallet(uint walletId, WalletProxy walletProxy)
-            : base(walletId, walletProxy)
-        {
-        }
 
         /// <summary>
         /// Validates that <see cref="Wallet.WalletId"/> is a <see cref="WalletType.DAO"/>
@@ -106,7 +102,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns></returns>
-        public async Task<IDictionary<string, ulong>> GetTreasuryBalance(CancellationToken cancellationToken = default)
+        public async Task<IDictionary<string, System.UInt128>> GetTreasuryBalance(CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             return await WalletProxy.SendMessage<IDictionary<string, ulong>>("dao_get_treasury_balance", data, cancellationToken).ConfigureAwait(false);
