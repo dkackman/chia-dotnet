@@ -171,7 +171,7 @@ namespace chia.dotnet
         /// <returns>A human readable string</returns>
         public static string ToBytesString(this int byteCount, string format = "N3")
         {
-            return ((ulong)byteCount).ToBytesString(format);
+            return ((long)byteCount).ToBytesString(format);
         }
 
         /// <summary>
@@ -182,7 +182,17 @@ namespace chia.dotnet
         /// <returns>A human readable string</returns>
         public static string ToBytesString(this long byteCount, string format = "N3")
         {
-            return ((ulong)byteCount).ToBytesString(format);
+            string[] suffixes = { "B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "YiB" };
+            if (byteCount == 0)
+            {
+                return $"{0.0.ToString(format)} {suffixes[0]}";
+            }
+
+            var abs = Math.Abs(byteCount); // in case byteCount is negative
+            var place = Convert.ToInt32(Math.Floor(Math.Log(abs, 1024)));
+            var num = Math.Sign(byteCount) * Math.Round(abs / Math.Pow(1024, place), 1);
+
+            return $"{num.ToString(format)} {suffixes[place]}";
         }
 
         /// <summary>
@@ -199,8 +209,9 @@ namespace chia.dotnet
                 return $"{0.0.ToString(format)} {suffixes[0]}";
             }
 
-            var place = Convert.ToInt32(Math.Floor(Math.Log(byteCount, 1024)));
-            var num = Math.Round(byteCount / Math.Pow(1024, place), 1);
+            var abs = Math.Abs(byteCount); // in case byteCount is negative
+            var place = Convert.ToInt32(Math.Floor(Math.Log(abs, 1024)));
+            var num = Math.Sign(byteCount) * Math.Round(abs / Math.Pow(1024, place), 1);
 
             return $"{num.ToString(format)} {suffixes[place]}";
         }
