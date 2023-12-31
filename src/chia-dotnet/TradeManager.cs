@@ -162,7 +162,7 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.offer = offer;
 
-            var response = await WalletProxy.SendMessage<bool>("check_offer_validity", data, cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("check_offer_validity", data, cancellationToken).ConfigureAwait(false);
             return (response.valid, response.id);
         }
 
@@ -264,12 +264,41 @@ namespace chia.dotnet
         /// <param name="reusePuzhash"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task<OfferRecord> CreateOffer(IDictionary<uint, long> walletIdsAndMojoAmounts, ulong minCoinAmount = 0, ulong maxCoinAmount = 0, bool validateOnly = false, IDictionary<string, string>? driver = null, IDictionary<string, string>? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<OfferRecord> CreateOffer(IDictionary<uint, long> walletIdsAndMojoAmounts, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool validateOnly = false, IDictionary<string, string>? driver = null, IDictionary<string, string>? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             ArgumentNullException.ThrowIfNull(walletIdsAndMojoAmounts);
 
             dynamic data = new ExpandoObject();
             data.offer = walletIdsAndMojoAmounts;
+            data.fee = fee;
+            data.validate_only = validateOnly;
+            data.min_coin_amount = minCoinAmount;
+            data.max_coin_amount = maxCoinAmount;
+            data.reuse_puzhash = reusePuzhash;
+            data.solver = solver;
+            data.driver_dict = driver;
+            return await WalletProxy.SendMessage<OfferRecord>("create_offer_for_ids", data, null, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Create an offer file from a set of id's in the form of wallet_id:amount
+        /// </summary>
+        /// <param name="launcherIdsAndMojoAmounts">The set of wallet ids and amounts (in mojo) representing the offer</param>
+        /// <param name="fee">Transaction fee for offer creation</param>   
+        /// <param name="minCoinAmount"></param>   
+        /// <param name="maxCoinAmount"></param>   
+        /// <param name="validateOnly">Only validate the offer contents. Do not create.</param>   
+        /// <param name="solver"></param>
+        /// <param name="driver">Additional data about the puzzle</param>
+        /// <param name="reusePuzhash"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>An awaitable <see cref="Task"/></returns>
+        public async Task<OfferRecord> CreateOffer(IDictionary<string, long> launcherIdsAndMojoAmounts, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool validateOnly = false, IDictionary<string, string>? driver = null, IDictionary<string, string>? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
+        {
+            ArgumentNullException.ThrowIfNull(launcherIdsAndMojoAmounts);
+
+            dynamic data = new ExpandoObject();
+            data.offer = launcherIdsAndMojoAmounts;
             data.fee = fee;
             data.validate_only = validateOnly;
             data.min_coin_amount = minCoinAmount;
@@ -293,7 +322,7 @@ namespace chia.dotnet
         /// <param name="reusePuzhash"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task<OfferRecord> CreateOffer(OfferSummary offer, ulong minCoinAmount = 0, ulong maxCoinAmount = 0, bool validateOnly = false, IDictionary<string, string>? driver = null, IDictionary<string, string>? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<OfferRecord> CreateOffer(OfferSummary offer, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool validateOnly = false, IDictionary<string, string>? driver = null, IDictionary<string, string>? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             var walletIdsAndMojoAmounts = new Dictionary<uint, long>();
             foreach (var requested in offer.Requested)
