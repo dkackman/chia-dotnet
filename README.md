@@ -75,9 +75,7 @@ dotnet add package chia-dotnet
 
 ### Tests
 
-There are various unit and integration tests in the test project that have example usage. Tests attributes with `[TestCategory("Integration")]` will use the local install of chia and the mainnet configuration to resolve RPC endpoints.
-
-Tests decorated with `[TestCategory("CAUTION")]` update the state of whatever they are interacting with. Run these tests with caution. If run against a production node on `mainnet`, they might change things, up to and including deleting keys or sending chia out of your wallet.
+There are various unit and integration tests in the test project that have example usage. Some tests might be set to skip because they either need input data specific to a wallet or they may be destructive.
 
 ### Some Notes About Types and Naming
 
