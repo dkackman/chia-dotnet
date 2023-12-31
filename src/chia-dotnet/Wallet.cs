@@ -100,7 +100,7 @@ namespace chia.dotnet
         /// <param name="maxCoinAmount"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The list of <see cref="IEnumerable{Token}"/>s</returns>
-        public async Task<IEnumerable<Coin>> SelectCoins(ulong amount, IEnumerable<Coin>? excludedCoins = null, IEnumerable<ulong>? excludedCoinAmounts = null, ulong minCoinAmount = 0, ulong maxCoinAmount = 0, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<Coin>> SelectCoins(ulong amount, IEnumerable<Coin>? excludedCoins = null, IEnumerable<ulong>? excludedCoinAmounts = null, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.amount = amount;
@@ -245,8 +245,8 @@ namespace chia.dotnet
             IEnumerable<string>? memos = null,
             IEnumerable<ulong>? excludeCoinAmounts = null,
             IEnumerable<string>? excludeCoinsIds = null,
-            ulong minCoinAmount = 0,
-            ulong maxCoinAmount = 0,
+            ulong? minCoinAmount = null,
+            ulong? maxCoinAmount = null,
             bool resusePuzHash = false,
             ulong fee = 0,
             CancellationToken cancellationToken = default)

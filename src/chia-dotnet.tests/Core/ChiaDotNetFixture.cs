@@ -15,7 +15,8 @@ public class ChiaDotNetFixture : IDisposable
 {
     public IHost TestHost { get; }
     internal CancellationTokenSource _cts;
-    private string OriginService => "unit_tests";
+
+    private const string OriginService = "unit_tests";
 
     public ChiaDotNetFixture()
     {
@@ -178,6 +179,7 @@ public class ChiaDotNetFixture : IDisposable
 
     public void Dispose()
     {
+        GC.SuppressFinalize(this);
         TestHost?.Dispose();
     }
 }

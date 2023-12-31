@@ -633,8 +633,8 @@ namespace chia.dotnet
             IEnumerable<PuzzleAnnouncement>? puzzleAnnouncements = null,
             IEnumerable<CoinAnnouncement>? coinAnnouncements = null,
             IEnumerable<Coin>? coins = null,
-            ulong minCoinAmount = 0,
-            ulong maxCoinAmount = 0,
+            ulong? minCoinAmount = null,
+            ulong? maxCoinAmount = null,
             ulong fee = 0,
             CancellationToken cancellationToken = default)
         {

@@ -7,12 +7,8 @@ using Xunit;
 
 namespace chia.dotnet.tests
 {
-    public class TradeManagerTests : TestBase
+    public class TradeManagerTests(ChiaDotNetFixture fixture) : TestBase(fixture)
     {
-        public TradeManagerTests(ChiaDotNetFixture fixture) : base(fixture)
-        {
-        }
-
         [Fact]
         public async Task GetAllOffers()
         {
@@ -41,36 +37,55 @@ namespace chia.dotnet.tests
             Assert.NotNull(cats.ToList());
         }
 
-        [Fact(Skip = "Needs data")]
+        [Fact]
         public async Task CreateOfferForIdsValidateOnly()
         {
             using var cts = new CancellationTokenSource(15000);
 
-            uint makerCoinWalletId = 1; // wallet ID for offered coin (must have balance >= 1)
-            uint takerCoinWalletId = 2; // wallet ID for requested coin
+            uint offeringWalletId = 17; // wallet ID and amount we are offering to exchange
+            uint askingForWalletId = 1; // the wallet id of the asset we are asking for (XCH ==1)
 
             // net amounts in mojo
             var idsAndAmounts = new Dictionary<uint, long>()
              {
-                 { makerCoinWalletId, 1 },
-                 { takerCoinWalletId, -1 }
+                 { offeringWalletId, 10 },
+                 { askingForWalletId, -1000000 }
              };
 
-            var offer = await TradeManager.CreateOffer(idsAndAmounts, validateOnly: true, cancellationToken: cts.Token);
+            var offer = await TradeManager.CreateOffer(idsAndAmounts, validateOnly: true, fee: 50000, cancellationToken: cts.Token);
 
             Assert.NotNull(offer);
         }
 
-        [Fact(Skip = "Needs data")]
+        [Fact]
+        public async Task CreateOfferForNftvalidateOnly()
+        {
+            using var cts = new CancellationTokenSource(15000);
+
+            uint offeringWalletId = 1; // the wallet id of the asset we are asking for (XCH ==1)
+
+            // net amounts in mojo
+            var idsAndAmounts = new Dictionary<string, long>()
+             {
+                 { offeringWalletId.ToString(), 1000000 },
+                 { "79aa8c805e59f14607dd4ddd49fcba5767c3068907f650a16951b41541750385", -1 } // launcher id of an nft
+             };
+
+            var offer = await TradeManager.CreateOffer(idsAndAmounts, validateOnly: true, fee: 50000, cancellationToken: cts.Token);
+
+            Assert.NotNull(offer);
+        }
+
+        [Fact]
         public async Task CreateOfferForIds()
         {
-            uint makerCoinWalletId = 2; // wallet ID for offered coin (must have balance >= 1)
-            uint takerCoinWalletId = 1; // wallet ID for requested coin
+            uint offeringWalletId = 17; // wallet ID and amount we are offering to exchange
+            uint askingForWalletId = 1; // the wallet id of the asset we are asking for (XCH ==1)
 
             var idsAndAmounts = new Dictionary<uint, long>()
              {
-                 { makerCoinWalletId, 1 },
-                 { takerCoinWalletId, -1 }
+                 { offeringWalletId, 1 },
+                 { askingForWalletId, -1 }
              };
 
             using var cts = new CancellationTokenSource(15000);
@@ -79,30 +94,33 @@ namespace chia.dotnet.tests
             Assert.NotNull(offer);
         }
 
-        [Fact(Skip = "Needs data")]
+        [Fact]
         public async Task CreateOfferFromSummary()
         {
-            var makerCoinAssetId = "89dad43c67e91506cb2a05f4ed060fe7be31add0bb656f959dc0778fadac2c4c"; // asset ID for offered coin (must have balance >= 1)
-            var takerCoinAssetId = "txch"; // asset ID for requested coin
+            using var cts = new CancellationTokenSource(1000000);
+
+            var (NetworkName, NetworkPrefix) = await TradeManager.WalletProxy.GetNetworkInfo(cts.Token);
+
+            var askingForAssetId = NetworkPrefix; // asset ID for requested coin
+            var offeringAssetId = "824c71e37ac660006e03f7884561e7a124d930460ae1506a9c234c06ebc6aa1d"; // asset ID for offered coin (must have balance >= 1)
 
             var summary = new OfferSummary
             {
-                Requested = new Dictionary<string, ulong> { { makerCoinAssetId, 1 } },
-                Offered = new Dictionary<string, ulong> { { takerCoinAssetId, 1 } }
+                Requested = new Dictionary<string, ulong> { { askingForAssetId, 1 } },
+                Offered = new Dictionary<string, ulong> { { offeringAssetId, 2 } }
             };
 
-            using var cts = new CancellationTokenSource(10000);
             var offer = await TradeManager.CreateOffer(summary, cancellationToken: cts.Token);
 
             Assert.NotNull(offer);
             Assert.True(offer.TradeRecord.Status == TradeStatus.PENDING_ACCEPT);
         }
 
-        [Fact(Skip = "Needs data")]
+        [Fact]
         public async Task CheckOfferValidity()
         {
             // a valid offer requires the actual coins used to create the offer to be un-spent on the blockchain
-            var validOffer = "offer1qqp83w76wzru6cmqvpsxygqqwc7hynr6hum6e0mnf72sn7uvvkpt68eyumkhelprk0adeg42nlelk2mpafrgx923m0l47yqsaxujnj67dj4d4xhf0dv5fx4uyw6zxasykmyde0v4a9t096w2f4sdn08qc54gum80kkw9wxuh4mwl5a7et253f0ul0k8r8hryflzkawulhqhy0urlr0pck26tq5vvpahyrslmgj67hhq76shmkc37rjja6u9408mdvnyhe7ha7a3m7wdxqkrjvnpg9r2fh73e404q4j6v8claxnm9r27l002hecyn7uyvklvdq3vjvvtr3zscmvtvqcnfks6c9xsygedj8gadj8gadjrgdvz9uykj456sythkzc2d6wus6nh88e0j4gwex9jvfr443wxw2xdezuuxnmu0fpg9ddhhfhaeqd2av70t3fxl5j63kmf44tzlm6e0z07lv7u0dshw6n72juc0jnm67hdruvpj63y3p0u7rh9tqcdmccgm6whn266lelufcunt78xk0d3mz3jrs0eted585lpl22lnrqdrg5avd39jveacfpxq9mwkj09t9320amvqjc0xqscmypke8lctpq6h8l3hxxllsn6cr8yyegrfxcxh54u6p060vtn5372m88as5kx906knga262kvmkcys50mck34wd98lekxy6wuqffklutucz0arrftavw6r39ch0u70lvl9xuxlalyevzudculm067uvqmt26dgx235l0lsha3ua7l056ydazeex0qj7kp0wwazd6h9wwmjsnnlxgt78muc8a48s2zjpz0cl7p822ttnltvf0065uf0ezfh0rrvte5xcua4f4ufn39pydzc8gakxmlv4mlskr4fnj479v9jxpvllrahapj70rwjgrt0jjkkkeh6t0l78rj6l9pvlll8lzl443z37xh797uvzuwql8uu6nkn0veykz7t8zerv6afamutn8dmwt406aflp3knmhv9szmpz654l305p2zaqgxg3ds9p4zpj9w6yt3j47t4n4rse6a3s5h4n4zkhh27lvphzdl3cxl3et7wr5hfpn89pg6qq8gnrdm4e083054n9fnd3tl6e3d8r74le9gjtdjfvh7mvd2p25dj8gml4adzxvddlv668y40sdmxg5nk2yhd0fq0xt957mxchhvm4mwa94uc2k6nzenj4wraekvt6mu0m4naapkqtx8m7ha6yfewavhjlv3hn5audclkuqqqyh2km7gxmzur4";
+            var validOffer = "offer1qqr83wcuu2rykcmqvpsxygqqtnzq9z5kr4aulny78fq774lhl5zc78qvpn8ud3zkjknu7wa3we4usnuc8furkad57c06ml28d0larknlknmplt0alu84fmg09mwp0x80lww0pt4469udhhxg4qymj3mzr8ts0xx0t5d33denkp4h0rdv2c24fxv0w0pl5kk3z0fku0jnevmayw3juhcgcpsr5dm4lua4kezegn7dvk5gw4s45vks5g46l7xppxg9xea76d4vtmqzqtphl40aac5krk45gm0hlr5e77mcyapc9zwttxh6qpdgvnlehj5lp2nh2npr57jxlntszjgnzw305064udm9j9hhdrnut8jv2naqcqs2szrynhf5rcwqny92ue7kekl80h0ccnefcsr4eyxtnzxf7630ll79uhhuel3vdnqhra8fg7nqkvkkwu0twk6dxckmqajc7mu0tmfnwtfrjjh2dl8ndq7m9upf2l3gfkvwr0zvpak0ppj9pnrtlrqlra4hcl0lax576ah77uhustxn7048r43u0dfrg4d0mfemz70c0sflnme7xcwlntuknfxcehsv6mdqqj0tluteehmlaakcenaz0wmdchc4w600dhj7vfjn477jkwz369l88jll73l37telln0ufc8q6c99hd7r0tyt7pyxwmred90eddllj4allm54rwtleh0p0t6mn3uh8dd7gthadu4dup65d8etlx0pwqqfqc0n0aqluv49yu0javjh97wpfwt0cyzvx4we80hgnzz8yazyj99h8h9t4y9uzj5v4lhlqtwj0qtvmu00ejlznh23qarwk0f6end8vt0hmk4089aav8umhjy28m4fupgdmlyvad220v07z3eez3ktq0ht6jtmeg7nupnv0ncmmc6dmmama8w0zdtlk3nu3qhtuc90a06ad7l4m40ew3dm2g86mmdg6zwt5d0hazfdqh63pdarnk9wqhy9kl8qekvzt0mlklwe7pktnrtdsq5a4ajawre4tp74sqqqmggc5zsyz6vsk";
             using var cts = new CancellationTokenSource(15000);
             var (Valid, Id) = await TradeManager.CheckOfferValidity(validOffer, cts.Token);
 
