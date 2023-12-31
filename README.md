@@ -42,7 +42,7 @@ await daemon.RegisterService();
 
 var fullNode = new FullNodeProxy(rpcClient, "unit_tests");
 var state = await fullNode.GetBlockchainState();
-Console.Writeline($"This node is synced: {state.Sync.Synced}")
+Console.WriteLine($"This node is synced: {state.Sync.Synced}");
 ```
 
 #### Send me some chia
