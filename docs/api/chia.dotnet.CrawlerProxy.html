@@ -79,38 +79,10 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><a class="xref" href="chia.dotnet.ServiceProxy.html">ServiceProxy</a></div>
-    <div class="level2"><span class="xref">CrawlerProxy</span></div>
+    <div class="level1"><span class="xref">CrawlerProxy</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_OriginService">ServiceProxy.OriginService</a>
-    </div>
-    <div>
-      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_DestinationService">ServiceProxy.DestinationService</a>
-    </div>
-    <div>
-      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_RpcClient">ServiceProxy.RpcClient</a>
-    </div>
-    <div>
-      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_HealthZ_System_Threading_CancellationToken_">ServiceProxy.HealthZ(CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_StopNode_System_Threading_CancellationToken_">ServiceProxy.StopNode(CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_GetConnections_System_Threading_CancellationToken_">ServiceProxy.GetConnections(CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_GetRoutes_System_Threading_CancellationToken_">ServiceProxy.GetRoutes(CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_OpenConnection_System_String_System_Int32_System_Threading_CancellationToken_">ServiceProxy.OpenConnection(String, Int32, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_CloseConnection_System_String_System_Threading_CancellationToken_">ServiceProxy.CloseConnection(String, CancellationToken)</a>
-    </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
     </div>
@@ -137,167 +109,11 @@
   <h6><strong>Assembly</strong>: chia-dotnet.dll</h6>
   <h5 id="chia_dotnet_CrawlerProxy_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class CrawlerProxy : ServiceProxy</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class CrawlerProxy</code></pre>
   </div>
-  <h3 id="constructors">Constructors
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_CrawlerProxy__ctor_chia_dotnet_IRpcClient_System_String_.md&amp;value=---%0Auid%3A%20chia.dotnet.CrawlerProxy.%23ctor(chia.dotnet.IRpcClient%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/CrawlerProxy.cs/#L19">View Source</a>
-  </span>
-  <a id="chia_dotnet_CrawlerProxy__ctor_" data-uid="chia.dotnet.CrawlerProxy.#ctor*"></a>
-  <h4 id="chia_dotnet_CrawlerProxy__ctor_chia_dotnet_IRpcClient_System_String_" data-uid="chia.dotnet.CrawlerProxy.#ctor(chia.dotnet.IRpcClient,System.String)">CrawlerProxy(IRpcClient, String)</h4>
-  <div class="markdown level1 summary"><p>ctor</p>
+  <h5 id="chia_dotnet_CrawlerProxy_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>ctor</p>
 </div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CrawlerProxy(IRpcClient rpcClient, string originService)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a></td>
-        <td><span class="parametername">rpcClient</span></td>
-        <td><p><a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a> instance to use for rpc communication</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">originService</span></td>
-        <td><p><a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Origin">Origin</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_CrawlerProxy_GetIPs_System_DateTime_System_Int32_System_Int32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.CrawlerProxy.GetIPs(System.DateTime%2CSystem.Int32%2CSystem.Int32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/CrawlerProxy.cs/#L43">View Source</a>
-  </span>
-  <a id="chia_dotnet_CrawlerProxy_GetIPs_" data-uid="chia.dotnet.CrawlerProxy.GetIPs*"></a>
-  <h4 id="chia_dotnet_CrawlerProxy_GetIPs_System_DateTime_System_Int32_System_Int32_System_Threading_CancellationToken_" data-uid="chia.dotnet.CrawlerProxy.GetIPs(System.DateTime,System.Int32,System.Int32,System.Threading.CancellationToken)">GetIPs(DateTime, Int32, Int32, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieves ip addresses of peers that have connected after a given time</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;(IEnumerable&lt;string&gt; ips, int total)&gt; GetIPs(DateTime after, int offset = 0, int limit = 10000, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></td>
-        <td><span class="parametername">after</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">offset</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">limit</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A token to allow the call to be cancelled</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-2">(T1, T2)</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;&gt;</td>
-        <td><p>IP addresses</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_CrawlerProxy_GetPeerCounts_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.CrawlerProxy.GetPeerCounts(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/CrawlerProxy.cs/#L29">View Source</a>
-  </span>
-  <a id="chia_dotnet_CrawlerProxy_GetPeerCounts_" data-uid="chia.dotnet.CrawlerProxy.GetPeerCounts*"></a>
-  <h4 id="chia_dotnet_CrawlerProxy_GetPeerCounts_System_Threading_CancellationToken_" data-uid="chia.dotnet.CrawlerProxy.GetPeerCounts(System.Threading.CancellationToken)">GetPeerCounts(CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieves aggregate information about peers</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;PeerCounts&gt; GetPeerCounts(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A token to allow the call to be cancelled</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.PeerCounts.html">PeerCounts</a>&gt;</td>
-        <td><p>Information about peers</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
 </article>
           </div>
           
@@ -309,7 +125,7 @@
                     <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_CrawlerProxy.md&amp;value=---%0Auid%3A%20chia.dotnet.CrawlerProxy%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/CrawlerProxy.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/CrawlerProxy.cs/#L17" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
