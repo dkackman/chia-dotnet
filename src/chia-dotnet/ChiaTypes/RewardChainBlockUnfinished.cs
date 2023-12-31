@@ -1,8 +1,10 @@
-﻿namespace chia.dotnet
+﻿using System.Numerics;
+
+namespace chia.dotnet
 {
     public record RewardChainBlockUnfinished
     {
-        public System.UInt128 TotalIters { get; init; }
+        public BigInteger TotalIters { get; init; }
         public byte SignagePointIndex { get; init; }
         public string PosSsCcChallengeHash { get; init; } = string.Empty;
         public ProofOfSpace ProofOfSpace { get; init; } = new();

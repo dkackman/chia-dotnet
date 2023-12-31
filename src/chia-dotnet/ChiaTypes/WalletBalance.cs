@@ -1,12 +1,14 @@
-﻿namespace chia.dotnet
+﻿using System.Numerics;
+
+namespace chia.dotnet
 {
     public record WalletBalance
     {
-        public System.UInt128 ConfirmedWalletBalance { get; init; }
-        public System.UInt128 UnconfirmedWalletBalance { get; init; }
-        public System.UInt128 SpendableBalance { get; init; }
-        public System.UInt128 PendingChange { get; init; }
-        public System.UInt128 MaxSendAmount { get; init; }
+        public BigInteger ConfirmedWalletBalance { get; init; }
+        public BigInteger UnconfirmedWalletBalance { get; init; }
+        public BigInteger SpendableBalance { get; init; }
+        public BigInteger PendingChange { get; init; }
+        public BigInteger MaxSendAmount { get; init; }
         public int UnspentCoinCount { get; init; }
         public int PendingCoinRemovalCount { get; init; }
         public WalletType WalletType { get; init; }

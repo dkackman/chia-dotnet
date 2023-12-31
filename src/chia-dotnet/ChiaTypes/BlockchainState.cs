@@ -1,4 +1,6 @@
-﻿namespace chia.dotnet
+﻿using System.Numerics;
+
+namespace chia.dotnet
 {
     /// <summary>
     /// The node's view of the blockchain.
@@ -15,7 +17,7 @@
         public long MempoolMaxTotalCost { get; init; }
         public long BlockMaxCost { get; init; }
         public BlockRecord? Peak { get; init; }
-        public System.UInt128 Space { get; init; }
+        public BigInteger Space { get; init; }
         public ulong SubSlotIters { get; init; }
         public SyncState Sync { get; init; } = new();
         public uint AverageBlockTime { get; init; }

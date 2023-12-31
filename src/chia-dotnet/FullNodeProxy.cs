@@ -4,6 +4,8 @@ using System.Dynamic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Numerics;
+
 using Newtonsoft.Json;
 
 namespace chia.dotnet
@@ -478,8 +480,8 @@ namespace chia.dotnet
         /// <param name="newerBlockHeaderhash"></param>
         /// <param name="olderBlockHeaderhash"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref="UInt128"/> of network space in bytes</returns>
-        public async Task<UInt128> GetNetworkSpace(string newerBlockHeaderhash, string olderBlockHeaderhash, CancellationToken cancellationToken = default)
+        /// <returns><see cref="BigInteger"/> of network space in bytes</returns>
+        public async Task<BigInteger> GetNetworkSpace(string newerBlockHeaderhash, string olderBlockHeaderhash, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(newerBlockHeaderhash))
             {

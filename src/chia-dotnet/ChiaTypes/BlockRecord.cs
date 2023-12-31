@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 using Newtonsoft.Json;
 
@@ -90,11 +91,11 @@ namespace chia.dotnet
         /// <summary>
         /// Total number of VDF iterations since genesis, including this block
         /// </summary>
-        public UInt128 TotalIters { get; init; }
+        public BigInteger TotalIters { get; init; }
         /// <summary>
         /// Total cumulative difficulty of all ancestor blocks since genesis
         /// </summary>
-        public UInt128 Weight { get; init; }
+        public BigInteger Weight { get; init; }
         [JsonIgnore]
         public DateTime? DateTimestamp => Timestamp.ToDateTime();
         [JsonIgnore]

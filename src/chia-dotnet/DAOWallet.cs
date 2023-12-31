@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Numerics;
 
 namespace chia.dotnet
 {
@@ -102,7 +103,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns></returns>
-        public async Task<IDictionary<string, System.UInt128>> GetTreasuryBalance(CancellationToken cancellationToken = default)
+        public async Task<IDictionary<string, BigInteger>> GetTreasuryBalance(CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             return await WalletProxy.SendMessage<IDictionary<string, ulong>>("dao_get_treasury_balance", data, cancellationToken).ConfigureAwait(false);

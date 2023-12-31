@@ -1,5 +1,6 @@
 ﻿using chia.dotnet.bech32;
 using Newtonsoft.Json;
+using System.Numerics;
 
 namespace chia.dotnet
 {
@@ -10,7 +11,7 @@ namespace chia.dotnet
     {
         public string ParentCoinInfo { get; init; } = string.Empty;
         public string PuzzleHash { get; init; } = string.Empty;
-        public System.UInt128 Amount { get; init; }
+        public BigInteger Amount { get; init; }
 
         /// <summary>
         /// The <see cref="Amount"/> as a hex string
