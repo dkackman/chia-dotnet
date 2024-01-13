@@ -1,159 +1,889 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class DAOWallet
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class DAOWallet
-   ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class DAOWallet
+ | chia-dotnet-bls </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class DAOWallet
+ | chia-dotnet-bls ">
+      
+      <meta name="description" content="Wraps a DAO Wallet">
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DAOWallet.md&amp;value=---%0Auid%3A%20chia.dotnet.DAOWallet%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/favicon-32x32.png" alt="chia-dotnet-bls">
+            chia-dotnet-bls
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="chia.dotnet.DAOWallet">
-  
-  
-  <h1 id="chia_dotnet_DAOWallet" data-uid="chia.dotnet.DAOWallet" class="text-break">Class DAOWallet
-  </h1>
-  <div class="markdown level0 summary"><p>Wraps a DAO Wallet</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">DAOWallet</span></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
-    </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="chia.dotnet.html">chia.dotnet</a></h6>
-  <h6><strong>Assembly</strong>: chia-dotnet.dll</h6>
-  <h5 id="chia_dotnet_DAOWallet_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class DAOWallet</code></pre>
-  </div>
-  <h5 id="chia_dotnet_DAOWallet_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>ctor</p>
-</div>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DAOWallet.md&amp;value=---%0Auid%3A%20chia.dotnet.DAOWallet%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L15" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-      </footer>
+
+        <article data-uid="chia.dotnet.DAOWallet">
+
+
+
+  <h1 id="chia_dotnet_DAOWallet" data-uid="chia.dotnet.DAOWallet" class="text-break">
+    Class DAOWallet
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="chia.html">chia</a>.<a class="xref" href="chia.dotnet.html">dotnet</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>chia-dotnet.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Wraps a DAO Wallet</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class DAOWallet : Wallet</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="chia.dotnet.Wallet.html">Wallet</a></div>
+      <div><span class="xref">DAOWallet</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_WalletId">Wallet.WalletId</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_WalletProxy">Wallet.WalletProxy</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetWalletInfo_System_Threading_CancellationToken_">Wallet.GetWalletInfo(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetBalance_System_Threading_CancellationToken_">Wallet.GetBalance(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SelectCoins_System_UInt64_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_Collections_Generic_IEnumerable_System_UInt64__System_Nullable_System_UInt64__System_Nullable_System_UInt64__System_Threading_CancellationToken_">Wallet.SelectCoins(ulong, IEnumerable&lt;Coin&gt;, IEnumerable&lt;ulong&gt;, ulong?, ulong?, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetTransactions_System_String_chia_dotnet_TransactionTypeFilter_System_Boolean_System_String_System_UInt32_System_UInt32_System_Nullable_System_Boolean__System_Threading_CancellationToken_">Wallet.GetTransactions(string, TransactionTypeFilter, bool, string, uint, uint, bool?, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetSpendableCoins_System_Nullable_System_UInt64__System_Nullable_System_UInt64__System_Collections_Generic_IEnumerable_System_UInt64__System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_">Wallet.GetSpendableCoins(ulong?, ulong?, IEnumerable&lt;ulong&gt;, IEnumerable&lt;Coin&gt;, IEnumerable&lt;string&gt;, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetNextAddress_System_Boolean_System_Threading_CancellationToken_">Wallet.GetNextAddress(bool, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetTransactionCount_chia_dotnet_TransactionTypeFilter_System_Threading_CancellationToken_">Wallet.GetTransactionCount(TransactionTypeFilter, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_DeleteUnconfirmedTransactions_System_Threading_CancellationToken_">Wallet.DeleteUnconfirmedTransactions(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransaction_System_String_System_UInt64_System_Collections_Generic_IEnumerable_System_String__System_Collections_Generic_IEnumerable_System_UInt64__System_Collections_Generic_IEnumerable_System_String__System_Nullable_System_UInt64__System_Nullable_System_UInt64__System_Boolean_System_UInt64_System_Threading_CancellationToken_">Wallet.SendTransaction(string, ulong, IEnumerable&lt;string&gt;, IEnumerable&lt;ulong&gt;, IEnumerable&lt;string&gt;, ulong?, ulong?, bool, ulong, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_UInt64_System_Threading_CancellationToken_">Wallet.SendTransactionMulti(IEnumerable&lt;Coin&gt;, IEnumerable&lt;Coin&gt;, ulong, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="chia_dotnet_DAOWallet_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>ctor</p>
+</div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="chia_dotnet_DAOWallet__ctor_" data-uid="chia.dotnet.DAOWallet.#ctor*"></a>
+
+  <h3 id="chia_dotnet_DAOWallet__ctor_System_UInt32_chia_dotnet_WalletProxy_" data-uid="chia.dotnet.DAOWallet.#ctor(System.UInt32,chia.dotnet.WalletProxy)">
+  DAOWallet(uint, WalletProxy)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Wraps a DAO Wallet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DAOWallet(uint walletId, WalletProxy walletProxy)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>walletId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The wallet_id to wrap</p>
+</dd>
+    <dt><code>walletProxy</code> <a class="xref" href="chia.dotnet.WalletProxy.html">WalletProxy</a></dt>
+    <dd><p>Wallet RPC proxy to use for communication</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="chia_dotnet_DAOWallet__ctor_System_UInt32_chia_dotnet_WalletProxy__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>ctor</p>
+</div>
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="chia_dotnet_DAOWallet_AddFundsToTreasury_" data-uid="chia.dotnet.DAOWallet.AddFundsToTreasury*"></a>
+
+  <h3 id="chia_dotnet_DAOWallet_AddFundsToTreasury_System_UInt64_System_UInt32_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.AddFundsToTreasury(System.UInt64,System.UInt32,System.UInt64,System.Threading.CancellationToken)">
+  AddFundsToTreasury(ulong, uint, ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L196"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds funds to a DAO's treasury.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(string txId, TransactionRecord tx)&gt; AddFundsToTreasury(ulong amount, uint fundingWalletId, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>amount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+    <dt><code>fundingWalletId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+    <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.txid">txId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.tx">tx</a>)&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DAOWallet_AdjustFilterLevel_" data-uid="chia.dotnet.DAOWallet.AdjustFilterLevel*"></a>
+
+  <h3 id="chia_dotnet_DAOWallet_AdjustFilterLevel_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.AdjustFilterLevel(System.UInt64,System.Threading.CancellationToken)">
+  AdjustFilterLevel(ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L181"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adjusts the DAO filter level.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;DAOInfo&gt; AdjustFilterLevel(ulong filterLevel, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>filterLevel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.DAOInfo.html">DAOInfo</a>&gt;</dt>
+    <dd><p><a class="xref" href="chia.dotnet.DAOInfo.html">DAOInfo</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DAOWallet_CloseProposal_" data-uid="chia.dotnet.DAOWallet.CloseProposal*"></a>
+
+  <h3 id="chia_dotnet_DAOWallet_CloseProposal_System_String_System_String_System_String_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.CloseProposal(System.String,System.String,System.String,System.UInt64,System.Threading.CancellationToken)">
+  CloseProposal(string, string, string, ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L143"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Closes a DAO proposal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(string txId, TransactionRecord tx)&gt; CloseProposal(string selfDestruct, string genesisId, string proposalId, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>selfDestruct</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>genesisId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>proposalId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.txid">txId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.tx">tx</a>)&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DAOWallet_CreateProposal_" data-uid="chia.dotnet.DAOWallet.CreateProposal*"></a>
+
+  <h3 id="chia_dotnet_DAOWallet_CreateProposal_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.CreateProposal(System.String,System.Threading.CancellationToken)">
+  CreateProposal(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a DAO proposal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(string proposalId, string txId, TransactionRecord tx)&gt; CreateProposal(string proposalType, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>proposalType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,chia.dotnet.transactionrecord-.proposalid">proposalId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,chia.dotnet.transactionrecord-.txid">txId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,chia.dotnet.transactionrecord-.tx">tx</a>)&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DAOWallet_ExitLockup_" data-uid="chia.dotnet.DAOWallet.ExitLockup*"></a>
+
+  <h3 id="chia_dotnet_DAOWallet_ExitLockup_System_Collections_Generic_IEnumerable_System_Object__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.ExitLockup(System.Collections.Generic.IEnumerable{System.Object},System.UInt64,System.Threading.CancellationToken)">
+  ExitLockup(IEnumerable&lt;object&gt;, ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L163"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Exits the DAO lockup period.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(string txId, TransactionRecord tx)&gt; ExitLockup(IEnumerable&lt;object&gt; coins, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>coins</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.txid">txId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.tx">tx</a>)&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DAOWallet_FreeCoinsFromFinishedProposals_" data-uid="chia.dotnet.DAOWallet.FreeCoinsFromFinishedProposals*"></a>
+
+  <h3 id="chia_dotnet_DAOWallet_FreeCoinsFromFinishedProposals_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.FreeCoinsFromFinishedProposals(System.UInt64,System.Threading.CancellationToken)">
+  FreeCoinsFromFinishedProposals(ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L254"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Frees coins from proposals that are finished.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(string txId, TransactionRecord tx)&gt; FreeCoinsFromFinishedProposals(ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.txid">txId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.tx">tx</a>)&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DAOWallet_GetProposalState_" data-uid="chia.dotnet.DAOWallet.GetProposalState*"></a>
+
+  <h3 id="chia_dotnet_DAOWallet_GetProposalState_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.GetProposalState(System.String,System.Threading.CancellationToken)">
+  GetProposalState(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L241"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Use this to figure out whether a proposal has passed or failed and whether it can be closed
+Given a proposal_id:</p>
+<ul>
+<li>if required yes votes are recorded then proposal passed.</li>
+<li>if timelock and attendance are met then proposal can close
+Returns a dict of passed and closable bools, and the remaining votes/blocks needed</li>
+</ul>
+<p>Note that a proposal can be in a passed and closable state now, but become failed if a large number of
+'no' votes are received before the soft close is reached.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ProposalState&gt; GetProposalState(string proposalId, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>proposalId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.ProposalState.html">ProposalState</a>&gt;</dt>
+    <dd><p><a class="xref" href="chia.dotnet.ProposalState.html">ProposalState</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DAOWallet_GetProposals_" data-uid="chia.dotnet.DAOWallet.GetProposals*"></a>
+
+  <h3 id="chia_dotnet_DAOWallet_GetProposals_System_Boolean_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.GetProposals(System.Boolean,System.Threading.CancellationToken)">
+  GetProposals(bool, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get all proposals for a given dao wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(IEnumerable&lt;ProposalInfo&gt; proposals, ulong proposalTimelock, ulong softCloseLength)&gt; GetProposals(bool includeClosed = true, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>includeClosed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.ProposalInfo.html">ProposalInfo</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-chia.dotnet.proposalinfo-,system.uint64,system.uint64-.proposals">proposals</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-chia.dotnet.proposalinfo-,system.uint64,system.uint64-.proposaltimelock">proposalTimelock</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-chia.dotnet.proposalinfo-,system.uint64,system.uint64-.softcloselength">softCloseLength</a>)&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DAOWallet_GetRules_" data-uid="chia.dotnet.DAOWallet.GetRules*"></a>
+
+  <h3 id="chia_dotnet_DAOWallet_GetRules_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.GetRules(System.Threading.CancellationToken)">
+  GetRules(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L128"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the rules of a DAO wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;DAORules&gt; GetRules(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.DAORules.html">DAORules</a>&gt;</dt>
+    <dd><p><a class="xref" href="chia.dotnet.DAORules.html">DAORules</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DAOWallet_GetTreasuryBalance_" data-uid="chia.dotnet.DAOWallet.GetTreasuryBalance*"></a>
+
+  <h3 id="chia_dotnet_DAOWallet_GetTreasuryBalance_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.GetTreasuryBalance(System.Threading.CancellationToken)">
+  GetTreasuryBalance(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the balance of a DAO's treasury.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IDictionary&lt;string, BigInteger&gt;&gt; GetTreasuryBalance(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DAOWallet_GetTreasuryId_" data-uid="chia.dotnet.DAOWallet.GetTreasuryId*"></a>
+
+  <h3 id="chia_dotnet_DAOWallet_GetTreasuryId_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.GetTreasuryId(System.Threading.CancellationToken)">
+  GetTreasuryId(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L117"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the treasury id of a DAO wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; GetTreasuryId(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DAOWallet_ParseProposal_" data-uid="chia.dotnet.DAOWallet.ParseProposal*"></a>
+
+  <h3 id="chia_dotnet_DAOWallet_ParseProposal_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.ParseProposal(System.String,System.Threading.CancellationToken)">
+  ParseProposal(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Parses a DAO proposal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IDictionary&lt;string, object&gt;&gt; ParseProposal(string proposalId, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>proposalId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;&gt;</dt>
+    <dd><p>Dictionary</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DAOWallet_SendToLockup_" data-uid="chia.dotnet.DAOWallet.SendToLockup*"></a>
+
+  <h3 id="chia_dotnet_DAOWallet_SendToLockup_System_UInt64_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.SendToLockup(System.UInt64,System.UInt64,System.Threading.CancellationToken)">
+  SendToLockup(ulong, ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L216"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sends the DAO to lockup.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(string txId, TransactionRecord tx)&gt; SendToLockup(ulong amount, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>amount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+    <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.txid">txId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.tx">tx</a>)&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DAOWallet_Validate_" data-uid="chia.dotnet.DAOWallet.Validate*"></a>
+
+  <h3 id="chia_dotnet_DAOWallet_Validate_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.Validate(System.Threading.CancellationToken)">
+  Validate(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validates that <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_WalletId">WalletId</a> is a <a class="xref" href="chia.dotnet.WalletType.html#chia_dotnet_WalletType_DAO">DAO</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Task Validate(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd>Wraps a DAO Wallet</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>True if the wallet is a DAO wallet</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DAOWallet_VoteOnProposal_" data-uid="chia.dotnet.DAOWallet.VoteOnProposal*"></a>
+
+  <h3 id="chia_dotnet_DAOWallet_VoteOnProposal_System_Boolean_System_UInt64_System_String_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.VoteOnProposal(System.Boolean,System.UInt64,System.String,System.UInt64,System.Threading.CancellationToken)">
+  VoteOnProposal(bool, ulong, string, ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Vote on a DAO proposal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(string txId, TransactionRecord tx)&gt; VoteOnProposal(bool isYesVote, ulong voteAmount, string proposalId, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>isYesVote</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>voteAmount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+    <dt><code>proposalId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.txid">txId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.tx">tx</a>)&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L16" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

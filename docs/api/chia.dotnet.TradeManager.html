@@ -1,156 +1,987 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TradeManager
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TradeManager
-   ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class TradeManager
+ | chia-dotnet-bls </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class TradeManager
+ | chia-dotnet-bls ">
+      
+      <meta name="description" content="API wrapper for those wallet RPC methods dealing with trades and offers">
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TradeManager.md&amp;value=---%0Auid%3A%20chia.dotnet.TradeManager%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/favicon-32x32.png" alt="chia-dotnet-bls">
+            chia-dotnet-bls
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="chia.dotnet.TradeManager">
-  
-  
-  <h1 id="chia_dotnet_TradeManager" data-uid="chia.dotnet.TradeManager" class="text-break">Class TradeManager
-  </h1>
-  <div class="markdown level0 summary"><p>API wrapper for those wallet RPC methods dealing with trades and offers</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">TradeManager</span></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
-    </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="chia.dotnet.html">chia.dotnet</a></h6>
-  <h6><strong>Assembly</strong>: chia-dotnet.dll</h6>
-  <h5 id="chia_dotnet_TradeManager_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class TradeManager</code></pre>
-  </div>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_TradeManager.md&amp;value=---%0Auid%3A%20chia.dotnet.TradeManager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L13" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-      </footer>
+
+        <article data-uid="chia.dotnet.TradeManager">
+
+
+
+  <h1 id="chia_dotnet_TradeManager" data-uid="chia.dotnet.TradeManager" class="text-break">
+    Class TradeManager
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="chia.html">chia</a>.<a class="xref" href="chia.dotnet.html">dotnet</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>chia-dotnet.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>API wrapper for those wallet RPC methods dealing with trades and offers</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class TradeManager</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">TradeManager</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="chia_dotnet_TradeManager__ctor_" data-uid="chia.dotnet.TradeManager.#ctor*"></a>
+
+  <h3 id="chia_dotnet_TradeManager__ctor_chia_dotnet_WalletProxy_" data-uid="chia.dotnet.TradeManager.#ctor(chia.dotnet.WalletProxy)">
+  TradeManager(WalletProxy)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>API wrapper for those wallet RPC methods dealing with trades and offers</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TradeManager(WalletProxy walletProxy)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>walletProxy</code> <a class="xref" href="chia.dotnet.WalletProxy.html">WalletProxy</a></dt>
+    <dd>API wrapper for those wallet RPC methods dealing with trades and offers</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="chia_dotnet_TradeManager_WalletProxy_" data-uid="chia.dotnet.TradeManager.WalletProxy*"></a>
+
+  <h3 id="chia_dotnet_TradeManager_WalletProxy" data-uid="chia.dotnet.TradeManager.WalletProxy">
+  WalletProxy
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WalletProxy WalletProxy { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="chia.dotnet.WalletProxy.html">WalletProxy</a></dt>
+    <dd>API wrapper for those wallet RPC methods dealing with trades and offers</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="chia_dotnet_TradeManager_AssetIdToName_" data-uid="chia.dotnet.TradeManager.AssetIdToName*"></a>
+
+  <h3 id="chia_dotnet_TradeManager_AssetIdToName_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.AssetIdToName(System.String,System.Threading.CancellationToken)">
+  AssetIdToName(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the CAT name from an asset id</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(uint? WalletId, string Name)&gt; AssetIdToName(string assetId, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>assetId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The asset id</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>? <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.nullable-system.uint32-,system.string-.walletid">WalletId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.nullable-system.uint32-,system.string-.name">Name</a>)&gt;</dt>
+    <dd><p>The wallet id and name of the CAT</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_TradeManager_CancelOffer_" data-uid="chia.dotnet.TradeManager.CancelOffer*"></a>
+
+  <h3 id="chia_dotnet_TradeManager_CancelOffer_System_String_System_Boolean_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.CancelOffer(System.String,System.Boolean,System.UInt64,System.Threading.CancellationToken)">
+  CancelOffer(string, bool, ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L194"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Cancels an offer using a transaction</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task CancelOffer(string tradeId, bool secure = false, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tradeId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The trade id of the offer</p>
+</dd>
+    <dt><code>secure</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>This will create a transaction that includes coins that were offered</p>
+</dd>
+    <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Transaction fee</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>An awaitable Task</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_TradeManager_CancelOffers_" data-uid="chia.dotnet.TradeManager.CancelOffers*"></a>
+
+  <h3 id="chia_dotnet_TradeManager_CancelOffers_System_Boolean_System_String_System_Boolean_System_Int32_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.CancelOffers(System.Boolean,System.String,System.Boolean,System.Int32,System.UInt64,System.Threading.CancellationToken)">
+  CancelOffers(bool, string, bool, int, ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L143"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Cancels multiple offers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task CancelOffers(bool secure, string assetId = &quot;xch&quot;, bool cancelAll = false, int batchSize = 5, ulong batchFee = 0, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>secure</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>assetId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>cancelAll</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>batchSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>batchFee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>An awaitable Task</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_TradeManager_CheckOfferValidity_" data-uid="chia.dotnet.TradeManager.CheckOfferValidity*"></a>
+
+  <h3 id="chia_dotnet_TradeManager_CheckOfferValidity_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.CheckOfferValidity(System.String,System.Threading.CancellationToken)">
+  CheckOfferValidity(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L160"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks the validity of an offer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(bool Valid, string Id)&gt; CheckOfferValidity(string offer, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>offer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The bech32 encoded offer hex</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.string-.valid">Valid</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.string-.id">Id</a>)&gt;</dt>
+    <dd><p>Indicator of the offer's validity</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_TradeManager_CreateOffer_" data-uid="chia.dotnet.TradeManager.CreateOffer*"></a>
+
+  <h3 id="chia_dotnet_TradeManager_CreateOffer_System_Collections_Generic_IDictionary_System_String_System_Int64__System_Nullable_System_UInt64__System_Nullable_System_UInt64__System_Boolean_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.CreateOffer(System.Collections.Generic.IDictionary{System.String,System.Int64},System.Nullable{System.UInt64},System.Nullable{System.UInt64},System.Boolean,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String},System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
+  CreateOffer(IDictionary&lt;string, long&gt;, ulong?, ulong?, bool, IDictionary&lt;string, string&gt;?, IDictionary&lt;string, string&gt;?, bool?, ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L296"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create an offer file from a set of id's in the form of wallet_id:amount</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;OfferRecord&gt; CreateOffer(IDictionary&lt;string, long&gt; launcherIdsAndMojoAmounts, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool validateOnly = false, IDictionary&lt;string, string&gt;? driver = null, IDictionary&lt;string, string&gt;? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>launcherIdsAndMojoAmounts</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>&gt;</dt>
+    <dd><p>The set of wallet ids and amounts (in mojo) representing the offer</p>
+</dd>
+    <dt><code>minCoinAmount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a>?</dt>
+    <dd></dd>
+    <dt><code>maxCoinAmount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a>?</dt>
+    <dd></dd>
+    <dt><code>validateOnly</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Only validate the offer contents. Do not create.</p>
+</dd>
+    <dt><code>driver</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>Additional data about the puzzle</p>
+</dd>
+    <dt><code>solver</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd></dd>
+    <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Transaction fee for offer creation</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.OfferRecord.html">OfferRecord</a>&gt;</dt>
+    <dd><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_TradeManager_CreateOffer_" data-uid="chia.dotnet.TradeManager.CreateOffer*"></a>
+
+  <h3 id="chia_dotnet_TradeManager_CreateOffer_System_Collections_Generic_IDictionary_System_UInt32_System_Int64__System_Nullable_System_UInt64__System_Nullable_System_UInt64__System_Boolean_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.CreateOffer(System.Collections.Generic.IDictionary{System.UInt32,System.Int64},System.Nullable{System.UInt64},System.Nullable{System.UInt64},System.Boolean,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String},System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
+  CreateOffer(IDictionary&lt;uint, long&gt;, ulong?, ulong?, bool, IDictionary&lt;string, string&gt;?, IDictionary&lt;string, string&gt;?, bool?, ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L267"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create an offer file from a set of id's in the form of wallet_id:amount</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;OfferRecord&gt; CreateOffer(IDictionary&lt;uint, long&gt; walletIdsAndMojoAmounts, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool validateOnly = false, IDictionary&lt;string, string&gt;? driver = null, IDictionary&lt;string, string&gt;? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>walletIdsAndMojoAmounts</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>&gt;</dt>
+    <dd><p>The set of wallet ids and amounts (in mojo) representing the offer</p>
+</dd>
+    <dt><code>minCoinAmount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a>?</dt>
+    <dd></dd>
+    <dt><code>maxCoinAmount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a>?</dt>
+    <dd></dd>
+    <dt><code>validateOnly</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Only validate the offer contents. Do not create.</p>
+</dd>
+    <dt><code>driver</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>Additional data about the puzzle</p>
+</dd>
+    <dt><code>solver</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd></dd>
+    <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Transaction fee for offer creation</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.OfferRecord.html">OfferRecord</a>&gt;</dt>
+    <dd><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_TradeManager_CreateOffer_" data-uid="chia.dotnet.TradeManager.CreateOffer*"></a>
+
+  <h3 id="chia_dotnet_TradeManager_CreateOffer_chia_dotnet_OfferSummary_System_Nullable_System_UInt64__System_Nullable_System_UInt64__System_Boolean_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.CreateOffer(chia.dotnet.OfferSummary,System.Nullable{System.UInt64},System.Nullable{System.UInt64},System.Boolean,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String},System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
+  CreateOffer(OfferSummary, ulong?, ulong?, bool, IDictionary&lt;string, string&gt;?, IDictionary&lt;string, string&gt;?, bool?, ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L325"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create an offer file from a set of id's in the form of wallet_id:amount</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;OfferRecord&gt; CreateOffer(OfferSummary offer, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool validateOnly = false, IDictionary&lt;string, string&gt;? driver = null, IDictionary&lt;string, string&gt;? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>offer</code> <a class="xref" href="chia.dotnet.OfferSummary.html">OfferSummary</a></dt>
+    <dd><p>Summary of the offer to create</p>
+</dd>
+    <dt><code>minCoinAmount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a>?</dt>
+    <dd></dd>
+    <dt><code>maxCoinAmount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a>?</dt>
+    <dd></dd>
+    <dt><code>validateOnly</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Only validate the offer contents. Do not create.</p>
+</dd>
+    <dt><code>driver</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>Additional data about the puzzle</p>
+</dd>
+    <dt><code>solver</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd></dd>
+    <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Transaction fee for offer creation</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.OfferRecord.html">OfferRecord</a>&gt;</dt>
+    <dd><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_TradeManager_GetCATList_" data-uid="chia.dotnet.TradeManager.GetCATList*"></a>
+
+  <h3 id="chia_dotnet_TradeManager_GetCATList_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.GetCATList(System.Threading.CancellationToken)">
+  GetCATList(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the default list of CATs</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;CATInfo&gt;&gt; GetCATList(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.CATInfo.html">CATInfo</a>&gt;&gt;</dt>
+    <dd><p>A list of CATs</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_TradeManager_GetOffer_" data-uid="chia.dotnet.TradeManager.GetOffer*"></a>
+
+  <h3 id="chia_dotnet_TradeManager_GetOffer_System_String_System_Boolean_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.GetOffer(System.String,System.Boolean,System.Threading.CancellationToken)">
+  GetOffer(string, bool, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L177"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves an offer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;OfferRecord&gt; GetOffer(string tradeId, bool fileContents = false, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tradeId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The trade id of the offer</p>
+</dd>
+    <dt><code>fileContents</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Indicator as to whether to return the offer contents.
+<a class="xref" href="chia.dotnet.OfferRecord.html#chia_dotnet_OfferRecord_Offer">Offer</a> will be empty if this is false.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.OfferRecord.html">OfferRecord</a>&gt;</dt>
+    <dd><p>The OfferRecord</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_TradeManager_GetOfferSummary_" data-uid="chia.dotnet.TradeManager.GetOfferSummary*"></a>
+
+  <h3 id="chia_dotnet_TradeManager_GetOfferSummary_System_String_System_Boolean_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.GetOfferSummary(System.String,System.Boolean,System.Threading.CancellationToken)">
+  GetOfferSummary(string, bool, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L236"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the summary of an offer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;OfferSummary&gt; GetOfferSummary(string offer, bool advanced = false, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>offer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The bech32 encoded offer hex</p>
+</dd>
+    <dt><code>advanced</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.OfferSummary.html">OfferSummary</a>&gt;</dt>
+    <dd><p>The summary of the offer</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_TradeManager_GetOffers_" data-uid="chia.dotnet.TradeManager.GetOffers*"></a>
+
+  <h3 id="chia_dotnet_TradeManager_GetOffers_System_Boolean_System_Boolean_System_Boolean_System_String_System_Boolean_System_Boolean_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.GetOffers(System.Boolean,System.Boolean,System.Boolean,System.String,System.Boolean,System.Boolean,System.Threading.CancellationToken)">
+  GetOffers(bool, bool, bool, string?, bool, bool, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the list of offers</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;OfferRecord&gt;&gt; GetOffers(bool excludeMyOffers = false, bool excludeTakenOffers = false, bool includeCompleted = false, string? sortKey = null, bool reverse = false, bool fileContents = false, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>excludeMyOffers</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Do not include my offers in the result set</p>
+</dd>
+    <dt><code>excludeTakenOffers</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Do not include taken offers in the result set</p>
+</dd>
+    <dt><code>includeCompleted</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Do not include completed offers in the result set</p>
+</dd>
+    <dt><code>sortKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Field to sort results by</p>
+</dd>
+    <dt><code>reverse</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Reverse the sort order of the results</p>
+</dd>
+    <dt><code>fileContents</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Include the offer value in the result</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.OfferRecord.html">OfferRecord</a>&gt;&gt;</dt>
+    <dd><p>A list of <a class="xref" href="chia.dotnet.OfferRecord.html">OfferRecord</a>s</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_TradeManager_GetOffers_" data-uid="chia.dotnet.TradeManager.GetOffers*"></a>
+
+  <h3 id="chia_dotnet_TradeManager_GetOffers_System_Int32_System_Int32_System_Boolean_System_Boolean_System_Boolean_System_String_System_Boolean_System_Boolean_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.GetOffers(System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.String,System.Boolean,System.Boolean,System.Threading.CancellationToken)">
+  GetOffers(int, int, bool, bool, bool, string?, bool, bool, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the list of offers</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;OfferRecord&gt;&gt; GetOffers(int start, int end, bool excludeMyOffers = false, bool excludeTakenOffers = false, bool includeCompleted = false, string? sortKey = null, bool reverse = false, bool fileContents = false, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>start</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>the start index of offers (zero based)</p>
+</dd>
+    <dt><code>end</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The end index of offers</p>
+</dd>
+    <dt><code>excludeMyOffers</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Do not include my offers in the result set</p>
+</dd>
+    <dt><code>excludeTakenOffers</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Do not include taken offers in the result set</p>
+</dd>
+    <dt><code>includeCompleted</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Do not include completed offers in the result set</p>
+</dd>
+    <dt><code>sortKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Field to sort results by</p>
+</dd>
+    <dt><code>reverse</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Reverse the sort order of the results</p>
+</dd>
+    <dt><code>fileContents</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Include the offer value in the result</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.OfferRecord.html">OfferRecord</a>&gt;&gt;</dt>
+    <dd><p>A list of <a class="xref" href="chia.dotnet.OfferRecord.html">OfferRecord</a>s</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_TradeManager_GetOffersCount_" data-uid="chia.dotnet.TradeManager.GetOffersCount*"></a>
+
+  <h3 id="chia_dotnet_TradeManager_GetOffersCount_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.GetOffersCount(System.Threading.CancellationToken)">
+  GetOffersCount(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the number of offers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(int Total, int MyOffersCount, int TakenOffersCount)&gt; GetOffersCount(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32,system.int32-.total">Total</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32,system.int32-.myofferscount">MyOffersCount</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32,system.int32-.takenofferscount">TakenOffersCount</a>)&gt;</dt>
+    <dd><p>The number of offers</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_TradeManager_GetStrayCats_" data-uid="chia.dotnet.TradeManager.GetStrayCats*"></a>
+
+  <h3 id="chia_dotnet_TradeManager_GetStrayCats_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.GetStrayCats(System.Threading.CancellationToken)">
+  GetStrayCats(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L364"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a list of all unacknowledged CATs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;Token&gt;&gt; GetStrayCats(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.Token.html">Token</a>&gt;&gt;</dt>
+    <dd><p>The list of <a class="xref" href="chia.dotnet.Token.html">Token</a>s</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_TradeManager_TakeOffer_" data-uid="chia.dotnet.TradeManager.TakeOffer*"></a>
+
+  <h3 id="chia_dotnet_TradeManager_TakeOffer_System_String_System_Collections_Generic_IDictionary_System_String_System_Object__System_Nullable_System_UInt64__System_Nullable_System_UInt64__System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.TakeOffer(System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Nullable{System.UInt64},System.Nullable{System.UInt64},System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
+  TakeOffer(string, IDictionary&lt;string, object&gt;?, ulong?, ulong?, bool?, ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L216"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Takes an offer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;TradeRecord&gt; TakeOffer(string offer, IDictionary&lt;string, object&gt;? solver = null, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>offer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>solver</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>minCoinAmount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a>?</dt>
+    <dd></dd>
+    <dt><code>maxCoinAmount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a>?</dt>
+    <dd></dd>
+    <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd></dd>
+    <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.TradeRecord.html">TradeRecord</a>&gt;</dt>
+    <dd><p><a class="xref" href="chia.dotnet.TradeRecord.html">TradeRecord</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L13" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,626 +1,590 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ServiceProxy
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ServiceProxy
-   ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class ServiceProxy
+ | chia-dotnet-bls </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ServiceProxy
+ | chia-dotnet-bls ">
+      
+      <meta name="description" content="Base class that uses an  to send and receive messages to services">
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/favicon-32x32.png" alt="chia-dotnet-bls">
+            chia-dotnet-bls
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="chia.dotnet.ServiceProxy">
-  
-  
-  <h1 id="chia_dotnet_ServiceProxy" data-uid="chia.dotnet.ServiceProxy" class="text-break">Class ServiceProxy
-  </h1>
-  <div class="markdown level0 summary"><p>Base class that uses an <a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a> to send and receive messages to services</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">ServiceProxy</span></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
-    </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="chia.dotnet.html">chia.dotnet</a></h6>
-  <h6><strong>Assembly</strong>: chia-dotnet.dll</h6>
-  <h5 id="chia_dotnet_ServiceProxy_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class ServiceProxy</code></pre>
-  </div>
-  <h5 id="chia_dotnet_ServiceProxy_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>The lifetime of the RpcClient is not controlled by the proxy. It should be disposed outside of this class.</p>
-</div>
-  <h3 id="constructors">Constructors
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy__ctor_chia_dotnet_IRpcClient_System_String_System_String_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.%23ctor(chia.dotnet.IRpcClient%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L21">View Source</a>
-  </span>
-  <a id="chia_dotnet_ServiceProxy__ctor_" data-uid="chia.dotnet.ServiceProxy.#ctor*"></a>
-  <h4 id="chia_dotnet_ServiceProxy__ctor_chia_dotnet_IRpcClient_System_String_System_String_" data-uid="chia.dotnet.ServiceProxy.#ctor(chia.dotnet.IRpcClient,System.String,System.String)">ServiceProxy(IRpcClient, String, String)</h4>
-  <div class="markdown level1 summary"><p>ctor</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected ServiceProxy(IRpcClient rpcClient, string destinationService, string originService)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a></td>
-        <td><span class="parametername">rpcClient</span></td>
-        <td><p><a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a> instance to use for rpc communication</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">destinationService</span></td>
-        <td><p><a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Destination">Destination</a></p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">originService</span></td>
-        <td><p><a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Origin">Origin</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_DestinationService.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.DestinationService%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L48">View Source</a>
-  </span>
-  <a id="chia_dotnet_ServiceProxy_DestinationService_" data-uid="chia.dotnet.ServiceProxy.DestinationService*"></a>
-  <h4 id="chia_dotnet_ServiceProxy_DestinationService" data-uid="chia.dotnet.ServiceProxy.DestinationService">DestinationService</h4>
-  <div class="markdown level1 summary"><p><a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Destination">Destination</a></p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string DestinationService { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_OriginService.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.OriginService%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L43">View Source</a>
-  </span>
-  <a id="chia_dotnet_ServiceProxy_OriginService_" data-uid="chia.dotnet.ServiceProxy.OriginService*"></a>
-  <h4 id="chia_dotnet_ServiceProxy_OriginService" data-uid="chia.dotnet.ServiceProxy.OriginService">OriginService</h4>
-  <div class="markdown level1 summary"><p>The name of the service that is running. Will be used as the <a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Origin">Origin</a> of all messages
-as well as the identifier used for <see cref="!:DaemonProxy.RegisterService(string, CancellationToken)"></see></p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string OriginService { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_RpcClient.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.RpcClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L53">View Source</a>
-  </span>
-  <a id="chia_dotnet_ServiceProxy_RpcClient_" data-uid="chia.dotnet.ServiceProxy.RpcClient*"></a>
-  <h4 id="chia_dotnet_ServiceProxy_RpcClient" data-uid="chia.dotnet.ServiceProxy.RpcClient">RpcClient</h4>
-  <div class="markdown level1 summary"><p>The <a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a> used for underlying RPC</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IRpcClient RpcClient { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_CloseConnection_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.CloseConnection(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L123">View Source</a>
-  </span>
-  <a id="chia_dotnet_ServiceProxy_CloseConnection_" data-uid="chia.dotnet.ServiceProxy.CloseConnection*"></a>
-  <h4 id="chia_dotnet_ServiceProxy_CloseConnection_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.CloseConnection(System.String,System.Threading.CancellationToken)">CloseConnection(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Closes a connection</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task CloseConnection(string nodeId, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">nodeId</span></td>
-        <td><p>The id of the connection to close</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A token to allow the call to be cancelled</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_GetConnections_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.GetConnections(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L81">View Source</a>
-  </span>
-  <a id="chia_dotnet_ServiceProxy_GetConnections_" data-uid="chia.dotnet.ServiceProxy.GetConnections*"></a>
-  <h4 id="chia_dotnet_ServiceProxy_GetConnections_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.GetConnections(System.Threading.CancellationToken)">GetConnections(CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Get the service's connections</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;ConnectionInfo&gt;&gt; GetConnections(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A token to allow the call to be cancelled</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.ConnectionInfo.html">ConnectionInfo</a>&gt;&gt;</td>
-        <td><p>A list of <a class="xref" href="chia.dotnet.ConnectionInfo.html">ConnectionInfo</a>s</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_GetRoutes_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.GetRoutes(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L91">View Source</a>
-  </span>
-  <a id="chia_dotnet_ServiceProxy_GetRoutes_" data-uid="chia.dotnet.ServiceProxy.GetRoutes*"></a>
-  <h4 id="chia_dotnet_ServiceProxy_GetRoutes_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.GetRoutes(System.Threading.CancellationToken)">GetRoutes(CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Get all endpoints of a service</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;string&gt;&gt; GetRoutes(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A token to allow the call to be cancelled</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;&gt;</td>
-        <td><p>A list of service routes</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_HealthZ_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.HealthZ(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L61">View Source</a>
-  </span>
-  <a id="chia_dotnet_ServiceProxy_HealthZ_" data-uid="chia.dotnet.ServiceProxy.HealthZ*"></a>
-  <h4 id="chia_dotnet_ServiceProxy_HealthZ_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.HealthZ(System.Threading.CancellationToken)">HealthZ(CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Sends heartbeat message to the service</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task HealthZ(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A token to allow the call to be cancelled</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>Awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="chia_dotnet_ServiceProxy_HealthZ_System_Threading_CancellationToken__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Either completes without error or throws an exception.</p>
-</div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_OpenConnection_System_String_System_Int32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.OpenConnection(System.String%2CSystem.Int32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L103">View Source</a>
-  </span>
-  <a id="chia_dotnet_ServiceProxy_OpenConnection_" data-uid="chia.dotnet.ServiceProxy.OpenConnection*"></a>
-  <h4 id="chia_dotnet_ServiceProxy_OpenConnection_System_String_System_Int32_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.OpenConnection(System.String,System.Int32,System.Threading.CancellationToken)">OpenConnection(String, Int32, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Add a connection</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task OpenConnection(string host, int port, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">host</span></td>
-        <td><p>The host name of the connection</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">port</span></td>
-        <td><p>The port to use</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A token to allow the call to be cancelled</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy_StopNode_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy.StopNode(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L71">View Source</a>
-  </span>
-  <a id="chia_dotnet_ServiceProxy_StopNode_" data-uid="chia.dotnet.ServiceProxy.StopNode*"></a>
-  <h4 id="chia_dotnet_ServiceProxy_StopNode_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.StopNode(System.Threading.CancellationToken)">StopNode(CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Stops the service</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task StopNode(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A token to allow the call to be cancelled</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>Awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_ServiceProxy.md&amp;value=---%0Auid%3A%20chia.dotnet.ServiceProxy%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L13" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-      </footer>
+
+        <article data-uid="chia.dotnet.ServiceProxy">
+
+
+
+  <h1 id="chia_dotnet_ServiceProxy" data-uid="chia.dotnet.ServiceProxy" class="text-break">
+    Class ServiceProxy
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="chia.html">chia</a>.<a class="xref" href="chia.dotnet.html">dotnet</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>chia-dotnet.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Base class that uses an <a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a> to send and receive messages to services</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class ServiceProxy</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">ServiceProxy</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="chia.dotnet.CrawlerProxy.html">CrawlerProxy</a></div>
+      <div><a class="xref" href="chia.dotnet.DaemonProxy.html">DaemonProxy</a></div>
+      <div><a class="xref" href="chia.dotnet.DataLayerProxy.html">DataLayerProxy</a></div>
+      <div><a class="xref" href="chia.dotnet.FarmerProxy.html">FarmerProxy</a></div>
+      <div><a class="xref" href="chia.dotnet.FullNodeProxy.html">FullNodeProxy</a></div>
+      <div><a class="xref" href="chia.dotnet.HarvesterProxy.html">HarvesterProxy</a></div>
+      <div><a class="xref" href="chia.dotnet.PlotterProxy.html">PlotterProxy</a></div>
+      <div><a class="xref" href="chia.dotnet.WalletProxy.html">WalletProxy</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="chia_dotnet_ServiceProxy_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>The lifetime of the RpcClient is not controlled by the proxy. It should be disposed outside of this class.</p>
+</div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="chia_dotnet_ServiceProxy__ctor_" data-uid="chia.dotnet.ServiceProxy.#ctor*"></a>
+
+  <h3 id="chia_dotnet_ServiceProxy__ctor_chia_dotnet_IRpcClient_System_String_System_String_" data-uid="chia.dotnet.ServiceProxy.#ctor(chia.dotnet.IRpcClient,System.String,System.String)">
+  ServiceProxy(IRpcClient, string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ctor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ServiceProxy(IRpcClient rpcClient, string destinationService, string originService)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rpcClient</code> <a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a></dt>
+    <dd><p><a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a> instance to use for rpc communication</p>
+</dd>
+    <dt><code>destinationService</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p><a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Destination">Destination</a></p>
+</dd>
+    <dt><code>originService</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p><a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Origin">Origin</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="chia_dotnet_ServiceProxy_DestinationService_" data-uid="chia.dotnet.ServiceProxy.DestinationService*"></a>
+
+  <h3 id="chia_dotnet_ServiceProxy_DestinationService" data-uid="chia.dotnet.ServiceProxy.DestinationService">
+  DestinationService
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p><a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Destination">Destination</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DestinationService { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd>Base class that uses an  to send and receive messages to services</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_ServiceProxy_OriginService_" data-uid="chia.dotnet.ServiceProxy.OriginService*"></a>
+
+  <h3 id="chia_dotnet_ServiceProxy_OriginService" data-uid="chia.dotnet.ServiceProxy.OriginService">
+  OriginService
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The name of the service that is running. Will be used as the <a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Origin">Origin</a> of all messages
+as well as the identifier used for <a class="xref" href="chia.dotnet.DaemonProxy.html#chia_dotnet_DaemonProxy_RegisterService_System_String_System_Threading_CancellationToken_">RegisterService(string, CancellationToken)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string OriginService { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd>Base class that uses an  to send and receive messages to services</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_ServiceProxy_RpcClient_" data-uid="chia.dotnet.ServiceProxy.RpcClient*"></a>
+
+  <h3 id="chia_dotnet_ServiceProxy_RpcClient" data-uid="chia.dotnet.ServiceProxy.RpcClient">
+  RpcClient
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The <a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a> used for underlying RPC</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRpcClient RpcClient { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a></dt>
+    <dd>Base class that uses an  to send and receive messages to services</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="chia_dotnet_ServiceProxy_CloseConnection_" data-uid="chia.dotnet.ServiceProxy.CloseConnection*"></a>
+
+  <h3 id="chia_dotnet_ServiceProxy_CloseConnection_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.CloseConnection(System.String,System.Threading.CancellationToken)">
+  CloseConnection(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L123"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Closes a connection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task CloseConnection(string nodeId, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>nodeId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The id of the connection to close</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_ServiceProxy_GetConnections_" data-uid="chia.dotnet.ServiceProxy.GetConnections*"></a>
+
+  <h3 id="chia_dotnet_ServiceProxy_GetConnections_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.GetConnections(System.Threading.CancellationToken)">
+  GetConnections(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the service's connections</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;ConnectionInfo&gt;&gt; GetConnections(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.ConnectionInfo.html">ConnectionInfo</a>&gt;&gt;</dt>
+    <dd><p>A list of <a class="xref" href="chia.dotnet.ConnectionInfo.html">ConnectionInfo</a>s</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_ServiceProxy_GetRoutes_" data-uid="chia.dotnet.ServiceProxy.GetRoutes*"></a>
+
+  <h3 id="chia_dotnet_ServiceProxy_GetRoutes_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.GetRoutes(System.Threading.CancellationToken)">
+  GetRoutes(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get all endpoints of a service</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;string&gt;&gt; GetRoutes(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd><p>A list of service routes</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_ServiceProxy_HealthZ_" data-uid="chia.dotnet.ServiceProxy.HealthZ*"></a>
+
+  <h3 id="chia_dotnet_ServiceProxy_HealthZ_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.HealthZ(System.Threading.CancellationToken)">
+  HealthZ(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sends heartbeat message to the service</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task HealthZ(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>Awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="chia_dotnet_ServiceProxy_HealthZ_System_Threading_CancellationToken__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Either completes without error or throws an exception.</p>
+</div>
+
+
+
+
+  <a id="chia_dotnet_ServiceProxy_OpenConnection_" data-uid="chia.dotnet.ServiceProxy.OpenConnection*"></a>
+
+  <h3 id="chia_dotnet_ServiceProxy_OpenConnection_System_String_System_Int32_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.OpenConnection(System.String,System.Int32,System.Threading.CancellationToken)">
+  OpenConnection(string, int, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Add a connection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task OpenConnection(string host, int port, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>host</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The host name of the connection</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The port to use</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_ServiceProxy_StopNode_" data-uid="chia.dotnet.ServiceProxy.StopNode*"></a>
+
+  <h3 id="chia_dotnet_ServiceProxy_StopNode_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.StopNode(System.Threading.CancellationToken)">
+  StopNode(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Stops the service</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task StopNode(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>Awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L13" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

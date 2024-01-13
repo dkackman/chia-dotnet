@@ -15,7 +15,9 @@
     }
   ],
   "build": {
-    "xrefService": [ "https://xref.docs.microsoft.com/query?uid={uid}" ],
+    "xrefService": [
+      "https://xref.docs.microsoft.com/query?uid={uid}"
+    ],
     "content": [
       {
         "files": [
@@ -54,8 +56,17 @@
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [
-      "default"
+      "default",
+      "modern"
     ],
+    "globalMetadata": {
+      "_appName": "chia-dotnet-bls",
+      "_appTitle": "chia-dotnet-bls",
+      "_appLogoPath": "images/favicon-32x32.png",
+      "_appFaviconPath": "images/favicon.ico",
+      "_enableSearch": true,
+      "pdf": true
+    },
     "postProcessors": [],
     "markdownEngineName": "markdig",
     "noLangKeyword": false,

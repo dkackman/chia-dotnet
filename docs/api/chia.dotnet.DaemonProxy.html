@@ -1,161 +1,1471 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class DaemonProxy
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class DaemonProxy
-   ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class DaemonProxy
+ | chia-dotnet-bls </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class DaemonProxy
+ | chia-dotnet-bls ">
+      
+      <meta name="description" content="for the daemon interface. The daemon can be used to proxy messages to and from other chia services as well as controlling the  and having it&#39;s own procedures">
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DaemonProxy.md&amp;value=---%0Auid%3A%20chia.dotnet.DaemonProxy%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/favicon-32x32.png" alt="chia-dotnet-bls">
+            chia-dotnet-bls
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="chia.dotnet.DaemonProxy">
-  
-  
-  <h1 id="chia_dotnet_DaemonProxy" data-uid="chia.dotnet.DaemonProxy" class="text-break">Class DaemonProxy
-  </h1>
-  <div class="markdown level0 summary"><p><a class="xref" href="chia.dotnet.WebSocketRpcClient.html">WebSocketRpcClient</a> for the daemon interface.
-The daemon can be used to proxy messages to and from other chia services as well
-as controlling the <a class="xref" href="chia.dotnet.PlotterProxy.html">PlotterProxy</a> and having it's own procedures</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">DaemonProxy</span></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
-    </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="chia.dotnet.html">chia.dotnet</a></h6>
-  <h6><strong>Assembly</strong>: chia-dotnet.dll</h6>
-  <h5 id="chia_dotnet_DaemonProxy_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class DaemonProxy</code></pre>
-  </div>
-  <h5 id="chia_dotnet_DaemonProxy_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>ctor</p>
-</div>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DaemonProxy.md&amp;value=---%0Auid%3A%20chia.dotnet.DaemonProxy%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L20" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-      </footer>
+
+        <article data-uid="chia.dotnet.DaemonProxy">
+
+
+
+  <h1 id="chia_dotnet_DaemonProxy" data-uid="chia.dotnet.DaemonProxy" class="text-break">
+    Class DaemonProxy
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="chia.html">chia</a>.<a class="xref" href="chia.dotnet.html">dotnet</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>chia-dotnet.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p><a class="xref" href="chia.dotnet.WebSocketRpcClient.html">WebSocketRpcClient</a> for the daemon interface.
+The daemon can be used to proxy messages to and from other chia services as well
+as controlling the <a class="xref" href="chia.dotnet.PlotterProxy.html">PlotterProxy</a> and having it's own procedures</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class DaemonProxy : ServiceProxy</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="chia.dotnet.ServiceProxy.html">ServiceProxy</a></div>
+      <div><span class="xref">DaemonProxy</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_OriginService">ServiceProxy.OriginService</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_DestinationService">ServiceProxy.DestinationService</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_RpcClient">ServiceProxy.RpcClient</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_HealthZ_System_Threading_CancellationToken_">ServiceProxy.HealthZ(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_StopNode_System_Threading_CancellationToken_">ServiceProxy.StopNode(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_GetConnections_System_Threading_CancellationToken_">ServiceProxy.GetConnections(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_GetRoutes_System_Threading_CancellationToken_">ServiceProxy.GetRoutes(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_OpenConnection_System_String_System_Int32_System_Threading_CancellationToken_">ServiceProxy.OpenConnection(string, int, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_CloseConnection_System_String_System_Threading_CancellationToken_">ServiceProxy.CloseConnection(string, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="chia_dotnet_DaemonProxy_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>ctor</p>
+</div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="chia_dotnet_DaemonProxy__ctor_" data-uid="chia.dotnet.DaemonProxy.#ctor*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy__ctor_chia_dotnet_WebSocketRpcClient_System_String_" data-uid="chia.dotnet.DaemonProxy.#ctor(chia.dotnet.WebSocketRpcClient,System.String)">
+  DaemonProxy(WebSocketRpcClient, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p><a class="xref" href="chia.dotnet.WebSocketRpcClient.html">WebSocketRpcClient</a> for the daemon interface.
+The daemon can be used to proxy messages to and from other chia services as well
+as controlling the <a class="xref" href="chia.dotnet.PlotterProxy.html">PlotterProxy</a> and having it's own procedures</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DaemonProxy(WebSocketRpcClient rpcClient, string originService)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rpcClient</code> <a class="xref" href="chia.dotnet.WebSocketRpcClient.html">WebSocketRpcClient</a></dt>
+    <dd><p><a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a> instance to use for rpc communication</p>
+</dd>
+    <dt><code>originService</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p><a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Origin">Origin</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="chia_dotnet_DaemonProxy__ctor_chia_dotnet_WebSocketRpcClient_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>ctor</p>
+</div>
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="chia_dotnet_DaemonProxy_AddPrivateKey_" data-uid="chia.dotnet.DaemonProxy.AddPrivateKey*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_AddPrivateKey_System_String_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.AddPrivateKey(System.String,System.String,System.Threading.CancellationToken)">
+  AddPrivateKey(string, string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L267"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds a private key to the keychain, with the given entropy and passphrase.
+The keychain itself will store the public key, and the entropy bytes, but not the passphrase.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;uint&gt; AddPrivateKey(string mnemonic, string passphrase, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mnemonic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Mnemonic entropy of the key</p>
+</dd>
+    <dt><code>passphrase</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Keyring passphrase</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>&gt;</dt>
+    <dd><p>Awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_CheckKeys_" data-uid="chia.dotnet.DaemonProxy.CheckKeys*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_CheckKeys_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.CheckKeys(System.String,System.Threading.CancellationToken)">
+  CheckKeys(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L303"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks the keys</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task CheckKeys(string rootPath, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rootPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The config root path</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>Awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="chia_dotnet_DaemonProxy_CheckKeys_System_String_System_Threading_CancellationToken__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This seems to send the daemon out to lunch</p>
+</div>
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_CreateProxyFrom_" data-uid="chia.dotnet.DaemonProxy.CreateProxyFrom*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_CreateProxyFrom__1" data-uid="chia.dotnet.DaemonProxy.CreateProxyFrom``1">
+  CreateProxyFrom&lt;T&gt;()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create a new derived <a class="xref" href="chia.dotnet.ServiceProxy.html">ServiceProxy</a> instance sharing this daemon's <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_RpcClient">RpcClient</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T CreateProxyFrom&lt;T&gt;() where T : ServiceProxy</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd><p>The <a class="xref" href="chia.dotnet.ServiceProxy.html">ServiceProxy</a></p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of <a class="xref" href="chia.dotnet.ServiceProxy.html">ServiceProxy</a> to create</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="chia_dotnet_DaemonProxy_CreateProxyFrom__1_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This only works for daemons because they can forward messages to other services through their <a class="xref" href="chia.dotnet.WebSocketRpcClient.html">WebSocketRpcClient</a></p>
+</div>
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_DeleteAllKeys_" data-uid="chia.dotnet.DaemonProxy.DeleteAllKeys*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_DeleteAllKeys_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.DeleteAllKeys(System.Threading.CancellationToken)">
+  DeleteAllKeys(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L254"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deletes all keys from the keychain</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeleteAllKeys(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>Awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_DeleteKeyByFingerprint_" data-uid="chia.dotnet.DaemonProxy.DeleteKeyByFingerprint*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_DeleteKeyByFingerprint_System_UInt32_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.DeleteKeyByFingerprint(System.UInt32,System.Threading.CancellationToken)">
+  DeleteKeyByFingerprint(uint, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L241"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deletes all keys which have the given public key fingerprint</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeleteKeyByFingerprint(uint fingerprint, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fingerprint</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The fingerprint</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>Awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_DeleteLabel_" data-uid="chia.dotnet.DaemonProxy.DeleteLabel*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_DeleteLabel_System_UInt32_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.DeleteLabel(System.UInt32,System.Threading.CancellationToken)">
+  DeleteLabel(uint, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L365"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes the label assigned to the key with the given fingerprint.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeleteLabel(uint fingerprint, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fingerprint</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The fingerprint</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_Exit_" data-uid="chia.dotnet.DaemonProxy.Exit*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_Exit_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.Exit(System.Threading.CancellationToken)">
+  Exit(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Tells the daemon at the RPC endpoint to exit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task Exit(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>Awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="chia_dotnet_DaemonProxy_Exit_System_Threading_CancellationToken__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>There isn't a way to start the daemon remotely via RPC, so take care that you have access to the RPC host if needed</p>
+</div>
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_GetAllPrivateKeys_" data-uid="chia.dotnet.DaemonProxy.GetAllPrivateKeys*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_GetAllPrivateKeys_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.GetAllPrivateKeys(System.Threading.CancellationToken)">
+  GetAllPrivateKeys(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L291"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns all private keys as a tuple of key, and entropy bytes (i.e. mnemonic) for each key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;PrivateKeyData&gt;&gt; GetAllPrivateKeys(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.PrivateKeyData.html">PrivateKeyData</a>&gt;&gt;</dt>
+    <dd><p>All of the <a class="xref" href="chia.dotnet.PrivateKey.html">PrivateKey</a>s</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_GetFirstPrivateKey_" data-uid="chia.dotnet.DaemonProxy.GetFirstPrivateKey*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_GetFirstPrivateKey_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.GetFirstPrivateKey(System.Threading.CancellationToken)">
+  GetFirstPrivateKey(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L281"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the first private key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;PrivateKeyData&gt; GetFirstPrivateKey(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.PrivateKeyData.html">PrivateKeyData</a>&gt;</dt>
+    <dd><p>The first <a class="xref" href="chia.dotnet.PrivateKey.html">PrivateKey</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_GetKey_" data-uid="chia.dotnet.DaemonProxy.GetKey*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_GetKey_System_UInt32_System_Boolean_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.GetKey(System.UInt32,System.Boolean,System.Threading.CancellationToken)">
+  GetKey(uint, bool, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L318"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Locates and returns KeyData matching the provided fingerprint</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;KeyData&gt; GetKey(uint fingerprint, bool includeSecrets = false, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fingerprint</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The fingerprint</p>
+</dd>
+    <dt><code>includeSecrets</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Include secrets</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.KeyData.html">KeyData</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_GetKeyForFingerprint_" data-uid="chia.dotnet.DaemonProxy.GetKeyForFingerprint*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_GetKeyForFingerprint_System_UInt32_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.GetKeyForFingerprint(System.UInt32,System.Threading.CancellationToken)">
+  GetKeyForFingerprint(uint, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L221"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the private key associated with the given fingerprint</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;PrivateKeyData&gt; GetKeyForFingerprint(uint fingerprint, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fingerprint</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The fingerprint</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.PrivateKeyData.html">PrivateKeyData</a>&gt;</dt>
+    <dd><p>The <a class="xref" href="chia.dotnet.PrivateKey.html">PrivateKey</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_GetKeyringStatus_" data-uid="chia.dotnet.DaemonProxy.GetKeyringStatus*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_GetKeyringStatus_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.GetKeyringStatus(System.Threading.CancellationToken)">
+  GetKeyringStatus(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L138"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the status of the keyring</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;KeyringStatus&gt; GetKeyringStatus(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.KeyringStatus.html">KeyringStatus</a>&gt;</dt>
+    <dd><p>Awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_GetKeys_" data-uid="chia.dotnet.DaemonProxy.GetKeys*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_GetKeys_System_UInt32_System_Boolean_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.GetKeys(System.UInt32,System.Boolean,System.Threading.CancellationToken)">
+  GetKeys(uint, bool, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L334"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the KeyData of all keys which can be retrieved</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;KeyData&gt;&gt; GetKeys(uint fingerprint, bool includeSecrets = false, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fingerprint</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The fingerprint</p>
+</dd>
+    <dt><code>includeSecrets</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Include secrets</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.KeyData.html">KeyData</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_GetStatus_" data-uid="chia.dotnet.DaemonProxy.GetStatus*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_GetStatus_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.GetStatus(System.Threading.CancellationToken)">
+  GetStatus(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get whether the genesis block has been intiailized</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; GetStatus(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>Boolean indicator</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_GetVersion_" data-uid="chia.dotnet.DaemonProxy.GetVersion*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_GetVersion_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.GetVersion(System.Threading.CancellationToken)">
+  GetVersion(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the installed version of chia at the endpoint</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; GetVersion(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The chia version as a string</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_GetWalletAddresses_" data-uid="chia.dotnet.DaemonProxy.GetWalletAddresses*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_GetWalletAddresses_System_Collections_Generic_IEnumerable_System_UInt32__System_Boolean_System_UInt32_System_UInt32_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.GetWalletAddresses(System.Collections.Generic.IEnumerable{System.UInt32},System.Boolean,System.UInt32,System.UInt32,System.Threading.CancellationToken)">
+  GetWalletAddresses(IEnumerable&lt;uint&gt;?, bool, uint, uint, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L393"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the list of addresses.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IDictionary&lt;uint, IEnumerable&lt;WalletAddress&gt;&gt;&gt; GetWalletAddresses(IEnumerable&lt;uint&gt;? fingerprints = null, bool nonObserverDerivation = false, uint index = 0, uint count = 1, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fingerprints</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>nonObserverDerivation</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.WalletAddress.html">WalletAddress</a>&gt;&gt;&gt;</dt>
+    <dd><p>A dictionary of fingerprints and <a class="xref" href="chia.dotnet.WalletAddress.html">WalletAddress</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_IsKeyringLocked_" data-uid="chia.dotnet.DaemonProxy.IsKeyringLocked*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_IsKeyringLocked_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.IsKeyringLocked(System.Threading.CancellationToken)">
+  IsKeyringLocked(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L176"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determine if the keyring is locked</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; IsKeyringLocked(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>Boolean indicator as to wheteher the keyring is locked</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_IsRunning_" data-uid="chia.dotnet.DaemonProxy.IsRunning*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_IsRunning_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.IsRunning(System.String,System.Threading.CancellationToken)">
+  IsRunning(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L379"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines if the named service is running.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; IsRunning(string service, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>service</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The service name</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>Boolean indicator as to wheteher the service is running</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_Ping_" data-uid="chia.dotnet.DaemonProxy.Ping*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_Ping_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.Ping(System.Threading.CancellationToken)">
+  Ping(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sends ping message to the service</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task Ping(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>Awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_RegisterService_" data-uid="chia.dotnet.DaemonProxy.RegisterService*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_RegisterService_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.RegisterService(System.String,System.Threading.CancellationToken)">
+  RegisterService(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Registers this daemon to receive messages. This is needed to receive responses from services other than the daemon.
+This is not a <a class="xref" href="chia.dotnet.ServiceNames.html">ServiceNames</a> but usually the name of the consumer application such as 'wallet_ui'</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task RegisterService(string service, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>service</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name to register</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>Awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_RegisterService_" data-uid="chia.dotnet.DaemonProxy.RegisterService*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_RegisterService_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.RegisterService(System.Threading.CancellationToken)">
+  RegisterService(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Registers this websocket to receive messages using <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_OriginService">OriginService</a>
+This is needed to receive responses from services other than the daemon.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task RegisterService(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>Awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_RemoveKeyringPassphrase_" data-uid="chia.dotnet.DaemonProxy.RemoveKeyringPassphrase*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_RemoveKeyringPassphrase_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.RemoveKeyringPassphrase(System.String,System.Threading.CancellationToken)">
+  RemoveKeyringPassphrase(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L207"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Remove the key ring passphrase</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task RemoveKeyringPassphrase(string currentPassphrase, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>currentPassphrase</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The current keyring passphrase</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>Awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_RunningServices_" data-uid="chia.dotnet.DaemonProxy.RunningServices*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_RunningServices_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.RunningServices(System.Threading.CancellationToken)">
+  RunningServices(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L128"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get athe list of running services</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;string&gt;&gt; RunningServices(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd><p>A list of services</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_SetKeyringPassphrase_" data-uid="chia.dotnet.DaemonProxy.SetKeyringPassphrase*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_SetKeyringPassphrase_System_String_System_String_System_String_System_Boolean_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.SetKeyringPassphrase(System.String,System.String,System.String,System.Boolean,System.Threading.CancellationToken)">
+  SetKeyringPassphrase(string, string, string, bool, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L190"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Update the key ring passphrase</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task SetKeyringPassphrase(string currentPassphrase, string newPassphrase, string passphraseHint, bool savePassphrase = false, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>currentPassphrase</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The current keyring passphrase</p>
+</dd>
+    <dt><code>newPassphrase</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The new keyring passphrase</p>
+</dd>
+    <dt><code>passphraseHint</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A passphrase hint</p>
+</dd>
+    <dt><code>savePassphrase</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Should the passphrase be saved</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>Awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_SetLabel_" data-uid="chia.dotnet.DaemonProxy.SetLabel*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_SetLabel_System_UInt32_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.SetLabel(System.UInt32,System.String,System.Threading.CancellationToken)">
+  SetLabel(uint, string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L350"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Assigns the given label to the first key with the given fingerprint.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task SetLabel(uint fingerprint, string label, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fingerprint</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The fingerprint</p>
+</dd>
+    <dt><code>label</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The label</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_StartService_" data-uid="chia.dotnet.DaemonProxy.StartService*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_StartService_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.StartService(System.String,System.Threading.CancellationToken)">
+  StartService(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Starts the named service.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task StartService(string service, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>service</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The <a class="xref" href="chia.dotnet.ServiceNames.html">ServiceNames</a> of the service</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>Awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_StopService_" data-uid="chia.dotnet.DaemonProxy.StopService*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_StopService_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.StopService(System.String,System.Threading.CancellationToken)">
+  StopService(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Stops the named service</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task StopService(string service, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>service</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The <a class="xref" href="chia.dotnet.ServiceNames.html">ServiceNames</a> of the service</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>Awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_UnlockKeyring_" data-uid="chia.dotnet.DaemonProxy.UnlockKeyring*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_UnlockKeyring_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.UnlockKeyring(System.String,System.Threading.CancellationToken)">
+  UnlockKeyring(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L163"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Unlock the keyring</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task UnlockKeyring(string key, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Keyring passphrase</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>Awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DaemonProxy_ValidateKeyringPassphrase_" data-uid="chia.dotnet.DaemonProxy.ValidateKeyringPassphrase*"></a>
+
+  <h3 id="chia_dotnet_DaemonProxy_ValidateKeyringPassphrase_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DaemonProxy.ValidateKeyringPassphrase(System.String,System.Threading.CancellationToken)">
+  ValidateKeyringPassphrase(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Test the validity of a passphrase</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ValidateKeyringPassphrase(string key, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Keyring passphrase</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>Awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DaemonProxy.cs/#L20" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

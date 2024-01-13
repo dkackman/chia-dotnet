@@ -1,159 +1,1026 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class DIDWallet
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class DIDWallet
-   ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class DIDWallet
+ | chia-dotnet-bls </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class DIDWallet
+ | chia-dotnet-bls ">
+      
+      <meta name="description" content="Wraps a Distributed Identity Wallet">
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DIDWallet.md&amp;value=---%0Auid%3A%20chia.dotnet.DIDWallet%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/favicon-32x32.png" alt="chia-dotnet-bls">
+            chia-dotnet-bls
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="chia.dotnet.DIDWallet">
-  
-  
-  <h1 id="chia_dotnet_DIDWallet" data-uid="chia.dotnet.DIDWallet" class="text-break">Class DIDWallet
-  </h1>
-  <div class="markdown level0 summary"><p>Wraps a Distributed Identity Wallet</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">DIDWallet</span></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
-    </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="chia.dotnet.html">chia.dotnet</a></h6>
-  <h6><strong>Assembly</strong>: chia-dotnet.dll</h6>
-  <h5 id="chia_dotnet_DIDWallet_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class DIDWallet</code></pre>
-  </div>
-  <h5 id="chia_dotnet_DIDWallet_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>ctor</p>
-</div>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_DIDWallet.md&amp;value=---%0Auid%3A%20chia.dotnet.DIDWallet%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L17" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-      </footer>
+
+        <article data-uid="chia.dotnet.DIDWallet">
+
+
+
+  <h1 id="chia_dotnet_DIDWallet" data-uid="chia.dotnet.DIDWallet" class="text-break">
+    Class DIDWallet
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="chia.html">chia</a>.<a class="xref" href="chia.dotnet.html">dotnet</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>chia-dotnet.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Wraps a Distributed Identity Wallet</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class DIDWallet : Wallet</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="chia.dotnet.Wallet.html">Wallet</a></div>
+      <div><span class="xref">DIDWallet</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_WalletId">Wallet.WalletId</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_WalletProxy">Wallet.WalletProxy</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetWalletInfo_System_Threading_CancellationToken_">Wallet.GetWalletInfo(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetBalance_System_Threading_CancellationToken_">Wallet.GetBalance(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SelectCoins_System_UInt64_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_Collections_Generic_IEnumerable_System_UInt64__System_Nullable_System_UInt64__System_Nullable_System_UInt64__System_Threading_CancellationToken_">Wallet.SelectCoins(ulong, IEnumerable&lt;Coin&gt;, IEnumerable&lt;ulong&gt;, ulong?, ulong?, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetTransactions_System_String_chia_dotnet_TransactionTypeFilter_System_Boolean_System_String_System_UInt32_System_UInt32_System_Nullable_System_Boolean__System_Threading_CancellationToken_">Wallet.GetTransactions(string, TransactionTypeFilter, bool, string, uint, uint, bool?, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetSpendableCoins_System_Nullable_System_UInt64__System_Nullable_System_UInt64__System_Collections_Generic_IEnumerable_System_UInt64__System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_">Wallet.GetSpendableCoins(ulong?, ulong?, IEnumerable&lt;ulong&gt;, IEnumerable&lt;Coin&gt;, IEnumerable&lt;string&gt;, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetNextAddress_System_Boolean_System_Threading_CancellationToken_">Wallet.GetNextAddress(bool, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetTransactionCount_chia_dotnet_TransactionTypeFilter_System_Threading_CancellationToken_">Wallet.GetTransactionCount(TransactionTypeFilter, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_DeleteUnconfirmedTransactions_System_Threading_CancellationToken_">Wallet.DeleteUnconfirmedTransactions(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransaction_System_String_System_UInt64_System_Collections_Generic_IEnumerable_System_String__System_Collections_Generic_IEnumerable_System_UInt64__System_Collections_Generic_IEnumerable_System_String__System_Nullable_System_UInt64__System_Nullable_System_UInt64__System_Boolean_System_UInt64_System_Threading_CancellationToken_">Wallet.SendTransaction(string, ulong, IEnumerable&lt;string&gt;, IEnumerable&lt;ulong&gt;, IEnumerable&lt;string&gt;, ulong?, ulong?, bool, ulong, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_UInt64_System_Threading_CancellationToken_">Wallet.SendTransactionMulti(IEnumerable&lt;Coin&gt;, IEnumerable&lt;Coin&gt;, ulong, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="chia_dotnet_DIDWallet_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>ctor</p>
+</div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="chia_dotnet_DIDWallet__ctor_" data-uid="chia.dotnet.DIDWallet.#ctor*"></a>
+
+  <h3 id="chia_dotnet_DIDWallet__ctor_System_UInt32_chia_dotnet_WalletProxy_" data-uid="chia.dotnet.DIDWallet.#ctor(System.UInt32,chia.dotnet.WalletProxy)">
+  DIDWallet(uint, WalletProxy)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Wraps a Distributed Identity Wallet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DIDWallet(uint walletId, WalletProxy walletProxy)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>walletId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The wallet_id to wrap</p>
+</dd>
+    <dt><code>walletProxy</code> <a class="xref" href="chia.dotnet.WalletProxy.html">WalletProxy</a></dt>
+    <dd><p>Wallet RPC proxy to use for communication</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="chia_dotnet_DIDWallet__ctor_System_UInt32_chia_dotnet_WalletProxy__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>ctor</p>
+</div>
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="chia_dotnet_DIDWallet_CreateAttest_" data-uid="chia.dotnet.DIDWallet.CreateAttest*"></a>
+
+  <h3 id="chia_dotnet_DIDWallet_CreateAttest_System_String_System_String_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.CreateAttest(System.String,System.String,System.String,System.Threading.CancellationToken)">
+  CreateAttest(string, string, string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L235"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create an attest file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(string MessageSpendBundle, (string Parent, string InnerPuzzleHash, ulong Amount) Info, string AttestData)&gt; CreateAttest(string coinName, string pubkey, string puzHash, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>coinName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The coin name</p>
+</dd>
+    <dt><code>pubkey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The public key</p>
+</dd>
+    <dt><code>puzHash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The puzzlehash</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.valuetuple-system.string,system.string,system.uint64-,system.string-.messagespendbundle">MessageSpendBundle</a>, (<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,system.uint64-.parent">Parent</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,system.uint64-.innerpuzzlehash">InnerPuzzleHash</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,system.uint64-.amount">Amount</a>) <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.valuetuple-system.string,system.string,system.uint64-,system.string-.info">Info</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.valuetuple-system.string,system.string,system.uint64-,system.string-.attestdata">AttestData</a>)&gt;</dt>
+    <dd><p>A spendbundle and information about the attest</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DIDWallet_CreateBackupFile_" data-uid="chia.dotnet.DIDWallet.CreateBackupFile*"></a>
+
+  <h3 id="chia_dotnet_DIDWallet_CreateBackupFile_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.CreateBackupFile(System.Threading.CancellationToken)">
+  CreateBackupFile(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L292"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create a backup of the wallet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; CreateBackupFile(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The backup data</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DIDWallet_GetCurrentCoinInfo_" data-uid="chia.dotnet.DIDWallet.GetCurrentCoinInfo*"></a>
+
+  <h3 id="chia_dotnet_DIDWallet_GetCurrentCoinInfo_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.GetCurrentCoinInfo(System.Threading.CancellationToken)">
+  GetCurrentCoinInfo(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets information about the DID wallets current coin</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(string MyDid, string Parent, string InnerPuzzle, ulong Amount)&gt; GetCurrentCoinInfo(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,system.string,system.uint64-.mydid">MyDid</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,system.string,system.uint64-.parent">Parent</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,system.string,system.uint64-.innerpuzzle">InnerPuzzle</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,system.string,system.uint64-.amount">Amount</a>)&gt;</dt>
+    <dd><p>The coin info</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DIDWallet_GetDid_" data-uid="chia.dotnet.DIDWallet.GetDid*"></a>
+
+  <h3 id="chia_dotnet_DIDWallet_GetDid_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.GetDid(System.Threading.CancellationToken)">
+  GetDid(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the distributed identity and coin if present</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(string MyDid, string? CoinID)&gt; GetDid(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.mydid">MyDid</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.coinid">CoinID</a>)&gt;</dt>
+    <dd><p>A DID and optional CoinID</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DIDWallet_GetInformationNeededForRecovery_" data-uid="chia.dotnet.DIDWallet.GetInformationNeededForRecovery*"></a>
+
+  <h3 id="chia_dotnet_DIDWallet_GetInformationNeededForRecovery_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.GetInformationNeededForRecovery(System.Threading.CancellationToken)">
+  GetInformationNeededForRecovery(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L274"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create an attestment</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(string MyDID, string CoinName, string NewPuzzleHash, string PublicKey, IEnumerable&lt;byte&gt; BackUpIds)&gt; GetInformationNeededForRecovery(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,system.string,system.string,system.collections.generic.ienumerable-system.byte--.mydid">MyDID</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,system.string,system.string,system.collections.generic.ienumerable-system.byte--.coinname">CoinName</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,system.string,system.string,system.collections.generic.ienumerable-system.byte--.newpuzzlehash">NewPuzzleHash</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,system.string,system.string,system.collections.generic.ienumerable-system.byte--.publickey">PublicKey</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,system.string,system.string,system.collections.generic.ienumerable-system.byte--.backupids">BackUpIds</a>)&gt;</dt>
+    <dd><p>A spendbundle and information about the attest</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DIDWallet_GetMetadata_" data-uid="chia.dotnet.DIDWallet.GetMetadata*"></a>
+
+  <h3 id="chia_dotnet_DIDWallet_GetMetadata_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.GetMetadata(System.Threading.CancellationToken)">
+  GetMetadata(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L170"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the metadata</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IDictionary&lt;string, string&gt;&gt; GetMetadata(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd><p>The metadata</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DIDWallet_GetName_" data-uid="chia.dotnet.DIDWallet.GetName*"></a>
+
+  <h3 id="chia_dotnet_DIDWallet_GetName_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.GetName(System.Threading.CancellationToken)">
+  GetName(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L131"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the wallet name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; GetName(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The name</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DIDWallet_GetPubKey_" data-uid="chia.dotnet.DIDWallet.GetPubKey*"></a>
+
+  <h3 id="chia_dotnet_DIDWallet_GetPubKey_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.GetPubKey(System.Threading.CancellationToken)">
+  GetPubKey(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the wallet pubkey</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; GetPubKey(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The pubkey</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DIDWallet_GetRecoveryList_" data-uid="chia.dotnet.DIDWallet.GetRecoveryList*"></a>
+
+  <h3 id="chia_dotnet_DIDWallet_GetRecoveryList_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.GetRecoveryList(System.Threading.CancellationToken)">
+  GetRecoveryList(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L220"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the recover list</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(IEnumerable&lt;string&gt; RecoverList, int NumRequired)&gt; GetRecoveryList(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.string-,system.int32-.ips">ips</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.string-,system.int32-.total">total</a>)&gt;</dt>
+    <dd><p>The recover list and num required property of the wallet</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DIDWallet_MessageSpend_" data-uid="chia.dotnet.DIDWallet.MessageSpend*"></a>
+
+  <h3 id="chia_dotnet_DIDWallet_MessageSpend_System_Collections_Generic_IEnumerable_System_String__System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.MessageSpend(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+  MessageSpend(IEnumerable&lt;string&gt;, IEnumerable&lt;string&gt;, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L143"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Spends a DID message.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;SpendBundle&gt; MessageSpend(IEnumerable&lt;string&gt; puzzleAnnouncements, IEnumerable&lt;string&gt; coinAnnouncements, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>puzzleAnnouncements</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>coinAnnouncements</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a>&gt;</dt>
+    <dd><p><a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DIDWallet_RecoverySpend_" data-uid="chia.dotnet.DIDWallet.RecoverySpend*"></a>
+
+  <h3 id="chia_dotnet_DIDWallet_RecoverySpend_System_Collections_Generic_IEnumerable_System_String__System_String_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.RecoverySpend(System.Collections.Generic.IEnumerable{System.String},System.String,System.String,System.Threading.CancellationToken)">
+  RecoverySpend(IEnumerable&lt;string&gt;, string?, string?, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L203"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Recovery spend</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task RecoverySpend(IEnumerable&lt;string&gt; attestData, string? pubkey, string? puzzlehash, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>attestData</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>List of attest messages. Must be &gt;= num_of_backup_ids_needed</p>
+</dd>
+    <dt><code>pubkey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The public key</p>
+</dd>
+    <dt><code>puzzlehash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The puzzlehash of the spend</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DIDWallet_SetName_" data-uid="chia.dotnet.DIDWallet.SetName*"></a>
+
+  <h3 id="chia_dotnet_DIDWallet_SetName_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.SetName(System.String,System.Threading.CancellationToken)">
+  SetName(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L157"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task SetName(string name, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DIDWallet_Spend_" data-uid="chia.dotnet.DIDWallet.Spend*"></a>
+
+  <h3 id="chia_dotnet_DIDWallet_Spend_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.Spend(System.String,System.Threading.CancellationToken)">
+  Spend(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Spend from the DID wallet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task Spend(string puzzlehash, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>puzzlehash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The puzzlehash to spend</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DIDWallet_Transfer_" data-uid="chia.dotnet.DIDWallet.Transfer*"></a>
+
+  <h3 id="chia_dotnet_DIDWallet_Transfer_System_String_System_Boolean_System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.Transfer(System.String,System.Boolean,System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
+  Transfer(string, bool, bool?, ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L308"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Transfer the DID wallet to another owner</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;TransactionRecord&gt; Transfer(string innerAddress, bool withRecoveryInfo = true, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>innerAddress</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>the address</p>
+</dd>
+    <dt><code>withRecoveryInfo</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Indiciator whether to include recovery infor</p>
+</dd>
+    <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd></dd>
+    <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Trasnaction fee</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt;</dt>
+    <dd><p>The backup data</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DIDWallet_UpdateMetadata_" data-uid="chia.dotnet.DIDWallet.UpdateMetadata*"></a>
+
+  <h3 id="chia_dotnet_DIDWallet_UpdateMetadata_System_String_System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.UpdateMetadata(System.String,System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
+  UpdateMetadata(string, bool?, ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L185"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the metadata</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;SpendBundle&gt; UpdateMetadata(string metadata, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>metadata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name</p>
+</dd>
+    <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd></dd>
+    <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Transaction fee</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a>&gt;</dt>
+    <dd><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DIDWallet_UpdateRecoveryIds_" data-uid="chia.dotnet.DIDWallet.UpdateRecoveryIds*"></a>
+
+  <h3 id="chia_dotnet_DIDWallet_UpdateRecoveryIds_System_Collections_Generic_IEnumerable_System_String__System_Nullable_System_UInt64__System_Nullable_System_Boolean__System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.UpdateRecoveryIds(System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.UInt64},System.Nullable{System.Boolean},System.Threading.CancellationToken)">
+  UpdateRecoveryIds(IEnumerable&lt;string&gt;, ulong?, bool?, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates recovery ID's</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task UpdateRecoveryIds(IEnumerable&lt;string&gt; newList, ulong? numVerificationsRequired = null, bool? reusePuzhash = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>newList</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The new ids</p>
+</dd>
+    <dt><code>numVerificationsRequired</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a>?</dt>
+    <dd><p>The number of verifications required</p>
+</dd>
+    <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DIDWallet_UpdateRecoveryIds_" data-uid="chia.dotnet.DIDWallet.UpdateRecoveryIds*"></a>
+
+  <h3 id="chia_dotnet_DIDWallet_UpdateRecoveryIds_System_Collections_Generic_IEnumerable_System_String__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.UpdateRecoveryIds(System.Collections.Generic.IEnumerable{System.String},System.UInt64,System.Threading.CancellationToken)">
+  UpdateRecoveryIds(IEnumerable&lt;string&gt;, ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates recovery ID's</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task UpdateRecoveryIds(IEnumerable&lt;string&gt; newList, ulong numVerificationsRequired, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>newList</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The new ids</p>
+</dd>
+    <dt><code>numVerificationsRequired</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>The number of verifications required</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DIDWallet_Validate_" data-uid="chia.dotnet.DIDWallet.Validate*"></a>
+
+  <h3 id="chia_dotnet_DIDWallet_Validate_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.Validate(System.Threading.CancellationToken)">
+  Validate(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validates that <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_WalletId">WalletId</a> is a <a class="xref" href="chia.dotnet.WalletType.html#chia_dotnet_WalletType_DISTRIBUTED_ID">DISTRIBUTED_ID</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Task Validate(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd>Wraps a Distributed Identity Wallet</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>True if the wallet is a DID wallet</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L17" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

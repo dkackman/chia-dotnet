@@ -1,159 +1,1617 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class FullNodeProxy
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class FullNodeProxy
-   ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class FullNodeProxy
+ | chia-dotnet-bls </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class FullNodeProxy
+ | chia-dotnet-bls ">
+      
+      <meta name="description" content="Proxy that communicates with the full node">
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/favicon-32x32.png" alt="chia-dotnet-bls">
+            chia-dotnet-bls
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="chia.dotnet.FullNodeProxy">
-  
-  
-  <h1 id="chia_dotnet_FullNodeProxy" data-uid="chia.dotnet.FullNodeProxy" class="text-break">Class FullNodeProxy
-  </h1>
-  <div class="markdown level0 summary"><p>Proxy that communicates with the full node</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">FullNodeProxy</span></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
-    </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="chia.dotnet.html">chia.dotnet</a></h6>
-  <h6><strong>Assembly</strong>: chia-dotnet.dll</h6>
-  <h5 id="chia_dotnet_FullNodeProxy_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class FullNodeProxy</code></pre>
-  </div>
-  <h5 id="chia_dotnet_FullNodeProxy_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>ctor</p>
-</div>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_FullNodeProxy.md&amp;value=---%0Auid%3A%20chia.dotnet.FullNodeProxy%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L19" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-      </footer>
+
+        <article data-uid="chia.dotnet.FullNodeProxy">
+
+
+
+  <h1 id="chia_dotnet_FullNodeProxy" data-uid="chia.dotnet.FullNodeProxy" class="text-break">
+    Class FullNodeProxy
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="chia.html">chia</a>.<a class="xref" href="chia.dotnet.html">dotnet</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>chia-dotnet.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Proxy that communicates with the full node</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class FullNodeProxy : ServiceProxy</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="chia.dotnet.ServiceProxy.html">ServiceProxy</a></div>
+      <div><span class="xref">FullNodeProxy</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_OriginService">ServiceProxy.OriginService</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_DestinationService">ServiceProxy.DestinationService</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_RpcClient">ServiceProxy.RpcClient</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_HealthZ_System_Threading_CancellationToken_">ServiceProxy.HealthZ(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_StopNode_System_Threading_CancellationToken_">ServiceProxy.StopNode(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_GetConnections_System_Threading_CancellationToken_">ServiceProxy.GetConnections(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_GetRoutes_System_Threading_CancellationToken_">ServiceProxy.GetRoutes(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_OpenConnection_System_String_System_Int32_System_Threading_CancellationToken_">ServiceProxy.OpenConnection(string, int, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_CloseConnection_System_String_System_Threading_CancellationToken_">ServiceProxy.CloseConnection(string, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="chia_dotnet_FullNodeProxy_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>ctor</p>
+</div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="chia_dotnet_FullNodeProxy__ctor_" data-uid="chia.dotnet.FullNodeProxy.#ctor*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy__ctor_chia_dotnet_IRpcClient_System_String_" data-uid="chia.dotnet.FullNodeProxy.#ctor(chia.dotnet.IRpcClient,System.String)">
+  FullNodeProxy(IRpcClient, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Proxy that communicates with the full node</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FullNodeProxy(IRpcClient rpcClient, string originService)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rpcClient</code> <a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a></dt>
+    <dd><p><a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a> instance to use for rpc communication</p>
+</dd>
+    <dt><code>originService</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p><a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Origin">Origin</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="chia_dotnet_FullNodeProxy__ctor_chia_dotnet_IRpcClient_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>ctor</p>
+</div>
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetAdditionsAndRemovals_" data-uid="chia.dotnet.FullNodeProxy.GetAdditionsAndRemovals*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetAdditionsAndRemovals_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetAdditionsAndRemovals(System.String,System.Threading.CancellationToken)">
+  GetAdditionsAndRemovals(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L392"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the additions and removals (state transitions) for a certain block.
+Returns coin records for each addition and removal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(IEnumerable&lt;CoinRecord&gt; Additions, IEnumerable&lt;CoinRecord&gt; Removals)&gt; GetAdditionsAndRemovals(string headerhash, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>headerhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The header hash</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-chia.dotnet.coinrecord-,system.collections.generic.ienumerable-chia.dotnet.coinrecord--.additions">Additions</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-chia.dotnet.coinrecord-,system.collections.generic.ienumerable-chia.dotnet.coinrecord--.removals">Removals</a>)&gt;</dt>
+    <dd><p>A list of additions and a list of removals</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetAllMemmpoolTxIds_" data-uid="chia.dotnet.FullNodeProxy.GetAllMemmpoolTxIds*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetAllMemmpoolTxIds_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetAllMemmpoolTxIds(System.Threading.CancellationToken)">
+  GetAllMemmpoolTxIds(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L444"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns a list of all transaction IDs (spend bundle hashes) in the mempool.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;string&gt;&gt; GetAllMemmpoolTxIds(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd><p>a list of tx_ids</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetAllMempoolItems_" data-uid="chia.dotnet.FullNodeProxy.GetAllMempoolItems*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetAllMempoolItems_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetAllMempoolItems(System.Threading.CancellationToken)">
+  GetAllMempoolItems(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L434"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns all items in the mempool.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IDictionary&lt;string, MempoolItem&gt;&gt; GetAllMempoolItems(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="chia.dotnet.MempoolItem.html">MempoolItem</a>&gt;&gt;</dt>
+    <dd><p>A dictionary of mempool items</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetAverageBlockTime_" data-uid="chia.dotnet.FullNodeProxy.GetAverageBlockTime*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetAverageBlockTime_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetAverageBlockTime(System.Threading.CancellationToken)">
+  GetAverageBlockTime(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L621"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Estimates the average time it is taking to process the last 500 blocks</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;TimeSpan&gt; GetAverageBlockTime(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a>&gt;</dt>
+    <dd><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a> estimation</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetBlock_" data-uid="chia.dotnet.FullNodeProxy.GetBlock*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetBlock_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetBlock(System.String,System.Threading.CancellationToken)">
+  GetBlock(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a block by a header hash</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;FullBlock&gt; GetBlock(string headerhash, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>headerhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The header hash</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.FullBlock.html">FullBlock</a>&gt;</dt>
+    <dd><p>The <a class="xref" href="chia.dotnet.FullBlock.html">FullBlock</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetBlockCountMetrics_" data-uid="chia.dotnet.FullNodeProxy.GetBlockCountMetrics*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetBlockCountMetrics_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetBlockCountMetrics(System.Threading.CancellationToken)">
+  GetBlockCountMetrics(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves aggregate information about blocks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;BlockCountMetrics&gt; GetBlockCountMetrics(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.BlockCountMetrics.html">BlockCountMetrics</a>&gt;</dt>
+    <dd><p>The <a class="xref" href="chia.dotnet.BlockCountMetrics.html">BlockCountMetrics</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetBlockRecord_" data-uid="chia.dotnet.FullNodeProxy.GetBlockRecord*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetBlockRecord_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetBlockRecord(System.String,System.Threading.CancellationToken)">
+  GetBlockRecord(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L201"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a block record by a header hash</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;BlockRecord&gt; GetBlockRecord(string headerhash, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>headerhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The header hash</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.BlockRecord.html">BlockRecord</a>&gt;</dt>
+    <dd><p>The <a class="xref" href="chia.dotnet.BlockRecord.html">BlockRecord</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetBlockRecordByHeight_" data-uid="chia.dotnet.FullNodeProxy.GetBlockRecordByHeight*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetBlockRecordByHeight_System_UInt32_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetBlockRecordByHeight(System.UInt32,System.Threading.CancellationToken)">
+  GetBlockRecordByHeight(uint, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L220"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a block record by height (assuming the height is less then or equal peak height)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;BlockRecord&gt; GetBlockRecordByHeight(uint height, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>the height to get</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.BlockRecord.html">BlockRecord</a>&gt;</dt>
+    <dd><p>The <a class="xref" href="chia.dotnet.BlockRecord.html">BlockRecord</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetBlockRecords_" data-uid="chia.dotnet.FullNodeProxy.GetBlockRecords*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetBlockRecords_System_UInt32_System_UInt32_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetBlockRecords(System.UInt32,System.UInt32,System.Threading.CancellationToken)">
+  GetBlockRecords(uint, uint, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L235"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves block records in a range</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;BlockRecord&gt;&gt; GetBlockRecords(uint start, uint end, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>start</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>Start height</p>
+</dd>
+    <dt><code>end</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>End Height - non-inclusive</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.BlockRecord.html">BlockRecord</a>&gt;&gt;</dt>
+    <dd><p>list of <a class="xref" href="chia.dotnet.BlockRecord.html">BlockRecord</a>s</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetBlockSpends_" data-uid="chia.dotnet.FullNodeProxy.GetBlockSpends*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetBlockSpends_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetBlockSpends(System.String,System.Threading.CancellationToken)">
+  GetBlockSpends(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L417"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves every coin that was spent in a block</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;CoinSpend&gt;&gt; GetBlockSpends(string headerhash, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>headerhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The block's header_hash</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.CoinSpend.html">CoinSpend</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetBlockSpendsWithConditions_" data-uid="chia.dotnet.FullNodeProxy.GetBlockSpendsWithConditions*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetBlockSpendsWithConditions_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetBlockSpendsWithConditions(System.String,System.Threading.CancellationToken)">
+  GetBlockSpendsWithConditions(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L668"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the spends in the given block, including its conditions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;BlockSpendWithConditions&gt;&gt; GetBlockSpendsWithConditions(string headerHash, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>headerHash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.BlockSpendWithConditions.html">BlockSpendWithConditions</a>&gt;&gt;</dt>
+    <dd><p>A list of <a class="xref" href="chia.dotnet.BlockSpendWithConditions.html">BlockSpendWithConditions</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetBlockchainState_" data-uid="chia.dotnet.FullNodeProxy.GetBlockchainState*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetBlockchainState_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetBlockchainState(System.Threading.CancellationToken)">
+  GetBlockchainState(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns a summary of the node's view of the blockchain.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;BlockchainState&gt; GetBlockchainState(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.BlockchainState.html">BlockchainState</a>&gt;</dt>
+    <dd><p>The <a class="xref" href="chia.dotnet.BlockchainState.html">BlockchainState</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetBlocks_" data-uid="chia.dotnet.FullNodeProxy.GetBlocks*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetBlocks_System_UInt32_System_UInt32_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetBlocks(System.UInt32,System.UInt32,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Threading.CancellationToken)">
+  GetBlocks(uint, uint, bool?, bool?, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the blocks between a start and end height</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;FullBlock&gt;&gt; GetBlocks(uint start, uint end, bool? excludeHeaderhash = null, bool? excludeReorged = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>start</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>Start height</p>
+</dd>
+    <dt><code>end</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>End Height - non-inclusive</p>
+</dd>
+    <dt><code>excludeHeaderhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Flag indicating whether to include the header hash in the result or not</p>
+</dd>
+    <dt><code>excludeReorged</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.FullBlock.html">FullBlock</a>&gt;&gt;</dt>
+    <dd><p>A list of <a class="xref" href="chia.dotnet.FullBlock.html">FullBlock</a>s</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetCoinRecordByName_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordByName*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetCoinRecordByName_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordByName(System.String,System.Threading.CancellationToken)">
+  GetCoinRecordByName(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L352"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a coin record by its name/id.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CoinRecord&gt; GetCoinRecordByName(string name, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The coin name</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a>&gt;</dt>
+    <dd><p>A <a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetCoinRecordsByHint_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordsByHint*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetCoinRecordsByHint_System_String_System_Boolean_System_Nullable_System_UInt32__System_Nullable_System_UInt32__System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordsByHint(System.String,System.Boolean,System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Threading.CancellationToken)">
+  GetCoinRecordsByHint(string, bool, uint?, uint?, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L369"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a coin record by hint</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;CoinRecord&gt;&gt; GetCoinRecordsByHint(string hint, bool includeSpentCoins, uint? startHeight = null, uint? endHeight = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>hint</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The hint</p>
+</dd>
+    <dt><code>includeSpentCoins</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>whether to include spent coins too, instead of just unspent</p>
+</dd>
+    <dt><code>startHeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>?</dt>
+    <dd><p>confirmation start height for search</p>
+</dd>
+    <dt><code>endHeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>?</dt>
+    <dd><p>confirmation end height for search</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a>&gt;&gt;</dt>
+    <dd><p>A list of <a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a>s</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetCoinRecordsByNames_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordsByNames*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetCoinRecordsByNames_System_Collections_Generic_IEnumerable_System_String__System_Boolean_System_Nullable_System_UInt32__System_Nullable_System_UInt32__System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordsByNames(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Threading.CancellationToken)">
+  GetCoinRecordsByNames(IEnumerable&lt;string&gt;, bool, uint?, uint?, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L288"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the coins for given coin IDs</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;CoinRecord&gt;&gt; GetCoinRecordsByNames(IEnumerable&lt;string&gt; names, bool includeSpentCoins, uint? startHeight = null, uint? endHeight = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>names</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The coin names</p>
+</dd>
+    <dt><code>includeSpentCoins</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Flag indicating whether to include spent coins or not</p>
+</dd>
+    <dt><code>startHeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>?</dt>
+    <dd><p>confirmation start height for search</p>
+</dd>
+    <dt><code>endHeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>?</dt>
+    <dd><p>confirmation end height for search</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a>&gt;&gt;</dt>
+    <dd><p>A list of <a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a>s</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetCoinRecordsByParentIds_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordsByParentIds*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetCoinRecordsByParentIds_System_Collections_Generic_IEnumerable_System_String__System_Boolean_System_Nullable_System_UInt32__System_Nullable_System_UInt32__System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordsByParentIds(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Threading.CancellationToken)">
+  GetCoinRecordsByParentIds(IEnumerable&lt;string&gt;, bool, uint?, uint?, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L333"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the coins for a given list of parent ids</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;CoinRecord&gt;&gt; GetCoinRecordsByParentIds(IEnumerable&lt;string&gt; parentIds, bool includeSpentCoins, uint? startHeight = null, uint? endHeight = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>parentIds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The list of parent ids hashes</p>
+</dd>
+    <dt><code>includeSpentCoins</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>whether to include spent coins too, instead of just unspent</p>
+</dd>
+    <dt><code>startHeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>?</dt>
+    <dd><p>confirmation start height for search</p>
+</dd>
+    <dt><code>endHeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>?</dt>
+    <dd><p>confirmation end height for search</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a>&gt;&gt;</dt>
+    <dd><p>A list of <a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a>s</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetCoinRecordsByPuzzleHash_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordsByPuzzleHash*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetCoinRecordsByPuzzleHash_System_String_System_Boolean_System_Nullable_System_UInt32__System_Nullable_System_UInt32__System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordsByPuzzleHash(System.String,System.Boolean,System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Threading.CancellationToken)">
+  GetCoinRecordsByPuzzleHash(string, bool, uint?, uint?, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L263"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the coins for a given puzzlehash</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;CoinRecord&gt;&gt; GetCoinRecordsByPuzzleHash(string puzzlehash, bool includeSpentCoins, uint? startHeight, uint? endHeight, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>puzzlehash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The puzzle hash</p>
+</dd>
+    <dt><code>includeSpentCoins</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>whether to include spent coins too, instead of just unspent</p>
+</dd>
+    <dt><code>startHeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>?</dt>
+    <dd><p>confirmation start height for search</p>
+</dd>
+    <dt><code>endHeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>?</dt>
+    <dd><p>confirmation end height for search</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a>&gt;&gt;</dt>
+    <dd><p>A list of <a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a>s</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetCoinRecordsByPuzzleHashes_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordsByPuzzleHashes*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetCoinRecordsByPuzzleHashes_System_Collections_Generic_IEnumerable_System_String__System_Boolean_System_Nullable_System_UInt32__System_Nullable_System_UInt32__System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetCoinRecordsByPuzzleHashes(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Threading.CancellationToken)">
+  GetCoinRecordsByPuzzleHashes(IEnumerable&lt;string&gt;, bool, uint?, uint?, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L310"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the coins for a given list of puzzlehashes, by default returns unspent coins.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;CoinRecord&gt;&gt; GetCoinRecordsByPuzzleHashes(IEnumerable&lt;string&gt; puzzlehashes, bool includeSpentCoins, uint? startHeight = null, uint? endHeight = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>puzzlehashes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The list of puzzle hashes</p>
+</dd>
+    <dt><code>includeSpentCoins</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>whether to include spent coins too, instead of just unspent</p>
+</dd>
+    <dt><code>startHeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>?</dt>
+    <dd><p>confirmation start height for search</p>
+</dd>
+    <dt><code>endHeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>?</dt>
+    <dd><p>confirmation end height for search</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a>&gt;&gt;</dt>
+    <dd><p>A list of <a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a>s</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetFeeEstimate_" data-uid="chia.dotnet.FullNodeProxy.GetFeeEstimate*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetFeeEstimate_System_UInt64_System_Collections_Generic_IEnumerable_System_Int32__System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetFeeEstimate(System.UInt64,System.Collections.Generic.IEnumerable{System.Int32},System.Threading.CancellationToken)">
+  GetFeeEstimate(ulong, IEnumerable&lt;int&gt;, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L152"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Estimate a spend fee</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(IEnumerable&lt;ulong&gt; estimates, IEnumerable&lt;int&gt; targetTimes, float currentFeeRate, ulong mempoolSize, ulong mempoolFees, int numSpends, ulong mempoolMaxSize, bool synced, uint peakHeight, ulong lastPeakTimestamp, ulong nodeTimeUtc, ulong lastBlockCost, ulong feesLastBlock, float feeRateLastBlock, uint lastTxBlockHeight)&gt; GetFeeEstimate(ulong cost, IEnumerable&lt;int&gt; targetTimes, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cost</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+    <dt><code>targetTimes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>Array of target times</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.uint64-,system.collections.generic.ienumerable-system.int32-,system.single,system.uint64,system.uint64,system.int32,system.uint64,system.valuetuple-system.boolean,system.uint32,system.uint64,system.uint64,system.uint64,system.uint64,system.single,system.valuetuple-system.uint32---.estimates">estimates</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.uint64-,system.collections.generic.ienumerable-system.int32-,system.single,system.uint64,system.uint64,system.int32,system.uint64,system.valuetuple-system.boolean,system.uint32,system.uint64,system.uint64,system.uint64,system.uint64,system.single,system.valuetuple-system.uint32---.targettimes">targetTimes</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.uint64-,system.collections.generic.ienumerable-system.int32-,system.single,system.uint64,system.uint64,system.int32,system.uint64,system.valuetuple-system.boolean,system.uint32,system.uint64,system.uint64,system.uint64,system.uint64,system.single,system.valuetuple-system.uint32---.currentfeerate">currentFeeRate</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.uint64-,system.collections.generic.ienumerable-system.int32-,system.single,system.uint64,system.uint64,system.int32,system.uint64,system.valuetuple-system.boolean,system.uint32,system.uint64,system.uint64,system.uint64,system.uint64,system.single,system.valuetuple-system.uint32---.mempoolsize">mempoolSize</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.uint64-,system.collections.generic.ienumerable-system.int32-,system.single,system.uint64,system.uint64,system.int32,system.uint64,system.valuetuple-system.boolean,system.uint32,system.uint64,system.uint64,system.uint64,system.uint64,system.single,system.valuetuple-system.uint32---.mempoolfees">mempoolFees</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.uint64-,system.collections.generic.ienumerable-system.int32-,system.single,system.uint64,system.uint64,system.int32,system.uint64,system.valuetuple-system.boolean,system.uint32,system.uint64,system.uint64,system.uint64,system.uint64,system.single,system.valuetuple-system.uint32---.numspends">numSpends</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.uint64-,system.collections.generic.ienumerable-system.int32-,system.single,system.uint64,system.uint64,system.int32,system.uint64,system.valuetuple-system.boolean,system.uint32,system.uint64,system.uint64,system.uint64,system.uint64,system.single,system.valuetuple-system.uint32---.mempoolmaxsize">mempoolMaxSize</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.uint64-,system.collections.generic.ienumerable-system.int32-,system.single,system.uint64,system.uint64,system.int32,system.uint64,system.valuetuple-system.boolean,system.uint32,system.uint64,system.uint64,system.uint64,system.uint64,system.single,system.valuetuple-system.uint32---.synced">synced</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.uint64-,system.collections.generic.ienumerable-system.int32-,system.single,system.uint64,system.uint64,system.int32,system.uint64,system.valuetuple-system.boolean,system.uint32,system.uint64,system.uint64,system.uint64,system.uint64,system.single,system.valuetuple-system.uint32---.peakheight">peakHeight</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.uint64-,system.collections.generic.ienumerable-system.int32-,system.single,system.uint64,system.uint64,system.int32,system.uint64,system.valuetuple-system.boolean,system.uint32,system.uint64,system.uint64,system.uint64,system.uint64,system.single,system.valuetuple-system.uint32---.lastpeaktimestamp">lastPeakTimestamp</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.uint64-,system.collections.generic.ienumerable-system.int32-,system.single,system.uint64,system.uint64,system.int32,system.uint64,system.valuetuple-system.boolean,system.uint32,system.uint64,system.uint64,system.uint64,system.uint64,system.single,system.valuetuple-system.uint32---.nodetimeutc">nodeTimeUtc</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.uint64-,system.collections.generic.ienumerable-system.int32-,system.single,system.uint64,system.uint64,system.int32,system.uint64,system.valuetuple-system.boolean,system.uint32,system.uint64,system.uint64,system.uint64,system.uint64,system.single,system.valuetuple-system.uint32---.lastblockcost">lastBlockCost</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.uint64-,system.collections.generic.ienumerable-system.int32-,system.single,system.uint64,system.uint64,system.int32,system.uint64,system.valuetuple-system.boolean,system.uint32,system.uint64,system.uint64,system.uint64,system.uint64,system.single,system.valuetuple-system.uint32---.feeslastblock">feesLastBlock</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.uint64-,system.collections.generic.ienumerable-system.int32-,system.single,system.uint64,system.uint64,system.int32,system.uint64,system.valuetuple-system.boolean,system.uint32,system.uint64,system.uint64,system.uint64,system.uint64,system.single,system.valuetuple-system.uint32---.feeratelastblock">feeRateLastBlock</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.uint64-,system.collections.generic.ienumerable-system.int32-,system.single,system.uint64,system.uint64,system.int32,system.uint64,system.valuetuple-system.boolean,system.uint32,system.uint64,system.uint64,system.uint64,system.uint64,system.single,system.valuetuple-system.uint32---.lasttxblockheight">lastTxBlockHeight</a>)&gt;</dt>
+    <dd><p>Fee estimate details</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetFeeEstimate_" data-uid="chia.dotnet.FullNodeProxy.GetFeeEstimate*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetFeeEstimate_chia_dotnet_SpendBundle_System_Collections_Generic_IEnumerable_System_Int32__System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetFeeEstimate(chia.dotnet.SpendBundle,System.Collections.Generic.IEnumerable{System.Int32},System.Threading.CancellationToken)">
+  GetFeeEstimate(SpendBundle, IEnumerable&lt;int&gt;, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Estimate a spend fee</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(IEnumerable&lt;int&gt; Estimates, IEnumerable&lt;int&gt; TargetTimes, ulong CurrentFeeRate, ulong MempoolSize, ulong MempoolMaxSize, bool Synced, uint PeakHeight, ulong LastPeakTimestamp, ulong UtcTimestamp)&gt; GetFeeEstimate(SpendBundle spendBundle, IEnumerable&lt;int&gt; targetTimes, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>spendBundle</code> <a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a></dt>
+    <dd><p>The spend bundle to esimtate</p>
+</dd>
+    <dt><code>targetTimes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>Array of target times</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.int32-,system.collections.generic.ienumerable-system.int32-,system.uint64,system.uint64,system.uint64,system.boolean,system.uint32,system.valuetuple-system.uint64,system.uint64--.estimates">Estimates</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.int32-,system.collections.generic.ienumerable-system.int32-,system.uint64,system.uint64,system.uint64,system.boolean,system.uint32,system.valuetuple-system.uint64,system.uint64--.targettimes">TargetTimes</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.int32-,system.collections.generic.ienumerable-system.int32-,system.uint64,system.uint64,system.uint64,system.boolean,system.uint32,system.valuetuple-system.uint64,system.uint64--.currentfeerate">CurrentFeeRate</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.int32-,system.collections.generic.ienumerable-system.int32-,system.uint64,system.uint64,system.uint64,system.boolean,system.uint32,system.valuetuple-system.uint64,system.uint64--.mempoolsize">MempoolSize</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.int32-,system.collections.generic.ienumerable-system.int32-,system.uint64,system.uint64,system.uint64,system.boolean,system.uint32,system.valuetuple-system.uint64,system.uint64--.mempoolmaxsize">MempoolMaxSize</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.int32-,system.collections.generic.ienumerable-system.int32-,system.uint64,system.uint64,system.uint64,system.boolean,system.uint32,system.valuetuple-system.uint64,system.uint64--.synced">Synced</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.int32-,system.collections.generic.ienumerable-system.int32-,system.uint64,system.uint64,system.uint64,system.boolean,system.uint32,system.valuetuple-system.uint64,system.uint64--.peakheight">PeakHeight</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.int32-,system.collections.generic.ienumerable-system.int32-,system.uint64,system.uint64,system.uint64,system.boolean,system.uint32,system.valuetuple-system.uint64,system.uint64--.lastpeaktimestamp">LastPeakTimestamp</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.int32-,system.collections.generic.ienumerable-system.int32-,system.uint64,system.uint64,system.uint64,system.boolean,system.uint32,system.valuetuple-system.uint64,system.uint64--.utctimestamp">UtcTimestamp</a>)&gt;</dt>
+    <dd><p>Fee estimate details</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetMemmpooItemByTxId_" data-uid="chia.dotnet.FullNodeProxy.GetMemmpooItemByTxId*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetMemmpooItemByTxId_System_String_System_Boolean_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetMemmpooItemByTxId(System.String,System.Boolean,System.Threading.CancellationToken)">
+  GetMemmpooItemByTxId(string, bool, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L456"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a mempool item by tx id.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;MempoolItem&gt; GetMemmpooItemByTxId(string txId, bool includePending = false, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>txId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Transaction id</p>
+</dd>
+    <dt><code>includePending</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Including pending transactions</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.MempoolItem.html">MempoolItem</a>&gt;</dt>
+    <dd><p>The <a class="xref" href="chia.dotnet.MempoolItem.html">MempoolItem</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetMemmpoolItemsByCoinName_" data-uid="chia.dotnet.FullNodeProxy.GetMemmpoolItemsByCoinName*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetMemmpoolItemsByCoinName_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetMemmpoolItemsByCoinName(System.String,System.Threading.CancellationToken)">
+  GetMemmpoolItemsByCoinName(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L470"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a mempool item by coin name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;MempoolItem&gt;&gt; GetMemmpoolItemsByCoinName(string coinName, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>coinName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Coin name</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.MempoolItem.html">MempoolItem</a>&gt;&gt;</dt>
+    <dd><p>The <a class="xref" href="chia.dotnet.MempoolItem.html">MempoolItem</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetNetworkInfo_" data-uid="chia.dotnet.FullNodeProxy.GetNetworkInfo*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetNetworkInfo_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetNetworkInfo(System.Threading.CancellationToken)">
+  GetNetworkInfo(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L510"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves information about the current network</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(string NetworkName, string NetworkPrefix)&gt; GetNetworkInfo(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.mydid">MyDid</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.coinid">CoinID</a>)&gt;</dt>
+    <dd><p>The network name and coin prefix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetNetworkSpace_" data-uid="chia.dotnet.FullNodeProxy.GetNetworkSpace*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetNetworkSpace_System_String_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetNetworkSpace(System.String,System.String,System.Threading.CancellationToken)">
+  GetNetworkSpace(string, string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L484"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves an estimate of total space validating the chain between two block header hashes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;BigInteger&gt; GetNetworkSpace(string newerBlockHeaderhash, string olderBlockHeaderhash, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>newerBlockHeaderhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>olderBlockHeaderhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a>&gt;</dt>
+    <dd><p><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a> of network space in bytes</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetPuzzleAndSolution_" data-uid="chia.dotnet.FullNodeProxy.GetPuzzleAndSolution*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetPuzzleAndSolution_System_String_System_UInt32_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetPuzzleAndSolution(System.String,System.UInt32,System.Threading.CancellationToken)">
+  GetPuzzleAndSolution(string, uint, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L602"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a coin solution</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;CoinSpend&gt; GetPuzzleAndSolution(string coinId, uint height, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>coinId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Id/name  of the coin</p>
+</dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>Block height at which the coin was spent 'spent_block_index'</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.CoinSpend.html">CoinSpend</a>&gt;</dt>
+    <dd><p>A <a class="xref" href="chia.dotnet.CoinSpend.html">CoinSpend</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="chia_dotnet_FullNodeProxy_GetPuzzleAndSolution_System_String_System_UInt32_System_Threading_CancellationToken__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>coinId is the coin name</p>
+</div>
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetRecentEOS_" data-uid="chia.dotnet.FullNodeProxy.GetRecentEOS*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetRecentEOS_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetRecentEOS(System.String,System.Threading.CancellationToken)">
+  GetRecentEOS(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L574"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a recent end of slot</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(EndOfSubSlotBundle Eos, double TimeReceived, bool Reverted, DateTime DateTimeReceived)&gt; GetRecentEOS(string challengeHash, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>challengeHash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>challenge hash</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.EndOfSubSlotBundle.html">EndOfSubSlotBundle</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.endofsubslotbundle,system.double,system.boolean,system.datetime-.eos">Eos</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.endofsubslotbundle,system.double,system.boolean,system.datetime-.timereceived">TimeReceived</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.endofsubslotbundle,system.double,system.boolean,system.datetime-.reverted">Reverted</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.endofsubslotbundle,system.double,system.boolean,system.datetime-.datetimereceived">DateTimeReceived</a>)&gt;</dt>
+    <dd><p>The <a class="xref" href="chia.dotnet.EndOfSubSlotBundle.html">EndOfSubSlotBundle</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetRecentSignagePoint_" data-uid="chia.dotnet.FullNodeProxy.GetRecentSignagePoint*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetRecentSignagePoint_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetRecentSignagePoint(System.String,System.Threading.CancellationToken)">
+  GetRecentSignagePoint(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L548"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a recent signage point</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(SignagePoint SignagePoint, double TimeReceived, bool Reverted, DateTime DateTimeReceived)&gt; GetRecentSignagePoint(string spHash, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>spHash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>signage point hash</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.SignagePoint.html">SignagePoint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.signagepoint,system.double,system.boolean,system.datetime-.signagepoint">SignagePoint</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.signagepoint,system.double,system.boolean,system.datetime-.timereceived">TimeReceived</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.signagepoint,system.double,system.boolean,system.datetime-.reverted">Reverted</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.signagepoint,system.double,system.boolean,system.datetime-.datetimereceived">DateTimeReceived</a>)&gt;</dt>
+    <dd><p>The <a class="xref" href="chia.dotnet.SignagePoint.html">SignagePoint</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_GetUnfinishedBlockHeaders_" data-uid="chia.dotnet.FullNodeProxy.GetUnfinishedBlockHeaders*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_GetUnfinishedBlockHeaders_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetUnfinishedBlockHeaders(System.Threading.CancellationToken)">
+  GetUnfinishedBlockHeaders(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L249"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get unfinished block headers</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;UnfinishedHeaderBlock&gt;&gt; GetUnfinishedBlockHeaders(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.UnfinishedHeaderBlock.html">UnfinishedHeaderBlock</a>&gt;&gt;</dt>
+    <dd><p>A list of <a class="xref" href="chia.dotnet.UnfinishedHeaderBlock.html">UnfinishedHeaderBlock</a>s</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_PushTx_" data-uid="chia.dotnet.FullNodeProxy.PushTx*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_PushTx_chia_dotnet_SpendBundle_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.PushTx(chia.dotnet.SpendBundle,System.Threading.CancellationToken)">
+  PushTx(SpendBundle, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L524"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pushes a transaction / spend bundle to the mempool and blockchain.
+Returns whether the spend bundle was successfully included into the mempool</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; PushTx(SpendBundle spendBundle, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>spendBundle</code> <a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>Indicator of whether the spend bundle was successfully included in the mempool</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_FullNodeProxy_WaitForSync_" data-uid="chia.dotnet.FullNodeProxy.WaitForSync*"></a>
+
+  <h3 id="chia_dotnet_FullNodeProxy_WaitForSync_System_Int32_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.WaitForSync(System.Int32,System.Threading.CancellationToken)">
+  WaitForSync(int, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Will wait until <a class="xref" href="chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetBlockchainState_System_Threading_CancellationToken_">GetBlockchainState(CancellationToken)</a> indicates
+that the full node has synced or until the cancellation token is canceled</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task WaitForSync(int millisecondsDelay = 10000, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>millisecondsDelay</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of milliseconds to wait each time before checking sync status</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.taskcanceledexception">TaskCanceledException</a></dt>
+    <dd><p>When cancellation token expires or is cancelled</p>
+</dd>
+  </dl>
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L21" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
