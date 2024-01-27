@@ -17,6 +17,80 @@ namespace chia.dotnet
     /// <param name="originService"><see cref="Message.Origin"/></param>
     public sealed class FarmerProxy(IRpcClient rpcClient, string originService) : ServiceProxy(rpcClient, ServiceNames.Farmer, originService)
     {
+        /// <summary>
+        /// Event raised when a new signage point is received
+        /// </summary>
+        public event EventHandler<dynamic>? NewSignagePoint;
+
+        /// <summary>
+        /// Event raised when a new signage point is received
+        /// </summary>
+        public event EventHandler<dynamic>? NewFarmingInfo;
+
+        /// <summary>
+        /// Event raised when a proof message arrives
+        /// </summary>
+        public event EventHandler<dynamic>? Proof;
+
+        /// <summary>
+        /// Event raised when a partial fails
+        /// </summary>
+        public event EventHandler<dynamic>? PartialFailed;
+
+        /// <summary>
+        /// Event raised when a partial is submitted
+        /// </summary>
+        public event EventHandler<dynamic>? PartialSubmitted;
+
+        /// <summary>
+        /// Event raised when a harvester is updated
+        /// </summary>
+        public event EventHandler<dynamic>? HarvesterUpdated;
+
+        /// <summary>
+        /// Event raised when a harvester is removed
+        /// </summary>
+        public event EventHandler<dynamic>? HarvesterRemoved;
+
+        /// <summary>
+        /// <see cref="ServiceProxy.OnEventMessage(Message)"/>
+        /// </summary>
+        /// <param name="msg"></param>
+        protected override void OnEventMessage(Message msg)
+        {
+            if (msg.Command == "new_signage_point")
+            {
+                NewSignagePoint?.Invoke(this, msg.Data);
+            }
+            else if (msg.Command == "new_farming_info")
+            {
+                NewFarmingInfo?.Invoke(this, msg.Data);
+            }
+            else if (msg.Command == "proof")
+            {
+                Proof?.Invoke(this, msg.Data);
+            }
+            else if (msg.Command == "failed_partial")
+            {
+                PartialFailed?.Invoke(this, msg.Data);
+            }
+            else if (msg.Command == "submitted_partial")
+            {
+                PartialSubmitted?.Invoke(this, msg.Data);
+            }
+            else if (msg.Command == "harvester_update")
+            {
+                HarvesterUpdated?.Invoke(this, msg.Data);
+            }
+            else if (msg.Command == "harvester_removed")
+            {
+                HarvesterRemoved?.Invoke(this, msg.Data);
+            }
+            else
+            {
+                base.OnEventMessage(msg);
+            }
+        }
 
         /// <summary>
         /// Get the farm and pool reward targets 

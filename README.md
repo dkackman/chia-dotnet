@@ -61,6 +61,29 @@ var standardWallet = new Wallet(1, wallet);
 var transaction = await standardWallet.SendTransaction("xch1ls2w9l2tksmp8u3a8xewhn86na3fjhxq79gnsccxr0v3rpa5ejcsuugha7", 1, 1);
 ```
 
+### Listen for events
+
+```csharp
+using chia.dotnet;
+
+var endpoint = Config.Open().GetEndpoint("daemon");
+using var rpcClient = new WebSocketRpcClient(endpoint);
+await rpcClient.Connect();
+
+var daemon = new DaemonProxy(rpcClient, "eventing_testharness");
+await daemon.RegisterService("wallet_ui"); // this listens for the messages sent to the ui
+
+var farmer = daemon.CreateProxyFrom<FarmerProxy>();
+farmer.ConnectionsChanged += (sender, data) => Console.WriteLine($"Connection count: {data.Count()}");
+farmer.NewFarmingInfo += (sender, data) => Console.WriteLine($"Farming info: {data}");
+farmer.NewSignagePoint += (sender, data) => Console.WriteLine($"Signage Point: {data}");
+
+while (true)
+{
+    await Task.Delay(100);
+}
+```
+
 ### Build
 
 ````bash

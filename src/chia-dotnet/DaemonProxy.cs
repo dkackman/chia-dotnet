@@ -19,7 +19,6 @@ namespace chia.dotnet
     /// <param name="originService"><see cref="Message.Origin"/></param>
     public sealed class DaemonProxy(WebSocketRpcClient rpcClient, string originService) : ServiceProxy(rpcClient, ServiceNames.Daemon, originService)
     {
-
         /// <summary>
         /// Sends ping message to the service
         /// </summary>
@@ -121,7 +120,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Get athe list of running services
+        /// Get the list of running services
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of services</returns>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Threading;
@@ -34,6 +35,87 @@ namespace chia.dotnet
 
             DestinationService = destinationService;
             OriginService = originService;
+
+            // only WebSocket can source events. Https does not have this mechanism
+            if (rpcClient is WebSocketRpcClient wss)
+            {
+                wss.BroadcastMessageReceived += (sender, msg) =>
+                {
+                    // this filters the messages so that derived classes
+                    // only get signaled for messages from their service
+                    if (msg.Origin == DestinationService)
+                    {
+                        OnEventMessage(msg);
+                    }
+                };
+            }
+        }
+
+        /// <summary>
+        /// Indicates whether this instance is wired to a <see cref="WebSocketRpcClient"/> so may source events
+        /// </summary>
+        public bool IsEventSource => RpcClient is WebSocketRpcClient;
+
+        /// <summary>
+        /// Event raised when a get_connections broadcast message is received
+        /// </summary>
+        public event EventHandler<IEnumerable<ConnectionInfo>>? ConnectionsChanged;
+
+        /// <summary>
+        /// Event raised when a connection is added
+        /// </summary>
+        public event EventHandler<dynamic>? ConnectionAdded;
+
+        /// <summary>
+        /// Event raised when a connection is closed
+        /// </summary>
+        public event EventHandler<dynamic>? ConnectionClosed;
+
+        /// <summary>
+        /// Event raised when a broadcast message is received that isn't recognized
+        /// </summary>
+        public event EventHandler<Message>? UnrecognizedEvent;
+
+        /// <summary>
+        /// Called when an event message is received
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <remarks>You need to call <see cref="DaemonProxy.RegisterService(string, CancellationToken)"/> 
+        /// <remarks>You need to call <see cref="DaemonProxy.RegisterService(string, CancellationToken)"/> 
+        /// with `wallet_ui` in order for service events to be generated.</remarks>
+        protected virtual void OnEventMessage(Message msg)
+        {
+            if (msg.Command == "get_connections")
+            {
+                var connections = SafeDeserializePayload<IEnumerable<ConnectionInfo>>(msg.Data, "connections");
+                ConnectionsChanged?.Invoke(this, connections);
+            }
+            else if (msg.Command == "add_connection")
+            {
+                ConnectionsChanged?.Invoke(this, msg.Data);
+            }
+            else if (msg.Command == "close_connection")
+            {
+                ConnectionClosed?.Invoke(this, msg.Data);
+            }
+            else
+            {
+                UnrecognizedEvent?.Invoke(this, msg);
+            }
+        }
+
+        protected static T? SafeDeserializePayload<T>(dynamic payload, string childItem)
+        {
+            try
+            {
+                return Converters.ToObject<IEnumerable<ConnectionInfo>>(payload, childItem);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+            }
+
+            return default;
         }
 
         /// <summary>
@@ -153,7 +235,7 @@ namespace chia.dotnet
             {
                 throw;
             }
-            catch (Exception e) // wrap eveything else in a response exception - this will include websocket or http specific failures
+            catch (Exception e) // wrap everything else in a response exception - this will include WebSocket or http specific failures
             {
                 throw new ResponseException(message, "Something went wrong sending the rpc message. Inspect the InnerException for details.", e);
             }

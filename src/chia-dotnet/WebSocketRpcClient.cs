@@ -49,10 +49,7 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task Connect(CancellationToken cancellationToken = default)
         {
-            if (disposedValue)
-            {
-                throw new ObjectDisposedException(nameof(WebSocketRpcClient));
-            }
+            ObjectDisposedException.ThrowIf(disposedValue, this);
 
             if (_webSocket.State is WebSocketState.Connecting or WebSocketState.Open)
             {
@@ -81,10 +78,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task Close(CancellationToken cancellationToken = default)
         {
-            if (disposedValue)
-            {
-                throw new ObjectDisposedException(nameof(WebSocketRpcClient));
-            }
+            ObjectDisposedException.ThrowIf(disposedValue, this);
 
             _receiveCancellationTokenSource.Cancel();
             await _webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "bye", cancellationToken).ConfigureAwait(false);
@@ -99,10 +93,7 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public virtual async Task PostMessage(Message message, CancellationToken cancellationToken = default)
         {
-            if (disposedValue)
-            {
-                throw new ObjectDisposedException(nameof(WebSocketRpcClient));
-            }
+            ObjectDisposedException.ThrowIf(disposedValue, this);
 
             var json = message.ToJson();
             await _webSocket.SendAsync(Encoding.UTF8.GetBytes(json), WebSocketMessageType.Text, true, cancellationToken).ConfigureAwait(false);
@@ -118,10 +109,7 @@ namespace chia.dotnet
         /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
         public async Task<dynamic> SendMessage(Message message, CancellationToken cancellationToken = default)
         {
-            if (disposedValue)
-            {
-                throw new ObjectDisposedException(nameof(WebSocketRpcClient));
-            }
+            ObjectDisposedException.ThrowIf(disposedValue, this);
 
             // capture the message to be sent
             if (!_pendingRequests.TryAdd(message.RequestId, message))
@@ -165,6 +153,8 @@ namespace chia.dotnet
         /// or was a response from a posted message (i.e. we didn't register to receive the response)
         /// Pooling state_changed messages come through this event
         /// </summary>
+        /// <remarks>You need to call <see cref="DaemonProxy.RegisterService(string, CancellationToken)"/> 
+        /// with `wallet_ui` in order for service events to be generated.</remarks>
         public event EventHandler<Message>? BroadcastMessageReceived;
 
         /// <summary>
@@ -173,14 +163,6 @@ namespace chia.dotnet
         /// <param name="message">The message to broadcast</param>
         protected virtual void OnBroadcastMessageReceived(Message message)
         {
-            if (message is null)
-            {
-                throw new ArgumentNullException(nameof(message));
-            }
-
-            // Debug.WriteLine("Broadcast message:");
-            // Debug.WriteLine(message.ToJson());
-
             BroadcastMessageReceived?.Invoke(this, message);
         }
 
@@ -215,7 +197,7 @@ namespace chia.dotnet
                 {
                     _pendingResponses[message.RequestId] = message;
                 }
-                else //if (message.RequestId != string.Empty) // only broadcast if it's an actual response
+                else
                 {
                     OnBroadcastMessageReceived(message);
                 }
@@ -224,7 +206,7 @@ namespace chia.dotnet
 
         private static bool ValidateServerCertificate(object sender, X509Certificate? certificate, X509Chain? chain, SslPolicyErrors sslPolicyErrors)
         {
-            // uncomment these checks to change remote cert validaiton requirements
+            // uncomment these checks to change remote cert validation requirements
 
             // require remote ca to be trusted on this machine
             //if ((sslPolicyErrors & SslPolicyErrors.RemoteCertificateChainErrors) == SslPolicyErrors.RemoteCertificateChainErrors) 

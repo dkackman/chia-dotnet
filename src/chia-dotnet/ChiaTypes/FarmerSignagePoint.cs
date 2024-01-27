@@ -1,8 +1,8 @@
 ﻿namespace chia.dotnet
 {
     /// <summary>
-    /// This type doesn't exist in the chia code but is generated and passed around as a dicitonary
-    /// (not to be ocnfused with <see cref="SignagePoint"/>)
+    /// This type doesn't exist in the chia code but is generated and passed around as a dictionary
+    /// (not to be confused with <see cref="SignagePoint"/>)
     /// </summary>
     public record FarmerSignagePoint
     {
