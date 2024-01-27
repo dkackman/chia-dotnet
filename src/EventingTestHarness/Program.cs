@@ -6,11 +6,12 @@ await rpcClient.Connect();
 
 var daemon = new DaemonProxy(rpcClient, "eventing_testharness");
 await daemon.RegisterService("wallet_ui"); // this listens for the messages sent to the ui
+daemon.StateChanged += (sender, data) => Console.WriteLine($"daemon state change: {data}");
 
 var farmer = daemon.CreateProxyFrom<FarmerProxy>();
-farmer.ConnectionsChanged += (sender, data) => Console.WriteLine($"Connections count: {data.Count()}");
+farmer.ConnectionAdded += (sender, data) => Console.WriteLine($"Connection added: {data}");
 farmer.NewFarmingInfo += (sender, data) => Console.WriteLine($"Farming info: {data}");
-farmer.NewSignagePoint += (sender, data) => Console.WriteLine($"Signage Point: {data}");
+farmer.NewSignagePoint += (sender, data) => Console.WriteLine($"Signage point: {data}");
 
 while (true)
 {

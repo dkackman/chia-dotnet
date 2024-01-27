@@ -71,17 +71,20 @@ using var rpcClient = new WebSocketRpcClient(endpoint);
 await rpcClient.Connect();
 
 var daemon = new DaemonProxy(rpcClient, "eventing_testharness");
-await daemon.RegisterService("wallet_ui"); // this listens for the messages sent to the ui
+// this listens for the messages sent to the ui
+await daemon.RegisterService("wallet_ui"); 
+daemon.StateChanged += (sender, data) => Console.WriteLine($"daemon state change: {data}");
 
 var farmer = daemon.CreateProxyFrom<FarmerProxy>();
-farmer.ConnectionsChanged += (sender, data) => Console.WriteLine($"Connection count: {data.Count()}");
+farmer.ConnectionAdded += (sender, data) => Console.WriteLine($"Connection added: {data}");
 farmer.NewFarmingInfo += (sender, data) => Console.WriteLine($"Farming info: {data}");
-farmer.NewSignagePoint += (sender, data) => Console.WriteLine($"Signage Point: {data}");
+farmer.NewSignagePoint += (sender, data) => Console.WriteLine($"Signage point: {data}");
 
 while (true)
 {
     await Task.Delay(100);
 }
+
 ```
 
 ### Build

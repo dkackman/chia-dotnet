@@ -16,6 +16,35 @@ namespace chia.dotnet
     /// <param name="originService"><see cref="Message.Origin"/></param>
     public sealed class HarvesterProxy(IRpcClient rpcClient, string originService) : ServiceProxy(rpcClient, ServiceNames.Harvester, originService)
     {
+        /// <summary>
+        /// Event raised when the plots change
+        /// </summary>
+        public event EventHandler<dynamic>? PlotsChanged;
+
+        /// <summary>
+        /// Event raised when the farming info changes
+        /// </summary>
+        public event EventHandler<dynamic>? FarmingInfoChanged;
+
+        /// <summary>
+        /// <see cref="ServiceProxy.OnEventMessage(Message)"/>
+        /// </summary>
+        /// <param name="msg"></param>
+        protected override void OnEventMessage(Message msg)
+        {
+            if (msg.Command == "get_plots")
+            {
+                PlotsChanged?.Invoke(this, msg.Data);
+            }
+            else if (msg.Command == "farming_info")
+            {
+                FarmingInfoChanged?.Invoke(this, msg.Data);
+            }
+            else
+            {
+                base.OnEventMessage(msg);
+            }
+        }
 
         /// <summary>
         /// Gets harvester configuration.

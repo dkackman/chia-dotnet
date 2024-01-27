@@ -15,7 +15,6 @@ namespace chia.dotnet
     /// <param name="walletProxy">Wallet RPC proxy to use for communication</param>
     public sealed class PoolWallet(uint walletId, WalletProxy walletProxy) : Wallet(walletId, walletProxy)
     {
-
         /// <summary>
         /// Validates that <see cref="Wallet.WalletId"/> is a <see cref="WalletType.POOLING_WALLET"/>
         /// </summary>

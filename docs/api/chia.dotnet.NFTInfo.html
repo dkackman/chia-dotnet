@@ -1,894 +1,858 @@
 ﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
 <html>
+  
   <head>
     <meta charset="utf-8">
-      <title>Class NFTInfo
- | chia-dotnet-bls </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class NFTInfo
- | chia-dotnet-bls ">
-      
-      <meta name="description" content="NFT Info for displaying NFT on the UI">
-      <link rel="icon" href="../images/favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
-      
-      <meta name="docfx:rel" content="../">
-      
-      
-      <meta name="docfx:docurl" content="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-      <meta name="loc:inThisArticle" content="In this article">
-      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
-      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
-      <meta name="loc:tocFilter" content="Filter by title">
-      <meta name="loc:nextArticle" content="Next">
-      <meta name="loc:prevArticle" content="Previous">
-      <meta name="loc:themeLight" content="Light">
-      <meta name="loc:themeDark" content="Dark">
-      <meta name="loc:themeAuto" content="Auto">
-      <meta name="loc:changeTheme" content="Change theme">
-      <meta name="loc:copy" content="Copy">
-      <meta name="loc:downloadPdf" content="Download PDF">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class NFTInfo
+   | chia-dotnet </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class NFTInfo
+   | chia-dotnet ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
-
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
-    <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../images/favicon-32x32.png" alt="chia-dotnet-bls">
-            chia-dotnet-bls
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/favicon-32x32.png" alt="chia-dotnet">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
               </form>
             </div>
           </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
         </div>
-      </nav>
-    </header>
-
-    <main class="container-xxl">
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
-          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
-
-      <div class="content">
-        <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
-
-          <nav id="breadcrumb"></nav>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
         </div>
-
-        <article data-uid="chia.dotnet.NFTInfo">
-
-
-
-  <h1 id="chia_dotnet_NFTInfo" data-uid="chia.dotnet.NFTInfo" class="text-break">
-    Class NFTInfo
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L8"><i class="bi bi-code-slash"></i></a>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="chia.dotnet.NFTInfo">
+  
+  
+  <h1 id="chia_dotnet_NFTInfo" data-uid="chia.dotnet.NFTInfo" class="text-break">Class NFTInfo
   </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="chia.html">chia</a>.<a class="xref" href="chia.dotnet.html">dotnet</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>chia-dotnet.dll</dd></dl>
-  </div>
-
-  <div class="markdown summary"><p>NFT Info for displaying NFT on the UI</p>
+  <div class="markdown level0 summary"><p>NFT Info for displaying NFT on the UI</p>
 </div>
-  <div class="markdown conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public record NFTInfo : IEquatable&lt;NFTInfo&gt;</code></pre>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">NFTInfo</span></div>
   </div>
-
-
-
-
-  <dl class="typelist inheritance">
-    <dt>Inheritance</dt>
-    <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">NFTInfo</span></div>
-    </dd>
-  </dl>
-
-  <dl class="typelist implements">
-    <dt>Implements</dt>
-    <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="chia.dotnet.NFTInfo.html">NFTInfo</a>&gt;</div>
-    </dd>
-  </dl>
-
-
-  <dl class="typelist derived">
-    <dt>Inherited Members</dt>
-    <dd>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="chia.dotnet.NFTInfo.html">NFTInfo</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
     </div>
-  </dd></dl>
-
-
-
-
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="chia_dotnet_NFTInfo_ChainInfo_" data-uid="chia.dotnet.NFTInfo.ChainInfo*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_ChainInfo" data-uid="chia.dotnet.NFTInfo.ChainInfo">
-  ChainInfo
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="chia.dotnet.html">chia.dotnet</a></h6>
+  <h6><strong>Assembly</strong>: chia-dotnet.dll</h6>
+  <h5 id="chia_dotnet_NFTInfo_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class NFTInfo : IEquatable&lt;NFTInfo&gt;</code></pre>
+  </div>
+  <h3 id="properties">Properties
   </h3>
-
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_ChainInfo.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.ChainInfo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L69">View Source</a>
+  </span>
+  <a id="chia_dotnet_NFTInfo_ChainInfo_" data-uid="chia.dotnet.NFTInfo.ChainInfo*"></a>
+  <h4 id="chia_dotnet_NFTInfo_ChainInfo" data-uid="chia.dotnet.NFTInfo.ChainInfo">ChainInfo</h4>
   <div class="markdown level1 summary"><p>Information saved on the chain in hex</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ChainInfo { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string ChainInfo { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_DataHash.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.DataHash%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L37">View Source</a>
+  </span>
   <a id="chia_dotnet_NFTInfo_DataHash_" data-uid="chia.dotnet.NFTInfo.DataHash*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_DataHash" data-uid="chia.dotnet.NFTInfo.DataHash">
-  DataHash
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L37"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_NFTInfo_DataHash" data-uid="chia.dotnet.NFTInfo.DataHash">DataHash</h4>
   <div class="markdown level1 summary"><p>Hash of the content</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string DataHash { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string DataHash { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_DataUris.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.DataUris%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L33">View Source</a>
+  </span>
   <a id="chia_dotnet_NFTInfo_DataUris_" data-uid="chia.dotnet.NFTInfo.DataUris*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_DataUris" data-uid="chia.dotnet.NFTInfo.DataUris">
-  DataUris
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L33"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_NFTInfo_DataUris" data-uid="chia.dotnet.NFTInfo.DataUris">DataUris</h4>
   <div class="markdown level1 summary"><p>A list of content URIs</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; DataUris { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; DataUris { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_EditionNumber.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.EditionNumber%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L61">View Source</a>
+  </span>
   <a id="chia_dotnet_NFTInfo_EditionNumber_" data-uid="chia.dotnet.NFTInfo.EditionNumber*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_EditionNumber" data-uid="chia.dotnet.NFTInfo.EditionNumber">
-  EditionNumber
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L61"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_NFTInfo_EditionNumber" data-uid="chia.dotnet.NFTInfo.EditionNumber">EditionNumber</h4>
   <div class="markdown level1 summary"><p>Number of the current NFT in the edition</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ulong EditionNumber { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ulong EditionNumber { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">UInt64</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_EditionTotal.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.EditionTotal%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L57">View Source</a>
+  </span>
   <a id="chia_dotnet_NFTInfo_EditionTotal_" data-uid="chia.dotnet.NFTInfo.EditionTotal*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_EditionTotal" data-uid="chia.dotnet.NFTInfo.EditionTotal">
-  EditionTotal
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L57"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_NFTInfo_EditionTotal" data-uid="chia.dotnet.NFTInfo.EditionTotal">EditionTotal</h4>
   <div class="markdown level1 summary"><p>How many NFTs in the current edition</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ulong EditionTotal { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ulong EditionTotal { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">UInt64</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_LauncherId.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.LauncherId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L13">View Source</a>
+  </span>
   <a id="chia_dotnet_NFTInfo_LauncherId_" data-uid="chia.dotnet.NFTInfo.LauncherId*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_LauncherId" data-uid="chia.dotnet.NFTInfo.LauncherId">
-  LauncherId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L13"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_NFTInfo_LauncherId" data-uid="chia.dotnet.NFTInfo.LauncherId">LauncherId</h4>
   <div class="markdown level1 summary"><p>Launcher coin ID</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string LauncherId { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string LauncherId { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_LauncherPuzhash.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.LauncherPuzhash%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L85">View Source</a>
+  </span>
   <a id="chia_dotnet_NFTInfo_LauncherPuzhash_" data-uid="chia.dotnet.NFTInfo.LauncherPuzhash*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_LauncherPuzhash" data-uid="chia.dotnet.NFTInfo.LauncherPuzhash">
-  LauncherPuzhash
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L85"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_NFTInfo_LauncherPuzhash" data-uid="chia.dotnet.NFTInfo.LauncherPuzhash">LauncherPuzhash</h4>
   <div class="markdown level1 summary"><p>Puzzle hash of the singleton launcher in hex</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string LauncherPuzhash { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string LauncherPuzhash { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_LicenseHash.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.LicenseHash%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L53">View Source</a>
+  </span>
   <a id="chia_dotnet_NFTInfo_LicenseHash_" data-uid="chia.dotnet.NFTInfo.LicenseHash*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_LicenseHash" data-uid="chia.dotnet.NFTInfo.LicenseHash">
-  LicenseHash
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L53"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_NFTInfo_LicenseHash" data-uid="chia.dotnet.NFTInfo.LicenseHash">LicenseHash</h4>
   <div class="markdown level1 summary"><p>Hash of the license</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string LicenseHash { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string LicenseHash { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_LicenseUris.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.LicenseUris%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L49">View Source</a>
+  </span>
   <a id="chia_dotnet_NFTInfo_LicenseUris_" data-uid="chia.dotnet.NFTInfo.LicenseUris*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_LicenseUris" data-uid="chia.dotnet.NFTInfo.LicenseUris">
-  LicenseUris
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L49"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_NFTInfo_LicenseUris" data-uid="chia.dotnet.NFTInfo.LicenseUris">LicenseUris</h4>
   <div class="markdown level1 summary"><p>A list of license URIs</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; LicenseUris { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; LicenseUris { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_MetadataHash.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.MetadataHash%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L45">View Source</a>
+  </span>
   <a id="chia_dotnet_NFTInfo_MetadataHash_" data-uid="chia.dotnet.NFTInfo.MetadataHash*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_MetadataHash" data-uid="chia.dotnet.NFTInfo.MetadataHash">
-  MetadataHash
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L45"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_NFTInfo_MetadataHash" data-uid="chia.dotnet.NFTInfo.MetadataHash">MetadataHash</h4>
   <div class="markdown level1 summary"><p>Hash of the metadata</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string MetadataHash { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string MetadataHash { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_MetadataUris.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.MetadataUris%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L41">View Source</a>
+  </span>
   <a id="chia_dotnet_NFTInfo_MetadataUris_" data-uid="chia.dotnet.NFTInfo.MetadataUris*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_MetadataUris" data-uid="chia.dotnet.NFTInfo.MetadataUris">
-  MetadataUris
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L41"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_NFTInfo_MetadataUris" data-uid="chia.dotnet.NFTInfo.MetadataUris">MetadataUris</h4>
   <div class="markdown level1 summary"><p>A list of metadata URIs</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; MetadataUris { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; MetadataUris { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="chia_dotnet_NFTInfo_MintHeight_" data-uid="chia.dotnet.NFTInfo.MintHeight*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_MintHeight" data-uid="chia.dotnet.NFTInfo.MintHeight">
-  MintHeight
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L73"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Block height of the NFT minting</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public uint MintHeight { get; init; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_MinterDID.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.MinterDID%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L89">View Source</a>
+  </span>
   <a id="chia_dotnet_NFTInfo_MinterDID_" data-uid="chia.dotnet.NFTInfo.MinterDID*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_MinterDID" data-uid="chia.dotnet.NFTInfo.MinterDID">
-  MinterDID
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L89"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_NFTInfo_MinterDID" data-uid="chia.dotnet.NFTInfo.MinterDID">MinterDID</h4>
   <div class="markdown level1 summary"><p>DID of the NFT minter</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string? MinterDID { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string MinterDID { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_MintHeight.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.MintHeight%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L73">View Source</a>
+  </span>
+  <a id="chia_dotnet_NFTInfo_MintHeight_" data-uid="chia.dotnet.NFTInfo.MintHeight*"></a>
+  <h4 id="chia_dotnet_NFTInfo_MintHeight" data-uid="chia.dotnet.NFTInfo.MintHeight">MintHeight</h4>
+  <div class="markdown level1 summary"><p>Block height of the NFT minting</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint MintHeight { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">UInt32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_NFTCoinID.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.NFTCoinID%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L17">View Source</a>
+  </span>
   <a id="chia_dotnet_NFTInfo_NFTCoinID_" data-uid="chia.dotnet.NFTInfo.NFTCoinID*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_NFTCoinID" data-uid="chia.dotnet.NFTInfo.NFTCoinID">
-  NFTCoinID
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L17"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_NFTInfo_NFTCoinID" data-uid="chia.dotnet.NFTInfo.NFTCoinID">NFTCoinID</h4>
   <div class="markdown level1 summary"><p>Current NFT coin ID</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string NFTCoinID { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string NFTCoinID { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_OffChainMetadata.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.OffChainMetadata%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L93">View Source</a>
+  </span>
   <a id="chia_dotnet_NFTInfo_OffChainMetadata_" data-uid="chia.dotnet.NFTInfo.OffChainMetadata*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_OffChainMetadata" data-uid="chia.dotnet.NFTInfo.OffChainMetadata">
-  OffChainMetadata
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L93"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_NFTInfo_OffChainMetadata" data-uid="chia.dotnet.NFTInfo.OffChainMetadata">OffChainMetadata</h4>
   <div class="markdown level1 summary"><p>Serialized off-chain metadata</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string? OffChainMetadata { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string OffChainMetadata { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_OwnerDID.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.OwnerDID%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L21">View Source</a>
+  </span>
   <a id="chia_dotnet_NFTInfo_OwnerDID_" data-uid="chia.dotnet.NFTInfo.OwnerDID*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_OwnerDID" data-uid="chia.dotnet.NFTInfo.OwnerDID">
-  OwnerDID
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L21"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_NFTInfo_OwnerDID" data-uid="chia.dotnet.NFTInfo.OwnerDID">OwnerDID</h4>
   <div class="markdown level1 summary"><p>Owner DID</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string? OwnerDID { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string OwnerDID { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_P2Address.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.P2Address%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L97">View Source</a>
+  </span>
   <a id="chia_dotnet_NFTInfo_P2Address_" data-uid="chia.dotnet.NFTInfo.P2Address*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_P2Address" data-uid="chia.dotnet.NFTInfo.P2Address">
-  P2Address
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L97"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_NFTInfo_P2Address" data-uid="chia.dotnet.NFTInfo.P2Address">P2Address</h4>
   <div class="markdown level1 summary"><p>The innermost puzzle hash of the NFT</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string P2Address { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string P2Address { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_PendingTransaction.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.PendingTransaction%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L81">View Source</a>
+  </span>
   <a id="chia_dotnet_NFTInfo_PendingTransaction_" data-uid="chia.dotnet.NFTInfo.PendingTransaction*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_PendingTransaction" data-uid="chia.dotnet.NFTInfo.PendingTransaction">
-  PendingTransaction
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L81"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_NFTInfo_PendingTransaction" data-uid="chia.dotnet.NFTInfo.PendingTransaction">PendingTransaction</h4>
   <div class="markdown level1 summary"><p>Indicate if the NFT is pending for a transaction</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool PendingTransaction { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool PendingTransaction { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_RoyaltyPercentage.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.RoyaltyPercentage%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L25">View Source</a>
+  </span>
   <a id="chia_dotnet_NFTInfo_RoyaltyPercentage_" data-uid="chia.dotnet.NFTInfo.RoyaltyPercentage*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_RoyaltyPercentage" data-uid="chia.dotnet.NFTInfo.RoyaltyPercentage">
-  RoyaltyPercentage
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L25"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_NFTInfo_RoyaltyPercentage" data-uid="chia.dotnet.NFTInfo.RoyaltyPercentage">RoyaltyPercentage</h4>
   <div class="markdown level1 summary"><p>Percentage of the transaction fee paid to the author, e.g. 1000 = 1%</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ushort? RoyaltyPercentage { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ushort? RoyaltyPercentage { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a>?</dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">UInt16</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_RoyaltyPuzzleHash.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.RoyaltyPuzzleHash%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L29">View Source</a>
+  </span>
   <a id="chia_dotnet_NFTInfo_RoyaltyPuzzleHash_" data-uid="chia.dotnet.NFTInfo.RoyaltyPuzzleHash*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_RoyaltyPuzzleHash" data-uid="chia.dotnet.NFTInfo.RoyaltyPuzzleHash">
-  RoyaltyPuzzleHash
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L29"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_NFTInfo_RoyaltyPuzzleHash" data-uid="chia.dotnet.NFTInfo.RoyaltyPuzzleHash">RoyaltyPuzzleHash</h4>
   <div class="markdown level1 summary"><p>uzzle hash where royalty will be sent to</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string? RoyaltyPuzzleHash { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string RoyaltyPuzzleHash { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_SupportsDID.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.SupportsDID%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L77">View Source</a>
+  </span>
   <a id="chia_dotnet_NFTInfo_SupportsDID_" data-uid="chia.dotnet.NFTInfo.SupportsDID*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_SupportsDID" data-uid="chia.dotnet.NFTInfo.SupportsDID">
-  SupportsDID
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L77"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_NFTInfo_SupportsDID" data-uid="chia.dotnet.NFTInfo.SupportsDID">SupportsDID</h4>
   <div class="markdown level1 summary"><p>If the inner puzzle supports DID</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool SupportsDID { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool SupportsDID { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo_UpdaterPuzhash.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo.UpdaterPuzhash%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L65">View Source</a>
+  </span>
   <a id="chia_dotnet_NFTInfo_UpdaterPuzhash_" data-uid="chia.dotnet.NFTInfo.UpdaterPuzhash*"></a>
-
-  <h3 id="chia_dotnet_NFTInfo_UpdaterPuzhash" data-uid="chia.dotnet.NFTInfo.UpdaterPuzhash">
-  UpdaterPuzhash
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L65"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_NFTInfo_UpdaterPuzhash" data-uid="chia.dotnet.NFTInfo.UpdaterPuzhash">UpdaterPuzhash</h4>
   <div class="markdown level1 summary"><p>Puzzle hash of the metadata updater in hex</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string UpdaterPuzhash { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string UpdaterPuzhash { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>NFT Info for displaying NFT on the UI</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">System.IEquatable&lt;T&gt;</a>
+  </div>
 </article>
-
-        <div class="contribution d-print-none">
-          <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L8" class="edit-link">Edit this page</a>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NFTInfo.md&amp;value=---%0Auid%3A%20chia.dotnet.NFTInfo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/NFTInfo.cs/#L8" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
         </div>
-
-
       </div>
-
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-    </main>
-
-    <div class="container-xxl search-results" id="search-results"></div>
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>

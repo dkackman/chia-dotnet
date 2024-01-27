@@ -20,6 +20,26 @@ namespace chia.dotnet
     /// <param name="originService"><see cref="Message.Origin"/></param>
     public sealed class FullNodeProxy(IRpcClient rpcClient, string originService) : ServiceProxy(rpcClient, ServiceNames.FullNode, originService)
     {
+        /// <summary>
+        /// Event raised when the blockchain state changes
+        /// </summary>
+        public event EventHandler<dynamic>? BlockchainStateChanged;
+
+        /// <summary>
+        /// <see cref="ServiceProxy.OnEventMessage(Message)"/>
+        /// </summary>
+        /// <param name="msg"></param>
+        protected override void OnEventMessage(Message msg)
+        {
+            if (msg.Command == "get_blockchain_state")
+            {
+                BlockchainStateChanged?.Invoke(this, msg.Data?.blockchain_state);
+            }
+            else
+            {
+                base.OnEventMessage(msg);
+            }
+        }
 
         /// <summary>
         /// Will wait until <see cref="GetBlockchainState(CancellationToken)"/> indicates 

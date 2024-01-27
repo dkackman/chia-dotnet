@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Threading;
@@ -41,9 +40,10 @@ namespace chia.dotnet
             {
                 wss.BroadcastMessageReceived += (sender, msg) =>
                 {
-                    // this filters the messages so that derived classes
-                    // only get signaled for messages from their service
-                    if (msg.Origin == DestinationService)
+                    // this filters out messages responses and also
+                    // makes sure that that derived classes only get
+                    // signaled for messages from their respective services
+                    if (!msg.Ack && msg.Origin == DestinationService)
                     {
                         OnEventMessage(msg);
                     }
@@ -59,16 +59,18 @@ namespace chia.dotnet
         /// <summary>
         /// Event raised when a get_connections broadcast message is received
         /// </summary>
-        public event EventHandler<IEnumerable<ConnectionInfo>>? ConnectionsChanged;
+        public event EventHandler<dynamic>? ConnectionsChanged;
 
         /// <summary>
         /// Event raised when a connection is added
         /// </summary>
+        /// <remarks>Requires registering as the `metrics` service</remarks>
         public event EventHandler<dynamic>? ConnectionAdded;
 
         /// <summary>
         /// Event raised when a connection is closed
         /// </summary>
+        /// <remarks>Requires registering as the `metrics` service</remarks>
         public event EventHandler<dynamic>? ConnectionClosed;
 
         /// <summary>
@@ -81,18 +83,16 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="msg"></param>
         /// <remarks>You need to call <see cref="DaemonProxy.RegisterService(string, CancellationToken)"/> 
-        /// <remarks>You need to call <see cref="DaemonProxy.RegisterService(string, CancellationToken)"/> 
-        /// with `wallet_ui` in order for service events to be generated.</remarks>
+        /// with `wallet_ui` or `metrics` in order for service events to be generated.</remarks>
         protected virtual void OnEventMessage(Message msg)
         {
             if (msg.Command == "get_connections")
             {
-                var connections = SafeDeserializePayload<IEnumerable<ConnectionInfo>>(msg.Data, "connections");
-                ConnectionsChanged?.Invoke(this, connections);
+                ConnectionsChanged?.Invoke(this, msg.Data);
             }
             else if (msg.Command == "add_connection")
             {
-                ConnectionsChanged?.Invoke(this, msg.Data);
+                ConnectionAdded?.Invoke(this, msg.Data);
             }
             else if (msg.Command == "close_connection")
             {
@@ -102,20 +102,6 @@ namespace chia.dotnet
             {
                 UnrecognizedEvent?.Invoke(this, msg);
             }
-        }
-
-        protected static T? SafeDeserializePayload<T>(dynamic payload, string childItem)
-        {
-            try
-            {
-                return Converters.ToObject<IEnumerable<ConnectionInfo>>(payload, childItem);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.ToString());
-            }
-
-            return default;
         }
 
         /// <summary>

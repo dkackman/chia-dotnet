@@ -1,245 +1,210 @@
 ﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
 <html>
+  
   <head>
     <meta charset="utf-8">
-      <title>Class PlotterConfig
- | chia-dotnet-bls </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class PlotterConfig
- | chia-dotnet-bls ">
-      
-      <meta name="description" content="Configuration settings for the plotter. (equivalent to chia plots create command line args) https://github.com/Chia-Network/chia-blockchain/wiki/CLI-Commands-Reference">
-      <link rel="icon" href="../images/favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
-      
-      <meta name="docfx:rel" content="../">
-      
-      
-      <meta name="docfx:docurl" content="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-      <meta name="loc:inThisArticle" content="In this article">
-      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
-      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
-      <meta name="loc:tocFilter" content="Filter by title">
-      <meta name="loc:nextArticle" content="Next">
-      <meta name="loc:prevArticle" content="Previous">
-      <meta name="loc:themeLight" content="Light">
-      <meta name="loc:themeDark" content="Dark">
-      <meta name="loc:themeAuto" content="Auto">
-      <meta name="loc:changeTheme" content="Change theme">
-      <meta name="loc:copy" content="Copy">
-      <meta name="loc:downloadPdf" content="Download PDF">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class PlotterConfig
+   | chia-dotnet </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class PlotterConfig
+   | chia-dotnet ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
-
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
-    <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../images/favicon-32x32.png" alt="chia-dotnet-bls">
-            chia-dotnet-bls
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/favicon-32x32.png" alt="chia-dotnet">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
               </form>
             </div>
           </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
         </div>
-      </nav>
-    </header>
-
-    <main class="container-xxl">
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
-          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
-
-      <div class="content">
-        <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
-
-          <nav id="breadcrumb"></nav>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
         </div>
-
-        <article data-uid="chia.dotnet.PlotterConfig">
-
-
-
-  <h1 id="chia_dotnet_PlotterConfig" data-uid="chia.dotnet.PlotterConfig" class="text-break">
-    Class PlotterConfig
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L13"><i class="bi bi-code-slash"></i></a>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="chia.dotnet.PlotterConfig">
+  
+  
+  <h1 id="chia_dotnet_PlotterConfig" data-uid="chia.dotnet.PlotterConfig" class="text-break">Class PlotterConfig
   </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="chia.html">chia</a>.<a class="xref" href="chia.dotnet.html">dotnet</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>chia-dotnet.dll</dd></dl>
-  </div>
-
-  <div class="markdown summary"><p>Configuration settings for the plotter. (equivalent to chia plots create command line args)
+  <div class="markdown level0 summary"><p>Configuration settings for the plotter. (equivalent to chia plots create command line args)
 <a href="https://github.com/Chia-Network/chia-blockchain/wiki/CLI-Commands-Reference">https://github.com/Chia-Network/chia-blockchain/wiki/CLI-Commands-Reference</a></p>
 </div>
-  <div class="markdown conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public record PlotterConfig : IEquatable&lt;PlotterConfig&gt;</code></pre>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">PlotterConfig</span></div>
   </div>
-
-
-
-
-  <dl class="typelist inheritance">
-    <dt>Inheritance</dt>
-    <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">PlotterConfig</span></div>
-    </dd>
-  </dl>
-
-  <dl class="typelist implements">
-    <dt>Implements</dt>
-    <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="chia.dotnet.PlotterConfig.html">PlotterConfig</a>&gt;</div>
-    </dd>
-  </dl>
-
-
-  <dl class="typelist derived">
-    <dt>Inherited Members</dt>
-    <dd>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="chia.dotnet.PlotterConfig.html">PlotterConfig</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
     </div>
-  </dd></dl>
-
-
-
-
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="chia_dotnet_PlotterConfig_AltFingerprint_" data-uid="chia.dotnet.PlotterConfig.AltFingerprint*"></a>
-
-  <h3 id="chia_dotnet_PlotterConfig_AltFingerprint" data-uid="chia.dotnet.PlotterConfig.AltFingerprint">
-  AltFingerprint
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="chia.dotnet.html">chia.dotnet</a></h6>
+  <h6><strong>Assembly</strong>: chia-dotnet.dll</h6>
+  <h5 id="chia_dotnet_PlotterConfig_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class PlotterConfig : IEquatable&lt;PlotterConfig&gt;</code></pre>
+  </div>
+  <h3 id="properties">Properties
   </h3>
-
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_AltFingerprint.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.AltFingerprint%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L96">View Source</a>
+  </span>
+  <a id="chia_dotnet_PlotterConfig_AltFingerprint_" data-uid="chia.dotnet.PlotterConfig.AltFingerprint*"></a>
+  <h4 id="chia_dotnet_PlotterConfig_AltFingerprint" data-uid="chia.dotnet.PlotterConfig.AltFingerprint">AltFingerprint</h4>
   <div class="markdown level1 summary"><p>This is the key Fingerprint used to select both the Farmer and Pool Public Keys to use.
 Utilize this when you want to select one key out of several in your keychain.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;a&quot;)]
-public uint? AltFingerprint { get; init; }</code></pre>
+public uint? AltFingerprint { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>?</dt>
-    <dd>Configuration settings for the plotter. (equivalent to chia plots create command line args) https://github.com/Chia-Network/chia-blockchain/wiki/CLI-Commands-Reference</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">UInt32</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_Buckets.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.Buckets%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L89">View Source</a>
+  </span>
   <a id="chia_dotnet_PlotterConfig_Buckets_" data-uid="chia.dotnet.PlotterConfig.Buckets*"></a>
-
-  <h3 id="chia_dotnet_PlotterConfig_Buckets" data-uid="chia.dotnet.PlotterConfig.Buckets">
-  Buckets
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L89"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_PlotterConfig_Buckets" data-uid="chia.dotnet.PlotterConfig.Buckets">Buckets</h4>
   <div class="markdown level1 summary"><p>More buckets require less RAM but more random seeks to disk. With spinning disks
 you want less buckets and with NVMe more buckets. There is no significant benefit
 from using smaller buckets - just use 128.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;u&quot;)]
-public int Buckets { get; init; }</code></pre>
+public int Buckets { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Defaults to 128</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><p>Defaults to 128</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_Buffer.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.Buffer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L80">View Source</a>
+  </span>
   <a id="chia_dotnet_PlotterConfig_Buffer_" data-uid="chia.dotnet.PlotterConfig.Buffer*"></a>
-
-  <h3 id="chia_dotnet_PlotterConfig_Buffer" data-uid="chia.dotnet.PlotterConfig.Buffer">
-  Buffer
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L80"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_PlotterConfig_Buffer" data-uid="chia.dotnet.PlotterConfig.Buffer">Buffer</h4>
   <div class="markdown level1 summary"><p>Define memory/RAM usage. Default is 4608 (4.6 GiB).
 More RAM will marginally increase speed of plot creation.
 Please bear in mind that this is what is allocated to the
@@ -247,596 +212,598 @@ plotting algorithm alone. Code, container, libraries etc.
 will require additional RAM from your system.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;b&quot;)]
-public int Buffer { get; init; }</code></pre>
+public int Buffer { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Defaults to 4608</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><p>Defaults to 4608</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_Delay.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.Delay%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L19">View Source</a>
+  </span>
   <a id="chia_dotnet_PlotterConfig_Delay_" data-uid="chia.dotnet.PlotterConfig.Delay*"></a>
-
-  <h3 id="chia_dotnet_PlotterConfig_Delay" data-uid="chia.dotnet.PlotterConfig.Delay">
-  Delay
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L19"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_PlotterConfig_Delay" data-uid="chia.dotnet.PlotterConfig.Delay">Delay</h4>
   <div class="markdown level1 summary"><p>The number of seconds to delay before beginning the plotting</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;delay&quot;)]
-public int Delay { get; init; }</code></pre>
+public int Delay { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Defaults to 0</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><p>Defaults to 0</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_DestinationDir.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.DestinationDir%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L69">View Source</a>
+  </span>
   <a id="chia_dotnet_PlotterConfig_DestinationDir_" data-uid="chia.dotnet.PlotterConfig.DestinationDir*"></a>
-
-  <h3 id="chia_dotnet_PlotterConfig_DestinationDir" data-uid="chia.dotnet.PlotterConfig.DestinationDir">
-  DestinationDir
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L69"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_PlotterConfig_DestinationDir" data-uid="chia.dotnet.PlotterConfig.DestinationDir">DestinationDir</h4>
   <div class="markdown level1 summary"><p>Define the final location for plot(s). Of course, -d should have enough free space as the final size of the
 plot. This directory is automatically added to your ~/.chia/VERSION/config/config.yaml file.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;d&quot;)]
-public string DestinationDir { get; init; }</code></pre>
+public string DestinationDir { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>No default - must be set</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><p>No default - must be set</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_ExcludeFinalDir.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.ExcludeFinalDir%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L141">View Source</a>
+  </span>
   <a id="chia_dotnet_PlotterConfig_ExcludeFinalDir_" data-uid="chia.dotnet.PlotterConfig.ExcludeFinalDir*"></a>
-
-  <h3 id="chia_dotnet_PlotterConfig_ExcludeFinalDir" data-uid="chia.dotnet.PlotterConfig.ExcludeFinalDir">
-  ExcludeFinalDir
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L141"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_PlotterConfig_ExcludeFinalDir" data-uid="chia.dotnet.PlotterConfig.ExcludeFinalDir">ExcludeFinalDir</h4>
   <div class="markdown level1 summary"><p>Skips adding [final dir] to harvester for farming.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;x&quot;)]
-public bool ExcludeFinalDir { get; init; }</code></pre>
+public bool ExcludeFinalDir { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Defaults to false</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p>Defaults to false</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_FarmerPublicKey.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.FarmerPublicKey%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L113">View Source</a>
+  </span>
   <a id="chia_dotnet_PlotterConfig_FarmerPublicKey_" data-uid="chia.dotnet.PlotterConfig.FarmerPublicKey*"></a>
-
-  <h3 id="chia_dotnet_PlotterConfig_FarmerPublicKey" data-uid="chia.dotnet.PlotterConfig.FarmerPublicKey">
-  FarmerPublicKey
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L113"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_PlotterConfig_FarmerPublicKey" data-uid="chia.dotnet.PlotterConfig.FarmerPublicKey">FarmerPublicKey</h4>
   <div class="markdown level1 summary"><p>This is your &quot;Farmer Public Key&quot;. Utilise this when you want to create plots on other
 machines for which you do not want to give full chia account access</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;f&quot;)]
-public string? FarmerPublicKey { get; init; }</code></pre>
+public string FarmerPublicKey { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>Configuration settings for the plotter. (equivalent to chia plots create command line args) https://github.com/Chia-Network/chia-blockchain/wiki/CLI-Commands-Reference</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_Memo.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.Memo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L119">View Source</a>
+  </span>
   <a id="chia_dotnet_PlotterConfig_Memo_" data-uid="chia.dotnet.PlotterConfig.Memo*"></a>
-
-  <h3 id="chia_dotnet_PlotterConfig_Memo" data-uid="chia.dotnet.PlotterConfig.Memo">
-  Memo
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L119"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_PlotterConfig_Memo" data-uid="chia.dotnet.PlotterConfig.Memo">Memo</h4>
   <div class="markdown level1 summary"><p>Debug purposes only</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;memo&quot;)]
-public string? Memo { get; init; }</code></pre>
+public string Memo { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>Configuration settings for the plotter. (equivalent to chia plots create command line args) https://github.com/Chia-Network/chia-blockchain/wiki/CLI-Commands-Reference</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_NoBitField.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.NoBitField%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L127">View Source</a>
+  </span>
   <a id="chia_dotnet_PlotterConfig_NoBitField_" data-uid="chia.dotnet.PlotterConfig.NoBitField*"></a>
-
-  <h3 id="chia_dotnet_PlotterConfig_NoBitField" data-uid="chia.dotnet.PlotterConfig.NoBitField">
-  NoBitField
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L127"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_PlotterConfig_NoBitField" data-uid="chia.dotnet.PlotterConfig.NoBitField">NoBitField</h4>
   <div class="markdown level1 summary"><p>Setting to true will disable the bitfield plotting algorithm,
 and revert back to the older b17 plotting style. After 1.0.4 it’s better to use bitfield for most cases</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;e&quot;)]
-public bool NoBitField { get; init; }</code></pre>
+public bool NoBitField { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Defaults to false</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="chia_dotnet_PlotterConfig_NumThreads_" data-uid="chia.dotnet.PlotterConfig.NumThreads*"></a>
-
-  <h3 id="chia_dotnet_PlotterConfig_NumThreads" data-uid="chia.dotnet.PlotterConfig.NumThreads">
-  NumThreads
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L134"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>The number of threads to devote to each plot</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;r&quot;)]
-public int NumThreads { get; init; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Defaults to 2</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p>Defaults to false</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_Number.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.Number%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L32">View Source</a>
+  </span>
   <a id="chia_dotnet_PlotterConfig_Number_" data-uid="chia.dotnet.PlotterConfig.Number*"></a>
-
-  <h3 id="chia_dotnet_PlotterConfig_Number" data-uid="chia.dotnet.PlotterConfig.Number">
-  Number
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L32"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_PlotterConfig_Number" data-uid="chia.dotnet.PlotterConfig.Number">Number</h4>
   <div class="markdown level1 summary"><p>The number of plots that will be made, in sequence.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;n&quot;)]
-public int Number { get; init; }</code></pre>
+public int Number { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Defaults to 1</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><p>Defaults to 1</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_NumThreads.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.NumThreads%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L134">View Source</a>
+  </span>
+  <a id="chia_dotnet_PlotterConfig_NumThreads_" data-uid="chia.dotnet.PlotterConfig.NumThreads*"></a>
+  <h4 id="chia_dotnet_PlotterConfig_NumThreads" data-uid="chia.dotnet.PlotterConfig.NumThreads">NumThreads</h4>
+  <div class="markdown level1 summary"><p>The number of threads to devote to each plot</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;r&quot;)]
+public int NumThreads { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><p>Defaults to 2</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_OverrideK.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.OverrideK%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L148">View Source</a>
+  </span>
   <a id="chia_dotnet_PlotterConfig_OverrideK_" data-uid="chia.dotnet.PlotterConfig.OverrideK*"></a>
-
-  <h3 id="chia_dotnet_PlotterConfig_OverrideK" data-uid="chia.dotnet.PlotterConfig.OverrideK">
-  OverrideK
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L148"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_PlotterConfig_OverrideK" data-uid="chia.dotnet.PlotterConfig.OverrideK">OverrideK</h4>
   <div class="markdown level1 summary"><p>Only needed when <a class="xref" href="chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_Size">Size</a> is set to <a class="xref" href="chia.dotnet.KSize.html#chia_dotnet_KSize_K25">K25</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;overrideK&quot;)]
-public bool? OverrideK { get; init; }</code></pre>
+public bool? OverrideK { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
-    <dd><p>Defaults to false.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
+        <td><p>Defaults to false.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_Parallel.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.Parallel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L25">View Source</a>
+  </span>
   <a id="chia_dotnet_PlotterConfig_Parallel_" data-uid="chia.dotnet.PlotterConfig.Parallel*"></a>
-
-  <h3 id="chia_dotnet_PlotterConfig_Parallel" data-uid="chia.dotnet.PlotterConfig.Parallel">
-  Parallel
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L25"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_PlotterConfig_Parallel" data-uid="chia.dotnet.PlotterConfig.Parallel">Parallel</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;parallel&quot;)]
-public bool Parallel { get; init; }</code></pre>
+public bool Parallel { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Defaults to false</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p>Defaults to false</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_PoolContractAddress.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.PoolContractAddress%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L99">View Source</a>
+  </span>
   <a id="chia_dotnet_PlotterConfig_PoolContractAddress_" data-uid="chia.dotnet.PlotterConfig.PoolContractAddress*"></a>
-
-  <h3 id="chia_dotnet_PlotterConfig_PoolContractAddress" data-uid="chia.dotnet.PlotterConfig.PoolContractAddress">
-  PoolContractAddress
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L99"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_PlotterConfig_PoolContractAddress" data-uid="chia.dotnet.PlotterConfig.PoolContractAddress">PoolContractAddress</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;c&quot;)]
-public string? PoolContractAddress { get; init; }</code></pre>
+public string PoolContractAddress { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>Configuration settings for the plotter. (equivalent to chia plots create command line args) https://github.com/Chia-Network/chia-blockchain/wiki/CLI-Commands-Reference</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_PoolPublicKey.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.PoolPublicKey%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L106">View Source</a>
+  </span>
   <a id="chia_dotnet_PlotterConfig_PoolPublicKey_" data-uid="chia.dotnet.PlotterConfig.PoolPublicKey*"></a>
-
-  <h3 id="chia_dotnet_PlotterConfig_PoolPublicKey" data-uid="chia.dotnet.PlotterConfig.PoolPublicKey">
-  PoolPublicKey
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L106"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_PlotterConfig_PoolPublicKey" data-uid="chia.dotnet.PlotterConfig.PoolPublicKey">PoolPublicKey</h4>
   <div class="markdown level1 summary"><p>This is your &quot;Pool Public Key&quot;. Utilise this when you want to
 create plots on other machines for which you do not want to give full chia account access.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;p&quot;)]
-public string? PoolPublicKey { get; init; }</code></pre>
+public string PoolPublicKey { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>Configuration settings for the plotter. (equivalent to chia plots create command line args) https://github.com/Chia-Network/chia-blockchain/wiki/CLI-Commands-Reference</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_Queue.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.Queue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L45">View Source</a>
+  </span>
   <a id="chia_dotnet_PlotterConfig_Queue_" data-uid="chia.dotnet.PlotterConfig.Queue*"></a>
-
-  <h3 id="chia_dotnet_PlotterConfig_Queue" data-uid="chia.dotnet.PlotterConfig.Queue">
-  Queue
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L45"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_PlotterConfig_Queue" data-uid="chia.dotnet.PlotterConfig.Queue">Queue</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;queue&quot;)]
-public string Queue { get; init; }</code></pre>
+public string Queue { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Defaults to &quot;default&quot;</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><p>Defaults to &quot;default&quot;</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_Size.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.Size%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L39">View Source</a>
+  </span>
   <a id="chia_dotnet_PlotterConfig_Size_" data-uid="chia.dotnet.PlotterConfig.Size*"></a>
-
-  <h3 id="chia_dotnet_PlotterConfig_Size" data-uid="chia.dotnet.PlotterConfig.Size">
-  Size
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L39"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_PlotterConfig_Size" data-uid="chia.dotnet.PlotterConfig.Size">Size</h4>
   <div class="markdown level1 summary"><p>Define the size of the plot(s).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;k&quot;)]
-public KSize Size { get; init; }</code></pre>
+public KSize Size { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="chia.dotnet.KSize.html">KSize</a></dt>
-    <dd><p>Defaults to <a class="xref" href="chia.dotnet.KSize.html#chia_dotnet_KSize_K32">K32</a></p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="chia.dotnet.KSize.html">KSize</a></td>
+        <td><p>Defaults to <a class="xref" href="chia.dotnet.KSize.html#chia_dotnet_KSize_K32">K32</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_TempDir.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.TempDir%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L54">View Source</a>
+  </span>
   <a id="chia_dotnet_PlotterConfig_TempDir_" data-uid="chia.dotnet.PlotterConfig.TempDir*"></a>
-
-  <h3 id="chia_dotnet_PlotterConfig_TempDir" data-uid="chia.dotnet.PlotterConfig.TempDir">
-  TempDir
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L54"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_PlotterConfig_TempDir" data-uid="chia.dotnet.PlotterConfig.TempDir">TempDir</h4>
   <div class="markdown level1 summary"><p>Define the temporary directory for plot creation. This is where Plotting
 Phase 1 (Forward Propagation) and Phase 2 (Backpropagation) both occur.
 The -t dir requires the largest working space: normally about 2.5 times the size of the final plot.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;t&quot;)]
-public string TempDir { get; init; }</code></pre>
+public string TempDir { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>No default - must be set</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><p>No default - must be set</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig_TempDir2.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig.TempDir2%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L61">View Source</a>
+  </span>
   <a id="chia_dotnet_PlotterConfig_TempDir2_" data-uid="chia.dotnet.PlotterConfig.TempDir2*"></a>
-
-  <h3 id="chia_dotnet_PlotterConfig_TempDir2" data-uid="chia.dotnet.PlotterConfig.TempDir2">
-  TempDir2
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L61"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="chia_dotnet_PlotterConfig_TempDir2" data-uid="chia.dotnet.PlotterConfig.TempDir2">TempDir2</h4>
   <div class="markdown level1 summary"><p>Define a secondary temporary directory for plot creation. This is where Plotting Phase 3 (Compression) and Phase 4 (Checkpoints) occur.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;t2&quot;)]
-public string? TempDir2 { get; init; }</code></pre>
+public string TempDir2 { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>If not set defaults to <a class="xref" href="chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_TempDir">TempDir</a></p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><p>If not set defaults to <a class="xref" href="chia.dotnet.PlotterConfig.html#chia_dotnet_PlotterConfig_TempDir">TempDir</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">System.IEquatable&lt;T&gt;</a>
+  </div>
 </article>
-
-        <div class="contribution d-print-none">
-          <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L13" class="edit-link">Edit this page</a>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PlotterConfig.md&amp;value=---%0Auid%3A%20chia.dotnet.PlotterConfig%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/PlotterConfig.cs/#L13" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
         </div>
-
-
       </div>
-
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-    </main>
-
-    <div class="container-xxl search-results" id="search-results"></div>
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>

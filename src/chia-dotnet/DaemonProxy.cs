@@ -20,6 +20,35 @@ namespace chia.dotnet
     public sealed class DaemonProxy(WebSocketRpcClient rpcClient, string originService) : ServiceProxy(rpcClient, ServiceNames.Daemon, originService)
     {
         /// <summary>
+        /// Event raised when the keyring status changes 
+        /// </summary>
+        public event EventHandler<dynamic>? KeyringStatusChanged;
+
+        /// <summary>
+        /// Event raised when the Daemon or Plotter changes state 
+        /// </summary>
+        public event EventHandler<dynamic>? StateChanged;
+
+        /// <summary>
+        /// <see cref="ServiceProxy.OnEventMessage(Message)"/>
+        /// </summary>
+        /// <param name="msg"></param>
+        protected override void OnEventMessage(Message msg)
+        {
+            if (msg.Command == "keyring_status_changed")
+            {
+                KeyringStatusChanged?.Invoke(this, msg.Data);
+            }
+            else if (msg.Command == "state_changed")
+            {
+                StateChanged?.Invoke(this, msg.Data);
+            }
+            else
+            {
+                base.OnEventMessage(msg);
+            }
+        }
+        /// <summary>
         /// Sends ping message to the service
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>

@@ -18,6 +18,46 @@ namespace chia.dotnet
     /// <param name="originService"><see cref="Message.Origin"/></param>
     public sealed class WalletProxy(IRpcClient rpcClient, string originService) : ServiceProxy(rpcClient, ServiceNames.Wallet, originService)
     {
+        /// <summary>
+        /// Event raised when the wallet state changes
+        /// </summary>
+        public event EventHandler<dynamic>? StateChanged;
+
+        /// <summary>
+        /// Event raised when a coin is added
+        /// </summary>
+        /// <remarks>Requires registering as the `metrics` service</remarks>
+        public event EventHandler<dynamic>? CoinAdded;
+
+        /// <summary>
+        /// Event raised when the sync state changes
+        /// </summary>
+        /// <remarks>Requires registering as the `metrics` service</remarks>
+        public event EventHandler<dynamic>? SyncChanged;
+
+        /// <summary>
+        /// <see cref="ServiceProxy.OnEventMessage(Message)"/>
+        /// </summary>
+        /// <param name="msg"></param>
+        protected override void OnEventMessage(Message msg)
+        {
+            if (msg.Command == "state_changed")
+            {
+                StateChanged?.Invoke(this, msg.Data);
+            }
+            else if (msg.Command == "coin_added")
+            {
+                CoinAdded?.Invoke(this, msg.Data);
+            }
+            else if (msg.Command == "sync_changed")
+            {
+                SyncChanged?.Invoke(this, msg.Data);
+            }
+            else
+            {
+                base.OnEventMessage(msg);
+            }
+        }
 
         /// <summary>
         /// Gets basic info about a pool that is used for pool wallet creation

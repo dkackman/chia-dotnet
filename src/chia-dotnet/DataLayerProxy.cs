@@ -17,7 +17,6 @@ namespace chia.dotnet
     /// <param name="originService"><see cref="Message.Origin"/></param>
     public sealed class DataLayerProxy(IRpcClient rpcClient, string originService) : ServiceProxy(rpcClient, ServiceNames.DataLayer, originService)
     {
-
         /// <summary>
         /// Adds a mirror
         /// </summary>

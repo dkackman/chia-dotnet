@@ -23,13 +23,14 @@ namespace chia.dotnet
         public event EventHandler<dynamic>? NewSignagePoint;
 
         /// <summary>
-        /// Event raised when a new signage point is received
+        /// Event raised when new farming info is received
         /// </summary>
         public event EventHandler<dynamic>? NewFarmingInfo;
 
         /// <summary>
         /// Event raised when a proof message arrives
         /// </summary>
+        /// <remarks>Requires registering as the `metrics` service</remarks>
         public event EventHandler<dynamic>? Proof;
 
         /// <summary>
@@ -64,7 +65,7 @@ namespace chia.dotnet
             }
             else if (msg.Command == "new_farming_info")
             {
-                NewFarmingInfo?.Invoke(this, msg.Data);
+                NewFarmingInfo?.Invoke(this, msg.Data?.farming_info);
             }
             else if (msg.Command == "proof")
             {

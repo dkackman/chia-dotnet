@@ -60,8 +60,8 @@
       "modern"
     ],
     "globalMetadata": {
-      "_appName": "chia-dotnet-bls",
-      "_appTitle": "chia-dotnet-bls",
+      "_appName": "chia-dotnet",
+      "_appTitle": "chia-dotnet",
       "_appLogoPath": "images/favicon-32x32.png",
       "_appFaviconPath": "images/favicon.ico",
       "_enableSearch": true,
