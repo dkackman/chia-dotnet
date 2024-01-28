@@ -1,169 +1,475 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PoolWallet
-   | chia-dotnet </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PoolWallet
-   | chia-dotnet ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
-    <link rel="shortcut icon" href="../images/favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    <meta property="docfx:rel" content="../">
-    
+      <title>Class PoolWallet
+ | chia-dotnet </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class PoolWallet
+ | chia-dotnet ">
+      
+      <meta name="description" content="Wraps a Pool Wallet">
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PoolWallet.md&amp;value=---%0Auid%3A%20chia.dotnet.PoolWallet%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../images/favicon-32x32.png" alt="chia-dotnet">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/favicon-32x32.png" alt="chia-dotnet">
+            chia-dotnet
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
-        
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="chia.dotnet.PoolWallet">
-  
-  
-  <h1 id="chia_dotnet_PoolWallet" data-uid="chia.dotnet.PoolWallet" class="text-break">Class PoolWallet
+
+        <article data-uid="chia.dotnet.PoolWallet">
+
+
+
+  <h1 id="chia_dotnet_PoolWallet" data-uid="chia.dotnet.PoolWallet" class="text-break">
+    Class PoolWallet
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h1>
-  <div class="markdown level0 summary"><p>Wraps a Pool Wallet</p>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="chia.html">chia</a>.<a class="xref" href="chia.dotnet.html">dotnet</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>chia-dotnet.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Wraps a Pool Wallet</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">PoolWallet</span></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
-    </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="chia.dotnet.html">chia.dotnet</a></h6>
-  <h6><strong>Assembly</strong>: chia-dotnet.dll</h6>
-  <h5 id="chia_dotnet_PoolWallet_syntax">Syntax</h5>
+  <div class="markdown conceptual"></div>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class PoolWallet</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class PoolWallet : Wallet</code></pre>
   </div>
-  <h5 id="chia_dotnet_PoolWallet_remarks"><strong>Remarks</strong></h5>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="chia.dotnet.Wallet.html">Wallet</a></div>
+      <div><span class="xref">PoolWallet</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_WalletId">Wallet.WalletId</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_WalletProxy">Wallet.WalletProxy</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetWalletInfo_System_Threading_CancellationToken_">Wallet.GetWalletInfo(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetBalance_System_Threading_CancellationToken_">Wallet.GetBalance(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SelectCoins_System_UInt64_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_Collections_Generic_IEnumerable_System_UInt64__System_Nullable_System_UInt64__System_Nullable_System_UInt64__System_Threading_CancellationToken_">Wallet.SelectCoins(ulong, IEnumerable&lt;Coin&gt;, IEnumerable&lt;ulong&gt;, ulong?, ulong?, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetTransactions_System_String_chia_dotnet_TransactionTypeFilter_System_Boolean_System_String_System_UInt32_System_UInt32_System_Nullable_System_Boolean__System_Threading_CancellationToken_">Wallet.GetTransactions(string, TransactionTypeFilter, bool, string, uint, uint, bool?, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetSpendableCoins_System_Nullable_System_UInt64__System_Nullable_System_UInt64__System_Collections_Generic_IEnumerable_System_UInt64__System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_">Wallet.GetSpendableCoins(ulong?, ulong?, IEnumerable&lt;ulong&gt;, IEnumerable&lt;Coin&gt;, IEnumerable&lt;string&gt;, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetNextAddress_System_Boolean_System_Threading_CancellationToken_">Wallet.GetNextAddress(bool, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_GetTransactionCount_chia_dotnet_TransactionTypeFilter_System_Threading_CancellationToken_">Wallet.GetTransactionCount(TransactionTypeFilter, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_DeleteUnconfirmedTransactions_System_Threading_CancellationToken_">Wallet.DeleteUnconfirmedTransactions(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransaction_System_String_System_UInt64_System_Collections_Generic_IEnumerable_System_String__System_Collections_Generic_IEnumerable_System_UInt64__System_Collections_Generic_IEnumerable_System_String__System_Nullable_System_UInt64__System_Nullable_System_UInt64__System_Boolean_System_UInt64_System_Threading_CancellationToken_">Wallet.SendTransaction(string, ulong, IEnumerable&lt;string&gt;, IEnumerable&lt;ulong&gt;, IEnumerable&lt;string&gt;, ulong?, ulong?, bool, ulong, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_SendTransactionMulti_System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_UInt64_System_Threading_CancellationToken_">Wallet.SendTransactionMulti(IEnumerable&lt;Coin&gt;, IEnumerable&lt;Coin&gt;, ulong, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="chia_dotnet_PoolWallet_remarks">Remarks</h2>
   <div class="markdown level0 remarks"><p>ctor</p>
 </div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="chia_dotnet_PoolWallet__ctor_" data-uid="chia.dotnet.PoolWallet.#ctor*"></a>
+
+  <h3 id="chia_dotnet_PoolWallet__ctor_System_UInt32_chia_dotnet_WalletProxy_" data-uid="chia.dotnet.PoolWallet.#ctor(System.UInt32,chia.dotnet.WalletProxy)">
+  PoolWallet(uint, WalletProxy)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Wraps a Pool Wallet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PoolWallet(uint walletId, WalletProxy walletProxy)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>walletId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The wallet_id to wrap</p>
+</dd>
+    <dt><code>walletProxy</code> <a class="xref" href="chia.dotnet.WalletProxy.html">WalletProxy</a></dt>
+    <dd><p>Wallet RPC proxy to use for communication</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="chia_dotnet_PoolWallet__ctor_System_UInt32_chia_dotnet_WalletProxy__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>ctor</p>
+</div>
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="chia_dotnet_PoolWallet_AbsorbRewards_" data-uid="chia.dotnet.PoolWallet.AbsorbRewards*"></a>
+
+  <h3 id="chia_dotnet_PoolWallet_AbsorbRewards_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.PoolWallet.AbsorbRewards(System.UInt64,System.Threading.CancellationToken)">
+  AbsorbRewards(ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Perform a sweep of the p2_singleton rewards controlled by the pool wallet singleton</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(PoolWalletInfo State, TransactionRecord Transaction)&gt; AbsorbRewards(ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Transaction fee (in units of mojos)</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.PoolWalletInfo.html">PoolWalletInfo</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.poolwalletinfo,chia.dotnet.transactionrecord-.state">State</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.poolwalletinfo,chia.dotnet.transactionrecord-.transaction">Transaction</a>)&gt;</dt>
+    <dd><p>Wallet state and transaction</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_PoolWallet_JoinPool_" data-uid="chia.dotnet.PoolWallet.JoinPool*"></a>
+
+  <h3 id="chia_dotnet_PoolWallet_JoinPool_System_String_System_String_System_UInt32_System_Threading_CancellationToken_" data-uid="chia.dotnet.PoolWallet.JoinPool(System.String,System.String,System.UInt32,System.Threading.CancellationToken)">
+  JoinPool(string, string, uint, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Join the wallet to a pool</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;TransactionRecord&gt; JoinPool(string targetPuzzlehash, string poolUrl, uint relativeLockHeight, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>targetPuzzlehash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Puzzle hash</p>
+</dd>
+    <dt><code>poolUrl</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Url of the pool to join</p>
+</dd>
+    <dt><code>relativeLockHeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>Relative lock height</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt;</dt>
+    <dd><p>The resulting <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="chia_dotnet_PoolWallet_JoinPool_System_String_System_String_System_UInt32_System_Threading_CancellationToken__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>See <a class="xref" href="chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_GetPoolInfo_System_Uri_System_Threading_CancellationToken_">GetPoolInfo(Uri, CancellationToken)</a></p>
+</div>
+
+
+
+
+  <a id="chia_dotnet_PoolWallet_SelfPool_" data-uid="chia.dotnet.PoolWallet.SelfPool*"></a>
+
+  <h3 id="chia_dotnet_PoolWallet_SelfPool_System_Threading_CancellationToken_" data-uid="chia.dotnet.PoolWallet.SelfPool(System.Threading.CancellationToken)">
+  SelfPool(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Leaving a pool requires two state transitions.
+First we transition to PoolSingletonState.LEAVING_POOL
+Then we transition to FARMING_TO_POOL or SELF_POOLING</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;TransactionRecord&gt; SelfPool(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt;</dt>
+    <dd><p>The resulting <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_PoolWallet_Status_" data-uid="chia.dotnet.PoolWallet.Status*"></a>
+
+  <h3 id="chia_dotnet_PoolWallet_Status_System_Threading_CancellationToken_" data-uid="chia.dotnet.PoolWallet.Status(System.Threading.CancellationToken)">
+  Status(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Perform a sweep of the p2_singleton rewards controlled by the pool wallet singleton</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(PoolWalletInfo State, IEnumerable&lt;TransactionRecord&gt; UnconfirmedTransactions)&gt; Status(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.PoolWalletInfo.html">PoolWalletInfo</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.poolwalletinfo,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.state">State</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.poolwalletinfo,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.unconfirmedtransactions">UnconfirmedTransactions</a>)&gt;</dt>
+    <dd><p>Wallet state and list of unconfirmed transactions</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_PoolWallet_Validate_" data-uid="chia.dotnet.PoolWallet.Validate*"></a>
+
+  <h3 id="chia_dotnet_PoolWallet_Validate_System_Threading_CancellationToken_" data-uid="chia.dotnet.PoolWallet.Validate(System.Threading.CancellationToken)">
+  Validate(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validates that <a class="xref" href="chia.dotnet.Wallet.html#chia_dotnet_Wallet_WalletId">WalletId</a> is a <a class="xref" href="chia.dotnet.WalletType.html#chia_dotnet_WalletType_POOLING_WALLET">POOLING_WALLET</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Task Validate(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd>Wraps a Pool Wallet</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>True if the wallet is a pooling wallet</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_PoolWallet.md&amp;value=---%0Auid%3A%20chia.dotnet.PoolWallet%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L16" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/PoolWallet.cs/#L16" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>

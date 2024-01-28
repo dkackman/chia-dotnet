@@ -1,515 +1,841 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace chia.dotnet
-   | chia-dotnet </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace chia.dotnet
-   | chia-dotnet ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
-    <link rel="shortcut icon" href="../images/favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    <meta property="docfx:rel" content="../">
-    
+      <title>Namespace chia.dotnet
+ | chia-dotnet </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Namespace chia.dotnet
+ | chia-dotnet ">
+      
+      
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../images/favicon-32x32.png" alt="chia-dotnet">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/favicon-32x32.png" alt="chia-dotnet">
+            chia-dotnet
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
-        
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="chia.dotnet">
-  
+
+        <article data-uid="chia.dotnet">
+
   <h1 id="chia_dotnet" data-uid="chia.dotnet" class="text-break">Namespace chia.dotnet
-  </h1>
+</h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="markdown level0 remarks"></div>
-    <h3 id="classes">Classes
-  </h3>
-      <h4><a class="xref" href="chia.dotnet.AmountFilter.html">AmountFilter</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.AmountWithPuzzlehash.html">AmountWithPuzzlehash</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.Announcement.html">Announcement</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.AssetInfo.html">AssetInfo</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.AutoClaimSettings.html">AutoClaimSettings</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.BlockchainState.html">BlockchainState</a></h4>
-      <section><p>The node's view of the blockchain.</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.BlockCountMetrics.html">BlockCountMetrics</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.BlockRecord.html">BlockRecord</a></h4>
-      <section><p>This class is not included or hashed into the blockchain, but it is kept in memory as a more
+
+    <h3 id="classes">
+Classes
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.AmountFilter.html">AmountFilter</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.AmountWithPuzzlehash.html">AmountWithPuzzlehash</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.Announcement.html">Announcement</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.AssetInfo.html">AssetInfo</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.AutoClaimSettings.html">AutoClaimSettings</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.BlockCountMetrics.html">BlockCountMetrics</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.BlockRecord.html">BlockRecord</a></dt>
+      <dd><p>This class is not included or hashed into the blockchain, but it is kept in memory as a more
 efficient way to maintain data about the blockchain. This allows us to validate future blocks,
 difficulty adjustments, etc, without saving the whole header block in memory.</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.BlockSpendWithConditions.html">BlockSpendWithConditions</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.CATInfo.html">CATInfo</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.CATWallet.html">CATWallet</a></h4>
-      <section><p>Wraps a CAT wallet</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.ChallengeChainSubSlot.html">ChallengeChainSubSlot</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.ClassgroupElement.html">ClassgroupElement</a></h4>
-      <section><p>Represents a classgroup element (a,b,c) where a, b, and c are 512 bit signed integers. However this is using
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.BlockSpendWithConditions.html">BlockSpendWithConditions</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.BlockchainState.html">BlockchainState</a></dt>
+      <dd><p>The node's view of the blockchain.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.CATInfo.html">CATInfo</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.CATWallet.html">CATWallet</a></dt>
+      <dd><p>Wraps a CAT wallet</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.CRCATWallet.html">CRCATWallet</a></dt>
+      <dd><p>Wraps a CRCAT  Wallet</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.ChallengeChainSubSlot.html">ChallengeChainSubSlot</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.ClassgroupElement.html">ClassgroupElement</a></dt>
+      <dd><p>Represents a classgroup element (a,b,c) where a, b, and c are 512 bit signed integers. However this is using
 a compressed representation. VDF outputs are a single classgroup element. VDF proofs can also be one classgroup
 element(or multiple).</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.Coin.html">Coin</a></h4>
-      <section><p>This structure is used in the body for the reward and fees genesis coins.</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.CoinAnnouncement.html">CoinAnnouncement</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a></h4>
-      <section><p>These are values that correspond to a CoinName that are used
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.Coin.html">Coin</a></dt>
+      <dd><p>This structure is used in the body for the reward and fees genesis coins.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.CoinAnnouncement.html">CoinAnnouncement</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.CoinRecord.html">CoinRecord</a></dt>
+      <dd><p>These are values that correspond to a CoinName that are used
 in keeping track of the unspent database.</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.CoinSpend.html">CoinSpend</a></h4>
-      <section><p>This is a rather disparate data structure that validates coin transfers. It's generally populated
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.CoinSpend.html">CoinSpend</a></dt>
+      <dd><p>This is a rather disparate data structure that validates coin transfers. It's generally populated
 with data from different sources, since burned coins are identified by name, so it is built up
 more often that it is streamed.</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.Condition.html">Condition</a></h4>
-      <section><p>This type doesn't exist in the chia code. This property is serialzied into the Json
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.Condition.html">Condition</a></dt>
+      <dd><p>This type doesn't exist in the chia code. This property is serialzied into the Json
 as a tuple, which shows up as a mixed type json array. There is a speciailzed converter to read
 the Json and get the ConditionOpCode into <a class="xref" href="chia.dotnet.Condition.html#chia_dotnet_Condition_ConditionOpcode">ConditionOpcode</a>
 conditions: List[Tuple[ConditionOpcode, List[ConditionWithArgs]]]</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.ConditionValidTimes.html">ConditionValidTimes</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.ConditionWithVars.html">ConditionWithVars</a></h4>
-      <section><p>This structure is used to store parsed CLVM conditions
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.ConditionValidTimes.html">ConditionValidTimes</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.ConditionWithVars.html">ConditionWithVars</a></dt>
+      <dd><p>This structure is used to store parsed CLVM conditions
 Conditions in CLVM have either format of(opcode, var1) or(opcode, var1, var2)</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.Config.html">Config</a></h4>
-      <section><p>Represents a chia config yaml file and its contents.
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.Config.html">Config</a></dt>
+      <dd><p>Represents a chia config yaml file and its contents.
 Used to find the uri and ssl certs needed to connect</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.ConnectionInfo.html">ConnectionInfo</a></h4>
-      <section><p>Chia's representation of a connection from node to node</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.CrawlerProxy.html">CrawlerProxy</a></h4>
-      <section><p>Proxy that communicates with the crawler</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.CRCATWallet.html">CRCATWallet</a></h4>
-      <section><p>Wraps a CRCAT  Wallet</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.DaemonProxy.html">DaemonProxy</a></h4>
-      <section><p><a class="xref" href="chia.dotnet.WebSocketRpcClient.html">WebSocketRpcClient</a> for the daemon interface.
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.ConnectionInfo.html">ConnectionInfo</a></dt>
+      <dd><p>Chia's representation of a connection from node to node</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.CrawlerProxy.html">CrawlerProxy</a></dt>
+      <dd><p>Proxy that communicates with the crawler</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.DAOInfo.html">DAOInfo</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.DAORules.html">DAORules</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.DAOWallet.html">DAOWallet</a></dt>
+      <dd><p>Wraps a DAO Wallet</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.DIDWallet.html">DIDWallet</a></dt>
+      <dd><p>Wraps a Distributed Identity Wallet</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.DaemonProxy.html">DaemonProxy</a></dt>
+      <dd><p><a class="xref" href="chia.dotnet.WebSocketRpcClient.html">WebSocketRpcClient</a> for the daemon interface.
 The daemon can be used to proxy messages to and from other chia services as well
 as controlling the <a class="xref" href="chia.dotnet.PlotterProxy.html">PlotterProxy</a> and having it's own procedures</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.DAOInfo.html">DAOInfo</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.DAORules.html">DAORules</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.DAOWallet.html">DAOWallet</a></h4>
-      <section><p>Wraps a DAO Wallet</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.DataLayerOffer.html">DataLayerOffer</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.DataLayerProxy.html">DataLayerProxy</a></h4>
-      <section><p>Proxy that communicates with the Data Layer</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.DataLayerSyncStatus.html">DataLayerSyncStatus</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.DataLayerWallet.html">DataLayerWallet</a></h4>
-      <section><p>Wraps a Data Layer Wallet</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.DidInfo.html">DidInfo</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.DIDWallet.html">DIDWallet</a></h4>
-      <section><p>Wraps a Distributed Identity Wallet</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.EndOfSubSlotBundle.html">EndOfSubSlotBundle</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.EndpointInfo.html">EndpointInfo</a></h4>
-      <section><p>Information about how to connect and authenticate with the RPC endpoint</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.ErrorResponse.html">ErrorResponse</a></h4>
-      <section><p>Response in error case for all endpoints of the pool protocol</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.Extensions.html">Extensions</a></h4>
-      <section><p>Helper extension methods</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.FarmerProxy.html">FarmerProxy</a></h4>
-      <section><p>Proxy that communicates with the farmer</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.FarmerRewards.html">FarmerRewards</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.FarmerSignagePoint.html">FarmerSignagePoint</a></h4>
-      <section><p>This type doesn't exist in the chia code but is generated and passed around as a dictionary
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.DataLayerOffer.html">DataLayerOffer</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.DataLayerProxy.html">DataLayerProxy</a></dt>
+      <dd><p>Proxy that communicates with the Data Layer</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.DataLayerSyncStatus.html">DataLayerSyncStatus</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.DataLayerWallet.html">DataLayerWallet</a></dt>
+      <dd><p>Wraps a Data Layer Wallet</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.DidInfo.html">DidInfo</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.EndOfSubSlotBundle.html">EndOfSubSlotBundle</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.EndpointInfo.html">EndpointInfo</a></dt>
+      <dd><p>Information about how to connect and authenticate with the RPC endpoint</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.ErrorResponse.html">ErrorResponse</a></dt>
+      <dd><p>Response in error case for all endpoints of the pool protocol</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.Extensions.html">Extensions</a></dt>
+      <dd><p>Helper extension methods</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.FarmerProxy.html">FarmerProxy</a></dt>
+      <dd><p>Proxy that communicates with the farmer</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.FarmerRewards.html">FarmerRewards</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.FarmerSignagePoint.html">FarmerSignagePoint</a></dt>
+      <dd><p>This type doesn't exist in the chia code but is generated and passed around as a dictionary
 (not to be confused with <a class="xref" href="chia.dotnet.SignagePoint.html">SignagePoint</a>)</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.FilterItem.html">FilterItem</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.Foliage.html">Foliage</a></h4>
-      <section><p>The entire foliage block, containing signature and the unsigned back pointer
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.FilterItem.html">FilterItem</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.Foliage.html">Foliage</a></dt>
+      <dd><p>The entire foliage block, containing signature and the unsigned back pointer
 The hash of this is the &quot;header hash&quot;. Note that for unfinished blocks, the prev_block_hash
 Is the prev from the signage point, and can be replaced with a more recent block</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.FoliageBlockData.html">FoliageBlockData</a></h4>
-      <section><p>Part of the block that is signed by the plot key</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.FoliageTransactionBlock.html">FoliageTransactionBlock</a></h4>
-      <section><p>Information that goes along with each transaction block that is relevant for light clients</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.FullBlock.html">FullBlock</a></h4>
-      <section><p>All the information required to validate a block</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.FullNodeProxy.html">FullNodeProxy</a></h4>
-      <section><p>Proxy that communicates with the full node</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.FungibleAsset.html">FungibleAsset</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.HarvesterConfig.html">HarvesterConfig</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.HarvesterConnection.html">HarvesterConnection</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.HarvesterInfo.html">HarvesterInfo</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.HarvesterProxy.html">HarvesterProxy</a></h4>
-      <section><p>Proxy that communicates with the harvester</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.HarvesterSummary.html">HarvesterSummary</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.HarvesterSync.html">HarvesterSync</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.HashFilter.html">HashFilter</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.HttpRpcClient.html">HttpRpcClient</a></h4>
-      <section><p>Class that handles core communication with the rpc endpoint using http(s)</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.InfusedChallengeChainSubSlot.html">InfusedChallengeChainSubSlot</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.InternalNode.html">InternalNode</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.KeyData.html">KeyData</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.KeyDataSecrets.html">KeyDataSecrets</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.KeyringStatus.html">KeyringStatus</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.KVDiff.html">KVDiff</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.Layer.html">Layer</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.LineageProof.html">LineageProof</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.MempoolItem.html">MempoolItem</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.MempoolMinFees.html">MempoolMinFees</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.Message.html">Message</a></h4>
-      <section><p>The messaging data structure for request and response exchange with the RPC endpoint</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.Mirror.html">Mirror</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.NFTBulkMintingInfo.html">NFTBulkMintingInfo</a></h4>
-      <section><p>Info for minting NFTs in bulk</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.NftCoinInfo.html">NftCoinInfo</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.NFTInfo.html">NFTInfo</a></h4>
-      <section><p>NFT Info for displaying NFT on the UI</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.NftMintEntry.html">NftMintEntry</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.NFTMintingInfo.html">NFTMintingInfo</a></h4>
-      <section><p>Info for minting an NFT</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.NFTWallet.html">NFTWallet</a></h4>
-      <section><p>Wraps an NFT wallet</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.NPC.html">NPC</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.NPCResult.html">NPCResult</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.OfferRecord.html">OfferRecord</a></h4>
-      <section><p>The in memory representation of an offer and its record of trade</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.OfferStore.html">OfferStore</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.OfferSummary.html">OfferSummary</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.PaginatedPlotRequest.html">PaginatedPlotRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.PassphraseRequirements.html">PassphraseRequirements</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.PeerCounts.html">PeerCounts</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.PlotInfo.html">PlotInfo</a></h4>
-      <section><p>Info about a plot file</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.PlotInfoRequestData.html">PlotInfoRequestData</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.PlotPathRequestData.html">PlotPathRequestData</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.PlotterConfig.html">PlotterConfig</a></h4>
-      <section><p>Configuration settings for the plotter. (equivalent to chia plots create command line args)
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.FoliageBlockData.html">FoliageBlockData</a></dt>
+      <dd><p>Part of the block that is signed by the plot key</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.FoliageTransactionBlock.html">FoliageTransactionBlock</a></dt>
+      <dd><p>Information that goes along with each transaction block that is relevant for light clients</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.FullBlock.html">FullBlock</a></dt>
+      <dd><p>All the information required to validate a block</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.FullNodeProxy.html">FullNodeProxy</a></dt>
+      <dd><p>Proxy that communicates with the full node</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.FungibleAsset.html">FungibleAsset</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.HarvesterConfig.html">HarvesterConfig</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.HarvesterConnection.html">HarvesterConnection</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.HarvesterInfo.html">HarvesterInfo</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.HarvesterProxy.html">HarvesterProxy</a></dt>
+      <dd><p>Proxy that communicates with the harvester</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.HarvesterSummary.html">HarvesterSummary</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.HarvesterSync.html">HarvesterSync</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.HashFilter.html">HashFilter</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.HttpRpcClient.html">HttpRpcClient</a></dt>
+      <dd><p>Class that handles core communication with the rpc endpoint using http(s)</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.InfusedChallengeChainSubSlot.html">InfusedChallengeChainSubSlot</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.InternalNode.html">InternalNode</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.KVDiff.html">KVDiff</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.KeyData.html">KeyData</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.KeyDataSecrets.html">KeyDataSecrets</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.KeyringStatus.html">KeyringStatus</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.Layer.html">Layer</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.LineageProof.html">LineageProof</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.MempoolItem.html">MempoolItem</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.MempoolMinFees.html">MempoolMinFees</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.Message.html">Message</a></dt>
+      <dd><p>The messaging data structure for request and response exchange with the RPC endpoint</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.Mirror.html">Mirror</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.NFTBulkMintingInfo.html">NFTBulkMintingInfo</a></dt>
+      <dd><p>Info for minting NFTs in bulk</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.NFTInfo.html">NFTInfo</a></dt>
+      <dd><p>NFT Info for displaying NFT on the UI</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.NFTMintingInfo.html">NFTMintingInfo</a></dt>
+      <dd><p>Info for minting an NFT</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.NFTWallet.html">NFTWallet</a></dt>
+      <dd><p>Wraps an NFT wallet</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.NPC.html">NPC</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.NPCResult.html">NPCResult</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.NftCoinInfo.html">NftCoinInfo</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.NftMintEntry.html">NftMintEntry</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.OfferRecord.html">OfferRecord</a></dt>
+      <dd><p>The in memory representation of an offer and its record of trade</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.OfferStore.html">OfferStore</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.OfferSummary.html">OfferSummary</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PaginatedPlotRequest.html">PaginatedPlotRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PassphraseRequirements.html">PassphraseRequirements</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PeerCounts.html">PeerCounts</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PlotInfo.html">PlotInfo</a></dt>
+      <dd><p>Info about a plot file</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PlotInfoRequestData.html">PlotInfoRequestData</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PlotPathRequestData.html">PlotPathRequestData</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PlotterConfig.html">PlotterConfig</a></dt>
+      <dd><p>Configuration settings for the plotter. (equivalent to chia plots create command line args)
 <a href="https://github.com/Chia-Network/chia-blockchain/wiki/CLI-Commands-Reference">https://github.com/Chia-Network/chia-blockchain/wiki/CLI-Commands-Reference</a></p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.PlotterInfo.html">PlotterInfo</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.PlotterProxy.html">PlotterProxy</a></h4>
-      <section><p>Class to manage plotting</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.PlottingKeys.html">PlottingKeys</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.PluginStatus.html">PluginStatus</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.PoolInfo.html">PoolInfo</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.PoolPoint.html">PoolPoint</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.PoolState.html">PoolState</a></h4>
-      <section><p><code>PoolState</code> is a type that is serialized to the blockchain to track the state of the user's pool singleton
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PlotterInfo.html">PlotterInfo</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PlotterProxy.html">PlotterProxy</a></dt>
+      <dd><p>Class to manage plotting</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PlottingKeys.html">PlottingKeys</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PluginStatus.html">PluginStatus</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PoolInfo.html">PoolInfo</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PoolPoint.html">PoolPoint</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PoolState.html">PoolState</a></dt>
+      <dd><p><code>PoolState</code> is a type that is serialized to the blockchain to track the state of the user's pool singleton
 <code>target_puzzle_hash</code> is either the pool address, or the self-pooling address that pool rewards will be paid to.
 <code>target_puzzle_hash</code> is NOT the p2_singleton puzzle that block rewards are sent to.
 The <code>p2_singleton</code> address is the initial address, and the <code>target_puzzle_hash</code> is the final destination.
 <code>relative_lock_height</code> is zero when in SELF_POOLING state</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.PoolStateInfo.html">PoolStateInfo</a></h4>
-      <section><p>This type does not exist in the chia python, but is returned as a dicitonary for the UI to show pool state.
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PoolStateInfo.html">PoolStateInfo</a></dt>
+      <dd><p>This type does not exist in the chia python, but is returned as a dicitonary for the UI to show pool state.
 Not to be confused with <a class="xref" href="chia.dotnet.PoolState.html">PoolState</a></p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.PoolTarget.html">PoolTarget</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.PoolWallet.html">PoolWallet</a></h4>
-      <section><p>Wraps a Pool Wallet</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.PoolWalletConfig.html">PoolWalletConfig</a></h4>
-      <section><p>This is what goes into the user's config file, to communicate between the wallet and the farmer processes.</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.PoolWalletInfo.html">PoolWalletInfo</a></h4>
-      <section><p>Internal Pool Wallet state, not destined for the blockchain. This can be completely derived with
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PoolTarget.html">PoolTarget</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PoolWallet.html">PoolWallet</a></dt>
+      <dd><p>Wraps a Pool Wallet</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PoolWalletConfig.html">PoolWalletConfig</a></dt>
+      <dd><p>This is what goes into the user's config file, to communicate between the wallet and the farmer processes.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PoolWalletInfo.html">PoolWalletInfo</a></dt>
+      <dd><p>Internal Pool Wallet state, not destined for the blockchain. This can be completely derived with
 the Singleton's CoinSpends list, or with the information from the WalletPoolStore.</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.PrivateKey.html">PrivateKey</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.PrivateKeyData.html">PrivateKeyData</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.Proof.html">Proof</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.ProofOfSpace.html">ProofOfSpace</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.ProposalInfo.html">ProposalInfo</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.ProposalState.html">ProposalState</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.PuzzleAnnouncement.html">PuzzleAnnouncement</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.QueuedPlotInfo.html">QueuedPlotInfo</a></h4>
-      <section><p>An entry on the plotter queue</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.ResponseException.html">ResponseException</a></h4>
-      <section><p>Exception thrown when the RPC endpoint returns a response <a class="xref" href="chia.dotnet.Message.html">Message</a> but Data.success is false
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PrivateKey.html">PrivateKey</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PrivateKeyData.html">PrivateKeyData</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.Proof.html">Proof</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.ProofOfSpace.html">ProofOfSpace</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.ProposalInfo.html">ProposalInfo</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.ProposalState.html">ProposalState</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PuzzleAnnouncement.html">PuzzleAnnouncement</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.QueuedPlotInfo.html">QueuedPlotInfo</a></dt>
+      <dd><p>An entry on the plotter queue</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.ResponseException.html">ResponseException</a></dt>
+      <dd><p>Exception thrown when the RPC endpoint returns a response <a class="xref" href="chia.dotnet.Message.html">Message</a> but Data.success is false
 oro there is a communication error on the websocket of http channgel</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.RewardChainBlock.html">RewardChainBlock</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.RewardChainBlockUnfinished.html">RewardChainBlockUnfinished</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.RewardChainSubSlot.html">RewardChainSubSlot</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.Root.html">Root</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.RootHash.html">RootHash</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.RootHistory.html">RootHistory</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.RoyaltyAsset.html">RoyaltyAsset</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.SendPeer.html">SendPeer</a></h4>
-      <section><p>Represents the list of peers that we sent the transaction to, whether each one
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.RewardChainBlock.html">RewardChainBlock</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.RewardChainBlockUnfinished.html">RewardChainBlockUnfinished</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.RewardChainSubSlot.html">RewardChainSubSlot</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.Root.html">Root</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.RootHash.html">RootHash</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.RootHistory.html">RootHistory</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.RoyaltyAsset.html">RoyaltyAsset</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.SendPeer.html">SendPeer</a></dt>
+      <dd><p>Represents the list of peers that we sent the transaction to, whether each one
 included it in the mempool, and what the error message (if any) was</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.ServiceProxy.html">ServiceProxy</a></h4>
-      <section><p>Base class that uses an <a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a> to send and receive messages to services</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.SignagePoint.html">SignagePoint</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.SingletonInfo.html">SingletonInfo</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.SingletonRecord.html">SingletonRecord</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a></h4>
-      <section><p>This is a list of coins being spent along with their solution programs, and a single
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.ServiceProxy.html">ServiceProxy</a></dt>
+      <dd><p>Base class that uses an <a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a> to send and receive messages to services</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.SignagePoint.html">SignagePoint</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.SingletonInfo.html">SingletonInfo</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.SingletonRecord.html">SingletonRecord</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a></dt>
+      <dd><p>This is a list of coins being spent along with their solution programs, and a single
 aggregated signature. This is the object that most closely corresponds to a bitcoin
 transaction (although because of non-interactive signature aggregation, the boundaries
 between transactions are more flexible than in bitcoin).</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.StoreProofs.html">StoreProofs</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.SubEpochSummary.html">SubEpochSummary</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.SubSlotProofs.html">SubSlotProofs</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.SyncState.html">SyncState</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.TerminalNode.html">TerminalNode</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.Token.html">Token</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.TradeManager.html">TradeManager</a></h4>
-      <section><p>API wrapper for those wallet RPC methods dealing with trades and offers</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.TradeRecord.html">TradeRecord</a></h4>
-      <section><p>Used for storing transaction data and status in wallets.</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a></h4>
-      <section><p>Used for storing transaction data and status in wallets.</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.TransactionsInfo.html">TransactionsInfo</a></h4>
-      <section><p>Information that goes along with each transaction block</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.TransactionTypeFilter.html">TransactionTypeFilter</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.UInt32Range.html">UInt32Range</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.UInt64Range.html">UInt64Range</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.UnfinishedHeaderBlock.html">UnfinishedHeaderBlock</a></h4>
-      <section><p>Same as a FullBlock but without TransactionInfo and Generator, used by light clients</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.VCLineageProof.html">VCLineageProof</a></h4>
-      <section><p>The covenant layer for exigent metadata layers requires to be passed the previous parent's metadata too</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.VCProofs.html">VCProofs</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.VCRecord.html">VCRecord</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.VDFInfo.html">VDFInfo</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.VDFProof.html">VDFProof</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.VerifiedCredential.html">VerifiedCredential</a></h4>
-      <section><p>This class serves as the main driver for the entire VC puzzle stack. Given the information below, it can sync and
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.StoreProofs.html">StoreProofs</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.SubEpochSummary.html">SubEpochSummary</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.SubSlotProofs.html">SubSlotProofs</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.SyncState.html">SyncState</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.TerminalNode.html">TerminalNode</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.Token.html">Token</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.TradeManager.html">TradeManager</a></dt>
+      <dd><p>API wrapper for those wallet RPC methods dealing with trades and offers</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.TradeRecord.html">TradeRecord</a></dt>
+      <dd><p>Used for storing transaction data and status in wallets.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a></dt>
+      <dd><p>Used for storing transaction data and status in wallets.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.TransactionTypeFilter.html">TransactionTypeFilter</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.TransactionsInfo.html">TransactionsInfo</a></dt>
+      <dd><p>Information that goes along with each transaction block</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.UInt32Range.html">UInt32Range</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.UInt64Range.html">UInt64Range</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.UnfinishedHeaderBlock.html">UnfinishedHeaderBlock</a></dt>
+      <dd><p>Same as a FullBlock but without TransactionInfo and Generator, used by light clients</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.VCLineageProof.html">VCLineageProof</a></dt>
+      <dd><p>The covenant layer for exigent metadata layers requires to be passed the previous parent's metadata too</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.VCProofs.html">VCProofs</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.VCRecord.html">VCRecord</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.VDFInfo.html">VDFInfo</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.VDFProof.html">VDFProof</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.VerifiedCredential.html">VerifiedCredential</a></dt>
+      <dd><p>This class serves as the main driver for the entire VC puzzle stack. Given the information below, it can sync and
 spend VerifiedCredentials in any specified manner.Trying to sync from a spend that this class did not create will
 likely result in an error.</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.VerifiedCredentialManager.html">VerifiedCredentialManager</a></h4>
-      <section><p>API wrapper for those wallet RPC methods dealing with verified credentials</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.Wallet.html">Wallet</a></h4>
-      <section><p>Base class representing a specific wallet (i.e. anything with a WalletID)</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.WalletAddress.html">WalletAddress</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.WalletBalance.html">WalletBalance</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.WalletInfo.html">WalletInfo</a></h4>
-      <section><p>This object represents the wallet data as it is stored in DB.
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.VerifiedCredentialManager.html">VerifiedCredentialManager</a></dt>
+      <dd><p>API wrapper for those wallet RPC methods dealing with verified credentials</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.Wallet.html">Wallet</a></dt>
+      <dd><p>Base class representing a specific wallet (i.e. anything with a WalletID)</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.WalletAddress.html">WalletAddress</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.WalletBalance.html">WalletBalance</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.WalletInfo.html">WalletInfo</a></dt>
+      <dd><p>This object represents the wallet data as it is stored in DB.
 ID: Main wallet (Standard) is stored at index 1, every wallet created after done has auto incremented id.
 Name: can be a user provided or default generated name. (can be modified)
 Type: is specified during wallet creation and should never be changed.
 Data: this filed is intended to be used for storing any wallet specific information required for it.
 This data should be json encoded string.</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.WalletProxy.html">WalletProxy</a></h4>
-      <section><p>Proxy that communicates with the wallet endpoint</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.WebSocketRpcClient.html">WebSocketRpcClient</a></h4>
-      <section><p>Class that handles core communication with the rpc endpoint using a websocket (wss).
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.WalletProxy.html">WalletProxy</a></dt>
+      <dd><p>Proxy that communicates with the wallet endpoint</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.WebSocketRpcClient.html">WebSocketRpcClient</a></dt>
+      <dd><p>Class that handles core communication with the rpc endpoint using a websocket (wss).
 Only the daemon endpoint supports websockets, but it can proxy communication to other services.
 <a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Destination">Destination</a></p>
-</section>
-    <h3 id="structs">Structs
-  </h3>
-      <h4><a class="xref" href="chia.dotnet.ServiceNames.html">ServiceNames</a></h4>
-      <section><p>The names of chia services. These are used as <a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Destination">Destination</a> values</p>
-</section>
-    <h3 id="interfaces">Interfaces
-  </h3>
-      <h4><a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a></h4>
-      <section><p>Interface representing rpc communication</p>
-</section>
-    <h3 id="enums">Enums
-  </h3>
-      <h4><a class="xref" href="chia.dotnet.CoinRecordOrder.html">CoinRecordOrder</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.CoinType.html">CoinType</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.FilterMode.html">FilterMode</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.KSize.html">KSize</a></h4>
-      <section><p>Valid plot sizes
+</dd>
+    </dl>
+    <h3 id="structs">
+Structs
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.ServiceNames.html">ServiceNames</a></dt>
+      <dd><p>The names of chia services. These are used as <a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Destination">Destination</a> values</p>
+</dd>
+    </dl>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a></dt>
+      <dd><p>Interface representing rpc communication</p>
+</dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.CoinRecordOrder.html">CoinRecordOrder</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.CoinType.html">CoinType</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.FilterMode.html">FilterMode</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.KSize.html">KSize</a></dt>
+      <dd><p>Valid plot sizes
 <a href="https://github.com/Chia-Network/chia-blockchain/wiki/k-sizes">https://github.com/Chia-Network/chia-blockchain/wiki/k-sizes</a></p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.MempoolInclusionStatus.html">MempoolInclusionStatus</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.NodeType.html">NodeType</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.PlotState.html">PlotState</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.PoolSingletonState.html">PoolSingletonState</a></h4>
-      <section><p>From the user's point of view, a pool group can be in these states:
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.MempoolInclusionStatus.html">MempoolInclusionStatus</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.NodeType.html">NodeType</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PlotState.html">PlotState</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.PoolSingletonState.html">PoolSingletonState</a></dt>
+      <dd><p>From the user's point of view, a pool group can be in these states:
 <code>SELF_POOLING</code>: The singleton exists on the blockchain, and we are farming
 block rewards to a wallet address controlled by the user</p>
 <p><code>LEAVING_POOL</code>: The singleton exists, and we have entered the &quot;escaping&quot; state, which
@@ -517,52 +843,52 @@ means we are waiting for a number of blocks = <code>relative_lock_height</code> 
 <p><code>FARMING_TO_POOL</code>: The singleton exists, and it is assigned to a pool.</p>
 <p><code>CLAIMING_SELF_POOLED_REWARDS</code>: We have submitted a transaction to sweep our
 self-pooled funds.</p>
-</section>
-      <h4><a class="xref" href="chia.dotnet.Side.html">Side</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.Status.html">Status</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.TradeStatus.html">TradeStatus</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.TransactionType.html">TransactionType</a></h4>
-      <section></section>
-      <h4><a class="xref" href="chia.dotnet.WalletType.html">WalletType</a></h4>
-      <section><p>Wallet Types</p>
-</section>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.Side.html">Side</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.Status.html">Status</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.TradeStatus.html">TradeStatus</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.TransactionType.html">TransactionType</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.WalletType.html">WalletType</a></dt>
+      <dd><p>Wallet Types</p>
+</dd>
+    </dl>
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>

@@ -1,1010 +1,1051 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BlockRecord
-   | chia-dotnet </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BlockRecord
-   | chia-dotnet ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
-    <link rel="shortcut icon" href="../images/favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    <meta property="docfx:rel" content="../">
-    
+      <title>Class BlockRecord
+ | chia-dotnet </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class BlockRecord
+ | chia-dotnet ">
+      
+      <meta name="description" content="This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.">
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../images/favicon-32x32.png" alt="chia-dotnet">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/favicon-32x32.png" alt="chia-dotnet">
+            chia-dotnet
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
-        
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="chia.dotnet.BlockRecord">
-  
-  
-  <h1 id="chia_dotnet_BlockRecord" data-uid="chia.dotnet.BlockRecord" class="text-break">Class BlockRecord
+
+        <article data-uid="chia.dotnet.BlockRecord">
+
+
+
+  <h1 id="chia_dotnet_BlockRecord" data-uid="chia.dotnet.BlockRecord" class="text-break">
+    Class BlockRecord
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h1>
-  <div class="markdown level0 summary"><p>This class is not included or hashed into the blockchain, but it is kept in memory as a more
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="chia.html">chia</a>.<a class="xref" href="chia.dotnet.html">dotnet</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>chia-dotnet.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>This class is not included or hashed into the blockchain, but it is kept in memory as a more
 efficient way to maintain data about the blockchain. This allows us to validate future blocks,
 difficulty adjustments, etc, without saving the whole header block in memory.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">BlockRecord</span></div>
-  </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="chia.dotnet.BlockRecord.html">BlockRecord</a>&gt;</div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
-    </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="chia.dotnet.html">chia.dotnet</a></h6>
-  <h6><strong>Assembly</strong>: chia-dotnet.dll</h6>
-  <h5 id="chia_dotnet_BlockRecord_syntax">Syntax</h5>
+  <div class="markdown conceptual"></div>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class BlockRecord : IEquatable&lt;BlockRecord&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public record BlockRecord : IEquatable&lt;BlockRecord&gt;</code></pre>
   </div>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_ChallengeBlockInfoHash.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.ChallengeBlockInfoHash%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L19">View Source</a>
-  </span>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">BlockRecord</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="chia.dotnet.BlockRecord.html">BlockRecord</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="chia_dotnet_BlockRecord_ChallengeBlockInfoHash_" data-uid="chia.dotnet.BlockRecord.ChallengeBlockInfoHash*"></a>
-  <h4 id="chia_dotnet_BlockRecord_ChallengeBlockInfoHash" data-uid="chia.dotnet.BlockRecord.ChallengeBlockInfoHash">ChallengeBlockInfoHash</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_ChallengeBlockInfoHash" data-uid="chia.dotnet.BlockRecord.ChallengeBlockInfoHash">
+  ChallengeBlockInfoHash
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Hash of challenge chain data, used to validate end of slots in the future</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ChallengeBlockInfoHash { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string ChallengeBlockInfoHash { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_ChallengeVdfOutput.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.ChallengeVdfOutput%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L23">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_ChallengeVdfOutput_" data-uid="chia.dotnet.BlockRecord.ChallengeVdfOutput*"></a>
-  <h4 id="chia_dotnet_BlockRecord_ChallengeVdfOutput" data-uid="chia.dotnet.BlockRecord.ChallengeVdfOutput">ChallengeVdfOutput</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_ChallengeVdfOutput" data-uid="chia.dotnet.BlockRecord.ChallengeVdfOutput">
+  ChallengeVdfOutput
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is the intermediary VDF output at ip_iters in challenge chain</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ClassgroupElement ChallengeVdfOutput { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ClassgroupElement ChallengeVdfOutput { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="chia.dotnet.ClassgroupElement.html">ClassgroupElement</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_DateTimestamp.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.DateTimestamp%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L99">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="chia.dotnet.ClassgroupElement.html">ClassgroupElement</a></dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_DateTimestamp_" data-uid="chia.dotnet.BlockRecord.DateTimestamp*"></a>
-  <h4 id="chia_dotnet_BlockRecord_DateTimestamp" data-uid="chia.dotnet.BlockRecord.DateTimestamp">DateTimestamp</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_DateTimestamp" data-uid="chia.dotnet.BlockRecord.DateTimestamp">
+  DateTimestamp
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonIgnore]
 public DateTime? DateTimestamp { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_Deficit.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.Deficit%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L27">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>?</dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_Deficit_" data-uid="chia.dotnet.BlockRecord.Deficit*"></a>
-  <h4 id="chia_dotnet_BlockRecord_Deficit" data-uid="chia.dotnet.BlockRecord.Deficit">Deficit</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_Deficit" data-uid="chia.dotnet.BlockRecord.Deficit">
+  Deficit
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>A deficit of 16 is an overflow block after an infusion. Deficit of 15 is a challenge block</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public byte Deficit { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public byte Deficit { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">Byte</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_FarmerPuzzleHash.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.FarmerPuzzleHash%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L28">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_FarmerPuzzleHash_" data-uid="chia.dotnet.BlockRecord.FarmerPuzzleHash*"></a>
-  <h4 id="chia_dotnet_BlockRecord_FarmerPuzzleHash" data-uid="chia.dotnet.BlockRecord.FarmerPuzzleHash">FarmerPuzzleHash</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_FarmerPuzzleHash" data-uid="chia.dotnet.BlockRecord.FarmerPuzzleHash">
+  FarmerPuzzleHash
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string FarmerPuzzleHash { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string FarmerPuzzleHash { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_Fees.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.Fees%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L32">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_Fees_" data-uid="chia.dotnet.BlockRecord.Fees*"></a>
-  <h4 id="chia_dotnet_BlockRecord_Fees" data-uid="chia.dotnet.BlockRecord.Fees">Fees</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_Fees" data-uid="chia.dotnet.BlockRecord.Fees">
+  Fees
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Transaction block (present iff is_transaction_block)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ulong? Fees { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ulong? Fees { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">UInt64</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_FinishedChallengeSlotHashes.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.FinishedChallengeSlotHashes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L36">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a>?</dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_FinishedChallengeSlotHashes_" data-uid="chia.dotnet.BlockRecord.FinishedChallengeSlotHashes*"></a>
-  <h4 id="chia_dotnet_BlockRecord_FinishedChallengeSlotHashes" data-uid="chia.dotnet.BlockRecord.FinishedChallengeSlotHashes">FinishedChallengeSlotHashes</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_FinishedChallengeSlotHashes" data-uid="chia.dotnet.BlockRecord.FinishedChallengeSlotHashes">
+  FinishedChallengeSlotHashes
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Slot (present iff this is the first SB in sub slot)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; FinishedChallengeSlotHashes { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt;? FinishedChallengeSlotHashes { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_FinishedInfusedChallengeSlotHashes.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.FinishedInfusedChallengeSlotHashes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L40">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_FinishedInfusedChallengeSlotHashes_" data-uid="chia.dotnet.BlockRecord.FinishedInfusedChallengeSlotHashes*"></a>
-  <h4 id="chia_dotnet_BlockRecord_FinishedInfusedChallengeSlotHashes" data-uid="chia.dotnet.BlockRecord.FinishedInfusedChallengeSlotHashes">FinishedInfusedChallengeSlotHashes</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_FinishedInfusedChallengeSlotHashes" data-uid="chia.dotnet.BlockRecord.FinishedInfusedChallengeSlotHashes">
+  FinishedInfusedChallengeSlotHashes
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Slot (present iff this is the first SB in sub slot)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; FinishedInfusedChallengeSlotHashes { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt;? FinishedInfusedChallengeSlotHashes { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_FinishedRewardSlotHashes.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.FinishedRewardSlotHashes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L44">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_FinishedRewardSlotHashes_" data-uid="chia.dotnet.BlockRecord.FinishedRewardSlotHashes*"></a>
-  <h4 id="chia_dotnet_BlockRecord_FinishedRewardSlotHashes" data-uid="chia.dotnet.BlockRecord.FinishedRewardSlotHashes">FinishedRewardSlotHashes</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_FinishedRewardSlotHashes" data-uid="chia.dotnet.BlockRecord.FinishedRewardSlotHashes">
+  FinishedRewardSlotHashes
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Slot (present iff this is the first SB in sub slot)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; FinishedRewardSlotHashes { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt;? FinishedRewardSlotHashes { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_HeaderHash.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.HeaderHash%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L45">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_HeaderHash_" data-uid="chia.dotnet.BlockRecord.HeaderHash*"></a>
-  <h4 id="chia_dotnet_BlockRecord_HeaderHash" data-uid="chia.dotnet.BlockRecord.HeaderHash">HeaderHash</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_HeaderHash" data-uid="chia.dotnet.BlockRecord.HeaderHash">
+  HeaderHash
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string HeaderHash { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string HeaderHash { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_Height.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.Height%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L46">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_Height_" data-uid="chia.dotnet.BlockRecord.Height*"></a>
-  <h4 id="chia_dotnet_BlockRecord_Height" data-uid="chia.dotnet.BlockRecord.Height">Height</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_Height" data-uid="chia.dotnet.BlockRecord.Height">
+  Height
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public uint Height { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public uint Height { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">UInt32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_InfusedChallengeVdfOutput.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.InfusedChallengeVdfOutput%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L50">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_InfusedChallengeVdfOutput_" data-uid="chia.dotnet.BlockRecord.InfusedChallengeVdfOutput*"></a>
-  <h4 id="chia_dotnet_BlockRecord_InfusedChallengeVdfOutput" data-uid="chia.dotnet.BlockRecord.InfusedChallengeVdfOutput">InfusedChallengeVdfOutput</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_InfusedChallengeVdfOutput" data-uid="chia.dotnet.BlockRecord.InfusedChallengeVdfOutput">
+  InfusedChallengeVdfOutput
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is the intermediary VDF output at ip_iters in infused cc, if deficit less than or equal to 3</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ClassgroupElement InfusedChallengeVdfOutput { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ClassgroupElement? InfusedChallengeVdfOutput { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="chia.dotnet.ClassgroupElement.html">ClassgroupElement</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_IsTransactionBlock.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.IsTransactionBlock%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L101">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="chia.dotnet.ClassgroupElement.html">ClassgroupElement</a></dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_IsTransactionBlock_" data-uid="chia.dotnet.BlockRecord.IsTransactionBlock*"></a>
-  <h4 id="chia_dotnet_BlockRecord_IsTransactionBlock" data-uid="chia.dotnet.BlockRecord.IsTransactionBlock">IsTransactionBlock</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_IsTransactionBlock" data-uid="chia.dotnet.BlockRecord.IsTransactionBlock">
+  IsTransactionBlock
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonIgnore]
 public bool IsTransactionBlock { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_Overflow.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.Overflow%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L51">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_Overflow_" data-uid="chia.dotnet.BlockRecord.Overflow*"></a>
-  <h4 id="chia_dotnet_BlockRecord_Overflow" data-uid="chia.dotnet.BlockRecord.Overflow">Overflow</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_Overflow" data-uid="chia.dotnet.BlockRecord.Overflow">
+  Overflow
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Overflow { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool Overflow { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_PoolPuzzleHash.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.PoolPuzzleHash%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L55">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_PoolPuzzleHash_" data-uid="chia.dotnet.BlockRecord.PoolPuzzleHash*"></a>
-  <h4 id="chia_dotnet_BlockRecord_PoolPuzzleHash" data-uid="chia.dotnet.BlockRecord.PoolPuzzleHash">PoolPuzzleHash</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_PoolPuzzleHash" data-uid="chia.dotnet.BlockRecord.PoolPuzzleHash">
+  PoolPuzzleHash
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Need to keep track of these because Coins are created in a future block</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string PoolPuzzleHash { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string PoolPuzzleHash { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_PrevHash.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.PrevHash%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L60">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_PrevHash_" data-uid="chia.dotnet.BlockRecord.PrevHash*"></a>
-  <h4 id="chia_dotnet_BlockRecord_PrevHash" data-uid="chia.dotnet.BlockRecord.PrevHash">PrevHash</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_PrevHash" data-uid="chia.dotnet.BlockRecord.PrevHash">
+  PrevHash
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Header hash of the previous block
 Transaction block (present iff is_transaction_block)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string PrevHash { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string PrevHash { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_PrevTransactionBlockHash.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.PrevTransactionBlockHash%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L64">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_PrevTransactionBlockHash_" data-uid="chia.dotnet.BlockRecord.PrevTransactionBlockHash*"></a>
-  <h4 id="chia_dotnet_BlockRecord_PrevTransactionBlockHash" data-uid="chia.dotnet.BlockRecord.PrevTransactionBlockHash">PrevTransactionBlockHash</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_PrevTransactionBlockHash" data-uid="chia.dotnet.BlockRecord.PrevTransactionBlockHash">
+  PrevTransactionBlockHash
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Header hash of the previous transaction block</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string PrevTransactionBlockHash { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string? PrevTransactionBlockHash { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_PrevTransactionBlockHeight.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.PrevTransactionBlockHeight%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L65">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_PrevTransactionBlockHeight_" data-uid="chia.dotnet.BlockRecord.PrevTransactionBlockHeight*"></a>
-  <h4 id="chia_dotnet_BlockRecord_PrevTransactionBlockHeight" data-uid="chia.dotnet.BlockRecord.PrevTransactionBlockHeight">PrevTransactionBlockHeight</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_PrevTransactionBlockHeight" data-uid="chia.dotnet.BlockRecord.PrevTransactionBlockHeight">
+  PrevTransactionBlockHeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public uint PrevTransactionBlockHeight { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public uint PrevTransactionBlockHeight { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">UInt32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_RequiredIters.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.RequiredIters%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L69">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_RequiredIters_" data-uid="chia.dotnet.BlockRecord.RequiredIters*"></a>
-  <h4 id="chia_dotnet_BlockRecord_RequiredIters" data-uid="chia.dotnet.BlockRecord.RequiredIters">RequiredIters</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_RequiredIters" data-uid="chia.dotnet.BlockRecord.RequiredIters">
+  RequiredIters
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The number of iters required for this proof of space</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ulong RequiredIters { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ulong RequiredIters { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">UInt64</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_RewardClaimsIncorporated.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.RewardClaimsIncorporated%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L73">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_RewardClaimsIncorporated_" data-uid="chia.dotnet.BlockRecord.RewardClaimsIncorporated*"></a>
-  <h4 id="chia_dotnet_BlockRecord_RewardClaimsIncorporated" data-uid="chia.dotnet.BlockRecord.RewardClaimsIncorporated">RewardClaimsIncorporated</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_RewardClaimsIncorporated" data-uid="chia.dotnet.BlockRecord.RewardClaimsIncorporated">
+  RewardClaimsIncorporated
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Transaction block (present iff is_transaction_block)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;Coin&gt; RewardClaimsIncorporated { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;Coin&gt;? RewardClaimsIncorporated { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.Coin.html">Coin</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_RewardInfusionNewChallenge.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.RewardInfusionNewChallenge%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L77">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.Coin.html">Coin</a>&gt;</dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_RewardInfusionNewChallenge_" data-uid="chia.dotnet.BlockRecord.RewardInfusionNewChallenge*"></a>
-  <h4 id="chia_dotnet_BlockRecord_RewardInfusionNewChallenge" data-uid="chia.dotnet.BlockRecord.RewardInfusionNewChallenge">RewardInfusionNewChallenge</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_RewardInfusionNewChallenge" data-uid="chia.dotnet.BlockRecord.RewardInfusionNewChallenge">
+  RewardInfusionNewChallenge
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The reward chain infusion output, input to next VDF</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string RewardInfusionNewChallenge { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string RewardInfusionNewChallenge { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_SignagePointIndex.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.SignagePointIndex%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L78">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_SignagePointIndex_" data-uid="chia.dotnet.BlockRecord.SignagePointIndex*"></a>
-  <h4 id="chia_dotnet_BlockRecord_SignagePointIndex" data-uid="chia.dotnet.BlockRecord.SignagePointIndex">SignagePointIndex</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_SignagePointIndex" data-uid="chia.dotnet.BlockRecord.SignagePointIndex">
+  SignagePointIndex
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public byte SignagePointIndex { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public byte SignagePointIndex { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">Byte</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_SubEpochSummaryIncluded.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.SubEpochSummaryIncluded%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L82">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_SubEpochSummaryIncluded_" data-uid="chia.dotnet.BlockRecord.SubEpochSummaryIncluded*"></a>
-  <h4 id="chia_dotnet_BlockRecord_SubEpochSummaryIncluded" data-uid="chia.dotnet.BlockRecord.SubEpochSummaryIncluded">SubEpochSummaryIncluded</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_SubEpochSummaryIncluded" data-uid="chia.dotnet.BlockRecord.SubEpochSummaryIncluded">
+  SubEpochSummaryIncluded
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Sub-epoch (present iff this is the first SB after sub-epoch)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SubEpochSummary SubEpochSummaryIncluded { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public SubEpochSummary? SubEpochSummaryIncluded { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="chia.dotnet.SubEpochSummary.html">SubEpochSummary</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_SubSlotIters.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.SubSlotIters%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L86">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="chia.dotnet.SubEpochSummary.html">SubEpochSummary</a></dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_SubSlotIters_" data-uid="chia.dotnet.BlockRecord.SubSlotIters*"></a>
-  <h4 id="chia_dotnet_BlockRecord_SubSlotIters" data-uid="chia.dotnet.BlockRecord.SubSlotIters">SubSlotIters</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_SubSlotIters" data-uid="chia.dotnet.BlockRecord.SubSlotIters">
+  SubSlotIters
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Current network sub_slot_iters parameter</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ulong SubSlotIters { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ulong SubSlotIters { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">UInt64</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_Timestamp.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.Timestamp%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L90">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_Timestamp_" data-uid="chia.dotnet.BlockRecord.Timestamp*"></a>
-  <h4 id="chia_dotnet_BlockRecord_Timestamp" data-uid="chia.dotnet.BlockRecord.Timestamp">Timestamp</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_Timestamp" data-uid="chia.dotnet.BlockRecord.Timestamp">
+  Timestamp
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Transaction block (present iff is_transaction_block)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ulong? Timestamp { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ulong? Timestamp { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">UInt64</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_TotalIters.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.TotalIters%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L94">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a>?</dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_TotalIters_" data-uid="chia.dotnet.BlockRecord.TotalIters*"></a>
-  <h4 id="chia_dotnet_BlockRecord_TotalIters" data-uid="chia.dotnet.BlockRecord.TotalIters">TotalIters</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_TotalIters" data-uid="chia.dotnet.BlockRecord.TotalIters">
+  TotalIters
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L94"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Total number of VDF iterations since genesis, including this block</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BigInteger TotalIters { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public BigInteger TotalIters { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord_Weight.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord.Weight%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L98">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a></dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_BlockRecord_Weight_" data-uid="chia.dotnet.BlockRecord.Weight*"></a>
-  <h4 id="chia_dotnet_BlockRecord_Weight" data-uid="chia.dotnet.BlockRecord.Weight">Weight</h4>
+
+  <h3 id="chia_dotnet_BlockRecord_Weight" data-uid="chia.dotnet.BlockRecord.Weight">
+  Weight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Total cumulative difficulty of all ancestor blocks since genesis</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BigInteger Weight { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public BigInteger Weight { get; init; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">System.IEquatable&lt;T&gt;</a>
-  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a></dt>
+    <dd>This class is not included or hashed into the blockchain, but it is kept in memory as a more efficient way to maintain data about the blockchain. This allows us to validate future blocks, difficulty adjustments, etc, without saving the whole header block in memory.</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_BlockRecord.md&amp;value=---%0Auid%3A%20chia.dotnet.BlockRecord%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L14" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/BlockRecord.cs/#L14" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>
