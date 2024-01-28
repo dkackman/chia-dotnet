@@ -262,6 +262,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.Converters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.Converters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/chia.dotnet.CrawlerProxy.yml",
       "output": {
         ".html": {

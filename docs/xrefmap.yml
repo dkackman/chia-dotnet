@@ -1929,6 +1929,94 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.ConnectionInfo.Type
   nameWithType: ConnectionInfo.Type
+- uid: chia.dotnet.Converters
+  name: Converters
+  href: api/chia.dotnet.Converters.html
+  commentId: T:chia.dotnet.Converters
+  fullName: chia.dotnet.Converters
+  nameWithType: Converters
+- uid: chia.dotnet.Converters.ToDateTime(System.Double)
+  name: ToDateTime(double)
+  href: api/chia.dotnet.Converters.html#chia_dotnet_Converters_ToDateTime_System_Double_
+  commentId: M:chia.dotnet.Converters.ToDateTime(System.Double)
+  name.vb: ToDateTime(Double)
+  fullName: chia.dotnet.Converters.ToDateTime(double)
+  fullName.vb: chia.dotnet.Converters.ToDateTime(Double)
+  nameWithType: Converters.ToDateTime(double)
+  nameWithType.vb: Converters.ToDateTime(Double)
+- uid: chia.dotnet.Converters.ToDateTime(System.Nullable{System.UInt64})
+  name: ToDateTime(ulong?)
+  href: api/chia.dotnet.Converters.html#chia_dotnet_Converters_ToDateTime_System_Nullable_System_UInt64__
+  commentId: M:chia.dotnet.Converters.ToDateTime(System.Nullable{System.UInt64})
+  name.vb: ToDateTime(ULong?)
+  fullName: chia.dotnet.Converters.ToDateTime(ulong?)
+  fullName.vb: chia.dotnet.Converters.ToDateTime(ULong?)
+  nameWithType: Converters.ToDateTime(ulong?)
+  nameWithType.vb: Converters.ToDateTime(ULong?)
+- uid: chia.dotnet.Converters.ToDateTime(System.UInt64)
+  name: ToDateTime(ulong)
+  href: api/chia.dotnet.Converters.html#chia_dotnet_Converters_ToDateTime_System_UInt64_
+  commentId: M:chia.dotnet.Converters.ToDateTime(System.UInt64)
+  name.vb: ToDateTime(ULong)
+  fullName: chia.dotnet.Converters.ToDateTime(ulong)
+  fullName.vb: chia.dotnet.Converters.ToDateTime(ULong)
+  nameWithType: Converters.ToDateTime(ulong)
+  nameWithType.vb: Converters.ToDateTime(ULong)
+- uid: chia.dotnet.Converters.ToDateTime*
+  name: ToDateTime
+  href: api/chia.dotnet.Converters.html#chia_dotnet_Converters_ToDateTime_
+  commentId: Overload:chia.dotnet.Converters.ToDateTime
+  isSpec: "True"
+  fullName: chia.dotnet.Converters.ToDateTime
+  nameWithType: Converters.ToDateTime
+- uid: chia.dotnet.Converters.ToJson(System.Object)
+  name: ToJson(object)
+  href: api/chia.dotnet.Converters.html#chia_dotnet_Converters_ToJson_System_Object_
+  commentId: M:chia.dotnet.Converters.ToJson(System.Object)
+  name.vb: ToJson(Object)
+  fullName: chia.dotnet.Converters.ToJson(object)
+  fullName.vb: chia.dotnet.Converters.ToJson(Object)
+  nameWithType: Converters.ToJson(object)
+  nameWithType.vb: Converters.ToJson(Object)
+- uid: chia.dotnet.Converters.ToJson*
+  name: ToJson
+  href: api/chia.dotnet.Converters.html#chia_dotnet_Converters_ToJson_
+  commentId: Overload:chia.dotnet.Converters.ToJson
+  isSpec: "True"
+  fullName: chia.dotnet.Converters.ToJson
+  nameWithType: Converters.ToJson
+- uid: chia.dotnet.Converters.ToObject*
+  name: ToObject
+  href: api/chia.dotnet.Converters.html#chia_dotnet_Converters_ToObject_
+  commentId: Overload:chia.dotnet.Converters.ToObject
+  isSpec: "True"
+  fullName: chia.dotnet.Converters.ToObject
+  nameWithType: Converters.ToObject
+- uid: chia.dotnet.Converters.ToObject``1(System.String)
+  name: ToObject<T>(string)
+  href: api/chia.dotnet.Converters.html#chia_dotnet_Converters_ToObject__1_System_String_
+  commentId: M:chia.dotnet.Converters.ToObject``1(System.String)
+  name.vb: ToObject(Of T)(String)
+  fullName: chia.dotnet.Converters.ToObject<T>(string)
+  fullName.vb: chia.dotnet.Converters.ToObject(Of T)(String)
+  nameWithType: Converters.ToObject<T>(string)
+  nameWithType.vb: Converters.ToObject(Of T)(String)
+- uid: chia.dotnet.Converters.ToTimestamp(System.DateTime)
+  name: ToTimestamp(DateTime)
+  href: api/chia.dotnet.Converters.html#chia_dotnet_Converters_ToTimestamp_System_DateTime_
+  commentId: M:chia.dotnet.Converters.ToTimestamp(System.DateTime)
+  name.vb: ToTimestamp(Date)
+  fullName: chia.dotnet.Converters.ToTimestamp(System.DateTime)
+  fullName.vb: chia.dotnet.Converters.ToTimestamp(Date)
+  nameWithType: Converters.ToTimestamp(DateTime)
+  nameWithType.vb: Converters.ToTimestamp(Date)
+- uid: chia.dotnet.Converters.ToTimestamp*
+  name: ToTimestamp
+  href: api/chia.dotnet.Converters.html#chia_dotnet_Converters_ToTimestamp_
+  commentId: Overload:chia.dotnet.Converters.ToTimestamp
+  isSpec: "True"
+  fullName: chia.dotnet.Converters.ToTimestamp
+  nameWithType: Converters.ToTimestamp
 - uid: chia.dotnet.CrawlerProxy
   name: CrawlerProxy
   href: api/chia.dotnet.CrawlerProxy.html
@@ -5561,19 +5649,6 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FullNodeProxy.GetAdditionsAndRemovals
   nameWithType: FullNodeProxy.GetAdditionsAndRemovals
-- uid: chia.dotnet.FullNodeProxy.GetAllMemmpoolTxIds(System.Threading.CancellationToken)
-  name: GetAllMemmpoolTxIds(CancellationToken)
-  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetAllMemmpoolTxIds_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.FullNodeProxy.GetAllMemmpoolTxIds(System.Threading.CancellationToken)
-  fullName: chia.dotnet.FullNodeProxy.GetAllMemmpoolTxIds(System.Threading.CancellationToken)
-  nameWithType: FullNodeProxy.GetAllMemmpoolTxIds(CancellationToken)
-- uid: chia.dotnet.FullNodeProxy.GetAllMemmpoolTxIds*
-  name: GetAllMemmpoolTxIds
-  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetAllMemmpoolTxIds_
-  commentId: Overload:chia.dotnet.FullNodeProxy.GetAllMemmpoolTxIds
-  isSpec: "True"
-  fullName: chia.dotnet.FullNodeProxy.GetAllMemmpoolTxIds
-  nameWithType: FullNodeProxy.GetAllMemmpoolTxIds
 - uid: chia.dotnet.FullNodeProxy.GetAllMempoolItems(System.Threading.CancellationToken)
   name: GetAllMempoolItems(CancellationToken)
   href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetAllMempoolItems_System_Threading_CancellationToken_
@@ -5587,6 +5662,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FullNodeProxy.GetAllMempoolItems
   nameWithType: FullNodeProxy.GetAllMempoolItems
+- uid: chia.dotnet.FullNodeProxy.GetAllMempoolTxIds(System.Threading.CancellationToken)
+  name: GetAllMempoolTxIds(CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetAllMempoolTxIds_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetAllMempoolTxIds(System.Threading.CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetAllMempoolTxIds(System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetAllMempoolTxIds(CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetAllMempoolTxIds*
+  name: GetAllMempoolTxIds
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetAllMempoolTxIds_
+  commentId: Overload:chia.dotnet.FullNodeProxy.GetAllMempoolTxIds
+  isSpec: "True"
+  fullName: chia.dotnet.FullNodeProxy.GetAllMempoolTxIds
+  nameWithType: FullNodeProxy.GetAllMempoolTxIds
 - uid: chia.dotnet.FullNodeProxy.GetAverageBlockTime(System.Threading.CancellationToken)
   name: GetAverageBlockTime(CancellationToken)
   href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetAverageBlockTime_System_Threading_CancellationToken_
@@ -5859,38 +5947,38 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FullNodeProxy.GetFeeEstimate
   nameWithType: FullNodeProxy.GetFeeEstimate
-- uid: chia.dotnet.FullNodeProxy.GetMemmpooItemByTxId(System.String,System.Boolean,System.Threading.CancellationToken)
-  name: GetMemmpooItemByTxId(string, bool, CancellationToken)
-  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetMemmpooItemByTxId_System_String_System_Boolean_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.FullNodeProxy.GetMemmpooItemByTxId(System.String,System.Boolean,System.Threading.CancellationToken)
-  name.vb: GetMemmpooItemByTxId(String, Boolean, CancellationToken)
-  fullName: chia.dotnet.FullNodeProxy.GetMemmpooItemByTxId(string, bool, System.Threading.CancellationToken)
-  fullName.vb: chia.dotnet.FullNodeProxy.GetMemmpooItemByTxId(String, Boolean, System.Threading.CancellationToken)
-  nameWithType: FullNodeProxy.GetMemmpooItemByTxId(string, bool, CancellationToken)
-  nameWithType.vb: FullNodeProxy.GetMemmpooItemByTxId(String, Boolean, CancellationToken)
-- uid: chia.dotnet.FullNodeProxy.GetMemmpooItemByTxId*
-  name: GetMemmpooItemByTxId
-  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetMemmpooItemByTxId_
-  commentId: Overload:chia.dotnet.FullNodeProxy.GetMemmpooItemByTxId
+- uid: chia.dotnet.FullNodeProxy.GetMempoolItemByTxId(System.String,System.Boolean,System.Threading.CancellationToken)
+  name: GetMempoolItemByTxId(string, bool, CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetMempoolItemByTxId_System_String_System_Boolean_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetMempoolItemByTxId(System.String,System.Boolean,System.Threading.CancellationToken)
+  name.vb: GetMempoolItemByTxId(String, Boolean, CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetMempoolItemByTxId(string, bool, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.FullNodeProxy.GetMempoolItemByTxId(String, Boolean, System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetMempoolItemByTxId(string, bool, CancellationToken)
+  nameWithType.vb: FullNodeProxy.GetMempoolItemByTxId(String, Boolean, CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetMempoolItemByTxId*
+  name: GetMempoolItemByTxId
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetMempoolItemByTxId_
+  commentId: Overload:chia.dotnet.FullNodeProxy.GetMempoolItemByTxId
   isSpec: "True"
-  fullName: chia.dotnet.FullNodeProxy.GetMemmpooItemByTxId
-  nameWithType: FullNodeProxy.GetMemmpooItemByTxId
-- uid: chia.dotnet.FullNodeProxy.GetMemmpoolItemsByCoinName(System.String,System.Threading.CancellationToken)
-  name: GetMemmpoolItemsByCoinName(string, CancellationToken)
-  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetMemmpoolItemsByCoinName_System_String_System_Threading_CancellationToken_
-  commentId: M:chia.dotnet.FullNodeProxy.GetMemmpoolItemsByCoinName(System.String,System.Threading.CancellationToken)
-  name.vb: GetMemmpoolItemsByCoinName(String, CancellationToken)
-  fullName: chia.dotnet.FullNodeProxy.GetMemmpoolItemsByCoinName(string, System.Threading.CancellationToken)
-  fullName.vb: chia.dotnet.FullNodeProxy.GetMemmpoolItemsByCoinName(String, System.Threading.CancellationToken)
-  nameWithType: FullNodeProxy.GetMemmpoolItemsByCoinName(string, CancellationToken)
-  nameWithType.vb: FullNodeProxy.GetMemmpoolItemsByCoinName(String, CancellationToken)
-- uid: chia.dotnet.FullNodeProxy.GetMemmpoolItemsByCoinName*
-  name: GetMemmpoolItemsByCoinName
-  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetMemmpoolItemsByCoinName_
-  commentId: Overload:chia.dotnet.FullNodeProxy.GetMemmpoolItemsByCoinName
+  fullName: chia.dotnet.FullNodeProxy.GetMempoolItemByTxId
+  nameWithType: FullNodeProxy.GetMempoolItemByTxId
+- uid: chia.dotnet.FullNodeProxy.GetMempoolItemsByCoinName(System.String,System.Threading.CancellationToken)
+  name: GetMempoolItemsByCoinName(string, CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetMempoolItemsByCoinName_System_String_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetMempoolItemsByCoinName(System.String,System.Threading.CancellationToken)
+  name.vb: GetMempoolItemsByCoinName(String, CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetMempoolItemsByCoinName(string, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.FullNodeProxy.GetMempoolItemsByCoinName(String, System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetMempoolItemsByCoinName(string, CancellationToken)
+  nameWithType.vb: FullNodeProxy.GetMempoolItemsByCoinName(String, CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetMempoolItemsByCoinName*
+  name: GetMempoolItemsByCoinName
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetMempoolItemsByCoinName_
+  commentId: Overload:chia.dotnet.FullNodeProxy.GetMempoolItemsByCoinName
   isSpec: "True"
-  fullName: chia.dotnet.FullNodeProxy.GetMemmpoolItemsByCoinName
-  nameWithType: FullNodeProxy.GetMemmpoolItemsByCoinName
+  fullName: chia.dotnet.FullNodeProxy.GetMempoolItemsByCoinName
+  nameWithType: FullNodeProxy.GetMempoolItemsByCoinName
 - uid: chia.dotnet.FullNodeProxy.GetNetworkInfo(System.Threading.CancellationToken)
   name: GetNetworkInfo(CancellationToken)
   href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetNetworkInfo_System_Threading_CancellationToken_

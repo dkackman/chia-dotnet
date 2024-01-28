@@ -8,7 +8,7 @@
       <meta name="title" content="Class WebSocketRpcClient
  | chia-dotnet ">
       
-      <meta name="description" content="Class that handles core communication with the rpc endpoint using a websocket (wss). Only the daemon endpoint supports websockets, but it can proxy communication to other services.">
+      <meta name="description" content="Class that handles core communication with the rpc endpoint using a WebSocket (wss). Only the daemon endpoint supports WebSockets, but it can proxy communication to other services.">
       <link rel="icon" href="../images/favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -100,8 +100,8 @@
   <dl><dt>Assembly</dt><dd>chia-dotnet.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Class that handles core communication with the rpc endpoint using a websocket (wss).
-Only the daemon endpoint supports websockets, but it can proxy communication to other services.
+  <div class="markdown summary"><p>Class that handles core communication with the rpc endpoint using a WebSocket (wss).
+Only the daemon endpoint supports WebSockets, but it can proxy communication to other services.
 <a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Destination">Destination</a></p>
 </div>
   <div class="markdown conceptual"></div>
@@ -156,6 +156,13 @@ Only the daemon endpoint supports websockets, but it can proxy communication to 
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="chia.dotnet.Converters.html#chia_dotnet_Converters_ToJson_System_Object_">Converters.ToJson(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -183,7 +190,7 @@ Only the daemon endpoint supports websockets, but it can proxy communication to 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>endpoint</code> <a class="xref" href="chia.dotnet.EndpointInfo.html">EndpointInfo</a></dt>
-    <dd><p>Details of the websocket endpoint</p>
+    <dd><p>Details of the WebSocket endpoint</p>
 </dd>
   </dl>
 
@@ -224,7 +231,7 @@ Only the daemon endpoint supports websockets, but it can proxy communication to 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="chia.dotnet.EndpointInfo.html">EndpointInfo</a></dt>
-    <dd>Class that handles core communication with the rpc endpoint using a websocket (wss). Only the daemon endpoint supports websockets, but it can proxy communication to other services.</dd>
+    <dd>Class that handles core communication with the rpc endpoint using a WebSocket (wss). Only the daemon endpoint supports WebSockets, but it can proxy communication to other services.</dd>
   </dl>
 
 
@@ -245,7 +252,7 @@ Only the daemon endpoint supports websockets, but it can proxy communication to 
   <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WebSocketRpcClient.cs/#L79"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Cancels the receive loop and closes the websocket</p>
+  <div class="markdown level1 summary"><p>Cancels the receive loop and closes the WebSocket</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -284,7 +291,7 @@ Only the daemon endpoint supports websockets, but it can proxy communication to 
   <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WebSocketRpcClient.cs/#L50"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Opens the websocket and starts the receive loop</p>
+  <div class="markdown level1 summary"><p>Opens the WebSocket and starts the receive loop</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -416,7 +423,7 @@ Only the daemon endpoint supports websockets, but it can proxy communication to 
   <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WebSocketRpcClient.cs/#L70"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called after <a class="xref" href="chia.dotnet.WebSocketRpcClient.html#chia_dotnet_WebSocketRpcClient_Connect_System_Threading_CancellationToken_">Connect(CancellationToken)</a> completes successfully. Lets derived classess know that they can do
+  <div class="markdown level1 summary"><p>Called after <a class="xref" href="chia.dotnet.WebSocketRpcClient.html#chia_dotnet_WebSocketRpcClient_Connect_System_Threading_CancellationToken_">Connect(CancellationToken)</a> completes successfully. Lets derived classes know that they can do
 post connection initialization</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -444,7 +451,7 @@ post connection initialization</p>
   <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WebSocketRpcClient.cs/#L94"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Posts a <a class="xref" href="chia.dotnet.Message.html">Message</a> to the websocket but does not wait for a response</p>
+  <div class="markdown level1 summary"><p>Posts a <a class="xref" href="chia.dotnet.Message.html">Message</a> to the WebSocket but does not wait for a response</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -561,7 +568,7 @@ Pooling state_changed messages come through this event</p>
   <h4 class="section">Event Type</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventhandler-1">EventHandler</a>&lt;<a class="xref" href="chia.dotnet.Message.html">Message</a>&gt;</dt>
-    <dd>Class that handles core communication with the rpc endpoint using a websocket (wss). Only the daemon endpoint supports websockets, but it can proxy communication to other services.</dd>
+    <dd>Class that handles core communication with the rpc endpoint using a WebSocket (wss). Only the daemon endpoint supports WebSockets, but it can proxy communication to other services.</dd>
   </dl>
 
 

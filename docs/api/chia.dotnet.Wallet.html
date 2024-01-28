@@ -159,11 +159,18 @@
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="chia.dotnet.Converters.html#chia_dotnet_Converters_ToJson_System_Object_">Converters.ToJson(object)</a>
+  </div>
+  </dd></dl>
 
 
 
   <h2 id="chia_dotnet_Wallet_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>When not dervied from this represents a <a class="xref" href="chia.dotnet.WalletType.html#chia_dotnet_WalletType_STANDARD_WALLET">STANDARD_WALLET</a></p>
+  <div class="markdown level0 remarks"><p>When not derived from this represents a <a class="xref" href="chia.dotnet.WalletType.html#chia_dotnet_WalletType_STANDARD_WALLET">STANDARD_WALLET</a></p>
 </div>
 
 
@@ -204,7 +211,7 @@
 
 
   <h4 class="section" id="chia_dotnet_Wallet__ctor_System_UInt32_chia_dotnet_WalletProxy__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>When not dervied from this represents a <a class="xref" href="chia.dotnet.WalletType.html#chia_dotnet_WalletType_STANDARD_WALLET">STANDARD_WALLET</a></p>
+  <div class="markdown level1 remarks"><p>When not derived from this represents a <a class="xref" href="chia.dotnet.WalletType.html#chia_dotnet_WalletType_STANDARD_WALLET">STANDARD_WALLET</a></p>
 </div>
 
 
@@ -459,7 +466,7 @@
     <dd><p>The maximum coin amount&gt;</p>
 </dd>
     <dt><code>excludedCoinAmounts</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a>&gt;</dt>
-    <dd><p>Amounts to exlcude</p>
+    <dd><p>Amounts to exclude</p>
 </dd>
     <dt><code>excludedCoins</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.Coin.html">Coin</a>&gt;</dt>
     <dd><p>Coins to exclude</p>
@@ -692,7 +699,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;TransactionRecord&gt; SendTransaction(string address, ulong amount, IEnumerable&lt;string&gt;? memos = null, IEnumerable&lt;ulong&gt;? excludeCoinAmounts = null, IEnumerable&lt;string&gt;? excludeCoinsIds = null, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool resusePuzHash = false, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;TransactionRecord&gt; SendTransaction(string address, ulong amount, IEnumerable&lt;string&gt;? memos = null, IEnumerable&lt;ulong&gt;? excludeCoinAmounts = null, IEnumerable&lt;string&gt;? excludeCoinsIds = null, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool reusePuzhash = false, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -714,7 +721,7 @@
     <dd></dd>
     <dt><code>maxCoinAmount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a>?</dt>
     <dd></dd>
-    <dt><code>resusePuzHash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
     <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
     <dd><p>Fee amount (in units of mojos)</p>
@@ -824,7 +831,7 @@
 
 
   <h4 class="section" id="chia_dotnet_Wallet_Validate_System_Threading_CancellationToken__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Intended to be overriden by derived classes of specific <a class="xref" href="chia.dotnet.WalletType.html">WalletType</a></p>
+  <div class="markdown level1 remarks"><p>Intended to be overridden by derived classes of specific <a class="xref" href="chia.dotnet.WalletType.html">WalletType</a></p>
 </div>
 
 

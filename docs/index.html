@@ -87,10 +87,11 @@
         <article data-uid="">
 <h1 id="chia-dotnet">chia-dotnet</h1>
 
-<p>Cross-platform .Net5 <a href="https://github.com/dkackman/chia-dotnet">rpc client library</a> for <a href="https://chia.net">chia</a>.</p>
+<p>Cross-platform .Net Core <a href="https://github.com/dkackman/chia-dotnet">rpc client library</a> for <a href="https://chia.net">chia</a>.</p>
 <p><em>Browse the <a href="https://dkackman.github.io/chia-dotnet/api/chia.dotnet.html">api documentation</a> and
 <a href="https://github.com/dkackman/chia-dotnet/tree/main/src/chia-dotnet.tests">integration test code</a> for more info and examples.</em></p>
-<h2 id="quick-start-example">Quick Start Example</h2>
+<h2 id="quick-start-examples">Quick Start Examples</h2>
+<h3 id="connect-to-the-node-and-find-out-about-the-blockchain">Connect to the Node and find out about the blockchain</h3>
 <pre><code class="lang-csharp">var endpoint = Config.Open().GetEndpoint(&quot;daemon&quot;);
 using var rpcClient = new WebSocketRpcClient(endpoint);
 await rpcClient.Connect();
@@ -100,6 +101,42 @@ await daemon.RegisterService();
 
 var fullNode = new FullNodeProxy(rpcClient, &quot;unit_tests&quot;);
 var state = await fullNode.GetBlockchainState();
+Console.WriteLine($&quot;This node is synced: {state.Sync.Synced}&quot;);
+</code></pre>
+<h3 id="send-me-some-chia">Send me some chia</h3>
+<pre><code class="lang-csharp">var endpoint = Config.Open().GetEndpoint(&quot;wallet&quot;);
+using var rpcClient = new HttpRpcClient(endpoint);
+
+var wallet = new WalletProxy(rpcClient, &quot;unit_tests&quot;);
+await wallet.WaitForSync();
+
+// walletId of 1 is the main XCH wallet
+var standardWallet = new Wallet(1, wallet);
+
+// this is my receive address. feel free to run this code on mainnet as often as you like :-)
+var transaction = await standardWallet.SendTransaction(&quot;xch1ls2w9l2tksmp8u3a8xewhn86na3fjhxq79gnsccxr0v3rpa5ejcsuugha7&quot;, 1, 1);
+</code></pre>
+<h3 id="listen-for-events">Listen for events</h3>
+<pre><code class="lang-csharp">using chia.dotnet;
+
+var endpoint = Config.Open().GetEndpoint(&quot;daemon&quot;);
+using var rpcClient = new WebSocketRpcClient(endpoint);
+await rpcClient.Connect();
+
+var daemon = new DaemonProxy(rpcClient, &quot;eventing_testharness&quot;);
+// this listens for the messages sent to the ui
+await daemon.RegisterService(&quot;wallet_ui&quot;); 
+daemon.StateChanged += (sender, data) =&gt; Console.WriteLine($&quot;daemon state change: {data}&quot;);
+
+var farmer = daemon.CreateProxyFrom&lt;FarmerProxy&gt;();
+farmer.ConnectionAdded += (sender, data) =&gt; Console.WriteLine($&quot;Connection added: {data}&quot;);
+farmer.NewFarmingInfo += (sender, data) =&gt; Console.WriteLine($&quot;Farming info: {data}&quot;);
+farmer.NewSignagePoint += (sender, data) =&gt; Console.WriteLine($&quot;Signage point: {data}&quot;);
+
+while (true)
+{
+    await Task.Delay(100);
+}
 </code></pre>
 <h3 id="main-types-and-relationships">Main Types and Relationships</h3>
 <p>The Wallet service API is segmented into classes for specific wallet types and a trade maanger for trades and offers.</p>
