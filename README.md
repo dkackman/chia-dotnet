@@ -8,9 +8,11 @@ A [.net](https://dotnet.microsoft.com/download/dotnet/6.0) client library for [c
 
 ## Getting Started
 
-### Documentation
+### See Also
 
-<https://dkackman.github.io/chia-dotnet/>
+- [Documentation](https://dkackman.github.io/chia-dotnet/)
+- [chia-dotnet-bls](https://www.nuget.org/packages/chia-dotnet-bls/)
+- [chia-blockchain](https://chia.net)
 
 ### Features
 
