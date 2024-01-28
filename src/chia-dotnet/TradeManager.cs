@@ -81,7 +81,7 @@ namespace chia.dotnet
 
             var response = await WalletProxy.SendMessage("get_all_offers", data, cancellationToken).ConfigureAwait(false);
 
-            // need to explicitly decalre these two types to cast away any dynamicness
+            // need to explicitly declare these two types to cast away any dynamic-ness
             TradeRecord[] tradeRecords = Converters.ToObject<TradeRecord[]>(response.trade_records);
             string[] offers = Converters.ToObject<string[]>(response.offers);
 
@@ -332,7 +332,7 @@ namespace chia.dotnet
                 {
                     throw new InvalidOperationException($"There is no wallet for the asset {requested.Key}");
                 }
-                walletIdsAndMojoAmounts.Add(WalletId.Value, (long)requested.Value); // reqeusted value > 0 
+                walletIdsAndMojoAmounts.Add(WalletId.Value, (long)requested.Value); // requested value > 0 
             }
 
             foreach (var offered in offer.Offered)

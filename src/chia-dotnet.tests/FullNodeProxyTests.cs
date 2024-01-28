@@ -247,7 +247,7 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
 
             // Act
-            var ids = await FullNode.GetAllMemmpoolTxIds(cts.Token);
+            var ids = await FullNode.GetAllMempoolTxIds(cts.Token);
 
             // Assert
             Assert.NotNull(ids.ToList());
@@ -378,14 +378,14 @@ namespace chia.dotnet.tests
         }
 
         [Fact(Skip = "Requires review")]
-        public async Task GetMemmpooItemByTxId()
+        public async Task GetMempoolItemByTxId()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
             var txId = string.Empty;
 
             // Act
-            var returnValue = await FullNode.GetMemmpooItemByTxId(txId: txId, cancellationToken: cts.Token);
+            var returnValue = await FullNode.GetMempoolItemByTxId(txId: txId, cancellationToken: cts.Token);
 
             // Assert
             Assert.NotNull(returnValue);

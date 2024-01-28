@@ -16,7 +16,6 @@ namespace chia.dotnet
     /// <param name="originService"><see cref="Message.Origin"/></param>
     public sealed class CrawlerProxy(IRpcClient rpcClient, string originService) : ServiceProxy(rpcClient, ServiceNames.Crawler, originService)
     {
-
         /// <summary>
         /// Retrieves aggregate information about peers
         /// </summary>

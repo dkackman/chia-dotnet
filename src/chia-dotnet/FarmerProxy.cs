@@ -135,7 +135,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="maxPhToSearch">The max number of puzzle hashes to search</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The farm and pool reward targets plus indicator if privakte keys are present</returns>
+        /// <returns>The farm and pool reward targets plus indicator if private keys are present</returns>
         public async Task<(string FarmerTarget, string PoolTarget, bool HaveFarmerSk, bool HavePoolSk)> GetRewardTargetsIncludingPrivateKey(int maxPhToSearch = 500, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();

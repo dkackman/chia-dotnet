@@ -87,10 +87,8 @@ namespace chia.dotnet
         /// <returns>Awaitable <see cref="Task"/></returns>
         public async Task PostMessage(Message message, CancellationToken cancellationToken = default)
         {
-            if (disposedValue)
-            {
-                throw new ObjectDisposedException(nameof(HttpRpcClient));
-            }
+            ObjectDisposedException.ThrowIf(disposedValue, this);
+
 
             // need to use our json to ensure we get the snake case resolver
             // (don't change to extension method syntax as it won't bind to the dynamic 'Data' object)            
@@ -111,10 +109,7 @@ namespace chia.dotnet
         /// <exception cref="ResponseException">Throws when <see cref="Message.IsSuccessfulResponse"/> is False</exception>
         public async Task<dynamic> SendMessage(Message message, CancellationToken cancellationToken = default)
         {
-            if (disposedValue)
-            {
-                throw new ObjectDisposedException(nameof(HttpRpcClient));
-            }
+            ObjectDisposedException.ThrowIf(disposedValue, this);
 
             // need to use our json to ensure we get the snake case resolver
             // (don't change to extension method syntax as it won't bind to the dynamic 'Data' object)
@@ -139,7 +134,7 @@ namespace chia.dotnet
 
         private static bool ValidateServerCertificate(object sender, X509Certificate? certificate, X509Chain? chain, SslPolicyErrors sslPolicyErrors)
         {
-            // uncomment these checks to change remote cert validaiton requirements
+            // uncomment these checks to change remote cert validation requirements
 
             // require remote ca to be trusted on this machine
             //if ((sslPolicyErrors & SslPolicyErrors.RemoteCertificateChainErrors) == SslPolicyErrors.RemoteCertificateChainErrors) 

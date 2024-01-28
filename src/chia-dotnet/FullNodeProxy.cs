@@ -128,7 +128,7 @@ namespace chia.dotnet
         /// <summary>
         /// Estimate a spend fee
         /// </summary>
-        /// <param name="spendBundle">The spend bundle to esimtate</param>
+        /// <param name="spendBundle">The spend bundle to estimate</param>
         /// <param name="targetTimes">Array of target times</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Fee estimate details</returns>
@@ -461,7 +461,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>a list of tx_ids</returns>
-        public async Task<IEnumerable<string>> GetAllMemmpoolTxIds(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<string>> GetAllMempoolTxIds(CancellationToken cancellationToken = default)
         {
             return await SendMessage<IEnumerable<string>>("get_all_mempool_tx_ids", null, "tx_ids", cancellationToken).ConfigureAwait(false);
         }
@@ -473,7 +473,7 @@ namespace chia.dotnet
         /// <param name="includePending">Including pending transactions</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="MempoolItem"/></returns>
-        public async Task<MempoolItem> GetMemmpooItemByTxId(string txId, bool includePending = false, CancellationToken cancellationToken = default)
+        public async Task<MempoolItem> GetMempoolItemByTxId(string txId, bool includePending = false, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.tx_id = txId;
@@ -487,7 +487,7 @@ namespace chia.dotnet
         /// <param name="coinName">Coin name</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="MempoolItem"/></returns>
-        public async Task<IEnumerable<MempoolItem>> GetMemmpoolItemsByCoinName(string coinName, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<MempoolItem>> GetMempoolItemsByCoinName(string coinName, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.coin_name = coinName;

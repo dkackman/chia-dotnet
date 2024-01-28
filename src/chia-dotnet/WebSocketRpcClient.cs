@@ -13,8 +13,8 @@ using System.Threading.Tasks;
 namespace chia.dotnet
 {
     /// <summary>
-    /// Class that handles core communication with the rpc endpoint using a websocket (wss).
-    /// Only the daemon endpoint supports websockets, but it can proxy communication to other services.
+    /// Class that handles core communication with the rpc endpoint using a WebSocket (wss).
+    /// Only the daemon endpoint supports WebSockets, but it can proxy communication to other services.
     /// <see cref="Message.Destination"/>
     /// </summary>
     public class WebSocketRpcClient : IRpcClient
@@ -29,7 +29,7 @@ namespace chia.dotnet
         /// <summary>
         /// ctor
         /// </summary>
-        /// <param name="endpoint">Details of the websocket endpoint</param>        
+        /// <param name="endpoint">Details of the WebSocket endpoint</param>        
         public WebSocketRpcClient(EndpointInfo endpoint)
         {
             Endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
@@ -43,7 +43,7 @@ namespace chia.dotnet
         public EndpointInfo Endpoint { get; init; }
 
         /// <summary>
-        /// Opens the websocket and starts the receive loop
+        /// Opens the WebSocket and starts the receive loop
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
@@ -64,7 +64,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Called after <see cref="Connect(CancellationToken)"/> completes successfully. Lets derived classess know that they can do
+        /// Called after <see cref="Connect(CancellationToken)"/> completes successfully. Lets derived classes know that they can do
         /// post connection initialization 
         /// </summary>
         protected virtual void OnConnected()
@@ -72,7 +72,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Cancels the receive loop and closes the websocket
+        /// Cancels the receive loop and closes the WebSocket
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Awaitable <see cref="Task"/></returns>
@@ -85,7 +85,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Posts a <see cref="Message"/> to the websocket but does not wait for a response
+        /// Posts a <see cref="Message"/> to the WebSocket but does not wait for a response
         /// </summary>
         /// <param name="message">The message to post</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
@@ -142,7 +142,7 @@ namespace chia.dotnet
             }
 
             return response is null
-                ? throw new ResponseException(message, "The websocket did not respond")
+                ? throw new ResponseException(message, "The WebSocket did not respond")
                 : !response.IsSuccessfulResponse
                 ? throw new ResponseException(message, response.Data?.error?.ToString())
                 : response.Data ?? new ExpandoObject();

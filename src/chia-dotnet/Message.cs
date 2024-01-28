@@ -43,7 +43,7 @@ namespace chia.dotnet
         public string RequestId { get; init; } = string.Empty;
 
         /// <summary>
-        /// Inidcates whether this is a response (<see cref="Ack"/> is true) and the success flag is also true
+        /// Indicates whether this is a response (<see cref="Ack"/> is true) and the success flag is also true
         /// </summary>
         [JsonIgnore]
         public bool IsSuccessfulResponse => Ack && Data?.success == true;
@@ -71,7 +71,7 @@ namespace chia.dotnet
                     Data = FormatDataObject(data),
                     Origin = origin,
                     Destination = destination,
-                    RequestId = GetNewReuqestId()
+                    RequestId = GetNewRequestId()
                 };
         }
 
@@ -105,7 +105,7 @@ namespace chia.dotnet
 
         private static readonly Random random = new();
 
-        private static string GetNewReuqestId()
+        private static string GetNewRequestId()
         {
             var buffer = new byte[32];
             random.NextBytes(buffer);

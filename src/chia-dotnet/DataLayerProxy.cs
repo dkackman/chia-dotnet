@@ -41,7 +41,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="ids">List of file id's</param>
         /// <param name="foldername">The folder name</param>
-        /// <param name="overwrite">Indicator whetehr to overwrite files</param>
+        /// <param name="overwrite">Indicator whether to overwrite files</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable Task</returns>
         public async Task AddMissingFiles(string[] ids, string foldername, bool overwrite = false, CancellationToken cancellationToken = default)

@@ -15,12 +15,11 @@ namespace chia.dotnet
     /// </remarks>
     /// <param name="rpcClient"><see cref="IRpcClient"/> instance to use for rpc communication</param>
     /// <param name="originService"><see cref="Message.Origin"/></param>
-    /// <remarks>The daemon endpoint handles plotting commands, so the rpc client has to us a websocket client and dameon endpoint</remarks>
+    /// <remarks>The daemon endpoint handles plotting commands, so the rpc client has to us a WebSocket client and daemon endpoint</remarks>
     public sealed class PlotterProxy(WebSocketRpcClient rpcClient, string originService) : ServiceProxy(rpcClient, ServiceNames.Daemon, originService)
     {
-
         /// <summary>
-        /// Registers this instance as a plotter and retreives the plot queue
+        /// Registers this instance as a plotter and retrieves the plot queue
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The list of <see cref="QueuedPlotInfo"/>s</returns>

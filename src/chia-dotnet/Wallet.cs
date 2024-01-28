@@ -10,7 +10,7 @@ namespace chia.dotnet
     /// <summary>
     /// Base class representing a specific wallet (i.e. anything with a WalletID)
     /// </summary>
-    /// <remarks>When not dervied from this represents a <see cref="WalletType.STANDARD_WALLET"/></remarks>
+    /// <remarks>When not derived from this represents a <see cref="WalletType.STANDARD_WALLET"/></remarks>
     /// <remarks>
     /// ctor
     /// </remarks>
@@ -45,7 +45,7 @@ namespace chia.dotnet
         /// Validates that <see cref="WalletId"/> is a <see cref="WalletType.STANDARD_WALLET"/>
         /// </summary>
         /// <returns>True if the wallet is of the expected type</returns>
-        /// <remarks>Intended to be overriden by derived classes of specific <see cref="WalletType"/></remarks>
+        /// <remarks>Intended to be overridden by derived classes of specific <see cref="WalletType"/></remarks>
         public virtual async Task Validate(CancellationToken cancellationToken = default)
         {
             await Validate(WalletType.STANDARD_WALLET, cancellationToken).ConfigureAwait(false);
@@ -155,7 +155,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="minCoinAmount">The minimum coin amount</param>
         /// <param name="maxCoinAmount">The maximum coin amount></param>
-        /// <param name="excludedCoinAmounts">Amounts to exlcude</param>
+        /// <param name="excludedCoinAmounts">Amounts to exclude</param>
         /// <param name="excludedCoins">Coins to exclude</param>
         /// <param name="excludedCoinIds">Coin ids to exclude</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
@@ -237,7 +237,7 @@ namespace chia.dotnet
         /// <param name="excludeCoinsIds"></param>
         /// <param name="minCoinAmount"></param>
         /// <param name="maxCoinAmount"></param>
-        /// <param name="resusePuzHash"></param>
+        /// <param name="reusePuzhash"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> SendTransaction(string address,
@@ -247,7 +247,7 @@ namespace chia.dotnet
             IEnumerable<string>? excludeCoinsIds = null,
             ulong? minCoinAmount = null,
             ulong? maxCoinAmount = null,
-            bool resusePuzHash = false,
+            bool reusePuzhash = false,
             ulong fee = 0,
             CancellationToken cancellationToken = default)
         {
@@ -262,7 +262,7 @@ namespace chia.dotnet
             data.min_coin_amount = minCoinAmount;
             data.max_coin_amount = maxCoinAmount;
             data.fee = fee;
-            data.reuse_puzhash = resusePuzHash;
+            data.reuse_puzhash = reusePuzhash;
             if (excludeCoinAmounts is not null)
             {
                 data.exclude_coin_amounts = excludeCoinAmounts.ToList();

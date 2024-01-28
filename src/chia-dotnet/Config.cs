@@ -35,7 +35,7 @@ namespace chia.dotnet
         /// <summary>
         /// Creates an <see cref="EndpointInfo"/> from the named service section
         /// </summary>
-        /// <param name="serviceName">The setion name in the config file. Use 'daemon' for the root config that include 'self_hostname'; i.e. the local daemon</param>
+        /// <param name="serviceName">The section name in the config file. Use 'daemon' for the root config that include 'self_hostname'; i.e. the local daemon</param>
         /// <returns>An <see cref="EndpointInfo"/> that can be used to connect to the given service's RPC interface</returns>
         public EndpointInfo GetEndpoint(string serviceName)
         {
@@ -69,7 +69,7 @@ namespace chia.dotnet
             }
             else if (serviceName is "data_layer" && !d.ContainsKey(serviceName))
             {
-                // data_layer is not in the config by dfault but might have been added (DLaaS)
+                // data_layer is not in the config by default but might have been added (DLaaS)
                 // so we're gonna put it together based on defaults and what the ui uses
                 builder.Scheme = "https";
                 dynamic section = Contents.ui;
@@ -77,7 +77,7 @@ namespace chia.dotnet
                 builder.Port = 8562; //default data_layer port
                 ssl = section.daemon_ssl;
 
-                // use the same folder strucutre but where we would expect the data_layer certs
+                // use the same folder structure but where we would expect the data_layer certs
                 string crt = ssl.private_crt;
                 string key = ssl.private_key;
                 ssl.private_crt = crt.Replace("ui", "data_layer").Replace("daemon", "data_layer");
@@ -88,11 +88,11 @@ namespace chia.dotnet
                 builder.Scheme = "https";
                 builder.Host = Contents.self_hostname;
 
-                if (!d.ContainsKey(serviceName))
+                if (!d.TryGetValue(serviceName, out var value))
                 {
                     throw new InvalidOperationException($"A configuration section with the name {serviceName} cannot be found");
                 }
-                dynamic section = d[serviceName];
+                dynamic section = value;
 
                 builder.Port = Convert.ToInt32(section.rpc_port);
                 ssl = section.ssl;
@@ -150,7 +150,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Opens the <see cref="Config"/> from <see cref="DefaultRootPath"/> plus 'config' and 'config.yaml'
+        /// Opens the <see cref="Config"/> from <see cref="DefaultRootPath"/> plus `config` and `config.yaml`.
         /// </summary>
         /// <returns>The user's chia install <see cref="Config"/> instance</returns>
         public static Config Open()
@@ -237,7 +237,6 @@ namespace chia.dotnet
                 return GetEnumerator();
             }
         }
-
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 #pragma warning restore CS8714 // The type cannot be used as type parameter in the generic type or method. Nullability of type argument doesn't match 'notnull' constraint.
     }

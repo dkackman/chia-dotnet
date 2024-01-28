@@ -6,7 +6,7 @@ namespace chia.dotnet
     /// <summary>
     /// Information about how to connect and authenticate with the RPC endpoint
     /// </summary>
-    /// <remarks>Using the <see cref="CertPath"/>/<see cref="KeyPath"/> vs <see cref="Cert"/>/<see cref="Key"/> are independent of each other</remarks>
+    /// <remarks>Using <see cref="CertPath"/>/<see cref="KeyPath"/> vs <see cref="Cert"/>/<see cref="Key"/> are independent of each other</remarks>
     public record EndpointInfo
     {
         /// <summary>
@@ -33,7 +33,6 @@ namespace chia.dotnet
         /// The loaded key as base 64 encoded blob  
         /// </summary>
         public string Key { get; init; } = string.Empty;
-
 
         public X509Certificate2Collection GetCert()
         {

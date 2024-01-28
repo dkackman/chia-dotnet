@@ -577,7 +577,7 @@ namespace chia.dotnet
 
             var response = await SendMessage("create_new_wallet", data, cancellationToken).ConfigureAwait(false);
 
-            // this gets serialzied back as an unnamed tuple [self.parent_coin_info, self.puzzle_hash, self.amount]
+            // this gets serialized back as an unnamed tuple [self.parent_coin_info, self.puzzle_hash, self.amount]
             var coinList = response.coin_list;
             var coin = new Coin()
             {
@@ -601,7 +601,7 @@ namespace chia.dotnet
         /// <summary>
         /// Creates a new pool wallet
         /// </summary>
-        /// <param name="initialTargetState">The desired intiial state of the wallet</param>
+        /// <param name="initialTargetState">The desired initial state of the wallet</param>
         /// <param name="p2SingletonDelayedPH">A delayed address (can be null or empty to not use)</param>
         /// <param name="p2SingletonDelayTime">Delay time to create the wallet</param>           
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
@@ -822,7 +822,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Recover a missing or unspendable DID wallet by a coin id of the DID.
+        /// Recover a missing or un-spendable DID wallet by a coin id of the DID.
         /// </summary>
         /// <param name="coinId"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>

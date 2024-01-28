@@ -9,11 +9,11 @@ namespace chia.dotnet
     public static class Extensions
     {
         /// <summary>
-        /// There are 1 tillion mojo in a chia
+        /// There are 1 trillion mojo in a chia
         /// </summary>
         public const decimal OneTrillion = 1000000000000M;
 
-        /// <summary>
+        /// <summary>B
         /// Converts an amount of mojo to the same amount in chia, converting from <see cref="ulong"/> to <see cref="decimal"/>
         /// </summary>
         /// <param name="mojo">The amount of mojo</param>
@@ -83,7 +83,7 @@ namespace chia.dotnet
         /// <param name="byteCount">The number of bytes</param>
         /// <param name="format">Return string culture format</param>
         /// <returns>A human readable string</returns>
-        /// <remarks>Adapted from https://stackoverflow.com/questions/281640/how-do-i-get-a-human-readable-file-size-in-bytes-abbreviation-using-net </remarks>
+        /// <remarks>Adapted from https://stackoverflow.com/questions/281640/how-do-i-get-a-human-readable-file-size-in-bytes-abbreviation-using-net</remarks>
         public static string ToBytesString(this BigInteger byteCount, string format = "N3")
         {
             string[] suffixes = ["B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "YiB"];
@@ -110,7 +110,7 @@ namespace chia.dotnet
         /// <param name="byteCount">The number of bytes</param>
         /// <param name="format">Return string culture format</param>
         /// <returns>A human readable string</returns>
-        /// <remarks>Adapted from https://stackoverflow.com/questions/281640/how-do-i-get-a-human-readable-file-size-in-bytes-abbreviation-using-net </remarks>
+        /// <remarks>Adapted from https://stackoverflow.com/questions/281640/how-do-i-get-a-human-readable-file-size-in-bytes-abbreviation-using-net</remarks>
         public static string ToBytesString(this UInt128 byteCount, string format = "N3")
         {
             string[] suffixes = ["B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "YiB"];
@@ -119,12 +119,11 @@ namespace chia.dotnet
                 return $"{0.0.ToString(format)} {suffixes[0]}";
             }
 
-            var abs = BigInteger.Abs(byteCount); // in case byteCount is negative
-            var place = Convert.ToInt32(Math.Floor(BigInteger.Log(abs, 1024)));
+            var place = Convert.ToInt32(Math.Floor(BigInteger.Log(byteCount, 1024)));
             var pow = Math.Pow(1024, place);
 
             // since we need to do this with integer math, get the quotient and remainder
-            var quotient = BigInteger.DivRem(abs, new BigInteger(pow), out var remainder);
+            var quotient = BigInteger.DivRem(byteCount, new BigInteger(pow), out var remainder);
             // convert the remainder to a ratio and add both back together as doubles, putting the sign back
             var num = UInt128.Sign(byteCount) * (Math.Floor((double)quotient) + ((double)remainder / pow));
 
@@ -137,7 +136,7 @@ namespace chia.dotnet
         /// <param name="byteCount">The number of bytes</param>
         /// <param name="format">Return string culture format</param>         
         /// <returns>A human readable string</returns>
-        /// <remarks>Adapted from https://stackoverflow.com/questions/281640/how-do-i-get-a-human-readable-file-size-in-bytes-abbreviation-using-net </remarks>
+        /// <remarks>Adapted from https://stackoverflow.com/questions/281640/how-do-i-get-a-human-readable-file-size-in-bytes-abbreviation-using-net</remarks>
         public static string ToBytesString(this ulong byteCount, string format = "N3")
         {
             string[] suffixes = ["B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "YiB"];

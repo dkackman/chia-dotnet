@@ -11,6 +11,9 @@ namespace chia.dotnet
     /// </summary>
     public sealed class VerifiedCredentialManager(WalletProxy walletProxy)
     {
+        /// <summary>
+        /// The <see cref="WalletProxy"/> to use for communcation
+        /// </summary>
         public WalletProxy WalletProxy { get; init; } = walletProxy ?? throw new ArgumentNullException(nameof(walletProxy));
 
         /// <summary>

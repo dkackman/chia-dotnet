@@ -47,7 +47,7 @@ namespace chia.dotnet
 
             dynamic data = CreateWalletDataObject();
             data.target_puzzlehash = targetPuzzlehash;
-            data.pool_url = poolUrl.TrimEnd('/'); // the blocchain doesn't like the trailing /
+            data.pool_url = poolUrl.TrimEnd('/'); // the blockchain doesn't like the trailing /
             data.relative_lock_height = relativeLockHeight;
 
             return await WalletProxy.SendMessage<TransactionRecord>("pw_join_pool", data, "transaction", cancellationToken).ConfigureAwait(false);

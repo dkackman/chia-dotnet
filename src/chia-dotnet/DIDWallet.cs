@@ -66,7 +66,7 @@ namespace chia.dotnet
         /// <summary>
         /// Spend from the DID wallet
         /// </summary>
-        /// <param name="puzzlehash">The puzzlehash to spend</param>
+        /// <param name="puzzlehash">The puzzle-hash to spend</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task Spend(string puzzlehash, CancellationToken cancellationToken = default)
@@ -299,9 +299,9 @@ namespace chia.dotnet
         /// Transfer the DID wallet to another owner
         /// </summary>
         /// <param name="innerAddress">the address</param>
-        /// <param name="withRecoveryInfo">Indiciator whether to include recovery infor</param>
+        /// <param name="withRecoveryInfo">Indicator whether to include recovery info</param>
         /// <param name="reusePuzhash"></param>
-        /// <param name="fee">Trasnaction fee</param>
+        /// <param name="fee">Transaction fee</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The backup data</returns>
         public async Task<TransactionRecord> Transfer(string innerAddress, bool withRecoveryInfo = true, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)

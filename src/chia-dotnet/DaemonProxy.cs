@@ -84,7 +84,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Get whether the genesis block has been intiailized
+        /// Get whether the genesis block has been initialized
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Boolean indicator</returns>
@@ -104,7 +104,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Registers this websocket to receive messages using <see cref="ServiceProxy.OriginService"/> 
+        /// Registers this WebSocket to receive messages using <see cref="ServiceProxy.OriginService"/> 
         /// This is needed to receive responses from services other than the daemon.
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
@@ -200,7 +200,7 @@ namespace chia.dotnet
         /// Determine if the keyring is locked
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>Boolean indicator as to wheteher the keyring is locked</returns>
+        /// <returns>Boolean indicator as to whether the keyring is locked</returns>
         public async Task<bool> IsKeyringLocked(CancellationToken cancellationToken = default)
         {
             return await SendMessage<bool>("is_keyring_locked", "is_keyring_locked", cancellationToken).ConfigureAwait(false);
@@ -403,7 +403,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="service">The service name</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>Boolean indicator as to wheteher the service is running</returns>
+        /// <returns>Boolean indicator as to whether the service is running</returns>
         public async Task<bool> IsRunning(string service, CancellationToken cancellationToken = default)
         {
             return await SendMessage<bool>("is_running", CreateDataObject(service), "is_running", cancellationToken).ConfigureAwait(false);

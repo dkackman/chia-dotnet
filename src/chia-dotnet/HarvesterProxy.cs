@@ -159,7 +159,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Removes a plot directory from the harveser configuration
+        /// Removes a plot directory from the harvester configuration
         /// </summary>
         /// <param name="dirname">The plot directory to remove</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
