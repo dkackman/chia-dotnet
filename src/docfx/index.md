@@ -65,6 +65,6 @@ while (true)
 
 ### Main Types and Relationships
 
-The Wallet service API is segmented into classes for specific wallet types and a trade maanger for trades and offers.
+The Wallet service API is segmented into classes for specific wallet types and a trade manager for trades and offers.
 
 ![Class diagram](images/uml.svg "Class diagram")
