@@ -1,6 +1,6 @@
 # chia-dotnet
 
-A [.net](https://dotnet.microsoft.com/download/dotnet/6.0) client library for [chia](https://github.com/Chia-Network/chia-blockchain)™ RPC interfaces that runs on linux and windows.
+A [.net](https://dotnet.microsoft.com/download/dotnet/6.0) client library for [chia](https://github.com/Chia-Network/chia-blockchain)™ RPC interfaces that runs on linux and windows, including a bech32 implementation.
 
 [![build](https://github.com/dkackman/chia-dotnet/actions/workflows/dotnet.yml/badge.svg)](https://github.com/dkackman/chia-dotnet/actions)
 [![CodeQL](https://github.com/dkackman/chia-dotnet/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/dkackman/chia-dotnet/actions/workflows/github-code-scanning/codeql)
