@@ -10,7 +10,7 @@ namespace chia.dotnet
         /// <summary>
         /// If first sb
         /// </summary>
-        public IEnumerable<EndOfSubSlotBundle> FinishedSubSlots { get; init; } = new List<EndOfSubSlotBundle>();
+        public IEnumerable<EndOfSubSlotBundle> FinishedSubSlots { get; init; } = [];
         /// <summary>
         /// Reward chain trunk data
         /// </summary>

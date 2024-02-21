@@ -17,14 +17,14 @@ namespace chia.dotnet
         public double NextFarmerUpdate { get; init; }
         public double NextPoolInfoUpdate { get; init; }
         [JsonProperty("points_acknowledged_24h")]
-        public IEnumerable<PoolPoint> PointsAcknowledged24h { get; init; } = new List<PoolPoint>();
+        public IEnumerable<PoolPoint> PointsAcknowledged24h { get; init; } = [];
         public ulong PointsAcknowledgedSinceStart { get; init; }
         [JsonProperty("points_found_24h")]
-        public IEnumerable<PoolPoint> PointsFound24h { get; init; } = new List<PoolPoint>();
+        public IEnumerable<PoolPoint> PointsFound24h { get; init; } = [];
         public ulong PointsFoundSinceStart { get; init; }
         public int PlotCount { get; init; }
         public PoolWalletConfig PoolConfig { get; init; } = new();
-        public IEnumerable<ErrorResponse> PoolErrors24h { get; init; } = new List<ErrorResponse>();
+        public IEnumerable<ErrorResponse> PoolErrors24h { get; init; } = [];
         [JsonIgnore]
         public DateTime NextFarmerUpdateDateTime => NextFarmerUpdate.ToDateTime();
         [JsonIgnore]

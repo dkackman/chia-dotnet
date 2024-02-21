@@ -55,7 +55,7 @@ namespace chia.dotnet
             Debug.Assert(enumerable is not null);
             var e = (IEnumerable<dynamic>)enumerable;
 
-            return e is null ? Enumerable.Empty<T>() : e.Select(item => (T)item);
+            return e is null ? [] : e.Select(item => (T)item);
         }
 
         /// <summary>

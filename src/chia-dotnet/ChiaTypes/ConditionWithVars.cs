@@ -9,6 +9,6 @@ namespace chia.dotnet
     public record ConditionWithVars
     {
         public ushort Opcode { get; init; }
-        public IEnumerable<string> Vars { get; init; } = new List<string>();
+        public IEnumerable<string> Vars { get; init; } = [];
     }
 }

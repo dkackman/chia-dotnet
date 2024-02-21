@@ -6,6 +6,6 @@ namespace chia.dotnet
     {
         public string CoinName { get; init; } = string.Empty;
         public string PuzzleHash { get; init; } = string.Empty;
-        public IEnumerable<Condition> Conditions { get; init; } = new List<Condition>();
+        public IEnumerable<Condition> Conditions { get; init; } = [];
     }
 }

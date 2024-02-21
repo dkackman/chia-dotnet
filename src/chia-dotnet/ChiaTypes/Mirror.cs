@@ -7,7 +7,7 @@ namespace chia.dotnet
         public string CoinId { get; init; } = string.Empty;
         public string LauncherId { get; init; } = string.Empty;
         public ulong Amount { get; init; }
-        public IEnumerable<string> Urls { get; init; } = new List<string>();
+        public IEnumerable<string> Urls { get; init; } = [];
         public bool Ours { get; init; } = true;
     }
 }

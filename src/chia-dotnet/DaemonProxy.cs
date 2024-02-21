@@ -67,7 +67,7 @@ namespace chia.dotnet
         public T CreateProxyFrom<T>() where T : ServiceProxy
         {
             var constructor = typeof(T).GetConstructor([typeof(IRpcClient), typeof(string)]);
-            return constructor is null || constructor.Invoke(new object[] { RpcClient, OriginService }) is not T proxy
+            return constructor is null || constructor.Invoke([RpcClient, OriginService]) is not T proxy
                 ? throw new InvalidOperationException($"Cannot create a {typeof(T).Name}")
                 : proxy;
         }

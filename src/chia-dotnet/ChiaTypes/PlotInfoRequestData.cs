@@ -7,7 +7,7 @@ namespace chia.dotnet
         public string NodeId { get; init; } = string.Empty;
         public int Page { get; init; }
         public int PageSize { get; init; }
-        public IEnumerable<FilterItem> Filter { get; init; } = new List<FilterItem>();
+        public IEnumerable<FilterItem> Filter { get; init; } = [];
         public string SortKey { get; init; } = "filename";
         public bool Reverse { get; init; }
     }

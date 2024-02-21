@@ -14,6 +14,6 @@ namespace chia.dotnet
     public record Condition
     {
         public string ConditionOpcode { get; init; } = string.Empty;
-        public IEnumerable<ConditionWithVars> Args { get; init; } = new List<ConditionWithVars>();
+        public IEnumerable<ConditionWithVars> Args { get; init; } = [];
     }
 }

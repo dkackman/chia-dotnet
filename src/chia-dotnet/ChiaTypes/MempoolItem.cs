@@ -9,8 +9,8 @@ namespace chia.dotnet
         public NPCResult NPCResult { get; init; } = new();
         public ulong Cost { get; init; }
         public string SpendBudndleName { get; init; } = string.Empty;
-        public IEnumerable<Coin> Additions { get; init; } = new List<Coin>();
-        public IEnumerable<Coin> Removals { get; init; } = new List<Coin>();
+        public IEnumerable<Coin> Additions { get; init; } = [];
+        public IEnumerable<Coin> Removals { get; init; } = [];
         public string Program { get; init; } = string.Empty;
     }
 }

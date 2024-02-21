@@ -13,7 +13,7 @@ namespace chia.dotnet
         public IDictionary<string, string> Metadata { get; init; } = new Dictionary<string, string>();
         public string LauncherId { get; init; } = string.Empty;
         public string FullPuzzle { get; init; } = string.Empty;
-        public IEnumerable<object> Solution { get; init; } = new List<object>();
-        public IEnumerable<string> Hints { get; init; } = new List<string>();
+        public IEnumerable<object> Solution { get; init; } = [];
+        public IEnumerable<string> Hints { get; init; } = [];
     }
 }

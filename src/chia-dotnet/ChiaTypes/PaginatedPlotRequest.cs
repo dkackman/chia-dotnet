@@ -8,6 +8,6 @@ namespace chia.dotnet
         public int Page { get; init; }
         public int PageCount { get; init; }
         public int TotalCount { get; init; }
-        public IEnumerable<PlotInfo> Plots { get; init; } = new List<PlotInfo>();
+        public IEnumerable<PlotInfo> Plots { get; init; } = [];
     }
 }

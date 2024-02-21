@@ -42,5 +42,7 @@ namespace chia.dotnet
                 ? CertLoader.GetCertFromFiles(CertPath, KeyPath)
                 : CertLoader.DeserializeCert(Cert, Key);
         }
+
+        public override string ToString() => Uri.ToString();
     }
 }

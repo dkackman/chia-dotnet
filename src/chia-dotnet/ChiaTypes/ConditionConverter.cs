@@ -22,7 +22,7 @@ namespace chia.dotnet
             return new Condition()
             {
                 ConditionOpcode = opcode ?? string.Empty,
-                Args = args ?? new List<ConditionWithVars>()
+                Args = args ?? []
             };
         }
 

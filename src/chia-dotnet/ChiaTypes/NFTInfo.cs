@@ -30,7 +30,7 @@ namespace chia.dotnet
         /// <summary>
         /// A list of content URIs
         /// </summary>
-        public IEnumerable<string> DataUris { get; init; } = new List<string>();
+        public IEnumerable<string> DataUris { get; init; } = [];
         /// <summary>
         /// Hash of the content
         /// </summary>
@@ -38,7 +38,7 @@ namespace chia.dotnet
         /// <summary>
         /// A list of metadata URIs
         /// </summary>
-        public IEnumerable<string> MetadataUris { get; init; } = new List<string>();
+        public IEnumerable<string> MetadataUris { get; init; } = [];
         /// <summary>
         /// Hash of the metadata
         /// </summary>
@@ -46,7 +46,7 @@ namespace chia.dotnet
         /// <summary>
         /// A list of license URIs
         /// </summary>
-        public IEnumerable<string> LicenseUris { get; init; } = new List<string>();
+        public IEnumerable<string> LicenseUris { get; init; } = [];
         /// <summary>
         /// Hash of the license
         /// </summary>

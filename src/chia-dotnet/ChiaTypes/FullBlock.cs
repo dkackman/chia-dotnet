@@ -12,7 +12,7 @@ namespace chia.dotnet
         /// <summary>
         /// If first sb
         /// </summary>
-        public IEnumerable<EndOfSubSlotBundle> FinishedSubSlots { get; init; } = new List<EndOfSubSlotBundle>();
+        public IEnumerable<EndOfSubSlotBundle> FinishedSubSlots { get; init; } = [];
         /// <summary>
         /// Reward chain trunk data
         /// </summary>
@@ -50,7 +50,7 @@ namespace chia.dotnet
         /// <summary>
         /// List of block heights of previous generators referenced in this block
         /// </summary>
-        public IEnumerable<uint> TransactionsGeneratorRefList { get; init; } = new List<uint>();
+        public IEnumerable<uint> TransactionsGeneratorRefList { get; init; } = [];
         public string HeaderHash { get; init; } = string.Empty;
         /// <summary>
         /// Is this block from a transaction

@@ -4,7 +4,7 @@ namespace chia.dotnet
 {
     public record TransactionTypeFilter
     {
-        public IEnumerable<byte> Values { get; init; } = new List<byte>();
+        public IEnumerable<byte> Values { get; init; } = [];
 
         public FilterMode Mode { get; init; } = FilterMode.Exlude;
     }

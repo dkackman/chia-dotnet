@@ -6,6 +6,6 @@ namespace chia.dotnet
     {
         public string StoreID { get; init; } = string.Empty;
 
-        public IEnumerable<KeyValuePair<string, string>> Inclusions { get; init; } = new Dictionary<string, string>();
+        public IEnumerable<KeyValuePair<string, string>> Inclusions { get; init; } = [];
     }
 }

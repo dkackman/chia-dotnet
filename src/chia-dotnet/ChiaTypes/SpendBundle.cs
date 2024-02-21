@@ -11,6 +11,6 @@ namespace chia.dotnet
     public record SpendBundle
     {
         public string AggregatedSignature { get; init; } = string.Empty;
-        public IEnumerable<CoinSpend> CoinSpends { get; init; } = new List<CoinSpend>();
+        public IEnumerable<CoinSpend> CoinSpends { get; init; } = [];
     }
 }

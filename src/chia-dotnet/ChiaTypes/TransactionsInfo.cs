@@ -27,6 +27,6 @@ namespace chia.dotnet
         /// <summary>
         /// These can be in any order
         /// </summary>
-        public IEnumerable<Coin> RewardClaimsIncorporated { get; init; } = new List<Coin>();
+        public IEnumerable<Coin> RewardClaimsIncorporated { get; init; } = [];
     }
 }

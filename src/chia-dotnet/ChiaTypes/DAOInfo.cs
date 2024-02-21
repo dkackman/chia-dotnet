@@ -7,8 +7,8 @@ namespace chia.dotnet
         public string TreasuryId { get; init; } = string.Empty;
         public uint CatWalletId { get; init; }
         public uint DaoCatWalletId { get; init; }
-        public IEnumerable<ProposalInfo> ProposalsList { get; init; } = new List<ProposalInfo>();
-        public IEnumerable<IDictionary<string, LineageProof?>> ParentInfo { get; init; } = new List<IDictionary<string, LineageProof?>>();
+        public IEnumerable<ProposalInfo> ProposalsList { get; init; } = [];
+        public IEnumerable<IDictionary<string, LineageProof?>> ParentInfo { get; init; } = [];
         public Coin? CurrentTreasuryCoin { get; init; }
         public string? CurrentTreasuryInnerpuz { get; init; }
         /// <summary>
@@ -19,7 +19,7 @@ namespace chia.dotnet
         /// we ignore proposals with fewer votes than this - defaults to 1
         /// </summary>
         public ulong FilterBelowVoteAmount { get; init; } = 1;
-        public IEnumerable<string> Assets { get; init; } = new List<string>();
+        public IEnumerable<string> Assets { get; init; } = [];
         public uint CurrentHeight { get; init; }
     }
 }

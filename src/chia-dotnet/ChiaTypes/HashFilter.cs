@@ -4,7 +4,7 @@ namespace chia.dotnet
 {
     public record HashFilter
     {
-        public IEnumerable<string> Values { get; init; } = new List<string>();
+        public IEnumerable<string> Values { get; init; } = [];
 
         public FilterMode Mode { get; init; } = FilterMode.Exlude;
     }

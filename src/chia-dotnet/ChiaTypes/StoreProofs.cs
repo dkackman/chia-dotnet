@@ -5,6 +5,6 @@ namespace chia.dotnet
     public record StoreProofs
     {
         public string StoreId { get; init; } = string.Empty;
-        public IEnumerable<Proof> Proofs { get; init; } = new List<Proof>();
+        public IEnumerable<Proof> Proofs { get; init; } = [];
     }
 }
