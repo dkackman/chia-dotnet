@@ -98,6 +98,12 @@ namespace chia.dotnet
                 ssl = section.ssl;
             }
 
+            // check to make sure we have a routable host
+            if (string.IsNullOrEmpty(builder.Host) || builder.Host == "0.0.0.0")
+            {
+                builder.Host = "127.0.0.1";
+            }
+
             return new EndpointInfo
             {
                 Uri = builder.Uri,
