@@ -248,6 +248,8 @@ namespace chia.dotnet
                 Requested = Converters.ToObject<IDictionary<string, ulong>>(response.summary.requested),
                 Fees = response.summary.fees,
                 Infos = Converters.ToObject<IDictionary<string, object>>(response.summary.infos),
+                Additions = Converters.ToObject<IEnumerable<string>>(response.summary.additions),
+                Removals = Converters.ToObject<IEnumerable<string>>(response.summary.Removals),
             };
         }
 

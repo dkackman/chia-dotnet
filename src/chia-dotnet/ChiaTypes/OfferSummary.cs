@@ -9,5 +9,7 @@ namespace chia.dotnet
         public IDictionary<string, ulong> Requested { get; init; } = new Dictionary<string, ulong>();
         public ulong Fees { get; init; } = 0;
         public IDictionary<string, object> Infos { get; init; } = new Dictionary<string, object>();
+        public IEnumerable<string> Additions { get; init; } = [];
+        public IEnumerable<string> Removals { get; init; } = [];
     }
 }
