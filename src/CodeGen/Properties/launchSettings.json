@@ -2,7 +2,7 @@
   "profiles": {
     "CodeGen": {
       "commandName": "Project",
-      "commandLineArgs": "impl C:\\Users\\don\\src\\github\\dkackman\\chia-api\\src\\daemon.yaml get_wallet_addresses"
+      "commandLineArgs": "impl C:\\Users\\don\\src\\github\\dkackman\\chia-api\\src\\full_node.yaml get_aggsig_additional_data"
     }
   }
 }

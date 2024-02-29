@@ -691,5 +691,15 @@ namespace chia.dotnet
             data.header_hash = headerHash;
             return await SendMessage<IEnumerable<BlockSpendWithConditions>>("get_block_spends_with_conditions", data, "block_spends_with_conditions", cancellationToken).ConfigureAwait(false);
         }
+
+        /// <summary>
+        /// Retrieves aggregated signature additional data.
+        /// </summary>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>An awaitable Task</returns>
+        public async Task<string> GetAggsigAdditionalData(CancellationToken cancellationToken = default)
+        {
+            return await SendMessage<string>("get_aggsig_additional_data", null, "additional_data", cancellationToken).ConfigureAwait(false);
+        }
     }
 }
