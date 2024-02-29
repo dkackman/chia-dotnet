@@ -20,7 +20,7 @@ A [.net](https://dotnet.microsoft.com/download/dotnet/6.0) client library for [c
 - Coverage of all of chia's rpc endpoints
   - Daemon, Full Node, Farmer, Harvester, Wallet, Plotter, Crawler, DataLayer
 - Coverage of all of the methods at each endpoint
-  - as of 2.1.4
+  - as of 2.2.0
 - Static types for chia input and outputs
 - Supports connecting via the `daemon` on `wss` or directly to each service with `https`
   - both `https` and `wss` use tha same interfaces so switching is seamless
