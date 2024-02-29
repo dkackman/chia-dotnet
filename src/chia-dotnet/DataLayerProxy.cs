@@ -468,5 +468,37 @@ namespace chia.dotnet
             data.fingerprint = fingerprint;
             await SendMessage("wallet_log_in", data, cancellationToken).ConfigureAwait(false);
         }
+
+        /// <summary>
+        /// Verifies a proof.
+        /// </summary>
+        /// <param name="proof"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Proof verification</returns>
+        public async Task<(bool CurrentRoot, ProofResultInclusions VerifiedClvmHashes)> VerifyProof(DLProof proof, CancellationToken cancellationToken = default)
+        {
+            dynamic response = await SendMessage("verify_proof", proof, cancellationToken).ConfigureAwait(false);
+
+            return (
+                response.current_root,
+                Converters.ToObject<ProofResultInclusions>(response.verified_clvm_hashes)
+                );
+        }
+
+        /// <summary>
+        /// Retrieves a proof.
+        /// </summary>
+        /// <param name="storeId"></param>
+        /// <param name="keys"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns><see cref="DLProof"/></returns>
+        public async Task<DLProof> GetProof(string storeId, IEnumerable<string> keys, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.store_id = storeId;
+            data.keys = keys.ToList();
+
+            return await SendMessage<DLProof>("get_proof", data, "proof", cancellationToken).ConfigureAwait(false);
+        }
     }
 }

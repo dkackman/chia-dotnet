@@ -2,7 +2,7 @@
   "profiles": {
     "CodeGen": {
       "commandName": "Project",
-      "commandLineArgs": "impl C:\\Users\\don\\src\\github\\dkackman\\chia-api\\src\\full_node.yaml get_aggsig_additional_data"
+      "commandLineArgs": "impl C:\\Users\\don\\src\\github\\dkackman\\chia-api\\src\\data_layer.yaml get_proof"
     }
   }
 }

@@ -960,6 +960,49 @@
 
 
 
+  <a id="chia_dotnet_DataLayerProxy_GetProof_" data-uid="chia.dotnet.DataLayerProxy.GetProof*"></a>
+
+  <h3 id="chia_dotnet_DataLayerProxy_GetProof_System_String_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.GetProof(System.String,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+  GetProof(string, IEnumerable&lt;string&gt;, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L495"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a proof.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;DLProof&gt; GetProof(string storeId, IEnumerable&lt;string&gt; keys, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>storeId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>keys</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.DLProof.html">DLProof</a>&gt;</dt>
+    <dd><p><a class="xref" href="chia.dotnet.DLProof.html">DLProof</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_DataLayerProxy_GetRoot_" data-uid="chia.dotnet.DataLayerProxy.GetRoot*"></a>
 
   <h3 id="chia_dotnet_DataLayerProxy_GetRoot_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.GetRoot(System.String,System.Threading.CancellationToken)">
@@ -1504,6 +1547,47 @@
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.uint64-.valid">Valid</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.uint64-.fee">Fee</a>)&gt;</dt>
     <dd><p>boolean valid flag and fee amount</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_DataLayerProxy_VerifyProof_" data-uid="chia.dotnet.DataLayerProxy.VerifyProof*"></a>
+
+  <h3 id="chia_dotnet_DataLayerProxy_VerifyProof_chia_dotnet_DLProof_System_Threading_CancellationToken_" data-uid="chia.dotnet.DataLayerProxy.VerifyProof(chia.dotnet.DLProof,System.Threading.CancellationToken)">
+  VerifyProof(DLProof, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DataLayerProxy.cs/#L478"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Verifies a proof.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(bool CurrentRoot, ProofResultInclusions VerifiedClvmHashes)&gt; VerifyProof(DLProof proof, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>proof</code> <a class="xref" href="chia.dotnet.DLProof.html">DLProof</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,chia.dotnet.proofresultinclusions-.currentroot">CurrentRoot</a>, <a class="xref" href="chia.dotnet.ProofResultInclusions.html">ProofResultInclusions</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,chia.dotnet.proofresultinclusions-.verifiedclvmhashes">VerifiedClvmHashes</a>)&gt;</dt>
+    <dd><p>Proof verification</p>
 </dd>
   </dl>
 

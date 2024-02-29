@@ -1168,5 +1168,21 @@ namespace chia.dotnet
                 (uint)response.dao_cat_wallet_id
                 );
         }
+
+        /// <summary>
+        /// Verifies a proof.
+        /// </summary>
+        /// <param name="proof"></param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>Proof verification</returns>
+        public async Task<(bool CurrentRoot, ProofResultInclusions VerifiedClvmHashes)> DlVerifyProof(DLProof proof, CancellationToken cancellationToken = default)
+        {
+            dynamic response = await SendMessage("dl_verify_proof", proof, cancellationToken).ConfigureAwait(false);
+
+            return (
+                response.current_root,
+                Converters.ToObject<ProofResultInclusions>(response.verified_clvm_hashes)
+                );
+        }
     }
 }

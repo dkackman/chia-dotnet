@@ -2849,6 +2849,51 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DIDWallet.Validate
   nameWithType: DIDWallet.Validate
+- uid: chia.dotnet.DLProof
+  name: DLProof
+  href: api/chia.dotnet.DLProof.html
+  commentId: T:chia.dotnet.DLProof
+  fullName: chia.dotnet.DLProof
+  nameWithType: DLProof
+- uid: chia.dotnet.DLProof.CoinId
+  name: CoinId
+  href: api/chia.dotnet.DLProof.html#chia_dotnet_DLProof_CoinId
+  commentId: P:chia.dotnet.DLProof.CoinId
+  fullName: chia.dotnet.DLProof.CoinId
+  nameWithType: DLProof.CoinId
+- uid: chia.dotnet.DLProof.CoinId*
+  name: CoinId
+  href: api/chia.dotnet.DLProof.html#chia_dotnet_DLProof_CoinId_
+  commentId: Overload:chia.dotnet.DLProof.CoinId
+  isSpec: "True"
+  fullName: chia.dotnet.DLProof.CoinId
+  nameWithType: DLProof.CoinId
+- uid: chia.dotnet.DLProof.InnerPuzzleHash
+  name: InnerPuzzleHash
+  href: api/chia.dotnet.DLProof.html#chia_dotnet_DLProof_InnerPuzzleHash
+  commentId: P:chia.dotnet.DLProof.InnerPuzzleHash
+  fullName: chia.dotnet.DLProof.InnerPuzzleHash
+  nameWithType: DLProof.InnerPuzzleHash
+- uid: chia.dotnet.DLProof.InnerPuzzleHash*
+  name: InnerPuzzleHash
+  href: api/chia.dotnet.DLProof.html#chia_dotnet_DLProof_InnerPuzzleHash_
+  commentId: Overload:chia.dotnet.DLProof.InnerPuzzleHash
+  isSpec: "True"
+  fullName: chia.dotnet.DLProof.InnerPuzzleHash
+  nameWithType: DLProof.InnerPuzzleHash
+- uid: chia.dotnet.DLProof.StoreProofs
+  name: StoreProofs
+  href: api/chia.dotnet.DLProof.html#chia_dotnet_DLProof_StoreProofs
+  commentId: P:chia.dotnet.DLProof.StoreProofs
+  fullName: chia.dotnet.DLProof.StoreProofs
+  nameWithType: DLProof.StoreProofs
+- uid: chia.dotnet.DLProof.StoreProofs*
+  name: StoreProofs
+  href: api/chia.dotnet.DLProof.html#chia_dotnet_DLProof_StoreProofs_
+  commentId: Overload:chia.dotnet.DLProof.StoreProofs
+  isSpec: "True"
+  fullName: chia.dotnet.DLProof.StoreProofs
+  nameWithType: DLProof.StoreProofs
 - uid: chia.dotnet.DaemonProxy
   name: DaemonProxy
   href: api/chia.dotnet.DaemonProxy.html
@@ -3656,6 +3701,22 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DataLayerProxy.GetOwnedStores
   nameWithType: DataLayerProxy.GetOwnedStores
+- uid: chia.dotnet.DataLayerProxy.GetProof(System.String,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)
+  name: GetProof(string, IEnumerable<string>, CancellationToken)
+  href: api/chia.dotnet.DataLayerProxy.html#chia_dotnet_DataLayerProxy_GetProof_System_String_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DataLayerProxy.GetProof(System.String,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)
+  name.vb: GetProof(String, IEnumerable(Of String), CancellationToken)
+  fullName: chia.dotnet.DataLayerProxy.GetProof(string, System.Collections.Generic.IEnumerable<string>, System.Threading.CancellationToken)
+  fullName.vb: chia.dotnet.DataLayerProxy.GetProof(String, System.Collections.Generic.IEnumerable(Of String), System.Threading.CancellationToken)
+  nameWithType: DataLayerProxy.GetProof(string, IEnumerable<string>, CancellationToken)
+  nameWithType.vb: DataLayerProxy.GetProof(String, IEnumerable(Of String), CancellationToken)
+- uid: chia.dotnet.DataLayerProxy.GetProof*
+  name: GetProof
+  href: api/chia.dotnet.DataLayerProxy.html#chia_dotnet_DataLayerProxy_GetProof_
+  commentId: Overload:chia.dotnet.DataLayerProxy.GetProof
+  isSpec: "True"
+  fullName: chia.dotnet.DataLayerProxy.GetProof
+  nameWithType: DataLayerProxy.GetProof
 - uid: chia.dotnet.DataLayerProxy.GetRoot(System.String,System.Threading.CancellationToken)
   name: GetRoot(string, CancellationToken)
   href: api/chia.dotnet.DataLayerProxy.html#chia_dotnet_DataLayerProxy_GetRoot_System_String_System_Threading_CancellationToken_
@@ -3861,6 +3922,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.DataLayerProxy.VerifyOffer
   nameWithType: DataLayerProxy.VerifyOffer
+- uid: chia.dotnet.DataLayerProxy.VerifyProof(chia.dotnet.DLProof,System.Threading.CancellationToken)
+  name: VerifyProof(DLProof, CancellationToken)
+  href: api/chia.dotnet.DataLayerProxy.html#chia_dotnet_DataLayerProxy_VerifyProof_chia_dotnet_DLProof_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.DataLayerProxy.VerifyProof(chia.dotnet.DLProof,System.Threading.CancellationToken)
+  fullName: chia.dotnet.DataLayerProxy.VerifyProof(chia.dotnet.DLProof, System.Threading.CancellationToken)
+  nameWithType: DataLayerProxy.VerifyProof(DLProof, CancellationToken)
+- uid: chia.dotnet.DataLayerProxy.VerifyProof*
+  name: VerifyProof
+  href: api/chia.dotnet.DataLayerProxy.html#chia_dotnet_DataLayerProxy_VerifyProof_
+  commentId: Overload:chia.dotnet.DataLayerProxy.VerifyProof
+  isSpec: "True"
+  fullName: chia.dotnet.DataLayerProxy.VerifyProof
+  nameWithType: DataLayerProxy.VerifyProof
 - uid: chia.dotnet.DataLayerProxy.WalletLogIn(System.UInt32,System.Threading.CancellationToken)
   name: WalletLogIn(uint, CancellationToken)
   href: api/chia.dotnet.DataLayerProxy.html#chia_dotnet_DataLayerProxy_WalletLogIn_System_UInt32_System_Threading_CancellationToken_
@@ -4424,6 +4498,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.EndpointInfo.KeyPath
   nameWithType: EndpointInfo.KeyPath
+- uid: chia.dotnet.EndpointInfo.ToString
+  name: ToString()
+  href: api/chia.dotnet.EndpointInfo.html#chia_dotnet_EndpointInfo_ToString
+  commentId: M:chia.dotnet.EndpointInfo.ToString
+  fullName: chia.dotnet.EndpointInfo.ToString()
+  nameWithType: EndpointInfo.ToString()
+- uid: chia.dotnet.EndpointInfo.ToString*
+  name: ToString
+  href: api/chia.dotnet.EndpointInfo.html#chia_dotnet_EndpointInfo_ToString_
+  commentId: Overload:chia.dotnet.EndpointInfo.ToString
+  isSpec: "True"
+  fullName: chia.dotnet.EndpointInfo.ToString
+  nameWithType: EndpointInfo.ToString
 - uid: chia.dotnet.EndpointInfo.Uri
   name: Uri
   href: api/chia.dotnet.EndpointInfo.html#chia_dotnet_EndpointInfo_Uri
@@ -5649,6 +5736,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.FullNodeProxy.GetAdditionsAndRemovals
   nameWithType: FullNodeProxy.GetAdditionsAndRemovals
+- uid: chia.dotnet.FullNodeProxy.GetAggsigAdditionalData(System.Threading.CancellationToken)
+  name: GetAggsigAdditionalData(CancellationToken)
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetAggsigAdditionalData_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.FullNodeProxy.GetAggsigAdditionalData(System.Threading.CancellationToken)
+  fullName: chia.dotnet.FullNodeProxy.GetAggsigAdditionalData(System.Threading.CancellationToken)
+  nameWithType: FullNodeProxy.GetAggsigAdditionalData(CancellationToken)
+- uid: chia.dotnet.FullNodeProxy.GetAggsigAdditionalData*
+  name: GetAggsigAdditionalData
+  href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetAggsigAdditionalData_
+  commentId: Overload:chia.dotnet.FullNodeProxy.GetAggsigAdditionalData
+  isSpec: "True"
+  fullName: chia.dotnet.FullNodeProxy.GetAggsigAdditionalData
+  nameWithType: FullNodeProxy.GetAggsigAdditionalData
 - uid: chia.dotnet.FullNodeProxy.GetAllMempoolItems(System.Threading.CancellationToken)
   name: GetAllMempoolItems(CancellationToken)
   href: api/chia.dotnet.FullNodeProxy.html#chia_dotnet_FullNodeProxy_GetAllMempoolItems_System_Threading_CancellationToken_
@@ -6813,6 +6913,64 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.HashFilter.Values
   nameWithType: HashFilter.Values
+- uid: chia.dotnet.HashOnlyProof
+  name: HashOnlyProof
+  href: api/chia.dotnet.HashOnlyProof.html
+  commentId: T:chia.dotnet.HashOnlyProof
+  fullName: chia.dotnet.HashOnlyProof
+  nameWithType: HashOnlyProof
+- uid: chia.dotnet.HashOnlyProof.KeyClvmHash
+  name: KeyClvmHash
+  href: api/chia.dotnet.HashOnlyProof.html#chia_dotnet_HashOnlyProof_KeyClvmHash
+  commentId: P:chia.dotnet.HashOnlyProof.KeyClvmHash
+  fullName: chia.dotnet.HashOnlyProof.KeyClvmHash
+  nameWithType: HashOnlyProof.KeyClvmHash
+- uid: chia.dotnet.HashOnlyProof.KeyClvmHash*
+  name: KeyClvmHash
+  href: api/chia.dotnet.HashOnlyProof.html#chia_dotnet_HashOnlyProof_KeyClvmHash_
+  commentId: Overload:chia.dotnet.HashOnlyProof.KeyClvmHash
+  isSpec: "True"
+  fullName: chia.dotnet.HashOnlyProof.KeyClvmHash
+  nameWithType: HashOnlyProof.KeyClvmHash
+- uid: chia.dotnet.HashOnlyProof.NodeHash
+  name: NodeHash
+  href: api/chia.dotnet.HashOnlyProof.html#chia_dotnet_HashOnlyProof_NodeHash
+  commentId: P:chia.dotnet.HashOnlyProof.NodeHash
+  fullName: chia.dotnet.HashOnlyProof.NodeHash
+  nameWithType: HashOnlyProof.NodeHash
+- uid: chia.dotnet.HashOnlyProof.NodeHash*
+  name: NodeHash
+  href: api/chia.dotnet.HashOnlyProof.html#chia_dotnet_HashOnlyProof_NodeHash_
+  commentId: Overload:chia.dotnet.HashOnlyProof.NodeHash
+  isSpec: "True"
+  fullName: chia.dotnet.HashOnlyProof.NodeHash
+  nameWithType: HashOnlyProof.NodeHash
+- uid: chia.dotnet.HashOnlyProof.ValueClvmHash
+  name: ValueClvmHash
+  href: api/chia.dotnet.HashOnlyProof.html#chia_dotnet_HashOnlyProof_ValueClvmHash
+  commentId: P:chia.dotnet.HashOnlyProof.ValueClvmHash
+  fullName: chia.dotnet.HashOnlyProof.ValueClvmHash
+  nameWithType: HashOnlyProof.ValueClvmHash
+- uid: chia.dotnet.HashOnlyProof.ValueClvmHash*
+  name: ValueClvmHash
+  href: api/chia.dotnet.HashOnlyProof.html#chia_dotnet_HashOnlyProof_ValueClvmHash_
+  commentId: Overload:chia.dotnet.HashOnlyProof.ValueClvmHash
+  isSpec: "True"
+  fullName: chia.dotnet.HashOnlyProof.ValueClvmHash
+  nameWithType: HashOnlyProof.ValueClvmHash
+- uid: chia.dotnet.HashOnlyProof.layers
+  name: layers
+  href: api/chia.dotnet.HashOnlyProof.html#chia_dotnet_HashOnlyProof_layers
+  commentId: P:chia.dotnet.HashOnlyProof.layers
+  fullName: chia.dotnet.HashOnlyProof.layers
+  nameWithType: HashOnlyProof.layers
+- uid: chia.dotnet.HashOnlyProof.layers*
+  name: layers
+  href: api/chia.dotnet.HashOnlyProof.html#chia_dotnet_HashOnlyProof_layers_
+  commentId: Overload:chia.dotnet.HashOnlyProof.layers
+  isSpec: "True"
+  fullName: chia.dotnet.HashOnlyProof.layers
+  nameWithType: HashOnlyProof.layers
 - uid: chia.dotnet.HttpRpcClient
   name: HttpRpcClient
   href: api/chia.dotnet.HttpRpcClient.html
@@ -7236,6 +7394,38 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.KeyDataSecrets.PrivateKey
   nameWithType: KeyDataSecrets.PrivateKey
+- uid: chia.dotnet.KeyValueHashes
+  name: KeyValueHashes
+  href: api/chia.dotnet.KeyValueHashes.html
+  commentId: T:chia.dotnet.KeyValueHashes
+  fullName: chia.dotnet.KeyValueHashes
+  nameWithType: KeyValueHashes
+- uid: chia.dotnet.KeyValueHashes.KeyClvmHash
+  name: KeyClvmHash
+  href: api/chia.dotnet.KeyValueHashes.html#chia_dotnet_KeyValueHashes_KeyClvmHash
+  commentId: P:chia.dotnet.KeyValueHashes.KeyClvmHash
+  fullName: chia.dotnet.KeyValueHashes.KeyClvmHash
+  nameWithType: KeyValueHashes.KeyClvmHash
+- uid: chia.dotnet.KeyValueHashes.KeyClvmHash*
+  name: KeyClvmHash
+  href: api/chia.dotnet.KeyValueHashes.html#chia_dotnet_KeyValueHashes_KeyClvmHash_
+  commentId: Overload:chia.dotnet.KeyValueHashes.KeyClvmHash
+  isSpec: "True"
+  fullName: chia.dotnet.KeyValueHashes.KeyClvmHash
+  nameWithType: KeyValueHashes.KeyClvmHash
+- uid: chia.dotnet.KeyValueHashes.ValueClvmHash
+  name: ValueClvmHash
+  href: api/chia.dotnet.KeyValueHashes.html#chia_dotnet_KeyValueHashes_ValueClvmHash
+  commentId: P:chia.dotnet.KeyValueHashes.ValueClvmHash
+  fullName: chia.dotnet.KeyValueHashes.ValueClvmHash
+  nameWithType: KeyValueHashes.ValueClvmHash
+- uid: chia.dotnet.KeyValueHashes.ValueClvmHash*
+  name: ValueClvmHash
+  href: api/chia.dotnet.KeyValueHashes.html#chia_dotnet_KeyValueHashes_ValueClvmHash_
+  commentId: Overload:chia.dotnet.KeyValueHashes.ValueClvmHash
+  isSpec: "True"
+  fullName: chia.dotnet.KeyValueHashes.ValueClvmHash
+  nameWithType: KeyValueHashes.ValueClvmHash
 - uid: chia.dotnet.KeyringStatus
   name: KeyringStatus
   href: api/chia.dotnet.KeyringStatus.html
@@ -8837,6 +9027,19 @@ references:
   commentId: T:chia.dotnet.OfferSummary
   fullName: chia.dotnet.OfferSummary
   nameWithType: OfferSummary
+- uid: chia.dotnet.OfferSummary.Additions
+  name: Additions
+  href: api/chia.dotnet.OfferSummary.html#chia_dotnet_OfferSummary_Additions
+  commentId: P:chia.dotnet.OfferSummary.Additions
+  fullName: chia.dotnet.OfferSummary.Additions
+  nameWithType: OfferSummary.Additions
+- uid: chia.dotnet.OfferSummary.Additions*
+  name: Additions
+  href: api/chia.dotnet.OfferSummary.html#chia_dotnet_OfferSummary_Additions_
+  commentId: Overload:chia.dotnet.OfferSummary.Additions
+  isSpec: "True"
+  fullName: chia.dotnet.OfferSummary.Additions
+  nameWithType: OfferSummary.Additions
 - uid: chia.dotnet.OfferSummary.Fees
   name: Fees
   href: api/chia.dotnet.OfferSummary.html#chia_dotnet_OfferSummary_Fees
@@ -8889,6 +9092,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.OfferSummary.Offered
   nameWithType: OfferSummary.Offered
+- uid: chia.dotnet.OfferSummary.Removals
+  name: Removals
+  href: api/chia.dotnet.OfferSummary.html#chia_dotnet_OfferSummary_Removals
+  commentId: P:chia.dotnet.OfferSummary.Removals
+  fullName: chia.dotnet.OfferSummary.Removals
+  nameWithType: OfferSummary.Removals
+- uid: chia.dotnet.OfferSummary.Removals*
+  name: Removals
+  href: api/chia.dotnet.OfferSummary.html#chia_dotnet_OfferSummary_Removals_
+  commentId: Overload:chia.dotnet.OfferSummary.Removals
+  isSpec: "True"
+  fullName: chia.dotnet.OfferSummary.Removals
+  nameWithType: OfferSummary.Removals
 - uid: chia.dotnet.OfferSummary.Requested
   name: Requested
   href: api/chia.dotnet.OfferSummary.html#chia_dotnet_OfferSummary_Requested
@@ -10918,6 +11134,38 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.ProofOfSpace.Size
   nameWithType: ProofOfSpace.Size
+- uid: chia.dotnet.ProofResultInclusions
+  name: ProofResultInclusions
+  href: api/chia.dotnet.ProofResultInclusions.html
+  commentId: T:chia.dotnet.ProofResultInclusions
+  fullName: chia.dotnet.ProofResultInclusions
+  nameWithType: ProofResultInclusions
+- uid: chia.dotnet.ProofResultInclusions.Inclusions
+  name: Inclusions
+  href: api/chia.dotnet.ProofResultInclusions.html#chia_dotnet_ProofResultInclusions_Inclusions
+  commentId: P:chia.dotnet.ProofResultInclusions.Inclusions
+  fullName: chia.dotnet.ProofResultInclusions.Inclusions
+  nameWithType: ProofResultInclusions.Inclusions
+- uid: chia.dotnet.ProofResultInclusions.Inclusions*
+  name: Inclusions
+  href: api/chia.dotnet.ProofResultInclusions.html#chia_dotnet_ProofResultInclusions_Inclusions_
+  commentId: Overload:chia.dotnet.ProofResultInclusions.Inclusions
+  isSpec: "True"
+  fullName: chia.dotnet.ProofResultInclusions.Inclusions
+  nameWithType: ProofResultInclusions.Inclusions
+- uid: chia.dotnet.ProofResultInclusions.StoreId
+  name: StoreId
+  href: api/chia.dotnet.ProofResultInclusions.html#chia_dotnet_ProofResultInclusions_StoreId
+  commentId: P:chia.dotnet.ProofResultInclusions.StoreId
+  fullName: chia.dotnet.ProofResultInclusions.StoreId
+  nameWithType: ProofResultInclusions.StoreId
+- uid: chia.dotnet.ProofResultInclusions.StoreId*
+  name: StoreId
+  href: api/chia.dotnet.ProofResultInclusions.html#chia_dotnet_ProofResultInclusions_StoreId_
+  commentId: Overload:chia.dotnet.ProofResultInclusions.StoreId
+  isSpec: "True"
+  fullName: chia.dotnet.ProofResultInclusions.StoreId
+  nameWithType: ProofResultInclusions.StoreId
 - uid: chia.dotnet.ProposalInfo
   name: ProposalInfo
   href: api/chia.dotnet.ProposalInfo.html
@@ -15144,6 +15392,19 @@ references:
   isSpec: "True"
   fullName: chia.dotnet.WalletProxy.DidGetInfo
   nameWithType: WalletProxy.DidGetInfo
+- uid: chia.dotnet.WalletProxy.DlVerifyProof(chia.dotnet.DLProof,System.Threading.CancellationToken)
+  name: DlVerifyProof(DLProof, CancellationToken)
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_DlVerifyProof_chia_dotnet_DLProof_System_Threading_CancellationToken_
+  commentId: M:chia.dotnet.WalletProxy.DlVerifyProof(chia.dotnet.DLProof,System.Threading.CancellationToken)
+  fullName: chia.dotnet.WalletProxy.DlVerifyProof(chia.dotnet.DLProof, System.Threading.CancellationToken)
+  nameWithType: WalletProxy.DlVerifyProof(DLProof, CancellationToken)
+- uid: chia.dotnet.WalletProxy.DlVerifyProof*
+  name: DlVerifyProof
+  href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_DlVerifyProof_
+  commentId: Overload:chia.dotnet.WalletProxy.DlVerifyProof
+  isSpec: "True"
+  fullName: chia.dotnet.WalletProxy.DlVerifyProof
+  nameWithType: WalletProxy.DlVerifyProof
 - uid: chia.dotnet.WalletProxy.ExtendDerivationIndex(System.UInt32,System.Threading.CancellationToken)
   name: ExtendDerivationIndex(uint, CancellationToken)
   href: api/chia.dotnet.WalletProxy.html#chia_dotnet_WalletProxy_ExtendDerivationIndex_System_UInt32_System_Threading_CancellationToken_

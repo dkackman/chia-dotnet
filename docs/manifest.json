@@ -322,6 +322,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.DLProof.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.DLProof.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/chia.dotnet.DaemonProxy.yml",
       "output": {
         ".html": {
@@ -602,6 +612,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.HashOnlyProof.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.HashOnlyProof.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/chia.dotnet.HttpRpcClient.yml",
       "output": {
         ".html": {
@@ -676,6 +696,16 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.KeyDataSecrets.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.KeyValueHashes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.KeyValueHashes.html"
         }
       },
       "version": ""
@@ -1126,6 +1156,16 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.ProofOfSpace.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.ProofResultInclusions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.ProofResultInclusions.html"
         }
       },
       "version": ""

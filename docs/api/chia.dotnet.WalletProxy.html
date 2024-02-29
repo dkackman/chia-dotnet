@@ -1056,6 +1056,47 @@ checks if any wallets have a non-zero balance</p>
 
 
 
+  <a id="chia_dotnet_WalletProxy_DlVerifyProof_" data-uid="chia.dotnet.WalletProxy.DlVerifyProof*"></a>
+
+  <h3 id="chia_dotnet_WalletProxy_DlVerifyProof_chia_dotnet_DLProof_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.DlVerifyProof(chia.dotnet.DLProof,System.Threading.CancellationToken)">
+  DlVerifyProof(DLProof, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L1178"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Verifies a proof.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(bool CurrentRoot, ProofResultInclusions VerifiedClvmHashes)&gt; DlVerifyProof(DLProof proof, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>proof</code> <a class="xref" href="chia.dotnet.DLProof.html">DLProof</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,chia.dotnet.proofresultinclusions-.currentroot">CurrentRoot</a>, <a class="xref" href="chia.dotnet.ProofResultInclusions.html">ProofResultInclusions</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,chia.dotnet.proofresultinclusions-.verifiedclvmhashes">VerifiedClvmHashes</a>)&gt;</dt>
+    <dd><p>Proof verification</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_WalletProxy_ExtendDerivationIndex_" data-uid="chia.dotnet.WalletProxy.ExtendDerivationIndex*"></a>
 
   <h3 id="chia_dotnet_WalletProxy_ExtendDerivationIndex_System_UInt32_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.ExtendDerivationIndex(System.UInt32,System.Threading.CancellationToken)">
