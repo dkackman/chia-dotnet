@@ -66,7 +66,7 @@ public class ChiaDotNetFixture : IDisposable
                         //connect wss client
                         wssClient.Connect(cts.Token).ConfigureAwait(false).GetAwaiter().GetResult();
                         var daemon = new DaemonProxy(wssClient, OriginService);
-                        daemon.RegisterService(cts.Token).ConfigureAwait(false).GetAwaiter().GetResult(); ;
+                        daemon.RegisterService(cts.Token).ConfigureAwait(false).GetAwaiter().GetResult();
 
                         //proxies
                         var nodeRpcClient = new FullNodeProxy(wssClient, OriginService);

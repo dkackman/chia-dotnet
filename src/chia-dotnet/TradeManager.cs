@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
@@ -91,9 +92,9 @@ namespace chia.dotnet
 
             // need to explicitly declare these two types to cast away any dynamic-ness
             TradeRecord[] tradeRecords = Converters.ToObject<TradeRecord[]>(response.trade_records);
-            if (response.offers is not null)
+            string[] offers = Converters.ToObject<string[]>(response.offers);
+            if (offers is not null)
             {
-                string[] offers = Converters.ToObject<string[]>(response.offers);
 
                 var zipped = offers.Zip(tradeRecords);
 
