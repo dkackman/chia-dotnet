@@ -20,6 +20,16 @@ namespace chia.dotnet.tests
         }
 
         [Fact]
+        public async Task GetAllOffersWithoutFileContents()
+        {
+            using var cts = new CancellationTokenSource(15000);
+            var offers = await TradeManager.GetOffers(cancellationToken: cts.Token);
+
+            // requires at least one open offer
+            Assert.NotNull(offers.ToList());
+        }
+
+        [Fact]
         public async Task GetOffersCount()
         {
             using var cts = new CancellationTokenSource(15000);
@@ -58,7 +68,7 @@ namespace chia.dotnet.tests
         }
 
         [Fact]
-        public async Task CreateOfferForNftvalidateOnly()
+        public async Task CreateOfferForNftValidateOnly()
         {
             using var cts = new CancellationTokenSource(15000);
 

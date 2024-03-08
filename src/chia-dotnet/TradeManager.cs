@@ -67,7 +67,15 @@ namespace chia.dotnet
         /// <param name="reverse">Reverse the sort order of the results</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="OfferRecord"/>s</returns>
-        public async Task<IEnumerable<OfferRecord>> GetOffers(int start, int end, bool excludeMyOffers = false, bool excludeTakenOffers = false, bool includeCompleted = false, string? sortKey = null, bool reverse = false, bool fileContents = false, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<OfferRecord>> GetOffers(int start,
+            int end,
+            bool excludeMyOffers = false,
+            bool excludeTakenOffers = false,
+            bool includeCompleted = false,
+            string? sortKey = null,
+            bool reverse = false,
+            bool fileContents = false,
+            CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.start = start;
@@ -83,15 +91,24 @@ namespace chia.dotnet
 
             // need to explicitly declare these two types to cast away any dynamic-ness
             TradeRecord[] tradeRecords = Converters.ToObject<TradeRecord[]>(response.trade_records);
-            string[] offers = Converters.ToObject<string[]>(response.offers);
+            if (response.offers is not null)
+            {
+                string[] offers = Converters.ToObject<string[]>(response.offers);
 
-            var zipped = offers.Zip(tradeRecords);
+                var zipped = offers.Zip(tradeRecords);
 
-            return from zip in zipped
+                return from zip in zipped
+                       select new OfferRecord()
+                       {
+                           Offer = zip.First,
+                           TradeRecord = zip.Second with { Offer = zip.First }
+                       };
+            }
+
+            return from trade in tradeRecords
                    select new OfferRecord()
                    {
-                       Offer = zip.First,
-                       TradeRecord = zip.Second with { Offer = zip.First }
+                       TradeRecord = trade
                    };
         }
 
