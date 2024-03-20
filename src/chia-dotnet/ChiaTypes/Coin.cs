@@ -38,5 +38,18 @@ namespace chia.dotnet
                 return theBytes.Sha256().ToString().ToUpperInvariant();
             }
         }
+
+        /// <summary>
+        /// SHA256 hash of <see cref="ParentCoinInfo"/>, <see cref="PuzzleHash"/>, and <see cref="AmountHex"/>
+        /// </summary>
+        [JsonIgnore]
+        public byte[] CoinId
+        {
+            get
+            {
+                var theBytes = HexBytes.FromHex(ParentCoinInfo) + HexBytes.FromHex(PuzzleHash) + HexBytes.FromHex(AmountHex);
+                return theBytes.Sha256().Bytes;
+            }
+        }
     }
 }
