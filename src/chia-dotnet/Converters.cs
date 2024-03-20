@@ -92,9 +92,9 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="epoch"></param>
         /// <returns></returns>
-        public static long ToTimestamp(this DateTime epoch)
+        public static ulong ToTimestamp(this DateTime epoch)
         {
-            return (epoch.Ticks - 621355968000000000) / 10000000;
+            return ((ulong)epoch.Ticks - 621355968000000000UL) / 10000000UL;
         }
 
         /// <summary>
