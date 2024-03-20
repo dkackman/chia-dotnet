@@ -10,7 +10,7 @@ namespace chia.dotnet
     /// Base class that uses an <see cref="IRpcClient"/> to send and receive messages to services
     /// </summary>
     /// <remarks>The lifetime of the RpcClient is not controlled by the proxy. It should be disposed outside of this class.</remarks>
-    public abstract class ServiceProxy
+    public abstract class ServiceProxy : IServiceProxy
     {
         /// <summary>
         /// ctor
@@ -249,5 +249,9 @@ namespace chia.dotnet
 
             return Converters.ToObject<T>(d, childItem);
         }
+
+        async Task<dynamic> IServiceProxy.SendMessage(string command, CancellationToken cancellationToken) => await SendMessage(command, cancellationToken).ConfigureAwait(false);
+
+        async Task<dynamic> IServiceProxy.SendMessage(string command, dynamic? data, CancellationToken cancellationToken) => await SendMessage(command, data, cancellationToken).ConfigureAwait(false);
     }
 }
