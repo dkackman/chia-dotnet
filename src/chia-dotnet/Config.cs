@@ -33,6 +33,25 @@ namespace chia.dotnet
         public string ChiaRootPath { get; }
 
         /// <summary>
+        /// Get the chain genesis challenge
+        /// </summary>
+        /// <param name="network">Network name. Defaults to mainnet</param>
+        /// <returns>The genesis challenge or null</returns>
+        public string? GetGenesisChallenge(string network = "mainnet")
+        {
+            var constants = Contents.farmer?.network_overrides?.constants;
+            if (constants is IDictionary<string, object> d)
+            {
+                if (d.TryGetValue(network, out dynamic? value))
+                {
+                    return value?.GENESIS_CHALLENGE as string;
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
         /// Creates an <see cref="EndpointInfo"/> from the named service section
         /// </summary>
         /// <param name="serviceName">The section name in the config file. Use 'daemon' for the root config that include 'self_hostname'; i.e. the local daemon</param>

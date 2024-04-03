@@ -14,6 +14,19 @@ namespace chia.dotnet.tests
             Assert.NotNull(config);
         }
 
+
+        [Fact]
+        public void GetMainnetGenesisChallenge()
+        {
+            var file = new FileInfo("config.yaml");
+            var config = Config.Open(file.FullName);
+
+            var challenge = config.GetGenesisChallenge();
+
+            Assert.Equal("ccd5bb71183532bff220ba46c268991a3ff07eb358e8255a65c30a2dce0e5fbb", challenge);
+        }
+
+
         [Fact]
         public void CanGetDefaultDatalayerEndpoint()
         {
