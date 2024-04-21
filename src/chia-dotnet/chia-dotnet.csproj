@@ -21,8 +21,6 @@
     <PackageReleaseNotes>GetGenesisChallenge</PackageReleaseNotes>
     <PackageIcon>chia-leaf-logo-384x384.png</PackageIcon>
     <PackageIconUrl />
-    <AssemblyVersion>3.3.3.0</AssemblyVersion>
-    <FileVersion>3.3.3.0</FileVersion>
     <Nullable>enable</Nullable>
     <Title>chia.dotnet</Title>
     <PackageReadmeFile>README.md</PackageReadmeFile>
