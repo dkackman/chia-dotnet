@@ -4,7 +4,7 @@ namespace chia.dotnet
 {
     /// <summary>
     /// Exception thrown when the RPC endpoint returns a response <see cref="Message"/> but Data.success is false
-    /// oro there is a communication error on the WebSocket of http channel
+    /// or there is a communication error on the WebSocket of http channel
     /// </summary>
     /// <remarks>
     /// ctor

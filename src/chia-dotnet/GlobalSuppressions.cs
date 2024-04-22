@@ -6,3 +6,4 @@
 using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Style", "IDE0130:Namespace does not match folder structure", Justification = "<Pending>", Scope = "namespace", Target = "~N:chia.dotnet")]
+[assembly: SuppressMessage("Style", "IDE0160:Convert to block scoped namespace", Justification = "<Pending>", Scope = "namespace", Target = "~N:chia.dotnet.protocol")]
