@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using System.Collections.Concurrent;
 using System.Diagnostics;
@@ -82,7 +82,7 @@ public class Peer : IDisposable
         ObjectDisposedException.ThrowIf(disposedValue, this);
 
         var json = message.ToJson();
-        await _webSocket.SendAsync(Encoding.UTF8.GetBytes(json), WebSocketMessageType.Text, true, cancellationToken).ConfigureAwait(false);
+        await _webSocket.SendAsync(Encoding.UTF8.GetBytes(json), WebSocketMessageType.Binary, true, cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>
@@ -98,10 +98,18 @@ public class Peer : IDisposable
         ObjectDisposedException.ThrowIf(disposedValue, this);
 
         // Atomically increment _nonce and assign it to message.Id
-        message.Id = (ushort)Interlocked.Increment(ref _nonce);
+        int incremented = Interlocked.Increment(ref _nonce);
+
+        // if we've hit the max value, reset to 0
+        if (incremented >= ushort.MaxValue - 1)
+        {
+            _ = Interlocked.CompareExchange(ref _nonce, 0, incremented);
+            incremented = 0;
+        }
+        message.Id = (ushort)incremented;
 
         // capture the message to be sent
-        if (!_pendingRequests.TryAdd(message.Id, message))
+        if (!_pendingRequests.TryAdd(message.Id.Value, message))
         {
             throw new InvalidOperationException($"A message with an id of {message.Id} has already been sent");
         }
@@ -113,21 +121,21 @@ public class Peer : IDisposable
         catch (Exception e)
         {
             Debug.WriteLine(e.Message);
-            _ = _pendingRequests.TryRemove(message.Id, out _);
+            _ = _pendingRequests.TryRemove(message.Id.Value, out _);
             throw;
         }
 
         // wait here until a response shows up or we get cancelled
         ProtocolMessage response;
-        while (!_pendingResponses.TryRemove(message.Id, out response!) && !cancellationToken.IsCancellationRequested)
+        while (!_pendingResponses.TryRemove(message.Id.Value, out response!) && !cancellationToken.IsCancellationRequested)
         {
             await Task.Delay(10, cancellationToken).ConfigureAwait(false);
         }
 
         // the receive loop cleans up but make sure we do so on cancellation too
-        if (_pendingRequests.ContainsKey(message.Id))
+        if (_pendingRequests.ContainsKey(message.Id.Value))
         {
-            _ = _pendingRequests.TryRemove(message.Id, out _);
+            _ = _pendingRequests.TryRemove(message.Id.Value, out _);
         }
 
         return response?.Data ?? throw new ProtocolException(message, "The WebSocket did not respond");
@@ -176,9 +184,9 @@ public class Peer : IDisposable
             var message = response.ToObject<ProtocolMessage>() ?? new ProtocolMessage();
 
             // if we have a message pending with this id, capture the response and remove the request from the pending dictionary                
-            if (_pendingRequests.TryRemove(message.Id, out _))
+            if (message.Id.HasValue && _pendingRequests.TryRemove(message.Id.Value, out _))
             {
-                _pendingResponses[message.Id] = message;
+                _pendingResponses[message.Id.Value] = message;
             }
             else
             {

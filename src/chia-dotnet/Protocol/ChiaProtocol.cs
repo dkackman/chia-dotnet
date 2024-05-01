@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace chia.dotnet.protocol;
 
@@ -98,7 +98,7 @@ public enum ProtocolMessageTypes
 public record ProtocolMessage
 {
     public ProtocolMessageTypes MsgType { get; init; }
-    public ushort Id { get; internal set; }
+    public ushort? Id { get; internal set; }
     public byte[] Data { get; init; } = [];
 }
 
