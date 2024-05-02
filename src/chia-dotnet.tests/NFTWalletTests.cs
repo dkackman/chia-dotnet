@@ -75,7 +75,7 @@ public class NFTWalletTests : TestBase
         using var cts = new CancellationTokenSource(15000);
 
         // Act
-        var returnValue = await NFTWallet.GetDid(cancellationToken: cts.Token);
+        var returnValue = await NFTWallet.GetDID(cancellationToken: cts.Token);
 
         // Assert
         Assert.NotNull(returnValue);

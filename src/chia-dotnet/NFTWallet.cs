@@ -87,7 +87,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The Did</returns>
-        public async Task<string> GetDid(CancellationToken cancellationToken = default)
+        public async Task<string> GetDID(CancellationToken cancellationToken = default)
         {
             return await WalletProxy.SendMessage<string>("nft_get_wallet_did", CreateWalletDataObject(), "did_id", cancellationToken).ConfigureAwait(false);
         }
