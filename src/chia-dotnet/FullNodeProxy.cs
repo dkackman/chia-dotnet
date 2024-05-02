@@ -523,19 +523,7 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Retrieves information about the current network
-        /// </summary>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The network name and coin prefix</returns>
-        public async Task<(string NetworkName, string NetworkPrefix)> GetNetworkInfo(CancellationToken cancellationToken = default)
-        {
-            var response = await SendMessage("get_network_info", cancellationToken).ConfigureAwait(false);
-
-            return (response.network_name, response.network_prefix);
-        }
-
-        /// <summary>
-        /// Pushes a transaction / spend bundle to the mempool and blockchain.
+        /// Pushes a spend bundle to the mempool and blockchain.
         /// Returns whether the spend bundle was successfully included into the mempool
         /// </summary>
         /// <param name="spendBundle"></param>
@@ -555,6 +543,7 @@ namespace chia.dotnet
                 return true;
             }
 
+            // duplicate what the SendMessage method normally does since this endpoint behaves differently than most
             var message = Message.Create("push_tx", data, DestinationService, OriginService);
             throw new ResponseException(message, JsonConvert.SerializeObject(response));
         }

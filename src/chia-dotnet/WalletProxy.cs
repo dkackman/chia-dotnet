@@ -227,18 +227,6 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Retrieves information about the current network
-        /// </summary>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The current network name and prefix</returns>
-        public async Task<(string NetworkName, string NetworkPrefix)> GetNetworkInfo(CancellationToken cancellationToken = default)
-        {
-            var response = await SendMessage("get_network_info", cancellationToken).ConfigureAwait(false);
-
-            return (response.network_name, response.network_prefix);
-        }
-
-        /// <summary>
         /// Get blockchain height info
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
