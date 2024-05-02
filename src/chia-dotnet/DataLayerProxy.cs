@@ -46,10 +46,8 @@ namespace chia.dotnet
         /// <returns>An awaitable Task</returns>
         public async Task AddMissingFiles(string[] ids, string foldername, bool overwrite = false, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(foldername))
-            {
-                throw new ArgumentNullException(nameof(foldername));
-            }
+            ArgumentException.ThrowIfNullOrEmpty(foldername, nameof(foldername));
+
             dynamic data = new ExpandoObject();
             data.ids = ids;
             data.foldername = foldername;
@@ -67,10 +65,7 @@ namespace chia.dotnet
         /// <returns>Transaction id</returns>
         public async Task<string> BatchUpdate(string id, IDictionary<string, string> changeList, ulong fee = 0, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
+            ArgumentException.ThrowIfNullOrEmpty(id, nameof(id));
 
             dynamic data = new ExpandoObject();
             data.id = id;
@@ -455,7 +450,6 @@ namespace chia.dotnet
             return (response.valid, response.fee);
         }
 
-
         /// <summary>
         /// Sets a key to active.
         /// </summary>
@@ -499,6 +493,22 @@ namespace chia.dotnet
             data.keys = keys.ToList();
 
             return await SendMessage<DLProof>("get_proof", data, "proof", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Submits a pending root
+        /// </summary>
+        /// <param name="storeId">The store id</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A transaction id</returns>
+        public async Task<string> SubmitPendingRoot(string storeId, ulong fee = 0, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.store_id = storeId;
+            data.fee = fee;
+
+            return await SendMessage<string>("submit_pending_root", data, "tx_id", cancellationToken).ConfigureAwait(false);
         }
     }
 }
