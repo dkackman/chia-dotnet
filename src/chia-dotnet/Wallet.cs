@@ -231,7 +231,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="address">The receiving address</param>
         /// <param name="amount">The amount to send (in units of mojos)</param>
-        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="memos">Memos to go along with the transaction</param>
         /// <param name="excludeCoinAmounts"></param>
         /// <param name="excludeCoinsIds"></param>
@@ -284,7 +284,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="additions">Additions to the block chain</param>
         /// <param name="coins">Coins to include</param>
-        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, IEnumerable<Coin>? coins = null, ulong fee = 0, CancellationToken cancellationToken = default)

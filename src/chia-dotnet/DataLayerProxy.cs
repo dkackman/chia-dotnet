@@ -23,7 +23,7 @@ namespace chia.dotnet
         /// <param name="id">Mirror id</param>
         /// <param name="amount">The Amount</param>
         /// <param name="urls">List of mirror urls</param>
-        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable Task</returns>
         public async Task AddMirror(string id, ulong amount, IEnumerable<string> urls, ulong fee = 0, CancellationToken cancellationToken = default)
@@ -61,7 +61,7 @@ namespace chia.dotnet
         /// <param name="id">Id</param>
         /// <param name="changeList">Name value pairs of changes</param>
         /// <param name="submitOnChain">Indicates to submit the updates on the blockchain</param>
-        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Transaction id</returns>
         public async Task<string> BatchUpdate(string id, IDictionary<string, string> changeList, bool submitOnChain = true, ulong fee = 0, CancellationToken cancellationToken = default)
@@ -81,7 +81,7 @@ namespace chia.dotnet
         /// Cancels an offer using a transaction
         /// </summary>
         /// <param name="tradeId">The trade id of the offer</param>
-        /// <param name="fee">Transaction fee</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <param name="secure">This will create a transaction that includes coins that were offered</param>
         /// <returns>An awaitable Task</returns>
@@ -119,7 +119,7 @@ namespace chia.dotnet
         /// <summary>
         /// Creates a data store.
         /// </summary>
-        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The tree id and list of transactions</returns>
         public async Task<(string id, IEnumerable<TransactionRecord> txs)> CreateDataStore(ulong fee = 0, CancellationToken cancellationToken = default)
@@ -139,7 +139,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="key">Row key</param>
         /// <param name="id">Row id</param>
-        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Transaction id</returns>
         public async Task<string> DeleteKey(string key, string id, ulong fee = 0, CancellationToken cancellationToken = default)
@@ -155,7 +155,7 @@ namespace chia.dotnet
         /// Deletes a mirror.
         /// </summary>
         /// <param name="coinId">Mirror coin id</param>
-        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns></returns>
         public async Task DeleteMirror(string coinId, ulong fee = 0, CancellationToken cancellationToken = default)

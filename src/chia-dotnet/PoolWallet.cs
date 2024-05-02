@@ -33,7 +33,8 @@ namespace chia.dotnet
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The resulting <see cref="TransactionRecord"/></returns>
         /// <remarks>See <see cref="WalletProxy.GetPoolInfo(Uri, CancellationToken)"/></remarks>
-        public async Task<TransactionRecord> JoinPool(string targetPuzzlehash, string poolUrl, uint relativeLockHeight, CancellationToken cancellationToken = default)
+        public async Task<(TransactionRecord Transaction, TransactionRecord FeeTransaction, ulong TotalFee, IEnumerable<TransactionRecord> Transactions)>
+                JoinPool(string targetPuzzlehash, string poolUrl, uint relativeLockHeight, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(targetPuzzlehash))
             {
@@ -50,7 +51,13 @@ namespace chia.dotnet
             data.pool_url = poolUrl.TrimEnd('/'); // the blockchain doesn't like the trailing /
             data.relative_lock_height = relativeLockHeight;
 
-            return await WalletProxy.SendMessage<TransactionRecord>("pw_join_pool", data, "transaction", cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("pw_join_pool", data, cancellationToken).ConfigureAwait(false);
+            return (
+                Converters.ToObject<TransactionRecord>(response.transaction),
+                Converters.ToObject<TransactionRecord>(response.fee_transaction),
+                (ulong)response.total_fee,
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
+                );
         }
 
         /// <summary>
@@ -60,18 +67,27 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The resulting <see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> SelfPool(CancellationToken cancellationToken = default)
+        public async Task<(TransactionRecord Transaction, TransactionRecord FeeTransaction, ulong TotalFee, IEnumerable<TransactionRecord> Transactions)>
+            SelfPool(CancellationToken cancellationToken = default)
         {
-            return await WalletProxy.SendMessage<TransactionRecord>("pw_self_pool", CreateWalletDataObject(), "transaction", cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("pw_self_pool", CreateWalletDataObject(), cancellationToken).ConfigureAwait(false);
+
+            return (
+                Converters.ToObject<TransactionRecord>(response.transaction),
+                Converters.ToObject<TransactionRecord>(response.fee_transaction),
+                (ulong)response.total_fee,
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
+    );
         }
 
         /// <summary>
         /// Perform a sweep of the p2_singleton rewards controlled by the pool wallet singleton
         /// </summary>
-        /// <param name="fee">Transaction fee (in units of mojos)</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Wallet state and transaction</returns>
-        public async Task<(PoolWalletInfo State, TransactionRecord Transaction)> AbsorbRewards(ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(PoolWalletInfo State, TransactionRecord Transaction, TransactionRecord FeeTransaction, IEnumerable<TransactionRecord> Transactions)>
+            AbsorbRewards(ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.fee = fee;
@@ -80,7 +96,9 @@ namespace chia.dotnet
 
             return (
                 Converters.ToObject<PoolWalletInfo>(response.state),
-                Converters.ToObject<TransactionRecord>(response.transaction)
+                Converters.ToObject<TransactionRecord>(response.transaction),
+                Converters.ToObject<TransactionRecord>(response.fee_transaction),
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
                 );
         }
 

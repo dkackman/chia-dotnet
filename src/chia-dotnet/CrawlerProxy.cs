@@ -26,7 +26,6 @@ namespace chia.dotnet
             return await SendMessage<PeerCounts>("get_peer_counts", "peer_counts", cancellationToken).ConfigureAwait(false);
         }
 
-
         /// <summary>
         /// Retrieves ip addresses of peers that have connected after a given time
         /// </summary>

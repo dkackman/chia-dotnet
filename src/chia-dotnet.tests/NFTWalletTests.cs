@@ -49,7 +49,7 @@ public class NFTWalletTests : TestBase
         using var cts = new CancellationTokenSource(15000);
 
         // Act
-        var returnValue = await NFTWallet.NftCountNfts(cancellationToken: cts.Token);
+        var returnValue = await NFTWallet.CountNFTs(cancellationToken: cts.Token);
 
         // Assert
         Assert.True(returnValue >= 0);
@@ -105,7 +105,7 @@ public class NFTWalletTests : TestBase
         };
 
         // Act
-        var returnValue = await NFTWallet.MintNFT(info: info, cancellationToken: cts.Token);
+        var returnValue = await NFTWallet.Mint(info: info, cancellationToken: cts.Token);
 
         // Assert
         Assert.NotNull(returnValue.SpendBundle);
@@ -141,7 +141,7 @@ public class NFTWalletTests : TestBase
         };
 
         // Act
-        var returnValue = await NFTWallet.NftMintBulk(info: info, cancellationToken: cts.Token);
+        var returnValue = await NFTWallet.MintBulk(info: info, cancellationToken: cts.Token);
 
         // Assert
         Assert.NotNull(returnValue.SpendBundle);

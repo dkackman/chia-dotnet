@@ -1,4 +1,6 @@
-﻿namespace chia.dotnet
+﻿using System;
+
+namespace chia.dotnet
 {
     /// <summary>
     /// The in memory representation of an offer and its record of trade
@@ -13,6 +15,13 @@
         /// <summary>
         /// Trade record associated with the offer
         /// </summary>
-        public TradeRecord TradeRecord { get; init; } = new TradeRecord();
+        public TradeRecord Trade { get; init; } = new TradeRecord();
+
+        /// <summary>
+        /// Trade record associated with the offer
+        /// </summary>
+        /// <remarks>Deprecated. Use <see cref="Trade"/></remarks>
+        [Obsolete("This property is obsolete. Use Trade instead.", false)]
+        public TradeRecord TradeRecord => Trade;
     }
 }

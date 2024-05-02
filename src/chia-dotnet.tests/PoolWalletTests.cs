@@ -64,7 +64,7 @@ public class PoolWalletTests : TestBase
         using var cts = new CancellationTokenSource(15000);
 
         // Act
-        var (State, Transaction) = await PoolWallet.AbsorbRewards(cancellationToken: cts.Token);
+        var (State, Transaction, FeeTransaction, Transactions) = await PoolWallet.AbsorbRewards(cancellationToken: cts.Token);
 
         // Assert
         Assert.NotNull(State);
