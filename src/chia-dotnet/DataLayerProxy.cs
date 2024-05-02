@@ -60,10 +60,11 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="id">Id</param>
         /// <param name="changeList">Name value pairs of changes</param>
+        /// <param name="submitOnChain">Indicates to submit the updates on the blockchain</param>
         /// <param name="fee">Fee amount (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Transaction id</returns>
-        public async Task<string> BatchUpdate(string id, IDictionary<string, string> changeList, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<string> BatchUpdate(string id, IDictionary<string, string> changeList, bool submitOnChain = true, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             ArgumentException.ThrowIfNullOrEmpty(id, nameof(id));
 
@@ -71,6 +72,8 @@ namespace chia.dotnet
             data.id = id;
             data.changelist = changeList;
             data.fee = fee;
+            data.submit_on_chain = submitOnChain;
+
             return await SendMessage<string>("batch_update", data, "tx_id", cancellationToken).ConfigureAwait(false);
         }
 
