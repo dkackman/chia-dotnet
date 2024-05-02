@@ -182,18 +182,39 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Gets the list of ancestors for a given id/hash pair.
+        /// Gets the list of keys for a given id/hash pair.
         /// </summary>
-        /// <param name="id">Id</param>
+        /// <param name="id">Store id</param>
         /// <param name="rootHash">Root Hash</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns></returns>
+        /// <returns>The list of keys</returns>
         public async Task<IEnumerable<string>> GetKeys(string id, string? rootHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.id = id;
             data.root_hash = rootHash;
             return await SendMessage<IEnumerable<string>>("get_keys", data, "keys", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets the list of keys for a given id/hash pair.
+        /// </summary>
+        /// <param name="id">Store id</param>
+        /// <param name="rootHash">Root Hash</param>
+        /// <param name="page">The page to get</param>
+        /// <param name="maxPageSize">The max size of each page</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The list of keys and paging information</returns>
+        public async Task<(IEnumerable<string> keys, int totalPages, int totalBytes, string rootHash)> GetKeys(string id, string? rootHash, int page = 1, int maxPageSize = 40 * 1024 * 1024, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.id = id;
+            data.root_hash = rootHash;
+            data.page = page;
+            data.max_page_size = maxPageSize;
+            var response = await SendMessage("get_keys", data, cancellationToken).ConfigureAwait(false);
+
+            return (Converters.ToObject<IEnumerable<string>>(response.keys), response.total_pages, response.total_bytes, response.root_hash);
         }
 
         /// <summary>
@@ -212,6 +233,27 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Get the keys and values for a given id/root_hash pair.
+        /// </summary>
+        /// <param name="id">Store id</param>
+        /// <param name="rootHash">Root Hash</param>
+        /// <param name="page">The page to get</param>
+        /// <param name="maxPageSize">The max size of each page</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The list of keys and paging information</returns>
+        public async Task<(IEnumerable<TerminalNode> keys, int totalPages, int totalBytes, string rootHash)> GetKeysValues(string id, string? rootHash, int page = 1, int maxPageSize = 40 * 1024 * 1024, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.id = id;
+            data.root_hash = rootHash;
+            data.page = page;
+            data.max_page_size = maxPageSize;
+            var response = await SendMessage("get_keys_values", data, cancellationToken).ConfigureAwait(false);
+
+            return (Converters.ToObject<IEnumerable<TerminalNode>>(response.keys), response.total_pages, response.total_bytes, response.root_hash);
+        }
+
+        /// <summary>
         /// Get kv diff between two root hashes.
         /// </summary>
         /// <param name="id">Id</param>
@@ -227,6 +269,30 @@ namespace chia.dotnet
             data.hash2 = hash2;
             return await SendMessage<KVDiff>("get_kv_diff", data, "diff", cancellationToken).ConfigureAwait(false);
         }
+
+        /// <summary>
+        /// Get the keys and values for a given id/root_hash pair.
+        /// </summary>
+        /// <param name="id">Store id</param>
+        /// <param name="hash1">First Hash</param>
+        /// <param name="hash2">Second Hash</param>
+        /// <param name="page">The page to get</param>
+        /// <param name="maxPageSize">The max size of each page</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The list of keys and paging information</returns>
+        public async Task<(KVDiff diff, int totalPages, int totalBytes)> GetKVDiff(string id, string hash1, string hash2, int page = 1, int maxPageSize = 40 * 1024 * 1024, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.id = id;
+            data.hash1 = hash1;
+            data.hash2 = hash2;
+            data.page = page;
+            data.max_page_size = maxPageSize;
+            var response = await SendMessage("get_kv_diff", data, cancellationToken).ConfigureAwait(false);
+
+            return (Converters.ToObject<KVDiff>(response.diff), response.total_pages, response.total_bytes);
+        }
+
 
         /// <summary>
         /// Gets hash of latest tree root saved in our local datastore.
@@ -510,7 +576,6 @@ namespace chia.dotnet
             dynamic data = new ExpandoObject();
             data.store_id = storeId;
             data.fee = fee;
-
             return await SendMessage<string>("submit_pending_root", data, "tx_id", cancellationToken).ConfigureAwait(false);
         }
     }
