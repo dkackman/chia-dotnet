@@ -453,7 +453,7 @@ namespace chia.dotnet.tests
             // Arrange
             using var cts = new CancellationTokenSource(15000);
             var didId = string.Empty;
-            IEnumerable<NftCoinInfo> nftCoinList = null;
+            IEnumerable<NFTCoinInfo> nftCoinList = null;
 
             // Act
             var returnValue = await Wallet.NftSetDidBulk(didId: didId, nftCoinList: nftCoinList, cancellationToken: cts.Token);
@@ -468,7 +468,7 @@ namespace chia.dotnet.tests
             // Arrange
             using var cts = new CancellationTokenSource(15000);
             var targetAddress = string.Empty;
-            IEnumerable<NftCoinInfo> nftCoinList = null;
+            IEnumerable<NFTCoinInfo> nftCoinList = null;
 
             // Act
             var returnValue = await Wallet.NftTransferBulk(targetAddress: targetAddress, nftCoinList: nftCoinList, cancellationToken: cts.Token);
@@ -671,7 +671,7 @@ namespace chia.dotnet.tests
             var returnValue = await Wallet.VerifySignature(
                 address: address,
                 signature: Signature,
-                message: message.ToHexString(),
+                message: message,
 
                 pubkey: PubKey,
                 signingMode: SigningMode,

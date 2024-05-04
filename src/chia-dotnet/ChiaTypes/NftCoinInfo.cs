@@ -1,6 +1,6 @@
 ﻿namespace chia.dotnet
 {
-    public record NftCoinInfo
+    public record NFTCoinInfo
     {
 
         public string NftCoinId { get; init; } = string.Empty;

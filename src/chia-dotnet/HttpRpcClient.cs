@@ -89,7 +89,6 @@ namespace chia.dotnet
         {
             ObjectDisposedException.ThrowIf(disposedValue, this);
 
-
             // need to use our json to ensure we get the snake case resolver
             // (don't change to extension method syntax as it won't bind to the dynamic 'Data' object)            
             var json = Converters.ToJson(message.Data);

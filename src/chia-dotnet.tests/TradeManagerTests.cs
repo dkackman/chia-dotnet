@@ -89,12 +89,12 @@ namespace chia.dotnet.tests
         [Fact]
         public async Task CreateOfferForIds()
         {
-            uint offeringWalletId = 17; // wallet ID and amount we are offering to exchange
-            uint askingForWalletId = 1; // the wallet id of the asset we are asking for (XCH ==1)
+            uint offeringWalletId = 1; // wallet ID and amount we are offering to exchange
+            uint askingForWalletId = 2; // the wallet id of the asset we are asking for (XCH ==1)
 
             var idsAndAmounts = new Dictionary<uint, long>()
              {
-                 { offeringWalletId, 1 },
+                 { offeringWalletId, 10 },
                  { askingForWalletId, -1 }
              };
 

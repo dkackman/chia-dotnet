@@ -8,9 +8,11 @@ namespace chia.dotnet
         public ulong Fee { get; init; }
         public NPCResult NPCResult { get; init; } = new();
         public ulong Cost { get; init; }
-        public string SpendBudndleName { get; init; } = string.Empty;
+        public string SpendBundleName { get; init; } = string.Empty;
         public IEnumerable<Coin> Additions { get; init; } = [];
         public IEnumerable<Coin> Removals { get; init; } = [];
-        public string Program { get; init; } = string.Empty;
+        public uint? AssertHeight { get; init; }
+        public uint? AssertBeforeHeight { get; init; }
+        public uint? AssertBeforeSeconds { get; init; }
     }
 }

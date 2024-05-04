@@ -21,16 +21,8 @@ namespace chia.dotnet
         protected ServiceProxy(IRpcClient rpcClient, string destinationService, string originService)
         {
             RpcClient = rpcClient ?? throw new ArgumentNullException(nameof(rpcClient));
-
-            if (string.IsNullOrEmpty(destinationService))
-            {
-                throw new ArgumentNullException(nameof(destinationService));
-            }
-
-            if (string.IsNullOrEmpty(originService))
-            {
-                throw new ArgumentNullException(nameof(originService));
-            }
+            ArgumentException.ThrowIfNullOrEmpty(destinationService, nameof(destinationService));
+            ArgumentException.ThrowIfNullOrEmpty(originService, nameof(originService));
 
             DestinationService = destinationService;
             OriginService = originService;
@@ -170,10 +162,7 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task OpenConnection(string host, int port, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(host))
-            {
-                throw new ArgumentNullException(nameof(host));
-            }
+            ArgumentException.ThrowIfNullOrEmpty(host, nameof(host));
 
             dynamic data = new ExpandoObject();
             data.host = host;
@@ -190,10 +179,7 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task CloseConnection(string nodeId, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(nodeId))
-            {
-                throw new ArgumentNullException(nameof(nodeId));
-            }
+            ArgumentException.ThrowIfNullOrEmpty(nodeId, nameof(nodeId));
 
             dynamic data = new ExpandoObject();
             data.node_id = nodeId;

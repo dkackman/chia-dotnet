@@ -767,7 +767,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Transaction number and <see cref="SpendBundle"/></returns>
-        public async Task<(int TxNum, SpendBundle SpendBundle, IEnumerable<TransactionRecord> Transactions)> NftSetDidBulk(string didId, IEnumerable<NftCoinInfo> nftCoinList, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(int TxNum, SpendBundle SpendBundle, IEnumerable<TransactionRecord> Transactions)> NftSetDidBulk(string didId, IEnumerable<NFTCoinInfo> nftCoinList, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.nft_coin_list = nftCoinList.ToList();
@@ -791,7 +791,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Transaction number and a <see cref="SpendBundle"/></returns>
-        public async Task<(int TxNum, SpendBundle SpendBundle, IEnumerable<TransactionRecord> Transactions)> NftTransferBulk(string targetAddress, IEnumerable<NftCoinInfo> nftCoinList, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(int TxNum, SpendBundle SpendBundle, IEnumerable<TransactionRecord> Transactions)> NftTransferBulk(string targetAddress, IEnumerable<NFTCoinInfo> nftCoinList, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.nft_coin_list = nftCoinList.ToList();
@@ -813,12 +813,12 @@ namespace chia.dotnet
         /// <param name="latest"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable Task</returns>
-        public async Task<DidInfo> DidGetInfo(string coinId, bool latest = true, CancellationToken cancellationToken = default)
+        public async Task<DIDInfo> DidGetInfo(string coinId, bool latest = true, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.coin_id = coinId;
             data.latest = latest;
-            return await SendMessage<DidInfo>("did_get_info", data, null, cancellationToken).ConfigureAwait(false);
+            return await SendMessage<DIDInfo>("did_get_info", data, null, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

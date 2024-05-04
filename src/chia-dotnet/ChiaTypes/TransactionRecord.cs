@@ -47,5 +47,7 @@ namespace chia.dotnet
         [JsonIgnore]
         public DateTime CreatedAtDateTime => CreatedAtTime.ToDateTime();
         public ConditionValidTimes ValidTimes { get; init; } = new();
+
+        public IDictionary<string, string> Memos { get; init; } = new Dictionary<string, string>();
     }
 }

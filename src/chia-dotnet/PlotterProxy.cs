@@ -79,11 +79,7 @@ namespace chia.dotnet
         /// <returns>An awaitable <see cref="Task"/></returns>
         public async Task StopPlotting(string id, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
-
+            ArgumentException.ThrowIfNullOrEmpty(id, nameof(id));
             dynamic data = new ExpandoObject();
             data.id = id;
 

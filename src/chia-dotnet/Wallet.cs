@@ -106,14 +106,14 @@ namespace chia.dotnet
             data.amount = amount;
             if (excludedCoins is not null)
             {
-                data.amount = excludedCoins.ToList();
+                data.excluded_coins = excludedCoins.ToList();
             }
             if (excludedCoinAmounts is not null)
             {
-                data.amount = excludedCoinAmounts.ToList();
+                data.excluded_coin_amounts = excludedCoinAmounts.ToList();
             }
-            data.amount = minCoinAmount;
-            data.amount = maxCoinAmount;
+            data.min_coin_amount = minCoinAmount;
+            data.max_coin_amount = maxCoinAmount;
 
             return await WalletProxy.SendMessage<IEnumerable<Coin>>("select_coins", data, "coins", cancellationToken).ConfigureAwait(false);
         }
@@ -251,10 +251,7 @@ namespace chia.dotnet
             ulong fee = 0,
             CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(address))
-            {
-                throw new ArgumentNullException(nameof(address));
-            }
+            ArgumentException.ThrowIfNullOrEmpty(address, nameof(address));
 
             dynamic data = CreateWalletDataObject();
             data.address = address;

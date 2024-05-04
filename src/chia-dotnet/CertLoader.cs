@@ -50,15 +50,8 @@ namespace chia.dotnet
 
         public static X509Certificate2Collection DeserializeCert(string certBlob, string keyBlob)
         {
-            if (string.IsNullOrEmpty(certBlob))
-            {
-                throw new ArgumentNullException(nameof(certBlob));
-            }
-
-            if (string.IsNullOrEmpty(keyBlob))
-            {
-                throw new ArgumentNullException(nameof(keyBlob));
-            }
+            ArgumentNullException.ThrowIfNull(certBlob, nameof(certBlob));
+            ArgumentNullException.ThrowIfNull(keyBlob, nameof(keyBlob));
 
             using X509Certificate2 cert = new(Encoding.UTF8.GetBytes(certBlob));
             using var rsa = DeserializePrivateKey(keyBlob);

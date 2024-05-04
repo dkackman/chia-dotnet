@@ -36,15 +36,8 @@ namespace chia.dotnet
         public async Task<(TransactionRecord Transaction, TransactionRecord FeeTransaction, ulong TotalFee, IEnumerable<TransactionRecord> Transactions)>
                 JoinPool(string targetPuzzlehash, string poolUrl, uint relativeLockHeight, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(targetPuzzlehash))
-            {
-                throw new ArgumentNullException(nameof(targetPuzzlehash));
-            }
-
-            if (string.IsNullOrEmpty(poolUrl))
-            {
-                throw new ArgumentNullException(nameof(poolUrl));
-            }
+            ArgumentException.ThrowIfNullOrEmpty(targetPuzzlehash, nameof(targetPuzzlehash));
+            ArgumentException.ThrowIfNullOrEmpty(poolUrl, nameof(poolUrl));
 
             dynamic data = CreateWalletDataObject();
             data.target_puzzlehash = targetPuzzlehash;
