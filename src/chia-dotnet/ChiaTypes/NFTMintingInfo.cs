@@ -2,7 +2,7 @@
 
 namespace chia.dotnet
 {
-    public record NftMintEntry
+    public record NFTMintEntry
     {
         public ushort RoyaltyPercentage { get; init; }
         public IEnumerable<string> Uris { get; init; } = [];
@@ -18,7 +18,7 @@ namespace chia.dotnet
     /// <summary>
     /// Info for minting an NFT
     /// </summary>
-    public record NFTMintingInfo : NftMintEntry
+    public record NFTMintingInfo : NFTMintEntry
     {
         public string? RoyaltyAddress { get; init; }
         public string? TargetAddress { get; init; }

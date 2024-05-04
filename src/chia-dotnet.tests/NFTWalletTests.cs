@@ -118,9 +118,9 @@ public class NFTWalletTests : TestBase
         using var cts = new CancellationTokenSource(15000);
         NFTBulkMintingInfo info = new()
         {
-            MetadataList = new List<NftMintEntry>
+            MetadataList = new List<NFTMintEntry>
             {
-                new NftMintEntry
+                new NFTMintEntry
                 {
                     Uris = new string[] {
                         "https://nftstorage.link/ipfs/bafybeif37wgxiwsddi7iyovgbjdhskaw2kl2o2gym4zg3x5dsygvmhvs2y/01971..jpg",

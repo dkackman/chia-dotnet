@@ -9,7 +9,7 @@ namespace chia.dotnet
     {
         public string? RoyaltyAddress { get; init; }
         public ushort? RoyaltyPercentage { get; init; }
-        public IEnumerable<NftMintEntry> MetadataList { get; init; } = [];
+        public IEnumerable<NFTMintEntry> MetadataList { get; init; } = [];
         /// <summary>
         /// a list of targets for transferring minted NFTs (aka airdrop)
         /// </summary>
