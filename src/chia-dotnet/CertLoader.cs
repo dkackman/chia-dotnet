@@ -19,11 +19,13 @@ namespace chia.dotnet
         /// <returns>An ephemeral certificate that can be used for WebSocket authentication</returns>
         public static X509Certificate2Collection GetCertFromFiles(string certPath, string keyPath)
         {
+            certPath = ExpandTilde(certPath);
             if (!File.Exists(certPath))
             {
                 throw new FileNotFoundException($"crt file {certPath} not found");
             }
 
+            keyPath = ExpandTilde(keyPath);
             if (!File.Exists(keyPath))
             {
                 throw new FileNotFoundException($"key file {keyPath} not found");
@@ -35,6 +37,16 @@ namespace chia.dotnet
             return DeserializeCert(certStreamReader.ReadToEnd(), keyStreamReader.ReadToEnd());
         }
 
+        private static string ExpandTilde(string path)
+        {
+            if (path.StartsWith('~'))
+            {
+                var homeDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+                return string.Concat(homeDirectory, path.AsSpan(1));
+            }
+
+            return path;
+        }
 
         public static X509Certificate2Collection DeserializeCert(string certBlob, string keyBlob)
         {
