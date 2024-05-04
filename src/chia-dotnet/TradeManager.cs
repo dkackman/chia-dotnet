@@ -101,14 +101,14 @@ namespace chia.dotnet
                        select new OfferRecord()
                        {
                            Offer = zip.First,
-                           TradeRecord = zip.Second with { Offer = zip.First }
+                           Trade = zip.Second with { Offer = zip.First }
                        };
             }
 
             return from trade in tradeRecords
                    select new OfferRecord()
                    {
-                       TradeRecord = trade
+                       Trade = trade
                    };
         }
 
@@ -157,7 +157,7 @@ namespace chia.dotnet
         /// <param name="batchFee"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable Task</returns>
-        public async Task CancelOffers(bool secure, string assetId = "xch", bool cancelAll = false, int batchSize = 5, ulong batchFee = 0, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<TransactionRecord>> CancelOffers(bool secure, string assetId = "xch", bool cancelAll = false, int batchSize = 5, ulong batchFee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.batch_fee = batchFee;
@@ -165,7 +165,7 @@ namespace chia.dotnet
             data.batch_size = batchSize;
             data.cancel_all = cancelAll;
             data.asset_id = assetId;
-            await WalletProxy.SendMessage("cancel_offers", data, cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<IEnumerable<TransactionRecord>>("cancel_offers", data, "transactions", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -204,20 +204,19 @@ namespace chia.dotnet
         /// Cancels an offer using a transaction
         /// </summary>
         /// <param name="tradeId">The trade id of the offer</param>
-        /// <param name="fee">Transaction fee</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <param name="secure">This will create a transaction that includes coins that were offered</param>
         /// <returns>An awaitable Task</returns>
-        public async Task CancelOffer(string tradeId, bool secure = false, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<TransactionRecord>> CancelOffer(string tradeId, bool secure, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.trade_id = tradeId;
             data.fee = fee;
             data.secure = secure;
 
-            await WalletProxy.SendMessage("cancel_offer", data, cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<IEnumerable<TransactionRecord>>("cancel_offer", data, "transactions", cancellationToken).ConfigureAwait(false);
         }
-
 
         /// <summary>
         /// Takes an offer
@@ -227,10 +226,10 @@ namespace chia.dotnet
         /// <param name="minCoinAmount"></param>
         /// <param name="maxCoinAmount"></param>
         /// <param name="reusePuzhash"></param>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken"></param>
         /// <returns><see cref="TradeRecord"/></returns>
-        public async Task<TradeRecord> TakeOffer(string offer, IDictionary<string, object>? solver = null, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(TradeRecord Trade, IEnumerable<TransactionRecord> Transactions)> TakeOffer(string offer, IDictionary<string, object>? solver = null, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.offer = offer;
@@ -240,7 +239,12 @@ namespace chia.dotnet
             data.reuse_puzhash = reusePuzhash;
             data.fee = fee;
 
-            return await WalletProxy.SendMessage<TradeRecord>("take_offer", data, "trade_record", cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("take_offer", data, cancellationToken).ConfigureAwait(false);
+
+            return (
+                Converters.ToObject<TradeRecord>(response.trade_record),
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
+                );
         }
 
         /// <summary>
@@ -274,7 +278,7 @@ namespace chia.dotnet
         /// Create an offer file from a set of id's in the form of wallet_id:amount
         /// </summary>
         /// <param name="walletIdsAndMojoAmounts">The set of wallet ids and amounts (in mojo) representing the offer</param>
-        /// <param name="fee">Transaction fee for offer creation</param>   
+        /// <param name="fee">Fee (in units of mojos)</param>   
         /// <param name="minCoinAmount"></param>   
         /// <param name="maxCoinAmount"></param>   
         /// <param name="validateOnly">Only validate the offer contents. Do not create.</param>   
@@ -283,7 +287,7 @@ namespace chia.dotnet
         /// <param name="reusePuzhash"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task<OfferRecord> CreateOffer(IDictionary<uint, long> walletIdsAndMojoAmounts, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool validateOnly = false, IDictionary<string, string>? driver = null, IDictionary<string, string>? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(OfferRecord Offer, TradeRecord Trade, IEnumerable<TransactionRecord> Transactions)> CreateOffer(IDictionary<uint, long> walletIdsAndMojoAmounts, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool validateOnly = false, IDictionary<string, string>? driver = null, IDictionary<string, string>? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             ArgumentNullException.ThrowIfNull(walletIdsAndMojoAmounts);
 
@@ -296,14 +300,19 @@ namespace chia.dotnet
             data.reuse_puzhash = reusePuzhash;
             data.solver = solver;
             data.driver_dict = driver;
-            return await WalletProxy.SendMessage<OfferRecord>("create_offer_for_ids", data, null, cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("create_offer_for_ids", data, cancellationToken).ConfigureAwait(false);
+            return (
+                Converters.ToObject<OfferRecord>(response.offer),
+                Converters.ToObject<TradeRecord>(response.trade_record),
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
+                );
         }
 
         /// <summary>
         /// Create an offer file from a set of id's in the form of wallet_id:amount
         /// </summary>
         /// <param name="launcherIdsAndMojoAmounts">The set of wallet ids and amounts (in mojo) representing the offer</param>
-        /// <param name="fee">Transaction fee for offer creation</param>   
+        /// <param name="fee">Fee (in units of mojos)</param>   
         /// <param name="minCoinAmount"></param>   
         /// <param name="maxCoinAmount"></param>   
         /// <param name="validateOnly">Only validate the offer contents. Do not create.</param>   
@@ -312,7 +321,7 @@ namespace chia.dotnet
         /// <param name="reusePuzhash"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task<OfferRecord> CreateOffer(IDictionary<string, long> launcherIdsAndMojoAmounts, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool validateOnly = false, IDictionary<string, string>? driver = null, IDictionary<string, string>? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(OfferRecord Offer, TradeRecord Trade, IEnumerable<TransactionRecord> Transactions)> CreateOffer(IDictionary<string, long> launcherIdsAndMojoAmounts, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool validateOnly = false, IDictionary<string, string>? driver = null, IDictionary<string, string>? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             ArgumentNullException.ThrowIfNull(launcherIdsAndMojoAmounts);
 
@@ -325,14 +334,19 @@ namespace chia.dotnet
             data.reuse_puzhash = reusePuzhash;
             data.solver = solver;
             data.driver_dict = driver;
-            return await WalletProxy.SendMessage<OfferRecord>("create_offer_for_ids", data, null, cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("create_offer_for_ids", data, cancellationToken).ConfigureAwait(false);
+            return (
+                Converters.ToObject<OfferRecord>(response.offer),
+                Converters.ToObject<TradeRecord>(response.trade_record),
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
+                );
         }
 
         /// <summary>
         /// Create an offer file from a set of id's in the form of wallet_id:amount
         /// </summary>
         /// <param name="offer">Summary of the offer to create</param>
-        /// <param name="fee">Transaction fee for offer creation</param>   
+        /// <param name="fee">Fee (in units of mojos)</param>   
         /// <param name="minCoinAmount"></param>   
         /// <param name="maxCoinAmount"></param>   
         /// <param name="validateOnly">Only validate the offer contents. Do not create.</param>   
@@ -341,7 +355,7 @@ namespace chia.dotnet
         /// <param name="reusePuzhash"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task<OfferRecord> CreateOffer(OfferSummary offer, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool validateOnly = false, IDictionary<string, string>? driver = null, IDictionary<string, string>? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(OfferRecord Offer, TradeRecord Trade, IEnumerable<TransactionRecord> Transactions)> CreateOffer(OfferSummary offer, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool validateOnly = false, IDictionary<string, string>? driver = null, IDictionary<string, string>? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             var walletIdsAndMojoAmounts = new Dictionary<uint, long>();
             foreach (var requested in offer.Requested)

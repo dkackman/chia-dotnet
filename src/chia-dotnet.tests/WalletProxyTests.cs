@@ -242,7 +242,7 @@ namespace chia.dotnet.tests
             ulong amount = 1;
 
             // Act
-            var (Type, AssetId, WalletId) = await Wallet.CreateCATWallet(name: name, amount: amount, cancellationToken: cts.Token);
+            var (Type, AssetId, WalletId, Transactions) = await Wallet.CreateCATWallet(name: name, amount: amount, cancellationToken: cts.Token);
 
             // Assert
             Assert.NotNull(AssetId);
@@ -367,7 +367,7 @@ namespace chia.dotnet.tests
             };
 
             // Act
-            var (transaction, launcherId, p2SingletonHash) = await Wallet.CreatePoolWallet(initialTargetState: initialTargetState, cancellationToken: cts.Token);
+            var (transaction, launcherId, p2SingletonHash, TotalFee, Transactions) = await Wallet.CreatePoolWallet(initialTargetState: initialTargetState, cancellationToken: cts.Token);
 
             // Assert
             Assert.NotNull(launcherId);
@@ -394,7 +394,7 @@ namespace chia.dotnet.tests
             IEnumerable<AmountWithPuzzlehash> additions = null;
 
             // Act
-            var (SignedTx, SignedTxs) = await Wallet.CreateSignedTransaction(additions: additions, cancellationToken: cts.Token);
+            var (SignedTx, SignedTxs, Transactions) = await Wallet.CreateSignedTransaction(additions: additions, cancellationToken: cts.Token);
 
             // Assert
             Assert.NotNull(SignedTx);
@@ -453,7 +453,7 @@ namespace chia.dotnet.tests
             // Arrange
             using var cts = new CancellationTokenSource(15000);
             var didId = string.Empty;
-            IEnumerable<NftCoinInfo> nftCoinList = null;
+            IEnumerable<NFTCoinInfo> nftCoinList = null;
 
             // Act
             var returnValue = await Wallet.NftSetDidBulk(didId: didId, nftCoinList: nftCoinList, cancellationToken: cts.Token);
@@ -468,7 +468,7 @@ namespace chia.dotnet.tests
             // Arrange
             using var cts = new CancellationTokenSource(15000);
             var targetAddress = string.Empty;
-            IEnumerable<NftCoinInfo> nftCoinList = null;
+            IEnumerable<NFTCoinInfo> nftCoinList = null;
 
             // Act
             var returnValue = await Wallet.NftTransferBulk(targetAddress: targetAddress, nftCoinList: nftCoinList, cancellationToken: cts.Token);
@@ -671,7 +671,7 @@ namespace chia.dotnet.tests
             var returnValue = await Wallet.VerifySignature(
                 address: address,
                 signature: Signature,
-                message: message.ToHexString(),
+                message: message,
 
                 pubkey: PubKey,
                 signingMode: SigningMode,
@@ -747,7 +747,7 @@ namespace chia.dotnet.tests
             var returnValue = await Wallet.SpendClawbackCoins(coinIds: coinIds, cancellationToken: cts.Token);
 
             // Assert
-            Assert.NotNull(returnValue.ToList());
+            Assert.NotNull(returnValue.TransactionsIds.ToList());
         }
     }
 }

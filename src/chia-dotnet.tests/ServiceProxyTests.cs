@@ -69,11 +69,11 @@ public class ServiceProxyTests : TestBase
     {
         // Arrange
         using var cts = new CancellationTokenSource(15000);
-        var host = "testnet10-node.chia.net";
+        var host = "testnet11-node.chia.net";
         var port = 58444;
 
         // Act
-        await Farmer.OpenConnection(host: host, port: port, cancellationToken: cts.Token);
+        await FullNode.OpenConnection(host: host, port: port, cancellationToken: cts.Token);
 
         // Assert
 

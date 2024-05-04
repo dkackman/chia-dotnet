@@ -106,14 +106,14 @@ namespace chia.dotnet
             data.amount = amount;
             if (excludedCoins is not null)
             {
-                data.amount = excludedCoins.ToList();
+                data.excluded_coins = excludedCoins.ToList();
             }
             if (excludedCoinAmounts is not null)
             {
-                data.amount = excludedCoinAmounts.ToList();
+                data.excluded_coin_amounts = excludedCoinAmounts.ToList();
             }
-            data.amount = minCoinAmount;
-            data.amount = maxCoinAmount;
+            data.min_coin_amount = minCoinAmount;
+            data.max_coin_amount = maxCoinAmount;
 
             return await WalletProxy.SendMessage<IEnumerable<Coin>>("select_coins", data, "coins", cancellationToken).ConfigureAwait(false);
         }
@@ -231,7 +231,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="address">The receiving address</param>
         /// <param name="amount">The amount to send (in units of mojos)</param>
-        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="memos">Memos to go along with the transaction</param>
         /// <param name="excludeCoinAmounts"></param>
         /// <param name="excludeCoinsIds"></param>
@@ -251,10 +251,7 @@ namespace chia.dotnet
             ulong fee = 0,
             CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(address))
-            {
-                throw new ArgumentNullException(nameof(address));
-            }
+            ArgumentException.ThrowIfNullOrEmpty(address, nameof(address));
 
             dynamic data = CreateWalletDataObject();
             data.address = address;
@@ -284,7 +281,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="additions">Additions to the block chain</param>
         /// <param name="coins">Coins to include</param>
-        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The <see cref="TransactionRecord"/></returns>
         public async Task<TransactionRecord> SendTransactionMulti(IEnumerable<Coin> additions, IEnumerable<Coin>? coins = null, ulong fee = 0, CancellationToken cancellationToken = default)

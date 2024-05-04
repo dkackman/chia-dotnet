@@ -23,7 +23,7 @@ namespace chia.dotnet
         /// <param name="id">Mirror id</param>
         /// <param name="amount">The Amount</param>
         /// <param name="urls">List of mirror urls</param>
-        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable Task</returns>
         public async Task AddMirror(string id, ulong amount, IEnumerable<string> urls, ulong fee = 0, CancellationToken cancellationToken = default)
@@ -46,10 +46,8 @@ namespace chia.dotnet
         /// <returns>An awaitable Task</returns>
         public async Task AddMissingFiles(string[] ids, string foldername, bool overwrite = false, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(foldername))
-            {
-                throw new ArgumentNullException(nameof(foldername));
-            }
+            ArgumentException.ThrowIfNullOrEmpty(foldername, nameof(foldername));
+
             dynamic data = new ExpandoObject();
             data.ids = ids;
             data.foldername = foldername;
@@ -62,20 +60,20 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="id">Id</param>
         /// <param name="changeList">Name value pairs of changes</param>
-        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="submitOnChain">Indicates to submit the updates on the blockchain</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Transaction id</returns>
-        public async Task<string> BatchUpdate(string id, IDictionary<string, string> changeList, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<string> BatchUpdate(string id, IDictionary<string, string> changeList, bool submitOnChain = true, ulong fee = 0, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
+            ArgumentException.ThrowIfNullOrEmpty(id, nameof(id));
 
             dynamic data = new ExpandoObject();
             data.id = id;
             data.changelist = changeList;
             data.fee = fee;
+            data.submit_on_chain = submitOnChain;
+
             return await SendMessage<string>("batch_update", data, "tx_id", cancellationToken).ConfigureAwait(false);
         }
 
@@ -83,7 +81,7 @@ namespace chia.dotnet
         /// Cancels an offer using a transaction
         /// </summary>
         /// <param name="tradeId">The trade id of the offer</param>
-        /// <param name="fee">Transaction fee</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <param name="secure">This will create a transaction that includes coins that were offered</param>
         /// <returns>An awaitable Task</returns>
@@ -121,7 +119,7 @@ namespace chia.dotnet
         /// <summary>
         /// Creates a data store.
         /// </summary>
-        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The tree id and list of transactions</returns>
         public async Task<(string id, IEnumerable<TransactionRecord> txs)> CreateDataStore(ulong fee = 0, CancellationToken cancellationToken = default)
@@ -141,7 +139,7 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="key">Row key</param>
         /// <param name="id">Row id</param>
-        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Transaction id</returns>
         public async Task<string> DeleteKey(string key, string id, ulong fee = 0, CancellationToken cancellationToken = default)
@@ -157,7 +155,7 @@ namespace chia.dotnet
         /// Deletes a mirror.
         /// </summary>
         /// <param name="coinId">Mirror coin id</param>
-        /// <param name="fee">Fee amount (in units of mojos)</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns></returns>
         public async Task DeleteMirror(string coinId, ulong fee = 0, CancellationToken cancellationToken = default)
@@ -184,18 +182,39 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Gets the list of ancestors for a given id/hash pair.
+        /// Gets the list of keys for a given id/hash pair.
         /// </summary>
-        /// <param name="id">Id</param>
+        /// <param name="id">Store id</param>
         /// <param name="rootHash">Root Hash</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns></returns>
+        /// <returns>The list of keys</returns>
         public async Task<IEnumerable<string>> GetKeys(string id, string? rootHash, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.id = id;
             data.root_hash = rootHash;
             return await SendMessage<IEnumerable<string>>("get_keys", data, "keys", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets the list of keys for a given id/hash pair.
+        /// </summary>
+        /// <param name="id">Store id</param>
+        /// <param name="rootHash">Root Hash</param>
+        /// <param name="page">The page to get</param>
+        /// <param name="maxPageSize">The max size of each page</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The list of keys and paging information</returns>
+        public async Task<(IEnumerable<string> keys, int totalPages, int totalBytes, string rootHash)> GetKeys(string id, string? rootHash, int page = 1, int maxPageSize = 40 * 1024 * 1024, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.id = id;
+            data.root_hash = rootHash;
+            data.page = page;
+            data.max_page_size = maxPageSize;
+            var response = await SendMessage("get_keys", data, cancellationToken).ConfigureAwait(false);
+
+            return (Converters.ToObject<IEnumerable<string>>(response.keys), response.total_pages, response.total_bytes, response.root_hash);
         }
 
         /// <summary>
@@ -214,6 +233,27 @@ namespace chia.dotnet
         }
 
         /// <summary>
+        /// Get the keys and values for a given id/root_hash pair.
+        /// </summary>
+        /// <param name="id">Store id</param>
+        /// <param name="rootHash">Root Hash</param>
+        /// <param name="page">The page to get</param>
+        /// <param name="maxPageSize">The max size of each page</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The list of keys and paging information</returns>
+        public async Task<(IEnumerable<TerminalNode> keys, int totalPages, int totalBytes, string rootHash)> GetKeysValues(string id, string? rootHash, int page = 1, int maxPageSize = 40 * 1024 * 1024, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.id = id;
+            data.root_hash = rootHash;
+            data.page = page;
+            data.max_page_size = maxPageSize;
+            var response = await SendMessage("get_keys_values", data, cancellationToken).ConfigureAwait(false);
+
+            return (Converters.ToObject<IEnumerable<TerminalNode>>(response.keys), response.total_pages, response.total_bytes, response.root_hash);
+        }
+
+        /// <summary>
         /// Get kv diff between two root hashes.
         /// </summary>
         /// <param name="id">Id</param>
@@ -229,6 +269,30 @@ namespace chia.dotnet
             data.hash2 = hash2;
             return await SendMessage<KVDiff>("get_kv_diff", data, "diff", cancellationToken).ConfigureAwait(false);
         }
+
+        /// <summary>
+        /// Get the keys and values for a given id/root_hash pair.
+        /// </summary>
+        /// <param name="id">Store id</param>
+        /// <param name="hash1">First Hash</param>
+        /// <param name="hash2">Second Hash</param>
+        /// <param name="page">The page to get</param>
+        /// <param name="maxPageSize">The max size of each page</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>The list of keys and paging information</returns>
+        public async Task<(KVDiff diff, int totalPages, int totalBytes)> GetKVDiff(string id, string hash1, string hash2, int page = 1, int maxPageSize = 40 * 1024 * 1024, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.id = id;
+            data.hash1 = hash1;
+            data.hash2 = hash2;
+            data.page = page;
+            data.max_page_size = maxPageSize;
+            var response = await SendMessage("get_kv_diff", data, cancellationToken).ConfigureAwait(false);
+
+            return (Converters.ToObject<KVDiff>(response.diff), response.total_pages, response.total_bytes);
+        }
+
 
         /// <summary>
         /// Gets hash of latest tree root saved in our local datastore.
@@ -455,7 +519,6 @@ namespace chia.dotnet
             return (response.valid, response.fee);
         }
 
-
         /// <summary>
         /// Sets a key to active.
         /// </summary>
@@ -499,6 +562,21 @@ namespace chia.dotnet
             data.keys = keys.ToList();
 
             return await SendMessage<DLProof>("get_proof", data, "proof", cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Submits a pending root
+        /// </summary>
+        /// <param name="storeId">The store id</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
+        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
+        /// <returns>A transaction id</returns>
+        public async Task<string> SubmitPendingRoot(string storeId, ulong fee = 0, CancellationToken cancellationToken = default)
+        {
+            dynamic data = new ExpandoObject();
+            data.store_id = storeId;
+            data.fee = fee;
+            return await SendMessage<string>("submit_pending_root", data, "tx_id", cancellationToken).ConfigureAwait(false);
         }
     }
 }

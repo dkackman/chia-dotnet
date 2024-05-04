@@ -227,18 +227,6 @@ namespace chia.dotnet
         }
 
         /// <summary>
-        /// Retrieves information about the current network
-        /// </summary>
-        /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>The current network name and prefix</returns>
-        public async Task<(string NetworkName, string NetworkPrefix)> GetNetworkInfo(CancellationToken cancellationToken = default)
-        {
-            var response = await SendMessage("get_network_info", cancellationToken).ConfigureAwait(false);
-
-            return (response.network_name, response.network_prefix);
-        }
-
-        /// <summary>
         /// Get blockchain height info
         /// </summary>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
@@ -384,7 +372,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(WalletType Type, string AssetId, uint WalletId)> CreateCATWallet(ulong amount, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(WalletType Type, string AssetId, uint WalletId, IEnumerable<TransactionRecord> Transactions)> CreateCATWallet(ulong amount, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             return await CreateCATWallet(string.Empty, amount, fee, cancellationToken).ConfigureAwait(false);
         }
@@ -397,7 +385,7 @@ namespace chia.dotnet
         /// <param name="name">The wallet name</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(WalletType Type, string AssetId, uint WalletId)> CreateCATWallet(string name, ulong amount, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(WalletType Type, string AssetId, uint WalletId, IEnumerable<TransactionRecord> Transactions)> CreateCATWallet(string name, ulong amount, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.wallet_type = "cat_wallet";
@@ -414,7 +402,8 @@ namespace chia.dotnet
             return (
                 (WalletType)response.type,
                 response.asset_id,
-                (uint)response.wallet_id
+                (uint)response.wallet_id,
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.tranactions)
                 );
         }
 
@@ -527,10 +516,10 @@ namespace chia.dotnet
         /// <param name="numOfBackupIdsNeeded">The number of back ids needed to create the wallet</param>
         /// <param name="name"></param>           
         /// <param name="metaData"></param>           
-        /// <param name="fee"></param>           
+        /// <param name="fee">Fee (in units of mojos)</param>           
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(WalletType Type, string myDID, uint walletId)> CreateDIDWallet(IEnumerable<string> backupDIDs, ulong numOfBackupIdsNeeded, string name, IDictionary<string, string>? metaData = null, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(WalletType Type, string MyDID, uint WalletId)> CreateDIDWallet(IEnumerable<string> backupDIDs, ulong numOfBackupIdsNeeded, string name, IDictionary<string, string>? metaData = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             ArgumentNullException.ThrowIfNull(backupDIDs);
 
@@ -562,7 +551,7 @@ namespace chia.dotnet
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public async Task<(WalletType Type, string myDID, uint walletId, string coinName, Coin coin, string newPuzHash, string pubkey, IEnumerable<byte> backupDIDs, ulong numVerificationsRequired)>
+        public async Task<(WalletType Type, string MyDID, uint WalletId, string CoinName, Coin coin, string NewPuzHash, string Pubkey, IEnumerable<byte> BackupDIDs, ulong NumVerificationsRequired)>
             RecoverDIDWallet(string backupData, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(backupData))
@@ -606,7 +595,7 @@ namespace chia.dotnet
         /// <param name="p2SingletonDelayTime">Delay time to create the wallet</param>           
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(TransactionRecord transaction, string launcherId, string p2SingletonHash)>
+        public async Task<(TransactionRecord Transaction, string LauncherId, string P2SingletonHash, ulong TotalFee, IEnumerable<TransactionRecord> Transactions)>
             CreatePoolWallet(PoolState initialTargetState, ulong? p2SingletonDelayTime = null, string? p2SingletonDelayedPH = null, CancellationToken cancellationToken = default)
         {
             ArgumentNullException.ThrowIfNull(initialTargetState);
@@ -631,7 +620,9 @@ namespace chia.dotnet
             return (
                 Converters.ToObject<TransactionRecord>(response.transaction),
                 response.launcher_id,
-                response.p2_singleton_puzzle_hash
+                response.p2_singleton_puzzle_hash,
+                (ulong)response.total_fee,
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.tranactions)
                 );
         }
 
@@ -666,7 +657,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The signed <see cref="TransactionRecord"/></returns>
-        public async Task<(TransactionRecord SignedTx, IEnumerable<TransactionRecord> SignedTxs)> CreateSignedTransaction(
+        public async Task<(TransactionRecord SignedTx, IEnumerable<TransactionRecord> SignedTxs, IEnumerable<TransactionRecord> Transactions)> CreateSignedTransaction(
             IEnumerable<AmountWithPuzzlehash> additions,
             IEnumerable<ulong>? excludeCoinAmounts = null,
             IEnumerable<Coin>? excludeCoins = null,
@@ -709,7 +700,8 @@ namespace chia.dotnet
 
             return (
                 Converters.ToObject<TransactionRecord>(response.signed_tx),
-                Converters.ToObject<IEnumerable<TransactionRecord>>(response.signed_txs)
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.signed_txs),
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
                 );
         }
 
@@ -775,7 +767,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Transaction number and <see cref="SpendBundle"/></returns>
-        public async Task<(int TxNum, SpendBundle SpendBundle)> NftSetDidBulk(string didId, IEnumerable<NftCoinInfo> nftCoinList, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(int TxNum, SpendBundle SpendBundle, IEnumerable<TransactionRecord> Transactions)> NftSetDidBulk(string didId, IEnumerable<NFTCoinInfo> nftCoinList, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.nft_coin_list = nftCoinList.ToList();
@@ -783,7 +775,11 @@ namespace chia.dotnet
             data.fee = fee;
             data.reuse_puzhash = reusePuzhash;
             var response = await SendMessage("nft_set_did_bulk", data, cancellationToken).ConfigureAwait(false);
-            return (response.tx_num, Converters.ToObject<SpendBundle>(response.spend_bundle));
+            return (
+                response.tx_num,
+                Converters.ToObject<SpendBundle>(response.spend_bundle),
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
+                );
         }
 
         /// <summary>
@@ -795,7 +791,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Transaction number and a <see cref="SpendBundle"/></returns>
-        public async Task<(int TxNum, SpendBundle SpendBundle)> NftTransferBulk(string targetAddress, IEnumerable<NftCoinInfo> nftCoinList, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(int TxNum, SpendBundle SpendBundle, IEnumerable<TransactionRecord> Transactions)> NftTransferBulk(string targetAddress, IEnumerable<NFTCoinInfo> nftCoinList, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.nft_coin_list = nftCoinList.ToList();
@@ -803,7 +799,11 @@ namespace chia.dotnet
             data.fee = fee;
             data.reuse_puzhash = reusePuzhash;
             var response = await SendMessage("nft_transfer_bulk", data, cancellationToken).ConfigureAwait(false);
-            return (response.tx_num, Converters.ToObject<SpendBundle>(response.spend_bundle));
+            return (
+                response.tx_num,
+                Converters.ToObject<SpendBundle>(response.spend_bundle),
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
+                );
         }
 
         /// <summary>
@@ -813,12 +813,12 @@ namespace chia.dotnet
         /// <param name="latest"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>An awaitable Task</returns>
-        public async Task<DidInfo> DidGetInfo(string coinId, bool latest = true, CancellationToken cancellationToken = default)
+        public async Task<DIDInfo> DidGetInfo(string coinId, bool latest = true, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.coin_id = coinId;
             data.latest = latest;
-            return await SendMessage<DidInfo>("did_get_info", data, null, cancellationToken).ConfigureAwait(false);
+            return await SendMessage<DIDInfo>("did_get_info", data, null, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -1104,13 +1104,18 @@ namespace chia.dotnet
         /// <param name="coinIds"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A list of <see cref="string"/></returns>
-        public async Task<IEnumerable<string>> SpendClawbackCoins(IEnumerable<string> coinIds, ushort batchSize = 50, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(IEnumerable<string> TransactionsIds, IEnumerable<TransactionRecord> Transactions)> SpendClawbackCoins(IEnumerable<string> coinIds, ushort batchSize = 50, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.coin_ids = coinIds.ToList();
             data.fee = fee;
             data.batch_size = batchSize;
-            return await SendMessage<IEnumerable<string>>("spend_clawback_coins", data, "transaction_ids", cancellationToken).ConfigureAwait(false);
+
+            var response = await SendMessage("spend_clawback_coins", data, cancellationToken).ConfigureAwait(false);
+            return (
+                Converters.ToObject<string>(response.transaction_ids),
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
+                );
         }
 
         /// <summary>
@@ -1123,7 +1128,7 @@ namespace chia.dotnet
         /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(WalletType Type, string TreasuryId, uint WalletId, uint CatWalletId, uint DaoCatWalletId)>
+        public async Task<(WalletType Type, string TreasuryId, uint WalletId, uint CatWalletId, uint DaoCatWalletId, IEnumerable<TransactionRecord> Transactions)>
             CreateNewDAOWallet(DAORules? daoRules = null, ulong? amountOfCats = null, ulong filterAmount = 1, ulong feeForCat = 0, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -1140,7 +1145,8 @@ namespace chia.dotnet
                 response.treasury_id,
                 (uint)response.wallet_id,
                 (uint)response.cat_wallet_id,
-                (uint)response.dao_cat_wallet_id
+                (uint)response.dao_cat_wallet_id,
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.tranactions)
                 );
         }
 
@@ -1151,7 +1157,7 @@ namespace chia.dotnet
         /// <param name="filterAmount"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>Information about the wallet</returns>
-        public async Task<(WalletType Type, string TreasuryId, uint WalletId, uint CatWalletId, uint DaoCatWalletId)>
+        public async Task<(WalletType Type, string TreasuryId, uint WalletId, uint CatWalletId, uint DaoCatWalletId, IEnumerable<TransactionRecord> Transactions)>
             CreateExistingDAOWallet(string treasuryId, ulong filterAmount = 1, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
@@ -1165,7 +1171,8 @@ namespace chia.dotnet
                 response.treasury_id,
                 (uint)response.wallet_id,
                 (uint)response.cat_wallet_id,
-                (uint)response.dao_cat_wallet_id
+                (uint)response.dao_cat_wallet_id,
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.tranactions)
                 );
         }
 

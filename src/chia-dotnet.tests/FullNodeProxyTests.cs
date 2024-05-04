@@ -238,6 +238,8 @@ namespace chia.dotnet.tests
 
             // Assert
             Assert.NotNull(items.ToList());
+
+            var item = items.First();
         }
 
         [Fact]
@@ -264,28 +266,6 @@ namespace chia.dotnet.tests
 
             // Assert
             Assert.NotEqual(TimeSpan.Zero, result);
-        }
-
-        [Fact(Skip = "not sure how to easily get coin name and solution height")]
-        public async Task GetPuzzleAndSolution()
-        {
-            // Arrange
-            using var cts = new CancellationTokenSource(15000);
-            var items = await FullNode.GetAllMempoolItems(cts.Token);
-            var item = items.FirstOrDefault();
-            var npc = item.Value.NPCResult.NpcList.First();
-            var coinRecord = await FullNode.GetCoinRecordByName(npc.CoinName, cts.Token);
-
-            // Act
-            var ps = await FullNode.GetPuzzleAndSolution(npc.CoinName, coinRecord.SpentBlockIndex, cts.Token);
-
-            // Assert
-            Assert.NotNull(coinRecord);
-            Assert.NotEqual((uint)0, coinRecord.SpentBlockIndex);
-            Assert.True(items.Any());
-            Assert.NotNull(item.Value);
-            Assert.NotNull(npc);
-            Assert.NotNull(ps);
         }
 
         [Fact]

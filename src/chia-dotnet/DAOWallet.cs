@@ -30,7 +30,7 @@ namespace chia.dotnet
         /// <param name="includeClosed"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns></returns>
-        public async Task<(IEnumerable<ProposalInfo> proposals, ulong proposalTimelock, ulong softCloseLength)> GetProposals(bool includeClosed = true, CancellationToken cancellationToken = default)
+        public async Task<(IEnumerable<ProposalInfo> Proposals, ulong ProposalTimelock, ulong SoftCloseLength)> GetProposals(bool includeClosed = true, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.include_closed = includeClosed;
@@ -48,7 +48,7 @@ namespace chia.dotnet
         /// <param name="proposalType"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns></returns>
-        public async Task<(string proposalId, string txId, TransactionRecord tx)> CreateProposal(string proposalType, CancellationToken cancellationToken = default)
+        public async Task<(string ProposalId, string TxId, TransactionRecord Transaction, IEnumerable<TransactionRecord> Transactions)> CreateProposal(string proposalType, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.proposal_type = proposalType;
@@ -57,7 +57,8 @@ namespace chia.dotnet
             return (
                 response.proposal_id.ToString(),
                 response.tx_id.ToString(),
-                Converters.ToObject<TransactionRecord>(response.tx)
+                Converters.ToObject<TransactionRecord>(response.tx),
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
             );
         }
 
@@ -77,13 +78,13 @@ namespace chia.dotnet
         /// <summary>
         /// Vote on a DAO proposal.
         /// </summary>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="isYesVote"></param>
         /// <param name="voteAmount"></param>
         /// <param name="proposalId"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns></returns>
-        public async Task<(string txId, TransactionRecord tx)> VoteOnProposal(bool isYesVote, ulong voteAmount, string proposalId, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(string TxId, TransactionRecord Transaction, IEnumerable<TransactionRecord> Transactions)> VoteOnProposal(bool isYesVote, ulong voteAmount, string proposalId, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.proposal_id = proposalId;
@@ -93,7 +94,8 @@ namespace chia.dotnet
             var response = await WalletProxy.SendMessage("dao_vote_on_proposal", data, cancellationToken).ConfigureAwait(false);
             return (
                 response.tx_id.ToString(),
-                Converters.ToObject<TransactionRecord>(response.tx)
+                Converters.ToObject<TransactionRecord>(response.tx),
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
             );
         }
 
@@ -133,13 +135,13 @@ namespace chia.dotnet
         /// <summary>
         /// Closes a DAO proposal.
         /// </summary>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="selfDestruct"></param>
         /// <param name="genesisId"></param>
         /// <param name="proposalId"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns></returns>
-        public async Task<(string txId, TransactionRecord tx)> CloseProposal(string selfDestruct, string genesisId, string proposalId, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(string txId, TransactionRecord Transaction, IEnumerable<TransactionRecord> Transactions)> CloseProposal(string selfDestruct, string genesisId, string proposalId, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.proposal_id = proposalId;
@@ -149,17 +151,18 @@ namespace chia.dotnet
             var response = await WalletProxy.SendMessage("dao_close_proposal", data, cancellationToken).ConfigureAwait(false);
             return (
                 response.tx_id.ToString(),
-                Converters.ToObject<TransactionRecord>(response.tx)
+                Converters.ToObject<TransactionRecord>(response.tx),
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
             );
         }
         /// <summary>
         /// Exits the DAO lockup period.
         /// </summary>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="coins"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns></returns>
-        public async Task<(string txId, TransactionRecord tx)> ExitLockup(IEnumerable<object> coins, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(string TxId, TransactionRecord Transaction, IEnumerable<TransactionRecord> Transactions)> ExitLockup(IEnumerable<object> coins, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.coins = coins;
@@ -167,7 +170,8 @@ namespace chia.dotnet
             var response = await WalletProxy.SendMessage("dao_exit_lockup", data, "tx", cancellationToken).ConfigureAwait(false);
             return (
                 response.tx_id.ToString(),
-                Converters.ToObject<TransactionRecord>(response.tx)
+                Converters.ToObject<TransactionRecord>(response.tx),
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
             );
         }
 
@@ -187,12 +191,12 @@ namespace chia.dotnet
         /// <summary>
         /// Adds funds to a DAO's treasury.
         /// </summary>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="amount"></param>
         /// <param name="fundingWalletId"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns></returns>
-        public async Task<(string txId, TransactionRecord tx)> AddFundsToTreasury(ulong amount, uint fundingWalletId, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(string TxId, TransactionRecord Transaction, IEnumerable<TransactionRecord> Transactions)> AddFundsToTreasury(ulong amount, uint fundingWalletId, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.funding_wallet_id = fundingWalletId;
@@ -201,18 +205,19 @@ namespace chia.dotnet
             var response = await WalletProxy.SendMessage("dao_add_funds_to_treasury", data, cancellationToken).ConfigureAwait(false);
             return (
                 response.tx_id.ToString(),
-                Converters.ToObject<TransactionRecord>(response.tx)
+                Converters.ToObject<TransactionRecord>(response.tx),
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
             );
         }
 
         /// <summary>
         /// Sends the DAO to lockup.
         /// </summary>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="amount"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns></returns>
-        public async Task<(string txId, TransactionRecord tx)> SendToLockup(ulong amount, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(string TxId, TransactionRecord Transaction, IEnumerable<TransactionRecord> Transactions)> SendToLockup(ulong amount, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.amount = amount;
@@ -220,7 +225,8 @@ namespace chia.dotnet
             var response = await WalletProxy.SendMessage("dao_send_to_lockup", data, cancellationToken).ConfigureAwait(false);
             return (
                 response.tx_id.ToString(),
-                Converters.ToObject<TransactionRecord>(response.tx)
+                Converters.ToObject<TransactionRecord>(response.tx),
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
             );
         }
 
@@ -228,7 +234,7 @@ namespace chia.dotnet
         /// Use this to figure out whether a proposal has passed or failed and whether it can be closed
         /// Given a proposal_id:
         /// - if required yes votes are recorded then proposal passed.
-        /// - if timelock and attendance are met then proposal can close
+        /// - if time lock and attendance are met then proposal can close
         /// Returns a dict of passed and closable bools, and the remaining votes/blocks needed
         ///
         /// Note that a proposal can be in a passed and closable state now, but become failed if a large number of
@@ -247,17 +253,18 @@ namespace chia.dotnet
         /// <summary>
         /// Frees coins from proposals that are finished.
         /// </summary>
-        /// <param name="fee"></param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns></returns>
-        public async Task<(string txId, TransactionRecord tx)> FreeCoinsFromFinishedProposals(ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(string TxId, TransactionRecord Transaction, IEnumerable<TransactionRecord> Transactions)> FreeCoinsFromFinishedProposals(ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.fee = fee;
             var response = await WalletProxy.SendMessage("dao_free_coins_from_finished_proposals", data, cancellationToken).ConfigureAwait(false);
             return (
                 response.tx_id.ToString(),
-                Converters.ToObject<TransactionRecord>(response.tx)
+                Converters.ToObject<TransactionRecord>(response.tx),
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
             );
         }
     }

@@ -2,10 +2,10 @@
 
 namespace chia.dotnet
 {
-    public record DidInfo
+    public record DIDInfo
     {
         public string DidId { get; init; } = string.Empty;
-        public string LastestCoin { get; init; } = string.Empty;
+        public string LatestCoin { get; init; } = string.Empty;
         public string P2Address { get; init; } = string.Empty;
         public string PublicKey { get; init; } = string.Empty;
         public string RecoveryListHash { get; init; } = string.Empty;

@@ -89,12 +89,12 @@ namespace chia.dotnet.tests
         [Fact]
         public async Task CreateOfferForIds()
         {
-            uint offeringWalletId = 17; // wallet ID and amount we are offering to exchange
-            uint askingForWalletId = 1; // the wallet id of the asset we are asking for (XCH ==1)
+            uint offeringWalletId = 1; // wallet ID and amount we are offering to exchange
+            uint askingForWalletId = 2; // the wallet id of the asset we are asking for (XCH ==1)
 
             var idsAndAmounts = new Dictionary<uint, long>()
              {
-                 { offeringWalletId, 1 },
+                 { offeringWalletId, 10 },
                  { askingForWalletId, -1 }
              };
 
@@ -123,7 +123,7 @@ namespace chia.dotnet.tests
             var offer = await TradeManager.CreateOffer(summary, cancellationToken: cts.Token);
 
             Assert.NotNull(offer);
-            Assert.True(offer.TradeRecord.Status == TradeStatus.PENDING_ACCEPT);
+            Assert.True(offer.Trade.Status == TradeStatus.PENDING_ACCEPT);
         }
 
         [Fact]
@@ -171,10 +171,11 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
             var offer = await TradeManager.GetOffer(cancellableTradeId, fileContents: true, cts.Token);
 
-            Assert.False(offer.TradeRecord.Status == TradeStatus.CANCELLED);
+            Assert.False(offer.Trade.Status == TradeStatus.CANCELLED);
 
             using var cts2 = new CancellationTokenSource(10000);
-            await TradeManager.CancelOffer(cancellableTradeId, cancellationToken: cts2.Token);
+            var transactions = await TradeManager.CancelOffer(cancellableTradeId, true, cancellationToken: cts2.Token);
+            Assert.NotNull(transactions);
         }
 
         [Fact(Skip = "Needs data")]
@@ -186,7 +187,7 @@ namespace chia.dotnet.tests
             using var cts = new CancellationTokenSource(15000);
             var offer = await TradeManager.GetOffer(secureCancellableTradeId, fileContents: true, cts.Token);
 
-            Assert.False(offer.TradeRecord.Status == TradeStatus.CANCELLED);
+            Assert.False(offer.Trade.Status == TradeStatus.CANCELLED);
 
             using var cts2 = new CancellationTokenSource(15000);
             var (Valid, Id) = await TradeManager.CheckOfferValidity(offer.Offer, cts2.Token);
@@ -205,10 +206,10 @@ namespace chia.dotnet.tests
             var acceptableOffer = "offer1qqp83w76wzru6cmqvpsxygqqvc0atkd5dht62v3nn8vklgl00efe6lpt0jskh74lkvkr47cheelm5ncr5c8pdt9r7hwxs0fhtt8cm4nn506acsxhw0sxym6p6x7sxj0d8etjat76x95urp9536z7k894ryuk06yffa043v8kgmme6w6svkwm0tkc5jl3gefm4hzl4efdr0llxlvxdvh7cnkdnua0wsrelldr2w376pp8fd8ws3m7jxppxg9sg9k5fn6g4lce73jemfxg469hn3097m5lwavmt40xs9gxrk5hha0cpdgvjyn986w3t8zhat6wghnv2430m3d9yemy9lwej6t3jtmjlalfau47ttkhlya6qqgu5sqkpfh0uh70tcs4g6wl0rcwum5d97e6c4q0dz2kak03clc58j49ax93u6j006f8khn80ut70rm8zu6jcvhr870qjleng7ayytwyatyl42xehd2pfqp47k9jkjlel739f47rh8ns6dncgwr6006h2du9w7xung3fz67ftceu7jfet52envrc6wkh9f240wlsg8ctdtmjekwvcycf0a0t67f35av6xfs26rvsxn7hlsdwg78ynmlhsm6h0m4fxfselv2vkrmc839unk8h7ezknad4fatn0elj2287rtqz50u7n6l46aadpl03x7v86qalxz3xl9mkut8627mnrxmaj8uvmuka7m6llkuqcxl7f32m5p4fhlctd2mxmxthu2nargcmx4nmamut6gte6wrncxrrx84xmwht5z7uu5ujuwgn4r90aluze6khlas4pdw3xrwd8dsuelkx4wp0mhx4j4vale4lucum24hrc0n5chns0qmdn835l9vza2dnx4p9jazr4e4gv0x0387r2v08k7jhfk9twtdmcchx84keu2ta3p06zaltmlmmu76jd6c0e73lykv67vfw6pkw07j4vuj7df8mkm4dsmr2d42mucf6g9sa5j0h2n0x2ngem0e37n3knff994lghydqqmskm6esrdqwh8";
             using var cts = new CancellationTokenSource(10000);
 
-            var tradeRecord = await TradeManager.TakeOffer(acceptableOffer, cancellationToken: cts.Token);
+            var response = await TradeManager.TakeOffer(acceptableOffer, cancellationToken: cts.Token);
 
-            Assert.NotNull(tradeRecord);
-            Assert.True(tradeRecord.Status == TradeStatus.PENDING_CONFIRM);
+            Assert.NotNull(response.Trade);
+            Assert.True(response.Trade.Status == TradeStatus.PENDING_CONFIRM);
         }
 
         [Fact]

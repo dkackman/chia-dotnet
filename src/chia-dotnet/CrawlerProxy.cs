@@ -26,7 +26,6 @@ namespace chia.dotnet
             return await SendMessage<PeerCounts>("get_peer_counts", "peer_counts", cancellationToken).ConfigureAwait(false);
         }
 
-
         /// <summary>
         /// Retrieves ip addresses of peers that have connected after a given time
         /// </summary>
@@ -35,7 +34,7 @@ namespace chia.dotnet
         /// <param name="limit"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>IP addresses</returns>
-        public async Task<(IEnumerable<string> ips, int total)> GetIPs(DateTime after, int offset = 0, int limit = 10000, CancellationToken cancellationToken = default)
+        public async Task<(IEnumerable<string> IPs, int Total)> GetIPs(DateTime after, int offset = 0, int limit = 10000, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.after = after.ToTimestamp();
