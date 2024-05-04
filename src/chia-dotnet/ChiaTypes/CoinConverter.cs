@@ -3,6 +3,8 @@ using System.Numerics;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Diagnostics;
+using System.Linq;
 
 namespace chia.dotnet
 {
@@ -12,17 +14,19 @@ namespace chia.dotnet
         {
             return objectType == typeof(Coin);
         }
+
         public override object ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
             JArray array = JArray.Load(reader);
             var list = new List<Coin>();
             foreach (var item in array)
             {
+                Debug.Assert(item.Count() >= 3);
                 list.Add(new Coin
                 {
-                    ParentCoinInfo = item[0].ToString(),
-                    Amount = BigInteger.Parse(item[1].ToString()),
-                    PuzzleHash = item[2].ToString()
+                    ParentCoinInfo = item[0]!.ToString(),
+                    Amount = BigInteger.Parse(item[1]!.ToString()),
+                    PuzzleHash = item[2]!.ToString()
                 });
             }
             return list;
@@ -31,17 +35,24 @@ namespace chia.dotnet
 
         public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
-            writer.WriteStartArray();
-            foreach (var coin in value as IEnumerable<Coin>)
+            if (value is not null)
             {
                 writer.WriteStartArray();
-                writer.WriteValue(coin.ParentCoinInfo);
-                writer.WriteValue(coin.Amount);
-                writer.WriteValue(coin.PuzzleHash);
-                writer.WriteEndArray();
+                foreach (var coin in (IEnumerable<Coin>)value)
+                {
+                    writer.WriteStartArray();
+                    writer.WriteValue(coin.ParentCoinInfo);
+                    writer.WriteValue(coin.Amount);
+                    writer.WriteValue(coin.PuzzleHash);
+                    writer.WriteEndArray();
 
+                }
+                writer.WriteEndArray();
             }
-            writer.WriteEndArray();
+            else
+            {
+                writer.WriteNull();
+            }
         }
     }
 
@@ -64,10 +75,12 @@ namespace chia.dotnet
             var list = new List<NameValuePair>();
             foreach (var item in array)
             {
+                Debug.Assert(item.Count() >= 2);
+
                 list.Add(new NameValuePair
                 {
-                    Name = item[0].ToString(),
-                    Value = item[1].ToString()
+                    Name = item[0]!.ToString(),
+                    Value = item[1]!.ToString()
                 });
             }
             return list;
@@ -75,16 +88,23 @@ namespace chia.dotnet
 
         public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
-            writer.WriteStartArray();
-            foreach (var nvp in value as IEnumerable<NameValuePair>)
+            if (value is not null)
             {
                 writer.WriteStartArray();
-                writer.WriteValue(nvp.Name);
-                writer.WriteValue(nvp.Value);
-                writer.WriteEndArray();
+                foreach (var nvp in (IEnumerable<NameValuePair>)value)
+                {
+                    writer.WriteStartArray();
+                    writer.WriteValue(nvp.Name);
+                    writer.WriteValue(nvp.Value);
+                    writer.WriteEndArray();
 
+                }
+                writer.WriteEndArray();
             }
-            writer.WriteEndArray();
+            else
+            {
+                writer.WriteNull();
+            }
         }
     }
 }
