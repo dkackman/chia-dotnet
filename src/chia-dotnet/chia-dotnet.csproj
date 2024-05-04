@@ -7,7 +7,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>4.0.0-beta.1</Version>
+    <Version>4.0.0</Version>
     <Authors>dkackman</Authors>
     <Company>dkackman</Company>
     <Description>A .net client library for chia™ RPC interfaces that runs on linux and windows.</Description>

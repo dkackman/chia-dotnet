@@ -105,7 +105,7 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class ServiceProxy</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class ServiceProxy : IServiceProxy</code></pre>
   </div>
 
 
@@ -119,6 +119,12 @@
     </dd>
   </dl>
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="chia.dotnet.IServiceProxy.html">IServiceProxy</a></div>
+    </dd>
+  </dl>
 
   <dl class="typelist derived">
     <dt>Derived</dt>
@@ -226,7 +232,7 @@
 
   <h3 id="chia_dotnet_ServiceProxy_DestinationService" data-uid="chia.dotnet.ServiceProxy.DestinationService">
   DestinationService
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L108"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p><a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Destination">Destination</a></p>
@@ -258,7 +264,7 @@
 
   <h3 id="chia_dotnet_ServiceProxy_IsEventSource" data-uid="chia.dotnet.ServiceProxy.IsEventSource">
   IsEventSource
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L49"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Indicates whether this instance is wired to a <a class="xref" href="chia.dotnet.WebSocketRpcClient.html">WebSocketRpcClient</a> so may source events</p>
@@ -290,7 +296,7 @@
 
   <h3 id="chia_dotnet_ServiceProxy_OriginService" data-uid="chia.dotnet.ServiceProxy.OriginService">
   OriginService
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L103"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The name of the service that is running. Will be used as the <a class="xref" href="chia.dotnet.Message.html#chia_dotnet_Message_Origin">Origin</a> of all messages
@@ -323,7 +329,7 @@ as well as the identifier used for <a class="xref" href="chia.dotnet.DaemonProxy
 
   <h3 id="chia_dotnet_ServiceProxy_RpcClient" data-uid="chia.dotnet.ServiceProxy.RpcClient">
   RpcClient
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L113"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The <a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a> used for underlying RPC</p>
@@ -359,7 +365,7 @@ as well as the identifier used for <a class="xref" href="chia.dotnet.DaemonProxy
 
   <h3 id="chia_dotnet_ServiceProxy_CloseConnection_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.CloseConnection(System.String,System.Threading.CancellationToken)">
   CloseConnection(string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L191"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L180"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Closes a connection</p>
@@ -401,7 +407,7 @@ as well as the identifier used for <a class="xref" href="chia.dotnet.DaemonProxy
 
   <h3 id="chia_dotnet_ServiceProxy_GetConnections_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.GetConnections(System.Threading.CancellationToken)">
   GetConnections(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L141"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the service's connections</p>
@@ -436,11 +442,50 @@ as well as the identifier used for <a class="xref" href="chia.dotnet.DaemonProxy
 
 
 
+  <a id="chia_dotnet_ServiceProxy_GetNetworkInfo_" data-uid="chia.dotnet.ServiceProxy.GetNetworkInfo*"></a>
+
+  <h3 id="chia_dotnet_ServiceProxy_GetNetworkInfo_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.GetNetworkInfo(System.Threading.CancellationToken)">
+  GetNetworkInfo(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L195"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves information about the current network</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(string NetworkName, string NetworkPrefix)&gt; GetNetworkInfo(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.mydid">MyDid</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.coinid">CoinID</a>)&gt;</dt>
+    <dd><p>The current network name and prefix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="chia_dotnet_ServiceProxy_GetRoutes_" data-uid="chia.dotnet.ServiceProxy.GetRoutes*"></a>
 
   <h3 id="chia_dotnet_ServiceProxy_GetRoutes_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.GetRoutes(System.Threading.CancellationToken)">
   GetRoutes(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L159"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L151"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all endpoints of a service</p>
@@ -479,7 +524,7 @@ as well as the identifier used for <a class="xref" href="chia.dotnet.DaemonProxy
 
   <h3 id="chia_dotnet_ServiceProxy_HealthZ_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.HealthZ(System.Threading.CancellationToken)">
   HealthZ(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L129"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L121"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sends heartbeat message to the service</p>
@@ -521,7 +566,7 @@ as well as the identifier used for <a class="xref" href="chia.dotnet.DaemonProxy
 
   <h3 id="chia_dotnet_ServiceProxy_OnEventMessage_chia_dotnet_Message_" data-uid="chia.dotnet.ServiceProxy.OnEventMessage(chia.dotnet.Message)">
   OnEventMessage(Message)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L79"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when an event message is received</p>
@@ -557,7 +602,7 @@ with <code>wallet_ui</code> or <code>metrics</code> in order for service events 
 
   <h3 id="chia_dotnet_ServiceProxy_OpenConnection_System_String_System_Int32_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.OpenConnection(System.String,System.Int32,System.Threading.CancellationToken)">
   OpenConnection(string, int, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L171"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L163"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Add a connection</p>
@@ -602,7 +647,7 @@ with <code>wallet_ui</code> or <code>metrics</code> in order for service events 
 
   <h3 id="chia_dotnet_ServiceProxy_StopNode_System_Threading_CancellationToken_" data-uid="chia.dotnet.ServiceProxy.StopNode(System.Threading.CancellationToken)">
   StopNode(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L139"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L131"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Stops the service</p>
@@ -644,7 +689,7 @@ with <code>wallet_ui</code> or <code>metrics</code> in order for service events 
 
   <h3 id="chia_dotnet_ServiceProxy_ConnectionAdded" data-uid="chia.dotnet.ServiceProxy.ConnectionAdded">
   ConnectionAdded
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L60"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Event raised when a connection is added</p>
@@ -678,7 +723,7 @@ with <code>wallet_ui</code> or <code>metrics</code> in order for service events 
 
   <h3 id="chia_dotnet_ServiceProxy_ConnectionClosed" data-uid="chia.dotnet.ServiceProxy.ConnectionClosed">
   ConnectionClosed
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L66"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Event raised when a connection is closed</p>
@@ -712,7 +757,7 @@ with <code>wallet_ui</code> or <code>metrics</code> in order for service events 
 
   <h3 id="chia_dotnet_ServiceProxy_ConnectionsChanged" data-uid="chia.dotnet.ServiceProxy.ConnectionsChanged">
   ConnectionsChanged
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L54"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Event raised when a get_connections broadcast message is received</p>
@@ -743,7 +788,7 @@ with <code>wallet_ui</code> or <code>metrics</code> in order for service events 
 
   <h3 id="chia_dotnet_ServiceProxy_UnrecognizedEvent" data-uid="chia.dotnet.ServiceProxy.UnrecognizedEvent">
   UnrecognizedEvent
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ServiceProxy.cs/#L71"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Event raised when a broadcast message is received that isn't recognized</p>

@@ -105,7 +105,7 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class FullNodeProxy : ServiceProxy</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class FullNodeProxy : ServiceProxy, IServiceProxy</code></pre>
   </div>
 
 
@@ -120,6 +120,12 @@
     </dd>
   </dl>
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="chia.dotnet.IServiceProxy.html">IServiceProxy</a></div>
+    </dd>
+  </dl>
 
 
   <dl class="typelist derived">
@@ -166,6 +172,9 @@
     </div>
     <div>
       <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_CloseConnection_System_String_System_Threading_CancellationToken_">ServiceProxy.CloseConnection(string, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_GetNetworkInfo_System_Threading_CancellationToken_">ServiceProxy.GetNetworkInfo(CancellationToken)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -296,7 +305,7 @@ Returns coin records for each addition and removal.</p>
 
   <h3 id="chia_dotnet_FullNodeProxy_GetAggsigAdditionalData_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetAggsigAdditionalData(System.Threading.CancellationToken)">
   GetAggsigAdditionalData(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L700"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L689"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves aggregated signature additional data.</p>
@@ -413,7 +422,7 @@ Returns coin records for each addition and removal.</p>
 
   <h3 id="chia_dotnet_FullNodeProxy_GetAverageBlockTime_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetAverageBlockTime(System.Threading.CancellationToken)">
   GetAverageBlockTime(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L641"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L630"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Estimates the average time it is taking to process the last 500 blocks</p>
@@ -707,7 +716,7 @@ Returns coin records for each addition and removal.</p>
 
   <h3 id="chia_dotnet_FullNodeProxy_GetBlockSpendsWithConditions_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetBlockSpendsWithConditions(System.String,System.Threading.CancellationToken)">
   GetBlockSpendsWithConditions(string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L688"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L677"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the spends in the given block, including its conditions.</p>
@@ -1306,45 +1315,6 @@ Returns coin records for each addition and removal.</p>
 
 
 
-  <a id="chia_dotnet_FullNodeProxy_GetNetworkInfo_" data-uid="chia.dotnet.FullNodeProxy.GetNetworkInfo*"></a>
-
-  <h3 id="chia_dotnet_FullNodeProxy_GetNetworkInfo_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetNetworkInfo(System.Threading.CancellationToken)">
-  GetNetworkInfo(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L530"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Retrieves information about the current network</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(string NetworkName, string NetworkPrefix)&gt; GetNetworkInfo(CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>A token to allow the call to be cancelled</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.mydid">MyDid</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.coinid">CoinID</a>)&gt;</dt>
-    <dd><p>The network name and coin prefix</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
   <a id="chia_dotnet_FullNodeProxy_GetNetworkSpace_" data-uid="chia.dotnet.FullNodeProxy.GetNetworkSpace*"></a>
 
   <h3 id="chia_dotnet_FullNodeProxy_GetNetworkSpace_System_String_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetNetworkSpace(System.String,System.String,System.Threading.CancellationToken)">
@@ -1392,7 +1362,7 @@ Returns coin records for each addition and removal.</p>
 
   <h3 id="chia_dotnet_FullNodeProxy_GetPuzzleAndSolution_System_String_System_UInt32_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetPuzzleAndSolution(System.String,System.UInt32,System.Threading.CancellationToken)">
   GetPuzzleAndSolution(string, uint, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L622"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L611"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets a coin solution</p>
@@ -1440,7 +1410,7 @@ Returns coin records for each addition and removal.</p>
 
   <h3 id="chia_dotnet_FullNodeProxy_GetRecentEOS_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetRecentEOS(System.String,System.Threading.CancellationToken)">
   GetRecentEOS(string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L594"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L583"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets a recent end of slot</p>
@@ -1482,7 +1452,7 @@ Returns coin records for each addition and removal.</p>
 
   <h3 id="chia_dotnet_FullNodeProxy_GetRecentSignagePoint_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.GetRecentSignagePoint(System.String,System.Threading.CancellationToken)">
   GetRecentSignagePoint(string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L568"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L557"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets a recent signage point</p>
@@ -1595,10 +1565,10 @@ Returns coin records for each addition and removal.</p>
 
   <h3 id="chia_dotnet_FullNodeProxy_PushTx_chia_dotnet_SpendBundle_System_Threading_CancellationToken_" data-uid="chia.dotnet.FullNodeProxy.PushTx(chia.dotnet.SpendBundle,System.Threading.CancellationToken)">
   PushTx(SpendBundle, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L544"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/FullNodeProxy.cs/#L532"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Pushes a transaction / spend bundle to the mempool and blockchain.
+  <div class="markdown level1 summary"><p>Pushes a spend bundle to the mempool and blockchain.
 Returns whether the spend bundle was successfully included into the mempool</p>
 </div>
   <div class="markdown level1 conceptual"></div>

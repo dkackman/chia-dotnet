@@ -683,7 +683,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;TransactionRecord&gt; UpdateRoot(string newRoot, string launcherId, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(TransactionRecord txRecord, IEnumerable&lt;TransactionRecord&gt; transactions)&gt; UpdateRoot(string newRoot, string launcherId, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -702,8 +702,8 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt;</dt>
-    <dd><p><a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a></p>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.txrecord">txRecord</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">transactions</a>)&gt;</dt>
+    <dd><p><a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> and list of transactions</p>
 </dd>
   </dl>
 

@@ -235,7 +235,7 @@
 
   <h3 id="chia_dotnet_TradeManager_AssetIdToName_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.AssetIdToName(System.String,System.Threading.CancellationToken)">
   AssetIdToName(string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L131"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the CAT name from an asset id</p>
@@ -277,7 +277,7 @@
 
   <h3 id="chia_dotnet_TradeManager_CancelOffer_System_String_System_Boolean_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.CancelOffer(System.String,System.Boolean,System.UInt64,System.Threading.CancellationToken)">
   CancelOffer(string, bool, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L194"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L211"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Cancels an offer using a transaction</p>
@@ -285,7 +285,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task CancelOffer(string tradeId, bool secure = false, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;TransactionRecord&gt;&gt; CancelOffer(string tradeId, bool secure, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -297,7 +297,7 @@
     <dd><p>This will create a transaction that includes coins that were offered</p>
 </dd>
     <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd><p>Transaction fee</p>
+    <dd><p>Fee (in units of mojos)</p>
 </dd>
     <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
     <dd><p>A token to allow the call to be cancelled</p>
@@ -306,7 +306,7 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt;&gt;</dt>
     <dd><p>An awaitable Task</p>
 </dd>
   </dl>
@@ -325,7 +325,7 @@
 
   <h3 id="chia_dotnet_TradeManager_CancelOffers_System_Boolean_System_String_System_Boolean_System_Int32_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.CancelOffers(System.Boolean,System.String,System.Boolean,System.Int32,System.UInt64,System.Threading.CancellationToken)">
   CancelOffers(bool, string, bool, int, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L143"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L160"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Cancels multiple offers.</p>
@@ -333,7 +333,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task CancelOffers(bool secure, string assetId = &quot;xch&quot;, bool cancelAll = false, int batchSize = 5, ulong batchFee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;TransactionRecord&gt;&gt; CancelOffers(bool secure, string assetId = &quot;xch&quot;, bool cancelAll = false, int batchSize = 5, ulong batchFee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -355,7 +355,7 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt;&gt;</dt>
     <dd><p>An awaitable Task</p>
 </dd>
   </dl>
@@ -374,7 +374,7 @@
 
   <h3 id="chia_dotnet_TradeManager_CheckOfferValidity_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.CheckOfferValidity(System.String,System.Threading.CancellationToken)">
   CheckOfferValidity(string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L160"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L177"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks the validity of an offer</p>
@@ -416,7 +416,7 @@
 
   <h3 id="chia_dotnet_TradeManager_CreateOffer_System_Collections_Generic_IDictionary_System_String_System_Int64__System_Nullable_System_UInt64__System_Nullable_System_UInt64__System_Boolean_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.CreateOffer(System.Collections.Generic.IDictionary{System.String,System.Int64},System.Nullable{System.UInt64},System.Nullable{System.UInt64},System.Boolean,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String},System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
   CreateOffer(IDictionary&lt;string, long&gt;, ulong?, ulong?, bool, IDictionary&lt;string, string&gt;?, IDictionary&lt;string, string&gt;?, bool?, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L298"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L324"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create an offer file from a set of id's in the form of wallet_id:amount</p>
@@ -424,7 +424,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;OfferRecord&gt; CreateOffer(IDictionary&lt;string, long&gt; launcherIdsAndMojoAmounts, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool validateOnly = false, IDictionary&lt;string, string&gt;? driver = null, IDictionary&lt;string, string&gt;? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(OfferRecord Offer, TradeRecord Trade, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; CreateOffer(IDictionary&lt;string, long&gt; launcherIdsAndMojoAmounts, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool validateOnly = false, IDictionary&lt;string, string&gt;? driver = null, IDictionary&lt;string, string&gt;? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -447,7 +447,7 @@
     <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
     <dd></dd>
     <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd><p>Transaction fee for offer creation</p>
+    <dd><p>Fee (in units of mojos)</p>
 </dd>
     <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
     <dd><p>A token to allow the call to be cancelled</p>
@@ -456,7 +456,7 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.OfferRecord.html">OfferRecord</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.OfferRecord.html">OfferRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.offerrecord,chia.dotnet.traderecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.offer">Offer</a>, <a class="xref" href="chia.dotnet.TradeRecord.html">TradeRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.offerrecord,chia.dotnet.traderecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.trade">Trade</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.offerrecord,chia.dotnet.traderecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
 </dd>
   </dl>
@@ -475,7 +475,7 @@
 
   <h3 id="chia_dotnet_TradeManager_CreateOffer_System_Collections_Generic_IDictionary_System_UInt32_System_Int64__System_Nullable_System_UInt64__System_Nullable_System_UInt64__System_Boolean_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.CreateOffer(System.Collections.Generic.IDictionary{System.UInt32,System.Int64},System.Nullable{System.UInt64},System.Nullable{System.UInt64},System.Boolean,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String},System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
   CreateOffer(IDictionary&lt;uint, long&gt;, ulong?, ulong?, bool, IDictionary&lt;string, string&gt;?, IDictionary&lt;string, string&gt;?, bool?, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L269"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L290"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create an offer file from a set of id's in the form of wallet_id:amount</p>
@@ -483,7 +483,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;OfferRecord&gt; CreateOffer(IDictionary&lt;uint, long&gt; walletIdsAndMojoAmounts, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool validateOnly = false, IDictionary&lt;string, string&gt;? driver = null, IDictionary&lt;string, string&gt;? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(OfferRecord Offer, TradeRecord Trade, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; CreateOffer(IDictionary&lt;uint, long&gt; walletIdsAndMojoAmounts, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool validateOnly = false, IDictionary&lt;string, string&gt;? driver = null, IDictionary&lt;string, string&gt;? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -506,7 +506,7 @@
     <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
     <dd></dd>
     <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd><p>Transaction fee for offer creation</p>
+    <dd><p>Fee (in units of mojos)</p>
 </dd>
     <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
     <dd><p>A token to allow the call to be cancelled</p>
@@ -515,7 +515,7 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.OfferRecord.html">OfferRecord</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.OfferRecord.html">OfferRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.offerrecord,chia.dotnet.traderecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.offer">Offer</a>, <a class="xref" href="chia.dotnet.TradeRecord.html">TradeRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.offerrecord,chia.dotnet.traderecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.trade">Trade</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.offerrecord,chia.dotnet.traderecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
 </dd>
   </dl>
@@ -534,7 +534,7 @@
 
   <h3 id="chia_dotnet_TradeManager_CreateOffer_chia_dotnet_OfferSummary_System_Nullable_System_UInt64__System_Nullable_System_UInt64__System_Boolean_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.CreateOffer(chia.dotnet.OfferSummary,System.Nullable{System.UInt64},System.Nullable{System.UInt64},System.Boolean,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String},System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
   CreateOffer(OfferSummary, ulong?, ulong?, bool, IDictionary&lt;string, string&gt;?, IDictionary&lt;string, string&gt;?, bool?, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L327"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L358"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create an offer file from a set of id's in the form of wallet_id:amount</p>
@@ -542,7 +542,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;OfferRecord&gt; CreateOffer(OfferSummary offer, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool validateOnly = false, IDictionary&lt;string, string&gt;? driver = null, IDictionary&lt;string, string&gt;? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(OfferRecord Offer, TradeRecord Trade, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; CreateOffer(OfferSummary offer, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool validateOnly = false, IDictionary&lt;string, string&gt;? driver = null, IDictionary&lt;string, string&gt;? solver = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -565,7 +565,7 @@
     <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
     <dd></dd>
     <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd><p>Transaction fee for offer creation</p>
+    <dd><p>Fee (in units of mojos)</p>
 </dd>
     <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
     <dd><p>A token to allow the call to be cancelled</p>
@@ -574,7 +574,7 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.OfferRecord.html">OfferRecord</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.OfferRecord.html">OfferRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.offerrecord,chia.dotnet.traderecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.offer">Offer</a>, <a class="xref" href="chia.dotnet.TradeRecord.html">TradeRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.offerrecord,chia.dotnet.traderecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.trade">Trade</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.offerrecord,chia.dotnet.traderecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
 </dd>
   </dl>
@@ -593,7 +593,7 @@
 
   <h3 id="chia_dotnet_TradeManager_GetCATList_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.GetCATList(System.Threading.CancellationToken)">
   GetCATList(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L120"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the default list of CATs</p>
@@ -632,7 +632,7 @@
 
   <h3 id="chia_dotnet_TradeManager_GetOffer_System_String_System_Boolean_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.GetOffer(System.String,System.Boolean,System.Threading.CancellationToken)">
   GetOffer(string, bool, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L177"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L194"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves an offer</p>
@@ -678,7 +678,7 @@
 
   <h3 id="chia_dotnet_TradeManager_GetOfferSummary_System_String_System_Boolean_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.GetOfferSummary(System.String,System.Boolean,System.Threading.CancellationToken)">
   GetOfferSummary(string, bool, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L236"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L257"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the summary of an offer</p>
@@ -881,7 +881,7 @@
 
   <h3 id="chia_dotnet_TradeManager_GetStrayCats_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.GetStrayCats(System.Threading.CancellationToken)">
   GetStrayCats(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L366"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L397"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a list of all unacknowledged CATs.</p>
@@ -920,7 +920,7 @@
 
   <h3 id="chia_dotnet_TradeManager_TakeOffer_System_String_System_Collections_Generic_IDictionary_System_String_System_Object__System_Nullable_System_UInt64__System_Nullable_System_UInt64__System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.TradeManager.TakeOffer(System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Nullable{System.UInt64},System.Nullable{System.UInt64},System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
   TakeOffer(string, IDictionary&lt;string, object&gt;?, ulong?, ulong?, bool?, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L216"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/TradeManager.cs/#L232"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Takes an offer</p>
@@ -928,7 +928,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;TradeRecord&gt; TakeOffer(string offer, IDictionary&lt;string, object&gt;? solver = null, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(TradeRecord Trade, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; TakeOffer(string offer, IDictionary&lt;string, object&gt;? solver = null, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -944,14 +944,15 @@
     <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
     <dd></dd>
     <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd></dd>
+    <dd><p>Fee (in units of mojos)</p>
+</dd>
     <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
     <dd></dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.TradeRecord.html">TradeRecord</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.TradeRecord.html">TradeRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.traderecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.trade">Trade</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.traderecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd><p><a class="xref" href="chia.dotnet.TradeRecord.html">TradeRecord</a></p>
 </dd>
   </dl>

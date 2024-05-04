@@ -247,7 +247,7 @@
 
   <h3 id="chia_dotnet_DIDWallet_CreateAttest_System_String_System_String_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.CreateAttest(System.String,System.String,System.String,System.Threading.CancellationToken)">
   CreateAttest(string, string, string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L234"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L244"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create an attest file</p>
@@ -255,7 +255,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(string MessageSpendBundle, (string Parent, string InnerPuzzleHash, ulong Amount) Info, string AttestData)&gt; CreateAttest(string coinName, string pubkey, string puzHash, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(string MessageSpendBundle, (string Parent, string InnerPuzzleHash, ulong Amount) Info, string AttestData, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; CreateAttest(string coinName, string pubkey, string puzHash, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -276,7 +276,7 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.valuetuple-system.string,system.string,system.uint64-,system.string-.messagespendbundle">MessageSpendBundle</a>, (<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,system.uint64-.parent">Parent</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,system.uint64-.innerpuzzlehash">InnerPuzzleHash</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,system.uint64-.amount">Amount</a>) <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.valuetuple-system.string,system.string,system.uint64-,system.string-.info">Info</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.valuetuple-system.string,system.string,system.uint64-,system.string-.attestdata">AttestData</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.valuetuple-system.string,system.string,system.uint64-,system.string,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.messagespendbundle">MessageSpendBundle</a>, (<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,system.uint64-.parent">Parent</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,system.uint64-.innerpuzzlehash">InnerPuzzleHash</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,system.uint64-.amount">Amount</a>) <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.valuetuple-system.string,system.string,system.uint64-,system.string,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.info">Info</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.valuetuple-system.string,system.string,system.uint64-,system.string,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.attestdata">AttestData</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.valuetuple-system.string,system.string,system.uint64-,system.string,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd><p>A spendbundle and information about the attest</p>
 </dd>
   </dl>
@@ -295,7 +295,7 @@
 
   <h3 id="chia_dotnet_DIDWallet_CreateBackupFile_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.CreateBackupFile(System.Threading.CancellationToken)">
   CreateBackupFile(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L291"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L303"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create a backup of the wallet</p>
@@ -412,7 +412,7 @@
 
   <h3 id="chia_dotnet_DIDWallet_GetInformationNeededForRecovery_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.GetInformationNeededForRecovery(System.Threading.CancellationToken)">
   GetInformationNeededForRecovery(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L273"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L285"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create an attestment</p>
@@ -568,7 +568,7 @@
 
   <h3 id="chia_dotnet_DIDWallet_GetRecoveryList_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.GetRecoveryList(System.Threading.CancellationToken)">
   GetRecoveryList(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L219"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L229"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the recover list</p>
@@ -588,7 +588,7 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.string-,system.int32-.ips">ips</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.string-,system.int32-.total">total</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.string-,system.int32-.ips">IPs</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.string-,system.int32-.total">Total</a>)&gt;</dt>
     <dd><p>The recover list and num required property of the wallet</p>
 </dd>
   </dl>
@@ -650,7 +650,7 @@
 
   <h3 id="chia_dotnet_DIDWallet_RecoverySpend_System_Collections_Generic_IEnumerable_System_String__System_String_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.RecoverySpend(System.Collections.Generic.IEnumerable{System.String},System.String,System.String,System.Threading.CancellationToken)">
   RecoverySpend(IEnumerable&lt;string&gt;, string?, string?, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L202"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L207"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Recovery spend</p>
@@ -658,7 +658,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task RecoverySpend(IEnumerable&lt;string&gt; attestData, string? pubkey, string? puzzlehash, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(SpendBundle SpendBundle, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; RecoverySpend(IEnumerable&lt;string&gt; attestData, string? pubkey, string? puzzlehash, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -679,8 +679,8 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.spendbundle,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.spendbundle">SpendBundle</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.spendbundle,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
+    <dd><p>An <a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a></p>
 </dd>
   </dl>
 
@@ -782,7 +782,7 @@
 
   <h3 id="chia_dotnet_DIDWallet_Transfer_System_String_System_Boolean_System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DIDWallet.Transfer(System.String,System.Boolean,System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
   Transfer(string, bool, bool?, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L307"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DIDWallet.cs/#L319"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Transfer the DID wallet to another owner</p>
@@ -790,7 +790,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;TransactionRecord&gt; Transfer(string innerAddress, bool withRecoveryInfo = true, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(TransactionRecord Transaction, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; Transfer(string innerAddress, bool withRecoveryInfo = true, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -804,7 +804,7 @@
     <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
     <dd></dd>
     <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd><p>Transaction fee</p>
+    <dd><p>Fee (in units of mojos)</p>
 </dd>
     <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
     <dd><p>A token to allow the call to be cancelled</p>
@@ -813,7 +813,7 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.txrecord">txRecord</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">transactions</a>)&gt;</dt>
     <dd><p>The backup data</p>
 </dd>
   </dl>
@@ -840,7 +840,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;SpendBundle&gt; UpdateMetadata(string metadata, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(SpendBundle SpendBundle, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; UpdateMetadata(string metadata, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -851,7 +851,7 @@
     <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
     <dd></dd>
     <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd><p>Transaction fee</p>
+    <dd><p>Fee (in units of mojos)</p>
 </dd>
     <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
     <dd><p>A token to allow the call to be cancelled</p>
@@ -860,8 +860,8 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a>&gt;</dt>
-    <dd><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.spendbundle,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.spendbundle">SpendBundle</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.spendbundle,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
+    <dd><p>An <a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a></p>
 </dd>
   </dl>
 
@@ -887,7 +887,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task UpdateRecoveryIds(IEnumerable&lt;string&gt; newList, ulong? numVerificationsRequired = null, bool? reusePuzhash = null, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;TransactionRecord&gt;&gt; UpdateRecoveryIds(IEnumerable&lt;string&gt; newList, ulong? numVerificationsRequired = null, bool? reusePuzhash = null, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -907,8 +907,8 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt;&gt;</dt>
+    <dd><p>A ist of <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>s</p>
 </dd>
   </dl>
 
@@ -934,7 +934,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task UpdateRecoveryIds(IEnumerable&lt;string&gt; newList, ulong numVerificationsRequired, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;TransactionRecord&gt;&gt; UpdateRecoveryIds(IEnumerable&lt;string&gt; newList, ulong numVerificationsRequired, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -952,8 +952,8 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd><p>An awaitable <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt;&gt;</dt>
+    <dd><p>A ist of <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>s</p>
 </dd>
   </dl>
 

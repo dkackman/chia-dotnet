@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class Coin
+      <title>Class NameValuePair
  | chia-dotnet </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class Coin
+      <meta name="title" content="Class NameValuePair
  | chia-dotnet ">
       
-      <meta name="description" content="This structure is used in the body for the reward and fees genesis coins.">
+      
       <link rel="icon" href="../images/favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -18,7 +18,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_Coin.md&amp;value=---%0Auid%3A%20chia.dotnet.Coin%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/dkackman/chia-dotnet/new/main/apiSpec/new?filename=chia_dotnet_NameValuePair.md&amp;value=---%0Auid%3A%20chia.dotnet.NameValuePair%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -86,13 +86,13 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="chia.dotnet.Coin">
+        <article data-uid="chia.dotnet.NameValuePair">
 
 
 
-  <h1 id="chia_dotnet_Coin" data-uid="chia.dotnet.Coin" class="text-break">
-    Class Coin
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/Coin.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <h1 id="chia_dotnet_NameValuePair" data-uid="chia.dotnet.NameValuePair" class="text-break">
+    Class NameValuePair
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/CoinConverter.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -100,12 +100,11 @@
   <dl><dt>Assembly</dt><dd>chia-dotnet.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>This structure is used in the body for the reward and fees genesis coins.</p>
-</div>
+  <div class="markdown summary"></div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public record Coin : IEquatable&lt;Coin&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public record NameValuePair : IEquatable&lt;NameValuePair&gt;</code></pre>
   </div>
 
 
@@ -115,14 +114,14 @@
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">Coin</span></div>
+      <div><span class="xref">NameValuePair</span></div>
     </dd>
   </dl>
 
   <dl class="typelist implements">
     <dt>Implements</dt>
     <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="chia.dotnet.Coin.html">Coin</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="chia.dotnet.NameValuePair.html">NameValuePair</a>&gt;</div>
     </dd>
   </dl>
 
@@ -169,117 +168,18 @@
 </h2>
 
 
-  <a id="chia_dotnet_Coin_Amount_" data-uid="chia.dotnet.Coin.Amount*"></a>
+  <a id="chia_dotnet_NameValuePair_Name_" data-uid="chia.dotnet.NameValuePair.Name*"></a>
 
-  <h3 id="chia_dotnet_Coin_Amount" data-uid="chia.dotnet.Coin.Amount">
-  Amount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/Coin.cs/#L14"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BigInteger Amount { get; init; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a></dt>
-    <dd>This structure is used in the body for the reward and fees genesis coins.</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="chia_dotnet_Coin_AmountHex_" data-uid="chia.dotnet.Coin.AmountHex*"></a>
-
-  <h3 id="chia_dotnet_Coin_AmountHex" data-uid="chia.dotnet.Coin.AmountHex">
-  AmountHex
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/Coin.cs/#L19"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>The <a class="xref" href="chia.dotnet.Coin.html#chia_dotnet_Coin_Amount">Amount</a> as a hex string</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonIgnore]
-public string AmountHex { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>This structure is used in the body for the reward and fees genesis coins.</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="chia_dotnet_Coin_CoinId_" data-uid="chia.dotnet.Coin.CoinId*"></a>
-
-  <h3 id="chia_dotnet_Coin_CoinId" data-uid="chia.dotnet.Coin.CoinId">
-  CoinId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/Coin.cs/#L45"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>SHA256 hash of <a class="xref" href="chia.dotnet.Coin.html#chia_dotnet_Coin_ParentCoinInfo">ParentCoinInfo</a>, <a class="xref" href="chia.dotnet.Coin.html#chia_dotnet_Coin_PuzzleHash">PuzzleHash</a>, and <a class="xref" href="chia.dotnet.Coin.html#chia_dotnet_Coin_AmountHex">AmountHex</a></p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonIgnore]
-public byte[] CoinId { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
-    <dd>This structure is used in the body for the reward and fees genesis coins.</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="chia_dotnet_Coin_Name_" data-uid="chia.dotnet.Coin.Name*"></a>
-
-  <h3 id="chia_dotnet_Coin_Name" data-uid="chia.dotnet.Coin.Name">
+  <h3 id="chia_dotnet_NameValuePair_Name" data-uid="chia.dotnet.NameValuePair.Name">
   Name
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/Coin.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/CoinConverter.cs/#L61"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>SHA256 hash of <a class="xref" href="chia.dotnet.Coin.html#chia_dotnet_Coin_ParentCoinInfo">ParentCoinInfo</a>, <a class="xref" href="chia.dotnet.Coin.html#chia_dotnet_Coin_PuzzleHash">PuzzleHash</a>, and <a class="xref" href="chia.dotnet.Coin.html#chia_dotnet_Coin_AmountHex">AmountHex</a></p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonIgnore]
-public string Name { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string Name { get; init; }</code></pre>
   </div>
 
 
@@ -289,7 +189,7 @@ public string Name { get; }</code></pre>
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>This structure is used in the body for the reward and fees genesis coins.</dd>
+    <dd></dd>
   </dl>
 
 
@@ -299,18 +199,18 @@ public string Name { get; }</code></pre>
 
 
 
-  <a id="chia_dotnet_Coin_ParentCoinInfo_" data-uid="chia.dotnet.Coin.ParentCoinInfo*"></a>
+  <a id="chia_dotnet_NameValuePair_Value_" data-uid="chia.dotnet.NameValuePair.Value*"></a>
 
-  <h3 id="chia_dotnet_Coin_ParentCoinInfo" data-uid="chia.dotnet.Coin.ParentCoinInfo">
-  ParentCoinInfo
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/Coin.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <h3 id="chia_dotnet_NameValuePair_Value" data-uid="chia.dotnet.NameValuePair.Value">
+  Value
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/CoinConverter.cs/#L62"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ParentCoinInfo { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string Value { get; init; }</code></pre>
   </div>
 
 
@@ -320,38 +220,7 @@ public string Name { get; }</code></pre>
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>This structure is used in the body for the reward and fees genesis coins.</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="chia_dotnet_Coin_PuzzleHash_" data-uid="chia.dotnet.Coin.PuzzleHash*"></a>
-
-  <h3 id="chia_dotnet_Coin_PuzzleHash" data-uid="chia.dotnet.Coin.PuzzleHash">
-  PuzzleHash
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/Coin.cs/#L13"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string PuzzleHash { get; init; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd>This structure is used in the body for the reward and fees genesis coins.</dd>
+    <dd></dd>
   </dl>
 
 
@@ -365,7 +234,7 @@ public string Name { get; }</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/Coin.cs/#L10" class="edit-link">Edit this page</a>
+          <a href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/ChiaTypes/CoinConverter.cs/#L59" class="edit-link">Edit this page</a>
         </div>
 
 

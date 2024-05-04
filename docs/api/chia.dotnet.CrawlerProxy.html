@@ -105,7 +105,7 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class CrawlerProxy : ServiceProxy</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class CrawlerProxy : ServiceProxy, IServiceProxy</code></pre>
   </div>
 
 
@@ -120,6 +120,12 @@
     </dd>
   </dl>
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="chia.dotnet.IServiceProxy.html">IServiceProxy</a></div>
+    </dd>
+  </dl>
 
 
   <dl class="typelist derived">
@@ -166,6 +172,9 @@
     </div>
     <div>
       <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_CloseConnection_System_String_System_Threading_CancellationToken_">ServiceProxy.CloseConnection(string, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_GetNetworkInfo_System_Threading_CancellationToken_">ServiceProxy.GetNetworkInfo(CancellationToken)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -253,7 +262,7 @@
 
   <h3 id="chia_dotnet_CrawlerProxy_GetIPs_System_DateTime_System_Int32_System_Int32_System_Threading_CancellationToken_" data-uid="chia.dotnet.CrawlerProxy.GetIPs(System.DateTime,System.Int32,System.Int32,System.Threading.CancellationToken)">
   GetIPs(DateTime, int, int, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/CrawlerProxy.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/CrawlerProxy.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves ip addresses of peers that have connected after a given time</p>
@@ -261,7 +270,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(IEnumerable&lt;string&gt; ips, int total)&gt; GetIPs(DateTime after, int offset = 0, int limit = 10000, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(IEnumerable&lt;string&gt; IPs, int Total)&gt; GetIPs(DateTime after, int offset = 0, int limit = 10000, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -279,7 +288,7 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.string-,system.int32-.ips">ips</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.string-,system.int32-.total">total</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.string-,system.int32-.ips">IPs</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.string-,system.int32-.total">Total</a>)&gt;</dt>
     <dd><p>IP addresses</p>
 </dd>
   </dl>

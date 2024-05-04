@@ -138,6 +138,10 @@ difficulty adjustments, etc, without saving the whole header block in memory.</p
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.BundleCoinSpend.html">BundleCoinSpend</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="chia.dotnet.CATInfo.html">CATInfo</a></dt>
       <dd></dd>
     </dl>
@@ -185,14 +189,6 @@ more often that it is streamed.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="chia.dotnet.Condition.html">Condition</a></dt>
-      <dd><p>This type doesn't exist in the chia code. This property is serialzied into the Json
-as a tuple, which shows up as a mixed type json array. There is a speciailzed converter to read
-the Json and get the ConditionOpCode into <a class="xref" href="chia.dotnet.Condition.html#chia_dotnet_Condition_ConditionOpcode">ConditionOpcode</a>
-conditions: List[Tuple[ConditionOpcode, List[ConditionWithArgs]]]</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
       <dt><a class="xref" href="chia.dotnet.ConditionValidTimes.html">ConditionValidTimes</a></dt>
       <dd></dd>
     </dl>
@@ -237,6 +233,10 @@ Used to find the uri and ssl certs needed to connect</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.DidInfo.html">DIDInfo</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="chia.dotnet.DIDWallet.html">DIDWallet</a></dt>
       <dd><p>Wraps a Distributed Identity Wallet</p>
 </dd>
@@ -269,10 +269,6 @@ as controlling the <a class="xref" href="chia.dotnet.PlotterProxy.html">PlotterP
       <dt><a class="xref" href="chia.dotnet.DataLayerWallet.html">DataLayerWallet</a></dt>
       <dd><p>Wraps a Data Layer Wallet</p>
 </dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="chia.dotnet.DidInfo.html">DidInfo</a></dt>
-      <dd></dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="chia.dotnet.EndOfSubSlotBundle.html">EndOfSubSlotBundle</a></dt>
@@ -440,9 +436,17 @@ Is the prev from the signage point, and can be replaced with a more recent block
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.NftCoinInfo.html">NFTCoinInfo</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="chia.dotnet.NFTInfo.html">NFTInfo</a></dt>
       <dd><p>NFT Info for displaying NFT on the UI</p>
 </dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.NftMintEntry.html">NFTMintEntry</a></dt>
+      <dd></dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="chia.dotnet.NFTMintingInfo.html">NFTMintingInfo</a></dt>
@@ -455,19 +459,11 @@ Is the prev from the signage point, and can be replaced with a more recent block
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="chia.dotnet.NPC.html">NPC</a></dt>
-      <dd></dd>
-    </dl>
-    <dl class="jumplist">
       <dt><a class="xref" href="chia.dotnet.NPCResult.html">NPCResult</a></dt>
       <dd></dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="chia.dotnet.NftCoinInfo.html">NftCoinInfo</a></dt>
-      <dd></dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="chia.dotnet.NftMintEntry.html">NftMintEntry</a></dt>
+      <dt><a class="xref" href="chia.dotnet.NameValuePair.html">NameValuePair</a></dt>
       <dd></dd>
     </dl>
     <dl class="jumplist">
@@ -669,12 +665,20 @@ included it in the mempool, and what the error message (if any) was</p>
       <dd></dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.Spend.html">Spend</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a></dt>
       <dd><p>This is a list of coins being spent along with their solution programs, and a single
 aggregated signature. This is the object that most closely corresponds to a bitcoin
 transaction (although because of non-interactive signature aggregation, the boundaries
 between transactions are more flexible than in bitcoin).</p>
 </dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.SpendBundleConditions.html">SpendBundleConditions</a></dt>
+      <dd></dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="chia.dotnet.StoreProofs.html">StoreProofs</a></dt>
@@ -819,6 +823,11 @@ Interfaces
     <dl class="jumplist">
       <dt><a class="xref" href="chia.dotnet.IRpcClient.html">IRpcClient</a></dt>
       <dd><p>Interface representing rpc communication</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="chia.dotnet.IServiceProxy.html">IServiceProxy</a></dt>
+      <dd><p>Core interface to chia RPC endpoints that passes and returns dynamic objects</p>
 </dd>
     </dl>
     <h3 id="enums">

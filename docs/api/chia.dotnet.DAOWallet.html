@@ -247,7 +247,7 @@
 
   <h3 id="chia_dotnet_DAOWallet_AddFundsToTreasury_System_UInt64_System_UInt32_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.AddFundsToTreasury(System.UInt64,System.UInt32,System.UInt64,System.Threading.CancellationToken)">
   AddFundsToTreasury(ulong, uint, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L195"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L199"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Adds funds to a DAO's treasury.</p>
@@ -255,7 +255,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(string txId, TransactionRecord tx)&gt; AddFundsToTreasury(ulong amount, uint fundingWalletId, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(string TxId, TransactionRecord Transaction, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; AddFundsToTreasury(ulong amount, uint fundingWalletId, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -265,7 +265,8 @@
     <dt><code>fundingWalletId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
     <dd></dd>
     <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd></dd>
+    <dd><p>Fee (in units of mojos)</p>
+</dd>
     <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
     <dd><p>A token to allow the call to be cancelled</p>
 </dd>
@@ -273,7 +274,7 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.txid">txId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.tx">tx</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.txid">TxId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transaction">Transaction</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -291,7 +292,7 @@
 
   <h3 id="chia_dotnet_DAOWallet_AdjustFilterLevel_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.AdjustFilterLevel(System.UInt64,System.Threading.CancellationToken)">
   AdjustFilterLevel(ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L180"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L184"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Adjusts the DAO filter level.</p>
@@ -332,7 +333,7 @@
 
   <h3 id="chia_dotnet_DAOWallet_CloseProposal_System_String_System_String_System_String_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.CloseProposal(System.String,System.String,System.String,System.UInt64,System.Threading.CancellationToken)">
   CloseProposal(string, string, string, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L142"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L144"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Closes a DAO proposal.</p>
@@ -340,7 +341,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(string txId, TransactionRecord tx)&gt; CloseProposal(string selfDestruct, string genesisId, string proposalId, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(string txId, TransactionRecord Transaction, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; CloseProposal(string selfDestruct, string genesisId, string proposalId, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -352,7 +353,8 @@
     <dt><code>proposalId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
     <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd></dd>
+    <dd><p>Fee (in units of mojos)</p>
+</dd>
     <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
     <dd><p>A token to allow the call to be cancelled</p>
 </dd>
@@ -360,7 +362,7 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.txid">txId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.tx">tx</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.txid">TxId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transaction">Transaction</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -386,7 +388,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(string proposalId, string txId, TransactionRecord tx)&gt; CreateProposal(string proposalType, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(string ProposalId, string TxId, TransactionRecord Transaction, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; CreateProposal(string proposalType, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -400,7 +402,7 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,chia.dotnet.transactionrecord-.proposalid">proposalId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,chia.dotnet.transactionrecord-.txid">txId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,chia.dotnet.transactionrecord-.tx">tx</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.proposalid">ProposalId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.txid">TxId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transaction">Transaction</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -418,7 +420,7 @@
 
   <h3 id="chia_dotnet_DAOWallet_ExitLockup_System_Collections_Generic_IEnumerable_System_Object__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.ExitLockup(System.Collections.Generic.IEnumerable{System.Object},System.UInt64,System.Threading.CancellationToken)">
   ExitLockup(IEnumerable&lt;object&gt;, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L162"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L165"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Exits the DAO lockup period.</p>
@@ -426,7 +428,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(string txId, TransactionRecord tx)&gt; ExitLockup(IEnumerable&lt;object&gt; coins, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(string TxId, TransactionRecord Transaction, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; ExitLockup(IEnumerable&lt;object&gt; coins, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -434,7 +436,8 @@
     <dt><code>coins</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</dt>
     <dd></dd>
     <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd></dd>
+    <dd><p>Fee (in units of mojos)</p>
+</dd>
     <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
     <dd><p>A token to allow the call to be cancelled</p>
 </dd>
@@ -442,7 +445,7 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.txid">txId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.tx">tx</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.txid">TxId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transaction">Transaction</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -460,7 +463,7 @@
 
   <h3 id="chia_dotnet_DAOWallet_FreeCoinsFromFinishedProposals_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.FreeCoinsFromFinishedProposals(System.UInt64,System.Threading.CancellationToken)">
   FreeCoinsFromFinishedProposals(ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L253"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L259"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Frees coins from proposals that are finished.</p>
@@ -468,13 +471,14 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(string txId, TransactionRecord tx)&gt; FreeCoinsFromFinishedProposals(ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(string TxId, TransactionRecord Transaction, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; FreeCoinsFromFinishedProposals(ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd></dd>
+    <dd><p>Fee (in units of mojos)</p>
+</dd>
     <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
     <dd><p>A token to allow the call to be cancelled</p>
 </dd>
@@ -482,7 +486,7 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.txid">txId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.tx">tx</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.txid">TxId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transaction">Transaction</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -500,14 +504,14 @@
 
   <h3 id="chia_dotnet_DAOWallet_GetProposalState_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.GetProposalState(System.String,System.Threading.CancellationToken)">
   GetProposalState(string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L240"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L246"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Use this to figure out whether a proposal has passed or failed and whether it can be closed
 Given a proposal_id:</p>
 <ul>
 <li>if required yes votes are recorded then proposal passed.</li>
-<li>if timelock and attendance are met then proposal can close
+<li>if time lock and attendance are met then proposal can close
 Returns a dict of passed and closable bools, and the remaining votes/blocks needed</li>
 </ul>
 <p>Note that a proposal can be in a passed and closable state now, but become failed if a large number of
@@ -557,7 +561,7 @@ Returns a dict of passed and closable bools, and the remaining votes/blocks need
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(IEnumerable&lt;ProposalInfo&gt; proposals, ulong proposalTimelock, ulong softCloseLength)&gt; GetProposals(bool includeClosed = true, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(IEnumerable&lt;ProposalInfo&gt; Proposals, ulong ProposalTimelock, ulong SoftCloseLength)&gt; GetProposals(bool includeClosed = true, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -571,7 +575,7 @@ Returns a dict of passed and closable bools, and the remaining votes/blocks need
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.ProposalInfo.html">ProposalInfo</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-chia.dotnet.proposalinfo-,system.uint64,system.uint64-.proposals">proposals</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-chia.dotnet.proposalinfo-,system.uint64,system.uint64-.proposaltimelock">proposalTimelock</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-chia.dotnet.proposalinfo-,system.uint64,system.uint64-.softcloselength">softCloseLength</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.ProposalInfo.html">ProposalInfo</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-chia.dotnet.proposalinfo-,system.uint64,system.uint64-.proposals">Proposals</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-chia.dotnet.proposalinfo-,system.uint64,system.uint64-.proposaltimelock">ProposalTimelock</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-chia.dotnet.proposalinfo-,system.uint64,system.uint64-.softcloselength">SoftCloseLength</a>)&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -589,7 +593,7 @@ Returns a dict of passed and closable bools, and the remaining votes/blocks need
 
   <h3 id="chia_dotnet_DAOWallet_GetRules_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.GetRules(System.Threading.CancellationToken)">
   GetRules(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L127"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L129"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the rules of a DAO wallet.</p>
@@ -628,7 +632,7 @@ Returns a dict of passed and closable bools, and the remaining votes/blocks need
 
   <h3 id="chia_dotnet_DAOWallet_GetTreasuryBalance_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.GetTreasuryBalance(System.Threading.CancellationToken)">
   GetTreasuryBalance(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L107"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the balance of a DAO's treasury.</p>
@@ -666,7 +670,7 @@ Returns a dict of passed and closable bools, and the remaining votes/blocks need
 
   <h3 id="chia_dotnet_DAOWallet_GetTreasuryId_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.GetTreasuryId(System.Threading.CancellationToken)">
   GetTreasuryId(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L118"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the treasury id of a DAO wallet.</p>
@@ -705,7 +709,7 @@ Returns a dict of passed and closable bools, and the remaining votes/blocks need
 
   <h3 id="chia_dotnet_DAOWallet_ParseProposal_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.ParseProposal(System.String,System.Threading.CancellationToken)">
   ParseProposal(string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L71"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Parses a DAO proposal.</p>
@@ -746,7 +750,7 @@ Returns a dict of passed and closable bools, and the remaining votes/blocks need
 
   <h3 id="chia_dotnet_DAOWallet_SendToLockup_System_UInt64_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.SendToLockup(System.UInt64,System.UInt64,System.Threading.CancellationToken)">
   SendToLockup(ulong, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L215"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L220"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sends the DAO to lockup.</p>
@@ -754,7 +758,7 @@ Returns a dict of passed and closable bools, and the remaining votes/blocks need
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(string txId, TransactionRecord tx)&gt; SendToLockup(ulong amount, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(string TxId, TransactionRecord Transaction, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; SendToLockup(ulong amount, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -762,7 +766,8 @@ Returns a dict of passed and closable bools, and the remaining votes/blocks need
     <dt><code>amount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
     <dd></dd>
     <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd></dd>
+    <dd><p>Fee (in units of mojos)</p>
+</dd>
     <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
     <dd><p>A token to allow the call to be cancelled</p>
 </dd>
@@ -770,7 +775,7 @@ Returns a dict of passed and closable bools, and the remaining votes/blocks need
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.txid">txId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.tx">tx</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.txid">TxId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transaction">Transaction</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -826,7 +831,7 @@ Returns a dict of passed and closable bools, and the remaining votes/blocks need
 
   <h3 id="chia_dotnet_DAOWallet_VoteOnProposal_System_Boolean_System_UInt64_System_String_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.DAOWallet.VoteOnProposal(System.Boolean,System.UInt64,System.String,System.UInt64,System.Threading.CancellationToken)">
   VoteOnProposal(bool, ulong, string, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/DAOWallet.cs/#L87"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vote on a DAO proposal.</p>
@@ -834,7 +839,7 @@ Returns a dict of passed and closable bools, and the remaining votes/blocks need
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(string txId, TransactionRecord tx)&gt; VoteOnProposal(bool isYesVote, ulong voteAmount, string proposalId, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(string TxId, TransactionRecord Transaction, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; VoteOnProposal(bool isYesVote, ulong voteAmount, string proposalId, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -846,7 +851,8 @@ Returns a dict of passed and closable bools, and the remaining votes/blocks need
     <dt><code>proposalId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
     <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd></dd>
+    <dd><p>Fee (in units of mojos)</p>
+</dd>
     <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
     <dd><p>A token to allow the call to be cancelled</p>
 </dd>
@@ -854,7 +860,7 @@ Returns a dict of passed and closable bools, and the remaining votes/blocks need
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.txid">txId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord-.tx">tx</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.txid">TxId</a>, <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transaction">Transaction</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd></dd>
   </dl>
 

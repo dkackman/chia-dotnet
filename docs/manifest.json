@@ -102,6 +102,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.BundleCoinSpend.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.BundleCoinSpend.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/chia.dotnet.CATInfo.yml",
       "output": {
         ".html": {
@@ -642,6 +652,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.IServiceProxy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.IServiceProxy.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/chia.dotnet.InfusedChallengeChainSubSlot.yml",
       "output": {
         ".html": {
@@ -846,6 +866,16 @@
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.NPCResult.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.NameValuePair.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.NameValuePair.html"
         }
       },
       "version": ""
@@ -1362,10 +1392,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.Spend.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.Spend.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/chia.dotnet.SpendBundle.yml",
       "output": {
         ".html": {
           "relative_path": "api/chia.dotnet.SpendBundle.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/chia.dotnet.SpendBundleConditions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/chia.dotnet.SpendBundleConditions.html"
         }
       },
       "version": ""
