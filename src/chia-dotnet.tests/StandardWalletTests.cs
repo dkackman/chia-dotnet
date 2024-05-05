@@ -31,7 +31,8 @@ namespace chia.dotnet.tests
 
             var transactions = await StandardWallet.GetTransactions(cancellationToken: cts.Token);
 
-            Assert.Equal((int)count, transactions.Count());
+            Assert.Equal(50, transactions.Count());
+
         }
 
         [Fact]
@@ -107,7 +108,7 @@ namespace chia.dotnet.tests
         {
             using var cts = new CancellationTokenSource(15000);
 
-            var transaction = await StandardWallet.SendTransaction(address: "txch1em43zsczg2fv79jlg00ucedl9x3atvpnfa09uuk5pgd7v9039sdsashhuq", amount: 1, fee: 1, cancellationToken: cts.Token);
+            var transaction = await StandardWallet.SendTransaction(address: "txch1ahxe7vt4ltazycrlthaguthzxvlfv9ueycddzdjk9dgdm4s6y09sn0k6a4", amount: 10, fee: 1, cancellationToken: cts.Token);
 
             Assert.NotNull(transaction);
         }
@@ -169,7 +170,7 @@ namespace chia.dotnet.tests
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
-            ulong amount = 1;
+            ulong amount = 10000;
 
             // Act
             var returnValue = await StandardWallet.SelectCoins(amount: amount, cancellationToken: cts.Token);

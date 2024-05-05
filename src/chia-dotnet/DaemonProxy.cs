@@ -433,11 +433,7 @@ namespace chia.dotnet
 
         private static object CreateDataObject(string service)
         {
-            if (string.IsNullOrEmpty(service))
-            {
-                throw new ArgumentNullException(nameof(service));
-            }
-
+            ArgumentException.ThrowIfNullOrEmpty(service, nameof(service));
             dynamic data = new ExpandoObject();
             data.service = service;
             return data;

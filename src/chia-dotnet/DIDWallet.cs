@@ -32,8 +32,8 @@ namespace chia.dotnet
         /// <param name="numVerificationsRequired">The number of verifications required</param>
         /// <param name="reusePuzhash"></param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task UpdateRecoveryIds(IEnumerable<string> newList, ulong? numVerificationsRequired = null, bool? reusePuzhash = null, CancellationToken cancellationToken = default)
+        /// <returns>A ist of <see cref="TransactionRecord"/>s</returns>
+        public async Task<IEnumerable<TransactionRecord>> UpdateRecoveryIds(IEnumerable<string> newList, ulong? numVerificationsRequired = null, bool? reusePuzhash = null, CancellationToken cancellationToken = default)
         {
             ArgumentNullException.ThrowIfNull(newList);
 
@@ -42,7 +42,7 @@ namespace chia.dotnet
             data.num_verifications_required = numVerificationsRequired;
             data.reuse_puzhash = reusePuzhash;
 
-            await WalletProxy.SendMessage("did_update_recovery_ids", data, cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<IEnumerable<TransactionRecord>>("did_update_recovery_ids", data, "transactions", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -51,8 +51,8 @@ namespace chia.dotnet
         /// <param name="newList">The new ids</param>
         /// <param name="numVerificationsRequired">The number of verifications required</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task UpdateRecoveryIds(IEnumerable<string> newList, ulong numVerificationsRequired, CancellationToken cancellationToken = default)
+        /// <returns>A ist of <see cref="TransactionRecord"/>s</returns>
+        public async Task<IEnumerable<TransactionRecord>> UpdateRecoveryIds(IEnumerable<string> newList, ulong numVerificationsRequired, CancellationToken cancellationToken = default)
         {
             ArgumentNullException.ThrowIfNull(newList);
 
@@ -60,7 +60,7 @@ namespace chia.dotnet
             data.new_list = newList.ToList();
             data.num_verifications_required = numVerificationsRequired;
 
-            await WalletProxy.SendMessage("did_update_recovery_ids", data, cancellationToken).ConfigureAwait(false);
+            return await WalletProxy.SendMessage<IEnumerable<TransactionRecord>>("did_update_recovery_ids", data, "transactions", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -178,17 +178,22 @@ namespace chia.dotnet
         /// </summary>
         /// <param name="metadata">The name</param>
         /// <param name="reusePuzhash"></param>
-        /// <param name="fee">Transaction fee</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task<SpendBundle> UpdateMetadata(string metadata, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
+        /// <returns>An <see cref="SpendBundle"/></returns>
+        public async Task<(SpendBundle SpendBundle, IEnumerable<TransactionRecord> Transactions)> UpdateMetadata(string metadata, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.metadata = metadata;
             data.reuse_puzhash = reusePuzhash;
             data.fee = fee;
 
-            return await WalletProxy.SendMessage<SpendBundle>("did_update_metadata", "spend_bundle", data, cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("did_update_metadata", data, cancellationToken).ConfigureAwait(false);
+
+            return (
+                Converters.ToObject<SpendBundle>(response.spend_bundle),
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
+                );
         }
 
         /// <summary>
@@ -198,8 +203,8 @@ namespace chia.dotnet
         /// <param name="pubkey">The public key</param>
         /// <param name="puzzlehash">The puzzlehash of the spend</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns>An awaitable <see cref="Task"/></returns>
-        public async Task RecoverySpend(IEnumerable<string> attestData, string? pubkey, string? puzzlehash, CancellationToken cancellationToken = default)
+        /// <returns>An <see cref="SpendBundle"/></returns>
+        public async Task<(SpendBundle SpendBundle, IEnumerable<TransactionRecord> Transactions)> RecoverySpend(IEnumerable<string> attestData, string? pubkey, string? puzzlehash, CancellationToken cancellationToken = default)
         {
             ArgumentNullException.ThrowIfNull(attestData);
 
@@ -208,7 +213,12 @@ namespace chia.dotnet
             data.pubkey = pubkey;
             data.puzhash = puzzlehash;
 
-            await WalletProxy.SendMessage("did_recovery_spend", data, cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("did_recovery_spend", data, cancellationToken).ConfigureAwait(false);
+
+            return (
+                Converters.ToObject<SpendBundle>(response.spend_bundle),
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
+                );
         }
 
         /// <summary>
@@ -231,7 +241,8 @@ namespace chia.dotnet
         /// <param name="puzHash">The puzzlehash</param>        
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>A spendbundle and information about the attest</returns>
-        public async Task<(string MessageSpendBundle, (string Parent, string InnerPuzzleHash, ulong Amount) Info, string AttestData)> CreateAttest(string coinName, string pubkey, string puzHash, CancellationToken cancellationToken = default)
+        public async Task<(string MessageSpendBundle, (string Parent, string InnerPuzzleHash, ulong Amount) Info, string AttestData, IEnumerable<TransactionRecord> Transactions)>
+            CreateAttest(string coinName, string pubkey, string puzHash, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(coinName))
             {
@@ -261,7 +272,8 @@ namespace chia.dotnet
                     response.info[1],
                     response.info[2]
                     ),
-                    response.attest_data
+                    response.attest_data,
+                    Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
                 );
         }
 
@@ -301,10 +313,10 @@ namespace chia.dotnet
         /// <param name="innerAddress">the address</param>
         /// <param name="withRecoveryInfo">Indicator whether to include recovery info</param>
         /// <param name="reusePuzhash"></param>
-        /// <param name="fee">Transaction fee</param>
+        /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
         /// <returns>The backup data</returns>
-        public async Task<TransactionRecord> Transfer(string innerAddress, bool withRecoveryInfo = true, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
+        public async Task<(TransactionRecord Transaction, IEnumerable<TransactionRecord> Transactions)> Transfer(string innerAddress, bool withRecoveryInfo = true, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = CreateWalletDataObject();
             data.inner_address = innerAddress;
@@ -312,7 +324,12 @@ namespace chia.dotnet
             data.reuse_puzhash = reusePuzhash;
             data.fee = fee;
 
-            return await WalletProxy.SendMessage<TransactionRecord>("did_transfer_did", "transaction", data, cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("did_transfer_did", data, cancellationToken).ConfigureAwait(false);
+
+            return (
+                Converters.ToObject<TransactionRecord>(response.transaction),
+                Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions)
+                );
         }
     }
 }

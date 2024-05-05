@@ -105,7 +105,7 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class PlotterProxy : ServiceProxy</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class PlotterProxy : ServiceProxy, IServiceProxy</code></pre>
   </div>
 
 
@@ -120,6 +120,12 @@
     </dd>
   </dl>
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="chia.dotnet.IServiceProxy.html">IServiceProxy</a></div>
+    </dd>
+  </dl>
 
 
   <dl class="typelist derived">
@@ -166,6 +172,9 @@
     </div>
     <div>
       <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_CloseConnection_System_String_System_Threading_CancellationToken_">ServiceProxy.CloseConnection(string, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_GetNetworkInfo_System_Threading_CancellationToken_">ServiceProxy.GetNetworkInfo(CancellationToken)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>

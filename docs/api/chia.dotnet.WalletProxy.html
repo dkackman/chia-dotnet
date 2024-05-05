@@ -105,7 +105,7 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class WalletProxy : ServiceProxy</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class WalletProxy : ServiceProxy, IServiceProxy</code></pre>
   </div>
 
 
@@ -120,6 +120,12 @@
     </dd>
   </dl>
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="chia.dotnet.IServiceProxy.html">IServiceProxy</a></div>
+    </dd>
+  </dl>
 
 
   <dl class="typelist derived">
@@ -166,6 +172,9 @@
     </div>
     <div>
       <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_CloseConnection_System_String_System_Threading_CancellationToken_">ServiceProxy.CloseConnection(string, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="chia.dotnet.ServiceProxy.html#chia_dotnet_ServiceProxy_GetNetworkInfo_System_Threading_CancellationToken_">ServiceProxy.GetNetworkInfo(CancellationToken)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -253,7 +262,7 @@
 
   <h3 id="chia_dotnet_WalletProxy_AddKey_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.AddKey(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
   AddKey(IEnumerable&lt;string&gt;, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L311"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L299"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Adds a new key to the wallet</p>
@@ -295,7 +304,7 @@
 
   <h3 id="chia_dotnet_WalletProxy_CalculateRoyalties_System_Collections_Generic_IEnumerable_chia_dotnet_FungibleAsset__System_Collections_Generic_IEnumerable_chia_dotnet_RoyaltyAsset__System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CalculateRoyalties(System.Collections.Generic.IEnumerable{chia.dotnet.FungibleAsset},System.Collections.Generic.IEnumerable{chia.dotnet.RoyaltyAsset},System.Threading.CancellationToken)">
   CalculateRoyalties(IEnumerable&lt;FungibleAsset&gt;, IEnumerable&lt;RoyaltyAsset&gt;, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L760"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L752"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Transfers an NFT to another address.</p>
@@ -338,7 +347,7 @@
 
   <h3 id="chia_dotnet_WalletProxy_CheckDeleteKey_System_UInt32_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CheckDeleteKey(System.UInt32,System.Threading.CancellationToken)">
   CheckDeleteKey(uint, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L345"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L333"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Check the key use prior to possible deletion
@@ -382,7 +391,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_CreateCATWallet_System_String_System_UInt64_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CreateCATWallet(System.String,System.UInt64,System.UInt64,System.Threading.CancellationToken)">
   CreateCATWallet(string, ulong, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L400"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L388"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create a new CAT wallet</p>
@@ -390,7 +399,7 @@ checks if any wallets have a non-zero balance</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(WalletType Type, string AssetId, uint WalletId)&gt; CreateCATWallet(string name, ulong amount, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(WalletType Type, string AssetId, uint WalletId, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; CreateCATWallet(string name, ulong amount, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -411,7 +420,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.WalletType.html">WalletType</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32-.type">Type</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32-.assetid">AssetId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32-.walletid">WalletId</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.WalletType.html">WalletType</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.type">Type</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.assetid">AssetId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.walletid">WalletId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd><p>Information about the wallet</p>
 </dd>
   </dl>
@@ -430,7 +439,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_CreateCATWallet_System_UInt64_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CreateCATWallet(System.UInt64,System.UInt64,System.Threading.CancellationToken)">
   CreateCATWallet(ulong, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L387"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L375"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create a new CAT wallet</p>
@@ -438,7 +447,7 @@ checks if any wallets have a non-zero balance</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(WalletType Type, string AssetId, uint WalletId)&gt; CreateCATWallet(ulong amount, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(WalletType Type, string AssetId, uint WalletId, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; CreateCATWallet(ulong amount, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -456,7 +465,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.WalletType.html">WalletType</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32-.type">Type</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32-.assetid">AssetId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32-.walletid">WalletId</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.WalletType.html">WalletType</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.type">Type</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.assetid">AssetId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.walletid">WalletId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd><p>Information about the wallet</p>
 </dd>
   </dl>
@@ -475,7 +484,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_CreateDIDWallet_System_Collections_Generic_IEnumerable_System_String__System_UInt64_System_String_System_Collections_Generic_IDictionary_System_String_System_String__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CreateDIDWallet(System.Collections.Generic.IEnumerable{System.String},System.UInt64,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.UInt64,System.Threading.CancellationToken)">
   CreateDIDWallet(IEnumerable&lt;string&gt;, ulong, string, IDictionary&lt;string, string&gt;?, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L533"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L522"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates a new DID wallet</p>
@@ -483,7 +492,7 @@ checks if any wallets have a non-zero balance</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(WalletType Type, string myDID, uint walletId)&gt; CreateDIDWallet(IEnumerable&lt;string&gt; backupDIDs, ulong numOfBackupIdsNeeded, string name, IDictionary&lt;string, string&gt;? metaData = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(WalletType Type, string MyDID, uint WalletId)&gt; CreateDIDWallet(IEnumerable&lt;string&gt; backupDIDs, ulong numOfBackupIdsNeeded, string name, IDictionary&lt;string, string&gt;? metaData = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -499,7 +508,8 @@ checks if any wallets have a non-zero balance</p>
     <dt><code>metaData</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
     <dd></dd>
     <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd></dd>
+    <dd><p>Fee (in units of mojos)</p>
+</dd>
     <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
     <dd><p>A token to allow the call to be cancelled</p>
 </dd>
@@ -507,7 +517,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.WalletType.html">WalletType</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32-.type">Type</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32-.assetid">AssetId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32-.walletid">WalletId</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.WalletType.html">WalletType</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32-.type">Type</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32-.assetid">AssetID</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32-.walletid">WalletId</a>)&gt;</dt>
     <dd><p>Information about the wallet</p>
 </dd>
   </dl>
@@ -526,7 +536,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_CreateExistingDAOWallet_System_String_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CreateExistingDAOWallet(System.String,System.UInt64,System.Threading.CancellationToken)">
   CreateExistingDAOWallet(string, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L1154"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L1160"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create a new CAT wallet</p>
@@ -534,7 +544,7 @@ checks if any wallets have a non-zero balance</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(WalletType Type, string TreasuryId, uint WalletId, uint CatWalletId, uint DaoCatWalletId)&gt; CreateExistingDAOWallet(string treasuryId, ulong filterAmount = 1, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(WalletType Type, string TreasuryId, uint WalletId, uint CatWalletId, uint DaoCatWalletId, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; CreateExistingDAOWallet(string treasuryId, ulong filterAmount = 1, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -550,7 +560,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.WalletType.html">WalletType</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32-.type">Type</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32-.treasuryid">TreasuryId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32-.walletid">WalletId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32-.catwalletid">CatWalletId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32-.daocatwalletid">DaoCatWalletId</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.WalletType.html">WalletType</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.type">Type</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.treasuryid">TreasuryId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.walletid">WalletId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.catwalletid">CatWalletId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.daocatwalletid">DaoCatWalletId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd><p>Information about the wallet</p>
 </dd>
   </dl>
@@ -569,7 +579,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_CreateNFTWallet_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CreateNFTWallet(System.String,System.Threading.CancellationToken)">
   CreateNFTWallet(string?, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L506"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L495"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates a new NFT wallet</p>
@@ -611,7 +621,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_CreateNewDAOWallet_chia_dotnet_DAORules_System_Nullable_System_UInt64__System_UInt64_System_UInt64_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CreateNewDAOWallet(chia.dotnet.DAORules,System.Nullable{System.UInt64},System.UInt64,System.UInt64,System.UInt64,System.Threading.CancellationToken)">
   CreateNewDAOWallet(DAORules?, ulong?, ulong, ulong, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L1126"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L1131"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create a new CAT wallet</p>
@@ -619,7 +629,7 @@ checks if any wallets have a non-zero balance</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(WalletType Type, string TreasuryId, uint WalletId, uint CatWalletId, uint DaoCatWalletId)&gt; CreateNewDAOWallet(DAORules? daoRules = null, ulong? amountOfCats = null, ulong filterAmount = 1, ulong feeForCat = 0, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(WalletType Type, string TreasuryId, uint WalletId, uint CatWalletId, uint DaoCatWalletId, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; CreateNewDAOWallet(DAORules? daoRules = null, ulong? amountOfCats = null, ulong filterAmount = 1, ulong feeForCat = 0, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -643,7 +653,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.WalletType.html">WalletType</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32-.type">Type</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32-.treasuryid">TreasuryId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32-.walletid">WalletId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32-.catwalletid">CatWalletId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32-.daocatwalletid">DaoCatWalletId</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.WalletType.html">WalletType</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.type">Type</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.treasuryid">TreasuryId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.walletid">WalletId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.catwalletid">CatWalletId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.daocatwalletid">DaoCatWalletId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.uint32,system.uint32,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd><p>Information about the wallet</p>
 </dd>
   </dl>
@@ -662,7 +672,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_CreateNewDl_System_String_System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CreateNewDl(System.String,System.UInt64,System.Threading.CancellationToken)">
   CreateNewDl(string, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L744"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L736"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initialize the new data layer wallets.</p>
@@ -706,7 +716,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_CreatePoolWallet_chia_dotnet_PoolState_System_Nullable_System_UInt64__System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CreatePoolWallet(chia.dotnet.PoolState,System.Nullable{System.UInt64},System.String,System.Threading.CancellationToken)">
   CreatePoolWallet(PoolState, ulong?, string?, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L609"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L598"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates a new pool wallet</p>
@@ -714,7 +724,7 @@ checks if any wallets have a non-zero balance</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(TransactionRecord transaction, string launcherId, string p2SingletonHash)&gt; CreatePoolWallet(PoolState initialTargetState, ulong? p2SingletonDelayTime = null, string? p2SingletonDelayedPH = null, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(TransactionRecord Transaction, string LauncherId, string P2SingletonHash, ulong TotalFee, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; CreatePoolWallet(PoolState initialTargetState, ulong? p2SingletonDelayTime = null, string? p2SingletonDelayedPH = null, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -735,7 +745,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.transactionrecord,system.string,system.string-.transaction">transaction</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.transactionrecord,system.string,system.string-.launcherid">launcherId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.transactionrecord,system.string,system.string-.p2singletonhash">p2SingletonHash</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.transactionrecord,system.string,system.string,system.uint64,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transaction">Transaction</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.transactionrecord,system.string,system.string,system.uint64,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.launcherid">LauncherId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.transactionrecord,system.string,system.string,system.uint64,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.p2singletonhash">P2SingletonHash</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.transactionrecord,system.string,system.string,system.uint64,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.totalfee">TotalFee</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.transactionrecord,system.string,system.string,system.uint64,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd><p>Information about the wallet</p>
 </dd>
   </dl>
@@ -754,7 +764,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_CreateSignedTransaction_System_Collections_Generic_IEnumerable_chia_dotnet_AmountWithPuzzlehash__System_Collections_Generic_IEnumerable_System_UInt64__System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_Collections_Generic_IEnumerable_chia_dotnet_PuzzleAnnouncement__System_Collections_Generic_IEnumerable_chia_dotnet_CoinAnnouncement__System_Collections_Generic_IEnumerable_chia_dotnet_Coin__System_Nullable_System_UInt64__System_Nullable_System_UInt64__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CreateSignedTransaction(System.Collections.Generic.IEnumerable{chia.dotnet.AmountWithPuzzlehash},System.Collections.Generic.IEnumerable{System.UInt64},System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.Collections.Generic.IEnumerable{chia.dotnet.PuzzleAnnouncement},System.Collections.Generic.IEnumerable{chia.dotnet.CoinAnnouncement},System.Collections.Generic.IEnumerable{chia.dotnet.Coin},System.Nullable{System.UInt64},System.Nullable{System.UInt64},System.UInt64,System.Threading.CancellationToken)">
   CreateSignedTransaction(IEnumerable&lt;AmountWithPuzzlehash&gt;, IEnumerable&lt;ulong&gt;?, IEnumerable&lt;Coin&gt;?, IEnumerable&lt;PuzzleAnnouncement&gt;?, IEnumerable&lt;CoinAnnouncement&gt;?, IEnumerable&lt;Coin&gt;?, ulong?, ulong?, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L669"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L660"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates and signs a transaction.</p>
@@ -762,7 +772,7 @@ checks if any wallets have a non-zero balance</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(TransactionRecord SignedTx, IEnumerable&lt;TransactionRecord&gt; SignedTxs)&gt; CreateSignedTransaction(IEnumerable&lt;AmountWithPuzzlehash&gt; additions, IEnumerable&lt;ulong&gt;? excludeCoinAmounts = null, IEnumerable&lt;Coin&gt;? excludeCoins = null, IEnumerable&lt;PuzzleAnnouncement&gt;? puzzleAnnouncements = null, IEnumerable&lt;CoinAnnouncement&gt;? coinAnnouncements = null, IEnumerable&lt;Coin&gt;? coins = null, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(TransactionRecord SignedTx, IEnumerable&lt;TransactionRecord&gt; SignedTxs, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; CreateSignedTransaction(IEnumerable&lt;AmountWithPuzzlehash&gt; additions, IEnumerable&lt;ulong&gt;? excludeCoinAmounts = null, IEnumerable&lt;Coin&gt;? excludeCoins = null, IEnumerable&lt;PuzzleAnnouncement&gt;? puzzleAnnouncements = null, IEnumerable&lt;CoinAnnouncement&gt;? coinAnnouncements = null, IEnumerable&lt;Coin&gt;? coins = null, ulong? minCoinAmount = null, ulong? maxCoinAmount = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -793,7 +803,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.signedtx">SignedTx</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.signedtxs">SignedTxs</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord-,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.signedtx">SignedTx</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord-,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.signedtxs">SignedTxs</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.transactionrecord,system.collections.generic.ienumerable-chia.dotnet.transactionrecord-,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd><p>The signed <a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a></p>
 </dd>
   </dl>
@@ -812,7 +822,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_CreateWalletForCAT_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.CreateWalletForCAT(System.String,System.Threading.CancellationToken)">
   CreateWalletForCAT(string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L427"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L416"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create a wallet for an existing CAT</p>
@@ -835,7 +845,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.WalletType.html">WalletType</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32-.type">Type</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32-.assetid">AssetId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32-.walletid">WalletId</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.WalletType.html">WalletType</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32-.type">Type</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32-.assetid">AssetID</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32-.walletid">WalletId</a>)&gt;</dt>
     <dd><p>The wallet type</p>
 </dd>
   </dl>
@@ -854,7 +864,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_DeleteAllKeys_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.DeleteAllKeys(System.Threading.CancellationToken)">
   DeleteAllKeys(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L365"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L353"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Deletes all keys from the wallet</p>
@@ -893,7 +903,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_DeleteKey_System_UInt32_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.DeleteKey(System.UInt32,System.Threading.CancellationToken)">
   DeleteKey(uint, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L327"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L315"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Deletes a specific key from the wallet</p>
@@ -1025,7 +1035,7 @@ checks if any wallets have a non-zero balance</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;DidInfo&gt; DidGetInfo(string coinId, bool latest = true, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;DIDInfo&gt; DidGetInfo(string coinId, bool latest = true, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1041,7 +1051,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.DidInfo.html">DidInfo</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.DIDInfo.html">DIDInfo</a>&gt;</dt>
     <dd><p>An awaitable Task</p>
 </dd>
   </dl>
@@ -1060,7 +1070,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_DlVerifyProof_chia_dotnet_DLProof_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.DlVerifyProof(chia.dotnet.DLProof,System.Threading.CancellationToken)">
   DlVerifyProof(DLProof, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L1178"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L1185"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Verifies a proof.</p>
@@ -1142,7 +1152,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_GenerateMnemonic_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.GenerateMnemonic(System.Threading.CancellationToken)">
   GenerateMnemonic(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L375"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L363"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Generates a new mnemonic phrase</p>
@@ -1288,7 +1298,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_GetCoinRecordsByNames_System_Collections_Generic_IEnumerable_System_String__System_Boolean_System_Nullable_System_UInt32__System_Nullable_System_UInt32__System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.GetCoinRecordsByNames(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Nullable{System.UInt32},System.Nullable{System.UInt32},System.Threading.CancellationToken)">
   GetCoinRecordsByNames(IEnumerable&lt;string&gt;, bool, uint?, uint?, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L725"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L717"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the coins for given coin IDs</p>
@@ -1378,7 +1388,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_GetFarmedAmount_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.GetFarmedAmount(System.Threading.CancellationToken)">
   GetFarmedAmount(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L643"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L634"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the amount farmed</p>
@@ -1417,7 +1427,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_GetHeightInfo_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.GetHeightInfo(System.Threading.CancellationToken)">
   GetHeightInfo(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L246"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L234"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get blockchain height info</p>
@@ -1495,7 +1505,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_GetNFTByDID_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.GetNFTByDID(System.String,System.Threading.CancellationToken)">
   GetNFTByDID(string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L454"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L443"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get an NFT wallet by DID ID</p>
@@ -1537,7 +1547,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_GetNFTInfo_System_String_System_Boolean_System_Boolean_System_Nullable_System_Boolean__System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.GetNFTInfo(System.String,System.Boolean,System.Boolean,System.Nullable{System.Boolean},System.Threading.CancellationToken)">
   GetNFTInfo(string, bool, bool, bool?, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L489"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L478"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get info about an NFT</p>
@@ -1568,45 +1578,6 @@ checks if any wallets have a non-zero balance</p>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.NFTInfo.html">NFTInfo</a>&gt;</dt>
     <dd><p>The wallet id</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="chia_dotnet_WalletProxy_GetNetworkInfo_" data-uid="chia.dotnet.WalletProxy.GetNetworkInfo*"></a>
-
-  <h3 id="chia_dotnet_WalletProxy_GetNetworkInfo_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.GetNetworkInfo(System.Threading.CancellationToken)">
-  GetNetworkInfo(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L234"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Retrieves information about the current network</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(string NetworkName, string NetworkPrefix)&gt; GetNetworkInfo(CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>A token to allow the call to be cancelled</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.mydid">MyDid</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.coinid">CoinID</a>)&gt;</dt>
-    <dd><p>The current network name and prefix</p>
 </dd>
   </dl>
 
@@ -1827,7 +1798,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_GetTransaction_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.GetTransaction(System.String,System.Threading.CancellationToken)">
   GetTransaction(string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L257"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L245"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a specific transaction</p>
@@ -2036,7 +2007,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_GetWalletsWithDIDs_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.GetWalletsWithDIDs(System.Threading.CancellationToken)">
   GetWalletsWithDIDs(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L467"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L456"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets all the wallets with DIDs</p>
@@ -2160,9 +2131,9 @@ checks if any wallets have a non-zero balance</p>
 
   <a id="chia_dotnet_WalletProxy_NftSetDidBulk_" data-uid="chia.dotnet.WalletProxy.NftSetDidBulk*"></a>
 
-  <h3 id="chia_dotnet_WalletProxy_NftSetDidBulk_System_String_System_Collections_Generic_IEnumerable_chia_dotnet_NftCoinInfo__System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.NftSetDidBulk(System.String,System.Collections.Generic.IEnumerable{chia.dotnet.NftCoinInfo},System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
-  NftSetDidBulk(string, IEnumerable&lt;NftCoinInfo&gt;, bool?, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L778"><i class="bi bi-code-slash"></i></a>
+  <h3 id="chia_dotnet_WalletProxy_NftSetDidBulk_System_String_System_Collections_Generic_IEnumerable_chia_dotnet_NFTCoinInfo__System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.NftSetDidBulk(System.String,System.Collections.Generic.IEnumerable{chia.dotnet.NFTCoinInfo},System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
+  NftSetDidBulk(string, IEnumerable&lt;NFTCoinInfo&gt;, bool?, ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L770"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Bulk set DID for NFTs across different wallets.</p>
@@ -2170,14 +2141,14 @@ checks if any wallets have a non-zero balance</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(int TxNum, SpendBundle SpendBundle)&gt; NftSetDidBulk(string didId, IEnumerable&lt;NftCoinInfo&gt; nftCoinList, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(int TxNum, SpendBundle SpendBundle, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; NftSetDidBulk(string didId, IEnumerable&lt;NFTCoinInfo&gt; nftCoinList, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>didId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
-    <dt><code>nftCoinList</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.NftCoinInfo.html">NftCoinInfo</a>&gt;</dt>
+    <dt><code>nftCoinList</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.NFTCoinInfo.html">NFTCoinInfo</a>&gt;</dt>
     <dd></dd>
     <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
     <dd></dd>
@@ -2191,7 +2162,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,chia.dotnet.spendbundle-.txnum">TxNum</a>, <a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,chia.dotnet.spendbundle-.spendbundle">SpendBundle</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,chia.dotnet.spendbundle,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.txnum">TxNum</a>, <a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,chia.dotnet.spendbundle,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.spendbundle">SpendBundle</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,chia.dotnet.spendbundle,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd><p>Transaction number and <a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a></p>
 </dd>
   </dl>
@@ -2208,9 +2179,9 @@ checks if any wallets have a non-zero balance</p>
 
   <a id="chia_dotnet_WalletProxy_NftTransferBulk_" data-uid="chia.dotnet.WalletProxy.NftTransferBulk*"></a>
 
-  <h3 id="chia_dotnet_WalletProxy_NftTransferBulk_System_String_System_Collections_Generic_IEnumerable_chia_dotnet_NftCoinInfo__System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.NftTransferBulk(System.String,System.Collections.Generic.IEnumerable{chia.dotnet.NftCoinInfo},System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
-  NftTransferBulk(string, IEnumerable&lt;NftCoinInfo&gt;, bool?, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L798"><i class="bi bi-code-slash"></i></a>
+  <h3 id="chia_dotnet_WalletProxy_NftTransferBulk_System_String_System_Collections_Generic_IEnumerable_chia_dotnet_NFTCoinInfo__System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.NftTransferBulk(System.String,System.Collections.Generic.IEnumerable{chia.dotnet.NFTCoinInfo},System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
+  NftTransferBulk(string, IEnumerable&lt;NFTCoinInfo&gt;, bool?, ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L794"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Bulk transfer NFTs to an address.</p>
@@ -2218,14 +2189,14 @@ checks if any wallets have a non-zero balance</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(int TxNum, SpendBundle SpendBundle)&gt; NftTransferBulk(string targetAddress, IEnumerable&lt;NftCoinInfo&gt; nftCoinList, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(int TxNum, SpendBundle SpendBundle, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; NftTransferBulk(string targetAddress, IEnumerable&lt;NFTCoinInfo&gt; nftCoinList, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>targetAddress</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
-    <dt><code>nftCoinList</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.NftCoinInfo.html">NftCoinInfo</a>&gt;</dt>
+    <dt><code>nftCoinList</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.NFTCoinInfo.html">NFTCoinInfo</a>&gt;</dt>
     <dd></dd>
     <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
     <dd></dd>
@@ -2239,7 +2210,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,chia.dotnet.spendbundle-.txnum">TxNum</a>, <a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,chia.dotnet.spendbundle-.spendbundle">SpendBundle</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,chia.dotnet.spendbundle,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.txnum">TxNum</a>, <a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,chia.dotnet.spendbundle,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.spendbundle">SpendBundle</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,chia.dotnet.spendbundle,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd><p>Transaction number and a <a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a></p>
 </dd>
   </dl>
@@ -2290,7 +2261,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_PushTransactions_System_Collections_Generic_IEnumerable_chia_dotnet_TransactionRecord__System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.PushTransactions(System.Collections.Generic.IEnumerable{chia.dotnet.TransactionRecord},System.Threading.CancellationToken)">
   PushTransactions(IEnumerable&lt;TransactionRecord&gt;, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L295"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L283"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Pushes a list of transactions to the mempool and blockchain.</p>
@@ -2331,7 +2302,7 @@ checks if any wallets have a non-zero balance</p>
 
   <h3 id="chia_dotnet_WalletProxy_PushTx_chia_dotnet_SpendBundle_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.PushTx(chia.dotnet.SpendBundle,System.Threading.CancellationToken)">
   PushTx(SpendBundle, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L277"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L265"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Pushes a transaction / spend bundle to the mempool and blockchain.
@@ -2373,14 +2344,14 @@ Returns whether the spend bundle was successfully included into the mempool</p>
 
   <h3 id="chia_dotnet_WalletProxy_RecoverDIDWallet_System_String_System_Threading_CancellationToken_" data-uid="chia.dotnet.WalletProxy.RecoverDIDWallet(System.String,System.Threading.CancellationToken)">
   RecoverDIDWallet(string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L565"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/WalletProxy.cs/#L554"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(WalletType Type, string myDID, uint walletId, string coinName, Coin coin, string newPuzHash, string pubkey, IEnumerable&lt;byte&gt; backupDIDs, ulong numVerificationsRequired)&gt; RecoverDIDWallet(string backupData, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(WalletType Type, string MyDID, uint WalletId, string CoinName, Coin coin, string NewPuzHash, string Pubkey, IEnumerable&lt;byte&gt; BackupDIDs, ulong NumVerificationsRequired)&gt; RecoverDIDWallet(string backupData, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -2393,7 +2364,7 @@ Returns whether the spend bundle was successfully included into the mempool</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.WalletType.html">WalletType</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.string,chia.dotnet.coin,system.string,system.string,system.valuetuple-system.collections.generic.ienumerable-system.byte-,system.uint64--.type">Type</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.string,chia.dotnet.coin,system.string,system.string,system.valuetuple-system.collections.generic.ienumerable-system.byte-,system.uint64--.mydid">myDID</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.string,chia.dotnet.coin,system.string,system.string,system.valuetuple-system.collections.generic.ienumerable-system.byte-,system.uint64--.walletid">walletId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.string,chia.dotnet.coin,system.string,system.string,system.valuetuple-system.collections.generic.ienumerable-system.byte-,system.uint64--.coinname">coinName</a>, <a class="xref" href="chia.dotnet.Coin.html">Coin</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.string,chia.dotnet.coin,system.string,system.string,system.valuetuple-system.collections.generic.ienumerable-system.byte-,system.uint64--.coin">coin</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.string,chia.dotnet.coin,system.string,system.string,system.valuetuple-system.collections.generic.ienumerable-system.byte-,system.uint64--.newpuzhash">newPuzHash</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.string,chia.dotnet.coin,system.string,system.string,system.valuetuple-system.collections.generic.ienumerable-system.byte-,system.uint64--.pubkey">pubkey</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.string,chia.dotnet.coin,system.string,system.string,system.valuetuple-system.collections.generic.ienumerable-system.byte-,system.uint64--.backupdids">backupDIDs</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.string,chia.dotnet.coin,system.string,system.string,system.valuetuple-system.collections.generic.ienumerable-system.byte-,system.uint64--.numverificationsrequired">numVerificationsRequired</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.WalletType.html">WalletType</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.string,chia.dotnet.coin,system.string,system.string,system.valuetuple-system.collections.generic.ienumerable-system.byte-,system.uint64--.type">Type</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.string,chia.dotnet.coin,system.string,system.string,system.valuetuple-system.collections.generic.ienumerable-system.byte-,system.uint64--.mydid">MyDID</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.string,chia.dotnet.coin,system.string,system.string,system.valuetuple-system.collections.generic.ienumerable-system.byte-,system.uint64--.walletid">WalletId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.string,chia.dotnet.coin,system.string,system.string,system.valuetuple-system.collections.generic.ienumerable-system.byte-,system.uint64--.coinname">CoinName</a>, <a class="xref" href="chia.dotnet.Coin.html">Coin</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.string,chia.dotnet.coin,system.string,system.string,system.valuetuple-system.collections.generic.ienumerable-system.byte-,system.uint64--.coin">coin</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.string,chia.dotnet.coin,system.string,system.string,system.valuetuple-system.collections.generic.ienumerable-system.byte-,system.uint64--.newpuzhash">NewPuzHash</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.string,chia.dotnet.coin,system.string,system.string,system.valuetuple-system.collections.generic.ienumerable-system.byte-,system.uint64--.pubkey">Pubkey</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.string,chia.dotnet.coin,system.string,system.string,system.valuetuple-system.collections.generic.ienumerable-system.byte-,system.uint64--.backupdids">BackupDIDs</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.wallettype,system.string,system.uint32,system.string,chia.dotnet.coin,system.string,system.string,system.valuetuple-system.collections.generic.ienumerable-system.byte-,system.uint64--.numverificationsrequired">NumVerificationsRequired</a>)&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -2692,7 +2663,7 @@ Returns whether the spend bundle was successfully included into the mempool</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;string&gt;&gt; SpendClawbackCoins(IEnumerable&lt;string&gt; coinIds, ushort batchSize = 50, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(IEnumerable&lt;string&gt; TransactionsIds, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; SpendClawbackCoins(IEnumerable&lt;string&gt; coinIds, ushort batchSize = 50, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -2711,7 +2682,7 @@ Returns whether the spend bundle was successfully included into the mempool</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.string-,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactionsids">TransactionsIds</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ienumerable-system.string-,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd><p>A list of <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></p>
 </dd>
   </dl>

@@ -177,14 +177,15 @@ namespace chia.dotnet
         /// <param name="launcherId"></param>
         /// <param name="fee">Fee (in units of mojos)</param>
         /// <param name="cancellationToken">A token to allow the call to be cancelled</param>
-        /// <returns><see cref="TransactionRecord"/></returns>
-        public async Task<TransactionRecord> UpdateRoot(string newRoot, string launcherId, ulong fee = 0, CancellationToken cancellationToken = default)
+        /// <returns><see cref="TransactionRecord"/> and list of transactions</returns>
+        public async Task<(TransactionRecord txRecord, IEnumerable<TransactionRecord> transactions)> UpdateRoot(string newRoot, string launcherId, ulong fee = 0, CancellationToken cancellationToken = default)
         {
             dynamic data = new ExpandoObject();
             data.launcher_id = launcherId;
             data.new_root = newRoot;
             data.fee = fee;
-            return await WalletProxy.SendMessage<TransactionRecord>("dl_update_root", data, "tx_record", cancellationToken).ConfigureAwait(false);
+            var response = await WalletProxy.SendMessage("dl_update_root", data, cancellationToken).ConfigureAwait(false);
+            return (response.tx_record, Converters.ToObject<IEnumerable<TransactionRecord>>(response.transactions));
         }
     }
 }

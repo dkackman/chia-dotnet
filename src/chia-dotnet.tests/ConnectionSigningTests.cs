@@ -30,8 +30,8 @@ namespace chia.dotnet.tests
         {
             var endpoint = new EndpointInfo()
             {
-                CertPath = @"C:\Users\don\.chia\mainnet\config\ssl\data_layer\private_data_layer.crt",
-                KeyPath = @"C:\Users\don\.chia\mainnet\config\ssl\data_layer\private_data_layer.key"
+                CertPath = @"~\.chia\mainnet\config\ssl\daemon\private_daemon.crt",
+                KeyPath = @"~\.chia\mainnet\config\ssl\daemon\private_daemon.key"
             };
             var certs = endpoint.GetCert();
             Assert.NotNull(certs);

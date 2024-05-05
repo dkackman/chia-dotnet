@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -77,12 +78,13 @@ namespace chia.dotnet.tests
             Assert.NotNull(summaries.ToList());
         }
 
-        [Fact]
+        [SkippableFact]
         public async Task GetHarvesterPlotsValid()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
             var summaries = await Farmer.GetHarvestersSummary(cts.Token);
+            Skip.IfNot(summaries.Any());
             var nodeId = summaries.First().Connection.NodeId;
             var requestData = new PlotInfoRequestData()
             {
@@ -97,12 +99,13 @@ namespace chia.dotnet.tests
             Assert.NotNull(plotInfo);
         }
 
-        [Fact]
+        [SkippableFact]
         public async Task GetHarvesterPlotsKeysMissing()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
             var summaries = await Farmer.GetHarvestersSummary(cts.Token);
+            Skip.IfNot(summaries.Any());
             var nodeId = summaries.First().Connection.NodeId;
             var requestData = new PlotPathRequestData()
             {
@@ -166,12 +169,13 @@ namespace chia.dotnet.tests
             Assert.NotNull(harvesters.ToList());
         }
 
-        [Fact]
+        [SkippableFact]
         public async Task GetHarvesterPlotsInvalid()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
             var summaries = await Farmer.GetHarvestersSummary(cts.Token);
+            Skip.IfNot(summaries.Any());
             var nodeId = summaries.First().Connection.NodeId;
             var requestData = new PlotPathRequestData()
             {
@@ -200,12 +204,14 @@ namespace chia.dotnet.tests
 
         }
 
-        [Fact]
+        [SkippableFact]
         public async Task GetHarvesterPlotsDuplicates()
         {
             // Arrange
             using var cts = new CancellationTokenSource(15000);
             var summaries = await Farmer.GetHarvestersSummary(cts.Token);
+            Skip.IfNot(summaries.Any());
+
             var nodeId = summaries.First().Connection.NodeId;
             var requestData = new PlotPathRequestData()
             {

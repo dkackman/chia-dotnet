@@ -6,7 +6,7 @@ namespace chia.dotnet.tests
     public class SerializationTests
     {
         [Fact]
-        public void DeserializeTransacation()
+        public void DeserializeTransaction()
         {
             var file = new FileInfo("transaction.json");
             using var reader = file.OpenText();
@@ -18,14 +18,14 @@ namespace chia.dotnet.tests
         }
 
         [Fact]
-        public void SerializeTransacation()
+        public void SerializeTransaction()
         {
             var file = new FileInfo("transaction.json");
             using var reader = file.OpenText();
             var json = reader.ReadToEnd();
 
             // if we can go from json -> object -> json -> object 
-            // the derialization and desrialziation is doing the correct things in aggregate
+            // the serialization and deserialization is doing the correct things in aggregate
             var transaction = Converters.ToObject<TransactionRecord>(json);
             Assert.NotNull(transaction);
 
@@ -58,6 +58,7 @@ namespace chia.dotnet.tests
             var item = Converters.ToObject<MempoolItem>(json);
 
             Assert.NotNull(item);
+
         }
 
         [Fact]
@@ -68,7 +69,7 @@ namespace chia.dotnet.tests
             var json = reader.ReadToEnd();
 
             // if we can go from json -> object -> json -> object 
-            // the derialization and desrialziation is doing the correct things in aggregate
+            // the serialization and deserialization is doing the correct things in aggregate
             var item = Converters.ToObject<MempoolItem>(json);
             Assert.NotNull(item);
 

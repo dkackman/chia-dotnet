@@ -49,7 +49,7 @@ public class NFTWalletTests : TestBase
         using var cts = new CancellationTokenSource(15000);
 
         // Act
-        var returnValue = await NFTWallet.NftCountNfts(cancellationToken: cts.Token);
+        var returnValue = await NFTWallet.CountNFTs(cancellationToken: cts.Token);
 
         // Assert
         Assert.True(returnValue >= 0);
@@ -75,7 +75,7 @@ public class NFTWalletTests : TestBase
         using var cts = new CancellationTokenSource(15000);
 
         // Act
-        var returnValue = await NFTWallet.GetDid(cancellationToken: cts.Token);
+        var returnValue = await NFTWallet.GetDID(cancellationToken: cts.Token);
 
         // Assert
         Assert.NotNull(returnValue);
@@ -105,7 +105,7 @@ public class NFTWalletTests : TestBase
         };
 
         // Act
-        var returnValue = await NFTWallet.MintNFT(info: info, cancellationToken: cts.Token);
+        var returnValue = await NFTWallet.Mint(info: info, cancellationToken: cts.Token);
 
         // Assert
         Assert.NotNull(returnValue.SpendBundle);
@@ -118,9 +118,9 @@ public class NFTWalletTests : TestBase
         using var cts = new CancellationTokenSource(15000);
         NFTBulkMintingInfo info = new()
         {
-            MetadataList = new List<NftMintEntry>
+            MetadataList = new List<NFTMintEntry>
             {
-                new NftMintEntry
+                new NFTMintEntry
                 {
                     Uris = new string[] {
                         "https://nftstorage.link/ipfs/bafybeif37wgxiwsddi7iyovgbjdhskaw2kl2o2gym4zg3x5dsygvmhvs2y/01971..jpg",
@@ -141,7 +141,7 @@ public class NFTWalletTests : TestBase
         };
 
         // Act
-        var returnValue = await NFTWallet.NftMintBulk(info: info, cancellationToken: cts.Token);
+        var returnValue = await NFTWallet.MintBulk(info: info, cancellationToken: cts.Token);
 
         // Assert
         Assert.NotNull(returnValue.SpendBundle);

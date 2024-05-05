@@ -201,7 +201,7 @@ public class DIDWalletTests : TestBase
         var puzHash = string.Empty;
 
         // Act
-        var (MessageSpendBundle, Info, AttestData) = await DIDWallet.CreateAttest(coinName: coinName, pubkey: pubkey, puzHash: puzHash, cancellationToken: cts.Token);
+        var (MessageSpendBundle, Info, AttestData, Transactions) = await DIDWallet.CreateAttest(coinName: coinName, pubkey: pubkey, puzHash: puzHash, cancellationToken: cts.Token);
 
         // Assert
         Assert.NotNull(MessageSpendBundle);

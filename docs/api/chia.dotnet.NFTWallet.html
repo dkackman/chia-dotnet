@@ -255,7 +255,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;SpendBundle&gt; AddUri(string uri, string key, string nftCoinId, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(SpendBundle SpendBundle, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; AddUri(string uri, string key, string nftCoinId, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -277,7 +277,7 @@
     <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
     <dd></dd>
     <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd><p>Transaction fee</p>
+    <dd><p>Fee (in units of mojos)</p>
 </dd>
     <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
     <dd><p>A token to allow the call to be cancelled</p>
@@ -286,7 +286,7 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.spendbundle,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.spendbundle">SpendBundle</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.spendbundle,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd><p>An <a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a></p>
 </dd>
   </dl>
@@ -301,11 +301,50 @@
 
 
 
-  <a id="chia_dotnet_NFTWallet_GetDid_" data-uid="chia.dotnet.NFTWallet.GetDid*"></a>
+  <a id="chia_dotnet_NFTWallet_CountNFTs_" data-uid="chia.dotnet.NFTWallet.CountNFTs*"></a>
 
-  <h3 id="chia_dotnet_NFTWallet_GetDid_System_Threading_CancellationToken_" data-uid="chia.dotnet.NFTWallet.GetDid(System.Threading.CancellationToken)">
-  GetDid(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/NFTWallet.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  <h3 id="chia_dotnet_NFTWallet_CountNFTs_System_Threading_CancellationToken_" data-uid="chia.dotnet.NFTWallet.CountNFTs(System.Threading.CancellationToken)">
+  CountNFTs(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/NFTWallet.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the number of NFTs in a wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;int&gt; CountNFTs(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A token to allow the call to be cancelled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>The number of NFTs in the wallet</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="chia_dotnet_NFTWallet_GetDID_" data-uid="chia.dotnet.NFTWallet.GetDID*"></a>
+
+  <h3 id="chia_dotnet_NFTWallet_GetDID_System_Threading_CancellationToken_" data-uid="chia.dotnet.NFTWallet.GetDID(System.Threading.CancellationToken)">
+  GetDID(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/NFTWallet.cs/#L90"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the DID</p>
@@ -313,7 +352,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; GetDid(CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; GetDID(CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -344,7 +383,7 @@
 
   <h3 id="chia_dotnet_NFTWallet_GetNFTs_System_Int32_System_Int32_System_Boolean_System_Threading_CancellationToken_" data-uid="chia.dotnet.NFTWallet.GetNFTs(System.Int32,System.Int32,System.Boolean,System.Threading.CancellationToken)">
   GetNFTs(int, int, bool, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/NFTWallet.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/NFTWallet.cs/#L75"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets NFTs from a wallet</p>
@@ -385,11 +424,11 @@
 
 
 
-  <a id="chia_dotnet_NFTWallet_MintNFT_" data-uid="chia.dotnet.NFTWallet.MintNFT*"></a>
+  <a id="chia_dotnet_NFTWallet_Mint_" data-uid="chia.dotnet.NFTWallet.Mint*"></a>
 
-  <h3 id="chia_dotnet_NFTWallet_MintNFT_chia_dotnet_NFTMintingInfo_System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.NFTWallet.MintNFT(chia.dotnet.NFTMintingInfo,System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
-  MintNFT(NFTMintingInfo, bool?, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/NFTWallet.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  <h3 id="chia_dotnet_NFTWallet_Mint_chia_dotnet_NFTMintingInfo_System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.NFTWallet.Mint(chia.dotnet.NFTMintingInfo,System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
+  Mint(NFTMintingInfo, bool?, ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/NFTWallet.cs/#L103"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Mints an NFT</p>
@@ -397,7 +436,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(SpendBundle SpendBundle, string NftId)&gt; MintNFT(NFTMintingInfo info, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(SpendBundle SpendBundle, string NftId, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; Mint(NFTMintingInfo info, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -408,7 +447,7 @@
     <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
     <dd></dd>
     <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd><p>Transaction fee</p>
+    <dd><p>Fee (in units of mojos)</p>
 </dd>
     <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
     <dd><p>A token to allow the call to be cancelled</p>
@@ -417,7 +456,7 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.spendbundle,system.string-.spendbundle">SpendBundle</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.spendbundle,system.string-.nftid">NftId</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.spendbundle,system.string,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.spendbundle">SpendBundle</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.spendbundle,system.string,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.nftid">NftId</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.spendbundle,system.string,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd><p>A <a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a></p>
 </dd>
   </dl>
@@ -432,50 +471,11 @@
 
 
 
-  <a id="chia_dotnet_NFTWallet_NftCountNfts_" data-uid="chia.dotnet.NFTWallet.NftCountNfts*"></a>
+  <a id="chia_dotnet_NFTWallet_MintBulk_" data-uid="chia.dotnet.NFTWallet.MintBulk*"></a>
 
-  <h3 id="chia_dotnet_NFTWallet_NftCountNfts_System_Threading_CancellationToken_" data-uid="chia.dotnet.NFTWallet.NftCountNfts(System.Threading.CancellationToken)">
-  NftCountNfts(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/NFTWallet.cs/#L57"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Retrieves the number of NFTs in a wallet.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;int&gt; NftCountNfts(CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>A token to allow the call to be cancelled</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
-    <dd><p>The number of NFTs in the wallet</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="chia_dotnet_NFTWallet_NftMintBulk_" data-uid="chia.dotnet.NFTWallet.NftMintBulk*"></a>
-
-  <h3 id="chia_dotnet_NFTWallet_NftMintBulk_chia_dotnet_NFTBulkMintingInfo_System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.NFTWallet.NftMintBulk(chia.dotnet.NFTBulkMintingInfo,System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
-  NftMintBulk(NFTBulkMintingInfo, bool?, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/NFTWallet.cs/#L129"><i class="bi bi-code-slash"></i></a>
+  <h3 id="chia_dotnet_NFTWallet_MintBulk_chia_dotnet_NFTBulkMintingInfo_System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.NFTWallet.MintBulk(chia.dotnet.NFTBulkMintingInfo,System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
+  MintBulk(NFTBulkMintingInfo, bool?, ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/NFTWallet.cs/#L138"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Mints an set NFTs in bulk</p>
@@ -483,18 +483,18 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;(SpendBundle SpendBundle, IEnumerable&lt;string&gt; NftIdList)&gt; NftMintBulk(NFTBulkMintingInfo info, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(SpendBundle SpendBundle, IEnumerable&lt;string&gt; NftIdList, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; MintBulk(NFTBulkMintingInfo info, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>info</code> <a class="xref" href="chia.dotnet.NFTBulkMintingInfo.html">NFTBulkMintingInfo</a></dt>
-    <dd><p>A list of dicts containing the metadata for each NFT to be minted</p>
+    <dd><p>A list of dictionaries containing the metadata for each NFT to be minted</p>
 </dd>
     <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
     <dd></dd>
     <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd><p>Transaction fee</p>
+    <dd><p>Fee (in units of mojos)</p>
 </dd>
     <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
     <dd><p>A token to allow the call to be cancelled</p>
@@ -503,7 +503,7 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.spendbundle,system.collections.generic.ienumerable-system.string--.spendbundle">SpendBundle</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.spendbundle,system.collections.generic.ienumerable-system.string--.nftidlist">NftIdList</a>)&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.spendbundle,system.collections.generic.ienumerable-system.string-,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.spendbundle">SpendBundle</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.spendbundle,system.collections.generic.ienumerable-system.string-,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.nftidlist">NftIdList</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.spendbundle,system.collections.generic.ienumerable-system.string-,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd><p><a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a> and a list of <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></p>
 </dd>
   </dl>
@@ -522,7 +522,7 @@
 
   <h3 id="chia_dotnet_NFTWallet_SetDID_System_String_System_String_System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.NFTWallet.SetDID(System.String,System.String,System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
   SetDID(string, string, bool?, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/NFTWallet.cs/#L170"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/NFTWallet.cs/#L180"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the DID for an NFT</p>
@@ -530,7 +530,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;SpendBundle&gt; SetDID(string didId, string nftCoinId, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(SpendBundle SpendBundle, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; SetDID(string didId, string nftCoinId, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -544,7 +544,8 @@
     <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
     <dd></dd>
     <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd></dd>
+    <dd><p>Fee (in units of mojos)</p>
+</dd>
     <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
     <dd><p>A token to allow the call to be cancelled</p>
 </dd>
@@ -552,7 +553,7 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.spendbundle,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.spendbundle">SpendBundle</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.spendbundle,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd><p>A <a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a></p>
 </dd>
   </dl>
@@ -571,7 +572,7 @@
 
   <h3 id="chia_dotnet_NFTWallet_SetStatus_System_String_System_Boolean_System_Threading_CancellationToken_" data-uid="chia.dotnet.NFTWallet.SetStatus(System.String,System.Boolean,System.Threading.CancellationToken)">
   SetStatus(string, bool, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/NFTWallet.cs/#L188"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/NFTWallet.cs/#L203"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the status of an NFT</p>
@@ -588,7 +589,7 @@
     <dd><p>The coin ID</p>
 </dd>
     <dt><code>inTransaction</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>In transaction idicator</p>
+    <dd><p>In transaction indicator</p>
 </dd>
     <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
     <dd><p>A token to allow the call to be cancelled</p>
@@ -616,7 +617,7 @@
 
   <h3 id="chia_dotnet_NFTWallet_Transfer_System_String_System_String_System_Nullable_System_Boolean__System_UInt64_System_Threading_CancellationToken_" data-uid="chia.dotnet.NFTWallet.Transfer(System.String,System.String,System.Nullable{System.Boolean},System.UInt64,System.Threading.CancellationToken)">
   Transfer(string, string, bool?, ulong, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/NFTWallet.cs/#L206"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dkackman/chia-dotnet/blob/main/src/chia-dotnet/NFTWallet.cs/#L221"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the status of an NFT</p>
@@ -624,7 +625,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;SpendBundle&gt; Transfer(string targetAddress, string coinId, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;(SpendBundle SpendBudle, IEnumerable&lt;TransactionRecord&gt; Transactions)&gt; Transfer(string targetAddress, string coinId, bool? reusePuzhash = null, ulong fee = 0, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -638,7 +639,7 @@
     <dt><code>reusePuzhash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
     <dd></dd>
     <dt><code>fee</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd><p>Transaction fee</p>
+    <dd><p>Fee (in units of mojos)</p>
 </dd>
     <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
     <dd><p>A token to allow the call to be cancelled</p>
@@ -647,7 +648,7 @@
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.spendbundle,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.spendbundle">SpendBundle</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="chia.dotnet.TransactionRecord.html">TransactionRecord</a>&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chia.dotnet.spendbundle,system.collections.generic.ienumerable-chia.dotnet.transactionrecord--.transactions">Transactions</a>)&gt;</dt>
     <dd><p>A <a class="xref" href="chia.dotnet.SpendBundle.html">SpendBundle</a></p>
 </dd>
   </dl>
