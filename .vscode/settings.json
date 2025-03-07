@@ -1,4 +1,14 @@
 {
   "dotnet-test-explorer.testProjectPath": "**/*.sln",
-  "cSpell.words": ["bech", "Puzhash"]
+  "cSpell.words": [
+    "aggsig",
+    "bech",
+    "Headerhash",
+    "hrpgot",
+    "maxv",
+    "polymod",
+    "Puzhash",
+    "puzzlehash",
+    "puzzlehashes"
+  ]
 }
