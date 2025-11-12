@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <RootNamespace>chia.dotnet</RootNamespace>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>4.0.0</Version>
+    <Version>4.1.0</Version>
     <Authors>dkackman</Authors>
     <Company>dkackman</Company>
     <Description>A .net client library for chia™ RPC interfaces that runs on linux and windows.</Description>
@@ -18,7 +18,7 @@
     <RepositoryUrl>https://github.com/dkackman/chia-dotnet</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>chia, 2.3.0</PackageTags>
-    <PackageReleaseNotes>Chia 2.3.0 changes</PackageReleaseNotes>
+    <PackageReleaseNotes>.net 10</PackageReleaseNotes>
     <PackageIcon>chia-leaf-logo-384x384.png</PackageIcon>
     <PackageIconUrl />
     <Nullable>enable</Nullable>
